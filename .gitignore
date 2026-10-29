@@ -1,0 +1,17 @@
+**/bin/
+**/obj/
+.vs/
+.idea/
+.env
+.env.*
+!.env.example
+**/appsettings.Local.json
+TestResults/
+*.user
+
+# Development Data Protection keys
+**/.local/
+
+# Build outputs whose directory names contain a literal backslash
+**/bin\\*/
+**/obj\\*/
