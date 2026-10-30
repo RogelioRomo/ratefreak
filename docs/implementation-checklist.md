@@ -30,8 +30,12 @@ collections/fields/items 0. No public deployment.
 Work is on `main`. At the user’s request, Phase 5 was merged locally by
 fast-forward from `dd454da` to `82a2ddb`; all feature commits are retained.
 Post-merge verification on `main`: 281 tests pass, zero failed/skipped.
-No remote is configured and no push was performed. Next phase is Phase 6;
-email verification/recovery and deployment hardening remain required before launch.
+No remote is configured and no push was performed. Phase 6a design is now ready
+for review: MusicBrainz full-length albums, one record per release group (user
+approved this scope on 2026-10-30). See
+`docs/superpowers/specs/2026-10-30-musicbrainz-design.md`; builder check found no
+important gaps. No Phase 6 product code or migration has been written yet.
+Email verification/recovery and deployment hardening remain required before launch.
 
 ### TMDB activation and live verification
 
