@@ -58,11 +58,12 @@ public sealed class MusicBrainzMediaProvider(HttpClient client,IOptions<MusicBra
                 using(response)
                 {
                     if(response.StatusCode==HttpStatusCode.NotFound) return null;
-                    var retry=RetrySeconds(response.Headers.RetryAfter);
+                    var delay=RetryDelay(response.Headers.RetryAfter);
+                    var retry=delay is { } duration ? (int?)Math.Clamp(Math.Ceiling(duration.TotalSeconds),1,86400) : null;
                     var limited=response.StatusCode is HttpStatusCode.TooManyRequests or HttpStatusCode.ServiceUnavailable;
-                    if(limited) gate.Cooldown(retry ?? 1);
+                    if(limited) gate.Cooldown(delay ?? TimeSpan.FromSeconds(1));
                     var transient=response.StatusCode is HttpStatusCode.RequestTimeout or HttpStatusCode.InternalServerError or HttpStatusCode.BadGateway or HttpStatusCode.GatewayTimeout;
-                    if(attempt==0 && (transient || limited && (retry ?? 1)<=1)) continue;
+                    if(attempt==0 && (transient || limited && (delay ?? TimeSpan.FromSeconds(1))<=TimeSpan.FromSeconds(1))) continue;
                     if(!response.IsSuccessStatusCode)
                     {
                         logger.LogWarning("MusicBrainz request failed with status {StatusCode}",(int)response.StatusCode);
@@ -84,9 +85,9 @@ public sealed class MusicBrainzMediaProvider(HttpClient client,IOptions<MusicBra
         catch(JsonException) { throw new MediaProviderException(ProviderFailure.InvalidResponse); }
         finally { gate.Exit(); }
     }
-    private int? RetrySeconds(RetryConditionHeaderValue? header)
+    private TimeSpan? RetryDelay(RetryConditionHeaderValue? header)
     {
-        var seconds=header?.Delta?.TotalSeconds ?? (header?.Date-clock.GetUtcNow())?.TotalSeconds;
-        return seconds is null?null:(int)Math.Clamp(Math.Ceiling(seconds.Value),1,86400);
+        var duration=header?.Delta ?? header?.Date-clock.GetUtcNow();
+        return duration is null ? null : duration < TimeSpan.FromSeconds(1) ? TimeSpan.FromSeconds(1) : duration;
     }
 }

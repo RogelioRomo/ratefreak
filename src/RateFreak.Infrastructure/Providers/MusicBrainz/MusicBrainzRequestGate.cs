@@ -10,12 +10,12 @@ public sealed class MusicBrainzRequestGate(TimeProvider clock) : IDisposable
     private TimeSpan cooldown;
     public bool TryEnter() => slot.Wait(0);
     public void Exit() => slot.Release();
-    public void Cooldown(int seconds) { cooldownStart = clock.GetTimestamp(); cooldown = TimeSpan.FromSeconds(seconds); }
+    public void Cooldown(TimeSpan duration) { cooldownStart = clock.GetTimestamp(); cooldown = duration; }
     public int? RemainingCooldown()
     {
         if (cooldownStart is not { } start) return null;
         var remaining = cooldown - clock.GetElapsedTime(start);
-        return remaining > TimeSpan.Zero ? Math.Clamp((int)Math.Ceiling(remaining.TotalSeconds),1,86400) : null;
+        return remaining > TimeSpan.Zero ? (int)Math.Clamp(Math.Ceiling(remaining.TotalSeconds),1,86400) : null;
     }
     public async Task PaceAsync(CancellationToken ct)
     {

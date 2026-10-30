@@ -601,6 +601,8 @@ process-wide gate allows one MusicBrainz operation, with no waiting operation qu
 every outbound start, including retry, is at least one second apart. At most one
 retry is allowed; 429/503 Retry-After establishes cooldown across requests/clients.
 Long cooldowns reject new work rather than sleeping past the operation deadline.
+The complete upstream duration is retained internally; only the exposed Retry-After
+header is capped at 86400 seconds.
 Responses are bounded to 1 MiB, depth 32 and unique JSON properties. Strict string,
 UUID, date, artist-credit and metadata bounds reject invalid upstream data with 502.
 Busy/disabled/limited/unavailable is 503 (Retry-After when applicable), timeout 504.

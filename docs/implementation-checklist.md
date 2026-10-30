@@ -3,7 +3,7 @@
 Updated 2026-10-30. Implemented Phase 0–5 and Phase 6a MusicBrainz albums.
 Social features and further providers remain separate Phase 6 work.
 
-## Resume here — Phase 6a implemented, review pending (2026-10-30)
+## Resume here — Phase 6a implementation complete (2026-10-30)
 
 User approved full-length MusicBrainz albums, one catalog item per release group,
 and requested implementation of the written design with planning/execution delegated.
@@ -11,13 +11,17 @@ Implemented explicit provider selection, bounded MusicBrainz adapter and shared
 transactional imports. Album library/ratings/reviews/collections work through existing
 contracts. See ADR 0007, README and the MusicBrainz design/plan.
 
-Verification: **353 tests pass** (64 unit, 84 provider contract, 205 integration),
+Verification: **355 tests pass** (64 unit, 86 provider contract, 205 integration),
 zero failed/skipped. Release build zero warnings/errors. NuGet transitive audit
 reports no known vulnerable packages. EF no pending model changes. Applied/reapplied
 `20261030164447_AddAlbums` locally; six migration history records once each.
 Migration only widens the type constraint; tested downgrade refusal when albums
 exist and safe downgrade/reapply preserving a movie when albums are absent.
-Independent whole-branch review is pending; finish it before marking Phase 6a complete.
+Independent whole-branch review completed. Reviewer found no blocking issues and
+independently reran the provider contracts. Its >24h cooldown finding was treated
+as a required fix: internal cooldown now preserves the complete Retry-After while
+only exposed seconds are capped. Two controlled-time regressions cover delta/date
+headers; observed RED→GREEN, then the full 355-test suite and Release build pass.
 
 Local API running at http://localhost:5080/swagger; PostgreSQL healthy on
 127.0.0.1:55432. Live health/readiness/Swagger/OpenAPI/capabilities/type filters pass.
@@ -57,7 +61,7 @@ pending. Phase 5's minor rejected-deletion snapshot test suggestion remains defe
   live aggregates, ownership/CSRF tests and additive migration. See evidence below.
 - [x] Phase 5: dynamic collections and schema validation.
 - [ ] Phase 6: additional providers and social features.
-  Phase 6a MusicBrainz implementation verified; final review pending.
+  Phase 6a MusicBrainz implementation complete and independently reviewed.
   Social features and further providers remain separate work.
 - [ ] Phase 7: production hardening and deployment verification.
 - [ ] Deferred account work: profile editing and public profiles.
@@ -471,7 +475,7 @@ password recovery, TMDB terms/attribution and remaining deployment safeguards.
   CSRF/type validation, existing TMDB transport/import behavior remain green.
 - [x] Generated `20261030164447_AddAlbums`; inspected constraint-only Up and explicit
   Down guard. Apply/reapply/model checks and safe downgrade behavior verified.
-- [x] Full suite 353/353, no failures/skips; Release build zero warnings/errors;
+- [x] Final full suite 355/355 (64 unit, 86 provider, 205 integration), no failures/skips; Release build zero warnings/errors;
   fresh transitive vulnerability audit reports no known vulnerable packages.
 - [x] Applied/reapplied locally; six migration history records once each. No accounts
   or catalog records created by live checks; existing media 2, albums 0, users 0.
@@ -479,7 +483,12 @@ password recovery, TMDB terms/attribution and remaining deployment safeguards.
   album filter 200; disabled MusicBrainz 503, invalid IDs/provider/type 400;
   existing real TMDB search 200. No live MusicBrainz calls.
 - [x] README/design/ADR/checklist updated with actual evidence.
-- [ ] Independent whole-branch review and any important fixes.
+- [x] Independent whole-branch review; no blocking findings. Treated long-cooldown
+  truncation as required: preserve complete upstream duration internally and cap only
+  exposed Retry-After. Controlled-time delta/date regressions observed RED→GREEN;
+  final full suite 355/355 and Release build zero warnings/errors after fix.
+- [x] Restarted local API with final reviewed code; readiness Healthy. No changes to
+  provider activation/contact, persistent records or migration model during fix.
 - [ ] Live MusicBrainz activation/search/preview/import verification after the user
   chooses maintainer contact. Implementation/tests do not require live activation.
 

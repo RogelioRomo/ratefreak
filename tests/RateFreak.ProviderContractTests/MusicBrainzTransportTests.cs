@@ -117,4 +117,22 @@ public sealed partial class MusicBrainzTests
         Assert.Equal(ProviderFailure.InvalidResponse,(await Assert.ThrowsAsync<MediaProviderException>(()=>Provider(client,gate).GetDetailsAsync(Id,"album",Ct))).Failure);
     }
 
+    [Theory]
+    [InlineData(2)]
+    [InlineData(50000)]
+    public async Task Multi_day_cooldown_is_preserved_while_exposed_retry_header_is_bounded(int days)
+    {
+        var clock=new ManualClock();var calls=0;
+        using var handler=new Handler((_,_)=>
+        {
+            if(++calls>1) return Task.FromResult(Json(Album()));
+            var response=Json("{}",HttpStatusCode.ServiceUnavailable);response.Headers.RetryAfter=days>20000 ? new RetryConditionHeaderValue(clock.GetUtcNow().AddDays(days)) : new RetryConditionHeaderValue(TimeSpan.FromDays(days));return Task.FromResult(response);
+        });
+        using var client=new HttpClient(handler);using var gate=new MusicBrainzRequestGate(clock);
+        var first=await Assert.ThrowsAsync<MediaProviderException>(()=>Provider(client,gate,clock).GetDetailsAsync(Id,"album",Ct));Assert.Equal(86400,first.RetryAfterSeconds);
+        clock.Advance(TimeSpan.FromDays(1));
+        var next=await Assert.ThrowsAsync<MediaProviderException>(()=>Provider(client,gate,clock).GetDetailsAsync(Id,"album",Ct));Assert.Equal(86400,next.RetryAfterSeconds);Assert.Equal(1,calls);
+        clock.Advance(TimeSpan.FromDays(days-1));Assert.NotNull(await Provider(client,gate,clock).GetDetailsAsync(Id,"album",Ct));Assert.Equal(2,calls);
+    }
+
 }
