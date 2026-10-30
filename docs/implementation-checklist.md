@@ -5,7 +5,44 @@ Phase 6b follows, Phase 6c IGDB games, Phase 6d public review comments and
 Phase 6e additional GitHub/Google sign-in.
 Collection discussions, moderation and further providers remain separate Phase 6 work.
 
-## Resume here — Phase 6e external sign-in merged (2026-10-30)
+## Resume here — IGDB and MusicBrainz live reads verified (2026-10-30)
+
+User supplied IGDB credentials and a chosen MusicBrainz contact in ignored `.env`,
+then requested live verification. Checked values without displaying them. Both
+`Enabled` flags were false, no inherited host settings were present, and no local
+API was running. The API does not automatically load `.env`.
+
+Loaded only IGDB/MusicBrainz settings into a temporary Development API process on
+127.0.0.1:5081, overriding both enabled flags to true for that process only.
+Database readiness returned 200 and public capabilities reported both enabled.
+Real provider checks succeeded:
+
+| Provider | Search | Preview |
+| --- | --- | --- |
+| IGDB | 200; The Witcher 3 query returned one result | 200; The Witcher 3: Wild Hunt, ID `1942` |
+| MusicBrainz | 200; Random Access Memories query returned six results | 200; Random Access Memories, release group `306b7820-9f80-471a-9647-8f769feea49d` |
+
+Temporary API stopped. No secrets/contact values printed, no persistent configuration
+changed, no accounts created and no imports performed. Saved `.env` enabled flags
+remain false. Normal use still requires exporting settings or using .NET user-secrets
+and enabling each provider. Authenticated live imports remain unverified; automated
+PostgreSQL import coverage already passes. Last full suite on main: 522 tests pass.
+
+Remaining priorities:
+
+- [ ] Configure/live-test Google and GitHub OAuth sign-in and linking.
+- [ ] Enable metadata providers in the normal runtime configuration when desired;
+  optionally verify authenticated live IGDB/MusicBrainz imports.
+- [ ] Moderation/reporting with an audit policy; optional collection discussions.
+- [ ] Profile editing/public profiles; catalog corrections/refresh/provenance; books.
+- [ ] Frontend/API integration and browser-facing proxy when explicitly requested.
+- [ ] Production hardening/deployment, provider licensing/attribution, backup/restore,
+  retention and abuse controls; resolve recovery policy for local password accounts.
+
+Email delivery, mail verification and password reset remain deferred by user choice.
+The existing adapters no longer await credentials/contact for read-only verification.
+
+## Previous resume — Phase 6e external sign-in merged (2026-10-30)
 
 User approved GitHub/Google as additional sign-in options, direct Identity integration,
 and the written design. Implemented on `feat/external-sign-in`, based on main `0237bc1`.
@@ -61,12 +98,13 @@ templates, disabled provider discovery/starts, mixed-case disabled callback, mis
 pending/session 401 and no-store checks. No verification accounts/provider mappings
 created by live checks. Temporary API stopped; existing 5080 server not restarted.
 
-Remaining: configure OAuth apps/credentials and live-test when ready; IGDB credentials
-and MusicBrainz contact; profiles, catalog refresh/correction, moderation/reporting,
+Remaining at this point: configure OAuth apps/credentials and live-test when ready;
+IGDB credentials and MusicBrainz contact (subsequently supplied and live-read verified
+above); profiles, catalog refresh/correction, moderation/reporting,
 optional collection discussions, books and production hardening. Resolve local-account
 ownership/recovery policy before public launch without assuming mail will be added.
 
-## Resume here — Phase 6d review comments complete (2026-10-30)
+## Previous resume — Phase 6d review comments complete (2026-10-30)
 
 User requested merging IGDB and continuing implementation. Fast-forward merged
 IGDB to main at `50f8ddc`; post-merge 444 tests passed, recorded in `518de06`. Deleted the
@@ -690,8 +728,10 @@ password recovery, TMDB terms/attribution and remaining deployment safeguards.
   final full suite 355/355 and Release build zero warnings/errors after fix.
 - [x] Restarted local API with final reviewed code; readiness Healthy. No changes to
   provider activation/contact, persistent records or migration model during fix.
-- [ ] Live MusicBrainz activation/search/preview/import verification after the user
-  chooses maintainer contact. Implementation/tests do not require live activation.
+- [x] User-chosen MusicBrainz contact supplied; live search/preview verified using a
+  temporary enabled process on 2026-10-30. See current resume evidence above.
+- [ ] Persistent runtime enablement and optional authenticated live import verification.
+  Saved settings remain disabled; automated imports are already tested.
 
 No EP/single/track/edition entities, artwork, annotation/tags/genres/provider-score
 import, social endpoints, IGDB/books or public launch in this slice. Shared-IP or

@@ -337,8 +337,9 @@ ConnectionStrings__Default=Host=localhost;Database=ratefreak;Username=ratefreak;
 Providers__Tmdb__Enabled=true
 Providers__Tmdb__AccessToken=
 
-Providers__MusicBrainz__Enabled=true
-Providers__MusicBrainz__UserAgent=RateFreak/1.0 (contact: admin@example.invalid)
+Providers__MusicBrainz__Enabled=false
+Providers__MusicBrainz__Contact=you@example.com
+Providers__MusicBrainz__TimeoutMilliseconds=6000
 
 Providers__Igdb__Enabled=false
 Providers__Igdb__ClientId=
@@ -438,6 +439,16 @@ Implement collection metadata, field definitions, JSONB item storage, runtime va
 ### Phase 6 — Expand providers and social features
 
 Add MusicBrainz, then IGDB and book provider as needed; implement follows, comments, moderation, and optional feeds.
+
+Status 2026-10-30: MusicBrainz, IGDB, follows, public review comments and additional
+Google/GitHub sign-in are implemented and merged into main. IGDB/MusicBrainz live
+search and preview passed with supplied settings in a temporary enabled process;
+saved enabled flags remain false. `.env` is not automatically loaded by the API.
+Remaining: OAuth live setup/testing, optional live metadata imports, books,
+moderation/reporting, optional collection discussions/feeds, profiles and catalog
+correction/refresh policy. Email delivery/password reset remain deferred by user
+choice; resolve local-password-account recovery policy before public launch.
+See `docs/implementation-checklist.md` for current evidence and remaining work.
 
 ### Phase 7 — Production hardening
 

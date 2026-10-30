@@ -2,12 +2,18 @@
 
 A monorepo containing a .NET 10 modular monolith API and a Next.js web app. Phase 1 foundation and Phase 2 local
 accounts/catalog reads, Phase 4 personal library/ratings/reviews, and Phase 5
-dynamic collections plus Phase 6a MusicBrainz albums, Phase 6b follows, Phase 6c IGDB games and Phase 6d review comments are implemented from `ratefreak-plan.md`.
+dynamic collections plus Phase 6a MusicBrainz albums, Phase 6b follows, Phase 6c IGDB games,
+Phase 6d review comments and Phase 6e additional Google/GitHub sign-in are implemented
+from `ratefreak-plan.md`.
 Next.js will be hosted separately and act as a thin browser-facing proxy; all
 accounts, authorization and business logic remain in .NET. The frontend scaffold lives in `web/`; API integration, the browser-facing proxy,
 and remaining business features are not implemented. The Phase 3 TMDB adapter is
 implemented; local TMDB activation and live verification completed on 2026-10-29.
 The checked-in default remains disabled until a server-side token is configured.
+IGDB and MusicBrainz live search/preview checks passed on 2026-10-30 using supplied
+credentials/contact in a temporarily enabled process. Saved local flags remain
+disabled; `.env` is not automatically loaded by the API. Authenticated live imports
+and Google/GitHub live sign-in have not been verified. Last full suite: 522 tests pass.
 
 ## Repository and web app
 
@@ -215,7 +221,8 @@ explicitly using the EF update command above. Its rollback removes follows data;
 EF commits each migration downgrade separately, so a later refusal does not undo
 already-completed downgrades. Back up before any intentional rollback.
 
-Comments, moderation, feeds and public profiles remain deferred. IGDB is next.
+Public review comments and IGDB are implemented. Moderation, feeds, public profiles
+and optional collection discussions remain deferred.
 
 ## Accounts: Phase 2 first slice
 
@@ -267,7 +274,9 @@ External sign-in below provides provider-managed authentication/recovery without
 email delivery. Before public launch, settle the remaining local-account ownership/
 recovery policy, finish HTTPS/ingress and key-storage hardening, and review abuse
 controls/account retention. Profile editing, public profiles, admin endpoints and further media providers remain pending. TMDB activation is
-verified locally; MusicBrainz activation awaits chosen maintainer contact.
+verified locally; IGDB and MusicBrainz live search/preview are also verified using
+the supplied credentials/contact. Normal runtime enablement remains a configuration
+step; authenticated live imports were not part of those read-only checks.
 See `docs/adr/0004-local-accounts.md` for the recorded implementation defaults.
 
 ### Optional GitHub and Google sign-in
@@ -690,6 +699,9 @@ are excluded. No MusicBrainz write-back or user account is involved.
 
 The adapter is **disabled by default**, including the current local configuration.
 Automated tests use simulated responses; no real MusicBrainz calls are required.
+Live search and preview succeeded on 2026-10-30 for Random Access Memories using
+the supplied maintainer contact and a temporary process with the provider enabled.
+The process was stopped and saved settings were unchanged. No live import was made.
 To enable actual search/import, choose a maintainer contact email or HTTPS project/
 contact URL that you consent to send to MusicBrainz in the outbound User-Agent.
 Do not use the example below as an actual contact or infer one from Git settings.
@@ -709,7 +721,7 @@ checked 2026-10-30.
 
 Routes:
 
-- `GET /api/v1/media/providers` lists both configured adapters, supported types,
+- `GET /api/v1/media/providers` lists all three configured metadata adapters, supported types,
   attribution and enabled states, without contact/tokens.
 - `GET /api/v1/media/external/search?provider=musicbrainz&type=album&q=Year%20Zero&page=1`
   searches album title or artist with an escaped literal phrase. Pages 1–500,
@@ -778,6 +790,10 @@ The adapter is **disabled by default**. No real credentials or live IGDB calls a
 needed by the tests. Configure server-side Twitch app credentials through user-secrets
 or deployment secret storage when you choose to activate it; do not put real
 credentials in tracked files or command history. No Twitch user login is added.
+Live search and preview succeeded on 2026-10-30 for The Witcher 3: Wild Hunt (ID 1942)
+using supplied credentials in a temporary enabled process. Saved flags remain false;
+the process was stopped and no live import was made. This verifies credentials and
+read requests, without enabling the provider in the normal runtime configuration.
 
 | Configuration | Contract |
 | --- | --- |
