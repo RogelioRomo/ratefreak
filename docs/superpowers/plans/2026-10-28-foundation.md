@@ -5,7 +5,7 @@
 **Goal:** Build Phase 1 only and record Phase 0 decisions.
 **Architecture:** Four layers, one API and PostgreSQL. Explicit migrations and no business tables.
 **Tech Stack:** .NET 10, EF Core/Npgsql 10, PostgreSQL 17, xUnit v3, Testcontainers.
-**Spec:** ratefreak-backend-plan.md and ../specs/2026-10-28-foundation-design.md.
+**Spec:** ratefreak-plan.md and ../specs/2026-10-28-foundation-design.md.
 
 ## Global Constraints
 

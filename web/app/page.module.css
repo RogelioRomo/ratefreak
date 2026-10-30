@@ -1,0 +1,32 @@
+.main {
+  width: min(100%, 52rem);
+  margin: auto;
+  padding: 6rem 1.5rem;
+}
+
+.eyebrow {
+  margin-bottom: 1.5rem;
+  color: #a6f07a;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.main h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+}
+
+.description {
+  max-width: 36rem;
+  margin-top: 2rem;
+  color: #c0c4ce;
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+
+.status {
+  margin-top: 3rem;
+  color: #a3a9b6;
+  line-height: 1.6;
+}

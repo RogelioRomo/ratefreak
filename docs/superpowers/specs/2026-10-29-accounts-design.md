@@ -2,7 +2,7 @@
 
 Approved scope: email/password registration and login, unique public handles,
 logout and /users/me, with cookie sessions, CSRF, rate limits, migrations and tests.
-Source: ratefreak-backend-plan.md Phase 2 and docs/adr/0004-local-accounts.md.
+Source: ratefreak-plan.md Phase 2 and docs/adr/0004-local-accounts.md.
 
 Goals: safe account storage and a real authenticated API slice backed by PostgreSQL.
 Non-goals: frontend/proxy code, catalog, providers, profile writes, email delivery,

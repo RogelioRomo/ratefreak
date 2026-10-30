@@ -1,13 +1,31 @@
-# RateFreak backend
+# RateFreak
 
-Standalone .NET 10 modular monolith. Phase 1 foundation and Phase 2 local
+A monorepo containing a .NET 10 modular monolith API and a Next.js web app. Phase 1 foundation and Phase 2 local
 accounts/catalog reads, Phase 4 personal library/ratings/reviews, and Phase 5
-dynamic collections plus Phase 6a MusicBrainz albums are implemented from `ratefreak-backend-plan.md`.
+dynamic collections plus Phase 6a MusicBrainz albums are implemented from `ratefreak-plan.md`.
 Next.js will be hosted separately and act as a thin browser-facing proxy; all
-accounts, authorization and business logic remain in .NET. The frontend/proxy and
-remaining business features are not implemented. The Phase 3 TMDB adapter is
+accounts, authorization and business logic remain in .NET. The frontend scaffold lives in `web/`; API integration, the browser-facing proxy,
+and remaining business features are not implemented. The Phase 3 TMDB adapter is
 implemented; local TMDB activation and live verification completed on 2026-10-29.
 The checked-in default remains disabled until a server-side token is configured.
+
+## Repository and web app
+
+The backend remains in `src/` and `tests/`. The independently built Next.js app
+lives in [`web/`](web/README.md), with its own pnpm lockfile. Deployment assets
+live in `deploy/` and shared documentation in `docs/`. Both apps can be changed
+in one pull request and deployed independently; no monorepo build tool is required.
+
+For the frontend, install Node.js 24 LTS and pnpm 10, then run from the repo root:
+
+```bash
+pnpm --dir web install --frozen-lockfile
+pnpm --dir web dev
+```
+
+Open http://localhost:3000. The starter homepage works without the backend.
+Run `pnpm --dir web lint`, `pnpm --dir web typecheck`, and
+`pnpm --dir web build` to verify frontend changes. The backend setup follows.
 
 ## 1. Prerequisites
 
@@ -228,6 +246,7 @@ See `docs/adr/0004-local-accounts.md` for the recorded implementation defaults.
 
 ```text
 RateFreak.sln
+web/                         Next.js App Router / TypeScript / pnpm
 src/RateFreak.Api             -> Application, Infrastructure (composition)
 src/RateFreak.Application     -> Domain
 src/RateFreak.Domain          -> no framework/package dependencies

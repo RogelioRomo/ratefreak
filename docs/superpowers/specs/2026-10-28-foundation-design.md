@@ -1,6 +1,6 @@
 # Phase 0 and Phase 1 design
 
-Source: ratefreak-backend-plan.md, phases 0–1. The user approved the thin Next.js
+Source: ratefreak-plan.md, phases 0–1. The user approved the thin Next.js
 proxy direction; implementation details below are builder decisions.
 
 Goal: an independently runnable .NET 10 API and PostgreSQL foundation, with

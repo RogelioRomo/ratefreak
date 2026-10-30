@@ -79,7 +79,7 @@ pending. Phase 5's minor rejected-deletion snapshot test suggestion remains defe
 - [ ] HTTPS/trusted-proxy setup, secure durable Data Protection keys, secret
   storage, browser/proxy CSRF and cookie forwarding, and deployment abuse limits.
 - [ ] Account deletion/retention policy, backups/restore verification and the
-  remaining production checklist in `ratefreak-backend-plan.md`.
+  remaining production checklist in `ratefreak-plan.md`.
 
 Local defaults: API `http://localhost:5080`, Swagger `/swagger`, OpenAPI
 `/openapi/v1.json`, PostgreSQL `127.0.0.1:55432` (host port 5432 is used by an
