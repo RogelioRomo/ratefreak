@@ -30,7 +30,7 @@ public sealed record ImportMediaRequest(string? Provider, string? ExternalId, st
 public sealed record ImportMediaResult(Guid MediaId, bool Created);
 public interface IMediaImportService
 {
-    Task<ImportMediaResult?> ImportAsync(string externalId, string type, CancellationToken cancellationToken);
+    Task<ImportMediaResult?> ImportAsync(string provider, string externalId, string type, CancellationToken cancellationToken);
 }
 
 public static class MediaProviderInput
@@ -44,5 +44,22 @@ public static class MediaProviderInput
         return true;
     }
 
-    public static bool ValidType(string? type) => type is not null && MediaTypes.IsSupported(type);
+    public static bool ValidType(string? type) => type is MediaTypes.Movie or MediaTypes.TvShow;
+
+    public static bool TryIdentity(string? provider, string? type, string? externalId, out ProviderIdentity identity)
+    {
+        identity = null!;
+        if (provider == "tmdb" && ValidType(type) && TryId(externalId, out var tmdbId))
+        {
+            var ns = type == MediaTypes.Movie ? "movie" : "tv";
+            identity = new(provider, ns, tmdbId, $"https://www.themoviedb.org/{ns}/{tmdbId}"); return true;
+        }
+        if (provider == "musicbrainz" && type == MediaTypes.Album && externalId is { Length: 36 }
+            && Guid.TryParseExact(externalId, "D", out var uuid) && uuid != Guid.Empty)
+        {
+            var id = uuid.ToString("D");
+            identity = new(provider, "release-group", id, $"https://musicbrainz.org/release-group/{id}"); return true;
+        }
+        return false;
+    }
 }

@@ -23,7 +23,7 @@ internal static class PersonalMediaEndpoints
         {
             var errors = PageErrors(page, pageSize);
             if (status is not null && !PersonalMediaRules.ValidStatus(status)) errors["status"] = ["Unsupported tracking status."];
-            if (type is not null && !MediaTypes.IsSupported(type)) errors["type"] = ["Type must be movie or tv_show."];
+            if (type is not null && !MediaTypes.IsSupported(type)) errors["type"] = ["Type must be movie, tv_show or album."];
             if (errors.Count != 0) return Results.ValidationProblem(errors);
             return Results.Ok(await service.ListAsync(UserId(user), new(status, type, page, pageSize), ct));
         }).RequireRateLimiting("personal-read").Produces<PersonalPage<LibraryItem>>().ProducesValidationProblem()

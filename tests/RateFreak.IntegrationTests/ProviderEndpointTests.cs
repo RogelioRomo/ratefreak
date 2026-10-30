@@ -17,7 +17,11 @@ public sealed class ProviderEndpointTests
         using var response = await client.GetAsync("/api/v1/media/providers", TestContext.Current.CancellationToken);
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         var json = await response.Content.ReadFromJsonAsync<JsonElement>(TestContext.Current.CancellationToken);
-        var provider = Assert.Single(json.EnumerateArray());
+        Assert.Equal(2, json.GetArrayLength());
+        var provider = json.EnumerateArray().Single(x => x.GetProperty("name").GetString() == "tmdb");
+        var music = json.EnumerateArray().Single(x => x.GetProperty("name").GetString() == "musicbrainz");
+        Assert.False(music.GetProperty("enabled").GetBoolean());
+        Assert.False(music.TryGetProperty("contact", out _));
         Assert.Equal("tmdb", provider.GetProperty("name").GetString());
         Assert.False(provider.GetProperty("enabled").GetBoolean());
         Assert.False(provider.TryGetProperty("accessToken", out _));
@@ -26,6 +30,8 @@ public sealed class ProviderEndpointTests
     [Theory]
     [InlineData("/api/v1/media/external/search?q=Alien&type=movie")]
     [InlineData("/api/v1/media/external/tmdb/movie/11")]
+    [InlineData("/api/v1/media/external/search?provider=musicbrainz&q=Album&type=album")]
+    [InlineData("/api/v1/media/external/musicbrainz/album/3bd76d40-7f0e-36b7-9348-91a33afee20e")]
     public async Task Disabled_provider_returns_unavailable_instead_of_empty_results(string route)
     {
         await using var factory = new ApiFactory();

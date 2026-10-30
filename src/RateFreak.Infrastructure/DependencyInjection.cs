@@ -1,3 +1,5 @@
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using RateFreak.Infrastructure.Providers.MusicBrainz;
 using RateFreak.Application.Collections;
 using RateFreak.Infrastructure.Collections;
 using RateFreak.Application.PersonalMedia;
@@ -56,10 +58,19 @@ public static class DependencyInjection
             .Validate(options => options.IsValid(), "TMDB configuration is invalid: check timeout, language and enabled-provider access token.")
             .ValidateOnStart();
         services.AddSingleton<TmdbRequestGate>();
-        services.AddHttpClient<IMediaProvider, TmdbMediaProvider>(client => client.Timeout = Timeout.InfiniteTimeSpan)
+        services.AddHttpClient<IMediaProvider, TmdbMediaProvider>("tmdb", client => client.Timeout = Timeout.InfiniteTimeSpan)
             .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
             { AllowAutoRedirect = false, PooledConnectionLifetime = TimeSpan.FromMinutes(5), MaxConnectionsPerServer = 4 })
             .RedactLoggedHeaders(["Authorization"]);
+        services.TryAddSingleton(TimeProvider.System);
+        services.AddOptions<MusicBrainzOptions>().Bind(configuration.GetSection("Providers:MusicBrainz"))
+            .Validate(options => options.IsValid(), "MusicBrainz configuration is invalid: check timeout and enabled-provider maintainer contact.").ValidateOnStart();
+        services.AddSingleton<MusicBrainzRequestGate>();
+        services.AddHttpClient<IMediaProvider, MusicBrainzMediaProvider>("musicbrainz", client => client.Timeout = Timeout.InfiniteTimeSpan)
+            .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
+            { AllowAutoRedirect = false, PooledConnectionLifetime = TimeSpan.FromMinutes(5), MaxConnectionsPerServer = 1 })
+            .RedactLoggedHeaders(["User-Agent"]);
+        services.AddScoped<IMediaProviderRegistry, MediaProviderRegistry>();
         services.AddScoped<IMediaImportService, MediaImportService>();
 
         services.AddHealthChecks().AddCheck<DatabaseReadinessCheck>("postgresql", tags: ["ready"],

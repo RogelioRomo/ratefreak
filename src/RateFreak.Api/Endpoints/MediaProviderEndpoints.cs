@@ -9,26 +9,29 @@ internal static class MediaProviderEndpoints
     public static void MapMediaProviderEndpoints(this WebApplication app)
     {
         var media = app.MapGroup("/api/v1/media").WithTags("Metadata providers");
-        media.MapGet("/providers", (IMediaProvider provider) => Results.Ok(new[] { provider.Capability }))
+        media.MapGet("/providers", (IMediaProviderRegistry providers) => Results.Ok(providers.Capabilities))
             .RequireRateLimiting("catalog").Produces<ProviderCapability[]>().WithSummary("List configured provider capabilities");
-        media.MapGet("/external/search", async (IMediaProvider provider, HttpContext context, CancellationToken cancellationToken,
-            string? q = null, string? type = null, int page = 1) =>
+        media.MapGet("/external/search", async (IMediaProviderRegistry providers, HttpContext context, CancellationToken cancellationToken,
+            string? q = null, string? type = null, int page = 1, string provider = "tmdb") =>
         {
             q = q?.Trim();
             var errors = new Dictionary<string, string[]>();
-            if (string.IsNullOrWhiteSpace(q) || q.Length > 200 || q.Any(char.IsControl))
+            if (!RateFreak.Domain.Collections.CollectionRules.ValidText(q, 200))
                 errors["q"] = ["Search must contain 1–200 characters without control characters."];
-            if (!MediaProviderInput.ValidType(type)) errors["type"] = ["Type must be movie or tv_show."];
+            var adapter = providers.Find(provider);
+            if (adapter is null) errors["provider"] = ["Unknown metadata provider."];
+            else if (type is null || !adapter.Capability.SupportedTypes.Contains(type)) errors["type"] = ["Type is not supported by this provider."];
             if (page is < 1 or > 500) errors["page"] = ["Page must be between 1 and 500."];
             if (errors.Count > 0) return Results.ValidationProblem(errors);
-            return await ProviderResult(async () => Results.Ok(await provider.SearchAsync(q!, type!, page, cancellationToken)), context);
+            return await ProviderResult(async () => Results.Ok(await adapter!.SearchAsync(q!, type!, page, cancellationToken)), context);
         }).RequireRateLimiting("external-search").Produces<ExternalSearchPage>().ProducesValidationProblem()
-            .ProducesProblem(502).ProducesProblem(503).ProducesProblem(504).WithSummary("Search TMDB movies or TV series");
+            .ProducesProblem(502).ProducesProblem(503).ProducesProblem(504).WithSummary("Search the selected metadata provider (default TMDB)");
         media.MapGet("/external/{provider}/{type}/{externalId}", async (string provider, string type, string externalId,
-            IMediaProvider adapter, HttpContext context, CancellationToken cancellationToken) =>
+            IMediaProviderRegistry providers, HttpContext context, CancellationToken cancellationToken) =>
         {
-            if (provider != adapter.Capability.Name) return Results.NotFound();
-            var validation = Validate(type, externalId, out var id);
+            var adapter = providers.Find(provider);
+            if (adapter is null) return Results.NotFound();
+            var validation = Validate(provider, type, externalId, out var id);
             if (validation is not null) return validation;
             return await ProviderResult(async () =>
             {
@@ -41,12 +44,12 @@ internal static class MediaProviderEndpoints
         media.MapPost("/import", async (ImportMediaRequest request, IMediaImportService imports,
             HttpContext context, CancellationToken cancellationToken) =>
         {
-            if (request.Provider != "tmdb") return Results.ValidationProblem(new Dictionary<string, string[]> { ["provider"] = ["Provider must be tmdb."] });
-            var validation = Validate(request.MediaType, request.ExternalId, out var id);
+            if (request.Provider is not ("tmdb" or "musicbrainz")) return Results.ValidationProblem(new Dictionary<string, string[]> { ["provider"] = ["Unknown metadata provider."] });
+            var validation = Validate(request.Provider, request.MediaType, request.ExternalId, out var id);
             if (validation is not null) return validation;
             return await ProviderResult(async () =>
             {
-                var result = await imports.ImportAsync(id, request.MediaType!, cancellationToken);
+                var result = await imports.ImportAsync(request.Provider!, id, request.MediaType!, cancellationToken);
                 if (result is null) return Results.NotFound();
                 return result.Created ? Results.Created($"/api/v1/media/{result.MediaId}", result) : Results.Ok(result);
             }, context);
@@ -56,13 +59,11 @@ internal static class MediaProviderEndpoints
             .WithSummary("Import provider media into the canonical catalog");
     }
 
-    private static IResult? Validate(string? type, string? externalId, out string id)
+    private static IResult? Validate(string? provider, string? type, string? externalId, out string id)
     {
-        var validId = MediaProviderInput.TryId(externalId, out id);
-        var errors = new Dictionary<string, string[]>();
-        if (!MediaProviderInput.ValidType(type)) errors["mediaType"] = ["Type must be movie or tv_show."];
-        if (!validId) errors["externalId"] = ["External ID must be a positive 32-bit decimal integer."];
-        return errors.Count == 0 ? null : Results.ValidationProblem(errors);
+        if (MediaProviderInput.TryIdentity(provider, type, externalId, out var identity)) { id=identity.ExternalId; return null; }
+        id="";
+        return Results.ValidationProblem(new Dictionary<string,string[]> { ["externalId"] = ["Invalid media type or external ID for the selected provider."] });
     }
 
     private static async Task<IResult> ProviderResult(Func<Task<IResult>> operation, HttpContext? context = null)

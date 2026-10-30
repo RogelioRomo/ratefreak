@@ -11,7 +11,7 @@ internal static class CatalogConfiguration
         {
             item.ToTable("media_items", table =>
             {
-                table.HasCheckConstraint("ck_media_items_type", "media_type IN ('movie', 'tv_show')");
+                table.HasCheckConstraint("ck_media_items_type", "media_type IN ('movie', 'tv_show', 'album')");
                 table.HasCheckConstraint("ck_media_items_title", "length(btrim(title)) > 0");
                 table.HasCheckConstraint("ck_media_items_metadata", "jsonb_typeof(metadata) = 'object'");
             });

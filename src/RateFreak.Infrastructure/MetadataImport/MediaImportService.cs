@@ -3,25 +3,28 @@ using Npgsql;
 using RateFreak.Application.MetadataImport;
 using RateFreak.Domain.Catalog;
 using RateFreak.Infrastructure.Persistence;
-using RateFreak.Infrastructure.Providers.Tmdb;
+using System.Text.Json;
 
 namespace RateFreak.Infrastructure.MetadataImport;
 
-internal sealed class MediaImportService(RateFreakDbContext context, IMediaProvider provider) : IMediaImportService
+internal sealed class MediaImportService(RateFreakDbContext context, IMediaProviderRegistry providers) : IMediaImportService
 {
-    public async Task<ImportMediaResult?> ImportAsync(string externalId, string type, CancellationToken cancellationToken)
+    public async Task<ImportMediaResult?> ImportAsync(string providerName, string externalId, string type, CancellationToken cancellationToken)
     {
-        if (!MediaProviderInput.TryId(externalId, out var id) || !MediaProviderInput.ValidType(type))
+        if (!MediaProviderInput.TryIdentity(providerName, type, externalId, out var identity))
             throw new ArgumentException("Invalid provider identity.");
-        var identityNamespace = TmdbMediaProvider.Namespace(type);
-        var existing = await FindAsync(id, identityNamespace, cancellationToken);
+        var provider = providers.Find(providerName) ?? throw new ArgumentException("Unknown provider.");
+        var existing = await FindAsync(identity, cancellationToken);
         if (existing is not null) return new ImportMediaResult(existing.Value, false);
-        var details = await provider.GetDetailsAsync(id, type, cancellationToken);
+        var details = await provider.GetDetailsAsync(identity.ExternalId, type, cancellationToken);
         if (details is null) return null;
-        var item = new MediaItem(type, details.Title, details.Description, details.ReleaseDate,
-            details.ImageReference, details.Metadata.GetRawText());
-        var mapping = new MediaExternalId(item.Id, "tmdb", identityNamespace, id,
-            $"https://www.themoviedb.org/{identityNamespace}/{id}", DateTimeOffset.UtcNow);
+        if (details.Provider != providerName || details.ExternalId != identity.ExternalId || details.Type != type)
+            throw new MediaProviderException(ProviderFailure.InvalidResponse);
+        MediaItem item;
+        try { item = new MediaItem(type, details.Title, details.Description, details.ReleaseDate, details.ImageReference, details.Metadata.GetRawText()); }
+        catch (Exception ex) when (ex is ArgumentException or JsonException or InvalidOperationException)
+        { throw new MediaProviderException(ProviderFailure.InvalidResponse); }
+        var mapping = new MediaExternalId(item.Id, identity.Provider, identity.Namespace, identity.ExternalId, identity.ExternalUrl, DateTimeOffset.UtcNow);
         await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
         try
         {
@@ -37,13 +40,13 @@ internal sealed class MediaImportService(RateFreakDbContext context, IMediaProvi
             await transaction.RollbackAsync(cancellationToken);
             context.Entry(mapping).State = EntityState.Detached;
             context.Entry(item).State = EntityState.Detached;
-            var winner = await FindAsync(id, identityNamespace, cancellationToken);
+            var winner = await FindAsync(identity, cancellationToken);
             if (winner is null) throw;
             return new ImportMediaResult(winner.Value, false);
         }
     }
 
-    private Task<Guid?> FindAsync(string id, string identityNamespace, CancellationToken cancellationToken) =>
-        context.MediaExternalIds.AsNoTracking().Where(x => x.Provider == "tmdb" && x.Namespace == identityNamespace && x.ExternalId == id)
+    private Task<Guid?> FindAsync(ProviderIdentity identity, CancellationToken cancellationToken) =>
+        context.MediaExternalIds.AsNoTracking().Where(x => x.Provider == identity.Provider && x.Namespace == identity.Namespace && x.ExternalId == identity.ExternalId)
             .Select(x => (Guid?)x.MediaItemId).SingleOrDefaultAsync(cancellationToken);
 }

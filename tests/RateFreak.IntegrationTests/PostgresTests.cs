@@ -1,5 +1,7 @@
 using System.Net;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.DependencyInjection;
 using RateFreak.Infrastructure.Persistence;
 using Testcontainers.PostgreSql;
@@ -34,4 +36,19 @@ public sealed class PostgresTests
         Assert.Empty(await context.Users.ToListAsync(TestContext.Current.CancellationToken));
         Assert.Equal(HttpStatusCode.OK, (await client.GetAsync("/health/ready", TestContext.Current.CancellationToken)).StatusCode);
     }
+    [Fact]
+    [Trait("Category", "Database")]
+    public async Task Album_migration_can_downgrade_and_reapply_without_deleting_existing_movies()
+    {
+        await using var postgres=new PostgreSqlBuilder("postgres:17").Build();await postgres.StartAsync(TestContext.Current.CancellationToken);
+        await using var db=new RateFreakDbContext(new DbContextOptionsBuilder<RateFreakDbContext>().UseNpgsql(postgres.GetConnectionString()).Options);
+        await db.Database.MigrateAsync(TestContext.Current.CancellationToken);
+        var movie=new RateFreak.Domain.Catalog.MediaItem("movie","Preserved movie");db.MediaItems.Add(movie);await db.SaveChangesAsync(TestContext.Current.CancellationToken);
+        await db.GetService<IMigrator>().MigrateAsync("20261030160901_AddCollections",TestContext.Current.CancellationToken);
+        Assert.True(await db.MediaItems.AnyAsync(x=>x.Id==movie.Id,TestContext.Current.CancellationToken));
+        await db.Database.MigrateAsync(TestContext.Current.CancellationToken);await db.Database.MigrateAsync(TestContext.Current.CancellationToken);
+        Assert.True(await db.MediaItems.AnyAsync(x=>x.Id==movie.Id,TestContext.Current.CancellationToken));
+        Assert.Single((await db.Database.GetAppliedMigrationsAsync(TestContext.Current.CancellationToken)).Where(x=>x.EndsWith("_AddAlbums",StringComparison.Ordinal)));
+    }
+
 }
