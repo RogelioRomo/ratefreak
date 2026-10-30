@@ -52,6 +52,12 @@ public static class CollectionValidation
 
     public static bool ValidJson(JsonElement value, int depth = 0)
     {
+        try { return ValidJsonCore(value, depth); }
+        catch (InvalidOperationException) { return false; }
+    }
+
+    private static bool ValidJsonCore(JsonElement value, int depth)
+    {
         if (depth > 16) return false;
         switch (value.ValueKind)
         {

@@ -49,6 +49,7 @@ public sealed partial class CollectionsTests
     [InlineData("{\"expectedRevision\":1,\"title\":\"x\",\"data\":{\"note\":\"\\uD800\"}}", 400)]
     [InlineData("{\"expectedRevision\":1,\"title\":\"x\",\"data\":{},\"position\":-1}", 400)]
     [InlineData("{\"expectedRevision\":1,\"mediaItemId\":\"00000000-0000-0000-0000-000000000001\",\"data\":{}}", 404)]
+    [InlineData("{\"expectedRevision\":1,\"title\":\"x\",\"data\":{\"\\uD800\":\"x\"}}", 400)]
     public async Task Invalid_item_writes_leave_collection_unchanged(string payload, int expectedStatus)
     {
         await using var factory = Factory(); using var client = Client(factory); await SignIn(client); var id = Id(await Create(client, [Field()]));

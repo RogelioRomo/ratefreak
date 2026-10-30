@@ -76,6 +76,16 @@ public sealed class CollectionValidationTests
         Assert.NotEmpty(CollectionValidation.ValidateFields([F("text") with { Key = key }]));
 
     [Fact]
+    public void Custom_json_depth_and_malformed_property_names_are_rejected_safely()
+    {
+        var atLimit = new string('[', 16) + "0" + new string(']', 16);
+        var overLimit = new string('[', 17) + "0" + new string(']', 17);
+        Assert.True(CollectionValidation.ValidJson(J(atLimit)));
+        Assert.False(CollectionValidation.ValidJson(J(overLimit)));
+        Assert.NotEmpty(CollectionValidation.ValidateData(J("{\"\\uD800\":\"x\"}"), [F("text")]));
+    }
+
+    [Fact]
     public void Field_and_value_boundaries_preserve_valid_inputs()
     {
         var fields = Enumerable.Range(0, 30).Select(i => F("text") with { Key = "key" + i }).ToArray();

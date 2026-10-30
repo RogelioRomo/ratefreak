@@ -66,8 +66,10 @@ internal sealed class CollectionQueries(RateFreakDbContext db) : ICollectionQuer
         if (collection is null) return null;
         var field = await db.CollectionFields.AsNoTracking().SingleOrDefaultAsync(x => x.Id == fieldId && x.CollectionId == id, ct);
         if (field is null) return null;
-        var values = await db.CollectionItems.AsNoTracking().Where(x => x.CollectionId == id).Select(x => x.Data).ToListAsync(ct);
-        var count = values.Count(x => CollectionMapping.Json(x).TryGetProperty(field.Key, out var value) && value.ValueKind != System.Text.Json.JsonValueKind.Null);
+        var count = await db.Database.SqlQuery<int>($"""
+            SELECT count(*)::integer AS "Value" FROM collection_items
+            WHERE collection_id = {id} AND data -> {field.Key} IS NOT NULL AND data -> {field.Key} <> 'null'::jsonb
+            """).SingleAsync(ct);
         await tx.CommitAsync(ct); return new(field.Id, field.Key, count, collection.Revision);
     }
 

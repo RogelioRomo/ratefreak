@@ -51,6 +51,7 @@ public static class DependencyInjection
         services.AddScoped<ICollectionQueries, CollectionQueries>();
         services.AddScoped<ICollectionCommands, CollectionCommands>();
         services.AddScoped<ICollectionItemCommands, CollectionItemCommands>();
+        services.AddScoped<ICollectionFieldCommands, CollectionFieldCommands>();
         services.AddOptions<TmdbOptions>().Bind(configuration.GetSection("Providers:Tmdb"))
             .Validate(options => options.IsValid(), "TMDB configuration is invalid: check timeout, language and enabled-provider access token.")
             .ValidateOnStart();
