@@ -35,8 +35,9 @@ that rolling back follows removes graph data and later refusals do not undo it.
 Deleted-account-during-write FK handling is implemented but not deterministically
 race-tested. No moderation/comments, profiles or feed added.
 
-Work is on `feat/user-follows`, based on `de41686`; no merge/push. **IGDB is next**
-per user direction. MusicBrainz live activation still awaits user-chosen contact.
+At the user’s request, follows was merged locally into `main` by fast-forward
+from `de41686` to `2f58aed`. Post-merge full suite: 364 tests pass, zero failed/skipped.
+No remote push. **IGDB is next** per user direction. MusicBrainz live activation still awaits user-chosen contact.
 
 ## Previous resume — Phase 6a implementation complete (2026-10-30)
 
