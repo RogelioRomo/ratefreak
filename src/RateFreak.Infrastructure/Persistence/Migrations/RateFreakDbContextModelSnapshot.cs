@@ -627,6 +627,32 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RateFreak.Domain.Social.UserFollow", b =>
+                {
+                    b.Property<Guid>("FollowerId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("follower_id");
+
+                    b.Property<Guid>("FolloweeId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("followee_id");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.HasKey("FollowerId", "FolloweeId");
+
+                    b.HasIndex("FolloweeId", "CreatedAt", "FollowerId");
+
+                    b.HasIndex("FollowerId", "CreatedAt", "FolloweeId");
+
+                    b.ToTable("user_follows", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_user_follows_no_self", "follower_id <> followee_id");
+                        });
+                });
+
             modelBuilder.Entity("RateFreak.Infrastructure.Authentication.AccountUser", b =>
                 {
                     b.Property<Guid>("Id")
@@ -859,6 +885,21 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                     b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RateFreak.Domain.Social.UserFollow", b =>
+                {
+                    b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
+                        .WithMany()
+                        .HasForeignKey("FolloweeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
+                        .WithMany()
+                        .HasForeignKey("FollowerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

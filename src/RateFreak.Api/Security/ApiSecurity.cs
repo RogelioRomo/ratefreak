@@ -77,6 +77,8 @@ internal static class ApiSecurity
             AddLimit(options, "csrf", 30, TimeSpan.FromMinutes(1));
             AddLimit(options, "catalog", 60, TimeSpan.FromMinutes(1));
             AddLimit(options, "external-search", 20, TimeSpan.FromMinutes(1));
+            AddLimit(options, "social-read", 60, TimeSpan.FromMinutes(1));
+            AddAccountLimit(options, "social-write", 30);
             AddAccountLimit(options, "personal-read", 60);
             AddAccountLimit(options, "personal-write", 30);
             options.AddPolicy("media-import", context => RateLimitPartition.GetFixedWindowLimiter(

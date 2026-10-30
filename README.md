@@ -190,6 +190,33 @@ validation, lockout, and separate rate-limit budgets. Docker is required for the
 full suite; no provider credentials are needed. Database tests fail rather than
 silently skip if Docker is unavailable.
 
+## Follows: Phase 6b
+
+| Method | Route | Contract |
+| --- | --- | --- |
+| PUT | `/api/v1/users/{userId}/follow` | Session + CSRF; follow target, 204 including repeats |
+| DELETE | `/api/v1/users/{userId}/follow` | Session + CSRF; unfollow target, 204 including repeats |
+| GET | `/api/v1/users/{userId}/followers` | Public paginated followers |
+| GET | `/api/v1/users/{userId}/following` | Public paginated followed users |
+
+Self-follow/unfollow returns 400. Unknown users return 404, including on DELETE.
+Lists accept `page` (1..10000, default 1) and `pageSize` (1..100, default 20),
+returning `{ items, totalCount, page, pageSize }`. Items expose only `id`, `handle`,
+`displayName`, `followedAt`, ordered oldest first with user UUID breaking ties.
+An existing user with no relationships returns an empty 200 page.
+
+Relationships are directed and public; following grants no access to private
+collections or libraries. All follows responses use `Cache-Control: no-store`.
+Separate limits allow 60 reads/IP/minute and 30 writes/account/minute. Rejections
+return 429 with `Retry-After`. Repeat/concurrent PUTs preserve the original follow
+time. Database constraints prohibit self/duplicate/orphan relationships; deleting
+an account cascades its incoming and outgoing follows. Apply `AddUserFollows`
+explicitly using the EF update command above. Its rollback removes follows data;
+EF commits each migration downgrade separately, so a later refusal does not undo
+already-completed downgrades. Back up before any intentional rollback.
+
+Comments, moderation, feeds and public profiles remain deferred. IGDB is next.
+
 ## Accounts: Phase 2 first slice
 
 | Method | Route | Contract |

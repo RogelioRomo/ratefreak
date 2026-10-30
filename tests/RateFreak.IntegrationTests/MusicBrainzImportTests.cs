@@ -114,9 +114,19 @@ public sealed class MusicBrainzImportTests(AccountDatabase database) : IClassFix
     {
         using var transport=new Transport();await using var factory=Factory(transport);using var client=Client(factory);await SignIn(client);
         var imported=await Json(await Import(client,Guid.NewGuid().ToString("D")),HttpStatusCode.Created);var id=imported.GetProperty("mediaId").GetGuid();await using var db=Db();
-        var history=(await db.Database.GetAppliedMigrationsAsync(Ct)).ToArray();
-        var error=await Assert.ThrowsAsync<Npgsql.PostgresException>(()=>db.GetService<IMigrator>().MigrateAsync("20261030160901_AddCollections",Ct));
-        Assert.Contains("albums exist",error.Message,StringComparison.OrdinalIgnoreCase);Assert.Equal(history,(await db.Database.GetAppliedMigrationsAsync(Ct)).ToArray());Assert.True(await db.MediaItems.AnyAsync(x=>x.Id==id,Ct));
+        // Pin this regression to the album migration. EF commits later migration
+        // downgrades separately before reaching the guarded album downgrade.
+        await db.GetService<IMigrator>().MigrateAsync("20261030164447_AddAlbums", Ct);
+        try
+        {
+            var history=(await db.Database.GetAppliedMigrationsAsync(Ct)).ToArray();
+            var error=await Assert.ThrowsAsync<Npgsql.PostgresException>(()=>db.GetService<IMigrator>().MigrateAsync("20261030160901_AddCollections",Ct));
+            Assert.Contains("albums exist",error.Message,StringComparison.OrdinalIgnoreCase);Assert.Equal(history,(await db.Database.GetAppliedMigrationsAsync(Ct)).ToArray());Assert.True(await db.MediaItems.AnyAsync(x=>x.Id==id,Ct));
+        }
+        finally
+        {
+            await db.Database.MigrateAsync(Ct);
+        }
     }
     private sealed class HostHandler(string host,string body) : HttpMessageHandler
     {

@@ -1,9 +1,44 @@
 # Implementation checklist and changelog
 
-Updated 2026-10-30. Implemented Phase 0–5 and Phase 6a MusicBrainz albums.
-Social features and further providers remain separate Phase 6 work.
+Updated 2026-10-30. Implemented Phase 0–5, Phase 6a MusicBrainz albums and Phase 6b follows.
+Comments/moderation and further providers remain separate Phase 6 work.
 
-## Resume here — Phase 6a implementation complete (2026-10-30)
+## Resume here — Phase 6b follows complete (2026-10-30)
+
+User approved follows next, then IGDB. Implemented public follower/following lists
+and authenticated, CSRF-protected repeat-safe follow/unfollow. Public lists expose
+only user ID, handle, display name and follow time; relationships grant no extra
+access to private data. Separate social read/write limits and no-store responses.
+Composite key, no-self CHECK, cascading account FKs and both ordered-list indexes.
+See follows design/plan and README for exact routes, paging and status contracts.
+
+Verification: **364 tests pass** (64 unit, 86 provider contract, 214 integration),
+zero failed/skipped. Nine new PostgreSQL-backed follows cases cover lifecycle,
+privacy, authentication/CSRF, missing/self targets, limits/account isolation,
+concurrent repeats, both directions of tied pagination, DB constraints/cascades
+and Development OpenAPI. Four initial HTTP cases observed RED on missing routes,
+then GREEN. Release build zero warnings/errors. Fresh transitive NuGet audit
+reports no known vulnerable packages. EF reports no pending model changes.
+
+Generated/inspected `20261030211018_AddUserFollows`, applied and reapplied locally.
+Temporary updated API on 5081 passed live/readiness/Swagger, missing-user 404,
+invalid-page 400, unauthenticated-write 401 and OpenAPI checks; then stopped.
+No persistent accounts or follows created by these live checks. No public deployment.
+The existing 5080 process was not restarted; do not assume it serves this revision.
+
+Independent review found no blocking defects; added privacy, separate-account budget
+and follower-direction pagination coverage. Historical album rollback regression
+initially failed because EF commits newer migration downgrades before the album
+refusal. Pinned that test to AddAlbums before asserting unchanged history/data,
+restoring latest in finally; focused RED→GREEN and full suite pass. README warns
+that rolling back follows removes graph data and later refusals do not undo it.
+Deleted-account-during-write FK handling is implemented but not deterministically
+race-tested. No moderation/comments, profiles or feed added.
+
+Work is on `feat/user-follows`, based on `de41686`; no merge/push. **IGDB is next**
+per user direction. MusicBrainz live activation still awaits user-chosen contact.
+
+## Previous resume — Phase 6a implementation complete (2026-10-30)
 
 User approved full-length MusicBrainz albums, one catalog item per release group,
 and requested implementation of the written design with planning/execution delegated.

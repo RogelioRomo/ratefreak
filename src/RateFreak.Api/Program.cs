@@ -33,7 +33,7 @@ app.UseExceptionHandler();
 app.UseStatusCodePages();
 app.Use(async (context, next) =>
 {
-    if (context.GetEndpoint()?.Metadata.GetMetadata<CollectionNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/auth") || context.Request.Path.StartsWithSegments("/api/v1/users/me") ||
+    if (context.GetEndpoint()?.Metadata.GetMetadata<CollectionNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<FollowNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/auth") || context.Request.Path.StartsWithSegments("/api/v1/users/me") ||
         (context.Request.Path.StartsWithSegments("/api/v1/media") && context.Request.Path.Value!.EndsWith("/rating", StringComparison.Ordinal)))
         context.Response.Headers.CacheControl = "no-store";
     await next(context);
@@ -48,6 +48,7 @@ app.MapCatalogEndpoints();
 app.MapMediaProviderEndpoints();
 app.MapPersonalMediaEndpoints();
 app.MapCollectionEndpoints();
+app.MapFollowEndpoints();
 app.Run();
 
 public partial class Program;
