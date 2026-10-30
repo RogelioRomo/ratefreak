@@ -30,6 +30,33 @@ internal static class CollectionEndpoints
             var result = await commands.CreateAsync(Owner(user), request, ct);
             return Response(result, context, result.Value is null ? null : $"/api/v1/collections/{result.Value.Collection.Id}");
         })).Produces<CollectionDetails>(201).WithSummary("Create a collection and its initial fields");
+        Write(group.MapPatch("/{id:guid}", async (Guid id, CollectionUpdate request, ClaimsPrincipal user, ICollectionCommands commands, HttpContext context, CancellationToken ct) =>
+            Response(await commands.UpdateAsync(Owner(user), id, request, ct), context)))
+            .Produces<CollectionDetails>().WithSummary("Replace your collection metadata using its current revision");
+        Read(group.MapGet("/{id:guid}/items", async (Guid id, ClaimsPrincipal user, ICollectionQueries queries, CancellationToken ct,
+            int page = 1, int pageSize = 20) =>
+        {
+            var errors = PageErrors(page, pageSize);
+            if (errors.Count != 0) return Results.ValidationProblem(errors);
+            var value = await queries.ItemsAsync(Viewer(user), id, page, pageSize, ct);
+            return value is null ? Results.NotFound() : Results.Ok(value);
+        })).Produces<CollectionPage<ItemDetails>>().ProducesValidationProblem().ProducesProblem(404).WithSummary("List accessible collection entries");
+        Read(group.MapGet("/{id:guid}/items/{itemId:guid}", async (Guid id, Guid itemId, ClaimsPrincipal user, ICollectionQueries queries, CancellationToken ct) =>
+        {
+            var value = await queries.ItemAsync(Viewer(user), id, itemId, ct);
+            return value is null ? Results.NotFound() : Results.Ok(value);
+        })).Produces<ItemDetails>().ProducesProblem(404).WithSummary("Get an accessible collection entry");
+        Write(group.MapPost("/{id:guid}/items", async (Guid id, ItemCreate request, ClaimsPrincipal user, ICollectionItemCommands commands, HttpContext context, CancellationToken ct) =>
+        {
+            var result = await commands.AddAsync(Owner(user), id, request, ct);
+            return Response(result, context, result.Value is null ? null : $"/api/v1/collections/{id}/items/{result.Value.Id}");
+        })).Produces<ItemDetails>(201).WithSummary("Add a canonical media or custom entry");
+        Write(group.MapPatch("/{id:guid}/items/{itemId:guid}", async (Guid id, Guid itemId, ItemUpdate request, ClaimsPrincipal user, ICollectionItemCommands commands, HttpContext context, CancellationToken ct) =>
+            Response(await commands.UpdateAsync(Owner(user), id, itemId, request, ct), context)))
+            .Produces<ItemDetails>().WithSummary("Replace an entry's custom data, title and position");
+        Write(group.MapDelete("/{id:guid}/items/{itemId:guid}", async (Guid id, Guid itemId, ClaimsPrincipal user, ICollectionItemCommands commands, HttpContext context, CancellationToken ct,
+            long? expectedRevision = null) => Response(await commands.DeleteAsync(Owner(user), id, itemId, expectedRevision, ct), context, delete: true)))
+            .Produces(204).WithSummary("Delete your collection entry using its current revision");
     }
 
     private static RouteHandlerBuilder Read(RouteHandlerBuilder route) => route.RequireRateLimiting("catalog").ProducesProblem(429);
