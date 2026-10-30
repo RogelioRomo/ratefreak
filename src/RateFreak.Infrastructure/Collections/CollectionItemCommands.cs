@@ -23,7 +23,7 @@ internal sealed class CollectionItemCommands(RateFreakDbContext db) : ICollectio
             if (mediaTitle is null) return new(CollectionStatus.NotFound);
             if (await db.CollectionItems.AnyAsync(x => x.CollectionId == id && x.MediaItemId == mediaId, ct)) return new(CollectionStatus.Conflict);
         }
-        var item = new CollectionItem(id, request.MediaItemId, request.Title, request.Data.GetRawText(), request.Position ?? 0);
+        var item = new CollectionItem(id, request.MediaItemId, request.Title, CollectionValidation.StorageObject(request.Data), request.Position ?? 0);
         db.CollectionItems.Add(item); collection!.Advance();
         try { await db.SaveChangesAsync(ct); }
         catch (DbUpdateException ex) when (ex.InnerException is PostgresException { SqlState: PostgresErrorCodes.ForeignKeyViolation, ConstraintName: "FK_collection_items_media_items_media_item_id" })
@@ -45,7 +45,7 @@ internal sealed class CollectionItemCommands(RateFreakDbContext db) : ICollectio
         if (request.Position is null) return CollectionMutation.Invalid<ItemDetails>("position", "Position is required for replacement.");
         var error = await Validate(id, item.MediaItemId, request.Title, request.Data, request.Position.Value, ct);
         if (error is not null) return error;
-        item.SetValues(request.Title, request.Data.GetRawText(), request.Position.Value); collection!.Advance();
+        item.SetValues(request.Title, CollectionValidation.StorageObject(request.Data), request.Position.Value); collection!.Advance();
         await db.SaveChangesAsync(ct);
         var title = item.MediaItemId is { } mediaId ? await db.MediaItems.Where(x => x.Id == mediaId).Select(x => x.Title).SingleAsync(ct) : item.Title!;
         var result = CollectionMapping.Item(item, title);

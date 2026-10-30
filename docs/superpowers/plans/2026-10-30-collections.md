@@ -1,6 +1,6 @@
 # Dynamic Collections Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Implement Phase 5 collections with validated custom fields, visibility, revision-safe edits and confirmed field deletion.
 
@@ -68,54 +68,54 @@ Contracts in Application/Collections:
 **Files:** Domain rules/entities, Application requests/validation/contracts; unit test file above.
 **Consumes:** approved spec. **Produces:** shared contracts above and `CollectionValidation.ValidateFields(IReadOnlyList<FieldDefinition> fields)` / `ValidateData(JsonElement data, IReadOnlyList<FieldDefinition> fields)` returning validation error dictionaries; rules shared by all commands.
 
-- [ ] Write parameterized failing unit tests covering every supported field type and limits: 30/31 fields, key/label limits and reserved/duplicate keys, configuration properties/options, decimal bounds/overflow, leap dates, required/optional/null/blank values, unknown/duplicate JSON keys, nesting 16/17, NUL/controls and unpaired surrogates. Assert valid values remain typed and invalid values yield errors rather than exceptions.
-- [ ] Run `dotnet test tests/RateFreak.UnitTests --no-restore --filter FullyQualifiedName~CollectionValidationTests`; observe RED before adding implementation.
-- [ ] Implement entities, request/result contracts, strict field-configuration parsing and validation. Use ordinal matching and invariant date parsing; validate raw JSON strings before GetString can replace malformed surrogate escapes. JSON elements returned from parsing must outlive their documents.
-- [ ] Run the focused unit command; expect all cases PASS. Commit this coherent slice on the feature branch.
+- [x] Write parameterized failing unit tests covering every supported field type and limits: 30/31 fields, key/label limits and reserved/duplicate keys, configuration properties/options, decimal bounds/overflow, leap dates, required/optional/null/blank values, unknown/duplicate JSON keys, nesting 16/17, NUL/controls and unpaired surrogates. Assert valid values remain typed and invalid values yield errors rather than exceptions.
+- [x] Run `dotnet test tests/RateFreak.UnitTests --no-restore --filter FullyQualifiedName~CollectionValidationTests`; observe RED before adding implementation.
+- [x] Implement entities, request/result contracts, strict field-configuration parsing and validation. Use ordinal matching and invariant date parsing; validate raw JSON strings before GetString can replace malformed surrogate escapes. JSON elements returned from parsing must outlive their documents.
+- [x] Run the focused unit command; expect all cases PASS. Commit this coherent slice on the feature branch.
 
 ### Task 2: Collection creation, persistence and visibility reads
 
 **Files:** CollectionsConfiguration, DbContext, DI, CollectionQueries/CollectionCommands, CollectionEndpoints, Program, migration/snapshot, integration test file.
 **Consumes:** Task 1 contracts/rules. **Produces:** queries and create command; all three mapped DbSets/tables and migration; HTTP create/list/detail endpoints.
 
-- [ ] Write failing HTTP tests using the existing AccountDatabase/ApiFactory patterns: authenticated create returns 201 and usable Location; default visibility private; owner sees it, strangers receive 404; public collection appears anonymously; ownOnly requires login. Reject empty/invalid names, bad initial fields, unknown members; initial schema creation must be atomic. No email in any response; no-store on success/error including route casing/trailing slash. Assert missing session 401, missing/stale CSRF 400.
-- [ ] Run `dotnet test tests/RateFreak.IntegrationTests --no-restore --filter FullyQualifiedName~CollectionsTests`; observe missing-route RED.
-- [ ] Implement relational mappings, indexes and constraints (visibility, positive revision/schema version, lengths, supported field types, positions, JSON object types, canonical/custom title shape), cascading ownership and restricted media FK. Generate `AddCollections` with EF CLI, inspect additive Up/dependent-first Down.
-- [ ] Implement create transaction, accessible query predicates and repeatable-read multi-query reads. Register services and routes. Public-accessible reads use catalog rate budget (including authenticated calls), owner-only deletion previews use personal-read, writes personal-write. Set no-store through matched endpoint metadata/filter rather than case-sensitive path checks. Use expectedRevision in bodies and `X-Collection-Revision` on every successful existing-collection mutation (including 204).
-- [ ] Run focused integration tests and existing PostgresTests; assert migration applies twice and HasPendingModelChanges is false. Commit slice.
+- [x] Write failing HTTP tests using the existing AccountDatabase/ApiFactory patterns: authenticated create returns 201 and usable Location; default visibility private; owner sees it, strangers receive 404; public collection appears anonymously; ownOnly requires login. Reject empty/invalid names, bad initial fields, unknown members; initial schema creation must be atomic. No email in any response; no-store on success/error including route casing/trailing slash. Assert missing session 401, missing/stale CSRF 400.
+- [x] Run `dotnet test tests/RateFreak.IntegrationTests --no-restore --filter FullyQualifiedName~CollectionsTests`; observe missing-route RED.
+- [x] Implement relational mappings, indexes and constraints (visibility, positive revision/schema version, lengths, supported field types, positions, JSON object types, canonical/custom title shape), cascading ownership and restricted media FK. Generate `AddCollections` with EF CLI, inspect additive Up/dependent-first Down.
+- [x] Implement create transaction, accessible query predicates and repeatable-read multi-query reads. Register services and routes. Public-accessible reads use catalog rate budget (including authenticated calls), owner-only deletion previews use personal-read, writes personal-write. Set no-store through matched endpoint metadata/filter rather than case-sensitive path checks. Use expectedRevision in bodies and `X-Collection-Revision` on every successful existing-collection mutation (including 204).
+- [x] Run focused integration tests and existing PostgresTests; assert migration applies twice and HasPendingModelChanges is false. Commit slice.
 
 ### Task 3: Revision-safe metadata and items
 
 **Files:** CollectionCommands, CollectionItemCommands, CollectionQueries, CollectionEndpoints, CollectionsTests.
 **Consumes:** Task 2 locked collection storage and queries. **Produces:** metadata update and all item commands/routes.
 
-- [ ] Add failing HTTP tests: custom title required, canonical media must exist and forbids title override, immutable media references, complete data replacement, validation from Task 1, duplicate canonical media returns 409 only within same collection, repeated custom titles allowed, position ordering and stable pagination. Missing/null/nonpositive/stale revisions rejected with no data change. Test all item routes enforce visibility/ownership, all writes require CSRF, and every returned Location resolves.
-- [ ] Add a read-race test using a DB interceptor/barrier: visibility update between collection authorization and item query cannot cause an inconsistent authorization/data snapshot. Assert either coherent public snapshot or 404, never mixed authorization and data.
-- [ ] Run focused tests and observe RED, then implement commands under transaction/`SELECT ... FOR UPDATE` on owner-filtered collection. Check revision after acquiring lock; validate before changes; increment revision and parent timestamp once. Constraint races must map only recognized duplicate/FK errors to sanitized 409/404, without swallowing other DB failures.
-- [ ] Run unit plus focused integration suites; assert null/overflow/NUL/duplicate JSON inputs return 400, never 500; tied-position pagination has no repeats. Commit slice.
+- [x] Add failing HTTP tests: custom title required, canonical media must exist and forbids title override, immutable media references, complete data replacement, validation from Task 1, duplicate canonical media returns 409 only within same collection, repeated custom titles allowed, position ordering and stable pagination. Missing/null/nonpositive/stale revisions rejected with no data change. Test all item routes enforce visibility/ownership, all writes require CSRF, and every returned Location resolves.
+- [x] Add a read-race test using a DB interceptor/barrier: visibility update between collection authorization and item query cannot cause an inconsistent authorization/data snapshot. Assert either coherent public snapshot or 404, never mixed authorization and data.
+- [x] Run focused tests and observe RED, then implement commands under transaction/`SELECT ... FOR UPDATE` on owner-filtered collection. Check revision after acquiring lock; validate before changes; increment revision and parent timestamp once. Constraint races must map only recognized duplicate/FK errors to sanitized 409/404, without swallowing other DB failures.
+- [x] Run unit plus focused integration suites; assert null/overflow/NUL/duplicate JSON inputs return 400, never 500; tied-position pagination has no repeats. Commit slice.
 
 ### Task 4: Compatible schema evolution and confirmed deletion
 
 **Files:** CollectionFieldCommands, CollectionQueries, CollectionEndpoints, CollectionsTests.
 **Consumes:** shared revision/locking protocol and validation. **Produces:** field add/update, deletion-impact and confirmed delete routes.
 
-- [ ] Write failing tests: add optional field; reject required addition to nonempty collection; label/position edits preserve data; reject key/type changes as unknown properties; tighten configuration/required only if all stored items remain valid; any failure rolls back definition, values, revision/schemaVersion/timestamps.
-- [ ] Write deletion tests: preview counts populated values only; anonymous/foreign preview denied; missing/false confirmation or missing revision leaves all data intact; stale revision returns 409; confirmed fresh delete removes every key and definition atomically, preserves unrelated data and updates affected item timestamps.
-- [ ] Add real concurrent HTTP writes on independent scoped contexts: same revision permits exactly one successful mutation and one 409; field schema edit racing an item insertion cannot persist invalid data; deletion racing an item update cannot erase data under an outdated confirmation. Gate concurrency with barriers rather than sleeps.
-- [ ] Run focused tests and observe RED. Implement locked transactions, revalidate existing items for compatible schema changes, and atomically remove JSONB keys during delete. Increment schemaVersion only for successful field changes, revision for all successful mutations.
-- [ ] Run unit and focused integration tests; prove all concurrency paths PASS with no 500/deadlock and valid final data. Commit slice.
+- [x] Write failing tests: add optional field; reject required addition to nonempty collection; label/position edits preserve data; reject key/type changes as unknown properties; tighten configuration/required only if all stored items remain valid; any failure rolls back definition, values, revision/schemaVersion/timestamps.
+- [x] Write deletion tests: preview counts populated values only; anonymous/foreign preview denied; missing/false confirmation or missing revision leaves all data intact; stale revision returns 409; confirmed fresh delete removes every key and definition atomically, preserves unrelated data and updates affected item timestamps.
+- [x] Add real concurrent HTTP writes on independent scoped contexts: same revision permits exactly one successful mutation and one 409; field schema edit racing an item insertion cannot persist invalid data; deletion racing an item update cannot erase data under an outdated confirmation. Gate concurrency with barriers rather than sleeps.
+- [x] Run focused tests and observe RED. Implement locked transactions, revalidate existing items for compatible schema changes, and atomically remove JSONB keys during delete. Increment schemaVersion only for successful field changes, revision for all successful mutations.
+- [x] Run unit and focused integration tests; prove all concurrency paths PASS with no 500/deadlock and valid final data. Commit slice.
 
 ### Task 5: Database proof, complete verification and handoff
 
 **Files:** CollectionsTests, PostgresTests, README, docs/adr/0006-collections.md, checklist and design status.
 **Consumes:** all implemented APIs/storage. **Produces:** verified Phase 5 with repeatable migration and documentation.
 
-- [ ] Add failing DB tests for direct duplicate media/key writes, invalid visibility/positions/JSON root, missing references, restricted catalog deletion and account cascade through fields/items. Add tests for invalid pagination and independent rate budgets/Retry-After on collection reads/writes, public→private access revocation and limits on error responses.
-- [ ] Observe RED for any uncovered failure; implement only necessary fixes and run focused tests to GREEN.
-- [ ] Run `dotnet test RateFreak.sln --no-restore --verbosity quiet`, `dotnet build RateFreak.sln -c Release --no-restore`, `dotnet ef migrations has-pending-model-changes --project src/RateFreak.Infrastructure --startup-project src/RateFreak.Api`, and `git diff --check`. Inspect all outputs; require zero failed/skipped tests, zero build warnings/errors and no model drift. Audit dependencies using the existing dotnet list command.
-- [ ] Apply/reapply migration locally with existing Development configuration; never print credentials. Start API on 5080 and verify health, Swagger/OpenAPI, collection create/item validation/duplicate conflict/confirmed field deletion/visibility using a temporary verification user. Remove only that user's records via account cascade; retain all pre-existing records. Record actual results, not expected results.
-- [ ] Document routes/request examples, revision header/conflicts, five field types, data replacement, privacy and permanent deletion semantics. Mark Phase 5 checklist complete only with evidence; keep public-launch requirements and future phases pending.
-- [ ] Run one independent whole-branch review, fix important findings with observed RED→GREEN tests, rerun required proof after changes. Finish with branch/commit summary and validation evidence; no merge, push or deployment implied.
+- [x] Add failing DB tests for direct duplicate media/key writes, invalid visibility/positions/JSON root, missing references, restricted catalog deletion and account cascade through fields/items. Add tests for invalid pagination and independent rate budgets/Retry-After on collection reads/writes, public→private access revocation and limits on error responses.
+- [x] Observe RED for any uncovered failure; implement only necessary fixes and run focused tests to GREEN.
+- [x] Run `dotnet test RateFreak.sln --no-restore --verbosity quiet`, `dotnet build RateFreak.sln -c Release --no-restore`, `dotnet ef migrations has-pending-model-changes --project src/RateFreak.Infrastructure --startup-project src/RateFreak.Api`, and `git diff --check`. Inspect all outputs; require zero failed/skipped tests, zero build warnings/errors and no model drift. Audit dependencies using the existing dotnet list command.
+- [x] Apply/reapply migration locally with existing Development configuration; never print credentials. Start API on 5080 and verify health, Swagger/OpenAPI, collection create/item validation/duplicate conflict/confirmed field deletion/visibility using a temporary verification user. Remove only that user's records via account cascade; retain all pre-existing records. Record actual results, not expected results.
+- [x] Document routes/request examples, revision header/conflicts, five field types, data replacement, privacy and permanent deletion semantics. Mark Phase 5 checklist complete only with evidence; keep public-launch requirements and future phases pending.
+- [x] Run one independent whole-branch review, fix important findings with observed RED→GREEN tests, rerun required proof after changes. Finish with branch/commit summary and validation evidence; no merge, push or deployment implied.
 
 ## Plan self-review
 

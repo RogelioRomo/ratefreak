@@ -88,6 +88,8 @@ public sealed partial class CollectionsTests(AccountDatabase database) : IClassF
     [InlineData("{\"name\":\"x\",\"visibility\":\"unlisted\"}")]
     [InlineData("{\"name\":\"x\",\"fields\":[null]}")]
     [InlineData("{\"name\":\"x\",\"fields\":[{\"key\":\"id\",\"label\":\"Id\",\"fieldType\":\"text\"}]}")]
+    [InlineData("{\"name\":\"first\",\"name\":\"second\"}")]
+    [InlineData("{\"name\":\"x\",\"fields\":[{\"key\":\"note\",\"label\":\"First\",\"label\":\"Second\",\"fieldType\":\"text\"}]}")]
     public async Task Invalid_collection_creation_is_atomic(string payload)
     {
         await using var factory = Factory(); using var client = Client(factory); await SignIn(client);

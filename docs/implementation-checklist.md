@@ -4,7 +4,7 @@ Updated 2026-10-30. Current scope: Phase 0/1, Phase 2 accounts/catalog reads,
 Development Swagger, Phase 3 TMDB (enabled locally), Phase 4 personal media,
 and Phase 5 dynamic collections. Earlier entries record historical verification.
 
-## Resume here — Phase 5 implemented (2026-10-30)
+## Resume here — Phase 5 complete (2026-10-30)
 
 Implemented collections with private/public visibility (default private), mixed
 canonical/custom entries, owner-only editing, five custom field types and bounded
@@ -12,12 +12,14 @@ JSONB validation. User approved duplicate canonical-media prevention per collect
 and permanent field deletion after impact preview/explicit confirmation, then
 approved the full design and native execution plan. See ADR 0006 and README.
 
-Current verification: **265 tests pass** (57 unit, 28 provider contract, 180 integration),
+Current verification: **281 tests pass** (64 unit, 28 provider contract, 189 integration),
 zero failed/skipped. Release build: zero warnings/errors. NuGet transitive audit:
 no known vulnerable packages. EF: no pending model changes. Applied/reapplied
 `20261030160901_AddCollections` to persistent local PostgreSQL; five migrations
 recorded once each. Live Phase 5 lifecycle/privacy/validation/deletion checks pass.
-Independent whole-branch review is pending; finish that before declaring Phase 5 complete.
+Independent review completed: two important input-validation findings reproduced
+in failing tests and fixed; the full suite and live regressions pass after fixes.
+One minor test-hardening suggestion remains documented below.
 
 Development API running at http://localhost:5080/swagger; PostgreSQL healthy on
 127.0.0.1:55432. Recheck processes on resume. Removed only the temporary Phase 5
@@ -26,7 +28,7 @@ records/mappings preserved. Local counts after cleanup: users 0, media 2,
 collections/fields/items 0. No public deployment.
 
 Work is on `feat/collections`, based on the initial Phase 4 commit `dd454da`.
-No remote/push/merge configured or performed. Next phase after review is Phase 6;
+No remote/push/merge configured or performed. Next phase is Phase 6;
 email verification/recovery and deployment hardening remain required before launch.
 
 ### TMDB activation and live verification
@@ -51,7 +53,7 @@ email verification/recovery and deployment hardening remain required before laun
 
 - [x] Phase 4: private library/tracking, 0–5 half-step ratings, public owned reviews,
   live aggregates, ownership/CSRF tests and additive migration. See evidence below.
-- [x] Phase 5: dynamic collections and schema validation (final review pending).
+- [x] Phase 5: dynamic collections and schema validation.
 - [ ] Phase 6: additional providers and social features.
 - [ ] Phase 7: production hardening and deployment verification.
 - [ ] Deferred account work: profile editing and public profiles.
@@ -416,7 +418,7 @@ TMDB attribution/terms and deployment hardening remain required before public la
   and one 409; coherent read snapshot prevents visibility/data race disclosure.
 - [x] Malformed escaped surrogate in JSON property name reproduced as a failing unit
   test; validation boundary now rejects it without a 500; HTTP regression passes.
-- [x] Full suite 265/265, no failures/skips. Release build zero warnings/errors;
+- [x] Final full suite 281/281 (64 unit, 28 provider, 189 integration), no failures/skips. Release build zero warnings/errors;
   audited all seven projects/transitives, no known vulnerable packages.
 - [x] Persistent-local migration apply/reapply, health/readiness/Swagger/OpenAPI,
   register/login, private creation, custom/canonical items, invalid-value 400,
@@ -424,7 +426,21 @@ TMDB attribution/terms and deployment hardening remain required before public la
 - [x] Logged out and removed only the exact temporary verification account;
   collections/fields/items cascaded away. Retained two pre-existing catalog records.
 - [x] README contracts and ADR/checklist updated.
-- [ ] Independent whole-branch review and any important fixes.
+- [x] Independent whole-branch review: no critical findings. Reproduced and fixed
+  rounded/underflowed decimal validation versus raw JSON storage (including bounds),
+  and duplicate DTO properties masking earlier invalid data. Exact coefficient/
+  exponent comparison rejects unrepresentable nonzero decimals; persisted numeric
+  values/configuration are serialized from the validated decimal. Exactly-zero
+  extreme-exponent input is canonicalized safely. API JSON deserialization rejects
+  duplicate properties before binding. Unit/HTTP regressions observed RED→GREEN.
+- [x] Final live run repeats lifecycle and verifies numeric precision/underflow and
+  masked duplicate input return 400, while exact-zero exponent forms persist safely.
+  Exact temporary user removed; final local counts again users 0, media 2,
+  collections/fields/items 0. API restarted with fixes and left running on 5080.
+- [ ] Deferred minor review suggestion: compare complete collection/item snapshots
+  before and after each rejected field deletion to strengthen timestamp/value/schema
+  preservation assertions. Current status/revision/deletion lifecycle tests pass;
+  implementation rejects these requests before executing any mutation.
 
 Limits: no frontend, collection deletion endpoint, archive/restore, bulk backfills,
 key/type migrations or collaboration. Phase 6 providers/social and Phase 7 production

@@ -61,6 +61,8 @@ public sealed partial class CollectionsTests
 
     [Theory]
     [InlineData("number", "{\"min\":1,\"max\":3}", "2.5", "4")]
+    [InlineData("number", "{\"max\":1}", "1", "1.00000000000000000000000000001")]
+    [InlineData("number", "{}", "1e-28", "1e-1000000")]
     [InlineData("boolean", "{}", "true", "\"true\"")]
     [InlineData("date", "{}", "\"2024-02-29\"", "\"2026-02-29\"")]
     [InlineData("select", "{\"options\":[\"A\",\"B\"]}", "\"A\"", "\"a\"")]
@@ -73,4 +75,28 @@ public sealed partial class CollectionsTests
         await Json(await Send(valid, 1), HttpStatusCode.Created);
         Assert.Equal(HttpStatusCode.BadRequest, (await Send(invalid, 2)).StatusCode); Assert.Equal(2, await Current(client, id));
     }
+    [Theory]
+    [InlineData("{\"min\":1e-1000000}")]
+    [InlineData("{\"max\":1.00000000000000000000000000001}")]
+    public async Task Numeric_configuration_rejects_nonrepresentable_bounds_without_writing(string configuration)
+    {
+        await using var factory = Factory(); using var client = Client(factory); await SignIn(client);
+        var response = await client.PostAsJsonAsync(Root, new { name = "Numbers", fields = new[] { Field("value", "number", configuration: JsonDocument.Parse(configuration).RootElement.Clone()) } }, Ct);
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        Assert.Empty((await Json(await client.GetAsync(Root + "?ownOnly=true", Ct))).GetProperty("items").EnumerateArray());
+    }
+
+    [Fact]
+    public async Task Exactly_representable_zero_is_stored_safely_despite_extreme_json_exponents()
+    {
+        await using var factory = Factory(); using var client = Client(factory); await SignIn(client);
+        var detail = await Create(client, [Field("value", "number", configuration: JsonDocument.Parse("{\"min\":0e1000000}").RootElement.Clone())]);
+        var path = Root + "/" + Id(detail) + "/items";
+        var created = await Json(await client.PostAsJsonAsync(path, new { expectedRevision = 1, title = "Zero", data = JsonDocument.Parse("{\"value\":0e-1000000}").RootElement.Clone() }, Ct), HttpStatusCode.Created);
+        Assert.Equal(0m, created.GetProperty("data").GetProperty("value").GetDecimal());
+        var stored = await Json(await client.GetAsync(path + "/" + created.GetProperty("id").GetGuid(), Ct));
+        Assert.Equal(0m, stored.GetProperty("data").GetProperty("value").GetDecimal());
+        Assert.Equal(0m, detail.GetProperty("fields")[0].GetProperty("configuration").GetProperty("min").GetDecimal());
+    }
+
 }

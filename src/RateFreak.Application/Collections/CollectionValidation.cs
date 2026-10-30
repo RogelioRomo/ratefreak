@@ -50,6 +50,15 @@ public static class CollectionValidation
         return errors;
     }
 
+    public static string StorageObject(JsonElement value)
+    {
+        var data = new Dictionary<string, JsonElement>(StringComparer.Ordinal);
+        foreach (var property in value.EnumerateObject())
+            data.Add(property.Name, property.Value.ValueKind == JsonValueKind.Number && CollectionNumbers.TryGetExactDecimal(property.Value, out var number)
+                ? JsonSerializer.SerializeToElement(number) : property.Value);
+        return JsonSerializer.Serialize(data);
+    }
+
     public static bool ValidJson(JsonElement value, int depth = 0)
     {
         try { return ValidJsonCore(value, depth); }
@@ -90,8 +99,8 @@ public static class CollectionValidation
             case "text": return !config.TryGetProperty("maxLength", out var length) || length.ValueKind == JsonValueKind.Number && length.TryGetInt32(out var n) && n is >= 1 and <= 4000;
             case "number":
                 decimal? min = null, max = null;
-                if (config.TryGetProperty("min", out var lower)) { if (lower.ValueKind != JsonValueKind.Number || !lower.TryGetDecimal(out var lowerNumber)) return false; min = lowerNumber; }
-                if (config.TryGetProperty("max", out var upper)) { if (upper.ValueKind != JsonValueKind.Number || !upper.TryGetDecimal(out var upperNumber)) return false; max = upperNumber; }
+                if (config.TryGetProperty("min", out var lower)) { if (!CollectionNumbers.TryGetExactDecimal(lower, out var lowerNumber)) return false; min = lowerNumber; }
+                if (config.TryGetProperty("max", out var upper)) { if (!CollectionNumbers.TryGetExactDecimal(upper, out var upperNumber)) return false; max = upperNumber; }
                 return min is null || max is null || min <= max;
             case "select":
                 if (!config.TryGetProperty("options", out var options) || options.ValueKind != JsonValueKind.Array || options.GetArrayLength() is < 1 or > 50) return false;
@@ -110,9 +119,9 @@ public static class CollectionValidation
                 var max = config.ValueKind == JsonValueKind.Object && config.TryGetProperty("maxLength", out var length) ? length.GetInt32() : 1000;
                 return value.ValueKind == JsonValueKind.String && CollectionRules.ValidText(value.GetString(), max, true, !field.Required);
             case "number":
-                if (value.ValueKind != JsonValueKind.Number || !value.TryGetDecimal(out var n)) return false;
+                if (!CollectionNumbers.TryGetExactDecimal(value, out var n)) return false;
                 return config.ValueKind != JsonValueKind.Object ||
-                    ((!config.TryGetProperty("min", out var min) || n >= min.GetDecimal()) && (!config.TryGetProperty("max", out var upper) || n <= upper.GetDecimal()));
+                    ((!config.TryGetProperty("min", out var min) || CollectionNumbers.TryGetExactDecimal(min, out var lowerBound) && n >= lowerBound) && (!config.TryGetProperty("max", out var upper) || CollectionNumbers.TryGetExactDecimal(upper, out var upperBound) && n <= upperBound));
             case "boolean": return value.ValueKind is JsonValueKind.True or JsonValueKind.False;
             case "date": return value.ValueKind == JsonValueKind.String && DateOnly.TryParseExact(value.GetString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out _);
             case "select": return value.ValueKind == JsonValueKind.String && config.GetProperty("options").EnumerateArray().Any(x => x.GetString() == value.GetString());

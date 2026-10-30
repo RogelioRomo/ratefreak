@@ -521,7 +521,11 @@ optional inclusive decimal `min`/`max`; boolean/date `{}`; select `options` cont
 valid `YYYY-MM-DD`; values are never coerced. Required fields reject absent/null
 values and blank text. Optional fields may be absent/null. Unknown keys, duplicate
 JSON keys, malformed Unicode, NUL, invalid types/bounds, irrelevant configuration
-and custom JSON deeper than 16 are rejected with 400. Existing 64 KiB body cap applies.
+and custom JSON deeper than 16 are rejected with 400. Numeric values and bounds must be exactly representable as
+.NET decimal; rounding/underflow is rejected. Persisted numbers use the validated
+decimal representation so extreme exponent syntax cannot reach PostgreSQL unchanged.
+Duplicate property names are rejected during deserialization of all API JSON request
+bodies, before binding can hide earlier values. Existing 64 KiB body cap applies.
 
 Lists default to page 1/pageSize 20, bounded at 10000/100. Public-accessible reads
 share the catalog 60/IP/minute budget, including signed-in calls; owner-only deletion
