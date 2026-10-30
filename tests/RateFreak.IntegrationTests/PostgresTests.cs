@@ -48,7 +48,7 @@ public sealed class PostgresTests
         Assert.True(await db.MediaItems.AnyAsync(x=>x.Id==movie.Id,TestContext.Current.CancellationToken));
         await db.Database.MigrateAsync(TestContext.Current.CancellationToken);await db.Database.MigrateAsync(TestContext.Current.CancellationToken);
         Assert.True(await db.MediaItems.AnyAsync(x=>x.Id==movie.Id,TestContext.Current.CancellationToken));
-        Assert.Single((await db.Database.GetAppliedMigrationsAsync(TestContext.Current.CancellationToken)).Where(x=>x.EndsWith("_AddAlbums",StringComparison.Ordinal)));
+        Assert.Single(await db.Database.GetAppliedMigrationsAsync(TestContext.Current.CancellationToken), x=>x.EndsWith("_AddAlbums",StringComparison.Ordinal));
     }
 
 }

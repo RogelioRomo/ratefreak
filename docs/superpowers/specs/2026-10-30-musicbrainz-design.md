@@ -1,7 +1,8 @@
 # Phase 6a — MusicBrainz albums
 
-Status: proposed written design. On 2026-10-30 the user approved starting Phase 6
-with MusicBrainz full-length albums and one catalog item per release group.
+Status: approved for implementation by the user on 2026-10-30. The user selected
+MusicBrainz full-length albums and one catalog item per release group, then asked
+to implement the written design with planning/execution delegated.
 Phase 6 social features and further providers remain separate slices.
 
 ## Intent and approach

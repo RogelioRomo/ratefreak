@@ -2,7 +2,7 @@
 
 Standalone .NET 10 modular monolith. Phase 1 foundation and Phase 2 local
 accounts/catalog reads, Phase 4 personal library/ratings/reviews, and Phase 5
-dynamic collections are implemented from `ratefreak-backend-plan.md`.
+dynamic collections plus Phase 6a MusicBrainz albums are implemented from `ratefreak-backend-plan.md`.
 Next.js will be hosted separately and act as a thin browser-facing proxy; all
 accounts, authorization and business logic remain in .NET. The frontend/proxy and
 remaining business features are not implemented. The Phase 3 TMDB adapter is
@@ -220,8 +220,8 @@ No permissive CORS policy or proxy implementation is included here.
 This slice is for local/private development: email ownership is not verified yet.
 Before public launch, implement email verification and recovery/password reset,
 finish HTTPS/ingress and key-storage hardening, and review abuse controls/account
-retention. Profile editing, public profiles, admin endpoints, TMDB token activation
-and additional media providers remain pending.
+retention. Profile editing, public profiles, admin endpoints and further media providers remain pending. TMDB activation is
+verified locally; MusicBrainz activation awaits chosen maintainer contact.
 See `docs/adr/0004-local-accounts.md` for the recorded implementation defaults.
 
 ## Structure and project references
@@ -266,7 +266,8 @@ Public reads are available in Development Swagger at http://localhost:5080/swagg
 - `GET /api/v1/media?q=planet&type=movie&page=1&pageSize=20`
 - `GET /api/v1/media/{id}`
 
-Supported types are `movie` and `tv_show`; TV seasons/episodes are deferred. Search
+Supported types are `movie`, `tv_show` and `album`; TV seasons/episodes and album
+editions/tracks are deferred. Search
 matches literal, case-insensitive title substrings. Search text is trimmed and limited
 to 200 characters; null characters are rejected. Page defaults to 1 (maximum 10000),
 page size to 20 (maximum 100). Results contain `items`, `page`, `pageSize`, and
@@ -398,7 +399,7 @@ Library PUT example:
 ```
 
 Statuses are `planned`, `in_progress`, `completed`, `paused`, `dropped`, for movies
-and TV alike. Dates are optional date-only values; completion cannot precede start.
+TV and albums alike. Dates are optional date-only values; completion cannot precede start.
 PUT replaces all fields, so omitted dates become null. Dates do not automatically
 change status and status changes do not infer dates. No episode/progress counters.
 
@@ -537,3 +538,88 @@ update command. Account deletion cascades collections/fields/items at DB level;
 catalog deletion is restricted while referenced. No collection deletion endpoint,
 field archive/restore, bulk migration, collaboration or frontend is included.
 Email verification/recovery and deployment hardening remain required before launch.
+
+
+## MusicBrainz albums (Phase 6a)
+
+MusicBrainz adds `album` media with search, preview and protected import through the
+existing provider routes. A canonical album represents a MusicBrainz release group,
+so editions/remasters share a single rating/review identity. Only primary type Album
+is accepted; live albums, compilations and soundtracks can qualify. EPs, singles,
+tracks and explicitly non-musical audiobook/audio-drama/spokenword/interview groups
+are excluded. No MusicBrainz write-back or user account is involved.
+
+The adapter is **disabled by default**, including the current local configuration.
+Automated tests use simulated responses; no real MusicBrainz calls are required.
+To enable actual search/import, choose a maintainer contact email or HTTPS project/
+contact URL that you consent to send to MusicBrainz in the outbound User-Agent.
+Do not use the example below as an actual contact or infer one from Git settings.
+
+| Configuration | Default / requirement |
+| --- | --- |
+| `Providers:MusicBrainz:Enabled` | false |
+| `Providers:MusicBrainz:Contact` | Chosen email or HTTPS contact URL required when enabled; max 256 ASCII characters, no header controls |
+| `Providers:MusicBrainz:TimeoutMilliseconds` | 6000; allowed 1500–15000, includes pacing/retry/body time |
+
+Store chosen Development settings with .NET user-secrets; production configuration
+uses `Providers__MusicBrainz__...`. No API key is currently required for read-only
+MusicBrainz access. This identification enables local requests, not public deployment.
+See [MusicBrainz API](https://musicbrainz.org/doc/MusicBrainz_API) and
+[identification/rate limits](https://musicbrainz.org/doc/MusicBrainz_API/Rate_Limiting),
+checked 2026-10-30.
+
+Routes:
+
+- `GET /api/v1/media/providers` lists both configured adapters, supported types,
+  attribution and enabled states, without contact/tokens.
+- `GET /api/v1/media/external/search?provider=musicbrainz&type=album&q=Year%20Zero&page=1`
+  searches album title or artist with an escaped literal phrase. Pages 1–500,
+  20 upstream results/page; filtering may produce shorter pages. No raw Lucene input.
+- `GET /api/v1/media/external/musicbrainz/album/{releaseGroupUuid}` previews an album.
+- `POST /api/v1/media/import` with
+  `{ "provider": "musicbrainz", "externalId": "RELEASE-GROUP-UUID", "mediaType": "album" }`
+  imports authoritative server-fetched details. Use a real nonempty dashed UUID;
+  uppercase UUIDs normalize to lowercase. Requires the existing session and CSRF flow.
+
+Omitting provider on search still selects TMDB. TMDB retains movie/tv_show support
+and integer identity rules. Unknown search/import providers and invalid type/ID
+pairs return 400; unknown preview provider returns 404. Valid non-album/missing
+MusicBrainz details return 404. Existing imports return 200 with the same canonical
+ID even when the provider is later disabled; first imports return 201. Concurrent
+imports create one item/mapping, never title-merge or overwrite curated records.
+
+Album title remains separate from artist credits. Metadata includes `artistCredit`,
+ordered `artists` (id/name/joinPhrase), `primaryType`, `secondaryTypes` and optional
+`firstReleaseDate`. A valid year/year-month is preserved without inventing a day;
+`releaseDate` is non-null only for a complete valid date. Description/imageReference
+remain null. No cover art, annotation, tags, genres or provider ratings are imported.
+Albums work with existing library statuses, ratings, reviews, catalog/library type
+filters and collections; imports do not automatically create personal records.
+
+Outbound transport uses a fixed HTTPS origin with redirects disabled. One shared
+process-wide gate allows one MusicBrainz operation, with no waiting operation queue;
+every outbound start, including retry, is at least one second apart. At most one
+retry is allowed; 429/503 Retry-After establishes cooldown across requests/clients.
+Long cooldowns reject new work rather than sleeping past the operation deadline.
+Responses are bounded to 1 MiB, depth 32 and unique JSON properties. Strict string,
+UUID, date, artist-credit and metadata bounds reject invalid upstream data with 502.
+Busy/disabled/limited/unavailable is 503 (Retry-After when applicable), timeout 504.
+Caller cancellation propagates. TMDB uses its own client settings and existing gate.
+
+Public external operations share the existing 20/IP/minute budget, imports share
+10/account/minute and provider capabilities share catalog limits. In-process pacing
+cannot coordinate multiple instances or other clients sharing the same egress IP;
+coordinate aggregate access before such deployment. MusicBrainz documents roughly
+one request/second/IP and requires a meaningful maintainer User-Agent.
+
+Apply `20261030164447_AddAlbums` using the normal explicit EF update command.
+The migration widens only the media type CHECK constraint. Downgrade refuses when
+albums exist, preserving records/history; handle album data explicitly before a
+rollback. Without albums, downgrade/reapply preserves existing movies/TV.
+
+[MusicBrainz licensing](https://musicbrainz.org/doc/About/Data_License) distinguishes
+core CC0 data from supplementary data; its API documentation distinguishes free
+non-commercial service from commercial plans. Review applicable terms before
+public/commercial launch. Cover art is a separate service and is deferred.
+Social features, IGDB/books and existing email/recovery/deployment requirements
+remain pending. This completes Phase 6a, not all of Phase 6.

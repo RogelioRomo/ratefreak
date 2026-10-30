@@ -1,41 +1,37 @@
 # Implementation checklist and changelog
 
-Updated 2026-10-30. Current scope: Phase 0/1, Phase 2 accounts/catalog reads,
-Development Swagger, Phase 3 TMDB (enabled locally), Phase 4 personal media,
-and Phase 5 dynamic collections. Earlier entries record historical verification.
+Updated 2026-10-30. Implemented Phase 0–5 and Phase 6a MusicBrainz albums.
+Social features and further providers remain separate Phase 6 work.
 
-## Resume here — Phase 5 complete (2026-10-30)
+## Resume here — Phase 6a implemented, review pending (2026-10-30)
 
-Implemented collections with private/public visibility (default private), mixed
-canonical/custom entries, owner-only editing, five custom field types and bounded
-JSONB validation. User approved duplicate canonical-media prevention per collection
-and permanent field deletion after impact preview/explicit confirmation, then
-approved the full design and native execution plan. See ADR 0006 and README.
+User approved full-length MusicBrainz albums, one catalog item per release group,
+and requested implementation of the written design with planning/execution delegated.
+Implemented explicit provider selection, bounded MusicBrainz adapter and shared
+transactional imports. Album library/ratings/reviews/collections work through existing
+contracts. See ADR 0007, README and the MusicBrainz design/plan.
 
-Current verification: **281 tests pass** (64 unit, 28 provider contract, 189 integration),
-zero failed/skipped. Release build: zero warnings/errors. NuGet transitive audit:
-no known vulnerable packages. EF: no pending model changes. Applied/reapplied
-`20261030160901_AddCollections` to persistent local PostgreSQL; five migrations
-recorded once each. Live Phase 5 lifecycle/privacy/validation/deletion checks pass.
-Independent review completed: two important input-validation findings reproduced
-in failing tests and fixed; the full suite and live regressions pass after fixes.
-One minor test-hardening suggestion remains documented below.
+Verification: **353 tests pass** (64 unit, 84 provider contract, 205 integration),
+zero failed/skipped. Release build zero warnings/errors. NuGet transitive audit
+reports no known vulnerable packages. EF no pending model changes. Applied/reapplied
+`20261030164447_AddAlbums` locally; six migration history records once each.
+Migration only widens the type constraint; tested downgrade refusal when albums
+exist and safe downgrade/reapply preserving a movie when albums are absent.
+Independent whole-branch review is pending; finish it before marking Phase 6a complete.
 
-Development API running at http://localhost:5080/swagger; PostgreSQL healthy on
-127.0.0.1:55432. Recheck processes on resume. Removed only the temporary Phase 5
-verification account and cascaded collections/fields/items; existing two catalog
-records/mappings preserved. Local counts after cleanup: users 0, media 2,
-collections/fields/items 0. No public deployment.
+Local API running at http://localhost:5080/swagger; PostgreSQL healthy on
+127.0.0.1:55432. Live health/readiness/Swagger/OpenAPI/capabilities/type filters pass.
+Existing live TMDB search passes and prior movie/TV records/mappings are preserved.
+MusicBrainz is **disabled**; valid requests return 503 and invalid IDs/types return
+400. No live MusicBrainz request or public deployment performed. Activation awaits
+user-chosen maintainer contact URL/email sent in the required outbound User-Agent;
+no contact inferred or published. Local counts: users 0, media 2, albums 0.
 
-Work is on `main`. At the user’s request, Phase 5 was merged locally by
-fast-forward from `dd454da` to `82a2ddb`; all feature commits are retained.
-Post-merge verification on `main`: 281 tests pass, zero failed/skipped.
-No remote is configured and no push was performed. Phase 6a design is now ready
-for review: MusicBrainz full-length albums, one record per release group (user
-approved this scope on 2026-10-30). See
-`docs/superpowers/specs/2026-10-30-musicbrainz-design.md`; builder check found no
-important gaps. No Phase 6 product code or migration has been written yet.
-Email verification/recovery and deployment hardening remain required before launch.
+Work is on `feat/musicbrainz`, based on `main` at `6d986d0`. Phase 5 previously
+merged locally by user request, with 281 tests passing on main. No remote/push.
+After review, Phase 6a code is ready; live activation remains a separate configured
+step. Social features, further providers and all public-launch requirements remain
+pending. Phase 5's minor rejected-deletion snapshot test suggestion remains deferred.
 
 ### TMDB activation and live verification
 
@@ -61,6 +57,8 @@ Email verification/recovery and deployment hardening remain required before laun
   live aggregates, ownership/CSRF tests and additive migration. See evidence below.
 - [x] Phase 5: dynamic collections and schema validation.
 - [ ] Phase 6: additional providers and social features.
+  Phase 6a MusicBrainz implementation verified; final review pending.
+  Social features and further providers remain separate work.
 - [ ] Phase 7: production hardening and deployment verification.
 - [ ] Deferred account work: profile editing and public profiles.
 - [ ] Deferred catalog work: authorized corrections/refresh and provenance policy.
@@ -452,3 +450,39 @@ Limits: no frontend, collection deletion endpoint, archive/restore, bulk backfil
 key/type migrations or collaboration. Phase 6 providers/social and Phase 7 production
 hardening remain future work. Public launch still requires email verification,
 password recovery, TMDB terms/attribution and remaining deployment safeguards.
+
+
+## Phase 6a — MusicBrainz albums (2026-10-30)
+
+- [x] Approved album-only/release-group scope and written design; inline execution.
+- [x] Explicit registry and provider-specific IDs/namespace/URLs; default search
+  remains TMDB and its type validation still rejects albums before HTTP.
+- [x] Distinct named provider HTTP clients; regression reproduced shared client-name
+  configuration issue RED and passes after isolation fix.
+- [x] Fixed-origin MusicBrainz search/lookup, escaped query, strict/bounded JSON,
+  artist/secondary-type normalization and partial-date precision without fabricated days.
+- [x] Single active operation/no queue, monotonic one-second pacing including retry,
+  shared cooldown on 429/503, <=1 retry, whole-operation timeout/caller cancellation.
+- [x] Disabled-by-default configuration with validated user-chosen maintainer contact;
+  no API key/contact in public capability response; no contact inferred from Git.
+- [x] Authoritative transactional import, canonical UUIDs, replay without HTTP/overwrite,
+  concurrent unique winner without orphan catalog entries; no title-based merging.
+- [x] Album catalog/library filters and rating/review/collection lifecycle; ownership,
+  CSRF/type validation, existing TMDB transport/import behavior remain green.
+- [x] Generated `20261030164447_AddAlbums`; inspected constraint-only Up and explicit
+  Down guard. Apply/reapply/model checks and safe downgrade behavior verified.
+- [x] Full suite 353/353, no failures/skips; Release build zero warnings/errors;
+  fresh transitive vulnerability audit reports no known vulnerable packages.
+- [x] Applied/reapplied locally; six migration history records once each. No accounts
+  or catalog records created by live checks; existing media 2, albums 0, users 0.
+- [x] Local API restarted; health/readiness/Swagger/OpenAPI and both capabilities 200;
+  album filter 200; disabled MusicBrainz 503, invalid IDs/provider/type 400;
+  existing real TMDB search 200. No live MusicBrainz calls.
+- [x] README/design/ADR/checklist updated with actual evidence.
+- [ ] Independent whole-branch review and any important fixes.
+- [ ] Live MusicBrainz activation/search/preview/import verification after the user
+  chooses maintainer contact. Implementation/tests do not require live activation.
+
+No EP/single/track/edition entities, artwork, annotation/tags/genres/provider-score
+import, social endpoints, IGDB/books or public launch in this slice. Shared-IP or
+multi-instance MusicBrainz pacing requires coordination before such deployment.
