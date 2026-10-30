@@ -31,7 +31,9 @@ MusicBrainz is **disabled**; valid requests return 503 and invalid IDs/types ret
 user-chosen maintainer contact URL/email sent in the required outbound User-Agent;
 no contact inferred or published. Local counts: users 0, media 2, albums 0.
 
-Work is on `feat/musicbrainz`, based on `main` at `6d986d0`. Phase 5 previously
+Work is on `main`. At the user’s request, MusicBrainz Phase 6a was merged
+locally by fast-forward from `6d986d0` to `4a81622`, retaining all feature commits.
+Post-merge verification on main: 355 tests pass, zero failed/skipped. Phase 5 previously
 merged locally by user request, with 281 tests passing on main. No remote/push.
 After review, Phase 6a code is ready; live activation remains a separate configured
 step. Social features, further providers and all public-launch requirements remain
