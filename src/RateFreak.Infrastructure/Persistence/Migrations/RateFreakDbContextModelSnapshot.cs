@@ -294,6 +294,196 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RateFreak.Domain.Collections.Collection", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2000)
+                        .HasColumnType("character varying(2000)")
+                        .HasColumnName("description");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("character varying(120)")
+                        .HasColumnName("name");
+
+                    b.Property<Guid>("OwnerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("owner_user_id");
+
+                    b.Property<long>("Revision")
+                        .HasColumnType("bigint")
+                        .HasColumnName("revision");
+
+                    b.Property<long>("SchemaVersion")
+                        .HasColumnType("bigint")
+                        .HasColumnName("schema_version");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<string>("Visibility")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)")
+                        .HasColumnName("visibility");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OwnerUserId", "CreatedAt", "Id");
+
+                    b.HasIndex("Visibility", "CreatedAt", "Id");
+
+                    b.ToTable("collections", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_collections_name", "length(btrim(name)) > 0");
+
+                            t.HasCheckConstraint("ck_collections_versions", "revision > 0 AND schema_version > 0");
+
+                            t.HasCheckConstraint("ck_collections_visibility", "visibility IN ('private', 'public')");
+                        });
+                });
+
+            modelBuilder.Entity("RateFreak.Domain.Collections.CollectionField", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<Guid>("CollectionId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("collection_id");
+
+                    b.Property<string>("Configuration")
+                        .IsRequired()
+                        .HasColumnType("jsonb")
+                        .HasColumnName("configuration");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("FieldType")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)")
+                        .HasColumnName("field_type");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("character varying(40)")
+                        .HasColumnName("key");
+
+                    b.Property<string>("Label")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)")
+                        .HasColumnName("label");
+
+                    b.Property<int>("Position")
+                        .HasColumnType("integer")
+                        .HasColumnName("position");
+
+                    b.Property<bool>("Required")
+                        .HasColumnType("boolean")
+                        .HasColumnName("required");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CollectionId", "Key")
+                        .IsUnique()
+                        .HasDatabaseName("ux_collection_fields_key");
+
+                    b.HasIndex("CollectionId", "Position", "Id");
+
+                    b.ToTable("collection_fields", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_collection_fields_configuration", "jsonb_typeof(configuration) = 'object'");
+
+                            t.HasCheckConstraint("ck_collection_fields_key", "key ~ '^[a-z][a-z0-9_]{0,39}$' AND key NOT IN ('id','title','media_item_id','created_at','updated_at')");
+
+                            t.HasCheckConstraint("ck_collection_fields_label", "length(btrim(label)) > 0");
+
+                            t.HasCheckConstraint("ck_collection_fields_position", "position >= 0");
+
+                            t.HasCheckConstraint("ck_collection_fields_type", "field_type IN ('text', 'number', 'boolean', 'date', 'select')");
+                        });
+                });
+
+            modelBuilder.Entity("RateFreak.Domain.Collections.CollectionItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<Guid>("CollectionId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("collection_id");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("Data")
+                        .IsRequired()
+                        .HasColumnType("jsonb")
+                        .HasColumnName("data");
+
+                    b.Property<Guid?>("MediaItemId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("media_item_id");
+
+                    b.Property<int>("Position")
+                        .HasColumnType("integer")
+                        .HasColumnName("position");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("title");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MediaItemId");
+
+                    b.HasIndex("CollectionId", "MediaItemId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_collection_items_media")
+                        .HasFilter("media_item_id IS NOT NULL");
+
+                    b.HasIndex("CollectionId", "Position", "Id");
+
+                    b.ToTable("collection_items", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_collection_items_data", "jsonb_typeof(data) = 'object'");
+
+                            t.HasCheckConstraint("ck_collection_items_position", "position >= 0");
+
+                            t.HasCheckConstraint("ck_collection_items_title", "(media_item_id IS NOT NULL AND title IS NULL) OR (media_item_id IS NULL AND title IS NOT NULL AND length(btrim(title)) > 0)");
+                        });
+                });
+
             modelBuilder.Entity("RateFreak.Domain.PersonalMedia.LibraryEntry", b =>
                 {
                     b.Property<Guid>("Id")
@@ -594,6 +784,38 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .HasForeignKey("MediaItemId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("RateFreak.Domain.Collections.Collection", b =>
+                {
+                    b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
+                        .WithMany()
+                        .HasForeignKey("OwnerUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RateFreak.Domain.Collections.CollectionField", b =>
+                {
+                    b.HasOne("RateFreak.Domain.Collections.Collection", null)
+                        .WithMany()
+                        .HasForeignKey("CollectionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RateFreak.Domain.Collections.CollectionItem", b =>
+                {
+                    b.HasOne("RateFreak.Domain.Collections.Collection", null)
+                        .WithMany()
+                        .HasForeignKey("CollectionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RateFreak.Domain.Catalog.MediaItem", null)
+                        .WithMany()
+                        .HasForeignKey("MediaItemId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("RateFreak.Domain.PersonalMedia.LibraryEntry", b =>

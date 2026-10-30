@@ -1,4 +1,5 @@
 using RateFreak.Domain.Catalog;
+using RateFreak.Domain.Collections;
 using RateFreak.Domain.PersonalMedia;
 using RateFreak.Infrastructure.Persistence.Configurations;
 using Microsoft.AspNetCore.Identity;
@@ -11,6 +12,10 @@ namespace RateFreak.Infrastructure.Persistence;
 public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> options)
     : IdentityDbContext<AccountUser, IdentityRole<Guid>, Guid>(options)
 {
+    public DbSet<Collection> Collections => Set<Collection>();
+    public DbSet<CollectionField> CollectionFields => Set<CollectionField>();
+    public DbSet<CollectionItem> CollectionItems => Set<CollectionItem>();
+
     public DbSet<MediaItem> MediaItems => Set<MediaItem>();
     public DbSet<MediaExternalId> MediaExternalIds => Set<MediaExternalId>();
 
@@ -22,6 +27,7 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ConfigureCatalog();
+        modelBuilder.ConfigureCollections();
         modelBuilder.ConfigurePersonalMedia();
         modelBuilder.Entity<AccountUser>(user =>
         {

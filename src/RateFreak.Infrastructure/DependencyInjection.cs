@@ -1,3 +1,5 @@
+using RateFreak.Application.Collections;
+using RateFreak.Infrastructure.Collections;
 using RateFreak.Application.PersonalMedia;
 using RateFreak.Infrastructure.PersonalMedia;
 using RateFreak.Application.MetadataImport;
@@ -46,6 +48,8 @@ public static class DependencyInjection
         services.AddScoped<ILibraryService, LibraryService>();
         services.AddScoped<IRatingService, RatingService>();
         services.AddScoped<IReviewService, ReviewService>();
+        services.AddScoped<ICollectionQueries, CollectionQueries>();
+        services.AddScoped<ICollectionCommands, CollectionCommands>();
         services.AddOptions<TmdbOptions>().Bind(configuration.GetSection("Providers:Tmdb"))
             .Validate(options => options.IsValid(), "TMDB configuration is invalid: check timeout, language and enabled-provider access token.")
             .ValidateOnStart();
