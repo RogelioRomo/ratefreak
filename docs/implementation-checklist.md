@@ -9,7 +9,9 @@ Collection discussions, moderation and further providers remain separate Phase 6
 User requested merging IGDB and continuing implementation. Fast-forward merged
 IGDB to main at `50f8ddc`; post-merge 444 tests passed, recorded in `518de06`. Deleted the
 merged feat/igdb-games branch under the user's branch-cleanup preference. Next
-slice is on `feat/review-comments`, based on `518de06`; comments not merged/pushed.
+slice was merged locally into `main` at the user’s request by fast-forward from
+`518de06` to `d3ca87e`. Post-merge full suite: 476 tests pass, zero failed/skipped.
+Merged feature branch deleted under the user’s cleanup preference. No remote push.
 Optional collection-comment target preference was asked; no answer received, so
 proceeded with the stated reviews-only default. See ADR 0009/design/plan/README.
 
