@@ -1,9 +1,57 @@
 # Implementation checklist and changelog
 
-Updated 2026-10-30. Implemented Phase 0–5, Phase 6a MusicBrainz albums and Phase 6b follows and Phase 6c IGDB games.
-Comments/moderation and further providers remain separate Phase 6 work.
+Updated 2026-10-30. Implemented Phase 0–5, Phase 6a MusicBrainz albums,
+Phase 6b follows, Phase 6c IGDB games and Phase 6d public review comments.
+Collection discussions, moderation and further providers remain separate Phase 6 work.
 
-## Resume here — Phase 6c IGDB games complete (2026-10-30)
+## Resume here — Phase 6d review comments complete (2026-10-30)
+
+User requested merging IGDB and continuing implementation. Fast-forward merged
+IGDB to main at `50f8ddc`; post-merge 444 tests passed, recorded in `518de06`. Deleted the
+merged feat/igdb-games branch under the user's branch-cleanup preference. Next
+slice is on `feat/review-comments`, based on `518de06`; comments not merged/pushed.
+Optional collection-comment target preference was asked; no answer received, so
+proceeded with the stated reviews-only default. See ADR 0009/design/plan/README.
+
+Implemented public flat review comments with POST/list and individual GET/PATCH/
+DELETE. Bodies trimmed 1..2000 UTF-16 units, literal text, valid Unicode, spoiler flag;
+strict duplicate/unknown JSON property rejection. Author-only mutations with cookie
+and CSRF; owning the review grants no mutation permission on another's comments.
+DTO author fields only id/handle/displayName. Shared social read/write budgets and
+no-store responses. Explicit review/account cascading FKs, body CHECK and indexes.
+List existence/count/page use repeatable read. Create/update projection remains in
+transaction; relevant FK failures safely roll back to 404. Empty review ID returns 404.
+
+**476 tests pass** (64 unit, 154 provider contract, 258 integration), zero failed/skipped.
+Added 32 PostgreSQL-backed comment/migration cases. Initial 15 HTTP cases observed
+RED on missing routes, then GREEN. All-zero parent regression observed 500→404.
+Tests prove author/review-owner isolation, every mutation's session/CSRF, JSON/control/
+Unicode/boundary input, stable tied pages, safe projection, shared budgets/no-store,
+constraints/cascades, deletion before insertion and blocked deletion between writes
+and response reads, plus a concurrent insert between count and page. Rollback/
+reapply preserves pre-existing account/game/review/follows schema. Tests use isolated
+PostgreSQL; no local verification accounts or comments were created.
+
+Release build zero warnings/errors. EF model matches generated migration. Fresh
+transitive NuGet audit reports no known vulnerable packages. Independent builder/
+code review completed with no remaining required findings. Added suggested snapshot,
+malformed-input and migration-preservation coverage. Full suite exposed existing
+game guard test assuming latest migration; reproduced removal of only comments
+history before game refusal. Pinned that fresh-container regression to AddVideoGames,
+then focused GREEN/full suite 476 GREEN; historical guard remains unchanged.
+
+Generated/inspected `20261030213246_AddReviewComments`: new table/FKs/indexes only;
+Down drops comments/data, documented. Applied/reapplied locally. Temporary updated
+API on 5081 passed liveness/readiness/Swagger, all five OpenAPI comment operations,
+missing 404, invalid-page 400, all unauthenticated mutations 401 and no-store headers.
+Temporary server stopped. Existing 5080 process was not restarted; recheck before
+assuming it serves latest code. No public deployment/provider activation or push.
+
+Remaining: collection discussions if desired; moderation/reporting and audit policy;
+book provider selection; deferred accounts/profiles and public-launch hardening.
+IGDB live activation awaits client credentials, MusicBrainz awaits chosen contact.
+
+## Previous resume — Phase 6c IGDB games complete (2026-10-30)
 
 User requested deleting the merged follows branch and continuing with IGDB, then
 confirmed main games/remakes/remasters. Verified feat/user-follows was merged into

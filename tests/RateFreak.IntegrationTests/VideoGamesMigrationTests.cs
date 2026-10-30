@@ -15,7 +15,8 @@ public sealed class VideoGamesMigrationTests
     {
         await using var postgres=new PostgreSqlBuilder("postgres:17").Build();await postgres.StartAsync(Ct);
         await using var db=new RateFreakDbContext(new DbContextOptionsBuilder<RateFreakDbContext>().UseNpgsql(postgres.GetConnectionString()).Options);
-        await db.Database.MigrateAsync(Ct);
+        // Pin this guard regression to its migration; later downgrades commit separately.
+        await db.GetService<IMigrator>().MigrateAsync("20261030212206_AddVideoGames",Ct);
         var game=new MediaItem("video_game","Preserved game");db.Add(game);await db.SaveChangesAsync(Ct);
         var history=(await db.Database.GetAppliedMigrationsAsync(Ct)).ToArray();
         var error=await Assert.ThrowsAsync<Npgsql.PostgresException>(()=>db.GetService<IMigrator>().MigrateAsync("20261030211018_AddUserFollows",Ct));

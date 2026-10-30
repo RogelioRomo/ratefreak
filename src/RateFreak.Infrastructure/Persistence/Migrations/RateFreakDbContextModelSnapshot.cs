@@ -627,6 +627,51 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RateFreak.Domain.Social.ReviewComment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("character varying(2000)")
+                        .HasColumnName("body");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<bool>("IsSpoiler")
+                        .HasColumnType("boolean")
+                        .HasColumnName("is_spoiler");
+
+                    b.Property<Guid>("ReviewId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("review_id");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("ReviewId", "CreatedAt", "Id");
+
+                    b.ToTable("review_comments", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_review_comments_body", "length(btrim(body, ' ' || chr(9) || chr(10) || chr(13))) > 0 AND length(body) <= 2000");
+                        });
+                });
+
             modelBuilder.Entity("RateFreak.Domain.Social.UserFollow", b =>
                 {
                     b.Property<Guid>("FollowerId")
@@ -880,6 +925,21 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("MediaItemId")
                         .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RateFreak.Domain.Social.ReviewComment", b =>
+                {
+                    b.HasOne("RateFreak.Domain.PersonalMedia.Review", null)
+                        .WithMany()
+                        .HasForeignKey("ReviewId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)

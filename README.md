@@ -2,7 +2,7 @@
 
 A monorepo containing a .NET 10 modular monolith API and a Next.js web app. Phase 1 foundation and Phase 2 local
 accounts/catalog reads, Phase 4 personal library/ratings/reviews, and Phase 5
-dynamic collections plus Phase 6a MusicBrainz albums, Phase 6b follows and Phase 6c IGDB games are implemented from `ratefreak-plan.md`.
+dynamic collections plus Phase 6a MusicBrainz albums, Phase 6b follows, Phase 6c IGDB games and Phase 6d review comments are implemented from `ratefreak-plan.md`.
 Next.js will be hosted separately and act as a thin browser-facing proxy; all
 accounts, authorization and business logic remain in .NET. The frontend scaffold lives in `web/`; API integration, the browser-facing proxy,
 and remaining business features are not implemented. The Phase 3 TMDB adapter is
@@ -742,3 +742,46 @@ requests, pagination, images and rate limits) and
 Review IGDB/Twitch terms, commercial partnership requirements, metadata/image rights
 and attribution before public use. This implementation does not constitute live
 activation or public-launch readiness.
+
+
+## Review comments (Phase 6d)
+
+Flat comments are available on public reviews. Collections, threaded replies,
+moderation/reporting and notifications are separate future work.
+
+| Method | Route | Contract |
+| --- | --- | --- |
+| GET | `/api/v1/reviews/{reviewId}/comments` | Public paginated comments, oldest first |
+| POST | `/api/v1/reviews/{reviewId}/comments` | Session + CSRF; `{ body, isSpoiler? }` -> 201 and Location |
+| GET | `/api/v1/comments/{id}` | Public comment detail |
+| PATCH | `/api/v1/comments/{id}` | Author + CSRF; replace body/spoiler -> 200 |
+| DELETE | `/api/v1/comments/{id}` | Author + CSRF -> 204; missing/non-owned -> 404 |
+
+Bodies are trimmed, then must contain 1–2000 UTF-16 code units of valid plain text.
+Only tab, CR and LF controls are allowed; blank text, NUL and unpaired surrogates
+are rejected. Text is returned literally; clients must render it as text. Spoiler
+flags default to false and must be handled by the frontend. PATCH replaces the
+body and flag, preserving comment ID, author, target and creation time; simultaneous
+edits use last-write-wins semantics. Duplicate/unknown JSON properties return 400.
+POST creates a new comment each time; it has no replay/idempotency key.
+
+Details expose `id`, `reviewId`, `author` (id/handle/displayName), `body`, `isSpoiler`,
+`createdAt` and `updatedAt`. Email and account/security fields are never included.
+The parent review's author cannot edit or delete another person's comment. No
+follow relationship is required. Removing a review cascades all its comments;
+removing an account removes its authored comments and the comments on its reviews.
+
+Lists return `{ items, page, pageSize, totalCount }`, with page 1..10000 (default 1)
+and pageSize 1..100 (default 20). Order is creation time then UUID. A read snapshot
+keeps parent existence, count and page consistent. Existing empty threads return
+200; missing reviews/comments return 404. Public comment endpoints use no-store,
+including validation, authentication and rate-limit responses. Reads share the
+60/IP/minute social budget with follows; writes share 30/account/minute. A 429
+includes Retry-After. Other catalog/personal limits remain separate.
+
+`AddReviewComments` adds only the comments table, its body constraint, cascading
+review/account foreign keys and paging/author indexes. Apply it with the explicit
+EF update command above; startup never migrates the database. Down drops comments
+and their data, so back up and review rollback impact first. Transactional writes
+and foreign-key handling prevent parent/account deletion races from producing
+orphan comments or a failed response read after a successful write.

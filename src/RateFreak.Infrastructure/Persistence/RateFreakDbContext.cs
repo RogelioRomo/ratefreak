@@ -24,12 +24,14 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
     public DbSet<LibraryEntry> LibraryEntries => Set<LibraryEntry>();
     public DbSet<Rating> Ratings => Set<Rating>();
     public DbSet<Review> Reviews => Set<Review>();
+    public DbSet<RateFreak.Domain.Social.ReviewComment> ReviewComments => Set<RateFreak.Domain.Social.ReviewComment>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ConfigureCatalog();
         modelBuilder.ConfigureSocial();
+        modelBuilder.ConfigureReviewComments();
         modelBuilder.ConfigureCollections();
         modelBuilder.ConfigurePersonalMedia();
         modelBuilder.Entity<AccountUser>(user =>

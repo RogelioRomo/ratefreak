@@ -1,3 +1,5 @@
+using RateFreak.Infrastructure.Social;
+using RateFreak.Application.Social;
 using RateFreak.Infrastructure.Providers.Igdb;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using RateFreak.Infrastructure.Providers.MusicBrainz;
@@ -52,6 +54,7 @@ public static class DependencyInjection
         services.AddScoped<ILibraryService, LibraryService>();
         services.AddScoped<IRatingService, RatingService>();
         services.AddScoped<IReviewService, ReviewService>();
+        services.AddScoped<IReviewCommentService, ReviewCommentService>();
         services.AddScoped<ICollectionQueries, CollectionQueries>();
         services.AddScoped<ICollectionCommands, CollectionCommands>();
         services.AddScoped<ICollectionItemCommands, CollectionItemCommands>();
