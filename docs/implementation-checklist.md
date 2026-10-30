@@ -5,10 +5,13 @@ Phase 6b follows, Phase 6c IGDB games, Phase 6d public review comments and
 Phase 6e additional GitHub/Google sign-in.
 Collection discussions, moderation and further providers remain separate Phase 6 work.
 
-## Resume here — Phase 6e external sign-in implemented (2026-10-30)
+## Resume here — Phase 6e external sign-in merged (2026-10-30)
 
 User approved GitHub/Google as additional sign-in options, direct Identity integration,
 and the written design. Implemented on `feat/external-sign-in`, based on main `0237bc1`.
+At the user's request, fast-forward merged locally into `main` at `67ea23e`.
+Post-merge full suite: 522 tests pass, zero failed/skipped. Deleted the merged
+feature branch under the user's cleanup preference. No remote push.
 Password registration/login and existing sessions remain. No email delivery provider,
 verification mail or password reset was added; those flows are deferred by user choice.
 Local password emails remain unverified, and lost-password accounts require a provider
@@ -50,7 +53,7 @@ Generated/inspected `20261030215540_AddExternalSignIn`: adds technical one-time
 challenge ID/expiry table, replaces login user index with unique (user,provider).
 Down drops transient flow state/restores old index, preserving accounts/mappings.
 Applied/reapplied locally. No real Google/GitHub credentials or provider calls, no
-email delivery, frontend, public deployment, merge or push. Setup/callbacks/recovery
+email delivery, frontend, public deployment or push. Setup/callbacks/recovery
 limits documented in README, `.env.example`, ADR 0010 and design/plan. Real transport
 redirect/body-cap settings inspected; OAuth HTTP tests substitute a fake backchannel.
 Temporary API on 5081 passed liveness/readiness/Swagger, all seven OpenAPI route
