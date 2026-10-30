@@ -1,7 +1,8 @@
 # RateFreak backend
 
 Standalone .NET 10 modular monolith. Phase 1 foundation and Phase 2 local
-accounts/catalog reads and Phase 4 personal library, ratings and reviews are implemented from `ratefreak-backend-plan.md`.
+accounts/catalog reads, Phase 4 personal library/ratings/reviews, and Phase 5
+dynamic collections are implemented from `ratefreak-backend-plan.md`.
 Next.js will be hosted separately and act as a thin browser-facing proxy; all
 accounts, authorization and business logic remain in .NET. The frontend/proxy and
 remaining business features are not implemented. The Phase 3 TMDB adapter is
@@ -430,5 +431,105 @@ includes Retry-After. Limits remain per instance. Authenticated mutations requir
 
 Apply `AddPersonalMedia` with the EF database update command above. The additive
 migration creates `user_media`, `ratings`, `reviews`, constraints and indexes only.
-This phase adds no frontend, private reviews, moderation workflow or collections.
+Phase 4 adds no frontend, private reviews or moderation workflow; collections are
+implemented separately in Phase 5 below.
 Email ownership/recovery and production hardening remain required before public launch.
+
+
+## Dynamic collections (Phase 5)
+
+Collections can combine catalog media and custom entries, with `text`, `number`,
+`boolean`, `date` and `select` fields. Visibility is `private` by default or `public`;
+only the owner can edit. Private collections return 404 to everyone else. Public
+lists include public collections plus the signed-in caller's private collections;
+`ownOnly=true` lists only your collections and requires sign-in. All collection
+responses use no-store because visibility may change. Text must be rendered as text.
+
+Create a collection with `POST /api/v1/collections`:
+
+```json
+{
+  "name": "Movie night",
+  "visibility": "private",
+  "fields": [
+    { "key": "watched_with", "label": "Watched with", "fieldType": "text",
+      "required": false, "configuration": { "maxLength": 200 }, "position": 0 }
+  ]
+}
+```
+
+Creation returns 201 with Location and `{ collection, fields }`. The collection
+contains its owner summary, metadata, `revision` and `schemaVersion` (both start at 1).
+Every write to an existing collection requires `expectedRevision`; a stale value
+returns 409, without applying changes. Every successful mutation returns
+`X-Collection-Revision` with the new revision, including 204 responses. Fetch the
+collection again after a conflict and review its current state before retrying.
+All writes use the existing cookie and fresh CSRF token flow; unknown body fields
+are rejected, including client-supplied ownership and immutable properties.
+
+| Method | Route under `/api/v1/collections` | Behavior |
+| --- | --- | --- |
+| POST | `/` | Create metadata and initial fields atomically |
+| GET | `/` | List accessible collections; optional `ownOnly`, `page`, `pageSize` |
+| GET | `/{id}` | Metadata, ordered fields and current revision |
+| PATCH | `/{id}` | Replace name, description and visibility with expectedRevision |
+| POST | `/{id}/fields` | `{ expectedRevision, field: { ...definition } }` |
+| PATCH | `/{id}/fields/{fieldId}` | Replace label, required, configuration and position |
+| GET | `/{id}/fields/{fieldId}/deletion-impact` | Owner-only populated-item count and revision |
+| DELETE | `/{id}/fields/{fieldId}?expectedRevision=N&confirm=true` | Permanently remove field and its values |
+| GET | `/{id}/items` | Paginated accessible items, ordered by position then UUID |
+| POST | `/{id}/items` | Add canonical media or custom entry |
+| GET | `/{id}/items/{itemId}` | Accessible entry details |
+| PATCH | `/{id}/items/{itemId}` | Replace custom title, data and position |
+| DELETE | `/{id}/items/{itemId}?expectedRevision=N` | Remove entry; 204 with new revision |
+
+Add a custom entry with `POST /{id}/items`:
+
+```json
+{ "expectedRevision": 1, "title": "Local short film",
+  "data": { "watched_with": "Friends" }, "position": 0 }
+```
+
+For a canonical entry, supply `mediaItemId` and omit `title`; the catalog supplies
+its title. Each canonical media item may occur once per collection (duplicate 409),
+but can appear in other collections. Custom entries may repeat titles. The item
+kind and media reference are immutable. Item PATCH replaces the full data object,
+custom title and position; omitted optional data keys are cleared. Custom titles
+are required; canonical titles cannot be overridden. No library/rating/review
+records are created or changed by collection operations.
+
+Field keys/types are immutable; label changes preserve values. Adding a required
+field to a nonempty collection returns 409. Making a field required or tightening
+its configuration succeeds only if every existing item remains valid. A successful
+field change increments schemaVersion as well as revision; item and metadata
+changes increment revision only. Positions are nonnegative integers; ties use UUID
+ordering. Creation defaults omitted positions to zero; replacement requires them.
+
+Deletion is permanent: first fetch deletion-impact, show its populatedItemCount,
+and ask the owner to confirm before sending DELETE with that revision. Missing or
+false confirmation returns 400. Any intervening collection edit makes the revision
+stale (409), requiring a fresh preview. The API removes the definition and all its
+keys, including null-valued keys, in one transaction. Null/absent values do not
+count as populated. Unrelated fields/entries survive; affected item timestamps update.
+
+Limits: 30 fields; names 1–120, descriptions ≤2000, labels 1–80, custom titles 1–200.
+Keys are 1–40 lowercase ASCII letters/digits/underscores, starting with a letter;
+`id`, `title`, `media_item_id`, `created_at`, `updated_at` are reserved. Keys are unique.
+Configuration is type-specific: text `maxLength` 1–4000 (default 1000); number
+optional inclusive decimal `min`/`max`; boolean/date `{}`; select `options` contains
+1–50 unique nonblank strings of at most 80 characters, matched exactly. Dates use
+valid `YYYY-MM-DD`; values are never coerced. Required fields reject absent/null
+values and blank text. Optional fields may be absent/null. Unknown keys, duplicate
+JSON keys, malformed Unicode, NUL, invalid types/bounds, irrelevant configuration
+and custom JSON deeper than 16 are rejected with 400. Existing 64 KiB body cap applies.
+
+Lists default to page 1/pageSize 20, bounded at 10000/100. Public-accessible reads
+share the catalog 60/IP/minute budget, including signed-in calls; owner-only deletion
+previews share personal-read 60/account/minute. Writes share personal-write
+30/account/minute. 429 includes Retry-After. These limits remain per API instance.
+
+Apply `20261030160901_AddCollections` explicitly with the existing EF database
+update command. Account deletion cascades collections/fields/items at DB level;
+catalog deletion is restricted while referenced. No collection deletion endpoint,
+field archive/restore, bulk migration, collaboration or frontend is included.
+Email verification/recovery and deployment hardening remain required before launch.

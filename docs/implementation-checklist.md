@@ -1,29 +1,33 @@
 # Implementation checklist and changelog
 
-Updated 2026-10-29. Current scope: Phase 0/1, Phase 2 accounts and catalog reads,
-Development-only Swagger, Phase 3 TMDB (enabled locally), and Phase 4 personal media.
-Earlier entries below record historical verification.
+Updated 2026-10-30. Current scope: Phase 0/1, Phase 2 accounts/catalog reads,
+Development Swagger, Phase 3 TMDB (enabled locally), Phase 4 personal media,
+and Phase 5 dynamic collections. Earlier entries record historical verification.
 
-## Resume here — Phase 4 complete (2026-10-29)
+## Resume here — Phase 5 implemented (2026-10-30)
 
-Implemented and verified personal libraries/tracking, ratings, reviews and local
-community rating aggregates. User approved ratings **0–5 in 0.5 increments**, private
-libraries and one editable public plain-text review per user/media, and delegated
-remaining implementation choices. See ADR 0005 and README for the exact contracts.
+Implemented collections with private/public visibility (default private), mixed
+canonical/custom entries, owner-only editing, five custom field types and bounded
+JSONB validation. User approved duplicate canonical-media prevention per collection
+and permanent field deletion after impact preview/explicit confirmation, then
+approved the full design and native execution plan. See ADR 0006 and README.
 
-Current verification: **166 tests pass** (7 unit, 28 provider contract, 131 integration),
-zero failed/skipped. Final Release build: zero warnings/errors. NuGet transitive
-audit: no known vulnerable packages. EF: no pending model changes. Applied/reapplied
-`20261029193432_AddPersonalMedia` to persistent local PostgreSQL; history records
-four migrations once each. Live Phase 4 lifecycle/security checks pass.
+Current verification: **265 tests pass** (57 unit, 28 provider contract, 180 integration),
+zero failed/skipped. Release build: zero warnings/errors. NuGet transitive audit:
+no known vulnerable packages. EF: no pending model changes. Applied/reapplied
+`20261030160901_AddCollections` to persistent local PostgreSQL; five migrations
+recorded once each. Live Phase 5 lifecycle/privacy/validation/deletion checks pass.
+Independent whole-branch review is pending; finish that before declaring Phase 5 complete.
 
-Development API left running at http://localhost:5080/swagger; PostgreSQL healthy
-on 127.0.0.1:55432. TMDB remains enabled and live search still passes. Recheck
-process state on resume. Both temporary verification accounts and their personal
-records were removed; existing two catalog records and mappings are preserved.
-Next phase is collections/schema validation; no automatic continuation is scheduled.
-Git was initialized on `main` at the user’s request after Phase 4; the initial
-commit captures all work through this phase. No remote or push is configured.
+Development API running at http://localhost:5080/swagger; PostgreSQL healthy on
+127.0.0.1:55432. Recheck processes on resume. Removed only the temporary Phase 5
+verification account and cascaded collections/fields/items; existing two catalog
+records/mappings preserved. Local counts after cleanup: users 0, media 2,
+collections/fields/items 0. No public deployment.
+
+Work is on `feat/collections`, based on the initial Phase 4 commit `dd454da`.
+No remote/push/merge configured or performed. Next phase after review is Phase 6;
+email verification/recovery and deployment hardening remain required before launch.
 
 ### TMDB activation and live verification
 
@@ -47,7 +51,7 @@ commit captures all work through this phase. No remote or push is configured.
 
 - [x] Phase 4: private library/tracking, 0–5 half-step ratings, public owned reviews,
   live aggregates, ownership/CSRF tests and additive migration. See evidence below.
-- [ ] Phase 5: dynamic collections and schema validation.
+- [x] Phase 5: dynamic collections and schema validation (final review pending).
 - [ ] Phase 6: additional providers and social features.
 - [ ] Phase 7: production hardening and deployment verification.
 - [ ] Deferred account work: profile editing and public profiles.
@@ -388,3 +392,41 @@ TMDB attribution/terms and deployment hardening remain required before public la
   Data Protection keys, temporary handoff files and build/test outputs excluded.
 - Added ignore patterns for generated directories containing literal backslashes.
 - No remote configured and no push performed.
+
+
+## Phase 5 — dynamic collections (2026-10-30)
+
+- [x] Approved full design and implementation plan; recorded ADR 0006.
+- [x] Domain/Application/Infrastructure/API module; no new dependencies.
+- [x] Private/public visibility, owner-only writes, canonical/custom entries,
+  no public email disclosure, no-store reads and existing shared rate budgets.
+- [x] Text/number/boolean/date/select validation, bounded definitions/options,
+  unique immutable keys/types, required/nullable rules and complete data replacement.
+- [x] Prevent duplicate canonical media per collection; allow independent custom rows.
+- [x] Locked parent-row transactions and expected revisions for all existing-collection
+  writes; schema edits revalidate current items; failures leave state unchanged.
+- [x] Owner-only deletion preview counts populated entries; confirmed fresh revision
+  deletes definitions and all keys atomically; stale confirmations return 409.
+- [x] Generated additive `20261030160901_AddCollections`; inspected Up/Down.
+  Repeatable migration/model checks pass. Five local migrations recorded once each.
+- [x] Test-first missing-route/validation RED→GREEN; PostgreSQL ownership/CSRF,
+  JSON/field/item validation, duplicate handling, schema compatibility, rollback,
+  pagination, shared limits, direct DB constraints and cascade/restricted deletion.
+- [x] Independent-connection concurrent item/schema/delete writes allow one winner
+  and one 409; coherent read snapshot prevents visibility/data race disclosure.
+- [x] Malformed escaped surrogate in JSON property name reproduced as a failing unit
+  test; validation boundary now rejects it without a 500; HTTP regression passes.
+- [x] Full suite 265/265, no failures/skips. Release build zero warnings/errors;
+  audited all seven projects/transitives, no known vulnerable packages.
+- [x] Persistent-local migration apply/reapply, health/readiness/Swagger/OpenAPI,
+  register/login, private creation, custom/canonical items, invalid-value 400,
+  duplicate 409, stale-confirmation 409, confirmed deletion 204, visibility changes.
+- [x] Logged out and removed only the exact temporary verification account;
+  collections/fields/items cascaded away. Retained two pre-existing catalog records.
+- [x] README contracts and ADR/checklist updated.
+- [ ] Independent whole-branch review and any important fixes.
+
+Limits: no frontend, collection deletion endpoint, archive/restore, bulk backfills,
+key/type migrations or collaboration. Phase 6 providers/social and Phase 7 production
+hardening remain future work. Public launch still requires email verification,
+password recovery, TMDB terms/attribution and remaining deployment safeguards.

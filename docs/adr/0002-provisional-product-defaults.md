@@ -10,7 +10,9 @@ Date: 2026-10-28. Revisit before the phase that implements each rule.
 - One editable review per user/media pair (approved in Phase 4; see ADR 0005).
 - Authenticated users may import, subject to rate limits; moderators correct catalog data.
 - Collections permit mixed media and custom entries; public/private, default private.
-  Owner-only editing; duplicate-media and schema-deletion policies remain pending Phase 5.
+  Owner-only editing; approved Phase 5 rules prohibit duplicate canonical media per
+  collection and require fresh impact preview/confirmation for permanent field deletion
+  (see ADR 0006).
 - Store external artwork references; copying/proxying requires licensing review.
 - TMDB first, in Phase 3; no provider credentials or adapters in the foundation.
 
