@@ -7,8 +7,9 @@ Comments/moderation and further providers remain separate Phase 6 work.
 
 User requested deleting the merged follows branch and continuing with IGDB, then
 confirmed main games/remakes/remasters. Verified feat/user-follows was merged into
-main and deleted it; IGDB work is on `feat/igdb-games`, based on `b495247`.
-No merge/push of the IGDB branch. No real credentials configured or activation.
+main and deleted it. At the user’s request, IGDB was merged locally into `main`
+by fast-forward from `b495247` to `50f8ddc`. Post-merge full suite: 444 tests pass,
+zero failed/skipped. No remote push. No real credentials configured or activation.
 
 Implemented `video_game` and IGDB registry adapter using the existing search,
 preview and transactional import path. One item per positive Int32 IGDB games ID,
