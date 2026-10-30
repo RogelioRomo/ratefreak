@@ -1,9 +1,58 @@
 # Implementation checklist and changelog
 
-Updated 2026-10-30. Implemented Phase 0–5, Phase 6a MusicBrainz albums and Phase 6b follows.
+Updated 2026-10-30. Implemented Phase 0–5, Phase 6a MusicBrainz albums and Phase 6b follows and Phase 6c IGDB games.
 Comments/moderation and further providers remain separate Phase 6 work.
 
-## Resume here — Phase 6b follows complete (2026-10-30)
+## Resume here — Phase 6c IGDB games complete (2026-10-30)
+
+User requested deleting the merged follows branch and continuing with IGDB, then
+confirmed main games/remakes/remasters. Verified feat/user-follows was merged into
+main and deleted it; IGDB work is on `feat/igdb-games`, based on `b495247`.
+No merge/push of the IGDB branch. No real credentials configured or activation.
+
+Implemented `video_game` and IGDB registry adapter using the existing search,
+preview and transactional import path. One item per positive Int32 IGDB games ID,
+namespace game; game_type 0/8/9 without version_parent; no DLC/bundles/editions.
+App-only Twitch client_credentials tokens stay in memory, sent in form-body auth
+requests. Separate named clients, redirects disabled/header redaction, monotonic
+expiry, bounded 401 refresh, one operation/no queue and 250ms game-send pacing.
+Complete upstream cooldown preserved internally; new operations blocked even in
+its final fraction of a second. Whole-operation deadline/caller cancellation.
+Bounded strict JSON and normalized metadata/cover/platforms/genres; no provider
+scores. Release timestamp preserved without inventing a canonical calendar day.
+
+**444 tests pass** (64 unit, 154 provider contract, 226 integration), zero failed or
+skipped. Baseline 364 passed. Added 68 provider cases and 12 HTTP/DB cases, including
+concurrent imports, equal-title remake/remaster independence, game library/rating/
+review/collection lifecycle, validation/auth/CSRF and guarded migration/reapply.
+Observed six HTTP cases RED before registration/schema, then GREEN. Initial
+provider tests first failed compilation on missing adapter types; no claim of
+behavioral RED for that initial contract batch. Explicit game rollback guard
+regression observed RED→GREEN. Release build zero warnings/errors. EF model matches
+migration. Fresh transitive NuGet audit reports no known vulnerable packages.
+
+Independent review found one required defect: numeric `/games/{id}` links refer to
+slugs, not API IDs, and can point to another game. Reproduced with 1942; regression
+observed RED→GREEN. IGDB's optional externalUrl is now null; identity remains numeric.
+Reviewer checked fix and found no remaining required findings. Production handler
+redirect/redaction settings inspected; tests replace handlers, so no separate live
+redirect/redaction transport proof. No public launch or provider terms approval.
+
+Generated/inspected `20261030212206_AddVideoGames`: constraint-only Up; table lock
+and explicit refusal if games exist in Down. Safe downgrade/reapply preserves
+movie/album data and follows schema in test databases. Applied/reapplied locally.
+Temporary updated API on 5081 passed health/readiness/Swagger/OpenAPI, public
+capabilities (three, IGDB disabled/no credential fields), video_game catalog filter,
+disabled search/preview 503, invalid type/ID 400 and default TMDB game search 400.
+Temporary server stopped. No records/accounts created by live checks. Existing 5080
+process was not restarted; recheck before assuming current code is served.
+
+README, .env.example, ADR 0008, design and implementation plan updated. IGDB live
+activation/search/preview/import awaits user-provided server-side Twitch app client
+ID/secret. MusicBrainz activation still awaits maintainer contact. Books,
+comments/moderation, deferred account work and public-launch hardening remain.
+
+## Previous resume — Phase 6b follows complete (2026-10-30)
 
 User approved follows next, then IGDB. Implemented public follower/following lists
 and authenticated, CSRF-protected repeat-safe follow/unfollow. Public lists expose

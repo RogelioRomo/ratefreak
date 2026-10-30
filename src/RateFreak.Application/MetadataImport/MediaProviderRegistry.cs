@@ -15,4 +15,4 @@ public sealed class MediaProviderRegistry(IEnumerable<IMediaProvider> providers)
     public IMediaProvider? Find(string name) => adapters.GetValueOrDefault(name);
 }
 
-public sealed record ProviderIdentity(string Provider, string Namespace, string ExternalId, string ExternalUrl);
+public sealed record ProviderIdentity(string Provider, string Namespace, string ExternalId, string? ExternalUrl);

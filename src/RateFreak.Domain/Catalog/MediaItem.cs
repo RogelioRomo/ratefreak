@@ -2,10 +2,11 @@ namespace RateFreak.Domain.Catalog;
 
 public static class MediaTypes
 {
+    public const string VideoGame = "video_game";
     public const string Album = "album";
     public const string Movie = "movie";
     public const string TvShow = "tv_show";
-    public static bool IsSupported(string value) => value is Movie or TvShow or Album;
+    public static bool IsSupported(string value) => value is Movie or TvShow or Album or VideoGame;
 }
 
 public sealed class MediaItem

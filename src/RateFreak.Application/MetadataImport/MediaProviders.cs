@@ -54,6 +54,10 @@ public static class MediaProviderInput
             var ns = type == MediaTypes.Movie ? "movie" : "tv";
             identity = new(provider, ns, tmdbId, $"https://www.themoviedb.org/{ns}/{tmdbId}"); return true;
         }
+        if (provider == "igdb" && type == MediaTypes.VideoGame && TryId(externalId, out var igdbId))
+        {
+            identity = new(provider, "game", igdbId, null); return true;
+        }
         if (provider == "musicbrainz" && type == MediaTypes.Album && externalId is { Length: 36 }
             && Guid.TryParseExact(externalId, "D", out var uuid) && uuid != Guid.Empty)
         {

@@ -15,7 +15,7 @@ internal static class CatalogEndpoints
             var errors = new Dictionary<string, string[]>();
             if (q?.Length > 200) errors["q"] = ["Search must not exceed 200 characters."];
             if (q?.Contains('\0') == true) errors["q"] = ["Search must not contain null characters."];
-            if (type is not null && !MediaTypes.IsSupported(type)) errors["type"] = ["Type must be movie, tv_show or album."];
+            if (type is not null && !MediaTypes.IsSupported(type)) errors["type"] = ["Type must be movie, tv_show, album or video_game."];
             if (page is < 1 or > 10000) errors["page"] = ["Page must be between 1 and 10000."];
             if (pageSize is < 1 or > 100) errors["pageSize"] = ["Page size must be between 1 and 100."];
             if (errors.Count > 0) return Results.ValidationProblem(errors);

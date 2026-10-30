@@ -1,3 +1,4 @@
+using RateFreak.Infrastructure.Providers.Igdb;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using RateFreak.Infrastructure.Providers.MusicBrainz;
 using RateFreak.Application.Collections;
@@ -71,6 +72,21 @@ public static class DependencyInjection
             .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
             { AllowAutoRedirect = false, PooledConnectionLifetime = TimeSpan.FromMinutes(5), MaxConnectionsPerServer = 1 })
             .RedactLoggedHeaders(["User-Agent"]);
+        services.AddOptions<IgdbOptions>().Bind(configuration.GetSection("Providers:Igdb"))
+            .Validate(options => options.IsValid(), "IGDB configuration is invalid: check timeout and enabled-provider app credentials.").ValidateOnStart();
+        services.AddSingleton<IgdbSession>();
+        services.AddHttpClient("igdb-auth", client => client.Timeout = Timeout.InfiniteTimeSpan)
+            .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
+            { AllowAutoRedirect = false, PooledConnectionLifetime = TimeSpan.FromMinutes(5), MaxConnectionsPerServer = 1 })
+            .RedactLoggedHeaders(["Authorization", "Client-ID"]);
+        services.AddHttpClient("igdb", client => client.Timeout = Timeout.InfiniteTimeSpan)
+            .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
+            { AllowAutoRedirect = false, PooledConnectionLifetime = TimeSpan.FromMinutes(5), MaxConnectionsPerServer = 1 })
+            .RedactLoggedHeaders(["Authorization", "Client-ID"])
+            .AddTypedClient<IMediaProvider>((client, provider) => new IgdbMediaProvider(
+                client, provider.GetRequiredService<IHttpClientFactory>().CreateClient("igdb-auth"),
+                provider.GetRequiredService<IOptions<IgdbOptions>>(),
+                provider.GetRequiredService<IgdbSession>(), provider.GetRequiredService<TimeProvider>()));
         services.AddScoped<IMediaProviderRegistry, MediaProviderRegistry>();
         services.AddScoped<IMediaImportService, MediaImportService>();
 

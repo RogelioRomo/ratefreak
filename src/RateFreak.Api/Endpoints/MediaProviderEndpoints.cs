@@ -44,7 +44,7 @@ internal static class MediaProviderEndpoints
         media.MapPost("/import", async (ImportMediaRequest request, IMediaImportService imports,
             HttpContext context, CancellationToken cancellationToken) =>
         {
-            if (request.Provider is not ("tmdb" or "musicbrainz")) return Results.ValidationProblem(new Dictionary<string, string[]> { ["provider"] = ["Unknown metadata provider."] });
+            if (request.Provider is not ("tmdb" or "musicbrainz" or "igdb")) return Results.ValidationProblem(new Dictionary<string, string[]> { ["provider"] = ["Unknown metadata provider."] });
             var validation = Validate(request.Provider, request.MediaType, request.ExternalId, out var id);
             if (validation is not null) return validation;
             return await ProviderResult(async () =>

@@ -2,7 +2,7 @@
 
 A monorepo containing a .NET 10 modular monolith API and a Next.js web app. Phase 1 foundation and Phase 2 local
 accounts/catalog reads, Phase 4 personal library/ratings/reviews, and Phase 5
-dynamic collections plus Phase 6a MusicBrainz albums are implemented from `ratefreak-plan.md`.
+dynamic collections plus Phase 6a MusicBrainz albums, Phase 6b follows and Phase 6c IGDB games are implemented from `ratefreak-plan.md`.
 Next.js will be hosted separately and act as a thin browser-facing proxy; all
 accounts, authorization and business logic remain in .NET. The frontend scaffold lives in `web/`; API integration, the browser-facing proxy,
 and remaining business features are not implemented. The Phase 3 TMDB adapter is
@@ -312,7 +312,7 @@ Public reads are available in Development Swagger at http://localhost:5080/swagg
 - `GET /api/v1/media?q=planet&type=movie&page=1&pageSize=20`
 - `GET /api/v1/media/{id}`
 
-Supported types are `movie`, `tv_show` and `album`; TV seasons/episodes and album
+Supported types are `movie`, `tv_show`, `album` and `video_game`; TV seasons/episodes and album
 editions/tracks are deferred. Search
 matches literal, case-insensitive title substrings. Search text is trimmed and limited
 to 200 characters; null characters are rejected. Page defaults to 1 (maximum 10000),
@@ -445,7 +445,7 @@ Library PUT example:
 ```
 
 Statuses are `planned`, `in_progress`, `completed`, `paused`, `dropped`, for movies
-TV and albums alike. Dates are optional date-only values; completion cannot precede start.
+TV, albums and games alike. Dates are optional date-only values; completion cannot precede start.
 PUT replaces all fields, so omitted dates become null. Dates do not automatically
 change status and status changes do not infer dates. No episode/progress counters.
 
@@ -669,5 +669,76 @@ rollback. Without albums, downgrade/reapply preserves existing movies/TV.
 core CC0 data from supplementary data; its API documentation distinguishes free
 non-commercial service from commercial plans. Review applicable terms before
 public/commercial launch. Cover art is a separate service and is deferred.
-Social features, IGDB/books and existing email/recovery/deployment requirements
+Comments/moderation, books and existing email/recovery/deployment requirements
 remain pending. This completes Phase 6a, not all of Phase 6.
+
+
+## IGDB video games (Phase 6c)
+
+IGDB adds `video_game` through the existing search, preview and authenticated import
+routes. Main games, remakes and remasters are separate canonical items, one per
+IGDB games ID; platform variants are not separate entities. DLC, expansions,
+bundles, ports, mods and editions are excluded in this slice. Existing TMDB/movie/TV
+and MusicBrainz/album behavior is preserved; default search remains TMDB.
+
+The adapter is **disabled by default**. No real credentials or live IGDB calls are
+needed by the tests. Configure server-side Twitch app credentials through user-secrets
+or deployment secret storage when you choose to activate it; do not put real
+credentials in tracked files or command history. No Twitch user login is added.
+
+| Configuration | Contract |
+| --- | --- |
+| `Providers:Igdb:Enabled` | false |
+| `Providers:Igdb:ClientId` | Required when enabled; 1..256 ASCII alphanumeric characters |
+| `Providers:Igdb:ClientSecret` | Required when enabled; same bounds, server secret |
+| `Providers:Igdb:TimeoutMilliseconds` | 6000; allowed 500..15000, covers auth, pacing, retries and bodies |
+
+Environment names use `Providers__Igdb__...`. Twitch client_credentials requests
+send credentials in a form body to a fixed HTTPS token endpoint. The app token
+stays in memory, cached for at most 55 minutes and renewed at least 60 seconds before
+expiry (short tokens used only for the current request). A 401 invalidates the cache
+and allows one fresh-token retry; no refresh-token/user-session flow is involved.
+Credentials and token values are absent from public capability/error responses.
+
+- `GET /api/v1/media/external/search?provider=igdb&type=video_game&q=Witcher&page=1`
+- `GET /api/v1/media/external/igdb/video_game/1942`
+- `POST /api/v1/media/import` with session and CSRF, body
+  `{ "provider": "igdb", "externalId": "1942", "mediaType": "video_game" }`
+
+IDs are positive Int32 decimals with leading zeros canonicalized. Namespace is
+`game`. Public IGDB pages use slugs rather than API IDs; the optional `externalUrl`
+is null until a separate slug-link policy is implemented. Search pages 1..500
+contain at most 20 results; input is escaped inside a fixed APICalypse query.
+Valid excluded/unknown games return 404 on preview/import; disabled valid requests
+return 503; invalid provider/type/IDs return 400 before outbound access. Imports
+return 201 once, then 200 without upstream HTTP or catalog overwrites. Existing
+transactional duplicate-race handling prevents orphan entries.
+
+Normalized data includes title, optional summary, validated fixed-CDN cover reference,
+gameType, optional Unix `firstReleaseTimestamp`, and up to 20 normalized platforms
+and genres (id/name). Canonical `releaseDate` stays null because the first-release
+timestamp alone does not establish day precision. No upstream scores, arbitrary
+URLs or raw provider fields are imported. A missing optional field is allowed;
+malformed data returns sanitized 502. Token JSON is bounded 16KiB; game JSON 1MiB,
+depth 32, with duplicate properties rejected.
+
+One operation is active per process with no queue. Games sends start at least 250ms
+apart, including retries; each operation allows at most two games sends. Token
+failures do not retry inside the operation. 429/503 sets a shared complete cooldown;
+new calls are rejected throughout it. Only exposed Retry-After seconds are capped
+at 86400. Long cooldowns fail promptly; short game failures can retry inside the
+same deadline. Caller cancellation propagates; deadline expiry returns 504.
+Named auth/game clients disable redirects and redact credential headers. Multi-instance
+or shared-credential deployments require coordinated rate limiting.
+
+Apply `20261030212206_AddVideoGames` explicitly with the EF command above. It only
+widens the media-type CHECK. Down locks the table and refuses if any games exist;
+without games, downgrade/reapply preserves earlier catalog data and follows schema.
+Never attempt production rollbacks without a backup and reviewed recovery plan.
+
+Primary references: [IGDB API](https://api-docs.igdb.com/) (current game_type field,
+requests, pagination, images and rate limits) and
+[Twitch app-token flow](https://dev.twitch.tv/docs/authentication/getting-tokens-oauth/#client-credentials-grant-flow).
+Review IGDB/Twitch terms, commercial partnership requirements, metadata/image rights
+and attribution before public use. This implementation does not constitute live
+activation or public-launch readiness.
