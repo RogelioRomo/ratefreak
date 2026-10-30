@@ -27,8 +27,10 @@ verification account and cascaded collections/fields/items; existing two catalog
 records/mappings preserved. Local counts after cleanup: users 0, media 2,
 collections/fields/items 0. No public deployment.
 
-Work is on `feat/collections`, based on the initial Phase 4 commit `dd454da`.
-No remote/push/merge configured or performed. Next phase is Phase 6;
+Work is on `main`. At the user’s request, Phase 5 was merged locally by
+fast-forward from `dd454da` to `82a2ddb`; all feature commits are retained.
+Post-merge verification on `main`: 281 tests pass, zero failed/skipped.
+No remote is configured and no push was performed. Next phase is Phase 6;
 email verification/recovery and deployment hardening remain required before launch.
 
 ### TMDB activation and live verification
