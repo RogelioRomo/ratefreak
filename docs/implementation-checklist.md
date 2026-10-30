@@ -1,8 +1,67 @@
 # Implementation checklist and changelog
 
 Updated 2026-10-30. Implemented Phase 0–5, Phase 6a MusicBrainz albums,
-Phase 6b follows, Phase 6c IGDB games and Phase 6d public review comments.
+Phase 6b follows, Phase 6c IGDB games, Phase 6d public review comments and
+Phase 6e additional GitHub/Google sign-in.
 Collection discussions, moderation and further providers remain separate Phase 6 work.
+
+## Resume here — Phase 6e external sign-in implemented (2026-10-30)
+
+User approved GitHub/Google as additional sign-in options, direct Identity integration,
+and the written design. Implemented on `feat/external-sign-in`, based on main `0237bc1`.
+Password registration/login and existing sessions remain. No email delivery provider,
+verification mail or password reset was added; those flows are deferred by user choice.
+Local password emails remain unverified, and lost-password accounts require a provider
+to have been explicitly linked while the owner could still sign in. Matching email
+never recovers, merges or signs into another account.
+
+Both providers disabled by default. Server-side OAuth authorization code/PKCE,
+correlation/state validation, fixed origins, bounded requests and five-minute external
+cookies. New accounts require provider-verified email and chosen handle/display name;
+transactional passwordless creation plus mapping. Known identities do not depend on
+current email availability. Explicit linking validates original account/session stamp,
+locks/reloads the user row and enforces one identity per provider/account. No unlinking.
+Logins list exposes only provider names/password availability. CSRF, no-store and
+separate auth budgets; callback budget precedes authentication middleware.
+
+**522 tests pass** (64 unit, 154 provider contract, 304 integration), zero failed/skipped.
+Added 46 PostgreSQL-backed HTTP/migration cases. Initial 7 missing-route cases and
+expanded 18 OAuth lifecycle cases observed RED before implementation, then GREEN.
+Regressions reproduced/fixed: copied external cookie could log in after logout
+(one-time database challenge consumption); tracked user retained old security stamp
+after lock acquisition (reload under lock); framework error description leaked to
+logs (OAuth handler log filters); optional GitHub email service failure blocked known
+identity login (email lookup failure treated as unavailable). Tamper/expiry, invalid
+state/correlation, provider failures/denial, lockout, strict JSON/CSRF, origin matching,
+no-store/budgets, email/handle collisions, explicit-link ownership and concurrency
+are covered. Same subject with different verified emails proves mapping-conflict
+rollback without orphan users. Migration apply/reapply/downgrade preserves users,
+password hashes and login mappings; pre-existing duplicate provider pairs refuse
+migration transactionally without deleting data.
+
+Independent static code review found one P2: mixed-case callback paths bypassed a
+case-sensitive guard while OAuth handlers still matched. Disabled-provider and
+exhausted-budget tests observed RED; guard now uses PathString matching. Full suite
+522 GREEN after fix. No remaining required findings. Reviewer's concurrency coverage
+suggestion implemented. Release build zero warnings/errors; EF model matches migration;
+fresh transitive NuGet audit reports no known vulnerable packages.
+
+Generated/inspected `20261030215540_AddExternalSignIn`: adds technical one-time
+challenge ID/expiry table, replaces login user index with unique (user,provider).
+Down drops transient flow state/restores old index, preserving accounts/mappings.
+Applied/reapplied locally. No real Google/GitHub credentials or provider calls, no
+email delivery, frontend, public deployment, merge or push. Setup/callbacks/recovery
+limits documented in README, `.env.example`, ADR 0010 and design/plan. Real transport
+redirect/body-cap settings inspected; OAuth HTTP tests substitute a fake backchannel.
+Temporary API on 5081 passed liveness/readiness/Swagger, all seven OpenAPI route
+templates, disabled provider discovery/starts, mixed-case disabled callback, missing
+pending/session 401 and no-store checks. No verification accounts/provider mappings
+created by live checks. Temporary API stopped; existing 5080 server not restarted.
+
+Remaining: configure OAuth apps/credentials and live-test when ready; IGDB credentials
+and MusicBrainz contact; profiles, catalog refresh/correction, moderation/reporting,
+optional collection discussions, books and production hardening. Resolve local-account
+ownership/recovery policy before public launch without assuming mail will be added.
 
 ## Resume here — Phase 6d review comments complete (2026-10-30)
 
@@ -208,8 +267,9 @@ pending. Phase 5's minor rejected-deletion snapshot test suggestion remains defe
 
 ### Required before public launch
 
-- [ ] Email ownership verification.
-- [ ] Password recovery/reset.
+- [ ] Resolve ownership/recovery policy for local password accounts. Mail verification
+  and password reset deferred by user choice; external accounts use provider identity
+  verification/recovery. No email-based linking or recovery shortcut.
 - [ ] Review accepted TMDB terms, commercial licensing if applicable, metadata
   storage/image rights, and frontend approved-logo/notice attribution.
 - [ ] HTTPS/trusted-proxy setup, secure durable Data Protection keys, secret

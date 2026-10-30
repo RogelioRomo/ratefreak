@@ -262,12 +262,105 @@ invent a user ID header; .NET always authenticates/authorizes the actual cookie.
 Do not expose a generic forwarding endpoint accepting arbitrary target URLs.
 No permissive CORS policy or proxy implementation is included here.
 
-This slice is for local/private development: email ownership is not verified yet.
-Before public launch, implement email verification and recovery/password reset,
-finish HTTPS/ingress and key-storage hardening, and review abuse controls/account
-retention. Profile editing, public profiles, admin endpoints and further media providers remain pending. TMDB activation is
+Local password accounts still have unverified emails and no password recovery.
+External sign-in below provides provider-managed authentication/recovery without
+email delivery. Before public launch, settle the remaining local-account ownership/
+recovery policy, finish HTTPS/ingress and key-storage hardening, and review abuse
+controls/account retention. Profile editing, public profiles, admin endpoints and further media providers remain pending. TMDB activation is
 verified locally; MusicBrainz activation awaits chosen maintainer contact.
 See `docs/adr/0004-local-accounts.md` for the recorded implementation defaults.
+
+### Optional GitHub and Google sign-in
+
+Both are additional sign-in options; password registration/login remain available.
+No email delivery service is used. New provider accounts have no local password;
+recovery depends on the provider or another identity explicitly linked beforehand.
+A matching email **never** merges accounts or recovers an existing password account.
+If the email already belongs to an account, sign in to that account first and link.
+
+| Method | Route | Behavior |
+|---|---|---|
+| GET | `/api/v1/auth/providers` | Names and enabled flags only |
+| POST | `/api/v1/auth/external/{provider}/start` | CSRF; redirects to Google/GitHub; already signed in -> 409 |
+| GET | `/api/v1/auth/external/{provider}/callback` | OAuth middleware callback; validates state/correlation/PKCE |
+| GET | `/api/v1/auth/external/complete` | Fixed callback destination; linked identity -> profile/session, new identity -> `{ requiresRegistration: true, provider }` |
+| GET | `/api/v1/auth/external/pending` | Short-lived onboarding status; no normal session required |
+| POST | `/api/v1/auth/external/register` | CSRF, `{ handle, displayName }`; 201 profile/session |
+| GET | `/api/v1/users/me/logins` | Session; `{ hasPassword, providers }`, no provider IDs/tokens |
+| POST | `/api/v1/users/me/logins/{provider}/start` | Session + fresh CSRF; redirects to explicitly link provider |
+
+Provider names are exactly `google` and `github`. Starts return 404 for unknown
+providers, 503 when disabled, 400 for an origin mismatch. Callback failures return
+sanitized 400; missing/expired/consumed tickets return 401. Email or handle/login
+collisions return generic 409. Choose another handle and retry onboarding within
+its five-minute lifetime. New identities require a valid provider-verified email:
+Google's verified email or GitHub's verified primary email, including private email.
+An existing provider mapping continues working without a current email. Linking
+preserves the account's email and verification state and requires the original
+session/security stamp to remain valid; it cannot move a login between accounts.
+Only one identity per provider per account is allowed. No unlink/password-setting
+endpoint is included.
+
+The client initiates starts with a CSRF-protected POST and follows the OAuth
+redirect as a browser navigation. A fetch client must handle navigation deliberately;
+ordinary cross-origin fetch redirects are not a frontend login implementation.
+After callback, the browser reaches the fixed completion API JSON. No arbitrary
+return URL is accepted. Frontend buttons and final page redirects are future work.
+Fetch a fresh CSRF token after authentication changes. All these responses, including
+errors and redirects, use no-store. Callback endpoints belong to middleware rather
+than the generated OpenAPI operation list.
+
+Temporary external cookies are HttpOnly, host-only, SameSite=Lax, Secure outside
+Development, and expire in five minutes without sliding renewal. They grant no
+normal account access. PostgreSQL stores one-time challenge IDs/expiry only; successful
+completion consumes the ID atomically, preventing copied completion-cookie replay.
+Expired rows are cleaned during subsequent starts. Onboarding creation and login
+mapping are transactional. Access/refresh tokens are never persisted or returned.
+Outbound requests use fixed HTTPS endpoints, no redirects, 10-second per-request
+timeouts and 64-KiB buffered response caps. OAuth handler diagnostic logging is
+disabled because framework errors/trace messages can contain provider error values
+and full authorization URLs. Keep ingress/access logs from recording auth queries,
+cookie headers or response bodies as part of deployment configuration.
+
+Budgets per API instance: starts 10/IP/minute, completion/pending/discovery share
+60/IP/minute, onboarding 5/IP/hour, login-list/link starts 10/account/minute.
+Callbacks have a separate 30/IP/minute budget before authentication middleware.
+429 responses include Retry-After. Deployment-wide limits require ingress/shared
+coordination.
+
+Register a Google **Web application** OAuth client and a GitHub **OAuth App** using
+their official setup guides:
+[Google](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/social/google-logins?view=aspnetcore-10.0),
+[GitHub](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps).
+Keep separate development/production credentials. Configure exact callbacks using
+the API's canonical browser origin, for example:
+
+```text
+http://localhost:5081/api/v1/auth/external/google/callback
+http://localhost:5081/api/v1/auth/external/github/callback
+```
+
+Use the actual running port/scheme. Production requires HTTPS. The enabled-provider
+configuration requires `Authentication:External:PublicOrigin` (origin only, no path,
+query, fragment or credentials), and each provider's `Enabled`, `ClientId`,
+`ClientSecret` under `Authentication:External:Google` / `GitHub`. Environment names
+use double underscores, as shown in `.env.example`; .NET does not automatically
+load that file. Put secrets in API user-secrets or deployment secret storage and
+enable only after credentials/callbacks are configured. No real credentials are
+included or activated. Google consent/audience restrictions still apply to live users.
+
+Before deployment, configure AllowedHosts, durable Data Protection keys and trusted
+HTTPS/proxy forwarding so request scheme/host exactly match PublicOrigin. A future
+Next.js proxy must also forward external/correlation cookies and callback traffic;
+do not rewrite callback origins opportunistically. This slice does not configure
+that proxy or publicly deploy the API.
+
+The additive `AddExternalSignIn` migration creates replay-state storage and replaces
+the nonunique login user index with unique `(user_id, login_provider)`. Existing
+duplicate pairs cause migration failure, without deleting mappings. Downgrade
+removes transient challenges and restores the old index, preserving users, hashes
+and login mappings; in-flight sign-ins must restart. Old application versions do
+not understand these flows. See ADR 0010 and the approved external-sign-in design.
 
 ## Structure and project references
 

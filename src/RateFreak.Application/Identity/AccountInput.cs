@@ -7,15 +7,22 @@ public static class AccountInput
     public static Dictionary<string, string[]> Validate(RegisterRequest request)
     {
         var errors = Validate(new LoginRequest(request.Email, request.Password));
-        var handle = request.Handle?.Trim();
+        foreach (var error in ValidateProfile(request.Handle, request.DisplayName)) errors[error.Key] = error.Value;
+        if (request.Password is { Length: < 12 })
+            errors["password"] = ["Password must be 12–128 characters with uppercase, lowercase and a digit."];
+        return errors;
+    }
+
+    public static Dictionary<string, string[]> ValidateProfile(string? rawHandle, string? displayName)
+    {
+        var errors = new Dictionary<string, string[]>();
+        var handle = rawHandle?.Trim();
         if (handle is null || handle.Length is < 3 or > 30 ||
             handle.Any(c => !char.IsAsciiLetterOrDigit(c) && c != '_'))
             errors["handle"] = ["Handle must be 3–30 ASCII letters, digits or underscores."];
-        var name = request.DisplayName?.Trim();
+        var name = displayName?.Trim();
         if (string.IsNullOrWhiteSpace(name) || name.Length > 80 || name.Any(char.IsControl))
             errors["displayName"] = ["Display name must be 1–80 characters without control characters."];
-        if (request.Password is { Length: < 12 })
-            errors["password"] = ["Password must be 12–128 characters with uppercase, lowercase and a digit."];
         return errors;
     }
 
@@ -30,7 +37,7 @@ public static class AccountInput
         return errors;
     }
 
-    private static bool ValidEmail(string? email)
+    public static bool ValidEmail(string? email)
     {
         if (string.IsNullOrWhiteSpace(email) || email.Length > 254 || !new EmailAddressAttribute().IsValid(email))
             return false;

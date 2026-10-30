@@ -129,7 +129,9 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId", "LoginProvider")
+                        .IsUnique()
+                        .HasDatabaseName("ux_user_logins_user_provider");
 
                     b.ToTable("user_logins", (string)null);
                 });
@@ -795,6 +797,24 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .HasDatabaseName("ux_users_normalized_handle");
 
                     b.ToTable("users", (string)null);
+                });
+
+            modelBuilder.Entity("RateFreak.Infrastructure.Authentication.ExternalAuthenticationChallenge", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<DateTimeOffset>("ExpiresAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("expires_at");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExpiresAt");
+
+                    b.ToTable("external_authentication_challenges", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

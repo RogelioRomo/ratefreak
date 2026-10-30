@@ -72,6 +72,10 @@ internal static class ApiSecurity
                 await Results.Problem(statusCode: StatusCodes.Status429TooManyRequests,
                     title: "Too many requests. Please try again later.").ExecuteAsync(context.HttpContext);
             };
+            AddLimit(options, "external-auth-start", 10, TimeSpan.FromMinutes(1));
+            AddLimit(options, "external-auth-read", 60, TimeSpan.FromMinutes(1));
+            AddLimit(options, "external-auth-register", 5, TimeSpan.FromHours(1));
+            AddAccountLimit(options, "external-auth-link", 10);
             AddLimit(options, "registration", 5, TimeSpan.FromHours(1));
             AddLimit(options, "login", 10, TimeSpan.FromMinutes(1));
             AddLimit(options, "csrf", 30, TimeSpan.FromMinutes(1));

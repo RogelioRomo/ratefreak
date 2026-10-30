@@ -34,6 +34,12 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
         modelBuilder.ConfigureReviewComments();
         modelBuilder.ConfigureCollections();
         modelBuilder.ConfigurePersonalMedia();
+        modelBuilder.Entity<ExternalAuthenticationChallenge>(challenge =>
+        {
+            challenge.ToTable("external_authentication_challenges");
+            challenge.HasKey(c => c.Id);
+            challenge.HasIndex(c => c.ExpiresAt);
+        });
         modelBuilder.Entity<AccountUser>(user =>
         {
             user.ToTable("users");
@@ -48,7 +54,12 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
         modelBuilder.Entity<IdentityRole<Guid>>().ToTable("roles");
         modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("user_roles");
         modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("user_claims");
-        modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("user_logins");
+        modelBuilder.Entity<IdentityUserLogin<Guid>>(login =>
+        {
+            login.ToTable("user_logins");
+            login.HasIndex(l => new { l.UserId, l.LoginProvider }).IsUnique()
+                .HasDatabaseName("ux_user_logins_user_provider");
+        });
         modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("user_tokens");
         modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("role_claims");
         foreach (var entity in modelBuilder.Model.GetEntityTypes())

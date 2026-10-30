@@ -11,6 +11,7 @@ builder.Logging.ClearProviders();
 builder.Logging.AddJsonConsole(options => options.IncludeScopes = true);
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.AddApiSecurity();
+builder.AddExternalAuthentication();
 builder.Services.AddOpenApi();
 // Reject ambiguous DTO properties before last-value binding can hide invalid data.
 builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.AllowDuplicateProperties = false);
@@ -38,12 +39,14 @@ app.Use(async (context, next) =>
         context.Response.Headers.CacheControl = "no-store";
     await next(context);
 });
+app.UseExternalAuthenticationGuard();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseRateLimiter();
 app.MapDevelopmentDocumentation();
 app.MapHealthEndpoints();
 app.MapAccountEndpoints();
+app.MapExternalAccountEndpoints();
 app.MapCatalogEndpoints();
 app.MapMediaProviderEndpoints();
 app.MapPersonalMediaEndpoints();
