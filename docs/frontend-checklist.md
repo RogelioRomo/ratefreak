@@ -23,8 +23,17 @@ Design: [frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
 2026-10-30: approved roadmap, written design and Phase 1 task plan; completed
 Phase 1 using native execution on `feat/frontend-foundation`. Phase 1 was committed
 as `f68535e` at the user's request, then Phase 2 was implemented on the same branch.
-Phase 2 is complete and approved for commit/merge to main. Its backend changes affect proxy attribution
-and rate-limit partitioning only; no migrations or provider settings changed.
+Phase 2 was committed as `8834c6f`; both commits were fast-forwarded into local
+`main`. The merged `feat/frontend-foundation` branch was deleted. Nothing was
+pushed. Start the next implementation slice on a new branch from `main`.
+Backend changes affect proxy attribution and rate-limit partitioning only;
+no migrations or provider settings changed. Tests were not rerun for the
+commit/merge, at the user's request; the implementation evidence below is retained.
+
+At the last runtime check, only the frontend preview on port 3100 was running;
+the API was stopped. Recheck processes in the next session. Account functionality
+needs the API/database and matching server-only proxy settings documented in
+`web/README.md`; the isolated verification fixture was shut down and removed.
 
 ## Phase 1 evidence
 
@@ -92,7 +101,8 @@ Plan: [frontend accounts](superpowers/plans/2026-10-30-frontend-accounts.md).
 
 Local account Phase 2 is complete. External Google/GitHub sign-in, callback/correlation
 cookie handling and explicit identity linking are a separate optional follow-up.
-Phase 3 catalog browsing/search/details can then consume the existing transport.
+The next planned feature slice is Phase 3 catalog browsing/search/details,
+using the existing transport; external sign-in is optional and does not block it.
 Future private query keys must include account identity and every filter.
 
 Configure the same proxy secret on both servers and the appropriate trusted mode
@@ -122,3 +132,12 @@ navigation cancellation was observed reaching the proxy.
   at the next check; same-browser windows receive immediate invalidation signals.
 
 No deferred minor code-review findings.
+
+## Suggested next-session prompt
+
+> Continue RateFreak frontend Phase 3: catalog browsing, search and details.
+> Read docs/frontend-checklist.md, the approved frontend roadmap, web/README.md
+> and web/AGENTS.md first. Start a new branch from main. Keep interfaces in
+> separate interfaces/ files, components small, and server-state caching in
+> TanStack Query. Plan and implement only the next focused slice; external
+> sign-in and provider imports can remain separate sessions.

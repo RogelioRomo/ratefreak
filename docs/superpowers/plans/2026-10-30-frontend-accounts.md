@@ -90,7 +90,8 @@ Public release still requires actual hosting/HTTPS/key-storage and local-account
 
 ## Completion evidence
 
-Completed 2026-10-30; Phase 1 committed f68535e; Phase 2 is complete and approved for commit/merge to main.
+Completed 2026-10-30; Phase 1 committed f68535e and Phase 2 committed 8834c6f.
+Both are merged into local main; the feature branch was deleted. Nothing pushed.
 Final checks: 123 frontend tests, lint/typecheck/build, 590 backend tests all pass.
 Live isolated Next/.NET/PostgreSQL browser lifecycle, cross-tab logout and mobile/
 desktop screenshots passed. Independent review session-coherence finding fixed
