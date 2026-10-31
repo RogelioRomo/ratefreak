@@ -2,10 +2,77 @@
 
 Updated 2026-10-30. Implemented Phase 0–5, Phase 6a MusicBrainz albums,
 Phase 6b follows, Phase 6c IGDB games, Phase 6d public review comments and
-Phase 6e additional GitHub/Google sign-in.
-Collection discussions, moderation and further providers remain separate Phase 6 work.
+Phase 6e additional GitHub/Google sign-in and Phase 6f moderation/reporting.
+Collection discussions and further providers remain separate Phase 6 work.
 
-## Resume here — IGDB and MusicBrainz live reads verified (2026-10-30)
+## Resume here — Phase 6f moderation/reporting implemented (2026-10-30)
+
+User deferred live Google/GitHub OAuth verification and approved moderation/reporting,
+the User/Moderator/Admin permission model and the written design. Implemented on
+`feat/moderation-reporting`, based on `main` at `8a32fb4`. No merge or remote push.
+
+Ordinary signed-in users report public reviews/comments with reason/details; lifetime
+per-user/target uniqueness, self-report rejection and independent reporting budget.
+Moderator and Admin privately inspect targets/reports, dismiss or hide reported
+content, proactively hide/restore and read audit history. Admin grants/revokes
+Moderator. No stored User role, privileged registration or HTTP Admin grant. Offline
+idempotent Admin appointment targets an existing UUID and records an operator event;
+verified only against isolated test databases, no real Admin appointed.
+
+Public review/comment lists/details/counts and comment creation honor hidden parent
+and child state. Author edits/deletes retain ownership; edits do not clear holds.
+Restoring a review retains individual comment holds. Ratings remain independent.
+Current database permissions are checked at the HTTP boundary and under transaction
+lock before writes. Shared transaction advisory locking serializes relevant content,
+report and role writes; stale inspected versions409; own-content staff decisions403.
+Real visibility/role changes and resolutions atomically append private audit events.
+Nullable live references retain reports/history after account/content/thread deletion;
+immutable metadata never reconnects to a reused historical UUID. No copied post
+bodies, emails or handles. Retention has no automatic expiry in this slice and
+requires a final erasure/export/staff-access policy before public launch.
+
+Verification: **550 tests pass** (64 unit,154 provider contract,332 integration),
+zero failed/skipped;28 added PostgreSQL-backed moderation/migration cases. Initial
+three HTTP tests observed missing-route RED. Hidden-public-read regression observed
+200→404. Offline-command and rollback-guard tests observed RED→GREEN. Deterministic
+queued revocation denies a previously authorized in-flight write; duplicate reports
+and resolutions have one winner. Audit-insert failures roll back visibility, report
+resolution and role writes. Strict JSON/Unicode, reporting/read budgets, safe DTOs,
+tied queue pages, deletion survival, parent/child restoration and OpenAPI are covered.
+
+Independent static review found trailing-slash reporting responses missed no-store,
+and nullable SQL CHECK expressions accepted invalid reports. Each regression observed
+RED→GREEN; metadata and explicit NULL checks fix both. Reviewer's historical UUID
+reconnection suggestion also reproduced/fixed. Reviewer verified fixes and found no
+remaining required issues. Existing deletion-race test exposed an unnecessary parent
+row lock; removed it while retaining advisory serialization and FK handling; the
+original regression and full suite pass. No production role assignment or deployment.
+
+Release build zero warnings/errors. EF model matches migration. Fresh transitive
+NuGet audit covers all seven projects, no known vulnerable packages. Generated and
+inspected `20261031003720_AddModeration`; additive visible defaults plus report/audit
+tables and indexes. Down locks affected tables and refuses while hidden content,
+reports or audit events exist. Guard refusal and safe downgrade/reapply preserve
+prior accounts/catalog/reviews in isolated PostgreSQL tests.
+
+Started the existing stopped local PostgreSQL container and applied/reapplied the
+migration; local users0,media2,reports0,audit0,roles0 and migration history once.
+Temporary API on5081 used only for read-only/unauthenticated health, Swagger/OpenAPI
+and moderation/report/admin guard checks, then stopped. See README/ADR0011/design/plan.
+No account creation, persistent moderation activity, provider activation, mail work,
+frontend work, merge or push. Local PostgreSQL left running.
+
+Remaining priorities:
+
+- [ ] Profile editing and public profiles; catalog corrections/refresh/provenance; books.
+- [ ] Optional collection discussions; account suspensions/appeals/notifications if desired.
+- [ ] Google/GitHub credentials and live sign-in/linking verification (deferred by user).
+- [ ] Persistent metadata-provider enablement and optional authenticated live imports.
+- [ ] Production hardening, retention/erasure/export policy, staff access/operator
+  attribution, licensing/attribution, backup/restore and account recovery policy.
+- [ ] Frontend/API integration and browser-facing proxy when explicitly requested.
+
+## Previous resume — IGDB and MusicBrainz live reads verified (2026-10-30)
 
 User supplied IGDB credentials and a chosen MusicBrainz contact in ignored `.env`,
 then requested live verification. Checked values without displaying them. Both

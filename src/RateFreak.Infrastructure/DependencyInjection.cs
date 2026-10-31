@@ -48,6 +48,7 @@ public static class DependencyInjection
             options.Lockout.MaxFailedAccessAttempts = 5;
             options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
         }).AddRoles<IdentityRole<Guid>>().AddEntityFrameworkStores<RateFreakDbContext>().AddSignInManager();
+        services.AddScoped<RateFreak.Application.Moderation.IModerationService, RateFreak.Infrastructure.Moderation.ModerationService>();
         services.AddScoped<IAccountService, AccountService>();
         services.AddScoped<IExternalAccountService, ExternalAccountService>();
         services.AddScoped<RateFreak.Application.Social.IFollowService, RateFreak.Infrastructure.Social.FollowService>();

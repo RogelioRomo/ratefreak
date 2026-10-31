@@ -8,6 +8,7 @@ public sealed class ReviewComment
     public Guid UserId { get; private set; }
     public Guid ReviewId { get; private set; }
     public string Body { get; private set; } = null!;
+    public bool IsHidden { get; private set; }
     public bool IsSpoiler { get; private set; }
     public DateTimeOffset CreatedAt { get; private set; } = DateTimeOffset.UtcNow;
     public DateTimeOffset UpdatedAt { get; private set; } = DateTimeOffset.UtcNow;

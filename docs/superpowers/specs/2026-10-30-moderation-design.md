@@ -1,6 +1,6 @@
 # Moderation and reporting
 
-Status: proposed for approval, 2026-10-30.
+Status: approved by user, 2026-10-30; implemented on feat/moderation-reporting.
 
 ## Intent and agreed permissions
 
@@ -8,7 +8,7 @@ Public reviews and comments need a private reporting and moderation workflow.
 The user approved ordinary signed-in users reporting content, Moderators reviewing
 reports and hiding/restoring content, and Admins assigning/revoking Moderator access.
 An ordinary user needs no stored role. Registration never assigns privileged roles.
-The detailed defaults below are proposed implementation decisions.
+The detailed defaults below were approved with this document.
 
 ## Approaches
 
@@ -17,8 +17,7 @@ existing role tables and retains content for correction/restoration. Permanent
 moderator deletion would make mistakes irreversible and complicate evidence
 retention. An external moderation service adds an unnecessary dependency. A custom
 permission framework adds complexity without improving this two-role workflow.
-The user approved the role model; reversible hiding is the recommended approach
-for approval with this document.
+The user approved the role model and this reversible-hiding design.
 
 ## Authorization and role administration
 

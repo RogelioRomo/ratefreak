@@ -1,4 +1,5 @@
 using System.Data;
+using RateFreak.Infrastructure.Moderation;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using RateFreak.Application.Social;
@@ -18,26 +19,30 @@ internal sealed class ReviewCommentService(RateFreakDbContext db) : IReviewComme
     public async Task<ReviewCommentPage?> ListAsync(Guid reviewId, int page, int pageSize, CancellationToken ct)
     {
         await using var tx = await db.Database.BeginTransactionAsync(IsolationLevel.RepeatableRead, ct);
-        if (!await db.Reviews.AnyAsync(x => x.Id == reviewId, ct)) return null;
-        var comments = db.ReviewComments.AsNoTracking().Where(x => x.ReviewId == reviewId);
+        if (!await db.Reviews.AnyAsync(x => x.Id == reviewId && !x.IsHidden, ct)) return null;
+        var comments = db.ReviewComments.AsNoTracking().Where(x => x.ReviewId == reviewId && !x.IsHidden);
         var count = await comments.CountAsync(ct);
         var items = await Items(comments.OrderBy(x => x.CreatedAt).ThenBy(x => x.Id).Skip((page - 1) * pageSize).Take(pageSize)).ToListAsync(ct);
         await tx.CommitAsync(ct);
         return new(items, page, pageSize, count);
     }
     public Task<ReviewCommentDetails?> FindAsync(Guid commentId, CancellationToken ct) =>
-        Items(db.ReviewComments.AsNoTracking().Where(x => x.Id == commentId)).SingleOrDefaultAsync(ct);
+        Items(db.ReviewComments.AsNoTracking().Where(x => x.Id == commentId && !x.IsHidden && db.Reviews.Any(r => r.Id == x.ReviewId && !r.IsHidden))).SingleOrDefaultAsync(ct);
 
     public async Task<ReviewCommentDetails?> CreateAsync(Guid userId, Guid reviewId, ReviewCommentRequest request, CancellationToken ct)
     {
         if (userId == Guid.Empty || reviewId == Guid.Empty) return null;
         var comment = new ReviewComment(userId, reviewId, request.Body!, request.IsSpoiler);
         await using var tx = await db.Database.BeginTransactionAsync(ct);
+        await ModerationLock.AcquireAsync(db, ct);
+        // The shared transaction lock serializes moderation; FK handling covers concurrent parent deletion.
+        var parent = await db.Reviews.AsNoTracking().SingleOrDefaultAsync(x => x.Id == reviewId, ct);
+        if (parent is null || parent.IsHidden) return null;
         db.Add(comment);
         try
         {
             await db.SaveChangesAsync(ct);
-            var result = await FindAsync(comment.Id, ct);
+            var result = await Items(db.ReviewComments.AsNoTracking().Where(x => x.Id == comment.Id)).SingleOrDefaultAsync(ct);
             await tx.CommitAsync(ct);
             return result;
         }
@@ -54,13 +59,19 @@ internal sealed class ReviewCommentService(RateFreakDbContext db) : IReviewComme
         var body = request.Body!.Trim();
         if (!ReviewComment.ValidBody(body)) throw new ArgumentException("Invalid review comment body.");
         await using var tx = await db.Database.BeginTransactionAsync(ct);
+        await ModerationLock.AcquireAsync(db, ct);
         var changed = await db.ReviewComments.Where(x => x.Id == commentId && x.UserId == userId).ExecuteUpdateAsync(set =>
             set.SetProperty(x => x.Body, body).SetProperty(x => x.IsSpoiler, request.IsSpoiler).SetProperty(x => x.UpdatedAt, DateTimeOffset.UtcNow), ct);
         if (changed == 0) return null;
-        var result = await FindAsync(commentId, ct);
+        var result = await Items(db.ReviewComments.AsNoTracking().Where(x => x.Id == commentId)).SingleOrDefaultAsync(ct);
         await tx.CommitAsync(ct);
         return result;
     }
-    public async Task<bool> DeleteAsync(Guid userId, Guid commentId, CancellationToken ct) =>
-        await db.ReviewComments.Where(x => x.Id == commentId && x.UserId == userId).ExecuteDeleteAsync(ct) != 0;
+    public async Task<bool> DeleteAsync(Guid userId, Guid commentId, CancellationToken ct)
+    {
+        await using var tx = await db.Database.BeginTransactionAsync(ct);
+        await ModerationLock.AcquireAsync(db, ct);
+        var deleted = await db.ReviewComments.Where(x => x.Id == commentId && x.UserId == userId).ExecuteDeleteAsync(ct) != 0;
+        await tx.CommitAsync(ct); return deleted;
+    }
 }

@@ -40,7 +40,12 @@ internal static class ApiSecurity
             });
 
         builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme).AddIdentityCookies();
-        builder.Services.AddAuthorization();
+        builder.Services.AddAuthorization(options =>
+        {
+            options.AddPolicy("moderation", p => p.RequireAuthenticatedUser().AddRequirements(new ModerationRequirement(false)));
+            options.AddPolicy("admin", p => p.RequireAuthenticatedUser().AddRequirements(new ModerationRequirement(true)));
+        });
+        builder.Services.AddScoped<Microsoft.AspNetCore.Authorization.IAuthorizationHandler, ModerationAuthorization>();
         builder.Services.ConfigureApplicationCookie(options =>
         {
             options.Cookie.Name = development ? "ratefreak.session" : "__Host-ratefreak.session";
@@ -83,6 +88,12 @@ internal static class ApiSecurity
             AddLimit(options, "external-search", 20, TimeSpan.FromMinutes(1));
             AddLimit(options, "social-read", 60, TimeSpan.FromMinutes(1));
             AddAccountLimit(options, "social-write", 30);
+            AddAccountLimit(options, "moderation-read", 60);
+            AddAccountLimit(options, "moderation-write", 30);
+            AddAccountLimit(options, "role-write", 10);
+            options.AddPolicy("reporting", context => RateLimitPartition.GetFixedWindowLimiter(
+                context.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "anonymous", _ => new FixedWindowRateLimiterOptions
+                { PermitLimit = 5, Window = TimeSpan.FromHours(1), QueueLimit = 0, AutoReplenishment = true }));
             AddAccountLimit(options, "personal-read", 60);
             AddAccountLimit(options, "personal-write", 30);
             options.AddPolicy("media-import", context => RateLimitPartition.GetFixedWindowLimiter(

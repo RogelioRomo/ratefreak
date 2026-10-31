@@ -3,7 +3,8 @@
 A monorepo containing a .NET 10 modular monolith API and a Next.js web app. Phase 1 foundation and Phase 2 local
 accounts/catalog reads, Phase 4 personal library/ratings/reviews, and Phase 5
 dynamic collections plus Phase 6a MusicBrainz albums, Phase 6b follows, Phase 6c IGDB games,
-Phase 6d review comments and Phase 6e additional Google/GitHub sign-in are implemented
+Phase 6d review comments, Phase 6e additional Google/GitHub sign-in and Phase 6f
+moderation/reporting are implemented
 from `ratefreak-plan.md`.
 Next.js will be hosted separately and act as a thin browser-facing proxy; all
 accounts, authorization and business logic remain in .NET. The frontend scaffold lives in `web/`; API integration, the browser-facing proxy,
@@ -13,7 +14,7 @@ The checked-in default remains disabled until a server-side token is configured.
 IGDB and MusicBrainz live search/preview checks passed on 2026-10-30 using supplied
 credentials/contact in a temporarily enabled process. Saved local flags remain
 disabled; `.env` is not automatically loaded by the API. Authenticated live imports
-and Google/GitHub live sign-in have not been verified. Last full suite: 522 tests pass.
+and Google/GitHub live sign-in have not been verified. Last full suite: 550 tests pass.
 
 ## Repository and web app
 
@@ -894,3 +895,88 @@ EF update command above; startup never migrates the database. Down drops comment
 and their data, so back up and review rollback impact first. Transactional writes
 and foreign-key handling prevent parent/account deletion races from producing
 orphan comments or a failed response read after a successful write.
+
+
+### Reporting and moderation
+
+Ordinary signed-in accounts may report public reviews/comments. Moderator and Admin
+are explicitly assigned Identity roles; Admin can also moderate. Registration never
+grants privileges. Staff permissions use current database membership; revoked access
+cannot be retained through old cookie role claims. Staff cannot moderate their own
+posts or resolve reports against them.
+
+| Method | Route | Access / behavior |
+| --- | --- | --- |
+| POST | `/api/v1/reviews/{id}/reports` | Signed-in + CSRF; report public review |
+| POST | `/api/v1/comments/{id}/reports` | Signed-in + CSRF; report public comment |
+| GET | `/api/v1/moderation/reports` | Staff; `status=open` or `resolved` |
+| GET | `/api/v1/moderation/reports/{id}` | Staff; private report and current target |
+| POST | `/api/v1/moderation/reports/{id}/resolve` | Staff + CSRF; dismiss or hide |
+| GET | `/api/v1/moderation/reviews/{id}` | Staff; inspect even hidden content/version |
+| GET | `/api/v1/moderation/comments/{id}` | Staff; inspect even under hidden parent |
+| POST | `/api/v1/moderation/reviews/{id}/visibility` | Staff + CSRF; hide/restore |
+| POST | `/api/v1/moderation/comments/{id}/visibility` | Staff + CSRF; hide/restore |
+| GET | `/api/v1/moderation/audit` | Staff; optional `targetType`, `targetId` filters |
+| PUT | `/api/v1/admin/moderators/{userId}` | Admin + CSRF; grant Moderator |
+| DELETE | `/api/v1/admin/moderators/{userId}` | Admin + CSRF; revoke Moderator |
+
+Reports accept `{reason, details?}`. Reasons: `spam`, `harassment`, `hate`,
+`sexual_content`, `violence`, `spoiler`, `other`. Details are trimmed plain text up
+to1000 UTF-16 units, required for other; valid Unicode, only tab/CR/LF controls.
+First report201, lifetime duplicate from same reporter/target409, self-report400,
+missing/hidden target404. Acknowledgements contain only id/status/createdAt. No
+public report counts, reporter listings or automatic hiding from report volume.
+
+Resolutions accept `{decision: "dismiss"|"hide", reason, expectedTargetUpdatedAt}`.
+Visibility accepts `{hidden: true|false, reason, expectedTargetUpdatedAt}`. Inspect
+current target first; stale timestamps or already resolved reports return409.
+Deleted targets can only be dismissed with null expectedTargetUpdatedAt. Required
+reasons are trimmed1..1000 plain-text UTF-16 units. Successful commands204. Same-state
+visibility and role requests are idempotent and produce no extra audit event.
+Role requests, including DELETE, carry a JSON `{reason}` body. Unknown/duplicate
+JSON properties return400. No HTTP endpoint grants Admin.
+
+Lists use page1..10000/pageSize1..100 (defaults1/20). Reports sort oldest first,
+audit newest first, with UUID tie order. Responses/errors use no-store; anonymous401,
+nonstaff403. Staff details expose public identity fields only, never email/security
+data. Limits per API instance: reporting5/account/hour; moderation reads60/account/min,
+writes30/account/min; role changes10/admin/min, no queue,429 Retry-After. These are
+separate from existing social budgets; deployment-wide enforcement is separate work.
+
+Hiding a review makes its public detail and entire comment thread404 and removes
+it from public lists/counts. Direct comment reads also enforce parent visibility.
+Restoring the review leaves individually hidden comments hidden. Authors can edit
+or delete their hidden content, but editing never republishes it. Their successful
+mutation response may contain their own hidden text; public GET stays404. Hidden
+reviews still occupy the author/media uniqueness slot. Ratings remain independent.
+
+Appoint the first Admin explicitly by **existing account UUID** in an operator
+shell with normal API database configuration. For example, from the repository:
+
+```bash
+dotnet run --project src/RateFreak.Api --no-launch-profile -- --appoint-admin <account-uuid> --reason "Initial administrator appointment"
+```
+
+The command exits without starting HTTP or applying migrations, records an operator
+audit event, and is idempotent. Exit0 success,2 invalid/missing account,1 operational
+failure. No account is created; credentials/emails never establish privilege. Keep
+secrets in normal environment/user-secrets storage; `.env` is not loaded automatically.
+Use the same environment/content-root configuration as your normal runtime. Admin
+changes beyond moderator assignment remain operator-managed; no real Admin has
+been appointed by implementation tests outside their isolated databases.
+
+Reports and audit metadata survive account/content deletion via nullable live
+references and retained opaque UUIDs. No copies of post bodies/emails/handles are
+retained; original report details and decision reasons are retained. There is no
+automatic expiry or purge in this slice. Before public launch, establish retention,
+erasure/export and staff access policies. History is append-only through the app,
+not tamper-proof against database administrators. Operator events identify an offline
+operator action; deployment/OS logs must identify the person when required.
+
+`AddModeration` is additive and defaults existing content to visible. Its downgrade
+locks the affected tables and refuses if hidden content, reports or audit history
+exist, preventing accidental republication/history loss. Restoration leaves audit
+history, so it does not make rollback eligible. Prefer forward migration fixes and
+backups; do not delete history merely to bypass the guard. Coarse database transaction
+locking serializes moderation/reporting and review/comment writes; assess throughput
+before large deployment. Suspensions, appeals, notifications and frontend remain deferred.

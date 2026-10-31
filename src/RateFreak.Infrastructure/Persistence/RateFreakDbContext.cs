@@ -26,10 +26,14 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
     public DbSet<Review> Reviews => Set<Review>();
     public DbSet<RateFreak.Domain.Social.ReviewComment> ReviewComments => Set<RateFreak.Domain.Social.ReviewComment>();
 
+    public DbSet<RateFreak.Domain.Moderation.ContentReport> ContentReports => Set<RateFreak.Domain.Moderation.ContentReport>();
+    public DbSet<RateFreak.Domain.Moderation.ModerationEvent> ModerationEvents => Set<RateFreak.Domain.Moderation.ModerationEvent>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ConfigureCatalog();
+        modelBuilder.ConfigureModeration();
         modelBuilder.ConfigureSocial();
         modelBuilder.ConfigureReviewComments();
         modelBuilder.ConfigureCollections();
