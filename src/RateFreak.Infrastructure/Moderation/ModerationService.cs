@@ -49,11 +49,15 @@ internal sealed partial class ModerationService(RateFreakDbContext db) : IModera
         var result=new ReportDetail(summary,r.Details,await LiveTarget(r,ct),r.Decision,r.ResolutionReason,r.ResolvedAt);
         await tx.CommitAsync(ct);return result;
     }
-    public async Task<ModerationPage<ModerationEvent>> AuditAsync(string? type,Guid? id,int page,int pageSize,CancellationToken ct)
+    public async Task<ModerationPage<ModerationAuditEntry>> AuditAsync(string? type,Guid? id,int page,int pageSize,CancellationToken ct)
     {
         await using var tx=await db.Database.BeginTransactionAsync(IsolationLevel.RepeatableRead,ct);
         var q=db.ModerationEvents.AsNoTracking().Where(x=>(type==null||x.TargetType==type)&&(id==null||x.TargetId==id));
-        var count=await q.CountAsync(ct);var items=await q.OrderByDescending(x=>x.CreatedAt).ThenBy(x=>x.Id).Skip((page-1)*pageSize).Take(pageSize).ToListAsync(ct);
+        var count=await q.CountAsync(ct);
+        var items=await q.OrderByDescending(x=>x.CreatedAt).ThenBy(x=>x.Id).Skip((page-1)*pageSize).Take(pageSize)
+            .Select(x => new ModerationAuditEntry(x.Id, x.CreatedAt, x.ActorId, x.ActorKind, x.Action,
+                x.TargetType, x.TargetId, x.ReportId, x.Reason, x.Before, x.After, x.ReviewedUpdatedAt))
+            .ToListAsync(ct);
         await tx.CommitAsync(ct);return new(items,page,pageSize,count);
     }
     private async Task LockUser(Guid id,CancellationToken ct) =>

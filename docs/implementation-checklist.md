@@ -5,7 +5,27 @@ Phase 6b follows, Phase 6c IGDB games, Phase 6d public review comments and
 Phase 6e additional GitHub/Google sign-in and Phase 6f moderation/reporting.
 Collection discussions and further providers remain separate Phase 6 work.
 
-## Resume here — Phase 6f moderation/reporting implemented (2026-10-30)
+## Resume here — audit DTO corrected; public profile design ready (2026-10-30)
+
+User requested a dedicated audit response DTO, then public profiles/editing.
+On `feat/public-profiles`, replaced audit entity return values and endpoint OpenAPI
+metadata with Application `ModerationAuditEntry`; Infrastructure projects all12
+existing fields explicitly. JSON fields/types/order, filtering, count/page ordering,
+repeatable-read snapshot, authorization and no-store behavior preserved. No schema
+change or new repository. Contract test observed RED on entity exposure, then GREEN;
+all29 moderation cases pass. Full suite **551 tests pass** (64 unit,154 provider,
+333 integration), zero failed/skipped; Release zero warnings/errors. Independent
+static review found no issues. No merge or push.
+
+For public profiles, user chose fixed handles with editable display name and bio.
+Reviewed design: `docs/superpowers/specs/2026-10-30-public-profiles-design.md`.
+Public UUID/handle lookups expose safe identity/bio/join date; owner-only partial
+PATCH preserves omitted fields. Proposed bounds/rates/privacy/migration guard and
+proof are documented. Builder check found no consequential unanswered questions.
+Profile design awaits approval before implementation; profile routes/schema are
+not yet added. Other remaining priorities are listed in the prior resume below.
+
+## Previous resume — Phase 6f moderation/reporting implemented (2026-10-30)
 
 User deferred live Google/GitHub OAuth verification and approved moderation/reporting,
 the User/Moderator/Admin permission model and the written design. Implemented on

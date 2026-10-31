@@ -36,7 +36,7 @@ internal static class ModerationEndpoints
         }
         staff.MapGet("/audit", async (IModerationService service, CancellationToken ct, string? targetType = null, Guid? targetId = null, int page = 1, int pageSize = 20) =>
             !Paging(page, pageSize) || targetType is not (null or "review" or "comment" or "account") ? Invalid() : Results.Ok(await service.AuditAsync(targetType, targetId, page, pageSize, ct)))
-            .RequireRateLimiting("moderation-read").Produces<ModerationPage<RateFreak.Domain.Moderation.ModerationEvent>>();
+            .RequireRateLimiting("moderation-read").Produces<ModerationPage<ModerationAuditEntry>>();
         var admin = app.MapGroup("/api/v1/admin/moderators").WithTags("Moderator administration").RequireAuthorization("admin");
         foreach (var verb in new[] { "PUT", "DELETE" })
             admin.MapMethods("/{id:guid}", [verb], async (Guid id, [Microsoft.AspNetCore.Mvc.FromBody] RoleRequest request, ClaimsPrincipal user, IModerationService service, CancellationToken ct) =>

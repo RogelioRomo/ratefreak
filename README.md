@@ -14,7 +14,7 @@ The checked-in default remains disabled until a server-side token is configured.
 IGDB and MusicBrainz live search/preview checks passed on 2026-10-30 using supplied
 credentials/contact in a temporarily enabled process. Saved local flags remain
 disabled; `.env` is not automatically loaded by the API. Authenticated live imports
-and Google/GitHub live sign-in have not been verified. Last full suite: 550 tests pass.
+and Google/GitHub live sign-in have not been verified. Last full suite: 551 tests pass.
 
 ## Repository and web app
 

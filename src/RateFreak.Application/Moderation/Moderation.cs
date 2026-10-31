@@ -16,6 +16,9 @@ public sealed record ModerationTarget(Guid Id, string TargetType, StaffIdentity?
 public sealed record ReportAcknowledgement(Guid Id, string Status, DateTimeOffset CreatedAt);
 public sealed record ReportSummary(Guid Id, string TargetType, Guid TargetId, StaffIdentity? Reporter, string Reason, string Status, DateTimeOffset CreatedAt);
 public sealed record ReportDetail(ReportSummary Report, string? Details, ModerationTarget? Target, string? Decision, string? ResolutionReason, DateTimeOffset? ResolvedAt);
+public sealed record ModerationAuditEntry(Guid Id, DateTimeOffset CreatedAt, Guid? ActorId, string ActorKind,
+    string Action, string TargetType, Guid TargetId, Guid? ReportId, string Reason,
+    bool? Before, bool? After, DateTimeOffset? ReviewedUpdatedAt);
 public sealed record ModerationPage<T>(IReadOnlyList<T> Items, int Page, int PageSize, int TotalCount);
 public enum ModerationStatus { Success, NotFound, Conflict, Forbidden, Invalid }
 public sealed record ModerationResult(ModerationStatus Status, object? Value = null);
@@ -26,7 +29,7 @@ public interface IModerationService
     Task<ModerationPage<ReportSummary>> ReportsAsync(string status, int page, int pageSize, CancellationToken ct);
     Task<ReportDetail?> ReportAsync(Guid id, CancellationToken ct);
     Task<ModerationTarget?> TargetAsync(string type, Guid id, CancellationToken ct);
-    Task<ModerationPage<RateFreak.Domain.Moderation.ModerationEvent>> AuditAsync(string? type, Guid? id, int page, int pageSize, CancellationToken ct);
+    Task<ModerationPage<ModerationAuditEntry>> AuditAsync(string? type, Guid? id, int page, int pageSize, CancellationToken ct);
     Task<ModerationResult> ResolveAsync(Guid actor, Guid id, ResolveRequest request, CancellationToken ct);
     Task<ModerationResult> VisibilityAsync(Guid actor, string type, Guid id, VisibilityRequest request, CancellationToken ct);
     Task<ModerationResult> ModeratorAsync(Guid actor, Guid user, bool grant, string reason, CancellationToken ct);
