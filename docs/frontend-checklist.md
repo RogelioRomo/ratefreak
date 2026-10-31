@@ -8,7 +8,7 @@ Design: [frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
 - [x] Write [Phase 1 implementation plan](superpowers/plans/2026-10-30-frontend-foundation.md).
 - [x] Review implementation plan and select native execution.
 - [x] Phase 1: foundation, transport/proxy, Query provider and shell.
-- [ ] Phase 2: local accounts and session lifecycle.
+- [x] Phase 2: local accounts and session lifecycle.
 - [ ] Phase 2 follow-up: external sign-in and identity linking.
 - [ ] Phase 3: catalog browsing/search and details.
 - [ ] Phase 3 follow-up: provider preview/import.
@@ -21,8 +21,10 @@ Design: [frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
 ## Resume notes
 
 2026-10-30: approved roadmap, written design and Phase 1 task plan; completed
-Phase 1 using native execution on `feat/frontend-foundation`. Work remains
-uncommitted, as specified. No backend code, migrations or provider settings changed.
+Phase 1 using native execution on `feat/frontend-foundation`. Phase 1 was committed
+as `f68535e` at the user's request, then Phase 2 was implemented on the same branch.
+Phase 2 is complete and approved for commit/merge to main. Its backend changes affect proxy attribution
+and rate-limit partitioning only; no migrations or provider settings changed.
 
 ## Phase 1 evidence
 
@@ -49,29 +51,57 @@ uncommitted, as specified. No backend code, migrations or provider settings chan
   into ApiError, plus the analogous token-body path and signal-completion race;
   four regression tests observed RED→GREEN, followed by the full green suite/build.
 
-## Phase 2 handoff and blockers
+## Phase 2 evidence
 
-Start with local registration, login/logout and authenticated session hooks/screens.
-Registration does not automatically sign in; backend login uses email. Add only
-the exact required proxy methods/routes, enforce trusted configured web Origin for
-all mutations (reject missing/foreign Origin), and forward X-CSRF-TOKEN.
+Plan: [frontend accounts](superpowers/plans/2026-10-30-frontend-accounts.md).
 
-**Resolve before enabling account flows or public use:** backend IP-based abuse
-budgets currently see the Next.js server's address. All proxied browsers therefore
-share CSRF issuance's 30/minute budget (and other IP-based budgets). Design trusted
-client attribution and per-browser limits together with the deployment boundary;
-never blindly trust browser-supplied X-Forwarded-For. Recorded review finding is
-accepted as a Phase 2 integration blocker; Phase 1 is local foundation only.
+- [x] Thin `/register`, `/login`, `/account` routes, feature-owned interfaces/APIs/hooks,
+  labeled forms and field errors, generic login errors, 429 guidance and protected
+  account display. Registration stays anonymous; logout explains all-device revocation.
+- [x] Exact-Origin/CSRF/JSON/body-size guarded POST account allowlist. Other methods
+  and business routes remain closed; server-only attribution never creates a user.
+- [x] Fixed the shared proxy-IP budget mechanism through authenticated attribution;
+  eight backend HTTP tests prove independent client budgets, mapped-IP normalization,
+  forged-header rejection and unchanged direct-client behavior. See ADR 0013 and
+  `web/README.md` for matching server secrets and verified runtime-mode requirements.
+- [x] Session transitions cancel old requests, clear caches and pending CSRF state;
+  submitted passwords are absent from mutation variables/history and browser storage.
+- [x] Independent review found unbounded session freshness. Fixed with active-tab
+  one-minute polling, window focus/pageshow and protected-entry checks, plus
+  credential-free BroadcastChannel invalidation. Tests cover expiry without manual
+  refresh and two independent clients changing accounts/signing out.
+- [x] Browser-discovered competing logout redirects reproduced RED and fixed GREEN:
+  protected-page logout now goes to login; public-page logout remains on that page.
+- [x] Final frontend checks: **123/123 tests across 19 files**, lint and typecheck
+  pass without warnings; production build passes with static account templates and
+  a dynamic API proxy. Required build/test subprocesses ran outside the sandbox.
+- [x] Full backend suite: **590/590**, no failures/skips (64 unit, 154 provider,
+  372 integration). No provider credentials/live external requests needed.
+- [x] Real browser flow through Next.js → .NET → isolated PostgreSQL: anonymous
+  protected-page redirect; registration 201 remains anonymous; rejected login clears
+  password; successful login creates HttpOnly session/CSRF cookies; private profile
+  loads; logout 204 removes session cookie; another open tab redirects to login
+  and `/users/me` returns 401. No browser runtime exceptions.
+- [x] Screenshots inspected at 375px and 1280px, no horizontal overflow, keyboard skip
+  navigation works. Temporary artifacts: `/tmp/ratefreak-phase2-login-375.png`,
+  `/tmp/ratefreak-phase2-register-1280.png`, `/tmp/ratefreak-phase2-account-{375,1280}.png`.
+  Verification used a disposable database/container and temporary processes, not
+  existing accounts or persistent API configuration.
 
-Cancel and clear private queries and call `resetCsrfState()` on identity changes;
-private keys include account identity and filters. Validate live Next-to-.NET
-session/CSRF cookie issuance/deletion and real disconnect propagation in that slice.
-OAuth redirects/correlation cookies and linking remain a separate follow-up.
+## Next session and release limits
 
-Review checked cookie separation at the proxy Response boundary; browser storage
-with live .NET sessions and multi-client throttling remain Phase 2 integration
-checks. No authentication UI, live writes, external-provider calls, deployment,
-SSR query hydration or persistent browser cache shipped in Phase 1.
+Local account Phase 2 is complete. External Google/GitHub sign-in, callback/correlation
+cookie handling and explicit identity linking are a separate optional follow-up.
+Phase 3 catalog browsing/search/details can then consume the existing transport.
+Future private query keys must include account identity and every filter.
+
+Configure the same proxy secret on both servers and the appropriate trusted mode
+before using the account UI. Production Vercel headers/HTTPS/secrets have not been
+provisioned or verified by local tests; another ingress needs a verified adapter.
+Cross-instance shared rate budgets, recovery policy and deployment hardening remain
+release work. Live client disconnect propagation through a deployed ingress remains
+an operational check; unit tests cover abort signals/timeouts and live local
+navigation cancellation was observed reaching the proxy.
 
 ## Implementation decisions
 
@@ -83,6 +113,12 @@ SSR query hydration or persistent browser cache shipped in Phase 1.
 - Updated `@types/node` from 20 to 24 to satisfy Vitest's peer requirement and
   describe the actual runtime. No runtime Node upgrade was needed.
 - Deferred the shared backend-IP bucket to the explicit Phase 2 blocker above;
-  enabling account traffic before resolving it could throttle all proxied users.
+  Phase 2 now implements authenticated attribution. Omitting/misconfiguring the
+  corresponding backend setting still leaves proxied callers sharing a budget.
+- Phase 2 uses an explicit Vercel trust mode instead of assuming static Next egress
+  IPs; self-hosted production support requires a separate ingress adapter.
+- Session synchronization and bounded checks supersede the initial infinite-freshness
+  implementation considered during Phase 2. Other-device revocation is discovered
+  at the next check; same-browser windows receive immediate invalidation signals.
 
 No deferred minor code-review findings.

@@ -24,6 +24,7 @@ it("encodes writes and obtains a fresh token for each sequential mutation", asyn
   expect(fetchMock.mock.calls.map(([url]) => url)).toEqual(["/api/v1/auth/csrf", "/api/v1/auth/logout", "/api/v1/auth/csrf", "/api/v1/auth/logout"]);
   expect(fetchMock.mock.calls[1][1]).toMatchObject({ body: '{"example":true}', headers: { "Content-Type": "application/json", "X-CSRF-TOKEN": "first" } });
   expect(fetchMock.mock.calls[3][1]?.headers).toMatchObject({ "X-CSRF-TOKEN": "second" });
+  expect(fetchMock.mock.calls[3][1]?.headers).toMatchObject({ "Content-Type": "application/json" });
 });
 
 it.each(["https://evil.test", "//evil.test", "/users/me", "../users/me", "users/../me", "users\\me", "users%2fme", "users/%2e%2e/me", "users/me#fragment", "users/%252fme", "users/me\n"])("rejects unsafe path %j before fetching", async (path) => {

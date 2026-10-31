@@ -7,16 +7,17 @@ Phase 6d review comments, Phase 6e additional Google/GitHub sign-in and Phase 6f
 moderation/reporting and Phase 6g public profiles/editing are implemented
 from `ratefreak-plan.md`.
 Next.js will be hosted separately and act as a thin browser-facing proxy; all
-accounts, authorization and business logic remain in .NET. Frontend Phase 1 lives
-in `web/`: a responsive shell, shared UI, TanStack Query and a restricted read-only
-browser-facing proxy. Account and business-feature screens remain future phases;
+accounts, authorization and business logic remain in .NET. Frontend Phases 1–2 live
+in `web/`: a responsive shell, shared UI, TanStack Query, local-account screens and
+a restricted browser-facing proxy. Catalog and other business-feature screens remain future phases;
 see `docs/frontend-checklist.md`. The Phase 3 TMDB adapter is
 implemented; local TMDB activation and live verification completed on 2026-10-29.
 The checked-in default remains disabled until a server-side token is configured.
 IGDB and MusicBrainz live search/preview checks passed on 2026-10-30 using supplied
 credentials/contact in a temporarily enabled process. Saved local flags remain
 disabled; `.env` is not automatically loaded by the API. Authenticated live imports
-and Google/GitHub live sign-in have not been verified. Last full suite: 582 tests pass.
+and Google/GitHub live sign-in have not been verified. Last full backend suite:
+590 tests pass; frontend suite: 123 tests pass.
 
 ## Repository and web app
 
@@ -261,16 +262,19 @@ redirect. Auth and `/users/me` responses use `Cache-Control: no-store`.
 
 Abuse limits: registration 5/IP/hour, login 10/IP/minute, CSRF issuance 30/IP/minute;
 429 Problem Details includes `Retry-After`. Invalid requests consume the budget.
-Limits are in-memory per API instance; trusted forwarding and per-browser rate
-limits at the future Next.js proxy must be configured before public deployment.
+Limits are in-memory per API instance. Optional authenticated browser-proxy
+attribution preserves client IP budgets across Next.js; configure both server
+secrets and a verified hosting mode as described in `web/README.md` before use.
+Shared budgets across multiple API instances remain deployment work.
 Kestrel request bodies are limited to 64 KiB. Passwords are bounded before hashing.
 
-The future Next.js proxy must forward the session **and** antiforgery cookies,
-relay all `Set-Cookie` updates/deletions, forward `X-CSRF-TOKEN`, reject cross-origin
-browser mutation requests, and never cache private/auth responses. It must not
-invent a user ID header; .NET always authenticates/authorizes the actual cookie.
-Do not expose a generic forwarding endpoint accepting arbitrary target URLs.
-No permissive CORS policy or proxy implementation is included here.
+The Next.js account proxy forwards session **and** antiforgery cookies, relays
+separate `Set-Cookie` updates/deletions and `X-CSRF-TOKEN`, rejects foreign/missing
+browser mutation Origin, bounds JSON bodies to 64 KiB, and never caches responses.
+It uses a fixed upstream and an explicit local-account allowlist. Service-authenticated
+client-address headers affect rate limits only; .NET authenticates/authorizes the
+actual user cookie. No permissive CORS policy is needed. OAuth/provider/catalog
+proxy routes are not enabled by this slice.
 
 Local password accounts still have unverified emails and no password recovery.
 External sign-in below provides provider-managed authentication/recovery without

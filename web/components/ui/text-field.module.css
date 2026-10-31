@@ -1,0 +1,6 @@
+.field { display: grid; gap: 0.5rem; }
+.field label { font-size: 0.875rem; font-weight: 600; }
+.field input { min-width: 0; width: 100%; min-height: 2.9rem; padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-small); background: var(--background); color: var(--foreground); font: inherit; }
+.field input[aria-invalid="true"] { border-color: #ffadad; }
+.hint { color: var(--muted); font-size: 0.75rem; line-height: 1.6; }
+.error { color: #ffbaba; font-size: 0.8rem; line-height: 1.6; }

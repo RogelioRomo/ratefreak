@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
+  flex-wrap: wrap;
+  padding-block: 1rem;
   min-height: 6rem;
   border-bottom: 1px solid var(--border);
 }

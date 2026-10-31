@@ -69,6 +69,7 @@ app.Use(async (context, next) =>
 });
 app.UseExceptionHandler();
 app.UseStatusCodePages();
+app.UseBrowserProxyIdentity();
 app.Use(async (context, next) =>
 {
     if (context.GetEndpoint()?.Metadata.GetMetadata<ProfileNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<CollectionNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<FollowNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<CommentNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/moderation") || context.Request.Path.StartsWithSegments("/api/v1/admin") || context.GetEndpoint()?.Metadata.GetMetadata<ReportingNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/auth") || context.Request.Path.StartsWithSegments("/api/v1/users/me") ||

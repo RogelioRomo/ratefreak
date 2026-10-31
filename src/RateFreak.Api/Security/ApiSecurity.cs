@@ -16,6 +16,11 @@ internal static class ApiSecurity
     public static void AddApiSecurity(this WebApplicationBuilder builder)
     {
         var development = builder.Environment.IsDevelopment();
+        builder.Services.AddOptions<BrowserProxyOptions>().Bind(builder.Configuration.GetSection("BrowserProxy"))
+            .Validate(options => options.SharedSecret is null ||
+                (options.SharedSecret.Length == 64 && options.SharedSecret.All(Uri.IsHexDigit)),
+                "BrowserProxy:SharedSecret must contain exactly 64 hexadecimal characters when configured.")
+            .ValidateOnStart();
         builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 64 * 1024);
         builder.Services.AddOptions<SessionOptions>().Bind(builder.Configuration.GetSection("Authentication"))
             .Validate(options => development
@@ -117,6 +122,6 @@ internal static class ApiSecurity
 
     private static void AddLimit(RateLimiterOptions options, string name, int permits, TimeSpan window) =>
         options.AddPolicy(name, context => RateLimitPartition.GetFixedWindowLimiter(
-            context.Connection.RemoteIpAddress?.ToString() ?? "unknown", _ => new FixedWindowRateLimiterOptions
+            BrowserProxyIdentity.Partition(context), _ => new FixedWindowRateLimiterOptions
             { PermitLimit = permits, Window = window, QueueLimit = 0, AutoReplenishment = true }));
 }

@@ -1,0 +1,20 @@
+.panel { width: min(100%, 30rem); margin-inline: auto; padding-block: clamp(3rem, 8vw, 5rem); }
+.heading { margin-bottom: 2rem; }
+.heading h1 { font-size: clamp(2rem, 5vw, 2.75rem); letter-spacing: -0.055em; line-height: 1.12; margin-block: 1rem; }
+.heading > p:last-child { color: var(--muted); line-height: 1.7; }
+.eyebrow { color: var(--accent); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; }
+.form, .form fieldset { display: grid; gap: 1.25rem; }
+.form fieldset { border: 0; min-width: 0; }
+.form fieldset:disabled { opacity: 0.7; }
+.footer { color: var(--muted); font-size: 0.875rem; line-height: 1.7; }
+.panel a { text-underline-offset: 0.2rem; color: var(--accent); }
+.error { padding: 1rem; border: 1px solid #7d4444; border-radius: var(--radius-small); color: #ffbaba; font-size: 0.875rem; line-height: 1.6; }
+.success { display: grid; gap: 1rem; line-height: 1.7; }
+.success h2 { font-size: 1.25rem; }
+.details { display: grid; gap: 1.5rem; margin-bottom: 1.5rem; }
+.details dl { display: grid; gap: 0.5rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: var(--radius-small); background: var(--surface); overflow-wrap: anywhere; }
+.details dt { color: var(--muted); font-size: 0.75rem; }
+.details dd { margin-bottom: 0.75rem; }
+.details dd:last-child { margin-bottom: 0; }
+.details p { color: var(--muted); font-size: 0.8rem; line-height: 1.7; }
+.logout { display: grid; gap: 0.75rem; }

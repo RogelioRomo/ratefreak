@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Suspense } from "react";
+import { AuthNavigation } from "@/features/auth/components/auth-navigation";
 import styles from "./site-header.module.css";
 
 export function SiteHeader() {
@@ -9,7 +11,7 @@ export function SiteHeader() {
         RateFreak<span className={styles.dot}>.</span>
       </Link>
       <nav aria-label="Main navigation">
-        <Link className={styles.home} href="/" aria-current="page">Home</Link>
+        <Suspense fallback={<Link className={styles.home} href="/">Home</Link>}><AuthNavigation /></Suspense>
       </nav>
     </header>
   );

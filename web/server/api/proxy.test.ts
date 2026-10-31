@@ -47,7 +47,7 @@ describe("proxy isolation", () => {
     expect(response.headers.getSetCookie()).toEqual(cookies);
   });
 
-  it.each(["auth/login", "users/me/extra", "users%2fme", "users/me?target=https://evil.test", "users/%6de"])("rejects unapproved URL %s without fetching", async (path) => {
+  it.each(["auth/unknown", "users/me/extra", "users%2fme", "users/me?target=https://evil.test", "users/%6de"])("rejects unapproved URL %s without fetching", async (path) => {
     const response = await proxyRequest(makeRequest(path), path.split("?", 1)[0].split("/"));
     expect(response.status).toBe(404);
     expect(response.headers.get("cache-control")).toBe("no-store");

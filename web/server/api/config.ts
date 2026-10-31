@@ -13,10 +13,24 @@ function readOrigin(value: string | undefined): string {
 
 export function readApiProxyConfig(): ApiProxyConfig {
   const prefix = process.env.NODE_ENV === "development" ? "" : "__Host-";
+  const apiOrigin = readOrigin(process.env.RATEFREAK_API_URL);
+  const proxySecret = process.env.RATEFREAK_PROXY_SECRET;
+  const clientIpMode = process.env.RATEFREAK_CLIENT_IP_MODE;
+  if (proxySecret || clientIpMode) {
+    const local = ["localhost", "127.0.0.1", "[::1]"].includes(new URL(apiOrigin).hostname);
+    if (!/^[a-fA-F0-9]{64}$/.test(proxySecret ?? "") ||
+      (clientIpMode !== "vercel" && clientIpMode !== "loopback") ||
+      (clientIpMode === "loopback" && (process.env.NODE_ENV !== "development" || !local)) ||
+      (clientIpMode === "vercel" && (process.env.VERCEL !== "1" || !apiOrigin.startsWith("https://")))) {
+      throw new Error("API proxy is not configured.");
+    }
+  }
   return {
-    apiOrigin: readOrigin(process.env.RATEFREAK_API_URL),
+    apiOrigin,
     webOrigin: process.env.RATEFREAK_WEB_ORIGIN ? readOrigin(process.env.RATEFREAK_WEB_ORIGIN) : undefined,
     cookieNames: [`${prefix}ratefreak.session`, `${prefix}ratefreak.csrf`],
     timeoutMs: 10_000,
+    proxySecret,
+    clientIpMode: clientIpMode as "vercel" | "loopback" | undefined,
   };
 }

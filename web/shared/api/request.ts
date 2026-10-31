@@ -18,7 +18,7 @@ export async function apiRequest<T>(path: string, options: ApiRequestOptions = {
   const headers: Record<string, string> = { Accept: "application/json" };
   if (method !== "GET") headers["X-CSRF-TOKEN"] = await getCsrfToken(options.signal);
   options.signal?.throwIfAborted();
-  if (options.body !== undefined) headers["Content-Type"] = "application/json";
+  if (method !== "GET" || options.body !== undefined) headers["Content-Type"] = "application/json";
   const response = await fetch(`/api/v1/${path}`, {
     method, headers, credentials: "same-origin", cache: "no-store", signal: options.signal,
     body: options.body === undefined ? undefined : JSON.stringify(options.body),

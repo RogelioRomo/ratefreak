@@ -3,4 +3,6 @@ export interface ApiProxyConfig {
   webOrigin?: string;
   cookieNames: readonly string[];
   timeoutMs: number;
+  proxySecret?: string;
+  clientIpMode?: "vercel" | "loopback";
 }

@@ -9,7 +9,7 @@ function rejectMethod(): Response {
   return proxyProblem(405, "Method not allowed.");
 }
 
-export const POST = rejectMethod;
+export const POST = GET;
 export const PUT = rejectMethod;
 export const PATCH = rejectMethod;
 export const DELETE = rejectMethod;

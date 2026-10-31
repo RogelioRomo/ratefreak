@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ChildrenProps } from "@/shared/interfaces/children-props";
 import { Providers } from "./providers";
 import { AppShell } from "@/components/layout/app-shell";
+import { SessionProvider } from "@/features/auth/components/session-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: ChildrenProps) {
   return (
     <html lang="en">
-      <body><Providers><AppShell>{children}</AppShell></Providers></body>
+      <body><Providers><SessionProvider><AppShell>{children}</AppShell></SessionProvider></Providers></body>
     </html>
   );
 }
