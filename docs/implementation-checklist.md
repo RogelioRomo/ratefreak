@@ -9,7 +9,10 @@ Collection discussions and further providers remain separate Phase 6 work.
 
 User deferred live Google/GitHub OAuth verification and approved moderation/reporting,
 the User/Moderator/Admin permission model and the written design. Implemented on
-`feat/moderation-reporting`, based on `main` at `8a32fb4`. No merge or remote push.
+`feat/moderation-reporting`, based on `main` at `8a32fb4`. At the user's request,
+fast-forward merged locally into `main` at `5a85329`. Post-merge full suite:
+550 tests pass, zero failed/skipped. Deleted the merged feature branch as requested.
+No remote push.
 
 Ordinary signed-in users report public reviews/comments with reason/details; lifetime
 per-user/target uniqueness, self-report rejection and independent reporting budget.
@@ -60,7 +63,7 @@ migration; local users0,media2,reports0,audit0,roles0 and migration history once
 Temporary API on5081 used only for read-only/unauthenticated health, Swagger/OpenAPI
 and moderation/report/admin guard checks, then stopped. See README/ADR0011/design/plan.
 No account creation, persistent moderation activity, provider activation, mail work,
-frontend work, merge or push. Local PostgreSQL left running.
+frontend work or remote push. Local PostgreSQL left running.
 
 Remaining priorities:
 
