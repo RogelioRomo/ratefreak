@@ -895,6 +895,12 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("access_failed_count");
 
+                    b.Property<string>("Bio")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)")
+                        .HasColumnName("bio");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("text")
@@ -905,6 +911,7 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .HasColumnName("created_at");
 
                     b.Property<string>("DisplayName")
+                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("character varying(80)")
@@ -961,6 +968,7 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .HasColumnName("two_factor_enabled");
 
                     b.Property<DateTimeOffset>("UpdatedAt")
+                        .IsConcurrencyToken()
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
 
@@ -980,7 +988,10 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ux_users_normalized_handle");
 
-                    b.ToTable("users", (string)null);
+                    b.ToTable("users", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_users_bio", "bio IS NULL OR (length(btrim(bio, ' ' || chr(9) || chr(10) || chr(13))) > 0 AND length(bio) <= 500)");
+                        });
                 });
 
             modelBuilder.Entity("RateFreak.Infrastructure.Authentication.ExternalAuthenticationChallenge", b =>

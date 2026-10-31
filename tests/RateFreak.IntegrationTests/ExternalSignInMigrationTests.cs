@@ -25,7 +25,15 @@ public sealed class ExternalSignInMigrationTests
         var user = new AccountUser { Id = Guid.NewGuid(), UserName = "preserved", NormalizedUserName = "PRESERVED",
             Email = "preserved@example.test", NormalizedEmail = "PRESERVED@EXAMPLE.TEST", DisplayName = "Preserved",
             PasswordHash = "preserved-password-hash", SecurityStamp = "preserved-stamp" };
-        db.Add(user);
+        // Seed only columns present at the historical migration; the current model also has Bio.
+        await db.Database.ExecuteSqlInterpolatedAsync($"""
+            INSERT INTO users (id, user_name, normalized_user_name, email, normalized_email,
+                display_name, password_hash, security_stamp, concurrency_stamp, created_at, updated_at,
+                email_confirmed, phone_number_confirmed, two_factor_enabled, lockout_enabled, access_failed_count)
+            VALUES ({user.Id}, {user.UserName}, {user.NormalizedUserName}, {user.Email}, {user.NormalizedEmail},
+                {user.DisplayName}, {user.PasswordHash}, {user.SecurityStamp}, {user.ConcurrencyStamp}, {user.CreatedAt}, {user.UpdatedAt},
+                false, false, false, false, 0)
+            """, ct);
         db.Add(new IdentityUserLogin<Guid> { UserId = user.Id, LoginProvider = "github", ProviderKey = "1" });
         if (duplicates) db.Add(new IdentityUserLogin<Guid> { UserId = user.Id, LoginProvider = "github", ProviderKey = "2" });
         await db.SaveChangesAsync(ct);
@@ -49,7 +57,8 @@ public sealed class ExternalSignInMigrationTests
             Assert.Empty(await db.Set<ExternalAuthenticationChallenge>().ToListAsync(ct));
             Assert.False(db.Database.HasPendingModelChanges());
         }
-        var preserved = await db.Users.AsNoTracking().SingleAsync(ct);
+        var preserved = await db.Users.AsNoTracking()
+            .Select(account => new { account.PasswordHash, account.SecurityStamp, account.EmailConfirmed }).SingleAsync(ct);
         Assert.Equal("preserved-password-hash", preserved.PasswordHash);
         Assert.Equal("preserved-stamp", preserved.SecurityStamp);
         Assert.False(preserved.EmailConfirmed);

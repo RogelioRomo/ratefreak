@@ -87,6 +87,8 @@ internal static class ApiSecurity
             AddLimit(options, "catalog", 60, TimeSpan.FromMinutes(1));
             AddLimit(options, "external-search", 20, TimeSpan.FromMinutes(1));
             AddLimit(options, "social-read", 60, TimeSpan.FromMinutes(1));
+            AddLimit(options, "profile-read", 60, TimeSpan.FromMinutes(1));
+            AddAccountLimit(options, "profile-write", 10);
             AddAccountLimit(options, "social-write", 30);
             AddAccountLimit(options, "moderation-read", 60);
             AddAccountLimit(options, "moderation-write", 30);

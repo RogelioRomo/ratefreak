@@ -46,12 +46,16 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
         });
         modelBuilder.Entity<AccountUser>(user =>
         {
-            user.ToTable("users");
+            user.ToTable("users", table => table.HasCheckConstraint("ck_users_bio",
+                "bio IS NULL OR (length(btrim(bio, ' ' || chr(9) || chr(10) || chr(13))) > 0 AND length(bio) <= 500)"));
+            // Prevent stale full-row Identity updates from reverting separately committed profile edits.
+            user.Property(u => u.Bio).HasMaxLength(500).IsConcurrencyToken();
+            user.Property(u => u.UpdatedAt).IsConcurrencyToken();
             user.Property(u => u.UserName).HasMaxLength(30).IsRequired();
             user.Property(u => u.NormalizedUserName).HasMaxLength(30).IsRequired();
             user.Property(u => u.Email).HasMaxLength(254).IsRequired();
             user.Property(u => u.NormalizedEmail).HasMaxLength(254).IsRequired();
-            user.Property(u => u.DisplayName).HasMaxLength(80).IsRequired();
+            user.Property(u => u.DisplayName).HasMaxLength(80).IsRequired().IsConcurrencyToken();
             user.HasIndex(u => u.NormalizedUserName).HasDatabaseName("ux_users_normalized_handle").IsUnique();
             user.HasIndex(u => u.NormalizedEmail).HasDatabaseName("ux_users_normalized_email").IsUnique();
         });

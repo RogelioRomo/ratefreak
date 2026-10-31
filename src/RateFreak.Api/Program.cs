@@ -71,7 +71,7 @@ app.UseExceptionHandler();
 app.UseStatusCodePages();
 app.Use(async (context, next) =>
 {
-    if (context.GetEndpoint()?.Metadata.GetMetadata<CollectionNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<FollowNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<CommentNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/moderation") || context.Request.Path.StartsWithSegments("/api/v1/admin") || context.GetEndpoint()?.Metadata.GetMetadata<ReportingNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/auth") || context.Request.Path.StartsWithSegments("/api/v1/users/me") ||
+    if (context.GetEndpoint()?.Metadata.GetMetadata<ProfileNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<CollectionNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<FollowNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<CommentNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/moderation") || context.Request.Path.StartsWithSegments("/api/v1/admin") || context.GetEndpoint()?.Metadata.GetMetadata<ReportingNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/auth") || context.Request.Path.StartsWithSegments("/api/v1/users/me") ||
         (context.Request.Path.StartsWithSegments("/api/v1/media") && context.Request.Path.Value!.EndsWith("/rating", StringComparison.Ordinal)))
         context.Response.Headers.CacheControl = "no-store";
     await next(context);
@@ -83,6 +83,7 @@ app.UseRateLimiter();
 app.MapDevelopmentDocumentation();
 app.MapHealthEndpoints();
 app.MapAccountEndpoints();
+app.MapUserProfileEndpoints();
 app.MapExternalAccountEndpoints();
 app.MapCatalogEndpoints();
 app.MapMediaProviderEndpoints();

@@ -4,7 +4,7 @@ A monorepo containing a .NET 10 modular monolith API and a Next.js web app. Phas
 accounts/catalog reads, Phase 4 personal library/ratings/reviews, and Phase 5
 dynamic collections plus Phase 6a MusicBrainz albums, Phase 6b follows, Phase 6c IGDB games,
 Phase 6d review comments, Phase 6e additional Google/GitHub sign-in and Phase 6f
-moderation/reporting are implemented
+moderation/reporting and Phase 6g public profiles/editing are implemented
 from `ratefreak-plan.md`.
 Next.js will be hosted separately and act as a thin browser-facing proxy; all
 accounts, authorization and business logic remain in .NET. The frontend scaffold lives in `web/`; API integration, the browser-facing proxy,
@@ -14,7 +14,7 @@ The checked-in default remains disabled until a server-side token is configured.
 IGDB and MusicBrainz live search/preview checks passed on 2026-10-30 using supplied
 credentials/contact in a temporarily enabled process. Saved local flags remain
 disabled; `.env` is not automatically loaded by the API. Authenticated live imports
-and Google/GitHub live sign-in have not been verified. Last full suite: 551 tests pass.
+and Google/GitHub live sign-in have not been verified. Last full suite: 582 tests pass.
 
 ## Repository and web app
 
@@ -980,3 +980,48 @@ history, so it does not make rollback eligible. Prefer forward migration fixes a
 backups; do not delete history merely to bypass the guard. Coarse database transaction
 locking serializes moderation/reporting and review/comment writes; assess throughput
 before large deployment. Suspensions, appeals, notifications and frontend remain deferred.
+
+### Public profiles and editing
+
+| Method | Route | Access / behavior |
+| --- | --- | --- |
+| GET | `/api/v1/users/{userId}` | Public profile by UUID |
+| GET | `/api/v1/users/by-handle/{handle}` | Public profile by case-insensitive handle |
+| PATCH | `/api/v1/users/me` | Signed-in owner + CSRF; partial display name/bio edit |
+
+Public profiles contain **only** `id`, `handle`, `displayName`, `bio`, `createdAt`.
+Email, security fields, roles, private library/ratings and provider mappings remain
+private. Missing users404; malformed handles400. Handles remain fixed and retain
+their registered casing. No all-user directory or private-profile switch. Existing
+follower/following routes remain separate. Public author-post lists are not added.
+
+PATCH accepts only `{displayName?, bio?}`. Omitted fields are preserved; supply at
+least one. Explicit `bio:null` or trimmed blank bio clears it. Display name must be
+nonnull, trimmed1..80 UTF-16 units, valid Unicode without controls. Bio accepts at
+most500 trimmed UTF-16 units, valid Unicode, only tab/CR/LF controls. Return literal
+text and escape it in the UI. Unknown/duplicate properties, wrong types and invalid
+values400. Handles, email, passwords and roles cannot be changed here. Successful
+PATCH200 returns the private owner `AccountProfile`, including email and bio.
+Registration, local/external login/onboarding and existing GET `/users/me` consistently
+include `bio` (null until edited), preserving existing owner fields.
+
+All profile responses/errors are no-store, including matched case/trailing-slash
+variants. Public reads share profile-read60/IP/min; edits10/account/min. Budgets are
+independent of social/catalog limits;429 Retry-After, no queue, per API instance.
+Unauthenticated edits401; invalid/missing CSRF400. Caller identity comes from the
+session, never the request body. There is no edit-by-target-ID operation.
+
+Updates change only supplied profile fields and UpdatedAt. Disjoint concurrent edits
+preserve both; same-field edits are last-write-wins. Profile edits leave credentials,
+Identity stamps, role/login mappings and sessions unchanged. Existing authentication
+middleware can independently renew session cookies. EF concurrency checks prevent
+stale Identity full-row writes from reverting profile edits; logout locks/reloads
+current account state before revocation. Review/comment/follow author DTOs reflect
+updated display names through their existing joins.
+
+`AddUserBios` adds one nullable bounded users.bio column and a CHECK. Downgrade locks
+the table and refuses while any bio exists, preventing silent text loss. Prefer
+forward fixes; review backup/data policy before intentional rollback. No avatar
+uploads, handle/email/password changes, public library, profile reports/moderation,
+frontend or deployment. Profile moderation and account erasure/export/retention
+policy remain public-launch work.

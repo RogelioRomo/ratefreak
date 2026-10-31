@@ -117,5 +117,5 @@ internal sealed class ExternalAccountService(RateFreakDbContext db, UserManager<
     private static bool KnownConflict(DbUpdateException ex) => ex.InnerException is PostgresException
     { SqlState: PostgresErrorCodes.UniqueViolation or PostgresErrorCodes.ForeignKeyViolation };
     private static AccountProfile Profile(AccountUser user) =>
-        new(user.Id, user.UserName!, user.DisplayName, user.Email!, user.CreatedAt);
+        new(user.Id, user.UserName!, user.DisplayName, user.Email!, user.CreatedAt, user.Bio);
 }

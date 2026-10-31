@@ -1,6 +1,6 @@
 # Public profiles and profile editing
 
-Status: proposed for approval, 2026-10-30.
+Status: approved by user and implemented on feat/public-profiles, 2026-10-30.
 
 ## Intent and agreed scope
 
@@ -58,7 +58,9 @@ Use dedicated profile-read60/IP/min and profile-write10/account/min fixed-window
 budgets, no queue,429 Retry-After. Every profile response/error no-store, including
 mixed-case/trailing-slash route matches. PATCH is owner-session derived,401 without
 session and400 without valid CSRF. Only database-persisted profile fields change;
-no role changes, session revocation, cookie refresh or provider calls.
+no role changes, session revocation, explicit profile-triggered cookie refresh or
+provider calls. Existing security-stamp middleware may renew cookies on ordinary
+authenticated requests independently of editing.
 
 ## Persistence and consistency
 
@@ -70,7 +72,11 @@ PATCH uses one transactional atomic update of only the supplied fields, followed
 by private response projection before commit. Concurrent edits of different fields
 preserve both; same-field concurrent edits are last-write-wins. Update UpdatedAt
 on successful edits. Do not overwrite Identity password/concurrency/security stamps,
-email verification flags or handle normalization. Row locks from the update protect
+email verification flags or handle normalization. Mark DisplayName/Bio/UpdatedAt
+as EF concurrency tokens so stale Identity full-row writes fail rather than undoing
+a committed profile edit; no extra columns or stamp changes. Logout locks/reloads
+the account before stamp revocation, so it remains reliable across profile edits.
+Row locks from the update protect
 projection against concurrent account deletion; deletion that wins first maps401.
 Do not acquire the moderation advisory lock: profile updates hold only the user row
 and acquire no content/role locks, avoiding a new lock-order dependency. Authored

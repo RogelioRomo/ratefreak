@@ -2,10 +2,75 @@
 
 Updated 2026-10-30. Implemented Phase 0–5, Phase 6a MusicBrainz albums,
 Phase 6b follows, Phase 6c IGDB games, Phase 6d public review comments and
-Phase 6e additional GitHub/Google sign-in and Phase 6f moderation/reporting.
+Phase 6e additional GitHub/Google sign-in, Phase 6f moderation/reporting and
+Phase 6g public profiles/editing.
 Collection discussions and further providers remain separate Phase 6 work.
 
-## Resume here — audit DTO corrected; public profile design ready (2026-10-30)
+## Resume here — Phase 6g public profiles/editing complete (2026-10-30)
+
+User requested audit DTO correction followed by public profiles/editing, chose fixed
+handles with editable display name/bio, and approved the written design. Implemented
+on `feat/public-profiles`, based on main `53e5e9d` with preceding audit DTO correction
+`fb4bef9` and design `0ace19f`. No merge or remote push. See README, ADR0012 and design/plan.
+
+Public GET `/api/v1/users/{userId}` and `/api/v1/users/by-handle/{handle}` return only
+id/handle/displayName/bio/createdAt. ASCII case-insensitive handle lookup preserves
+registered casing; handles stay fixed. No email/roles/private library/security data.
+Session+CSRF PATCH `/api/v1/users/me` accepts displayName/bio only, preserves omitted
+fields, clears bio on null/blank, and returns the private owner DTO. Display name
+trimmed1..80 valid UTF-16 units without controls; bio<=500 literal units with valid
+Unicode and only tab/CR/LF controls. All local/external owner response paths include
+bio. Existing review/comment/follow author joins reflect display-name changes.
+Separate profile read60/IP/min and write10/account/min budgets, strict JSON and
+no-store including case/trailing-slash/errors. No credentials/role/handle edits.
+
+Atomic field-selective update and response projection share a transaction; disjoint
+concurrent edits preserve both. Profile edits leave Identity stamps/security fields
+and mappings untouched. Reviewer found stale Identity full-row writes could revert
+committed profile text: deterministic regression RED→GREEN with DisplayName/Bio/
+UpdatedAt EF concurrency tokens (no extra columns/stamp changes). A follow-up race
+reproduced logout500 after a profile edit; logout now locks/reloads before revocation,
+preserving the edit and completing logout204. Reviewer verified both fixes; no
+remaining required findings. Existing authentication middleware can independently
+renew cookies on authenticated requests; profile service does not explicitly refresh.
+
+Verification: **582 tests pass** (64 unit,154 provider contract,364 integration),
+zero failed/skipped.31 added profile/OAuth/migration cases. Initial17 HTTP contracts
+observed RED on missing routes; guarded downgrade observed RED→GREEN. Tests cover
+exact public/private contracts and OpenAPI, auth/CSRF/ownership, strict JSON/Unicode/
+UTF-16 bounds, omitted/null semantics, budgets/no-store, complete Identity security
+snapshot preservation, disjoint concurrent writes, deletion-before-update401 and
+blocked deletion through response projection, existing authored DTO name updates,
+and fresh Google/GitHub login retaining bio via fake provider backchannels.
+
+Full suite exposed two historical OAuth migration tests using current AccountUser
+against pre-Bio schema; reproduced missing-column failure, changed only historical
+seed/projection, retained original duplicate/refusal/preservation assertions.
+Focused historical cases GREEN, then full suite582 GREEN. Reviewer checked that
+repair without findings. Release build zero warnings/errors; EF model matches
+migration; fresh transitive NuGet audit all seven projects, no known vulnerabilities.
+
+Generated/inspected `20261031021811_AddUserBios`: nullable bounded users.bio plus
+CHECK; Down locks users and refuses while any bio exists. Refusal and safe downgrade/
+reapply preserve Identity credentials/stamps, catalog and moderation history in
+isolated PostgreSQL. Applied/reapplied locally; users0,bios0,media2,reports0,audit0,
+assigned roles0, migration history once. Temporary API5081 health/readiness/Swagger/
+OpenAPI including public/private/request schemas and missing/invalid/unauthenticated
+profile routes passed with no-store; stopped. No persistent verification accounts,
+provider activation, frontend work or public deployment. Local PostgreSQL remains running.
+
+Remaining priorities:
+
+- [ ] Catalog corrections/refresh/provenance and books support.
+- [ ] Optional collection discussions, account suspensions/appeals/notifications.
+- [ ] Profile reporting/moderation before public launch; avatars/social links if desired.
+- [ ] Google/GitHub credentials and live sign-in/linking verification (deferred).
+- [ ] Persistent provider enablement and optional authenticated live imports.
+- [ ] Account deletion/export/retention/recovery policy, staff access/operator attribution,
+  licensing, deployment hardening, abuse controls and backup/restore verification.
+- [ ] Frontend/API integration and browser proxy when explicitly requested.
+
+## Previous resume — audit DTO corrected; public profile design ready (2026-10-30)
 
 User requested a dedicated audit response DTO, then public profiles/editing.
 On `feat/public-profiles`, replaced audit entity return values and endpoint OpenAPI
@@ -392,7 +457,7 @@ pending. Phase 5's minor rejected-deletion snapshot test suggestion remains defe
   Phase 6a MusicBrainz implementation complete and independently reviewed.
   Social features and further providers remain separate work.
 - [ ] Phase 7: production hardening and deployment verification.
-- [ ] Deferred account work: profile editing and public profiles.
+- [x] Deferred account work: profile editing and public profiles (Phase 6g complete).
 - [ ] Deferred catalog work: authorized corrections/refresh and provenance policy.
 - [ ] Frontend/Next.js proxy remains out of scope until explicitly requested.
 

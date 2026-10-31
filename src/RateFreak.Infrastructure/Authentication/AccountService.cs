@@ -2,10 +2,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using RateFreak.Application.Identity;
+using RateFreak.Infrastructure.Persistence;
 
 namespace RateFreak.Infrastructure.Authentication;
 
-internal sealed class AccountService(UserManager<AccountUser> users, SignInManager<AccountUser> signIn) : IAccountService
+internal sealed class AccountService(UserManager<AccountUser> users, SignInManager<AccountUser> signIn, RateFreakDbContext db) : IAccountService
 {
     public async Task<AccountResult> RegisterAsync(RegisterRequest request, CancellationToken cancellationToken)
     {
@@ -53,15 +54,22 @@ internal sealed class AccountService(UserManager<AccountUser> users, SignInManag
     public async Task LogoutAsync(Guid id, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
-        var user = await users.FindByIdAsync(id.ToString());
-        if (user is not null)
+        await using (var transaction = await db.Database.BeginTransactionAsync(cancellationToken))
         {
-            var result = await users.UpdateSecurityStampAsync(user);
-            if (!result.Succeeded) throw new InvalidOperationException("Session revocation failed.");
+            var user = await db.Users.FromSqlInterpolated($"SELECT * FROM users WHERE id = {id} FOR UPDATE")
+                .SingleOrDefaultAsync(cancellationToken);
+            if (user is not null)
+            {
+                // Authentication can have tracked an older account before a concurrent profile edit.
+                await db.Entry(user).ReloadAsync(cancellationToken);
+                var result = await users.UpdateSecurityStampAsync(user);
+                if (!result.Succeeded) throw new InvalidOperationException("Session revocation failed.");
+            }
+            await transaction.CommitAsync(cancellationToken);
         }
         await signIn.SignOutAsync();
     }
 
     private static AccountProfile Profile(AccountUser user) =>
-        new(user.Id, user.UserName!, user.DisplayName, user.Email!, user.CreatedAt);
+        new(user.Id, user.UserName!, user.DisplayName, user.Email!, user.CreatedAt, user.Bio);
 }
