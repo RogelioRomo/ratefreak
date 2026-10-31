@@ -7,8 +7,10 @@ Phase 6d review comments, Phase 6e additional Google/GitHub sign-in and Phase 6f
 moderation/reporting and Phase 6g public profiles/editing are implemented
 from `ratefreak-plan.md`.
 Next.js will be hosted separately and act as a thin browser-facing proxy; all
-accounts, authorization and business logic remain in .NET. The frontend scaffold lives in `web/`; API integration, the browser-facing proxy,
-and remaining business features are not implemented. The Phase 3 TMDB adapter is
+accounts, authorization and business logic remain in .NET. Frontend Phase 1 lives
+in `web/`: a responsive shell, shared UI, TanStack Query and a restricted read-only
+browser-facing proxy. Account and business-feature screens remain future phases;
+see `docs/frontend-checklist.md`. The Phase 3 TMDB adapter is
 implemented; local TMDB activation and live verification completed on 2026-10-29.
 The checked-in default remains disabled until a server-side token is configured.
 IGDB and MusicBrainz live search/preview checks passed on 2026-10-30 using supplied
@@ -30,8 +32,8 @@ pnpm --dir web install --frozen-lockfile
 pnpm --dir web dev
 ```
 
-Open http://localhost:3000. The starter homepage works without the backend.
-Run `pnpm --dir web lint`, `pnpm --dir web typecheck`, and
+Open http://localhost:3000. The homepage works without the backend.
+Run `pnpm --dir web lint`, `pnpm --dir web typecheck`, `pnpm --dir web test`, and
 `pnpm --dir web build` to verify frontend changes. The backend setup follows.
 
 ## 1. Prerequisites

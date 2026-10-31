@@ -1,0 +1,22 @@
+.intro { padding-block: clamp(4rem, 9vw, 7.5rem) 4rem; max-width: 54rem; }
+.eyebrow { display: flex; align-items: center; gap: 0.6rem; color: var(--accent); font-size: 0.7rem; letter-spacing: 0.16em; font-weight: 700; }
+.eyebrow span { font-size: 1.5rem; letter-spacing: 0; }
+.intro h1 { margin-top: 1.75rem; font-size: clamp(3.25rem, 8vw, 6.5rem); font-weight: 750; letter-spacing: -0.065em; line-height: 1.05; }
+.intro h1 span { color: var(--accent); }
+.description { max-width: 34rem; margin-top: var(--space-4); color: var(--muted); font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.8; }
+.media { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; list-style: none; }
+.media li { padding: 0.4rem 0.8rem; border: 1px solid var(--border); border-radius: 2rem; color: var(--muted); font-size: 0.75rem; }
+.upcoming { margin-bottom: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.sectionHeading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2); margin-bottom: var(--space-4); }
+.sectionHeading h2 { font-size: 1.25rem; letter-spacing: -0.03em; }
+.badge { font-size: 0.7rem; padding: 0.35rem 0.6rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0.3rem; color: var(--muted); }
+.features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+.features article { padding-top: var(--space-2); }
+.number { color: var(--muted); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; }
+.features h3 { margin-top: var(--space-3); font-size: 1rem; font-weight: 600; }
+.features p { margin-top: var(--space-2); max-width: 20rem; color: var(--muted); font-size: 0.875rem; line-height: 1.7; }
+@media (max-width: 40rem) {
+  .features { grid-template-columns: 1fr; gap: 1.75rem; }
+  .features p { max-width: 30rem; }
+  .intro { padding-bottom: 3rem; }
+}

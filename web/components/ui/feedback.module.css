@@ -1,0 +1,11 @@
+.state {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--surface);
+}
+.state h2 { font-size: 1.125rem; }
+.state p { color: var(--muted); line-height: 1.6; }

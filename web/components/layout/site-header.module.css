@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.mark {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  align-items: center;
+  margin-right: 0.65rem;
+  width: 2rem;
+  height: 2rem;
+  padding-inline: 0.45rem;
+  background: var(--accent);
+  color: var(--background);
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.mark span { margin-top: 0.2rem; }
+.dot { color: var(--accent); }
+.home { padding: 0.5rem 0; text-underline-offset: 0.45rem; text-decoration-color: var(--accent); font-size: 0.875rem; }
