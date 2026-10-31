@@ -11,7 +11,10 @@ Collection discussions and further providers remain separate Phase 6 work.
 User requested audit DTO correction followed by public profiles/editing, chose fixed
 handles with editable display name/bio, and approved the written design. Implemented
 on `feat/public-profiles`, based on main `53e5e9d` with preceding audit DTO correction
-`fb4bef9` and design `0ace19f`. No merge or remote push. See README, ADR0012 and design/plan.
+`fb4bef9` and design `0ace19f`. At the user's request, fast-forward merged locally
+into `main` at `0952377`. Post-merge full suite:582 tests pass, zero failed/skipped.
+Deleted the merged feature branch under the user's cleanup preference. No remote
+push. See README, ADR0012 and design/plan.
 
 Public GET `/api/v1/users/{userId}` and `/api/v1/users/by-handle/{handle}` return only
 id/handle/displayName/bio/createdAt. ASCII case-insensitive handle lookup preserves
