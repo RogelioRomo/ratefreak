@@ -28,6 +28,12 @@ internal static class PersonalMediaEndpoints
             return Results.Ok(await service.ListAsync(UserId(user), new(status, type, page, pageSize), ct));
         }).RequireRateLimiting("personal-read").Produces<PersonalPage<LibraryItem>>().ProducesValidationProblem()
             .ProducesProblem(401).ProducesProblem(429).WithSummary("List your private tracking library");
+        library.MapGet("/{mediaId:guid}", async (Guid mediaId, ClaimsPrincipal user, ILibraryService service, CancellationToken ct) =>
+        {
+            var result = await service.FindAsync(UserId(user), mediaId, ct);
+            return result is null ? Results.NotFound() : Results.Ok(result);
+        }).RequireRateLimiting("personal-read").Produces<LibraryItem>().ProducesProblem(401).ProducesProblem(404)
+            .WithSummary("Get your own tracking entry for a title");
         Write(library.MapPut("/{mediaId:guid}", async (Guid mediaId, LibraryRequest request, ClaimsPrincipal user,
             ILibraryService service, CancellationToken ct) =>
         {
@@ -76,6 +82,13 @@ internal static class PersonalMediaEndpoints
     private static void MapReviews(WebApplication app)
     {
         var media = app.MapGroup("/api/v1/media/{mediaId:guid}/reviews").WithTags("Reviews");
+        app.MapGet("/api/v1/media/{mediaId:guid}/review", async (Guid mediaId, ClaimsPrincipal user, IReviewService service, CancellationToken ct) =>
+        {
+            var result = await service.FindOwnAsync(UserId(user), mediaId, ct);
+            return result is null ? Results.NotFound() : Results.Ok(result);
+        }).WithTags("Reviews").RequireAuthorization().RequireRateLimiting("personal-read")
+            .Produces<ReviewDetails>().ProducesProblem(401).ProducesProblem(404)
+            .WithSummary("Get your own visible review for a title");
         media.MapGet("", async (Guid mediaId, IReviewService service, CancellationToken ct, int page = 1, int pageSize = 20) =>
         {
             var errors = PageErrors(page, pageSize);

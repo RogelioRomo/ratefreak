@@ -32,7 +32,10 @@ build scripts; it does not combine the frontend and backend into a JS workspace.
 ## API boundary
 
 The browser client calls the same-origin `/api/v1/` proxy. It permits only
-`GET auth/csrf`, `GET users/me` and `POST auth/register`, `auth/login`, `auth/logout`.
+`GET auth/csrf`, `GET users/me`, `GET media`, `GET media/{guid}` and
+`POST auth/register`, `auth/login`, `auth/logout`, plus the provider routes below.
+The media list accepts query parameters: `q`, `type`, `page`, `pageSize`. Duplicate/unknown parameters
+and invalid values return 400; other routes reject query strings.
 Other paths return 404 and unsupported methods return 405 locally. Authenticated
 navigation checks the session; missing proxy configuration returns sanitized 503
 responses and an account-unavailable state without preventing the shell from loading.
@@ -110,6 +113,112 @@ entry, mount, window focus/pageshow, and every minute while active. BroadcastCha
 notifies other windows of identity changes using a signal with no account payload.
 Private content is hidden while identity is being revalidated; network/429 errors
 are shown explicitly instead of being interpreted as logged out.
+
+## Catalog
+
+`/catalog` browses the local catalog without signing in. Submit the labeled title
+search and media-type filter to update the URL; pagination preserves filters,
+and Back/Forward restores them. Pages contain up to 20 titles. Invalid URL
+filters show a reset link without requesting data. Empty/no-match/out-of-range
+pages provide recovery, and failures provide retry or rate-limit guidance.
+
+`/catalog/{guid}` shows the title, format, release date, description and artwork.
+Missing records have a distinct not-found state; missing fields and failed
+images have honest fallbacks. Artwork accepts only the canonical HTTPS TMDB
+w500 and IGDB cover formats emitted by the existing provider adapters; other
+references are not loaded. No generic image proxy or metadata HTML rendering.
+
+Catalog data uses the existing API origin and requires the .NET API/database.
+There is no bundled seed catalog, automatic provider import or demo-data mode.
+Provider search/preview/import is available through Find titles. Query cancellation
+and complete filter keys prevent older searches replacing newer results.
+
+## Provider discovery and import
+
+Use **Find titles from providers** in the catalog, or open `/catalog/discover`.
+Search is explicit, with provider/type/title/page in the URL. Only configured,
+enabled providers can be searched. Results open authoritative previews; signed-in
+visitors can explicitly import into the shared catalog. This does not create a
+personal library entry. New and existing imports have distinct outcomes and a
+link to the canonical title. Import requests are never automatically replayed.
+
+Anonymous previews offer Log in to import and return to the same preview after
+login. Continuations accept only canonical internal provider-preview, library and
+catalog-detail paths;
+other login destinations retain the existing `/account` behavior.
+
+The restricted proxy additionally permits GET `media/providers`, GET
+`media/external/search`, GET `media/external/{provider}/{type}/{externalId}` and
+POST `media/import`. Only external search accepts `q`, `provider`, `type`, `page`;
+unknown/duplicate parameters, invalid provider/type pairs and identities are
+rejected locally. Import uses the existing session, exact Origin, attribution
+secret, JSON/body limit and fresh CSRF protections. All responses remain no-store.
+
+### Enable local providers
+
+.NET does **not** load the root `.env` automatically. Normal Development startup
+loads .NET user-secrets; environment variables passed to the process override them.
+Copy existing IGDB ClientId/ClientSecret and MusicBrainz Contact into their
+`Providers:Igdb:*` / `Providers:MusicBrainz:*` user-secret keys privately, then set:
+
+```bash
+dotnet user-secrets set 'Providers:Igdb:Enabled' 'true' --project src/RateFreak.Api
+dotnet user-secrets set 'Providers:MusicBrainz:Enabled' 'true' --project src/RateFreak.Api
+dotnet run --project src/RateFreak.Api --launch-profile http
+```
+
+Restart an already running API after configuration changes. IGDB needs the Twitch
+app client credentials; MusicBrainz needs a maintainer contact (no API key for these
+read-only requests). Do not place provider credentials in `NEXT_PUBLIC_` settings.
+GET `http://localhost:5080/api/v1/media/providers` reports enabled flags without
+credentials. Existing root README provider sections describe each exact contract.
+The current local setup has all three providers enabled and matching browser-proxy
+settings for frontend writes. Those local secret values are not tracked.
+
+## Personal library, ratings and reviews
+
+Open `/library` after signing in, or open a catalog title to track it, rate it or
+write a public review. Library Status/Media type filters and pagination live in
+the URL. Saved dates load before editing; tracking PUT replaces all fields, so
+status changes preserve the dates shown. Dates do not infer status. Removing a
+library entry leaves its rating and review intact.
+
+Ratings accept0–5 in0.5 steps, including zero. Each title shows the local community
+count/average separately. Reviews are public plain text, one per user/title,
+editable up to10000 UTF-16 units. Spoilers start concealed in the public list.
+Review pagination is independent of the personal editor. Conflicting creation
+keeps the draft and requires an explicit choice to load an existing visible review.
+Tracking removal and review deletion use inline confirmations.
+
+Private reads and caches belong to account plus media/filter identity. During a
+background session check, mounted drafts stay concealed/inert and their reads and
+writes pause; an in-flight write is cancelled without replay. The same verified
+account resumes its drafts. Confirmed logout/account change discards them. Failed
+writes preserve input; mutations never retry automatically. Login continuations
+add only canonical `/library` and `/catalog/{guid}` to the existing provider paths.
+
+The proxy adds exact library GET/PUT/DELETE, own rating/review GET, rating
+PUT/DELETE, public aggregate/review-list GET, review POST and review-ID PATCH/DELETE
+routes. Only library and review lists accept their bounded validated query keys.
+Every write retains existing exact Origin, attribution, JSON/body and CSRF guards.
+The two new .NET reads are `GET users/me/library/{mediaId}` and
+`GET media/{mediaId}/review`; they derive the owner from session, return404 when
+absent, and never reveal hidden review content. No schema migration is needed.
+
+## Appearance
+
+The editorial design applies to Home, catalog, media details, library, login, registration and account pages.
+Use the header's sun, moon and monitor buttons for **Light**, **Dark** or **System**.
+Buttons have accessible names, tooltips and pressed states. First
+visits use Dark. Saved theme choices take precedence. The browser remembers the preference in `ratefreak.theme`;
+System follows device changes, and other tabs receive preference updates.
+Storage restrictions do not prevent switching in the current document.
+
+A static first-party script applies the stored choice before hydration. Only
+the theme preference is persisted; account data, passwords and query caches are
+not stored by the theme system. Theme changes preserve mounted forms and do not
+change session state. Shared semantic tokens and component guidance are recorded
+in the root `DESIGN.md`.
 
 ## Frontend conventions
 

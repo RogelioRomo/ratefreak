@@ -1,0 +1,9 @@
+.artwork { display: block; width: 100%; height: auto; }
+.surface { fill: var(--surface); }
+.paper, .paperFill { fill: var(--background); }
+.outline { fill: none; stroke: var(--foreground); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.record, .inkFill { fill: var(--foreground); }
+.accentFill { fill: var(--accent); }
+.accentStroke { stroke: var(--accent); }
+.groove { fill: none; stroke: var(--background); stroke-width: 1.25; opacity: 0.35; }
+.recordGlint { fill: none; stroke: var(--background); stroke-width: 3; stroke-linecap: round; opacity: 0.55; }

@@ -11,7 +11,11 @@ export function AccountDetails() {
   if (!session.account) return <LoadingState label="Checking your session…" />;
   const account = session.account;
   return <div className={styles.details}>
-    <dl><dt>Display name</dt><dd>{account.displayName}</dd><dt>Handle</dt><dd>@{account.handle}</dd><dt>Email</dt><dd>{account.email}</dd></dl>
+    <dl>
+      <div><dt>Display name</dt><dd>{account.displayName}</dd></div>
+      <div><dt>Handle</dt><dd>@{account.handle}</dd></div>
+      <div><dt>Email</dt><dd>{account.email}</dd></div>
+    </dl>
     <p>This information is private to your account. Logging out signs you out on all devices.</p>
   </div>;
 }

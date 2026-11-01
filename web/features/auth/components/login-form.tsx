@@ -1,5 +1,7 @@
 "use client";
 
+import type { LoginContinuationProps } from "../interfaces/login-continuation";
+import { safePreviewReturnTo } from "../query/return-to";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { FormEvent } from "react";
@@ -11,7 +13,7 @@ import { useSession } from "../hooks/use-session";
 import { FormError, fieldErrors } from "./form-error";
 import styles from "./auth.module.css";
 
-export function LoginForm() {
+export function LoginForm({ returnTo }: LoginContinuationProps = {}) {
   const mutation = useLogin();
   const session = useSession();
   const router = useRouter();
@@ -21,7 +23,7 @@ export function LoginForm() {
     const data = new FormData(form);
     const input: LoginRequest = { email: String(data.get("email") ?? ""), password: String(data.get("password") ?? "") };
     (form.elements.namedItem("password") as HTMLInputElement).value = "";
-    void mutation.submit(input).then(() => router.replace("/account")).catch(() => {});
+    void mutation.submit(input).then(() => router.replace(safePreviewReturnTo(returnTo ?? null) ?? "/account")).catch(() => {});
   }
   return (
     <form aria-label="Log in" onSubmit={submit} className={styles.form}>

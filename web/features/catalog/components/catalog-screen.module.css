@@ -1,0 +1,6 @@
+.screen { padding-block: 3rem 4rem; }
+.heading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 1.5rem; }
+.heading h1 { font-family: var(--font-editorial); font-weight: 500; font-size: clamp(3rem, 6vw, 5rem); line-height: 1.05; letter-spacing: -0.045em; }
+.heading p { color: var(--muted); line-height: 1.6; max-width: 26rem; }
+.recovery { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--accent); }
+@media (max-width: 48rem) { .screen { padding-block: 2rem 3rem; } .heading { display: block; } .heading p { margin-top: 1rem; } }

@@ -1,0 +1,21 @@
+{
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "createdAt": "2026-10-31T17:27:16.543Z",
+        "reason": "Agent design decision: editorial homepage display face documented in DESIGN.md; independent finish review found no material defect and explicitly retained this font."
+      },
+      {
+        "rule": "overused-font",
+        "value": "arial",
+        "createdAt": "2026-10-31T17:27:16.613Z",
+        "reason": "Agent triage: pre-existing account-page system fallback retained outside the homepage redesign; independent review confirmed preserving the existing account theme."
+      }
+    ]
+  }
+}

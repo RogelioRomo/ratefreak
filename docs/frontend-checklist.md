@@ -9,16 +9,217 @@ Design: [frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
 - [x] Review implementation plan and select native execution.
 - [x] Phase 1: foundation, transport/proxy, Query provider and shell.
 - [x] Phase 2: local accounts and session lifecycle.
+- [x] Approve [Phase 3 catalog design](superpowers/specs/2026-10-31-frontend-catalog-design.md)
+  and [implementation plan](superpowers/plans/2026-10-31-frontend-catalog.md).
 - [ ] Phase 2 follow-up: external sign-in and identity linking.
-- [ ] Phase 3: catalog browsing/search and details.
-- [ ] Phase 3 follow-up: provider preview/import.
-- [ ] Phase 4: library, ratings and reviews.
+- [x] Phase 3: catalog browsing/search and details.
+- [x] Phase 3 follow-up: provider preview/import.
+- [x] Phase 4: library, ratings and reviews.
 - [ ] Phase 5: collection metadata and visibility.
 - [ ] Phase 5 follow-up: fields, items and schema-change confirmation.
 - [ ] Phase 6: profiles/editing, follows and comments in focused slices.
 - [ ] Phase 7: moderation and release verification.
 
 ## Resume notes
+
+2026-11-01 integration: at the user's request, committed the completed editorial
+UI/themes, catalog/provider flows and Phase4 personal-media work and merged it
+locally into `main`. No remote push or deployment. Earlier uncommitted-state notes
+below are historical; the current Git branch/history records the integration.
+Local secrets and verification captures remain ignored.
+
+
+2026-11-01 resumed after the usage-limit pause. Phase4 implementation and scoped
+review were already complete; the documentation agent had written DESIGN.md and
+`.impeccable/surfaces/personal.md` before its final handoff failed. Verified the
+documents directly against components, styles and stored review evidence, preserving
+the existing design system. No product-code changes during this resumption.
+Reran **316/316 frontend tests**, lint, typecheck, production build and whitespace
+checks successfully. The previously recorded **54/54 backend integration tests**
+remain the backend evidence; backend code is unchanged. Restarted dev preview3100
+and API5080 with existing ignored configuration/user-secrets; PostgreSQL remains
+healthy with its existing volume. No real account/data writes, migrations, commits,
+pushes or deployment. Phase4 is complete; next is collection metadata/visibility.
+
+
+2026-10-31 Phase4 implementation: completed private `/library` status/type filters
+and URL paging, title tracking with optional dates, zero-inclusive half-point
+ratings, own public-review publishing/editing/deletion, community aggregate and
+paginated spoiler-controlled plain-text reviews. Login continuation supports exact
+library/title paths. Tracking removal preserves rating/review; deletion confirms
+inline. Forms load own saved state before replacement writes and preserve drafts
+on errors, conflicts and unrelated review-page changes.
+
+Added the two approved authenticated .NET own-record reads, filtered by session
+owner and excluding hidden reviews. Existing DTOs/write semantics retained;
+explicit own-review no-store added, no migration. New integration fact observed
+405 before routes existed, then **54/54 PersonalMedia integration tests** passed
+against disposable PostgreSQL. Exact proxy allowlists add PUT/PATCH/DELETE only
+where needed, with existing Origin/attribution/JSON/body/CSRF guards intact.
+
+Fresh review found one P1: background session checks unmounted new personal forms
+and discarded drafts. Added regression tests, observed two failures, then fixed
+only the new consumers: retain forms hidden/inert/disabled while identity checks,
+pause private reads/abort pending writes, resume same-account drafts and discard
+on confirmed logout/account change. No existing session privacy policy relaxed.
+Final frontend suite **316/316 across 35 files**, lint, typecheck, production build
+and whitespace checks pass. Mechanical design scan `[]`. A validation-found startup race also has a deterministic RED→GREEN regression:
+initial session discovery preserves only known public query namespaces, while
+private/unknown data and confirmed identity changes retain existing clearing.
+Scoped reviewer verdict: **ship**, both session corrections resolved; independently
+reran24 focused tests. No remaining minors in that scope.
+
+Production browser checks use synthetic APIs and intercepted writes: library and
+activity in both themes at 320/768/1024/1440, inline removal, empty/invalid/anonymous,
+write error, saved activity, and session-checking states. Review-page navigation
+and Back preserve drafts; status edit keeps dates and zero rating saves; tracking
+removal leaves rating/review. No overflow/runtime errors. Evidence ignored under
+`.impeccable/review/personal/` and `/tmp/ratefreak-personal-review.mjs`.
+Live read-only checks through the frontend proxy: public aggregate/reviews200,
+new private tracking/own-review401 with no-store. No real-account writes or catalog
+changes; disposable backend test data and browser fixtures cover writes.
+
+All work stays uncommitted on `feat/homepage-editorial`. Existing API5080,
+PostgreSQL and dev preview3100 remain available; temporary verification processes
+are stopped after review. Next slice: collection metadata/visibility. External
+sign-in and collection fields/items remain separate follow-ups.
+
+
+2026-10-31 personal-media slice preparation: user requested the next Phase4 slice.
+Draft [personal library, ratings and reviews design](superpowers/specs/2026-10-31-frontend-personal-media-design.md)
+covers private library, title controls and public reviews. Existing write APIs
+are ready; proposed two small authenticated own-record reads avoid paginated scans
+and accidental replacement of saved dates/reviews. Detailed design awaits user
+approval; no product/backend code changed in this preparation.
+
+
+2026-10-31 provider discovery/import: user approved the new detailed design and
+requested help enabling existing provider credentials. Implemented dedicated
+`/catalog/discover` search and provider/type/ID preview routes, explicit native
+filters with URL/history state, attribution, honest pagination without totals,
+disabled/empty/error/retry states and catalog entry links. Preview offers login
+continuation with a strict canonical internal-path allowlist. Authenticated import
+sends only identity through the existing CSRF boundary, suppresses duplicate and
+stale account/route results, reports created/already-present and invalidates catalog
+queries. No personal-library writes or automatic mutation retries/replays.
+
+Local runtime: `.env` provider flags were already true, but .NET does not load
+that file automatically. Copied existing IGDB and MusicBrainz settings privately
+via stdin to Development user-secrets, then restarted the API. All three capability
+flags are now true. Configured a generated matching browser-proxy secret in API
+user-secrets and ignored `web/.env.local` with loopback attribution, required by
+existing mutation guards; exact frontend origin is 3100. No credentials were logged
+or added to tracked files. Ordinary `dotnet run` now retains enabled providers.
+
+Live verification through the frontend proxy: TMDB search200/20 results and
+Star Wars preview200; IGDB search200/14 and The Witcher IV preview200; MusicBrainz
+search200/20 and Year Zero preview200. No live import/account/catalog writes.
+Synthetic production browser checks cover login continuation and import201/200/503,
+Back/Forward, keyboard skip/focus, both themes at 320/768/1024/1440 (16 captures)
+plus 7 state captures, with no overflow/runtime errors. Evidence is ignored
+`.impeccable/review/providers/` and `/tmp/ratefreak-provider-review.mjs`.
+Final full suite **260/260 across 31 files**, lint, typecheck and production build pass;
+mechanical design scan `[]`. Fresh combined code/UI review: **ship**, no material
+findings; independently reran94 focused tests. Documentation records completed
+capabilities. Compact-test formatting remains a nonblocking maintenance observation.
+Development preview3100, API5080 and PostgreSQL remain running; temporary production
+preview3102 and headless Chrome were stopped after verification.
+Current work remains uncommitted on the existing feature branch. Next slice:
+personal library statuses, ratings and reviews. External sign-in stays separate.
+
+
+2026-10-31 next-slice preparation: provider preview/import is the next catalog
+slice. Draft design: [provider search, preview and import](superpowers/specs/2026-10-31-frontend-provider-import-design.md).
+Live capabilities confirm TMDB enabled and MusicBrainz/IGDB disabled; keep current
+provider configuration. Proposed dedicated discovery/preview routes reuse the
+editorial system and restrict import to an explicit authenticated action. This
+new slice's detailed design awaits approval; no provider product code changed.
+
+
+2026-10-31 local API follow-up: at the user's request, started the existing
+PostgreSQL Compose service and Development API on5080. Created ignored
+`web/.env.local` with the API origin and frontend origin3100; existing API
+configuration has no browser-proxy shared secret enabled. Readiness returns200
+and the real frontend proxy GET media returns200 with two existing catalog
+records. Earlier fixture-only verification remains accurate for that run; live
+list/detail/filter reads are now verified. No database migrations or data writes.
+API, PostgreSQL and existing frontend preview remain running.
+
+
+2026-10-31 catalog implementation: completed the approved browsing/details slice
+on the existing `feat/homepage-editorial` branch, preserving the approved design
+and all earlier uncommitted work. `/catalog` supports explicit title/type search,
+20-item URL pagination, Back/Forward restoration, invalid-filter recovery,
+loading/error/429/retry, empty/no-match and out-of-range states. GUID detail pages
+show available fields with honest missing-artwork/date/description fallbacks and
+a distinct missing-title state. Catalog navigation is active for list/details;
+the homepage has a working catalog entry point. Dark/blue remains the default.
+
+The restricted proxy adds only GET media and GET media/GUID; list parameters are
+validated/re-encoded, duplicates and unknowns rejected, all other route/method,
+origin/cookie/attribution/cancellation/no-store protections preserved. Contracts
+match the C# catalog records. Artwork supports only inspected canonical HTTPS
+TMDB/IGDB provider formats; no arbitrary hosts or generic image proxy.
+
+Verification: baseline **134** tests. New query/API/proxy and real QueryClient DOM
+tests cover filters, pagination, late responses, URL restoration, retry/429,
+empty/detail/missing states, long titles, failed and untrusted artwork. Final
+checks: **189/189 tests across 25 files**, lint, typecheck, production build and
+`git diff --check` pass. Fresh independent code/UI review: **ship**, no material
+findings. Minor observation: single-column artwork makes long lists scroll-heavy
+at 320px; retained as the approved artwork-led layout. Mechanical design scan: `[]`.
+Production build required a Suspense boundary around runtime detail params under the
+installed Next.js Cache Components rules; build passes after that correction.
+Browser checks passed in both themes at **320/768/1024/1440px** (16 list/detail
+captures), plus six recovery/error captures. No overflow or runtime errors.
+Keyboard verifies skip link/focus and Enter submission; browser history verifies
+pagination/search/detail round trips. Real Next proxy verifies canonical query
+forwarding and local 400/404/no-store rejection. Ignored evidence:
+`.impeccable/review/catalog/`, `/tmp/ratefreak-catalog-review.mjs`.
+
+Integration limit: the .NET API on 5080 was unavailable. Browser/proxy integration
+used a disposable synthetic upstream on 5090, with no real account/catalog writes;
+it does not prove a live database/API connection. Development preview on 3100 uses
+its existing configuration; no synthetic records or fixture mode ship in the app.
+Next slice: provider preview/import (still unimplemented). No automatic commits,
+pushes, deployment, backend changes or migrations.
+
+
+2026-10-31 theme adjustment: user selected **Dark as the default** and **blue**
+instead of the dark theme's pink accent. HTML/CSS, pre-paint initialization,
+server control state and invalid/removed-preference fallbacks now default Dark.
+Saved Light/Dark/System choices remain respected. Dark accent is `#91b9ee`,
+with coordinated hover/pressed/on-accent colors; Light retains its oxblood palette.
+Four updated assertions observed failing before implementation, then the full
+**134/134 tests** passed; lint, typecheck and production build pass. Production
+browser verifies dark first frame even on a light device, selected moon button,
+saved Light after reload, no runtime errors and no overflow at320/1440px.
+Blue button contrast is **7.53:1**. Design scan clear. Local captures/report:
+ignored `.impeccable/review/blue/`. Development preview remains on3100; temporary
+production3102 and headless Chrome stopped. Still uncommitted; catalog stays queued.
+
+2026-10-31 icon/SVG refinement: at the user's request, replaced the theme dropdown
+with accessible sun/moon/monitor icon buttons and replaced the homepage raster
+collage with original inline SVG. Added Tabler React icons and updated the lockfile.
+The old raster file is removed. Current source/visual guidance is in `DESIGN.md`.
+Still uncommitted on `feat/homepage-editorial`; catalog remains approved/queued.
+
+2026-10-31 follow-up: user approved the homepage and requested the existing
+account pages match it, plus a dark app theme. Home, login, registration and
+account now share the editorial system with a Light/Dark/System header control.
+Still uncommitted on `feat/homepage-editorial`; catalog remains approved but
+unimplemented. Latest app-theme evidence below supersedes the homepage-only
+palette behavior in the earlier record. No new npm dependencies or backend work.
+
+2026-10-31: user approved the Phase 3 catalog design/plan, then requested a
+homepage redesign first. Selected editorial culture journal (warm ivory, ink,
+oxblood, media collage) and code-first native implementation. Work is on
+`feat/homepage-editorial` in the existing checkout; no commit or push. Phase 3
+implementation has not started. The next slice keeps its approval and uses the
+new visual direction in root `DESIGN.md`; do not repeat the direction interview.
+
+Homepage implementation and browser evidence are below. The previous branch
+and merge history remains recorded in the 2026-10-30 notes.
 
 2026-10-30: approved roadmap, written design and Phase 1 task plan; completed
 Phase 1 using native execution on `feat/frontend-foundation`. Phase 1 was committed
@@ -99,6 +300,108 @@ Plan: [frontend accounts](superpowers/plans/2026-10-30-frontend-accounts.md).
 
 ## Next session and release limits
 
+### Homepage redesign evidence — 2026-10-31
+
+- Replaced the dark slogan/pill/three-column homepage with an editorial lead,
+  warm paper/oxblood palette, self-hosted Fraunces and DM Sans, and original local
+  WebP collage. Font licenses and artwork generation prompt are retained with
+  the assets. No new npm dependencies or backend changes.
+- Added a working registration entry point and an in-page planned-features link.
+  Library/review/collection copy remains explicitly future functionality; no
+  fabricated media records, activity, ratings or social proof.
+- Theme applies to the homepage and shell through the active navigation pathname.
+  Hidden cached homepage DOM cannot keep the paper theme on account routes.
+  Existing shell test covers the retained-DOM route transition.
+- Final frontend suite: **123/123 across 19 files**; lint, typecheck and production
+  build pass. Homepage remains statically prerendered. `git diff --check` passes.
+- Production headless Chrome captures inspected at **320, 768, 1024 and 1440px**:
+  loaded artwork/fonts, no horizontal overflow and no runtime exceptions. Tab
+  focuses Skip to content; Enter focuses main. Planned-features anchor works;
+  primary link opens registration; its original dark palette returns, and Home
+  navigation restores ivory. Screenshot/report artifacts are local and ignored
+  in `.impeccable/review/`.
+- Browser verification fixtures only `GET users/me` as anonymous (401); it does
+  not exercise live account writes or require API/database/provider configuration.
+  Previous Phase 2 live account evidence remains unchanged.
+- Mechanical design scan reported advisory font-popularity warnings for Fraunces
+  and the pre-existing Arial account fallback. Fraunces is the deliberate editorial
+  display face; the account theme is outside this redesign's scope.
+- Independent fresh design/code review disposition: **ship**, no material fixes.
+  It reviewed all four production captures and the changed design/source files.
+- Left the development preview on **http://localhost:3100** for user review.
+  Stopped temporary production servers on 3101/3102 and headless Chrome. No API
+  or database was started for this redesign.
+
+### Editorial account pages and app themes — 2026-10-31
+
+Plan: [editorial app themes](superpowers/plans/2026-10-31-editorial-app-themes.md).
+
+- Applied the approved editorial typography, wordmark, palette, buttons, form
+  fields, feedback and spacing to login, registration and account. Desktop uses
+  a heading/form split; mobile stacks in reading order. Account details are
+  simple labeled rows. Authentication/session logic remains unchanged.
+- Replaced homepage-specific palette selection with app-wide Light/Dark/System
+  themes. Light remains the first-visit default. Dark uses warm ink, cream and
+  rose; original artwork remains an illustrative printed collage.
+- Native labeled header select; browser-only `ratefreak.theme` persistence,
+  pre-paint static initialization, device changes in System mode, other-tab
+  synchronization and usable switching when storage is blocked. Theme changes
+  do not remount forms, clear inputs, alter sessions or persist account data.
+- Theme tests observed **9 failing assertions → 9 passing**. Additional control
+  tests cover saved selection, labeled options and preserving adjacent input.
+  Full suite: **134/134 across 21 files**. Lint, typecheck and production build
+  pass. Home and account route templates remain statically prerendered.
+- Inspected **16 production screenshots**: Home/login/register/account in both
+  themes at 320px and 1440px. All fit without horizontal overflow; artwork and
+  local fonts load. Also checked account-page layout widths at 768/1024px.
+  Captures and report: ignored `.impeccable/review/themes/`.
+- Real keyboard ArrowDown/Enter switches the native select. Theme changes preserve
+  actual email/password nodes and entered values; failed login still clears the
+  submitted password and preserves email. Error guidance remains present across
+  theme changes. Tab/Enter skip navigation still reaches main.
+- Reload with a saved Dark preference is dark on the first rendered frame.
+  Browser device emulation switches System appropriately; explicit Dark overrides
+  a light device setting. A real second page's localStorage change updates the
+  first page's theme/control. No application runtime exceptions or console errors.
+- Measured text contrast: light body 13.35, muted 5.44, primary action 8.56,
+  error 6.04; dark 14.26, 8.40, 7.69 and 7.85 respectively. Input/selector borders
+  are at least 3.10. Mechanical design scan returned **no findings**.
+- Browser verification uses intercepted API responses for an anonymous session,
+  a synthetic signed-in account and login validation failure. No live account
+  credentials, writes, database or provider calls. Prior live auth evidence remains
+  historical; backend suites were not rerun for these frontend-only changes.
+- Independent fresh finish review: **ship**, no material fixes after reviewing
+  all 16 final production captures and the theme/page source. Left the development
+  preview on **http://localhost:3100**; stopped the temporary production server
+  on 3102 and headless Chrome. No commit, push or deployment.
+
+### Icon controls and SVG artwork — 2026-10-31
+
+- Replaced the dropdown with three native theme buttons using Tabler sun, moon
+  and desktop icons. Accessible names, native tooltips, aria-pressed state,
+  visible focus and 44px targets preserve all three choices and keyboard use.
+  Homepage links also use small Tabler direction icons.
+- Removed `culture-collage.webp` and its page dependency. Original inline SVG
+  in `features/home/components/culture-artwork.tsx` represents the four media
+  formats with crisp geometry and semantic theme colors, plus an accessible label.
+- Updated theme-control assertions observed **2 failing tests → passing**; final
+  full suite remains **134/134 across 21 files**. Lint/typecheck/build pass.
+  Build and temporary browser/preview commands required sandbox escalation;
+  successful build evidence supersedes the blocked TypeScript subprocess attempt.
+- All 16 production captures inspected at 320/1440px across Home/login/register/
+  account and both themes: no overflow. Account layouts also checked at768/1024px.
+  Native Enter activates Dark, preserving typed fields. Reload/first-frame theme,
+  System changes, explicit override, real second-page storage sync and skip
+  navigation pass. No runtime/console errors; API responses are synthetic fixtures.
+  The initial automation omitted Enter's carriage-return text; correcting the
+  event payload verified behavior without changing application code.
+- Design scan: **no findings**. Independent fresh finish review: **ship**,
+  no material fixes. Captures/report are ignored in `.impeccable/review/icons/`.
+- Left the development preview on **http://localhost:3100**. Temporary production
+  preview3102 and headless Chrome stopped; no commit, push or deployment.
+
+### Catalog and release work
+
 Local account Phase 2 is complete. External Google/GitHub sign-in, callback/correlation
 cookie handling and explicit identity linking are a separate optional follow-up.
 The next planned feature slice is Phase 3 catalog browsing/search/details,
@@ -137,7 +440,10 @@ No deferred minor code-review findings.
 
 > Continue RateFreak frontend Phase 3: catalog browsing, search and details.
 > Read docs/frontend-checklist.md, the approved frontend roadmap, web/README.md
-> and web/AGENTS.md first. Start a new branch from main. Keep interfaces in
+> and web/AGENTS.md first. The Phase 3 design/plan is already approved. Preserve
+> the uncommitted homepage redesign on feat/homepage-editorial; resolve its
+> integration before branching from main. Follow DESIGN.md for frontend visuals.
+> Keep interfaces in
 > separate interfaces/ files, components small, and server-state caching in
 > TanStack Query. Plan and implement only the next focused slice; external
 > sign-in and provider imports can remain separate sessions.

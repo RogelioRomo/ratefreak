@@ -15,6 +15,9 @@ internal sealed class ReviewService(RateFreakDbContext context) : IReviewService
         select new ReviewDetails(review.Id, review.MediaItemId, new ReviewAuthor(author.Id, author.UserName!, author.DisplayName),
             review.Body, review.IsSpoiler, review.CreatedAt, review.UpdatedAt);
 
+    public Task<ReviewDetails?> FindOwnAsync(Guid userId, Guid mediaId, CancellationToken ct) =>
+        Items(context.Reviews.AsNoTracking().Where(x => x.UserId == userId && x.MediaItemId == mediaId && !x.IsHidden)).SingleOrDefaultAsync(ct);
+
     public async Task<PersonalPage<ReviewDetails>?> ListAsync(Guid mediaId, int page, int pageSize, CancellationToken ct)
     {
         await using var tx = await context.Database.BeginTransactionAsync(IsolationLevel.RepeatableRead, ct);

@@ -10,8 +10,8 @@ function rejectMethod(): Response {
 }
 
 export const POST = GET;
-export const PUT = rejectMethod;
-export const PATCH = rejectMethod;
-export const DELETE = rejectMethod;
+export const PUT = GET;
+export const PATCH = GET;
+export const DELETE = GET;
 export const HEAD = rejectMethod;
 export const OPTIONS = rejectMethod;

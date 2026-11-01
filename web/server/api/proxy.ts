@@ -1,4 +1,7 @@
 import "server-only";
+import { personalList, validatePersonalQuery } from "./personal-policy";
+import { providerIdentity, validateProviderSearch } from "./provider-policy";
+import { validateCatalogQuery } from "./catalog-query";
 import { readApiProxyConfig } from "./config";
 import { selectCookies } from "./cookies";
 import { isAllowedRoute } from "./route-policy";
@@ -15,14 +18,36 @@ export function proxyProblem(status: number, title: string): Response {
 }
 
 export async function proxyRequest(request: Request, path: readonly string[]): Promise<Response> {
-  if (!["GET", "POST"].includes(request.method)) return proxyProblem(405, "Method not allowed.");
+  if (!["GET", "POST", "PUT", "PATCH", "DELETE"].includes(request.method)) return proxyProblem(405, "Method not allowed.");
   const incoming = new URL(request.url);
-  if (incoming.search || incoming.pathname !== `/api/v1/${path.join("/")}`) {
+  const listKind = personalList(path);
+  const externalSearch = path.length === 3 && path[0] === "media" && path[1] === "external" && path[2] === "search";
+  if ((incoming.search && !(request.method === "GET" && ((path.length === 1 && path[0] === "media") || externalSearch || listKind))) || incoming.pathname !== `/api/v1/${path.join("/")}`) {
     return proxyProblem(404, "API route not found.");
   }
   if (!isAllowedRoute(request.method, path)) {
-    return isAllowedRoute("GET", path) || isAllowedRoute("POST", path)
+    return ["GET", "POST", "PUT", "PATCH", "DELETE"].some(method => isAllowedRoute(method, path))
       ? proxyProblem(405, "Method not allowed.") : proxyProblem(404, "API route not found.");
+  }
+
+  let query = "";
+  if (path.length === 1 && path[0] === "media") {
+    try { const validated = validateCatalogQuery(incoming.searchParams).toString(); query = validated ? `?${validated}` : ""; }
+    catch { return proxyProblem(400, "Invalid catalog filters."); }
+  }
+
+  if (externalSearch) {
+    try { query = `?${validateProviderSearch(incoming.searchParams)}`; }
+    catch { return proxyProblem(400, "Invalid provider filters."); }
+  }
+  if (listKind && request.method === "GET") {
+    try { const value = validatePersonalQuery(incoming.searchParams, listKind).toString(); query = value ? `?${value}` : ""; }
+    catch { return proxyProblem(400, "Invalid personal filters."); }
+  }
+  let upstreamPath = incoming.pathname;
+  if (path.length === 5 && path[0] === "media" && path[1] === "external") {
+    const identity = providerIdentity(path[2], path[3], path[4])!;
+    upstreamPath = `/api/v1/media/external/${identity.provider}/${identity.type}/${identity.externalId}`;
   }
 
   let config;
@@ -30,7 +55,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   catch { return proxyProblem(503, "API proxy is not configured."); }
 
   const headers = new Headers({ Accept: "application/json" });
-  const mutation = request.method === "POST";
+  const mutation = request.method !== "GET";
   try {
     if (mutation) validateMutation(request, config);
     clientAttributionHeaders(request, config).forEach((value, name) => headers.set(name, value));
@@ -58,7 +83,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
       headers.set("Content-Type", "application/json");
       headers.set("X-CSRF-TOKEN", request.headers.get("X-CSRF-TOKEN")!);
     }
-    const upstream = await fetch(`${config.apiOrigin}${incoming.pathname}`, {
+    const upstream = await fetch(`${config.apiOrigin}${upstreamPath}${query}`, {
       method: request.method, headers, body: requestBody, cache: "no-store", redirect: "manual", signal: controller.signal,
     });
     if (upstream.status >= 300 && upstream.status < 400) {

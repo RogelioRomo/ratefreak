@@ -142,3 +142,9 @@ it("disables pending submissions and sends a double submit only once", async () 
   expect(fetchMock.mock.calls.filter(([url]) => String(url).endsWith("auth/login"))).toHaveLength(1);
   await act(async () => { signedIn = true; resolve(Response.json(account)); });
 });
+
+it("returns to a canonical provider preview after login", async () => {
+  mount(<LoginScreen returnTo="/catalog/discover/tmdb/movie/11" />);
+  await fillLogin(); fireEvent.submit(screen.getByRole("form", { name: "Log in" }));
+  await waitFor(() => expect(navigation.replace).toHaveBeenCalledWith("/catalog/discover/tmdb/movie/11"));
+});

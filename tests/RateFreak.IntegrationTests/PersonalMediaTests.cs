@@ -55,6 +55,34 @@ public sealed class PersonalMediaTests(AccountDatabase database) : IClassFixture
     }
 
     [Fact]
+    public async Task Own_record_reads_enforce_identity_absence_and_hidden_visibility()
+    {
+        await using var factory = Factory(); using var owner = Client(factory); using var other = Client(factory);
+        var id = await Media();
+        var tracking = $"/api/v1/users/me/library/{id}";
+        var ownReview = $"/api/v1/media/{id}/review";
+        Assert.Equal(HttpStatusCode.Unauthorized, (await owner.GetAsync(tracking, Ct)).StatusCode);
+        Assert.Equal(HttpStatusCode.Unauthorized, (await owner.GetAsync(ownReview, Ct)).StatusCode);
+        await SignIn(owner); await SignIn(other);
+        Assert.Equal(HttpStatusCode.NotFound, (await owner.GetAsync(tracking, Ct)).StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, (await owner.GetAsync(ownReview, Ct)).StatusCode);
+        await owner.PutAsJsonAsync(tracking, new { status = "planned", startedAt = "2026-01-01" }, Ct);
+        var response = await owner.GetAsync(tracking, Ct);
+        Assert.True(response.Headers.CacheControl?.NoStore);
+        Assert.Equal("2026-01-01", (await Json(response)).GetProperty("startedAt").GetString());
+        Assert.Equal(HttpStatusCode.NotFound, (await other.GetAsync(tracking, Ct)).StatusCode);
+        var created = await Json(await owner.PostAsJsonAsync($"/api/v1/media/{id}/reviews", new { body = "Owner review" }, Ct), HttpStatusCode.Created);
+        var reviewResponse = await owner.GetAsync(ownReview, Ct);
+        Assert.True(reviewResponse.Headers.CacheControl?.NoStore);
+        Assert.Equal("Owner review", (await Json(reviewResponse)).GetProperty("body").GetString());
+        Assert.Equal(HttpStatusCode.NotFound, (await other.GetAsync(ownReview, Ct)).StatusCode);
+        await using var db = Context();
+        var reviewId = created.GetProperty("id").GetGuid();
+        await db.Reviews.Where(x => x.Id == reviewId).ExecuteUpdateAsync(x => x.SetProperty(r => r.IsHidden, true), Ct);
+        Assert.Equal(HttpStatusCode.NotFound, (await owner.GetAsync(ownReview, Ct)).StatusCode);
+    }
+
+    [Fact]
     public async Task Library_query_executes_against_PostgreSQL()
     {
         await using var factory = Factory();

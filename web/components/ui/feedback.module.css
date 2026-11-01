@@ -7,5 +7,7 @@
   border-radius: var(--radius-small);
   background: var(--surface);
 }
-.state h2 { font-size: 1.125rem; }
-.state p { color: var(--muted); line-height: 1.6; }
+.state h2 { margin-bottom: 0.5rem; font-size: 1.125rem; font-weight: 600; }
+.state p { color: var(--muted); line-height: 1.7; }
+.errorState { background: var(--error-surface); border-color: var(--error-border); }
+.errorState h2, .errorState p { color: var(--error); }

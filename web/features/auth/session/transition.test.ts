@@ -31,3 +31,20 @@ it("clears private data on expiry or account replacement without cancelling its 
   expect(client.getQueryData(["session"])).toEqual(account);
   client.clear();
 });
+
+it("keeps public requests alive during initial session discovery while clearing private state", async () => {
+  const client = createQueryClient();
+  let publicSignal!: AbortSignal;
+  let complete!: (value: string) => void;
+  const pending = client.fetchQuery({ queryKey: ["catalog", "detail", "title"], queryFn: ({ signal }) => {
+    publicSignal = signal;
+    return new Promise<string>(resolve => { complete = resolve; });
+  } }).catch(() => "cancelled");
+  client.setQueryData(["personal", "old", "review"], "private text");
+  await reconcileIdentity(client, account);
+  expect(client.getQueryData(["personal", "old", "review"])).toBeUndefined();
+  expect(publicSignal.aborted).toBe(false);
+  complete("public title");
+  expect(await pending).toBe("public title");
+  client.clear();
+});

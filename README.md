@@ -535,8 +535,10 @@ from the session; request bodies cannot specify a user ID and reject extra field
 | Method | Route | Behavior |
 | --- | --- | --- |
 | GET | `/api/v1/users/me/library` | Your private paginated library; optional `status` and `type` |
+| GET | `/api/v1/users/me/library/{mediaId}` | Your own tracking entry;404 when absent |
 | PUT | `/api/v1/users/me/library/{mediaId}` | Replace tracking status and optional dates |
 | DELETE | `/api/v1/users/me/library/{mediaId}` | Remove your entry; 204 even if absent |
+| GET | `/api/v1/media/{mediaId}/review` | Your own visible review;404 when absent/hidden |
 | GET | `/api/v1/media/{mediaId}/rating` | Your rating; 404 when unrated |
 | PUT | `/api/v1/media/{mediaId}/rating` | Set/update your rating |
 | DELETE | `/api/v1/media/{mediaId}/rating` | Remove your rating; 204 even if absent |
@@ -587,7 +589,9 @@ includes Retry-After. Limits remain per instance. Authenticated mutations requir
 
 Apply `AddPersonalMedia` with the EF database update command above. The additive
 migration creates `user_media`, `ratings`, `reviews`, constraints and indexes only.
-Phase 4 adds no frontend, private reviews or moderation workflow; collections are
+The original backend Phase4 added no frontend; the web app now exposes library,
+ratings and public reviews, including two authenticated own-record reads with no
+schema change. Private reviews and new moderation interfaces remain outside this slice; collections are
 implemented separately in Phase 5 below.
 Email ownership/recovery and production hardening remain required before public launch.
 

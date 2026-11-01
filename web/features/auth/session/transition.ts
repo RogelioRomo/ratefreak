@@ -14,7 +14,11 @@ export async function reconcileIdentity(client: QueryClient, next: AccountProfil
   const previous = client.getQueryData<AccountProfile | null>(sessionQueryKey);
   if (previous?.id === next?.id) return;
   resetCsrfState();
-  const privateQueries = { predicate: (query: Query) => query.queryKey[0] !== "session" };
+  // Initial discovery must not cancel public title loads mounted alongside the session.
+  // Private/unknown namespaces still clear; confirmed identity changes clear everything.
+  const publicRoots = new Set(["catalog", "community", "providers"]);
+  const privateQueries = { predicate: (query: Query) => query.queryKey[0] !== "session" &&
+    (previous !== undefined || !publicRoots.has(query.queryKey[0] as string)) };
   await client.cancelQueries(privateQueries);
   client.removeQueries(privateQueries);
 }

@@ -15,6 +15,9 @@ internal sealed class LibraryService(RateFreakDbContext context) : ILibraryServi
         select new LibraryItem(new MediaSummary(media.Id, media.MediaType, media.Title, media.ReleaseDate, media.ImageReference),
             entry.Status, entry.StartedAt, entry.CompletedAt, entry.CreatedAt, entry.UpdatedAt);
 
+    public Task<LibraryItem?> FindAsync(Guid userId, Guid mediaId, CancellationToken ct) =>
+        Items(context.LibraryEntries.AsNoTracking().Where(x => x.UserId == userId && x.MediaItemId == mediaId)).SingleOrDefaultAsync(ct);
+
     public async Task<PersonalPage<LibraryItem>> ListAsync(Guid userId, LibraryQuery query, CancellationToken ct)
     {
         await using var tx = await context.Database.BeginTransactionAsync(IsolationLevel.RepeatableRead, ct);
