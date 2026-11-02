@@ -23,9 +23,12 @@ The frontend currently supports local registration, login and account/session
 management, plus public catalog browsing, title/type search, pagination and
 media details, provider discovery/preview and explicit authenticated catalog import.
 Private library tracking, ratings and public review creation/editing are now
-available on catalog details, with a dedicated library page. Collections and
-social interfaces remain future slices;
-homepage copy must distinguish current functionality from planned functionality.
+available on catalog details, with a dedicated library page. Accessible collection
+browsing, private-default creation and owner metadata/visibility editing are now
+available, alongside typed custom-field definition/configuration, custom or catalog
+entries, entry value editing and explicit confirmed field/entry removal. Accessible
+collections expose their entries read-only to visitors. Social interfaces remain
+planned; homepage copy must distinguish current functionality from planned functionality.
 
 Use the existing Next.js App Router, TypeScript, CSS Modules and TanStack Query.
 Keep object interfaces in separate files. The .NET API owns business rules and

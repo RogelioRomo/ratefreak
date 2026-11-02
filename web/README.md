@@ -205,6 +205,76 @@ The two new .NET reads are `GET users/me/library/{mediaId}` and
 `GET media/{mediaId}/review`; they derive the owner from session, return404 when
 absent, and never reveal hidden review content. No schema migration is needed.
 
+## Collections
+
+`/collections` lists public collections plus the signed-in viewer's own private
+collections. Apply All accessible or My collections explicitly; scope and 20-item
+paging live in the URL. Anonymous My collections offers login. Collection reads
+wait for verified session identity and use viewer-specific cache keys, including
+an explicit anonymous identity. Content is concealed during identity checks.
+
+`/collections/new` creates a collection with name, optional description and
+Private/Public visibility; Private is the default. Existing owners can edit these
+fields at `/collections/{guid}`. Public visibility also exposes existing entries.
+Collection detail also supports typed fields, paginated entries and owner entry
+creation. There is no collection deletion control.
+
+Edits send all metadata plus the loaded revision. Background refreshes preserve
+dirty drafts and their revision. A conflict retains the draft and requires an
+explicit Reload latest metadata before another save; reloading replaces the draft
+and refreshes the detail snapshot. Writes never retry automatically. An uncertain
+create offers My collections to check the result before creating again. Session
+checks conceal and retain same-account drafts, cancel pending writes and pause
+reads; confirmed identity changes discard them. GUID cache identities are canonical
+lowercase. Visibility saves clear obsolete snapshots for other viewers.
+
+The proxy adds only GET/POST `collections` and GET/PATCH `collections/{guid}`.
+Only the GET list accepts `ownOnly`, `page`, `pageSize`; unknown/duplicate filters
+and other query-bearing routes are rejected. Existing Origin, CSRF, JSON/body,
+cookie, attribution, cancellation and no-store protections remain required.
+Login continuations add only canonical `/collections`, `/collections/new` and
+lowercase-GUID detail paths, without query strings or automatic write replay.
+No backend changes or migrations are needed for these collection interfaces.
+
+### Fields and entries
+
+Collection owners can define up to 30 text, number, boolean, date or select fields.
+Keys and types are immutable; labels, required settings, configuration and integer
+positions are editable. Required/configuration changes must preserve every saved
+entry's validity; incompatible proposals return a conflict without changing data.
+Adding a required field is disabled for a populated collection. Positions permit
+ties; there is no automatic renumbering or drag sorting.
+
+Add entry supports a custom title or explicit selection from the local catalog.
+Canonical identity cannot change on edit and duplicate canonical titles within
+one collection are rejected. No provider import or personal-library write happens
+as a side effect. Entry paging uses `itemsPage` in the collection URL. Dedicated
+`/collections/{guid}/items/{guid}` pages show literal field values and owner-only
+editing/removal. Optional Set a value toggles distinguish unset from false, zero
+and empty text. Replacement writes preserve all unchanged values.
+
+Dynamic numbers and numeric bounds use a feature-owned exact JSON/decimal codec,
+preserving the backend's .NET decimal range without JavaScript rounding. Shared
+transport callbacks are opt-in; other features retain their existing JSON behavior.
+Collection/item read bundles bracket the item read with two collection-revision
+reads and retry once if it changed. Drafts keep the revision loaded at editor
+initialization. Only one owner editor opens locally at a time. Confirmed writes
+close their editor before refresh; a failed/interrupted refresh blocks further
+writes and retries only the read.
+
+Field removal requires a fresh owner-only impact preview and explicit permanent
+deletion confirmation, including when no entries have populated values. Deletion
+uses the preview's revision; a stale revision or session uncertainty invalidates
+consent and requires a new preview/click. Removing an entry likewise requires
+fresh review and explicit confirmation; catalog/personal data remain independent.
+
+The proxy additionally permits exact collection item GET/POST, item-ID GET/PATCH/
+DELETE, field POST, field-ID PATCH/DELETE and deletion-impact GET paths. Item lists
+accept only page/pageSize. DELETE queries accept a positive safe-integer
+expectedRevision; field DELETE additionally requires exactly confirm=true.
+Other query-bearing field/item routes stay closed. Origin/CSRF/JSON/body-limit,
+attribution, cookie, cancellation and no-store protections apply throughout.
+
 ## Appearance
 
 The editorial design applies to Home, catalog, media details, library, login, registration and account pages.

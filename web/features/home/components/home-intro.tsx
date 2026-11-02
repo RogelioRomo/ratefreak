@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IconArrowDown, IconArrowUpRight } from "@tabler/icons-react";
+import { IconArrowUpRight } from "@tabler/icons-react";
 import { HomePlans } from "./home-plans";
 import { CultureArtwork } from "./culture-artwork";
 import styles from "./home-intro.module.css";
@@ -14,10 +14,8 @@ export function HomeIntro() {
             The games you lose yourself in. A place for everything you’re into.</p>
           <div className={styles.actions}>
             <Link href="/register" className={styles.primary}>Create your account <IconArrowUpRight size={18} stroke={1.75} aria-hidden="true" /></Link>
-            <a href="#taking-shape" className={styles.secondary}>See what&apos;s taking shape <IconArrowDown size={16} stroke={1.75} aria-hidden="true" /></a>
+            <Link href="/catalog" className={styles.secondary}>Browse the catalog <IconArrowUpRight size={16} stroke={1.75} aria-hidden="true" /></Link>
           </div>
-          <Link href="/catalog" className={styles.secondary}>Browse the catalog <IconArrowUpRight size={16} stroke={1.75} aria-hidden="true" /></Link>
-          <p className={styles.availability}>Accounts are open. Your library is ready.</p>
         </div>
         <figure className={styles.visual}>
           <CultureArtwork />

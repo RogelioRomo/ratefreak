@@ -70,3 +70,12 @@ it("prefers caller cancellation when an error body finishes during the abort", a
   });
   await expect(apiRequest("users/me", { signal: controller.signal })).rejects.toMatchObject({ name: "AbortError" });
 });
+it('supports opt-in exact JSON encoding/decoding under the unchanged CSRF boundary',async()=>{
+ fetchMock.mockResolvedValueOnce(Response.json({requestToken:'token'})).mockResolvedValueOnce(new Response('{"n":9007199254740993}'));
+ const result=await apiRequest<string>('collections',{method:'POST',body:{n:'exact'},encodeBody:()=>'{"n":9007199254740993}',decode:text=>text});
+ expect(result).toBe('{"n":9007199254740993}');expect(fetchMock.mock.calls[1][1]).toMatchObject({body:'{"n":9007199254740993}',headers:{'X-CSRF-TOKEN':'token'}});
+});
+it('does not decode204 and preserves cancellation raised by an opt-in decoder',async()=>{
+ fetchMock.mockResolvedValueOnce(new Response(null,{status:204}));const decode=vi.fn();expect(await apiRequest('collections',{decode})).toBeUndefined();expect(decode).not.toHaveBeenCalled();
+ const controller=new AbortController();fetchMock.mockResolvedValueOnce(new Response('{}'));await expect(apiRequest('collections',{signal:controller.signal,decode:()=>{controller.abort();return {};}})).rejects.toMatchObject({name:'AbortError'});
+});

@@ -2,7 +2,7 @@ import styles from "./home-plans.module.css";
 
 export function HomePlans() {
   return (
-    <section className={styles.plans} id="taking-shape" aria-labelledby="plans-title">
+    <section className={styles.plans} aria-labelledby="plans-title">
       <div className={styles.introduction}>
         <h2 id="plans-title">More than a list.<br /> <span>A point of view.</span></h2>
         <p className={styles.status}>A place for your interests</p>

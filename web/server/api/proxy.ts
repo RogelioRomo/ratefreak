@@ -1,4 +1,5 @@
 import "server-only";
+import { collectionQuery } from "./collection-policy";
 import { personalList, validatePersonalQuery } from "./personal-policy";
 import { providerIdentity, validateProviderSearch } from "./provider-policy";
 import { validateCatalogQuery } from "./catalog-query";
@@ -21,8 +22,11 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   if (!["GET", "POST", "PUT", "PATCH", "DELETE"].includes(request.method)) return proxyProblem(405, "Method not allowed.");
   const incoming = new URL(request.url);
   const listKind = personalList(path);
+  let collectionParams: URLSearchParams | null = null;
+  try { collectionParams = collectionQuery(request.method,path,incoming.searchParams); }
+  catch { return proxyProblem(400,"Invalid collection filters."); }
   const externalSearch = path.length === 3 && path[0] === "media" && path[1] === "external" && path[2] === "search";
-  if ((incoming.search && !(request.method === "GET" && ((path.length === 1 && path[0] === "media") || externalSearch || listKind))) || incoming.pathname !== `/api/v1/${path.join("/")}`) {
+  if ((incoming.search && !((collectionParams !== null || (request.method === "GET" && ((path.length === 1 && path[0] === "media") || externalSearch || listKind))))) || incoming.pathname !== `/api/v1/${path.join("/")}`) {
     return proxyProblem(404, "API route not found.");
   }
   if (!isAllowedRoute(request.method, path)) {
@@ -44,6 +48,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
     try { const value = validatePersonalQuery(incoming.searchParams, listKind).toString(); query = value ? `?${value}` : ""; }
     catch { return proxyProblem(400, "Invalid personal filters."); }
   }
+  if (collectionParams !== null) {const value=collectionParams.toString();query=value?`?${value}`:"";}
   let upstreamPath = incoming.pathname;
   if (path.length === 5 && path[0] === "media" && path[1] === "external") {
     const identity = providerIdentity(path[2], path[3], path[4])!;

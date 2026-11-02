@@ -89,6 +89,30 @@ or account changes. Review pagination, failed writes and unrelated saves preserv
 drafts. No new visual primitives are needed. Surface guidance and evidence are in
 [.impeccable/surfaces/personal.md](.impeccable/surfaces/personal.md).
 
+## Collections
+
+Mode: Operate. Collection summaries, creation, owner metadata editing, fields and
+entries reuse Fraunces headings, DM Sans text, flat divided sections and semantic
+theme tokens. Present wrapping title links, owner, plain-text description and
+visibility in a semantic list; use a labeled native scope select with explicit
+Apply and URL-owned pagination. Creation places the heading beside the native
+metadata form on desktop and stacks at 48rem. Summary rows stack at 32rem.
+
+Collection detail uses Entries and Fields sections with one inline owner editor
+at a time. Entry details use labeled values, preserving line breaks and wrapping
+long text. Keep field definitions as divided rows with explicit position controls;
+use native text, number-text, date, Yes/No and select controls with visible labels.
+Optional values have an explicit Set a value checkbox, distinguishing unset from
+empty text, false and zero. Reuse the existing input surfaces, small radius,
+accent focus outline and shared buttons; no new visual primitives or animation.
+
+Explain public visibility and permanent value loss before action. Failed writes
+retain drafts; conflicts require deliberate reload with a draft-replacement
+warning. Keep session-checking content concealed and inactive while preserving
+same-account drafts. Field removal requires a fresh impact preview and explicit
+confirmation; entry removal names the entry before confirmation. Surface guidance
+and evidence are in [.impeccable/surfaces/collections.md](.impeccable/surfaces/collections.md).
+
 ## Light, dark and system
 
 Dark is the first-visit default, explicitly requested by the user. Saved Light,

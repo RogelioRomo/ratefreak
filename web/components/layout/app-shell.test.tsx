@@ -19,7 +19,6 @@ it("provides one main landmark, skip navigation and working Home navigation", ()
   expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
   expect(within(main).getByRole("heading", { level: 1 })).toBeInTheDocument();
   expect(within(main).getByRole("link", { name: "Create your account" })).toHaveAttribute("href", "/register");
-  expect(within(main).getByRole("link", { name: "See what's taking shape" })).toHaveAttribute("href", "#taking-shape");
   expect(within(main).getByRole("heading", { name: "Good taste deserves a home.", level: 1 })).toBeInTheDocument();
   expect(within(main).getByText("A place for your interests")).toBeInTheDocument();
   expect(within(main).getByRole("link", { name: /browse the catalog/i })).toHaveAttribute("href", "/catalog");

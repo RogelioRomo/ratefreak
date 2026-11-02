@@ -11,7 +11,7 @@ function validatePath(path: string): void {
   }
 }
 
-export async function apiRequest<T>(path: string, options: ApiRequestOptions = {}): Promise<T> {
+export async function apiRequest<T>(path: string, options: ApiRequestOptions<T> = {}): Promise<T> {
   validatePath(path);
   options.signal?.throwIfAborted();
   const method = options.method ?? "GET";
@@ -21,7 +21,7 @@ export async function apiRequest<T>(path: string, options: ApiRequestOptions = {
   if (method !== "GET" || options.body !== undefined) headers["Content-Type"] = "application/json";
   const response = await fetch(`/api/v1/${path}`, {
     method, headers, credentials: "same-origin", cache: "no-store", signal: options.signal,
-    body: options.body === undefined ? undefined : JSON.stringify(options.body),
+    body: options.body === undefined ? undefined : (options.encodeBody ?? JSON.stringify)(options.body),
   });
   if (!response.ok) {
     const error = await parseApiError(response);
@@ -31,7 +31,7 @@ export async function apiRequest<T>(path: string, options: ApiRequestOptions = {
   options.signal?.throwIfAborted();
   if (response.status === 204) return undefined as T;
   try {
-    const data = await response.json() as T;
+    const data = options.decode ? options.decode(await response.text()) : await response.json() as T;
     options.signal?.throwIfAborted();
     return data;
   }

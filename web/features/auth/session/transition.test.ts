@@ -41,7 +41,9 @@ it("keeps public requests alive during initial session discovery while clearing 
     return new Promise<string>(resolve => { complete = resolve; });
   } }).catch(() => "cancelled");
   client.setQueryData(["personal", "old", "review"], "private text");
+  client.setQueryData(["collections", "anonymous", "detail", "id"], "viewer-sensitive data");
   await reconcileIdentity(client, account);
+  expect(client.getQueryData(["collections", "anonymous", "detail", "id"])).toBeUndefined();
   expect(client.getQueryData(["personal", "old", "review"])).toBeUndefined();
   expect(publicSignal.aborted).toBe(false);
   complete("public title");

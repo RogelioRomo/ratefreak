@@ -15,12 +15,203 @@ Design: [frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
 - [x] Phase 3: catalog browsing/search and details.
 - [x] Phase 3 follow-up: provider preview/import.
 - [x] Phase 4: library, ratings and reviews.
-- [ ] Phase 5: collection metadata and visibility.
-- [ ] Phase 5 follow-up: fields, items and schema-change confirmation.
+- [x] Approve [Phase 5 metadata/visibility design](superpowers/specs/2026-11-01-frontend-collections-design.md).
+- [x] Review [Phase 5 implementation plan](superpowers/plans/2026-11-01-frontend-collections.md); preserve native execution.
+- [x] Phase 5: collection metadata and visibility.
+- [x] Approve [Phase 5 fields/entries design](superpowers/specs/2026-11-01-frontend-collection-contents-design.md).
+- [x] Review [Phase 5 fields/entries implementation plan](superpowers/plans/2026-11-01-frontend-collection-contents.md); preserve native execution.
+- [x] Phase 5 follow-up: fields, items and schema-change confirmation.
 - [ ] Phase 6: profiles/editing, follows and comments in focused slices.
 - [ ] Phase 7: moderation and release verification.
 
 ## Resume notes
+
+2026-11-01 integration: user requested committing the completed collection work
+and current homepage edits, merging locally into `main`, and deleting
+`feat/collection-metadata` after verification. No remote push or deployment.
+Current Git branch/history records the integration result; earlier uncommitted
+notes below describe the implementation sessions. Local secrets, browser evidence
+and execution ledgers remain ignored.
+
+2026-11-01 Phase 5 collection contents complete on `feat/collection-metadata`.
+Implemented typed text/number/boolean/date/select field management, explicit
+catalog/custom entry creation, URL entry paging, dedicated entry detail/editing,
+and inline field/entry removal confirmation. One local owner editor at a time;
+immutable field keys/types and canonical media identities. No backend changes,
+migration, dependency additions, provider imports or personal-library writes.
+
+Feature-owned exact JSON/decimal codec preserves the backend decimal range and
+unchanged values through Query caching/replacement. Opt-in shared transport
+callbacks retain default behavior elsewhere. Stable detail→item→detail reads
+prevent mixed-schema editor snapshots, with one bounded read retry. Generic409
+preserves drafts without guessing whether it was revision/duplicate/compatibility.
+Confirmed mutations close their editor before the separate refresh phase; failed
+reads block another write and never replay a mutation. Deletion consent binds to
+the exact preview/snapshot and is invalidated by session uncertainty or observed
+revision changes; field deletion removes values permanently only after confirmation.
+
+Baseline377 tests; final **442/442 frontend tests across59 files** pass, including
+a fresh run after resuming the usage-limit interruption. Lint/typecheck/production
+build and whitespace checks pass. **58/58 real PostgreSQL collection integration
+tests**, zero skips, pass. Mechanical design scan `[]`. New feature tests observed
+RED before implementation; focused regressions also caught QueryClient token
+identity loss, stale cache variants, uncertain resubmit and metadata reload/cancel
+integration. Independent whole-change review found2 P2s: known-save completion
+lost across session-interrupted refresh, and validation errors missing native
+control associations. Both reproduced RED→GREEN, then the complete suite passed.
+No deferred findings. User homepage edits made during the pause were preserved;
+removed only their obsolete unused IconArrowDown import to keep combined lint clean.
+
+Real Chrome→Next3100→.NET5080→local PostgreSQL verification passed **17 workflow
+assertions**, plus **3 real30-field stress assertions** and **4 native keyboard
+assertions**. No request interception or synthetic responses. Covered all5 field
+types, exact28-digit decimal/false/date/select persistence, canonical selection,
+duplicate409, title-only precision preservation, real stale entry409, incompatible
+schema409, required-add prevention, zero/populated removal previews, stale deletion
+consent409/new preview, permanent key-only value removal, public/nonowner reads,
+owner-only impact, catalog/library independence and server visibility revocation.
+Native Tab/Enter skip-to-main and optional field Space/typing pass. No unexpected
+JavaScript exceptions or horizontal overflow. All62 capture files inspected:
+40 main screen matrix captures,6 real recovery/confirmation states and16 live
+30-field stress captures, both themes at320/768/1024/1440. Fresh visual verdict:
+**ship** for the46 main captures and **ship** for the16 supplemental captures.
+Documenter updated PRODUCT/DESIGN/collection surface from actual source, preserving
+tokens and leaving unrelated format/sidecar drift untouched.
+
+Evidence ignored at `.impeccable/review/collection-contents/`; executable scripts
+are `/tmp/ratefreak-contents-{live,finish,stress,keyboard}.mjs`. Live automation
+was paced within existing API budgets. A harness selector quoting mistake required
+resume on the same account; a later background session check correctly invalidated
+deletion consent, so finishing checks explicitly obtained a new preview. The usage
+limit interrupted reviewer handoff, not a product failure; the live finish process
+completed and its report was verified after resumption.
+
+Cleanup used a guarded transaction matching the exact verification account UUID,
+handle and complete3-collection manifest. Removed that account,3 collections,
+34 fields and1 remaining item; verified zero matching accounts/collections remain.
+Existing account/catalog/library records were excluded. Disposable integration
+databases were managed by Testcontainers. Temporary credential state and Chrome
+are removed after checks; requested API5080/frontend3100 stay available. No secret
+configuration changes, commits, merges, pushes or deployment. Work stays
+uncommitted. Next slice: Phase6 public profiles/editing, follows and comments in
+focused sessions; optional external sign-in remains separate.
+
+2026-11-01 collection contents design approved. Wrote and self-reviewed the
+[fields/entries implementation plan](superpowers/plans/2026-11-01-frontend-collection-contents.md).
+Seven tasks cover exact decimal/JSON transport, typed APIs/proxy routes, stable
+revision snapshots and separate mutation/read phases, field/value controls,
+entry pages/catalog selection, revision-bound deletion confirmation and real
+PostgreSQL/browser verification. Native execution preserved; plan review pending.
+Documentation-only work; no product/data/configuration changes or tests required.
+Whitespace check passes. Preserve all existing uncommitted metadata work.
+
+2026-11-01 next-slice preparation: drafted
+[collection fields, entries and schema-change confirmation](superpowers/specs/2026-11-01-frontend-collection-contents-design.md)
+from the actual field/item commands, endpoints and numeric validation. Extends
+current collection detail with typed field forms, paginated entries, catalog/custom
+entry creation and focused entry detail/editing. Defines stable revision-bracket
+reads, exact decimal round trips and owner-only deletion preview/confirmation.
+Real PostgreSQL/backend/browser verification remains required by the user's
+preference. Independent builder check: “nothing important left.” Design approval
+pending; no product code, dependencies, configuration,
+schema or data changed in this preparation. Preserve the existing uncommitted
+metadata work on `feat/collection-metadata`.
+
+2026-11-01 live Phase 5 verification, requested by the user: started the existing
+PostgreSQL service and Development API5080 using existing ignored configuration.
+Readiness200 and real development frontend proxy collection GET200. Ran
+`dotnet test tests/RateFreak.IntegrationTests --no-restore --filter
+FullyQualifiedName~CollectionsTests --verbosity quiet`: **58/58 passed**, zero
+skipped, against disposable real PostgreSQL. This includes collection metadata,
+visibility, security, fields/items and concurrent revision behavior.
+
+Completed **19 real browser assertions** through Chrome → Next3100 → .NET5080 →
+the existing local PostgreSQL, with no request interception or synthetic responses.
+Verified registration remains anonymous, login continuation, HttpOnly session,
+private-default create201/revision1, no-store, anonymous private404, metadata and
+public visibility persistence/revision2, uppercase URL reload, public anonymous200,
+anonymous write401, real concurrent update/revision3, stale-save409 with preserved
+draft and blocked resubmit, explicit reload/Cancel/reopen, final private save on
+uppercase route/revision4, revoked anonymous access, My collections and logout.
+No browser JavaScript exceptions. Real browser screenshots/report are ignored
+under `.impeccable/review/collections-live/`; executable check source is
+`/tmp/ratefreak-collections-live.mjs`.
+
+Interruption details: first real browser attempt stayed on session loading amid
+Turbopack reloads; API/frontend/Chrome later terminated with SIGTERM (termination
+cause unknown). No data created by that first stalled attempt. Resumed using
+Webpack locally; two subsequent harness attempts needed a corrected URL assertion
+and waits for real session revalidation, not product changes. The final run passed.
+Removed exactly the three new verification accounts and three empty collections
+from those resumed runs in a guarded transaction checking exact IDs, handles,
+counts and absence of fields/items. Verified zero matching users/collections
+remain. Existing accounts/catalog/library data were not targeted. Testcontainers
+disposed their separate test databases. No schema/configuration/product changes.
+API5080 and frontend3100 remain running; temporary Chrome stopped after checks.
+Earlier fixture-only/live-unavailable notes below describe the prior run and are
+superseded by this live evidence. No commits, pushes or deployment.
+
+2026-11-01 Phase 5 metadata/visibility complete on `feat/collection-metadata`.
+Added `/collections` accessible summaries, explicit All accessible/My collections
+scope and URL paging, private-default creation and shareable detail pages with
+owner-only inline metadata/visibility editing. Uses existing collection APIs;
+no backend changes or migrations. Fields, items, schema confirmation and external
+sign-in remain separate follow-ups. No collection deletion control or invented
+entry counts.
+
+All collection caches are viewer-scoped, including verified anonymous reads.
+Identity checks conceal/inert/disable content and cancel reads/writes while
+retaining same-account drafts; confirmed identity changes discard them. Editing
+retains its original revision through background refreshes. Conflict recovery
+preserves drafts and requires explicit replacement with latest metadata. Unknown
+create outcomes offer My collections rather than replaying the write. Exact
+proxy routes and canonical collection login paths retain existing guards.
+
+Baseline **316/316**; final **377/377 frontend tests across 42 files**, lint,
+typecheck, production build and whitespace checks pass. New feature tests observed
+RED before implementation. Fresh code review found uppercase GUID cache identity
+mismatch and stale cached details after conflict reload; both reproduced with
+failing regressions and fixed, then the full suite passed. Reload-cache finding
+was treated as material because Cancel/reopen otherwise reintroduced a stale
+revision. No deferred findings. Mechanical design scan returned `[]`.
+
+Production browser fixtures cover both themes at320/768/1024/1440 for list, create,
+detail and edit (32 captures), plus seven recovery/state captures. All inspected;
+no overflow or JavaScript exceptions. Expected HTTP401/404/409/429/503 logs belong
+to injected failure cases. Verified native keyboard skip-to-main, scope submission
+and browser Back, conflict draft/reload, saved visibility and unknown create
+recovery. Fresh visual review found only outdated PRODUCT.md capability copy;
+documenter corrected it and recorded the incumbent collection surface without
+changing tokens. Reviewer scored that sole finding resolved: **ship**.
+Ignored evidence: `.impeccable/review/collections/`; browser script/report source:
+`/tmp/ratefreak-collections-browser.mjs`.
+
+Live limit: local API5080 is stopped; read-only request could not connect.
+Production preview proxy returned503 under its existing production configuration.
+Authenticated/browser reads and writes used intercepted synthetic fixtures, not
+live account/database state. Backend tests were not rerun because backend code is
+unchanged. No real data writes, credentials/configuration changes, commits, pushes
+or deployment. Managed worktree was read-only under this sandbox; used the existing
+writable checkout on a feature branch, preserving planning files/dependencies.
+Temporary preview3102 and verification Chrome were stopped after checks; no
+pre-existing services were changed. Next slice: collection fields/items and
+schema-change confirmation. Work remains uncommitted for review.
+
+2026-11-01 Phase 5 design approved. Wrote and self-reviewed the
+[implementation plan](superpowers/plans/2026-11-01-frontend-collections.md): exact
+proxy/contracts, viewer-aware reads and retained session boundary, browsing,
+creation, revision-safe owner editing, and whole-slice verification. Native
+execution preserved. Plan review pending; no product code changed and no tests
+were run for these documentation-only changes. Whitespace check passes.
+
+2026-11-01 Phase 5 preparation: user selected public/access-aware collection
+browsing plus owner metadata/visibility management. Draft
+[collection metadata and visibility design](superpowers/specs/2026-11-01-frontend-collections-design.md)
+uses the existing backend list/detail/create/update APIs, private-by-default
+creation, viewer-scoped caches and explicit revision-conflict recovery. Fields,
+items and schema changes remain separate. Design approval was pending at this
+preparation point (subsequently approved above); no product
+code, dependencies, backend configuration or data changed.
 
 2026-11-01 integration: at the user's request, committed the completed editorial
 UI/themes, catalog/provider flows and Phase4 personal-media work and merged it
@@ -438,12 +629,13 @@ No deferred minor code-review findings.
 
 ## Suggested next-session prompt
 
-> Continue RateFreak frontend Phase 3: catalog browsing, search and details.
-> Read docs/frontend-checklist.md, the approved frontend roadmap, web/README.md
-> and web/AGENTS.md first. The Phase 3 design/plan is already approved. Preserve
-> the uncommitted homepage redesign on feat/homepage-editorial; resolve its
-> integration before branching from main. Follow DESIGN.md for frontend visuals.
-> Keep interfaces in
-> separate interfaces/ files, components small, and server-state caching in
-> TanStack Query. Plan and implement only the next focused slice; external
-> sign-in and provider imports can remain separate sessions.
+> Continue RateFreak frontend Phase 6: public profiles/editing, then follows and
+> comments in focused slices. Read docs/frontend-checklist.md, the approved roadmap,
+> web/README.md, web/AGENTS.md and DESIGN.md first. Phase5 metadata and fields/entries
+> are complete, including real backend/browser verification. The user requested
+> their local integration into main; check Git history/current state and start
+> the next focused slice on a new feature branch from main after that integration.
+> Prepare the next focused design using actual backend contracts. Keep interfaces
+> separate, components focused and TanStack Query for server state. Verify through
+> the real local backend with dedicated test data and guarded cleanup. No automatic
+> commit, merge, push or deployment. Optional external sign-in remains separate.

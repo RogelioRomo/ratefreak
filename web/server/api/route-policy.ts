@@ -1,9 +1,10 @@
 import "server-only";
+import { collectionRoute } from "./collection-policy";
 import { personalRoute } from "./personal-policy";
 import { providerIdentity } from "./provider-policy";
 
 export function isAllowedRoute(method: string, path: readonly string[]): boolean {
-  if (personalRoute(method, path)) return true;
+  if (collectionRoute(method, path) || personalRoute(method, path)) return true;
   if (path[0] === "media") {
     if (method === "POST" && path.length === 2 && path[1] === "import") return true;
     if (method === "GET" && path.length === 2 && path[1] === "providers") return true;
