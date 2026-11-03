@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+import { selectValue } from "@/test/select-value";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { beforeEach, expect, it, vi } from "vitest";
@@ -16,12 +17,13 @@ beforeEach(()=>{route.query='';route.push.mockReset();fetchMock.mockReset();vi.s
 it('shows initial guidance and capabilities without external search',async()=>{
  setup();expect(await screen.findByText('Search a provider to find your next title.')).toBeInTheDocument();
  expect(fetchMock.mock.calls.every(([url])=>String(url).endsWith('/providers'))).toBe(true);
- expect(screen.getByRole('option',{name:'IGDB (unavailable)'})).toBeDisabled();
+ fireEvent.keyDown(screen.getByLabelText('Provider'), {key:'Enter'});
+ expect(screen.getByRole('option',{name:'IGDB (unavailable)'})).toHaveAttribute('aria-disabled','true');
 });
 it('submits normalized filters, resets page and adapts draft types',async()=>{
  route.query='q=old&provider=tmdb&type=movie&page=2';setup();await screen.findByText('A Film');
- fireEvent.change(screen.getByLabelText('Provider'),{target:{value:'musicbrainz'}});
- expect(screen.getByLabelText('Media type')).toHaveValue('album');
+ selectValue(screen.getByLabelText('Provider'), 'musicbrainz');
+ expect(screen.getByLabelText('Media type')).toHaveTextContent('Albums');
  fireEvent.change(screen.getByRole('searchbox'),{target:{value:'  A & B  '}});
  fireEvent.click(screen.getByRole('button',{name:'Search providers'}));
  expect(route.push).toHaveBeenCalledWith('/catalog/discover?q=A+%26+B&provider=musicbrainz&type=album&page=1');

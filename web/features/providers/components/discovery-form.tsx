@@ -1,4 +1,5 @@
 "use client";
+import { Select } from "@/components/ui/select";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { IconSearch } from "@tabler/icons-react";
@@ -20,12 +21,12 @@ export function DiscoveryForm({ capabilities, filters }: DiscoveryFormProps) {
     router.push(discoveryHref({ q: String(values.get("q") ?? "").trim(), provider, type, page: 1 }));
   }}>
     <div className={styles.search}><label htmlFor="discovery-title">Title</label><input id="discovery-title" name="q" type="search" required maxLength={200} defaultValue={filters.q} placeholder="Search beyond the local catalog" /></div>
-    <div><label htmlFor="discovery-provider">Provider</label><select id="discovery-provider" value={provider} onChange={event => {
+    <div><label htmlFor="discovery-provider">Provider</label><Select id="discovery-provider" value={provider} onChange={event => {
       const next = event.target.value as ProviderName; setProvider(next);
       const nextTypes = capabilities.find(x => x.name === next)!.supportedTypes.filter(t => validProviderType(next, t));
       if (!nextTypes.includes(type)) setType(nextTypes[0]);
-    }}>{Object.keys(providerNames).map(name => { const option = capabilities.find(x => x.name === name); return <option key={name} value={name} disabled={!option?.enabled}>{providerNames[name as ProviderName]}{!option?.enabled ? " (unavailable)" : ""}</option>; })}</select></div>
-    <div><label htmlFor="discovery-type">Media type</label><select id="discovery-type" value={type} onChange={event => setType(event.target.value as typeof type)}>{types.map(t => <option key={t} value={t}>{mediaTypes[t]}</option>)}</select></div>
+    }}>{Object.keys(providerNames).map(name => { const option = capabilities.find(x => x.name === name); return <option key={name} value={name} disabled={!option?.enabled}>{providerNames[name as ProviderName]}{!option?.enabled ? " (unavailable)" : ""}</option>; })}</Select></div>
+    <div><label htmlFor="discovery-type">Media type</label><Select id="discovery-type" value={type} onChange={event => setType(event.target.value as typeof type)}>{types.map(t => <option key={t} value={t}>{mediaTypes[t]}</option>)}</Select></div>
     <Button type="submit"><IconSearch size={18} aria-hidden="true" />Search providers</Button>
   </form>;
 }

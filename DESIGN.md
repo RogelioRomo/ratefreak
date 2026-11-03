@@ -41,7 +41,7 @@ behavior. Do not decorate forms with a duplicate hero or collage.
 
 Mode: Operate. Browse, search and details extend the existing editorial system:
 Fraunces titles, DM Sans controls and text, semantic theme colors and Tabler icons.
-Use native labeled search/select controls with explicit submission and URL-owned
+Use labeled search inputs and shared custom select controls with explicit submission and URL-owned
 filters; keep results as a responsive artwork-led semantic list with title links,
 type/year metadata and Previous/Next navigation. Details place artwork beside the
 title and description on desktop and stack on mobile.
@@ -94,14 +94,15 @@ drafts. No new visual primitives are needed. Surface guidance and evidence are i
 Mode: Operate. Collection summaries, creation, owner metadata editing, fields and
 entries reuse Fraunces headings, DM Sans text, flat divided sections and semantic
 theme tokens. Present wrapping title links, owner, plain-text description and
-visibility in a semantic list; use a labeled native scope select with explicit
+visibility in a semantic list; use a labeled shared scope select with explicit
 Apply and URL-owned pagination. Creation places the heading beside the native
 metadata form on desktop and stacks at 48rem. Summary rows stack at 32rem.
 
 Collection detail uses Entries and Fields sections with one inline owner editor
 at a time. Entry details use labeled values, preserving line breaks and wrapping
 long text. Keep field definitions as divided rows with explicit position controls;
-use native text, number-text, date, Yes/No and select controls with visible labels.
+use native text, number-text and date inputs, and shared custom Yes/No and select
+controls with visible labels.
 Optional values have an explicit Set a value checkbox, distinguishing unset from
 empty text, false and zero. Reuse the existing input surfaces, small radius,
 accent focus outline and shared buttons; no new visual primitives or animation.
@@ -123,9 +124,22 @@ typography and layout. The geometric SVG artwork uses semantic theme colors.
 Semantic tokens own backgrounds, surfaces, text, accent/on-accent, input borders
 and error colors. Error text stays readable in both themes.
 
-A header group of sun, moon and monitor icon buttons offers Light, Dark and
+Dropdowns use `components/ui/select.tsx` throughout catalog, provider, personal
+media and collection forms. The custom trigger and options use the existing input
+surface, border and accent tokens, Tabler chevron/check icons, wrapping labels and
+a scrollable panel positioned within the viewport. Radix Select supplies keyboard
+navigation, typeahead and focus handling. A hidden form control preserves exact
+values, required validation and form submission. Options remain inside their
+form's hidden/inert boundary and close when the form becomes unavailable.
+
+At mobile widths up to 36rem, the header uses a hamburger button to open a
+full-screen navigation dialog that slides in from the right. Keep desktop
+navigation inline. The dialog supports Escape, a close button, trapped focus,
+scroll locking and closing on link selection; reduced motion removes the slide.
+
+A footer group of sun, moon and monitor icon buttons offers Light, Dark and
 System. Use Tabler icons, accessible names, native title tooltips, aria-pressed
-and 44px touch targets. Browser storage remembers only `ratefreak.theme`. System follows device
+and compact 32px buttons with 16px icons in the shared footer. Browser storage remembers only `ratefreak.theme`. System follows device
 changes; explicit Light/Dark overrides them. Other tabs receive updates. A static
 first-party head script applies the saved choice before first paint; keep the
 pages statically renderable without server cookies. If storage is unavailable,

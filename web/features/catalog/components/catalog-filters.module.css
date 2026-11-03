@@ -3,6 +3,6 @@
 .field label { font-size: 0.875rem; font-weight: 600; }
 .field input, .field select { width: 100%; min-width: 0; min-height: 3rem; padding: 0.75rem; font: inherit; font-size: 1rem; color: var(--foreground); background: var(--input-surface); border: 1px solid var(--input-border); border-radius: var(--radius-small); }
 .field input::placeholder { color: var(--muted); }
-.form button { min-height: 3rem; display: inline-flex; gap: 0.5rem; align-items: center; justify-content: center; }
+.form > button { min-height: 3rem; display: inline-flex; gap: 0.5rem; align-items: center; justify-content: center; }
 @media (max-width: 48rem) { .form { grid-template-columns: minmax(0, 1fr) auto; } .field:first-child { grid-column: 1 / -1; } }
 @media (max-width: 28rem) { .form { grid-template-columns: minmax(0, 1fr); } }

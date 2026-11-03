@@ -1,4 +1,5 @@
 "use client";
+import { Select } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
 import { IconSearch } from "@tabler/icons-react";
 import { Button } from "@/components/ui/button";
@@ -16,10 +17,10 @@ export function CatalogFilters({ filters }: CatalogFiltersProps) {
     <div className={styles.field}><label htmlFor="catalog-title">Title</label>
       <input id="catalog-title" name="q" type="search" defaultValue={filters.q} maxLength={200} placeholder="Find a film, record, show or game" /></div>
     <div className={styles.field}><label htmlFor="catalog-type">Media type</label>
-      <select id="catalog-type" name="type" defaultValue={filters.type}>
+      <Select id="catalog-type" name="type" defaultValue={filters.type}>
         <option value="">All types</option>
         {Object.entries(mediaTypes).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-      </select></div>
+      </Select></div>
     <Button type="submit"><IconSearch size={18} aria-hidden="true" />Search catalog</Button>
   </form>;
 }

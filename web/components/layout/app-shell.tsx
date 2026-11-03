@@ -1,5 +1,6 @@
 import type { AppShellProps } from "./interfaces/app-shell-props";
 import { SiteHeader } from "./site-header";
+import { ThemeControl } from "./theme-control";
 import styles from "./app-shell.module.css";
 
 export function AppShell({ children, className }: AppShellProps) {
@@ -11,6 +12,7 @@ export function AppShell({ children, className }: AppShellProps) {
       <footer className={styles.footer}>
         <span>RateFreak</span>
         <p>A little more you. A little less algorithm.</p>
+        <ThemeControl />
       </footer>
     </div>
   );

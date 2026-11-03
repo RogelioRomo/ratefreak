@@ -1,4 +1,5 @@
 "use client";
+import { Select } from "@/components/ui/select";
 import { useState } from "react";
 import { IconBookmark } from "@tabler/icons-react";
 import { Button } from "@/components/ui/button";
@@ -28,7 +29,7 @@ export function TrackingForm({ accountId, mediaId, saved }: TrackingFormProps) {
   }}>
     <PersonalError error={write.error} />{dateError && <p role="alert">{dateError}</p>}
     <fieldset disabled={write.pending}><div className={styles.fields}>
-      <div><label htmlFor="tracking-status">Tracking status</label><select id="tracking-status" value={status} onChange={e => setStatus(e.target.value as TrackingStatus)}>{Object.entries(trackingStatuses).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></div>
+      <div><label htmlFor="tracking-status">Tracking status</label><Select disabled={write.pending} id="tracking-status" value={status} onChange={e => setStatus(e.target.value as TrackingStatus)}>{Object.entries(trackingStatuses).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</Select></div>
       <div><label htmlFor="tracking-start">Started on</label><input id="tracking-start" type="date" value={started} onChange={e => setStarted(e.target.value)} /></div>
       <div><label htmlFor="tracking-complete">Completed on</label><input id="tracking-complete" type="date" value={completed} onChange={e => setCompleted(e.target.value)} aria-invalid={!!dateError} /></div>
     </div><p className={styles.hint}>Dates are optional. Changing status keeps your dates.</p>

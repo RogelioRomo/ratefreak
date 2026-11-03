@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+import { selectValue } from "@/test/select-value";
 import { fireEvent,screen,waitFor } from '@testing-library/react';
 import { beforeEach,expect,it,vi } from 'vitest';
 import { EntryEditor } from './entry-editor';
@@ -15,5 +16,5 @@ it('blocks another write after an unknown outcome until an explicit latest read'
 });
 it('searches the local catalog explicitly and sends only selected identity with null title',async()=>{
  const catalogId='c1111111-1111-1111-1111-111111111111';mock.mockImplementation(async(url)=>String(url).endsWith('csrf')?Response.json({requestToken:'token'}):String(url).includes('/media?')?Response.json({items:[{id:catalogId,title:'Alien',type:'movie',releaseDate:'1979-05-25',imageReference:null}],page:1,pageSize:20,totalCount:1}):Response.json({id:'entry',mediaItemId:catalogId,title:'Alien',data:{},position:0,createdAt:'d',updatedAt:'d'}));
- mount(<Test/>);fireEvent.change(screen.getByLabelText('Entry kind'),{target:{value:'catalog'}});fireEvent.change(screen.getByLabelText('Catalog title search'),{target:{value:'Alien'}});expect(mock).not.toHaveBeenCalled();fireEvent.click(screen.getByRole('button',{name:'Search catalog'}));fireEvent.click(await screen.findByRole('button',{name:'Choose Alien'}));fireEvent.click(screen.getByRole('button',{name:'Save entry'}));await waitFor(()=>expect(mock.mock.calls.some(([,o])=>o?.method==='POST')).toBe(true));expect(JSON.parse(String(mock.mock.calls.find(([,o])=>o?.method==='POST')?.[1]?.body))).toMatchObject({mediaItemId:catalogId,title:null,data:{}});
+ mount(<Test/>);selectValue(screen.getByLabelText('Entry kind'), 'catalog');fireEvent.change(screen.getByLabelText('Catalog title search'),{target:{value:'Alien'}});expect(mock).not.toHaveBeenCalled();fireEvent.click(screen.getByRole('button',{name:'Search catalog'}));fireEvent.click(await screen.findByRole('button',{name:'Choose Alien'}));fireEvent.click(screen.getByRole('button',{name:'Save entry'}));await waitFor(()=>expect(mock.mock.calls.some(([,o])=>o?.method==='POST')).toBe(true));expect(JSON.parse(String(mock.mock.calls.find(([,o])=>o?.method==='POST')?.[1]?.body))).toMatchObject({mediaItemId:catalogId,title:null,data:{}});
 });

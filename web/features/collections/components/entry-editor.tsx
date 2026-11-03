@@ -1,4 +1,5 @@
 "use client";
+import { Select } from "@/components/ui/select";
 import { useId,useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ApiError } from '@/shared/api/api-error';
@@ -40,7 +41,7 @@ function SafeEditor({details,item,active,actions,refresh,reload,onCancel,onSaved
    catch(error){if(!signal.aborted&&error instanceof ApiError){if(error.status===409)setConflict(true);if(error.status===404){try{await getCollection(snapshot.collection.id,signal);if(!signal.aborted){if(savedItem)setMissing(true);else setConflict(true);}}catch(parentError){if(!signal.aborted&&parentError instanceof ApiError&&parentError.status===404)onUnavailable?.();}}}throw error;}
   },refresh);if(result)onSaved();
  }}>
-  {!savedItem&&<div className={styles.field}><label htmlFor={`${id}-kind`}>Entry kind</label><select id={`${id}-kind`} value={kind} disabled={disabled} onChange={e=>setKind(e.target.value)}><option value="custom">Custom entry</option><option value="catalog">Catalog title</option></select></div>}
+  {!savedItem&&<div className={styles.field}><label htmlFor={`${id}-kind`}>Entry kind</label><Select id={`${id}-kind`} value={kind} disabled={disabled} onChange={e=>setKind(e.target.value)}><option value="custom">Custom entry</option><option value="catalog">Catalog title</option></Select></div>}
   {kind==='custom'?<div className={styles.field}><label htmlFor={`${id}-title`}>Entry title</label><input id={`${id}-title`} value={title} aria-invalid={!!errors.title} aria-describedby={errors.title?`${id}-title-error`:undefined} disabled={disabled||missing} onChange={e=>setTitle(e.target.value)}/>{errors.title&&<p role="alert" id={`${id}-title-error`}>{errors.title.join(" ")}</p>}</div>:savedItem?<p>Catalog title: {selected?.title}. Its catalog identity cannot change.</p>:<CatalogPicker value={selected} onChange={setSelected} disabled={disabled}/>}
   <div className={styles.field}><label htmlFor={`${id}-position`}>Entry position</label><input id={`${id}-position`} inputMode="numeric" value={position} aria-invalid={!!errors.position} aria-describedby={errors.position?`${id}-position-error`:undefined} disabled={disabled||missing} onChange={e=>setPosition(e.target.value)}/>{errors.position&&<p role="alert" id={`${id}-position-error`}>{errors.position.join(" ")}</p>}</div>
   <EntryValueControls fields={snapshot.fields} value={values} onChange={setValues} errors={errors} disabled={disabled||missing}/>

@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+import { selectValue } from "@/test/select-value";
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { beforeEach, expect, it, vi } from "vitest";
@@ -32,7 +33,7 @@ it("submits explicit filters and resets pagination", async () => {
   fetchMock.mockResolvedValue(Response.json(page));
   setup();
   fireEvent.change(screen.getByRole("searchbox", { name: "Title" }), { target: { value: "  A & B  " } });
-  fireEvent.change(screen.getByLabelText("Media type"), { target: { value: "album" } });
+  selectValue(screen.getByLabelText("Media type"), "album");
   fireEvent.click(screen.getByRole("button", { name: "Search catalog" }));
   expect(route.push).toHaveBeenCalledWith("/catalog?q=A+%26+B&type=album");
   expect(fetchMock).toHaveBeenCalledTimes(1);
@@ -44,7 +45,7 @@ it("restores form inputs on URL changes and isolates a late response", async () 
   route.query = "q=new&type=album&page=2";
   view.rerender(<CatalogScreen />);
   expect(screen.getByRole("searchbox")).toHaveValue("new");
-  expect(screen.getByLabelText("Media type")).toHaveValue("album");
+  expect(screen.getByLabelText("Media type")).toHaveTextContent("Albums");
   expect(await screen.findByText("New result")).toBeInTheDocument();
   await act(async () => { resolve(Response.json(page)); });
   expect(screen.queryByText(item.title.trim())).not.toBeInTheDocument();

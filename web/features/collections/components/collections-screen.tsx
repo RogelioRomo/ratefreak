@@ -1,4 +1,5 @@
 "use client";
+import { Select } from "@/components/ui/select";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useSession } from "@/features/auth/hooks/use-session";
@@ -30,7 +31,7 @@ function CollectionResults({viewer, active}: CollectionSessionState) {
     <form key={search.toString()} className={styles.filters} aria-label="Collection filters" onSubmit={event => {
       event.preventDefault(); const scope = new FormData(event.currentTarget).get("scope");
       router.push(collectionHref({...filters, scope: scope === "mine" ? "mine" : "all", page: 1}));
-    }}><div><label htmlFor="collection-scope">Show collections</label><select id="collection-scope" name="scope" defaultValue={filters.scope}><option value="all">All accessible</option><option value="mine">My collections</option></select></div><Button type="submit">Apply</Button></form>
+    }}><div><label htmlFor="collection-scope">Show collections</label><Select id="collection-scope" name="scope" defaultValue={filters.scope}><option value="all">All accessible</option><option value="mine">My collections</option></Select></div><Button type="submit">Apply</Button></form>
     {(unauthorized || (viewer === "anonymous" && filters.scope === "mine")) ? <p><Link className={styles.link} href="/login?returnTo=%2Fcollections">Log in to view your collections</Link></p>
       : query.isPending ? <LoadingState label="Loading collections…"/>
       : query.isError ? <ErrorState title="Collections unavailable." description="If requests are limited, wait before trying again." onRetry={() => void query.refetch()}/>

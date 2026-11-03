@@ -1,4 +1,5 @@
 "use client";
+import { Select } from "@/components/ui/select";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -37,8 +38,8 @@ function LibraryContent({ accountId }: LibraryContentProps) {
     <form key={search.toString()} className={styles.filters} aria-label="Library filters" onSubmit={event => {
       event.preventDefault(); const data = new FormData(event.currentTarget);
       router.push(libraryHref({ status: String(data.get("status")) as TrackingStatus | "", type: String(data.get("type")), page: 1, pageSize: 20 }));
-    }}><div><label htmlFor="library-status">Status</label><select id="library-status" name="status" defaultValue={filters.status}><option value="">All statuses</option>{Object.entries(trackingStatuses).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></div>
-      <div><label htmlFor="library-type">Media type</label><select id="library-type" name="type" defaultValue={filters.type}><option value="">All types</option>{Object.entries(mediaTypes).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></div><Button type="submit"><IconFilter size={17} aria-hidden="true" />Apply filters</Button>
+    }}><div><label htmlFor="library-status">Status</label><Select id="library-status" name="status" defaultValue={filters.status}><option value="">All statuses</option>{Object.entries(trackingStatuses).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</Select></div>
+      <div><label htmlFor="library-type">Media type</label><Select id="library-type" name="type" defaultValue={filters.type}><option value="">All types</option>{Object.entries(mediaTypes).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</Select></div><Button type="submit"><IconFilter size={17} aria-hidden="true" />Apply filters</Button>
     </form>
     {library.isPending ? <LoadingState label="Loading your library…" /> : library.isError ? <ErrorState title="Library unavailable." description="Please wait if requests are limited, then try again." onRetry={() => void library.refetch()} /> : !library.data.items.length ? <LibraryEmpty filters={filters} /> : <>
       <p className={styles.summary}>{library.data.totalCount} {library.data.totalCount === 1 ? "title" : "titles"} · Page {filters.page}</p>

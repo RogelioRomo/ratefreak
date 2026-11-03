@@ -17,14 +17,14 @@
 .score { max-width: 16rem; }
 .hint { color: var(--muted); font-size: 0.875rem; line-height: 1.6; }
 .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-.actions button, .filters button { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
+.actions button, .filters > button { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
 .form [role="alert"] { color: var(--error); line-height: 1.6; }
 .form [role="status"] { color: var(--accent); line-height: 1.6; }
 .confirm { padding-block: 1rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
 .confirm p { width: 100%; color: var(--muted); }
 .link { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--accent); margin-right: 1rem; }
 .filters { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: 1rem; align-items: end; padding-block: 1.5rem 2rem; border-bottom: 1px solid var(--border); }
-.filters button { min-height: 3rem; }
+.filters > button { min-height: 3rem; }
 .summary { color: var(--muted); font-size: 0.875rem; margin-block: 1.5rem; }
 .libraryList, .reviewList { list-style: none; }
 .libraryList li { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 1.5rem; padding-block: 1.5rem; border-bottom: 1px solid var(--border); }
