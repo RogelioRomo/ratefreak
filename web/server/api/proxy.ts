@@ -1,4 +1,6 @@
 import "server-only";
+import { commentList } from "./comment-policy";
+import { followList, followQuery } from "./follow-policy";
 import { collectionQuery } from "./collection-policy";
 import { personalList, validatePersonalQuery } from "./personal-policy";
 import { providerIdentity, validateProviderSearch } from "./provider-policy";
@@ -22,11 +24,12 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   if (!["GET", "POST", "PUT", "PATCH", "DELETE"].includes(request.method)) return proxyProblem(405, "Method not allowed.");
   const incoming = new URL(request.url);
   const listKind = personalList(path);
+  const socialList = request.method === "GET" && (followList(path) || commentList(path));
   let collectionParams: URLSearchParams | null = null;
   try { collectionParams = collectionQuery(request.method,path,incoming.searchParams); }
   catch { return proxyProblem(400,"Invalid collection filters."); }
   const externalSearch = path.length === 3 && path[0] === "media" && path[1] === "external" && path[2] === "search";
-  if ((incoming.search && !((collectionParams !== null || (request.method === "GET" && ((path.length === 1 && path[0] === "media") || externalSearch || listKind))))) || incoming.pathname !== `/api/v1/${path.join("/")}`) {
+  if ((incoming.search && !((collectionParams !== null || (request.method === "GET" && ((path.length === 1 && path[0] === "media") || externalSearch || listKind || socialList))))) || incoming.pathname !== `/api/v1/${path.join("/")}`) {
     return proxyProblem(404, "API route not found.");
   }
   if (!isAllowedRoute(request.method, path)) {
@@ -35,6 +38,10 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   }
 
   let query = "";
+  if (socialList) {
+    try { const value = followQuery(incoming.searchParams).toString(); query = value ? `?${value}` : ""; }
+    catch { return proxyProblem(400, "Invalid connection paging."); }
+  }
   if (path.length === 1 && path[0] === "media") {
     try { const validated = validateCatalogQuery(incoming.searchParams).toString(); query = validated ? `?${validated}` : ""; }
     catch { return proxyProblem(400, "Invalid catalog filters."); }

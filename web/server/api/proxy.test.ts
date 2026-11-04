@@ -60,7 +60,7 @@ describe("proxy isolation", () => {
   });
 
   it("rejects every unsupported method locally", async () => {
-    for (const method of ["POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"]) {
+    for (const method of ["POST", "PUT", "DELETE", "HEAD", "OPTIONS"]) {
       const response = await proxyRequest(makeRequest("users/me", { method, headers: { Origin: "https://evil.test" } }), ["users", "me"]);
       expect(response.status).toBe(405);
       expect(response.headers.get("cache-control")).toBe("no-store");
@@ -191,4 +191,24 @@ describe("personal-media boundary", () => {
     expect((await call({ Origin: "http://web.test", "Content-Type": "application/json", "X-CSRF-TOKEN": "csrf" })).status).toBe(200);
     expect(fetchMock.mock.calls[0][1]?.method).toBe(method);
   });
+});
+
+describe('follow proxy',()=>{
+ const id='a1111111-1111-1111-1111-111111111111';
+ it('forwards only bounded canonical paging',async()=>{fetchMock.mockResolvedValue(Response.json({}));const path=`users/${id}/followers`;expect((await proxyRequest(makeRequest(path+'?page=02&pageSize=20'),path.split('/'))).status).toBe(200);expect(fetchMock.mock.calls[0][0]).toBe(`http://api.test:5080/api/v1/${path}?page=2&pageSize=20`);});
+ it.each(['page=0','page=10001','page=1&page=2','actor=spoof'])('rejects list query %s locally',async q=>{const path=`users/${id}/following`;expect((await proxyRequest(makeRequest(path+'?'+q),path.split('/'))).status).toBe(400);expect(fetchMock).not.toHaveBeenCalled();});
+ it.each(['PUT','DELETE'])('preserves Origin and CSRF guards on %s',async method=>{
+  vi.stubEnv('RATEFREAK_API_URL','http://localhost:5080');vi.stubEnv('RATEFREAK_WEB_ORIGIN','http://web.test');vi.stubEnv('RATEFREAK_CLIENT_IP_MODE','loopback');vi.stubEnv('RATEFREAK_PROXY_SECRET','a'.repeat(64));const path=`users/${id}/follow`;
+  expect((await proxyRequest(makeRequest(path,{method,body:'{}',headers:{Origin:'https://foreign.test','Content-Type':'application/json','X-CSRF-TOKEN':'token'}}),path.split('/'))).status).toBe(403);
+  expect((await proxyRequest(makeRequest(path,{method,body:'{}',headers:{Origin:'http://web.test','Content-Type':'application/json'}}),path.split('/'))).status).toBe(400);expect(fetchMock).not.toHaveBeenCalled();
+ });
+});
+
+describe('review comment proxy',()=>{
+ const id='a1111111-1111-1111-1111-111111111111';
+ it('forwards exact public discussion and canonical comment paging',async()=>{fetchMock.mockImplementation(async()=>Response.json({}));const path=`reviews/${id}/comments`;expect((await proxyRequest(makeRequest(path+'?page=02&pageSize=20'),path.split('/'))).status).toBe(200);expect(fetchMock.mock.calls[0][0]).toBe(`http://api.test:5080/api/v1/${path}?page=2&pageSize=20`);expect((await proxyRequest(makeRequest(`reviews/${id}`),['reviews',id])).status).toBe(200);});
+ it.each(['page=0','page=10001','page=1&page=2','author=spoof'])('rejects invalid comment query %s locally',async q=>{const path=`reviews/${id}/comments`;expect((await proxyRequest(makeRequest(path+'?'+q),path.split('/'))).status).toBe(400);expect(fetchMock).not.toHaveBeenCalled();});
+ it.each(['POST','PATCH','DELETE'])('guards comment %s writes',async method=>{vi.stubEnv('RATEFREAK_API_URL','http://localhost:5080');vi.stubEnv('RATEFREAK_WEB_ORIGIN','http://web.test');vi.stubEnv('RATEFREAK_CLIENT_IP_MODE','loopback');vi.stubEnv('RATEFREAK_PROXY_SECRET','a'.repeat(64));const path=method==='POST'?`reviews/${id}/comments`:`comments/${id}`;
+ expect((await proxyRequest(makeRequest(path,{method,body:'{}',headers:{Origin:'https://foreign.test','Content-Type':'application/json','X-CSRF-TOKEN':'token'}}),path.split('/'))).status).toBe(403);
+ expect((await proxyRequest(makeRequest(path,{method,body:'{}',headers:{Origin:'http://web.test','Content-Type':'application/json'}}),path.split('/'))).status).toBe(400);expect(fetchMock).not.toHaveBeenCalled();});
 });

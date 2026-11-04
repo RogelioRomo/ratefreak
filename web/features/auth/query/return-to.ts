@@ -2,6 +2,8 @@ import { isMediaId } from "@/features/catalog/query/filters";
 import { previewHref, providerIdentity } from "@/features/providers/query/identity";
 export function safePreviewReturnTo(value: string | null): string | null {
   if (!value) return null;
+  if (value.startsWith("/reviews/") && isMediaId(value.slice(9)) && value === value.toLowerCase()) return value;
+  if (/^\/users\/[a-z0-9_]{3,30}$/i.test(value)) return value;
   if (value === "/collections" || value === "/collections/new") return value;
   if (value.startsWith("/collections/") && isMediaId(value.slice(13)) && value === value.toLowerCase()) return value;
   if (value === "/library") return value;

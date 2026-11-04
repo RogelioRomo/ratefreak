@@ -16,7 +16,7 @@ export function ReviewForm({ accountId, mediaId, saved }: ReviewFormProps) {
   const [conflict, setConflict] = useState(false), [existing, setExisting] = useState<ReviewDetails | null>(null);
   const [bodyError, setBodyError] = useState("");
   const [confirm, setConfirm] = useState(false), [message, setMessage] = useState("");
-  const write = usePersonalWrite(); const keys = [personalKeys.review(accountId, mediaId), personalKeys.reviews(mediaId)];
+  const write = usePersonalWrite(); const keys = [personalKeys.review(accountId, mediaId), personalKeys.reviews(mediaId), ["review-discussion"], ["comments"]];
   return <form aria-label="Review" className={styles.form} onSubmit={event => {
     event.preventDefault(); setMessage(""); setBodyError("");
     if (!body.trim()) { setBodyError("Write a review before saving."); return; }

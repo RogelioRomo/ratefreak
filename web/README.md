@@ -314,3 +314,49 @@ in the root `DESIGN.md`.
 Progress and the next session's scope are in [the frontend checklist](../docs/frontend-checklist.md).
 
 See the [root README](../README.md) for backend setup and API contracts.
+
+## Public profiles and editing
+
+`/users/{handle}` shows display name, handle, public bio and member date.
+Handles use case-insensitive lookup; email remains private. Review authors and
+Account link to these pages. `/account` offers display name (1–80 characters)
+and plain-text bio (up to500 characters) editing. Empty bio clears it. Both
+fields are submitted together; concurrent same-field updates use the backend's
+last-write-wins behavior. Unknown save outcomes require reloading before another
+save. Session uncertainty hides the editor while preserving same-account drafts.
+
+The proxy additionally allows exact `GET users/by-handle/{handle}` and
+`PATCH users/me`, with existing Origin/CSRF/body/no-store protections.
+Review comments are available through public review discussion pages.
+
+## Follows and public connections
+
+Profiles include public Followers/Following lists (20 rows per page). Selection
+uses `connections=followers|following` and `page=1..10000`; Back/Forward restores
+it. Anonymous visitors can read lists and log in with profile continuation.
+Signed-in nonowners can explicitly Follow or Unfollow. Both actions are safe to
+repeat; the API has no point relationship-state lookup, so the UI does not show
+an inferred toggle. A confirmed save stays confirmed if list refresh fails.
+Unknown outcomes offer deliberate repeat-safe actions without automatic retries.
+
+Additional exact proxy routes: `GET users/{guid}/followers|following` with bounded
+`page`/`pageSize`; `PUT|DELETE users/{guid}/follow` with the existing mutation guards.
+
+## Review discussions and comments
+
+Public review cards link to `/reviews/{guid}`. Discussions show the original review
+and public comments, oldest first, with independent spoiler reveal controls and
+literal text. URL `page` (1–10000) controls20-row comment paging. Anonymous visitors
+can read or log in with discussion continuation. Comment authors can post1–2000
+characters, edit body/spoiler status, and confirm deletion. The review author cannot
+edit another author's comments. Edits use backend last-write-wins behavior.
+
+Unknown write outcomes preserve drafts and block another submission until a full
+reload; POST never retries automatically. Session checks hide/disable editors while
+retaining same-account drafts. Background read failures retain editors and offer
+retry; confirmed writes remain confirmed when refresh fails.
+
+Additional exact proxy routes: `GET reviews/{guid}`, `GET|POST
+reviews/{guid}/comments`, and `GET|PATCH|DELETE comments/{guid}`. Only list GETs
+accept bounded `page`/`pageSize`; mutations retain existing Origin/CSRF/JSON/body
+protections. Reporting/moderation and release verification remain Phase7 work.

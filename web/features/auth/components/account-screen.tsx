@@ -8,6 +8,8 @@ import { AccountDetails } from "./account-details";
 import { LogoutControl } from "./logout-control";
 import { LoadingState } from "@/components/ui/loading-state";
 
+import { ProfileEditor } from "@/features/profiles/components/profile-editor";
+
 export function AccountScreen() {
   const session = useSession();
   const router = useRouter();
@@ -23,6 +25,7 @@ export function AccountScreen() {
   }, [entryChecked, session.account, session.isLoading, session.isTransitioning, session.error, router]);
   return <AuthPanel title="Your account." description="A space that’s yours.">
     {entryChecked ? <AccountDetails /> : <LoadingState label="Checking your session…" />}
+    {entryChecked && <ProfileEditor />}
     <div hidden={!entryChecked}><LogoutControl /></div>
   </AuthPanel>;
 }

@@ -11,9 +11,10 @@ import { useReviews } from "../hooks/use-personal";
 import styles from "./personal.module.css";
 function ReviewEntry({ review }: ReviewEntryProps) {
   const [revealed, setRevealed] = useState(false);
-  return <article className={styles.review}><header><h3>{review.author.displayName}</h3><p>@{review.author.handle} · <time dateTime={review.createdAt}>{review.createdAt.slice(0, 10)}</time></p></header>
+  return <article className={styles.review}><header><h3><Link href={`/users/${review.author.handle}`}>{review.author.displayName}</Link></h3><p>@{review.author.handle} · <time dateTime={review.createdAt}>{review.createdAt.slice(0, 10)}</time></p></header>
     {review.isSpoiler && <Button variant="secondary" aria-expanded={revealed} onClick={() => setRevealed(!revealed)}>{revealed ? "Hide spoilers" : "Show spoilers"}</Button>}
     {(!review.isSpoiler || revealed) && <p className={styles.body}>{review.body}</p>}
+    <Link className={styles.link} href={`/reviews/${review.id}`}>Comments</Link>
   </article>;
 }
 export function PublicReviews({ mediaId }: MediaActivityProps) {

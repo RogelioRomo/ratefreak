@@ -13,3 +13,11 @@ it.each([
 ].map((path) => [path]))("rejects unapproved path %j", (path) => {
   expect(isAllowedRoute("GET", path)).toBe(false);
 });
+
+it("permits exact profile lookup and owner update routes only", () => {
+ expect(isAllowedRoute("PATCH", ["users", "me"])).toBe(true);
+ expect(isAllowedRoute("GET", ["users", "by-handle", "Test_user"])).toBe(true);
+ for (const handle of ["ab", "a".repeat(31), "a-b", "a%2fb", "../me"]) expect(isAllowedRoute("GET", ["users", "by-handle", handle])).toBe(false);
+ expect(isAllowedRoute("PATCH", ["users", "by-handle", "owner"])).toBe(false);
+ expect(isAllowedRoute("POST", ["users", "me"])).toBe(false);
+});

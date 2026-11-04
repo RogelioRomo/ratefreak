@@ -21,10 +21,141 @@ Design: [frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
 - [x] Approve [Phase 5 fields/entries design](superpowers/specs/2026-11-01-frontend-collection-contents-design.md).
 - [x] Review [Phase 5 fields/entries implementation plan](superpowers/plans/2026-11-01-frontend-collection-contents.md); preserve native execution.
 - [x] Phase 5 follow-up: fields, items and schema-change confirmation.
-- [ ] Phase 6: profiles/editing, follows and comments in focused slices.
+- [x] Phase 6 first slice: public profiles and profile editing.
+- [x] Phase 6 second slice: follows and follower/following lists.
+- [x] Phase 6 final slice: review comments.
 - [ ] Phase 7: moderation and release verification.
 
 ## Resume notes
+
+2026-11-04 review comments complete; Phase6 profiles/follows/comments delivered.
+Public review cards link to `/reviews/{guid}`, a focused discussion page with the
+original review, independent review/comment spoiler controls, profile links and
+literal plain text. Comment lists use URL `page`1..10000,20 rows, server counts,
+oldest-first order, invalid/empty/unavailable/rate-limit/retry/out-of-range states.
+Anonymous reads and safe login continuation work. Signed-in users can add multiple
+public comments; only comment authors see editing and inline delete confirmation.
+Review authors gain no authority over other people's comments. Edits replace body
+and spoiler flag with the backend's last-write-wins semantics.
+
+Exact proxy routes retain Origin/CSRF/JSON/body/no-store guards. Feature-owned
+contracts/API/query/hooks/components/styles stay separate. Public comment and
+review-discussion queries survive initial session discovery; confirmed identity
+changes still clear caches. Same-account session checks retain drafts but hide,
+inert and disable controls and abort writes; identity changes discard old editors.
+Unknown write outcomes block resubmission and offer a full reload with a draft-loss
+warning; non-idempotent POST never retries automatically. Confirmed edits/deletes
+update cached records before independent refresh; confirmed feedback does not
+become a failed save after read failure. Profile/review writes invalidate the new
+author/discussion caches.
+
+Final **523/523 frontend tests across73 files**, lint/typecheck, production build
+and whitespace checks pass. **32/32 real PostgreSQL review-comment integration,
+persistence/snapshot/migration tests**, zero skips, pass. Focused missing feature
+checks observed RED→GREEN. Fresh review found background review/comment-list
+errors unmounting drafts. Reproduced both paths with failing regressions; retained
+data/editors with separate retry feedback, and concealed/inert retained404 content.
+Follow-up review found no remaining material issues. Tests also cover validation,
+unknown POST outcomes, cancelled/late completions, author isolation, spoiler reveal,
+delete consent, confirmed-cache updates and persistent deletion feedback.
+
+Real Chrome → Next3100 → API5080 → PostgreSQL verified login continuation,
+validation/recovery, POST/spoiler/literal text/newlines, PATCH, cancel/delete and
+persisted404, author isolation404 including the review author, anonymous reads and
+write401, CSRF400/foreign-Origin403 on all3 methods, URL recovery and native keyboard
+skip-to-main. Supplemental22-comment workflow verified Next/Previous/Back and
+catalog review→Comments navigation. Both palettes at320/768/1024/1440 passed
+no-overflow/runtime-error checks. Sixteen main/final captures inspected; final
+capture script resets scroll/focus to avoid full-page screenshots showing the
+fixed skip-link outside the live viewport. Back-to-title spacing was improved.
+Scripts/artifacts: `/tmp/comments-{browser,finish}.mjs`, `/tmp/comments-*.png`.
+No browser request interception or synthetic API responses in live checks.
+
+Local verification initially hit the accumulated registration budget and an empty
+catalog. Restarted only the Development API with unchanged limits/settings;
+created2 dedicated accounts and1 UUID-identified temporary title, then1 review and
+comment fixtures. Guarded transaction matched exact account UUID/username/email,
+media UUID/title, review identity and22-comment manifest; removed2 accounts and1
+media row, cascading the review/comments. Verified zero matching users/reviews/
+comments/media remain. Existing data excluded. Initial cleanup's wrong ownership
+column name rolled back before changes; corrected to verified `user_id` columns.
+Missing local .NET packages restored before backend tests. No backend/schema/
+dependency/configuration file changes, commits, merges, push or deployment.
+API5080/frontend3100 remain available. Preserve all current uncommitted work.
+Next: Phase7 moderation/reporting in focused slices, then release verification;
+external sign-in remains optional and separate. Phase6 completion does not imply
+public-launch/deployment readiness.
+
+2026-11-04 follows slice implemented. Public profiles now include Followers /
+Following lists with URL-owned direction/page,20-row paging, oldest-first ordering,
+profile links, server counts, empty/error/retry and out-of-range recovery. Exact
+proxy allowlists retain Origin/CSRF/JSON/body/no-store guards. Anonymous readers
+get a safe profile login continuation; login performs no follow action. Verified
+nonowners get explicit repeat-safe Follow/Unfollow setters. The existing API has
+no point relationship-status endpoint, so no inferred current-state toggle or
+unbounded graph scan. Self controls are absent. Session uncertainty conceals/inerts
+controls and aborts writes; account changes reset feedback. Known204 feedback is
+independent from list refresh; unknown outcomes allow only deliberate safe repeats.
+
+Focused tests observed RED→GREEN. Full frontend suite: **491/491 across66 files**;
+lint/typecheck/production build pass. **9/9 real PostgreSQL FollowTests**, zero skips,
+pass. Fresh independent review found stale connection-list names after profile
+edits; reproduced with a failing regression, fixed by connection invalidation.
+Live browser exposed initial session discovery cancelling profile queries and
+leaving Loading profile indefinitely; two regressions observed RED→GREEN and
+public-profile/connections now survive initial discovery, while confirmed identity
+changes still clear caches. Follow-up reviewer found no remaining material issues.
+
+Real Chrome → Next3100 → API5080 → PostgreSQL checks passed: login continuation,
+follow/unfollow and repeated writes, exact public counts and both graph directions,
+public/anonymous reads, self-control exclusion,401/CSRF400/foreign-Origin403,
+Back navigation, invalid/out-of-range recovery and native Tab/Enter skip-to-main.
+Both palettes at320/768/1024/1440 have no overflow/runtime errors; all eight captures
+visually inspected. Artifacts/scripts live under `/tmp/follows-*`; no intercepted
+API responses. Two dedicated accounts and their graph rows were removed by guarded
+exact-identity transaction, with zero matching accounts remaining.
+
+Design/plan: `docs/superpowers/{specs,plans}/2026-11-04-frontend-follows*`.
+Previous uncommitted profiles work preserved. No backend/schema/dependency/config
+file changes, commits, merge, push or deployment. API5080/frontend3100 remain running.
+Next focused implementation: review comments, then Phase7 moderation/release.
+
+2026-11-04 public profiles/editing implemented and verified. `/users/{handle}`
+shows the existing public DTO, with case-insensitive handle lookup, literal bio
+text and member date. Review author names and Account link to profiles. Account
+editing updates display name/bio through the existing guarded PATCH proxy.
+Feature interfaces, API functions, query hook and CSS Modules remain separate.
+User explicitly authorized implementation after the earlier approval discussion.
+
+Verification found and fixed draft loss caused by session-transition remounts,
+missing server field associations, stale account/public author caches, unguarded
+unknown-outcome resubmission, and the profile route's missing Suspense boundary.
+Editor drafts remain mounted but hidden/inert during session checks; identity
+changes discard the previous account's editor. Confirmed saves update the account
+cache and invalidate public profile, review and collection queries. Validation
+and rate-limit rejections preserve editable drafts; uncertain outcomes require a
+page reload before another write. Backend same-field concurrency remains
+last-write-wins; the form submits display name and bio together.
+
+Final frontend suite: **456/456 tests across62 files**. Lint, typecheck,
+production build and whitespace checks pass. **36/36 profile PostgreSQL integration
+tests**, zero skips, pass (profile security/cache/concurrency/migration cases).
+Real Chrome → Next3100 → API5080 → PostgreSQL verified registration/login,
+CSRF profile writes, validation recovery, saved feedback, public links, literal
+HTML-looking text/newlines, uppercase anonymous lookup, bio clearing and reload.
+Native Tab/Enter skip-to-main passes. Eight public-profile captures cover both
+palettes at320/768/1024/1440; automated checks found no horizontal overflow or
+runtime exceptions. Representative desktop/mobile public captures and mobile
+account capture visually inspected after typography/input fixes.
+
+Browser script/captures: `/tmp/profile-browser.mjs`, `/tmp/profile-*.png`.
+Chromium required libraries extracted under `/tmp/profile-browser-libs` because
+system dependency installation needed sudo. No system packages were installed.
+Dedicated browser verification account deleted in a transaction guarded by exact
+UUID/username/email; zero matching records remain. API5080/frontend3100 remain
+running, using existing ignored settings with process-only frontend Origin3100.
+No backend/schema/dependency/configuration file changes, commits or deployment.
+Next: follows in its own focused slice, then review comments; Phase7 stays pending.
 
 2026-11-01 integration: user requested committing the completed collection work
 and current homepage edits, merging locally into `main`, and deleting
@@ -629,13 +760,13 @@ No deferred minor code-review findings.
 
 ## Suggested next-session prompt
 
-> Continue RateFreak frontend Phase 6: public profiles/editing, then follows and
-> comments in focused slices. Read docs/frontend-checklist.md, the approved roadmap,
-> web/README.md, web/AGENTS.md and DESIGN.md first. Phase5 metadata and fields/entries
-> are complete, including real backend/browser verification. The user requested
-> their local integration into main; check Git history/current state and start
-> the next focused slice on a new feature branch from main after that integration.
-> Prepare the next focused design using actual backend contracts. Keep interfaces
-> separate, components focused and TanStack Query for server state. Verify through
-> the real local backend with dedicated test data and guarded cleanup. No automatic
-> commit, merge, push or deployment. Optional external sign-in remains separate.
+> Continue RateFreak frontend Phase7 moderation/reporting in focused slices, then
+> release verification. Phase6 profiles/editing, follows and review comments are
+> complete, including real backend/browser checks. Read this checklist, the roadmap,
+> web/README.md, web/AGENTS.md and DESIGN.md first. Preserve all current uncommitted
+> profiles/follows/comments work; do not assume integration into Git has happened.
+> Ground the next slice in actual reporting/moderation/authorization contracts.
+> Keep interfaces separate, components focused and TanStack Query for server state.
+> Verify with dedicated local data and guarded cleanup. No automatic commit, merge,
+> push, deployment, provider activation or promotion of real accounts to staff.
+> External sign-in remains an optional separate follow-up.

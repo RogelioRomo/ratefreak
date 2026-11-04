@@ -4,6 +4,8 @@ import { ErrorState } from "@/components/ui/error-state";
 import { LoadingState } from "@/components/ui/loading-state";
 import { useSession } from "../hooks/use-session";
 import styles from "./auth.module.css";
+import Link from "next/link";
+
 
 export function AccountDetails() {
   const session = useSession();
@@ -16,6 +18,7 @@ export function AccountDetails() {
       <div><dt>Handle</dt><dd>@{account.handle}</dd></div>
       <div><dt>Email</dt><dd>{account.email}</dd></div>
     </dl>
-    <p>This information is private to your account. Logging out signs you out on all devices.</p>
+    <p>Your email is private. Your display name and bio are public. Logging out signs you out on all devices.</p>
+    <Link href={`/users/${account.handle}`}>View public profile</Link>
   </div>;
 }

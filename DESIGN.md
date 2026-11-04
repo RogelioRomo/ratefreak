@@ -174,3 +174,20 @@ CSS Modules, self-hosted fonts and local optimized artwork. Keep homepage parts
 focused and props in separate interfaces where needed. Verify with the full
 frontend suite, lint, typecheck, build, keyboard checks and desktop/mobile browser
 captures. No changes to backend contracts, session lifecycle or proxy boundaries.
+
+## Public profiles, connections and review discussions
+
+Profiles and discussions extend the existing Fraunces/DM Sans editorial system,
+flat semantic lists and shared light/dark tokens. Profile text and review/comment
+bodies wrap long content, preserve newlines and render literally. Connection lists
+show server counts and profile links. Follow/Unfollow are explicit setters because
+the current API does not expose point relationship status.
+
+Review cards link to a dedicated discussion instead of eagerly loading threads.
+Review and comment spoiler reveals are independent. Discussion forms use labeled
+16px textarea inputs, public-visibility guidance, field-associated errors and
+visible focus. Author deletion confirmation names the action without exposing
+concealed spoiler text. Mobile stacks actions and preserves reading order.
+Retain drafts during session checks and recoverable background read failures;
+conceal/inert unavailable content. Unknown writes require deliberate recovery;
+confirmed write feedback remains independent from read refresh.

@@ -50,3 +50,8 @@ it("keeps public requests alive during initial session discovery while clearing 
   expect(await pending).toBe("public title");
   client.clear();
 });
+it.each(['public-profile','connections','review-discussion','comments'])('keeps %s reads alive during initial session discovery',async root=>{
+ const client=createQueryClient();let signal!:AbortSignal;let finish!:(value:string)=>void;
+ const pending=client.fetchQuery({queryKey:[root,'target'],queryFn:({signal:current})=>{signal=current;return new Promise<string>(resolve=>{finish=resolve;});}}).catch(()=>'cancelled');
+ await reconcileIdentity(client,account);expect(signal.aborted).toBe(false);finish('public');expect(await pending).toBe('public');client.clear();
+});
