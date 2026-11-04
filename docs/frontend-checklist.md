@@ -28,6 +28,41 @@ Design: [frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
 
 ## Resume notes
 
+2026-11-04 community rating now adds read-only five-star artwork alongside its
+unchanged exact two-decimal average/count. Stars round to nearest0.5, ties up:
+4.7→4.5 and4.8→5. Reuses rating icon/theme/half-fill styles; no-ratings remains
+separate from zero.32 focused personal/rating tests, lint/typecheck and whitespace
+checks pass. Read-only browser average fixtures verified both rounding directions,
+exact numeric copy, mobile/light and tablet/dark visuals with no overflow; both
+captures inspected. No database writes. Evidence `/tmp/community-stars-*`.
+
+2026-11-04 requested two-column title activity layout delivered. Above640px,
+Community rating/Your library and Your rating/Your review form two rows; mobile
+stacks all four and community reviews remain full width below. Lint/typecheck and
+22 focused personal-flow tests pass. Real browser verified placements at641/768/
+1024/1440 and mobile stacking at320/640, no overflow, retained review draft and
+native hidden/inert/disabled-fieldset guards. Both palettes captured at four main
+widths; representative captures inspected. Temporary exact-identity verification
+account removed; sample catalog titles preserved. Evidence `/tmp/activity-grid-*`.
+
+2026-11-04 user-requested rating control update: replaced the score dropdown with
+five Tabler star icons and ten half/full-star hit areas,0.5..5. Native named radios
+retain keyboard arrow selection, required validation and accessible names. Pointer
+hover previews without changing the selected value; touch selects directly. A
+separate0-star choice preserves the existing backend range and saved zero ratings.
+Save/Remove actions, rating API and session/draft protections stay intact. Uses
+semantic light/dark accent/input tokens and24×48px half-star hit areas.
+
+Focused missing-component tests observed RED→GREEN. Final **527/527 frontend tests
+across74 files**, lint/typecheck and production build pass. Real Chromium→Next→API→
+PostgreSQL verified all10 half-star targets, preview/reset without committing,
+native ArrowRight/Left, saved4.5 and0 reload, mobile touch2.5 persistence and
+removal404. Both palettes at320/768/1024/1440: eight rating-form captures inspected,
+no overflow/runtime exceptions. Script/captures at `/tmp/stars-browser.mjs` and
+`/tmp/stars-*.png`. Exact verification account/title removed in a guarded transaction
+after checking the rating was absent; zero matching records remain. No backend,
+dependency, schema or configuration changes. Phase7 remains the next feature work.
+
 2026-11-04 review comments complete; Phase6 profiles/follows/comments delivered.
 Public review cards link to `/reviews/{guid}`, a focused discussion page with the
 original review, independent review/comment spoiler controls, profile links and

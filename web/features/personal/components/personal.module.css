@@ -45,3 +45,9 @@
 @media (max-width: 32rem) { .filters { grid-template-columns: minmax(0, 1fr); } .libraryList li { grid-template-columns: 6rem minmax(0, 1fr); gap: 1rem; } .libraryInfo > a { font-size: 1.25rem; } .pagination { font-size: 0.8125rem; gap: 0.5rem; } }
 
 .retained { border: 0; min-width: 0; }
+
+.activityGrid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; column-gap: 2rem; }
+.activityGrid > *, .activityGrid .section { min-width: 0; }
+/* Flatten retained form wrappers while preserving their hidden/inert/disabled guards. */
+.activityGrid .privateLayout:not([hidden]), .activityGrid .retained, .activityGrid .personal { display: contents; }
+@media (min-width: 40.0625rem) { .activityGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

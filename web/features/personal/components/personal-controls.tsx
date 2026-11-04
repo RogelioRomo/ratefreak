@@ -23,7 +23,7 @@ export function PersonalControls({ mediaId }: MediaActivityProps) {
     {session.error ? <section className={styles.section}><h2>Your activity</h2><p role="alert">Your session could not be checked.</p><Button variant="secondary" onClick={() => void session.refresh()}>Retry session</Button></section>
       : !active && session.account !== null ? <LoadingState label="Checking your session…" />
       : session.account === null ? <section className={styles.section}><h2>Make room for your take.</h2><p>Track this title, give it a score, or write a public review.</p><Link className={styles.link} href={`/login?${new URLSearchParams({ returnTo: `/catalog/${mediaId}` })}`}>Log in to track, rate or review</Link></section> : null}
-    {accountId && <div hidden={!active} inert={!active}><fieldset className={styles.retained} disabled={!active}>
+    {accountId && <div className={styles.privateLayout} hidden={!active} inert={!active}><fieldset className={styles.retained} disabled={!active}>
       <PrivateForms key={`${accountId}:${mediaId}`} accountId={accountId} mediaId={mediaId} active={active} />
     </fieldset></div>}
   </>;

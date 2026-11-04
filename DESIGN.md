@@ -191,3 +191,27 @@ concealed spoiler text. Mobile stacks actions and preserves reading order.
 Retain drafts during session checks and recoverable background read failures;
 conceal/inert unavailable content. Unknown writes require deliberate recovery;
 confirmed write feedback remains independent from read refresh.
+
+## Half-star rating input
+
+Personal rating forms use five filled star silhouettes with separate left/right
+half-star hit areas, selecting0.5 through5 stars. Semantic accent fills selected
+stars; input-border color marks the remainder. Hover previews the score and resets
+on leaving; touch commits directly. Native named radio inputs support arrow-key
+navigation, required selection and screen-reader values. Visible numeric feedback
+distinguishes Not rated, zero and half-star values. Keep the explicit Save rating
+and Remove rating actions and a separate0-star choice for backend compatibility.
+Half-star targets are24×48px with visible keyboard focus in both themes.
+
+## Title activity layout
+
+Above640px, Community rating and Your library share the first row; Your rating and
+Your review share the second row in two equal columns. At640px and narrower,
+stack all four in that reading order. Public community reviews stay full width
+below. Retained private wrappers participate in the grid with display:contents
+only while visible; hidden/inert wrappers and disabled fieldsets retain their
+session protections and draft-preservation behavior.
+
+Community rating retains its exact two-decimal average and rating count, and adds
+a read-only five-star display. Round the visual average to the nearest0.5 (ties
+up):4.7→4.5,4.8→5. Empty ratings retain No ratings yet, distinct from a real0 average.

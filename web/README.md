@@ -360,3 +360,11 @@ Additional exact proxy routes: `GET reviews/{guid}`, `GET|POST
 reviews/{guid}/comments`, and `GET|PATCH|DELETE comments/{guid}`. Only list GETs
 accept bounded `page`/`pageSize`; mutations retain existing Origin/CSRF/JSON/body
 protections. Reporting/moderation and release verification remain Phase7 work.
+
+## Star ratings
+
+Ratings use five stars with half-star selection (0.5–5), hover previews, keyboard
+arrows and touch support. A separate0-star choice retains existing zero ratings.
+Save rating explicitly persists the numeric score; Remove rating returns to Not
+rated. This replaces the score dropdown while retaining the existing API/session
+and draft behavior.
