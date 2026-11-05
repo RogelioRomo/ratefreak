@@ -25,9 +25,87 @@ Design: [frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
 - [x] Phase 6 second slice: follows and follower/following lists.
 - [x] Phase 6 final slice: review comments.
 - [x] Phase 7 first slice: public review/comment reporting.
-- [ ] Phase 7 remaining: staff moderation and release verification.
+- [x] Phase 7 second slice: staff moderation, visibility and audit.
+- [x] Phase 7: local cross-feature release checks and readiness record.
+- [ ] Phase 7 remaining: production deployment verification and launch gates.
 
 ## Resume notes
+
+2026-11-05 local release verification completed. See
+[release verification record](frontend-release-verification.md) for launch gates.
+Fresh588 frontend tests, lint/typecheck/build and whitespace checks pass.
+Full backend clean rerun:591 passed, zero skipped (64 unit,373 real PostgreSQL
+integration,154 provider contract). Missing local NuGet packages restored first;
+no tracked dependency changes. Live browser checked11 routes at4 widths, keyboard
+skip navigation and5 no-store authorization/filter probes; no runtime exceptions,
+intercepted responses or synthetic browser fixtures. API liveness/readiness and
+proxy catalog200. No live data writes. Temporary Chromium stopped; API/frontend
+remain available. Artifacts `/tmp/release-*`. Updated web README. Changes remain
+uncommitted; no push/deployment. Production launch gates remain open.
+
+2026-11-05 staff moderation implemented and verified after user approval of its
+design, native execution and dedicated temporary local moderator provisioning.
+Account links to Moderation tools; existing API authorization governs access.
+`/moderation` provides Open/Resolved queues with URL filters and paging;
+report inspection supports explicit hide/resolve or dismissal, including deleted
+target dismissal. Direct review/comment inspection supports hide/restore; audit
+history uses real actor IDs, target filters and newest-first paging. All text is
+literal and spoilers remain behind explicit controls.
+
+Exact staff GET/POST proxy allowlists retain Origin/CSRF/JSON/body/no-store guards.
+Account-scoped queries and an external denial latch conceal staff content during
+session uncertainty, cancel requests/remove private caches on401/403 and require
+explicit successful authorization retry. Same-account checks retain hidden/inert/
+disabled drafts; account changes discard them. Inline consent binds raw server
+microsecond timestamp, report status, target, action and reason; revision/session
+changes cancel it.409 preserves reasons and requires fresh inspection; unknown
+POST outcomes block replay. Confirmed204 feedback survives failed refresh while
+another write stays blocked until successful inspection. Sensitive reasons stay
+out of URLs/storage/retained mutation variables/results.
+
+Final **588/588 frontend tests across84 files**, lint/typecheck, production build
+and whitespace checks pass. **28/28 real PostgreSQL moderation integration tests**,
+zero skips, pass. Missing-feature and regression checks observed RED→GREEN.
+Fresh whole-change reviewer found no material issues; no deferred minors.
+Mechanical design scan `[]`. One test harness issue was a reset callback returning
+a mock, treated by Vitest as teardown; block-bodied reset fixed it without changing
+production error handling. Test-only generic corrected before final passing build.
+
+Live Chromium→Next3100→API5080→PostgreSQL verified ordinary403, explicit staff
+access recovery, exact-version concurrent-edit409 and draft retention, review and
+comment hide/restore with public404→200, live/deleted-target dismissal and six
+persisted audit events. All three staff POST routes passed CSRF400/foreign-Origin403.
+Real role revocation with a loaded pending confirmation produced403, removed staff
+content, survived same-account session refresh, kept explicit retry denied and
+left public content unchanged. Native Tab/Enter skip-to-main passes. Both themes
+at320/768/1024/1440: eight report captures plus revoked mobile capture inspected;
+no horizontal overflow or browser runtime exceptions. No API response interception
+or synthetic browser fixtures. Scripts/captures/manifests/SQL: `/tmp/moderation-*`.
+
+Accumulated local registration budget blocked the third test account after two
+were created; restarted only Development API with unchanged limits/settings,
+resumed the exact recorded accounts, then provisioned one temporary Moderator
+membership/role. Dev Next restarted after build to avoid its earlier reload loop.
+Guarded transactions revoked membership, then removed exactly three users, two
+reviews/remaining comment, four reports, six test audit events and unused role;
+zero matching rows remain. Two existing catalog titles preserved. No existing
+real account promotion or backend/schema/dependency/configuration changes.
+
+Implementation remains uncommitted; reporting commit `459a918` stays on main.
+API5080/frontend3100 remain running; headless browser stopped after verification.
+Next: cross-feature release verification and operational readiness. Production
+ingress/deployment remains unverified; moderator-role administration UI and
+external sign-in are separate optional work. No push/merge/deployment.
+
+
+2026-11-05 user requested commit then next implementation. Public reporting
+committed locally on main as `459a918` (`feat: add public review and comment
+reporting`); fresh556/556 frontend tests and whitespace check passed immediately
+before commit. No push/deploy. Next proposed slice:
+[staff moderation design](superpowers/specs/2026-11-05-frontend-moderation-design.md),
+covering queues, decisions, visibility and audit, with role administration separate.
+No staff product code yet. Design review and dedicated local staff verification
+account authorization precede its implementation; preserve native execution.
 
 2026-11-05 public reporting implemented and verified. Catalog reviews, original
 review discussions and comment cards now offer explicit inline reports for other
@@ -855,12 +933,13 @@ No deferred minor code-review findings.
 
 ## Suggested next-session prompt
 
-> Continue RateFreak frontend Phase7 moderation/reporting in focused slices, then
+> Continue RateFreak frontend Phase7 release verification after reporting and staff moderation, then
 > release verification. Phase6 profiles/editing, follows and review comments are
 > complete, including real backend/browser checks. Read this checklist, the roadmap,
 > web/README.md, web/AGENTS.md and DESIGN.md first. Preserve all current uncommitted
 > profiles/follows/comments work; do not assume integration into Git has happened.
-> Ground the next slice in actual reporting/moderation/authorization contracts.
+> Reporting/staff moderation are implemented; read the newest resume notes and Git status.
+> Ground release checks in actual API/authorization contracts and current operational settings.
 > Keep interfaces separate, components focused and TanStack Query for server state.
 > Verify with dedicated local data and guarded cleanup. No automatic commit, merge,
 > push, deployment, provider activation or promotion of real accounts to staff.

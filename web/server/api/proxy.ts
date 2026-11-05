@@ -1,4 +1,5 @@
 import "server-only";
+import { moderationQuery } from "./moderation-policy";
 import { commentList } from "./comment-policy";
 import { followList, followQuery } from "./follow-policy";
 import { collectionQuery } from "./collection-policy";
@@ -28,8 +29,11 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   let collectionParams: URLSearchParams | null = null;
   try { collectionParams = collectionQuery(request.method,path,incoming.searchParams); }
   catch { return proxyProblem(400,"Invalid collection filters."); }
+  let moderationParams: URLSearchParams | null = null;
+  try { moderationParams = moderationQuery(request.method,path,incoming.searchParams); }
+  catch { return proxyProblem(400,"Invalid moderation filters."); }
   const externalSearch = path.length === 3 && path[0] === "media" && path[1] === "external" && path[2] === "search";
-  if ((incoming.search && !((collectionParams !== null || (request.method === "GET" && ((path.length === 1 && path[0] === "media") || externalSearch || listKind || socialList))))) || incoming.pathname !== `/api/v1/${path.join("/")}`) {
+  if ((incoming.search && !((moderationParams !== null || collectionParams !== null || (request.method === "GET" && ((path.length === 1 && path[0] === "media") || externalSearch || listKind || socialList))))) || incoming.pathname !== `/api/v1/${path.join("/")}`) {
     return proxyProblem(404, "API route not found.");
   }
   if (!isAllowedRoute(request.method, path)) {
@@ -56,6 +60,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
     catch { return proxyProblem(400, "Invalid personal filters."); }
   }
   if (collectionParams !== null) {const value=collectionParams.toString();query=value?`?${value}`:"";}
+  if (moderationParams !== null) query = `?${moderationParams}`;
   let upstreamPath = incoming.pathname;
   if (path.length === 5 && path[0] === "media" && path[1] === "external") {
     const identity = providerIdentity(path[2], path[3], path[4])!;

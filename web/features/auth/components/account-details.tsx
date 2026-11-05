@@ -20,5 +20,6 @@ export function AccountDetails() {
     </dl>
     <p>Your email is private. Your display name and bio are public. Logging out signs you out on all devices.</p>
     <Link href={`/users/${account.handle}`}>View public profile</Link>
+    <p><Link href="/moderation">Moderation tools</Link></p>
   </div>;
 }

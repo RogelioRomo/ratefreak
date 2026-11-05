@@ -1,0 +1,21 @@
+.screen { padding-block: 3rem; max-width: 70rem; display: grid; gap: 1.5rem; }
+.screen h1 { font: 600 clamp(2.5rem, 5vw, 4rem)/1.1 var(--font-editorial); letter-spacing: -.03em; }
+.screen h2 { font: 500 1.8rem/1.2 var(--font-editorial); }
+.screen a { color: var(--accent); text-underline-offset: .2em; }
+.screen p, .screen dd, .screen a { overflow-wrap: anywhere; }
+.nav, .actions, .paging { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; align-items: center; }
+.list { list-style: none; display: grid; }
+.row { padding-block: 1.5rem; border-bottom: 1px solid var(--border); display: grid; gap: .65rem; min-width: 0; }
+.meta { color: var(--muted); font-size: .9375rem; }
+.body { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 75ch; }
+.filters, .editor fieldset { display: grid; gap: .75rem; min-width: 0; border: 0; padding: 0; margin: 0; }
+.filters { max-width: 42rem; }
+.editor { max-width: 48rem; margin-top: 1.5rem; }
+.editor label, .filters label { font-weight: 600; }
+.editor textarea, .filters input { width: 100%; padding: .75rem; background: var(--input-surface); color: var(--foreground); border: 1px solid var(--input-border); border-radius: var(--radius-small); font: inherit; font-size: 1rem; }
+.editor textarea { min-height: 8rem; resize: vertical; }
+.editor p { margin-block: .5rem; }
+.confirm { padding-block: 1rem; border-block: 1px solid var(--border); }
+.detail { display: grid; gap: 1rem; }
+.detail dt { color: var(--muted); }
+.detail dd { margin-top: .25rem; white-space: pre-wrap; }

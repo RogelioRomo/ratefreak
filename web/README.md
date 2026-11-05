@@ -312,6 +312,8 @@ in the root `DESIGN.md`.
   `@vitest-environment jsdom` directive). Tests mock network I/O, not domain rules.
 
 Progress and the next session's scope are in [the frontend checklist](../docs/frontend-checklist.md).
+Local release evidence and outstanding launch gates are in the
+[release verification record](../docs/frontend-release-verification.md).
 
 See the [root README](../README.md) for backend setup and API contracts.
 
@@ -359,7 +361,8 @@ retry; confirmed writes remain confirmed when refresh fails.
 Additional exact proxy routes: `GET reviews/{guid}`, `GET|POST
 reviews/{guid}/comments`, and `GET|PATCH|DELETE comments/{guid}`. Only list GETs
 accept bounded `page`/`pageSize`; mutations retain existing Origin/CSRF/JSON/body
-protections. Reporting/moderation and release verification remain Phase7 work.
+protections. Reporting and moderation are described below; deployment verification
+remains open.
 
 ## Star ratings
 
@@ -368,3 +371,28 @@ arrows and touch support. A separate0-star choice retains existing zero ratings.
 Save rating explicitly persists the numeric score; Remove rating returns to Not
 rated. This replaces the score dropdown while retaining the existing API/session
 and draft behavior.
+
+## Reporting and moderation
+
+Other people's reviews/comments offer explicit inline reporting with seven
+reasons. Other requires details; details are limited to 1000 characters. Anonymous
+visitors can log in and return, without automatically submitting. Duplicate reports
+show a terminal message. Unknown write outcomes block replay until deliberate
+reload; details remain out of URLs, browser storage and retained mutation data.
+
+Signed-in Account pages link to `/moderation`. The API decides staff access;
+ordinary accounts receive access-denied guidance. Staff can inspect Open/Resolved
+report queues, dismiss reports or hide their targets, inspect review/comment IDs
+directly to hide/restore, and filter audit history at `/moderation/audit`.
+Spoilers require explicit reveal. Every decision requires a reason and inline
+confirmation bound to the exact server revision. Conflicts retain the reason and
+require fresh inspection; deleted targets permit dismissal only.
+
+Private staff caches are account scoped. Session uncertainty conceals/disables
+content and aborts work; authorization denial removes private data and persists
+until an explicit successful access check. Unknown write outcomes block replay.
+Moderator-role administration is separate and has no frontend/proxy route.
+
+The proxy allows exact report POST routes and moderation report/target/audit GETs,
+report resolve POST and target visibility POST. Validated URL filters and existing
+Origin, CSRF, JSON/body, cookie, cancellation and no-store protections apply.

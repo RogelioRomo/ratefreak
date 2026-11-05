@@ -30,5 +30,5 @@ it('permits only exact report POST routes', () => {
   expect(isAllowedRoute('POST',[segment,'bad','reports'])).toBe(false);
   expect(isAllowedRoute('POST',[segment,id,'reports','extra'])).toBe(false);
  }
- expect(isAllowedRoute('POST',['moderation','reports',id,'resolve'])).toBe(false);
+ expect(isAllowedRoute('POST',['admin','moderators',id])).toBe(false);
 });
