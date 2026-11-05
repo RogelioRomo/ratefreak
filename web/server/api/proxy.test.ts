@@ -212,3 +212,16 @@ describe('review comment proxy',()=>{
  expect((await proxyRequest(makeRequest(path,{method,body:'{}',headers:{Origin:'https://foreign.test','Content-Type':'application/json','X-CSRF-TOKEN':'token'}}),path.split('/'))).status).toBe(403);
  expect((await proxyRequest(makeRequest(path,{method,body:'{}',headers:{Origin:'http://web.test','Content-Type':'application/json'}}),path.split('/'))).status).toBe(400);expect(fetchMock).not.toHaveBeenCalled();});
 });
+
+it.each(['reviews','comments'])('guards and relays real reporting route %s',async segment=>{
+ vi.stubEnv('RATEFREAK_WEB_ORIGIN','http://web.test');vi.stubEnv('RATEFREAK_API_URL','http://localhost:5080');vi.stubEnv('RATEFREAK_CLIENT_IP_MODE','loopback');vi.stubEnv('RATEFREAK_PROXY_SECRET','a'.repeat(64));
+ const path=[segment,'a1111111-1111-1111-1111-111111111111','reports'];
+ for(const origin of [undefined,'https://evil.test']){
+  const headers:Record<string,string>={'Content-Type':'application/json'};if(origin)headers.Origin=origin;
+  expect((await proxyRequest(makeRequest(path.join('/'),{method:'POST',headers,body:'{"reason":"spam"}'}),path)).status).toBe(403);
+ }
+ expect(fetchMock).not.toHaveBeenCalled();
+ fetchMock.mockResolvedValue(Response.json({id:'report',status:'open'},{status:201,headers:{'Retry-After':'60'}}));
+ const response=await proxyRequest(makeRequest(path.join('/'),{method:'POST',headers:{Origin:'http://web.test','Content-Type':'application/json','X-CSRF-TOKEN':'csrf',Cookie:'ratefreak.session=s; ratefreak.csrf=c'},body:'{"reason":"spam"}'}),path);
+ expect(response.status).toBe(201);expect(response.headers.get('cache-control')).toBe('no-store');expect(response.headers.get('retry-after')).toBe('60');expect(new Headers(fetchMock.mock.calls[0][1]?.headers).get('X-CSRF-TOKEN')).toBe('csrf');
+});

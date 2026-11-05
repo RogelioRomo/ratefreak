@@ -1,0 +1,9 @@
+.control { margin-top: 1rem; }
+.form { max-width: 42rem; margin-top: 1rem; }
+.form p { overflow-wrap: anywhere; }
+.form fieldset { border: 0; padding: 0; margin: 0; min-width: 0; display: grid; gap: .65rem; }
+.form label { font-weight: 600; }
+.form textarea { width: 100%; min-height: 7rem; padding: .75rem; border: 1px solid var(--input-border); background: var(--input-surface); color: var(--foreground); border-radius: .25rem; font: inherit; font-size: 1rem; resize: vertical; }
+.form textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.form fieldset p { margin: 0 0 .5rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; }

@@ -10,7 +10,7 @@ import { PersonalControls } from "./personal-controls";
 import { PublicReviews } from "./public-reviews";
 import { LibraryScreen } from "./library-screen";
 const route=vi.hoisted(()=>({query:'',push:vi.fn(),replace:vi.fn()}));
-vi.mock('next/navigation',()=>({useSearchParams:()=>new URLSearchParams(route.query),useRouter:()=>({push:route.push,replace:route.replace})}));
+vi.mock('next/navigation',()=>({usePathname:()=>'/catalog/a1111111-1111-1111-1111-111111111111',useSearchParams:()=>new URLSearchParams(route.query),useRouter:()=>({push:route.push,replace:route.replace})}));
 const id='a1111111-1111-1111-1111-111111111111';const account={id:'owner',handle:'reader',displayName:'Reader',email:'reader@example.test',createdAt:'2026-10-31'};
 const media={id,type:'movie',title:'A film',releaseDate:null,imageReference:null};
 const entry={media,status:'completed',startedAt:'2026-01-01',completedAt:'2026-01-02',createdAt:'2026-01-01',updatedAt:'2026-01-02'};
@@ -79,3 +79,9 @@ it('cancels a pending write during session checking without losing its draft or 
  session={...session,account};view.rerender(<PersonalControls mediaId={id}/>);await act(async()=>resolve(Response.json({...review,body:'Late result'})));expect(screen.getByLabelText('Your public review')).toHaveValue('Keep this pending draft');expect(screen.queryByText('Review saved.')).not.toBeInTheDocument();expect(screen.getByRole('button',{name:'Save review'})).toBeEnabled();expect(mock.mock.calls.filter(([,o])=>o?.method==='PATCH')).toHaveLength(1);
 });
 it('saves a half-star selection through the existing numeric rating API',async()=>{setup(<PersonalControls mediaId={id}/>);fireEvent.click(await screen.findByRole('radio',{name:'4.5 stars'}));fireEvent.click(screen.getByRole('button',{name:'Save rating'}));await screen.findByText('Rating saved.');expect(mock.mock.calls.find(([url,o])=>String(url).endsWith('/rating')&&o?.method==='PUT')?.[1]?.body).toBe('{"score":4.5}');});
+it('retains a report draft and concealed spoiler after a background review failure',async()=>{
+ session={...session,account:{...account,id:'reporter'}};const view=setup(<PublicReviews mediaId={id}/>);
+ fireEvent.click(await screen.findByRole('button',{name:'Report review'}));fireEvent.change(screen.getByLabelText('Details'),{target:{value:'Report draft'}});
+ mock.mockResolvedValue(Response.json({title:'offline'},{status:503}));await act(()=>view.client.invalidateQueries({queryKey:['community',id,'reviews']}));
+ await screen.findByText('We couldn’t refresh reviews. Your report draft is kept.');expect(screen.getByLabelText('Details')).toHaveValue('Report draft');expect(screen.queryByText('<b>Literal text</b>')).toBeNull();
+});

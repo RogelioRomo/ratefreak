@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { ReportControl } from "@/features/reporting/components/report-control";
 import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useSession } from "@/features/auth/hooks/use-session";
@@ -23,6 +24,7 @@ export function CommentCard({ comment, enabled = true, onDeleted }: CommentCardP
   <header><h3><Link href={`/users/${comment.author.handle}`}>{comment.author.displayName}</Link></h3><p className={styles.meta}>@{comment.author.handle} · <time dateTime={comment.createdAt}>{comment.createdAt.slice(0, 10)}</time>{comment.updatedAt !== comment.createdAt && " · Edited"}</p></header>
   {comment.isSpoiler && <Button variant="secondary" aria-expanded={revealed} onClick={() => setRevealed(!revealed)}>{revealed ? "Hide comment spoilers" : "Show comment spoilers"}</Button>}
   {(!comment.isSpoiler || revealed) && <p className={styles.body}>{comment.body}</p>}
+  <ReportControl target={{type:"comment",id:comment.id,authorId:comment.author.id}} available={enabled}/>
   {owned && cached && <OwnerComment key={cached.id} comment={comment} accountId={cached.id} available={available} onDeleted={onDeleted} />}
  </article>;
 }

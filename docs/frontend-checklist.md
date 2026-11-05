@@ -24,9 +24,69 @@ Design: [frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
 - [x] Phase 6 first slice: public profiles and profile editing.
 - [x] Phase 6 second slice: follows and follower/following lists.
 - [x] Phase 6 final slice: review comments.
-- [ ] Phase 7: moderation and release verification.
+- [x] Phase 7 first slice: public review/comment reporting.
+- [ ] Phase 7 remaining: staff moderation and release verification.
 
 ## Resume notes
+
+2026-11-05 public reporting implemented and verified. Catalog reviews, original
+review discussions and comment cards now offer explicit inline reports for other
+people's content, with seven backend reasons and Other details validation.
+Anonymous login continuation preserves canonical review/catalog pagination and
+never submits automatically. Spoilers stay concealed. Own-content controls are
+absent. Details remain out of URLs/storage/retained mutation variables and results.
+
+Exact POST report proxy routes retain Origin/CSRF/JSON/body/no-store guards.
+Account-keyed forms preserve drafts during same-account checks under native
+hidden/inert/disabled guards; unavailable targets and session uncertainty abort
+writes. Identity changes discard editors/feedback. Known201/409 are terminal
+local feedback; validation/rate-limit rejection preserves editable drafts.
+Unknown POST outcomes block replay and warn that reload loses the draft.
+Catalog review background failures now retain report editors with independent
+retry feedback; retained404 content is concealed and disabled.
+
+Final **556/556 frontend tests across77 files**, lint/typecheck, production build
+and whitespace checks pass. **28/28 real PostgreSQL moderation integration tests**,
+zero skips, pass. Focused missing-feature checks observed RED→GREEN. Fresh whole
+change reviewer found no material issues/deferred minors. Mechanical scan `[]`.
+
+Live Chromium→Next3100→API5080→PostgreSQL verified report201 for both review and
+comment, duplicate409 after reload, native Other validation/recovery, real429
+with editable draft retention, CSRF400, foreign-Origin403, anonymous401,
+own-content exclusion, real login continuation without posting, cancel focus and
+native Tab/Enter skip-to-main. No intercepted or synthetic API responses.
+Both themes at320/768/1024/1440: eight captures inspected, no overflow or browser
+runtime exceptions. Scripts, manifest, SQL and captures: `/tmp/reporting-*`.
+
+Initial automation was interrupted by Development reloads before registration;
+restarting only Next fixed it. Production preview correctly rejects the existing
+Development loopback/cookie configuration; live evidence is Development, not
+production ingress. Next TypeScript subprocess/MSBuild IPC required sandbox
+escalation; successful checks above supersede those blocked attempts. Existing
+rate limits stayed unchanged; real reporting429 exercised recovery instead of
+resetting budgets. No system packages installed: browser libraries extracted/tmp.
+
+Two exact dedicated accounts plus one review/comment and two reports removed by
+guarded transaction; zero matching users/reviews/comments/reports remain. Existing
+Breaking Bad catalog record preserved. No backend/schema/dependency/configuration
+changes, commits, merge, push, deployment or real-account staff promotion.
+API5080/frontend3100 remain running. Next: staff moderation as a focused slice,
+then release verification. External sign-in remains optional and separate.
+
+
+2026-11-05 user approved the public reporting design and focused-slice order.
+[Implementation plan](superpowers/plans/2026-11-05-frontend-reporting.md) written
+and self-reviewed; native execution preserved. Plan awaits review before product
+implementation. Includes exact reporting routes, account-keyed drafts, uncertain
+POST protection, retained background-error content and page-aware safe login
+continuation. No product code changed.
+
+2026-11-05 resumed Phase7 contract investigation. Proposed first focused slice:
+[public review/comment reporting](superpowers/specs/2026-11-05-frontend-reporting-design.md).
+Grounded in existing report endpoints, validation, duplicate lifetime semantics,
+hidden-parent behavior and staff authorization contracts. Design awaits user
+review; no product code changed and Phase7 remains pending. Next: approve/adjust
+the reporting design, then write its implementation plan and execute natively.
 
 2026-11-04 community rating now adds read-only five-star artwork alongside its
 unchanged exact two-decimal average/count. Stars round to nearest0.5, ties up:

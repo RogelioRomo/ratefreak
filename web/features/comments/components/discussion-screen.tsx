@@ -25,7 +25,7 @@ export function DiscussionScreen({ reviewId }: DiscussionProps) {
  if (!valid) return <p>Invalid review address.</p>;
  if (review.isPending) return <LoadingState label="Loading review…" />;
  if (review.isError && !review.data) return <ErrorState title="Review unavailable" description="This review may have been removed, or requests may be limited. Wait and try again." onRetry={() => void review.refetch()} />;
- return <div className={styles.screen}><h1>Review discussion.</h1>{review.isError && <ErrorState title="Review unavailable" description={missing ? "This review is no longer available." : "We couldn’t refresh the review. Your draft is kept."} onRetry={() => void review.refetch()} />}<div hidden={missing} inert={missing}><ReviewContext key={review.data.id} review={review.data} /><h2>Comments</h2>
+ return <div className={styles.screen}><h1>Review discussion.</h1>{review.isError && <ErrorState title="Review unavailable" description={missing ? "This review is no longer available." : "We couldn’t refresh the review. Your draft is kept."} onRetry={() => void review.refetch()} />}<div hidden={missing} inert={missing}><ReviewContext key={review.data.id} review={review.data} available={!missing} /><h2>Comments</h2>
   {page === null ? <><p role="alert">Invalid comment page.</p><Link href={discussionHref(reviewId)}>Reset comment page</Link></> : <>
    <CommentList reviewId={reviewId} page={page} enabled={!missing} />
    {cached && <CommentForm key={`${cached.id}:${reviewId}`} reviewId={reviewId} accountId={cached.id} available={available} />}

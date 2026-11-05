@@ -21,3 +21,14 @@ it("permits exact profile lookup and owner update routes only", () => {
  expect(isAllowedRoute("PATCH", ["users", "by-handle", "owner"])).toBe(false);
  expect(isAllowedRoute("POST", ["users", "me"])).toBe(false);
 });
+
+it('permits only exact report POST routes', () => {
+ const id='a1111111-1111-1111-1111-111111111111';
+ for (const segment of ['reviews','comments']) {
+  expect(isAllowedRoute('POST',[segment,id,'reports'])).toBe(true);
+  for(const method of ['GET','PATCH','DELETE','PUT']) expect(isAllowedRoute(method,[segment,id,'reports'])).toBe(false);
+  expect(isAllowedRoute('POST',[segment,'bad','reports'])).toBe(false);
+  expect(isAllowedRoute('POST',[segment,id,'reports','extra'])).toBe(false);
+ }
+ expect(isAllowedRoute('POST',['moderation','reports',id,'resolve'])).toBe(false);
+});

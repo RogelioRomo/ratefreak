@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { expect, it, vi } from "vitest";
 import { CommentCard } from "./comment-card";
+vi.mock('next/navigation',()=>({usePathname:()=>'/reviews/review',useSearchParams:()=>new URLSearchParams()}));
 const session=vi.hoisted(()=>({account:{id:'owner'},error:null,isLoading:false,isTransitioning:false}));
 vi.mock('@/features/auth/hooks/use-session',()=>({useSession:()=>session}));
 const remove=vi.hoisted(()=>vi.fn());vi.mock('../api/comments',()=>({deleteComment:remove}));
