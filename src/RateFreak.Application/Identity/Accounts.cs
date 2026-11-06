@@ -5,7 +5,7 @@ public sealed record LoginRequest(string? Email, string? Password);
 public sealed record AccountProfile(Guid Id, string Handle, string DisplayName, string Email, DateTimeOffset CreatedAt, string? Bio = null);
 public enum AccountStatus { Success, Invalid, Conflict, Unauthenticated }
 public sealed record AccountResult(AccountStatus Status, AccountProfile? Profile = null,
-    Dictionary<string, string[]>? Errors = null);
+    Dictionary<string, string[]>? Errors = null, string? RecoveryCode = null);
 
 public interface IAccountService
 {

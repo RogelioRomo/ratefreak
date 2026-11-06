@@ -50,6 +50,7 @@ public static class DependencyInjection
         }).AddRoles<IdentityRole<Guid>>().AddEntityFrameworkStores<RateFreakDbContext>().AddSignInManager();
         services.AddScoped<RateFreak.Application.Moderation.IModerationService, RateFreak.Infrastructure.Moderation.ModerationService>();
         services.AddScoped<IAccountService, AccountService>();
+        services.AddScoped<IAccountRecoveryService, AccountRecoveryService>();
         services.AddScoped<IUserProfileService, UserProfileService>();
         services.AddScoped<IExternalAccountService, ExternalAccountService>();
         services.AddScoped<RateFreak.Application.Social.IFollowService, RateFreak.Infrastructure.Social.FollowService>();

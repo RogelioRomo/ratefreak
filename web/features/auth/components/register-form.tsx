@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
+import { AuthEntry } from "./auth-entry";
+import { RecoveryCodeDisplay } from "./recovery-code-display";
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/text-field";
 import type { RegisterRequest } from "../interfaces/register-request";
@@ -11,7 +13,8 @@ import { FormError, fieldErrors } from "./form-error";
 import styles from "./auth.module.css";
 
 export function RegisterForm() {
-  const mutation = useRegister();
+  const [code, setCode] = useState<string | null>(null);
+  const mutation = useRegister(setCode);
   const session = useSession();
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -24,9 +27,10 @@ export function RegisterForm() {
     (form.elements.namedItem("password") as HTMLInputElement).value = "";
     void mutation.submit(input).catch(() => {});
   }
+  if (code) return <RecoveryCodeDisplay code={code} title="Save your recovery code." doneLabel="Continue to login" onDone={() => setCode(null)} />;
   if (mutation.isSuccess) return <div className={styles.success}><h2>Your account is ready.</h2><p>Log in to start making RateFreak yours.</p><Link href="/login">Log in</Link></div>;
   return (
-    <form aria-label="Create account" onSubmit={submit} className={styles.form}>
+    <AuthEntry><form aria-label="Create account" onSubmit={submit} className={styles.form}>
       <FormError error={mutation.error} />
       <fieldset disabled={mutation.isPending || session.isTransitioning}>
         <TextField name="displayName" label="Display name" autoComplete="nickname" required maxLength={80} errors={fieldErrors(mutation.error, "displayName")} />
@@ -36,6 +40,6 @@ export function RegisterForm() {
         <Button type="submit">{mutation.isPending ? "Creating account…" : "Create account"}</Button>
       </fieldset>
       <p className={styles.footer}>Already have an account? <Link href="/login">Log in</Link>.</p>
-    </form>
+    </form></AuthEntry>
   );
 }

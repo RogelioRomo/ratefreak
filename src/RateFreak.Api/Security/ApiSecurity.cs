@@ -88,6 +88,8 @@ internal static class ApiSecurity
             AddAccountLimit(options, "external-auth-link", 10);
             AddLimit(options, "registration", 5, TimeSpan.FromHours(1));
             AddLimit(options, "login", 10, TimeSpan.FromMinutes(1));
+            AddLimit(options, "password-recovery", 10, TimeSpan.FromMinutes(1));
+            AddAccountLimit(options, "recovery-code", 5);
             AddLimit(options, "csrf", 30, TimeSpan.FromMinutes(1));
             AddLimit(options, "catalog", 60, TimeSpan.FromMinutes(1));
             AddLimit(options, "external-search", 20, TimeSpan.FromMinutes(1));

@@ -6,7 +6,23 @@ Phase 6e additional GitHub/Google sign-in, Phase 6f moderation/reporting and
 Phase 6g public profiles/editing.
 Collection discussions and further providers remain separate Phase 6 work.
 
-## Resume here — Phase 6g public profiles/editing complete (2026-10-30)
+## Current continuation — saved-code recovery (2026-11-06)
+
+After frontend release verification, the user approved saved-code recovery without
+local email verification or email delivery. [ADR 0014](adr/0014-account-recovery.md)
+supersedes historical local-email/recovery launch requirements below. API/frontend
+recovery is implemented on local `feat/account-recovery-codes`, with an additive
+migration and real disposable-database/browser verification. The existing local database was subsequently migrated at the user's explicit
+request, with unchanged user/catalog/collection row counts. The user also authorized
+a local commit; no merge, push or deployment.
+See [current release evidence](frontend-release-verification.md).
+
+Next: optional Google/GitHub browser sign-in/linking using existing backend support;
+provider apps/credentials/live activation remain separate configuration. Account
+retention/deletion/export, actual production ingress/session verification, durable
+keys, backups, abuse and provider-rights gates remain open.
+
+## Historical resume — Phase 6g public profiles/editing complete (2026-10-30)
 
 User requested audit DTO correction followed by public profiles/editing, chose fixed
 handles with editable display name/bio, and approved the written design. Implemented

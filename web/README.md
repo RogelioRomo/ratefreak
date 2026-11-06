@@ -33,7 +33,8 @@ build scripts; it does not combine the frontend and backend into a JS workspace.
 
 The browser client calls the same-origin `/api/v1/` proxy. It permits only
 `GET auth/csrf`, `GET users/me`, `GET media`, `GET media/{guid}` and
-`POST auth/register`, `auth/login`, `auth/logout`, plus the provider routes below.
+`POST auth/register`, `auth/login`, `auth/logout`, `auth/recovery-code`,
+`auth/reset-password` and `GET auth/recovery-status`, plus the feature routes below.
 The media list accepts query parameters: `q`, `type`, `page`, `pageSize`. Duplicate/unknown parameters
 and invalid values return 400; other routes reject query strings.
 Other paths return 404 and unsupported methods return 405 locally. Authenticated
@@ -396,3 +397,16 @@ Moderator-role administration is separate and has no frontend/proxy route.
 The proxy allows exact report POST routes and moderation report/target/audit GETs,
 report resolve POST and target visibility POST. Validated URL filters and existing
 Origin, CSRF, JSON/body, cookie, cancellation and no-store protections apply.
+
+
+## Recovery codes
+
+Local signup now includes a save-code step before login. `/reset-password` accepts
+a handle, saved code and new password; `/account` generates/replaces codes after
+current-password confirmation. Plaintext codes stay in component memory until
+acknowledgement/navigation, never shared query/mutation caches or browser storage.
+They are shown once; code replacement invalidates the previous one. Reset signs
+out every device and requires login. No verification/recovery email is sent, and
+admins cannot override recovery. See [ADR 0014](../docs/adr/0014-account-recovery.md)
+for loss-of-code and provider-only account behavior. Google/GitHub browser flows
+remain the next optional sign-in slice.

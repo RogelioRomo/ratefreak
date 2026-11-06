@@ -1,3 +1,4 @@
+import type { RegistrationResponse } from "../interfaces/registration-response";
 import { apiRequest } from "@/shared/api/request";
 import { ApiError } from "@/shared/api/api-error";
 import type { AccountProfile } from "../interfaces/account-profile";
@@ -16,7 +17,7 @@ export function login(input: LoginRequest): Promise<AccountProfile> {
   return apiRequest("auth/login", { method: "POST", body: input });
 }
 
-export function register(input: RegisterRequest): Promise<AccountProfile> {
+export function register(input: RegisterRequest): Promise<RegistrationResponse> {
   return apiRequest("auth/register", { method: "POST", body: input });
 }
 

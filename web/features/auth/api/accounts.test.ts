@@ -17,8 +17,8 @@ it("maps only an unauthenticated response to a signed-out session", async () => 
 
 it("matches existing account endpoints and never signs in after registration", async () => {
   const input = { email: profile.email, password: "Example-password-72", handle: profile.handle, displayName: profile.displayName };
-  fetchMock.mockResolvedValueOnce(Response.json({ requestToken: "token" })).mockResolvedValueOnce(Response.json(profile, { status: 201 }));
-  expect(await register(input)).toEqual(profile);
+  fetchMock.mockResolvedValueOnce(Response.json({ requestToken: "token" })).mockResolvedValueOnce(Response.json({ ...profile, recoveryCode: "Recovery-code-example" }, { status: 201 }));
+  expect(await register(input)).toEqual({ ...profile, recoveryCode: "Recovery-code-example" });
   expect(fetchMock.mock.calls.map(([url]) => url)).toEqual(["/api/v1/auth/csrf", "/api/v1/auth/register"]);
   fetchMock.mockResolvedValueOnce(Response.json({ requestToken: "new" })).mockResolvedValueOnce(Response.json(profile));
   expect(await login({ email: input.email, password: input.password })).toEqual(profile);

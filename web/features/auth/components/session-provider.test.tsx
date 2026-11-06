@@ -50,11 +50,12 @@ it("logs in without retaining submitted passwords in mutation state", async () =
 
 it("registration stays anonymous and does not retain credentials", async () => {
   const { client, wrapper } = harness();
-  vi.mocked(register).mockResolvedValue(account);
+  vi.mocked(register).mockResolvedValue({ ...account, recoveryCode: "Recovery-code-example" });
   const hook = renderHook(() => ({ session: useSession(), mutation: useRegister() }), { wrapper });
   await waitFor(() => expect(hook.result.current.session.account).toBeNull());
   await act(() => hook.result.current.mutation.submit({ email: account.email, password: "Secret-example-72", handle: account.handle, displayName: account.displayName }));
   expect(hook.result.current.session.account).toBeNull();
+  expect(JSON.stringify(client.getMutationCache().getAll().map((entry) => entry.state))).not.toContain("Recovery-code-example");
   expect(JSON.stringify(client.getMutationCache().getAll().map((entry) => entry.state))).not.toContain("Secret-example-72");
   hook.unmount(); client.clear();
 });

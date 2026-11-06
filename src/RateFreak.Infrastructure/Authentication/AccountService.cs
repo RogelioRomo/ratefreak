@@ -19,6 +19,10 @@ internal sealed class AccountService(UserManager<AccountUser> users, SignInManag
             Id = Guid.NewGuid(), UserName = request.Handle!.Trim(), Email = request.Email!.Trim(),
             DisplayName = request.DisplayName!.Trim(), CreatedAt = now, UpdatedAt = now
         };
+        var code = RecoveryCode.Generate();
+        await using var transaction = await db.Database.BeginTransactionAsync(cancellationToken);
+        db.Add(new AccountRecoveryState { UserId = user.Id, Verifier = RecoveryCode.Hash(user.Id, code) });
+        db.Add(new AccountRecoveryEvent { UserId = user.Id, Action = "code-issued" });
         IdentityResult result;
         try { result = await users.CreateAsync(user, request.Password!); }
         catch (DbUpdateException exception) when (exception.InnerException is PostgresException
@@ -27,7 +31,11 @@ internal sealed class AccountService(UserManager<AccountUser> users, SignInManag
         {
             return new(AccountStatus.Conflict);
         }
-        if (result.Succeeded) return new(AccountStatus.Success, Profile(user));
+        if (result.Succeeded)
+        {
+            await transaction.CommitAsync(cancellationToken);
+            return new(AccountStatus.Success, Profile(user), RecoveryCode: code);
+        }
         if (result.Errors.Any(e => e.Code is "DuplicateEmail" or "DuplicateUserName"))
             return new(AccountStatus.Conflict);
         return new(AccountStatus.Invalid, Errors: new() { ["password"] = result.Errors.Select(e => e.Description).ToArray() });

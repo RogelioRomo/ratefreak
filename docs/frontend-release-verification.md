@@ -1,10 +1,10 @@
 # Frontend release verification
 
-Date: 2026-11-05. Local verification passes; public-launch approval remains pending.
-This record covers the current checkout, including uncommitted staff moderation.
-It does not assert that these changes are committed, deployed or production verified.
+Date: 2026-11-06. Recovery-code verification follows the original pass below; public-launch approval remains pending.
+This record covers the current checkout, including uncommitted recovery-code work.
+Git records local commit state; these changes are not deployed or production verified.
 
-## Evidence from this pass
+## Original verification pass — 2026-11-05
 
 | Check | Result |
 | --- | --- |
@@ -47,7 +47,7 @@ and [deployment direction](adr/0001-deployment-and-authentication.md).
 
 | Gate | Evidence needed before launch |
 | --- | --- |
-| Local account ownership and recovery | An accepted policy for unverified emails, lost passwords and account retention/deletion; external sign-in is optional and does not settle local-password recovery |
+| Account retention/deletion | Saved-code recovery and the no-email-verification policy are now accepted and locally implemented ([ADR 0014](adr/0014-account-recovery.md)); retention/deletion/export policy remains open, and recovery still needs deployed acceptance |
 | Real production ingress | Deployed HTTPS origins, exact write Origin, matching server secrets and verified Vercel address headers, or a separately verified adapter for another host |
 | Production sessions | Real `__Host-` Secure/HttpOnly cookies, independent Set-Cookie forwarding/deletion, CSRF rejection, all-device logout and no private response caching through the actual ingress |
 | Durable Data Protection | Restricted persistent key storage, encryption/protected storage, restart and replica continuity, and controlled key recovery |
@@ -80,3 +80,64 @@ Run live browser checks against the API using the private local configuration
 described in [web setup](../web/README.md). Never copy secret values into this
 record. A Next build can disrupt an already-running dev server's generated files;
 restart the dev server before further browser checks if necessary.
+
+
+## Recovery-code verification — 2026-11-06
+
+Final verification on the recovery checkout:
+
+| Check | Result |
+| --- | --- |
+| Frontend suite | 600 passed across 85 files |
+| Full backend suite | 606 passed, zero skipped: 64 unit, 388 real PostgreSQL integration, 154 provider contract |
+| ESLint / TypeScript | Both exited 0 |
+| Next production build | Exited 0, including `/reset-password` |
+| Real browser recovery journey | Passed through Next/API/disposable PostgreSQL |
+| Responsive recovery checks | Four states at 320/768/1024/1440px, no overflow |
+| Runtime exceptions / design scan | None observed / no findings |
+| Diff whitespace | `git diff --check` exited 0 |
+
+Approved policy: local emails remain unverified; no recovery mail or admin reset
+is supported. New local accounts receive a saved code; existing local users enroll
+or rotate it after current-password confirmation. A valid single-use code resets
+the password, returns a replacement and revokes all sessions. Without a password,
+saved code or previously linked provider, recovery is impossible. External-only
+accounts retain provider recovery; Google/GitHub browser sign-in/linking is the
+next separate slice, with no credentials or live activation provisioned here.
+
+Backend checks cover real PostgreSQL code consumption, concurrent replay, stale
+tracked user/session rejection, legacy enrollment, provider-only denial, generic
+failures, CSRF/no-store, password/lockout rules and attempt budgets surviving API
+restart. Fault-injection tests prove registration and reset roll back if security
+event persistence fails. Registration OpenAPI includes the recovery code.
+Frontend tests cover save acknowledgement, code/password exclusion from mutation
+caches, dismissal, reset errors and unsaved-code survival during background session
+read failures. Fresh review findings were fixed with observed failing/passing tests.
+
+Live browser evidence used dedicated temporary services: Chromium → Next on 3101
+→ Development API on 5091 → a disposable PostgreSQL container migrated from empty.
+No interception or synthetic API responses were used. The journey proved signup
+without login, password-confirmed rotation, obsolete-code rejection, reset with
+replacement code, revocation of two existing signed-in browser sessions, old
+password rejection and login with the replacement password to the same account.
+Registration save, account recovery, reset form and reset save states fit at
+320/768/1024/1440px; inspected desktop/mobile captures have codes masked. No browser
+runtime errors were observed. Test identities/content existed only in the disposable
+database. Dedicated service processes were stopped and that container removed;
+existing project services/data were not migrated or modified.
+
+Temporary evidence is under `/tmp/ratefreak-recovery/`, including browser-smoke.mjs,
+browser-results.json, masked screenshots and verification logs. Browser automation
+requires the local Playwright/Chromium cache and temporary shared libraries.
+These are local evidence, not committed automation or production proof.
+
+At the user's explicit follow-up request, applied `20261106222423_AddAccountRecovery`
+to the existing local project PostgreSQL database on 2026-11-06. Verified migration
+history advanced from `20261031021811_AddUserBios`, both recovery tables exist, and
+existing row counts are preserved: 2 users, 8 catalog items, 0 collections. Both new
+recovery tables are empty; existing users remain unenrolled until they generate a
+code. The stopped project container was started for this operation and left running.
+Evidence: `/tmp/ratefreak-recovery/local-migration-results.json`. The API still does
+not migrate at startup. This was a local database update, not a deployment.
+Remaining deployment, Data Protection, backup/restore, abuse, licensing and policy
+gates above remain open.

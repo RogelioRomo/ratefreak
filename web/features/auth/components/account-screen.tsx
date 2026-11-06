@@ -8,6 +8,7 @@ import { AccountDetails } from "./account-details";
 import { LogoutControl } from "./logout-control";
 import { LoadingState } from "@/components/ui/loading-state";
 
+import { RecoverySettings } from "./recovery-settings";
 import { ProfileEditor } from "@/features/profiles/components/profile-editor";
 
 export function AccountScreen() {
@@ -26,6 +27,7 @@ export function AccountScreen() {
   return <AuthPanel title="Your account." description="A space that’s yours.">
     {entryChecked ? <AccountDetails /> : <LoadingState label="Checking your session…" />}
     {entryChecked && <ProfileEditor />}
+    {entryChecked && <RecoverySettings />}
     <div hidden={!entryChecked}><LogoutControl /></div>
   </AuthPanel>;
 }

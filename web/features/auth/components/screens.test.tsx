@@ -30,7 +30,8 @@ beforeEach(() => {
       if (loginStatus === 200) { signedIn = true; return Response.json(account); }
       return Response.json({ title: "Login failed." }, { status: loginStatus, headers: { "Retry-After": "60" } });
     }
-    if (path.endsWith("auth/register")) return Response.json(registerStatus === 201 ? account : { title: "Invalid.", errors: { handle: ["Handle is invalid."] } }, { status: registerStatus });
+    if (path.endsWith("auth/recovery-status")) return Response.json({ hasPassword: true, hasRecoveryCode: true });
+    if (path.endsWith("auth/register")) return Response.json(registerStatus === 201 ? { ...account, recoveryCode: "12345678-90ABCDEF-12345678-90ABCDEF" } : { title: "Invalid.", errors: { handle: ["Handle is invalid."] } }, { status: registerStatus });
     if (path.endsWith("auth/logout")) {
       if (logoutStatus === 204) { signedIn = false; return new Response(null, { status: 204 }); }
       return new Response(null, { status: logoutStatus });
@@ -75,7 +76,10 @@ it("registration shows success without signing in", async () => {
   fireEvent.change(screen.getByLabelText("Handle"), { target: { value: account.handle } });
   await fillLogin();
   fireEvent.submit(screen.getByRole("form", { name: "Create account" }));
-  expect(await screen.findByRole("heading", { name: "Your account is ready." })).toBeInTheDocument();
+  expect(await screen.findByRole("heading", { name: "Save your recovery code." })).toBeInTheDocument();
+  fireEvent.click(screen.getByRole("checkbox", { name: "I saved my recovery code" }));
+  fireEvent.click(screen.getByRole("button", { name: "Continue to login" }));
+  expect(screen.getByRole("heading", { name: "Your account is ready." })).toBeInTheDocument();
   expect(screen.getByRole("link", { name: "Log in" })).toHaveAttribute("href", "/login");
   expect(signedIn).toBe(false);
   expect(navigation.replace).not.toHaveBeenCalled();

@@ -44,6 +44,21 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
             challenge.HasKey(c => c.Id);
             challenge.HasIndex(c => c.ExpiresAt);
         });
+        modelBuilder.Entity<AccountRecoveryState>(state =>
+        {
+            state.ToTable("account_recovery_states");
+            state.HasKey(s => s.UserId);
+            state.Property(s => s.Verifier).HasMaxLength(64);
+            state.HasOne<AccountUser>().WithOne().HasForeignKey<AccountRecoveryState>(s => s.UserId).OnDelete(DeleteBehavior.Cascade);
+        });
+        modelBuilder.Entity<AccountRecoveryEvent>(entry =>
+        {
+            entry.ToTable("account_recovery_events");
+            entry.HasKey(e => e.Id);
+            entry.Property(e => e.Action).HasMaxLength(32).IsRequired();
+            entry.HasIndex(e => new { e.UserId, e.CreatedAt });
+            entry.HasOne<AccountUser>().WithMany().HasForeignKey(e => e.UserId).OnDelete(DeleteBehavior.Cascade);
+        });
         modelBuilder.Entity<AccountUser>(user =>
         {
             user.ToTable("users", table => table.HasCheckConstraint("ck_users_bio",

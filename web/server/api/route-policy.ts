@@ -17,10 +17,10 @@ export function isAllowedRoute(method: string, path: readonly string[]): boolean
     if (method === "GET" && path[1] === "external") return (path.length === 3 && path[2] === "search") || (path.length === 5 && providerIdentity(path[2], path[3], path[4]) !== null);
   }
   if (method === "POST") return path.length === 2 && path[0] === "auth" &&
-    ["register", "login", "logout"].includes(path[1]);
+    ["register", "login", "logout", "recovery-code", "reset-password"].includes(path[1]);
   if (method === "GET" && path[0] === "media") return path.length === 1 || (path.length === 2 && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(path[1]));
   return method === "GET" && path.length === 2 && (
-    (path[0] === "auth" && path[1] === "csrf") ||
+    (path[0] === "auth" && ["csrf", "recovery-status"].includes(path[1])) ||
     (path[0] === "users" && path[1] === "me")
   );
 }

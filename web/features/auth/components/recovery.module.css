@@ -1,0 +1,7 @@
+.code { display: block; padding: 1rem; border: 1px solid var(--border); font-size: 1rem; line-height: 1.8; overflow-wrap: anywhere; user-select: all; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.confirm { display: flex; align-items: flex-start; gap: 0.75rem; min-height: 2.75rem; cursor: pointer; }
+.confirm input { margin-top: 0.3rem; width: 1.25rem; height: 1.25rem; accent-color: var(--accent); flex-shrink: 0; }
+.settings { border-top: 1px solid var(--border); padding-block: 2rem; display: grid; gap: 1rem; line-height: 1.7; }
+.settings[hidden] { display: none; }
+.settings h2 { font-family: var(--font-editorial); font-size: 1.75rem; font-weight: 500; }

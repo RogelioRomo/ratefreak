@@ -19,7 +19,7 @@ internal static class AccountEndpoints
         auth.MapPost("/register", async (RegisterRequest request, IAccountService accounts, CancellationToken cancellationToken) =>
             Registration(await accounts.RegisterAsync(request, cancellationToken)))
             .AddEndpointFilter<AntiforgeryFilter>().RequireRateLimiting("registration")
-            .Produces<AccountProfile>(StatusCodes.Status201Created).ProducesValidationProblem()
+            .Produces<LocalRegistrationResponse>(StatusCodes.Status201Created).ProducesValidationProblem()
             .ProducesProblem(StatusCodes.Status409Conflict).WithSummary("Register a local account");
 
         auth.MapPost("/login", async (LoginRequest request, IAccountService accounts, CancellationToken cancellationToken) =>
@@ -58,7 +58,8 @@ internal static class AccountEndpoints
 
     private static IResult Registration(AccountResult result) => result.Status switch
     {
-        AccountStatus.Success => Results.Json(result.Profile, statusCode: StatusCodes.Status201Created),
+        AccountStatus.Success => Results.Json(new LocalRegistrationResponse(result.Profile!.Id, result.Profile.Handle, result.Profile.DisplayName,
+            result.Profile.Email, result.Profile.CreatedAt, result.Profile.Bio, result.RecoveryCode!), statusCode: StatusCodes.Status201Created),
         AccountStatus.Conflict => Results.Problem(statusCode: StatusCodes.Status409Conflict,
             title: "Email or handle is unavailable."),
         _ => Results.ValidationProblem(result.Errors!)

@@ -944,3 +944,34 @@ No deferred minor code-review findings.
 > Verify with dedicated local data and guarded cleanup. No automatic commit, merge,
 > push, deployment, provider activation or promotion of real accounts to staff.
 > External sign-in remains an optional separate follow-up.
+
+
+## Account recovery codes — 2026-11-06
+
+User approved [saved-code recovery](superpowers/specs/2026-11-06-account-recovery-design.md)
+and [ADR 0014](adr/0014-account-recovery.md). No local email verification/delivery
+or administrator override. API owns code issuance/verification, password changes,
+atomic consumption/rotation, session revocation and durable account attempt limits.
+Frontend adds the mandatory signup save step, `/reset-password`, and current-password
+confirmed enrollment/replacement in `/account`. Raw codes remain only in the
+issuing response and local component state, surviving recoverable session-read
+errors until acknowledgement/navigation. No code enters shared query/mutation caches.
+
+Real disposable PostgreSQL tests and a Chromium/Next/API browser journey passed;
+see [release verification](frontend-release-verification.md) for current counts,
+rollback/concurrency evidence, responsive captures and guarded service/database cleanup.
+Do not apply the new additive migration to existing databases implicitly, or infer
+production readiness from local checks. No commit, merge, push, deployment, provider
+activation or real-account promotion occurred.
+
+Next slice: optional Google/GitHub browser sign-in/linking using the existing API
+contracts, preserving local password accounts and their recovery codes. Live provider
+configuration still needs registered apps/credentials. Existing retention/deletion,
+production and provider-rights gates remain open.
+
+
+Follow-up authorization, 2026-11-06: user requested the migration and local commit.
+Applied `20261106222423_AddAccountRecovery` to the existing project database and
+verified both new empty tables plus unchanged counts (2 users, 8 media, 0 collections).
+The existing PostgreSQL container was started and left running. No merge/push or
+deployment. Fresh recovery and auth/proxy regression checks run before commit.

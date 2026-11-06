@@ -84,6 +84,7 @@ app.UseRateLimiter();
 app.MapDevelopmentDocumentation();
 app.MapHealthEndpoints();
 app.MapAccountEndpoints();
+app.MapAccountRecoveryEndpoints();
 app.MapUserProfileEndpoints();
 app.MapExternalAccountEndpoints();
 app.MapCatalogEndpoints();

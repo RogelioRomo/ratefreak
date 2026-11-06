@@ -232,3 +232,37 @@ it.each([['reports','resolve'],['reviews','visibility'],['comments','visibility'
  fetchMock.mockResolvedValue(new Response(null,{status:204}));const response=await proxyRequest(makeRequest(path.join('/'),{method:'POST',headers:{Origin:'http://web.test','Content-Type':'application/json','X-CSRF-TOKEN':'token'},body:'{}'}),path);expect(response.status).toBe(204);expect(response.headers.get('Cache-Control')).toBe('no-store');expect(new Headers(fetchMock.mock.calls[0][1]?.headers).get('X-CSRF-TOKEN')).toBe('token');
 });
 it('forwards only validated staff list query fields',async()=>{const path=['moderation','reports'];fetchMock.mockResolvedValue(Response.json({items:[]}));const response=await proxyRequest(makeRequest('moderation/reports?status=resolved&page=2&pageSize=20'),path);expect(response.status).toBe(200);expect(String(fetchMock.mock.calls[0][0])).toBe('http://api.test:5080/api/v1/moderation/reports?status=resolved&page=2&pageSize=20');fetchMock.mockClear();expect((await proxyRequest(makeRequest('moderation/reports?status=open&status=resolved'),path)).status).toBe(400);expect(fetchMock).not.toHaveBeenCalled();});
+
+describe("account recovery boundary", () => {
+  beforeEach(() => {
+    vi.stubEnv("RATEFREAK_API_URL", "http://localhost:5080");
+    vi.stubEnv("RATEFREAK_WEB_ORIGIN", "http://web.test");
+    vi.stubEnv("RATEFREAK_CLIENT_IP_MODE", "loopback");
+    vi.stubEnv("RATEFREAK_PROXY_SECRET", "a".repeat(64));
+  });
+  it.each(["recovery-code", "reset-password"])("forwards %s only through the protected mutation boundary", async (route) => {
+    fetchMock.mockResolvedValue(Response.json({ recoveryCode: "secret-code" }));
+    const path = `auth/${route}`;
+    const request = { method: "POST", headers: { Origin: "http://web.test", "Content-Type": "application/json", "X-CSRF-TOKEN": "token" }, body: JSON.stringify({ password: "new-password", recoveryCode: "saved-code" }) };
+    const response = await proxyRequest(makeRequest(path, request), path.split("/"));
+    expect(response.status).toBe(200);
+    expect(response.headers.get("cache-control")).toBe("no-store");
+    expect(await response.json()).toEqual({ recoveryCode: "secret-code" });
+    const options = fetchMock.mock.calls[0][1];
+    expect(new TextDecoder().decode(options?.body as Uint8Array)).toBe(request.body);
+    expect(new Headers(options?.headers).get("X-CSRF-TOKEN")).toBe("token");
+    fetchMock.mockClear();
+    const denied = await proxyRequest(makeRequest(path, { ...request, headers: { ...request.headers, Origin: "https://evil.test" } }), path.split("/"));
+    expect(denied.status).toBe(403);
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect((await proxyRequest(makeRequest(path), path.split("/"))).status).toBe(405);
+    expect((await proxyRequest(makeRequest(`${path}?code=secret`, request), path.split("/"))).status).toBe(404);
+  });
+  it("allows enrollment status reads without allowing writes", async () => {
+    fetchMock.mockResolvedValue(Response.json({ hasPassword: true, hasRecoveryCode: false }));
+    const response = await proxyRequest(makeRequest("auth/recovery-status"), ["auth", "recovery-status"]);
+    expect(response.status).toBe(200);
+    expect(response.headers.get("cache-control")).toBe("no-store");
+    expect((await proxyRequest(makeRequest("auth/recovery-status", { method: "POST" }), ["auth", "recovery-status"])).status).toBe(405);
+  });
+});

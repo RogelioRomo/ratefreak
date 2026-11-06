@@ -276,11 +276,11 @@ client-address headers affect rate limits only; .NET authenticates/authorizes th
 actual user cookie. No permissive CORS policy is needed. OAuth/provider/catalog
 proxy routes are not enabled by this slice.
 
-Local password accounts still have unverified emails and no password recovery.
-External sign-in below provides provider-managed authentication/recovery without
-email delivery. Before public launch, settle the remaining local-account ownership/
-recovery policy, finish HTTPS/ingress and key-storage hardening, and review abuse
-controls/account retention. Profile editing, public profiles, admin endpoints and further media providers remain pending. TMDB activation is
+Local password accounts intentionally have unverified emails and use saved-code
+password recovery without email delivery; see [ADR 0014](docs/adr/0014-account-recovery.md).
+External sign-in below provides provider-managed authentication/recovery. Before
+public launch, finish HTTPS/ingress and key-storage hardening, verify recovery on
+the deployed release, and review abuse controls/account retention. Profile editing, public profiles, admin endpoints and further media providers remain pending. TMDB activation is
 verified locally; IGDB and MusicBrainz live search/preview are also verified using
 the supplied credentials/contact. Normal runtime enablement remains a configuration
 step; authenticated live imports were not part of those read-only checks.
@@ -1035,3 +1035,35 @@ forward fixes; review backup/data policy before intentional rollback. No avatar
 uploads, handle/email/password changes, public library, profile reports/moderation,
 frontend or deployment. Profile moderation and account erasure/export/retention
 policy remain public-launch work.
+
+
+## Saved-code password recovery (2026-11-06)
+
+Local accounts intentionally do not require email verification or email delivery.
+This approved policy supersedes historical verification/recovery requirements
+above; see [ADR 0014](docs/adr/0014-account-recovery.md). Email is not ownership proof.
+
+- Local registration returns the existing profile fields plus `recoveryCode`.
+  Save the code before continuing to login. Registration still does not sign in.
+- `GET /api/v1/auth/recovery-status` (authenticated) returns `hasPassword` and
+  `hasRecoveryCode`, without any secret.
+- `POST /api/v1/auth/recovery-code` (authenticated + CSRF) accepts `{password}`
+  and returns `{recoveryCode}`. It creates/replaces the code after password and
+  current-session confirmation. Existing users enroll here through `/account`.
+- `POST /api/v1/auth/reset-password` (CSRF) accepts `{handle,recoveryCode,password}`
+  and returns a replacement `{recoveryCode}` after an atomic password reset and
+  all-device session revocation. The browser form is `/reset-password`.
+
+Only the issuing response shows a code. Store it privately in a password manager
+or offline. Consumed/replaced codes stop working. If a reset response is lost,
+try the new password; after login, generate a new code in settings. No automatic
+retry, email reset, admin override or local-password creation for external-only
+accounts is provided. Lost password plus lost code requires a previously linked
+provider; otherwise recovery is impossible. Google/GitHub remain optional backend
+capabilities, with browser integration/live configuration a separate follow-up.
+
+Apply the additive `AddAccountRecovery` migration using the existing reviewed
+migration process; the API does not migrate at startup. It adds recovery state and
+credential-free security events, leaving existing users unenrolled. Do not use
+production rollback without a reviewed recovery plan. Production hardening and
+retention/deletion/export policy remain release gates.
