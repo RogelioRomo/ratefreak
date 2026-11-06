@@ -15,6 +15,9 @@ public sealed class AccountDatabase : IAsyncLifetime
         await using var context = new RateFreakDbContext(new DbContextOptionsBuilder<RateFreakDbContext>()
             .UseNpgsql(ConnectionString).Options);
         await context.Database.MigrateAsync(TestContext.Current.CancellationToken);
+        // Domain/account fixtures represent an initialized installation. Setup tests use
+        // separate disposable databases and exercise the actual fresh-install guard.
+        await context.Database.ExecuteSqlRawAsync("UPDATE installation_state SET completed_at = CURRENT_TIMESTAMP WHERE id = 1", TestContext.Current.CancellationToken);
     }
 
     public async ValueTask DisposeAsync() => await postgres.DisposeAsync();

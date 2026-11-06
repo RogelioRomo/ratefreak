@@ -975,3 +975,23 @@ Applied `20261106222423_AddAccountRecovery` to the existing project database and
 verified both new empty tables plus unchanged counts (2 users, 8 media, 0 collections).
 The existing PostgreSQL container was started and left running. No merge/push or
 deployment. Fresh recovery and auth/proxy regression checks run before commit.
+
+
+## Secret-protected installation setup — 2026-11-06
+
+Implemented the approved [first-run design](superpowers/specs/2026-11-06-installation-setup-design.md):
+API-owned permanent singleton, deployment-secret verification and atomic first-admin
+creation with recovery/audit; frontend setup boundary before normal sessions. Existing
+account upgrades remain initialized without promotion. Setup never reopens because
+of admin deletion/demotion or secret removal. See [ADR 0015](adr/0015-installation-setup.md)
+and [release evidence](frontend-release-verification.md) for configuration, test/browser
+proof and remaining gates. The new migration has not been applied to the existing
+project database; no real installation secret/admin was created, commit or deployment.
+Next independent feature remains optional Google/GitHub browser sign-in/linking.
+
+
+Interactive follow-up: user tested the dedicated fresh-install demo successfully
+and authorized committing and merging setup to local main. Next development
+instant-navigation diagnostics use documented explicit opt-in (`manual-warning`)
+because the installation boundary intentionally withholds route segments. Demo
+accounts stay in its separate database; the existing project database is unchanged.

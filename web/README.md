@@ -11,7 +11,8 @@ pnpm --dir web install --frozen-lockfile
 pnpm --dir web dev
 ```
 
-Open http://localhost:3000. The homepage and application shell run without the API or database.
+Open http://localhost:3000. The app first checks installation state through the API;
+a reachable, migrated API/database is required before normal pages are shown.
 
 ## Checks and production
 
@@ -410,3 +411,24 @@ out every device and requires login. No verification/recovery email is sent, and
 admins cannot override recovery. See [ADR 0014](../docs/adr/0014-account-recovery.md)
 for loss-of-code and provider-only account behavior. Google/GitHub browser flows
 remain the next optional sign-in slice.
+
+
+## First-run setup
+
+The root installation boundary checks `GET /api/v1/setup/status` before mounting
+normal account/session handling or app navigation. A pending fresh installation
+shows `/setup`, asking for the API-configured deployment secret and first-admin
+account details. Save the returned recovery code, then continue to login. The
+Next proxy allows only setup status GET and setup POST, retaining its existing
+Origin, CSRF, body-size, fixed-upstream and no-store controls.
+
+Never configure the deployment secret in Next.js; users submit it in the masked
+setup form, and .NET verifies it. Keep the existing proxy configuration in place.
+Unknown setup status blocks normal content with retry. Confirmed completion is
+permanent, so later focus/status failures preserve existing editor drafts. Session
+changes cannot clear the independent installation-status query cache. Once complete,
+`/setup` redirects home and normal Create account registrations stay unprivileged.
+
+See the root README and [ADR 0015](../docs/adr/0015-installation-setup.md) for API
+secret provisioning, additive migration, existing-account upgrades and offline
+administrator maintenance. Existing databases are not migrated automatically.

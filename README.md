@@ -1067,3 +1067,50 @@ migration process; the API does not migrate at startup. It adds recovery state a
 credential-free security events, leaving existing users unenrolled. Do not use
 production rollback without a reviewed recovery plan. Production hardening and
 retention/deletion/export policy remain release gates.
+
+
+## First-run administrator setup
+
+Apply the additive `AddInstallationSetup` migration before starting the new API,
+using the existing reviewed migration process. API startup still does not migrate.
+For a fresh installation, generate its deployment secret locally:
+
+```bash
+openssl rand -hex 32
+```
+
+Store that 64-character value in the API's `Installation:SetupSecret` setting
+(`Installation__SetupSecret` in its deployment secret store). For local development:
+
+```bash
+dotnet user-secrets set 'Installation:SetupSecret' 'YOUR_64_HEX_SECRET' --project src/RateFreak.Api
+```
+
+Keep it private. Do not place it in `NEXT_PUBLIC_`, Next configuration, a URL, source
+control or the account password field. The API does not automatically load `.env`.
+The example file documents the environment-variable name; export it to the API
+process or use user-secrets/your deployment secret manager.
+
+Open the frontend. Before any account exists, the app redirects to `/setup` and
+shows **Create administrator**. Enter the deployment secret and account details,
+save the recovery code, then log in. This creates exactly one initial Admin.
+Subsequent **Create account** registrations are ordinary users. Missing or malformed
+secret configuration blocks a pending installation rather than opening registration.
+
+`GET /api/v1/setup/status` returns `{required,configured}`. `POST /api/v1/setup`
+accepts `{setupSecret,email,password,handle,displayName}` with CSRF (and proxy
+Origin protection), returning the local-registration profile plus recoveryCode.
+Before completion, only these setup routes, CSRF and health checks are available;
+other API calls return 503. After completion, setup submissions return 409 and
+`/setup` redirects home. Completion persists across restarts, replica changes,
+secret removal and first-admin deletion/demotion. Remove the deployment secret from
+runtime configuration after setup if desired; this cannot reopen setup.
+
+Existing-account databases migrate to initialized state without promoting or
+changing any user. An existing installation with no Admin uses the offline
+`--appoint-admin <existing-account-uuid> --reason ...` command documented above.
+Never clear the installation marker to add an admin. Missing marker/table or
+unreachable database fails closed and needs operator repair, not a setup reset.
+If setup succeeded but its response was lost, log in using the submitted account
+details and generate a recovery code in account settings. There are no reset emails
+or admin password overrides. See [ADR 0015](docs/adr/0015-installation-setup.md).

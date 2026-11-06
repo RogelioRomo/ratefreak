@@ -1064,6 +1064,28 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                     b.ToTable("external_authentication_challenges", (string)null);
                 });
 
+            modelBuilder.Entity("RateFreak.Infrastructure.Installation.InstallationState", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    b.Property<DateTimeOffset?>("CompletedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("completed_at");
+
+                    b.Property<Guid?>("InitialAdminId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("initial_admin_id");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("installation_state", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_installation_singleton", "id = 1");
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)

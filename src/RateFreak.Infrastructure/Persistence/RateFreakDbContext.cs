@@ -44,6 +44,12 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
             challenge.HasKey(c => c.Id);
             challenge.HasIndex(c => c.ExpiresAt);
         });
+        modelBuilder.Entity<RateFreak.Infrastructure.Installation.InstallationState>(state =>
+        {
+            state.ToTable("installation_state", table => table.HasCheckConstraint("ck_installation_singleton", "id = 1"));
+            state.HasKey(s => s.Id);
+            state.Property(s => s.Id).ValueGeneratedNever();
+        });
         modelBuilder.Entity<AccountRecoveryState>(state =>
         {
             state.ToTable("account_recovery_states");

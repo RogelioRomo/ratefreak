@@ -77,12 +77,14 @@ app.Use(async (context, next) =>
         context.Response.Headers.CacheControl = "no-store";
     await next(context);
 });
+app.UseInstallationGuard();
 app.UseExternalAuthenticationGuard();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseRateLimiter();
 app.MapDevelopmentDocumentation();
 app.MapHealthEndpoints();
+app.MapInstallationEndpoints();
 app.MapAccountEndpoints();
 app.MapAccountRecoveryEndpoints();
 app.MapUserProfileEndpoints();

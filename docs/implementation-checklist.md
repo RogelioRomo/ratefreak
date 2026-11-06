@@ -6,7 +6,23 @@ Phase 6e additional GitHub/Google sign-in, Phase 6f moderation/reporting and
 Phase 6g public profiles/editing.
 Collection discussions and further providers remain separate Phase 6 work.
 
-## Current continuation — saved-code recovery (2026-11-06)
+## Current continuation — first-run installation setup (2026-11-06)
+
+User approved secret-protected browser setup before normal app use. Implemented on
+`feat/installation-setup`: persistent singleton, secret-verified atomic first-admin
+creation/recovery/audit, API-wide pre-setup guard, and frontend `/setup` boundary
+outside normal sessions. Existing-account upgrades initialize without promotion;
+admin deletion/demotion/restarts/secret removal never reopen setup. See
+[ADR 0015](adr/0015-installation-setup.md), approved design/plan and
+[current release evidence](frontend-release-verification.md).
+
+The new additive migration and actual deployment-secret provisioning have not been
+applied to the existing project database/runtime. No existing account was promoted;
+no commit, merge, push or deployment is included. Next independent feature remains
+optional Google/GitHub browser sign-in/linking. Production operational/policy gates
+remain open.
+
+## Previous continuation — saved-code recovery (2026-11-06)
 
 After frontend release verification, the user approved saved-code recovery without
 local email verification or email delivery. [ADR 0014](adr/0014-account-recovery.md)

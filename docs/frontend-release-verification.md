@@ -1,7 +1,7 @@
 # Frontend release verification
 
 Date: 2026-11-06. Recovery-code verification follows the original pass below; public-launch approval remains pending.
-This record covers the current checkout, including uncommitted recovery-code work.
+This record covers the current checkout, including uncommitted installation-setup work.
 Git records local commit state; these changes are not deployed or production verified.
 
 ## Original verification pass — 2026-11-05
@@ -141,3 +141,86 @@ Evidence: `/tmp/ratefreak-recovery/local-migration-results.json`. The API still 
 not migrate at startup. This was a local database update, not a deployment.
 Remaining deployment, Data Protection, backup/restore, abuse, licensing and policy
 gates above remain open.
+
+
+## Installation setup verification — 2026-11-06
+
+Final verification:
+
+| Check | Result |
+| --- | --- |
+| Frontend tests | 616 passed across 87 files |
+| Full backend suite | 618 passed, zero skipped: 64 unit, 400 integration, 154 provider contract |
+| ESLint / TypeScript | Both exited 0 |
+| Next production build | Exited 0, including `/setup` and dynamic routes |
+| Real first-run browser journey | Passed through dedicated Next/API/disposable PostgreSQL |
+| Responsive setup | 16 state/theme/width checks, no overflow |
+| Browser exceptions / design scan | None observed / no findings |
+| Diff whitespace | `git diff --check` exited 0 |
+
+User approved first-run browser setup protected by an API deployment secret. See
+[ADR 0015](adr/0015-installation-setup.md). Fresh database migration seeds a pending
+singleton; existing-account upgrades seed completed state without promotion. Setup
+creates the first local Admin and recovery code atomically, then closes permanently.
+Ordinary registration remains unprivileged. Missing singleton/secret/database is
+fail closed; direct API calls and OAuth callbacks cannot bypass the guard.
+
+Tests exercise concurrency, CSRF/no-store/IP budgets, invalid/missing secrets,
+legacy migration, permanent closure after admin deletion/restart/secret removal,
+and rollback if admin audit storage fails. Existing domain/account fixtures are
+explicitly initialized; separate fresh-install databases exercise the real guard.
+Database-free endpoint contract tests use a test-owned completed-status double;
+the unreachable-database test uses the real guard.
+
+Fresh review identified possible loss of normal editor drafts on background setup
+status failure after completion. A failing regression reproduced it; the fix stops
+automatic status checks after confirmed permanent completion and preserves normal
+children on later errors. Unsaved recovery codes retain precedence during pending
+setup checks. Invalid setup-status response shapes are rejected before app access.
+The production build initially exposed Next dynamic pathname resolution outside
+Suspense; the root now supplies a loading boundary per installed Next documentation.
+
+Real Chromium verification used dedicated Next on 3102 → Development API on 5092
+→ a fresh disposable PostgreSQL database, without response interception. Catalog
+navigation redirected to setup, direct catalog API returned 503, an incorrect secret
+was rejected, and correct setup returned a recovery code without signing in. Saving
+it allowed login to the initial Admin and staff reads (200). Completed `/setup`
+redirected home. Normal Create account subsequently created an ordinary user whose
+staff read returned 403; a repeated setup POST returned 409 even with the secret.
+No runtime errors. Form/save-code states fit at 320/768/1024/1440px in Light and Dark
+(16 state/theme/width checks); inspected desktop/mobile captures mask recovery codes.
+Next Development diagnostics visible in captures are tooling, not product controls.
+
+Dedicated service processes were stopped and the disposable database removed;
+the temporary test deployment secret was deleted. No real accounts were promoted,
+existing database migrated or real installation secret provisioned. Evidence is in
+`/tmp/ratefreak-setup/`: browser-results.json, masked captures and verification logs.
+No commit, merge, push, deployment or provider activation is part of this pass.
+Production ingress, keys, backup/restore, abuse, licensing and policy gates remain.
+
+
+Outage regression evidence: a real unreachable PostgreSQL connection initially
+returned 500 because the EF provider wraps its connection exception. Narrow
+exception filters now recognize that database wrapper and return sanitized 503
+for status, guarded APIs and setup submission; CSRF remains available over HTTPS.
+The focused outage regression and final full backend suite pass.
+
+
+### Interactive local demo follow-up
+
+When starting a fresh user-facing Development demo, Next's implicit instant-navigation
+validation repeatedly reloaded routes intentionally withheld by the installation
+boundary. A real browser reproduced the loop at `/` and the loading state at `/setup`.
+Configured the installed Next option `experimental.instantInsights.validationLevel`
+to `manual-warning`, retaining Cache Components/partial prefetching and requiring
+explicit segment opt-in for that Development performance diagnostic. No API/session
+security or production rendering setting was weakened. A fresh browser then reached
+the still-unclaimed setup form with no runtime errors.
+
+Dedicated interactive demo is at `http://127.0.0.1:3102/setup` with API 5092 and a
+separate fresh `setup_demo` PostgreSQL container. State/process IDs are in
+`/tmp/ratefreak-setup-demo/smoke-state.json`; its private `deployment-secret.txt` is
+for the user to enter. The demo was deliberately left running for manual testing. Its initial readiness
+check left setup unclaimed; the user subsequently tested the flow and confirmed
+it works, then explicitly requested a local commit and merge to main. Existing project accounts/database remain unchanged.
+This runtime state is temporary and must be rechecked in later sessions.

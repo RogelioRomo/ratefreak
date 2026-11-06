@@ -86,6 +86,8 @@ internal static class ApiSecurity
             AddLimit(options, "external-auth-read", 60, TimeSpan.FromMinutes(1));
             AddLimit(options, "external-auth-register", 5, TimeSpan.FromHours(1));
             AddAccountLimit(options, "external-auth-link", 10);
+            AddLimit(options, "setup-read", 60, TimeSpan.FromMinutes(1));
+            AddLimit(options, "setup-write", 5, TimeSpan.FromMinutes(15));
             AddLimit(options, "registration", 5, TimeSpan.FromHours(1));
             AddLimit(options, "login", 10, TimeSpan.FromMinutes(1));
             AddLimit(options, "password-recovery", 10, TimeSpan.FromMinutes(1));
