@@ -3,18 +3,20 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "../hooks/use-session";
-import { AuthPanel } from "./auth-panel";
+import { useQueryClient } from "@tanstack/react-query";
+import type { AccountProfile } from "../interfaces/account-profile";
+import { sessionQueryKey } from "../session/query-keys";
+import { AccountSections } from "./account-sections";
+import styles from "./account-settings.module.css";
 import { AccountDetails } from "./account-details";
-import { LogoutControl } from "./logout-control";
 import { LoadingState } from "@/components/ui/loading-state";
 
-import { LinkedProviderSettings } from "./linked-provider-settings";
-import { RecoverySettings } from "./recovery-settings";
-import { ProfileEditor } from "@/features/profiles/components/profile-editor";
 
 export function AccountScreen() {
   const session = useSession();
   const router = useRouter();
+  const client = useQueryClient();
+  const cached = client.getQueryData<AccountProfile | null>(sessionQueryKey);
   const [entryChecked, setEntryChecked] = useState(false);
   const { refresh } = session;
   useEffect(() => {
@@ -25,11 +27,8 @@ export function AccountScreen() {
   useEffect(() => {
     if (entryChecked && session.account === null && !session.isLoading && !session.isTransitioning && !session.error) router.replace("/login");
   }, [entryChecked, session.account, session.isLoading, session.isTransitioning, session.error, router]);
-  return <AuthPanel title="Your account." description="A space that’s yours.">
-    {entryChecked ? <AccountDetails /> : <LoadingState label="Checking your session…" />}
-    {entryChecked && <ProfileEditor />}
-    {entryChecked && <RecoverySettings />}
-    {entryChecked && <LinkedProviderSettings />}
-    <div hidden={!entryChecked}><LogoutControl /></div>
-  </AuthPanel>;
+  return <section className={styles.account}>
+    <header className={styles.heading}><h1>Your account.</h1><p>A space that’s yours.</p></header>
+    {entryChecked ? cached ? <AccountSections key={cached.id} /> : <AccountDetails /> : <LoadingState label="Checking your session…" />}
+  </section>;
 }

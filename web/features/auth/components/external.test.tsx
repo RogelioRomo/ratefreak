@@ -61,6 +61,7 @@ it("starts once, disables duplicate clicks and never stores the authorization re
 });
 it("account settings distinguish linked and available providers", async () => {
   signedIn = true; enabled = ["google", "github"]; mount(<AccountScreen />);
+  fireEvent.click(await screen.findByRole("tab", { name: "Sign-in options" }));
   expect(await screen.findByText("GitHub is linked")).toBeInTheDocument();
   expect(await screen.findByRole("button", { name: "Link Google" })).toBeInTheDocument();
   expect(screen.queryByRole("button", { name: "Link GitHub" })).not.toBeInTheDocument();
@@ -68,6 +69,7 @@ it("account settings distinguish linked and available providers", async () => {
 });
 it("keeps a failed linking action visible in account settings", async () => {
   signedIn = true; mount(<AccountScreen />);
+  fireEvent.click(await screen.findByRole("tab", { name: "Sign-in options" }));
   fireEvent.click(await screen.findByRole("button", { name: "Link Google" }));
   await waitFor(() => expect(starts).toBe(1)); finishStart!(new Response(null, { status: 503 }));
   expect(await screen.findByRole("alert")).toHaveTextContent(/couldn’t start/);

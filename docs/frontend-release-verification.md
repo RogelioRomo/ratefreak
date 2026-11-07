@@ -340,3 +340,22 @@ Lint, typecheck, production build, EF model consistency, browser stability/provi
 visibility and staged whitespace/credential checks passed. The earlier independent
 review's only material finding has regression coverage and is fixed. These checks
 apply to the same source tree selected for the requested local fast-forward merge.
+
+## Account settings sidebar/tabs — 2026-11-07
+
+Account now presents four sections using an accessible vertical tab menu: Overview,
+Profile, Sign-in options and Password recovery. On mobile the menu precedes content.
+Existing forms remain mounted in hidden/inert inactive panels so profile drafts
+and one-time recovery codes survive selection changes. Active private panels are
+concealed during unavailable sessions and restored after successful retry. No API,
+authentication policy or database migration changed.
+
+All 674 frontend tests (91 files), lint, typecheck, production build and whitespace
+checks pass. Independent review found no material/minor issues. A real Chromium
+UI check with explicitly controlled account/logins/recovery read responses verified
+64 tab/theme/width combinations, keyboard selection and draft preservation with
+no overflow or runtime exceptions. This was frontend layout verification, not a
+new authenticated backend write/consent test. No real user/account data changed.
+Evidence and captures: `/tmp/ratefreak-account-tabs/`. Local frontend was restored
+with a fresh Development cache after the production build. This slice is not
+committed or merged; it is available locally on `feat/account-settings-tabs`.

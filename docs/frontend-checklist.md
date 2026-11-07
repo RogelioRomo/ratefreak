@@ -1016,3 +1016,25 @@ for evidence, limitations and remaining production gates. Dedicated temporary te
 services/database were cleaned up; the existing local project PostgreSQL remains
 running after its requested migration. No commit, merge, push or deployment for
 this browser slice has been requested or performed.
+
+## Account settings sections — 2026-11-07
+
+Split `/account` into Overview, Profile, Sign-in options and Password recovery.
+The menu sits left of the active panel on desktop and above it on mobile, keeping
+the established editorial Light/Dark styling. Vertical tabs support Up/Down,
+Home/End, roving focus and explicit tab/panel relationships. Only the selected
+panel is exposed; panels stay mounted to preserve profile drafts and unsaved
+recovery codes. Session failures hide private panels while allowing a retry;
+anonymous visitors receive no settings navigation. Logout remains available
+outside the sections.
+
+Verification: 674 frontend tests across 91 files, lint/typecheck/build and diff
+checks pass. Six new account tests cover selection, keyboard behavior, profile
+drafts, recovery-code acknowledgement across sections, anonymous access and
+session-failure/retry preservation. Existing linking tests now select Sign-in
+options. Independent review found no material or minor findings. Browser-only
+account fixtures verified 64 tab/theme/width combinations at
+320/768/1024/1440px, keyboard selection and draft preservation, with no overflow or
+runtime exceptions. No real account writes or provider consent were performed.
+Desktop/mobile captures were inspected; mechanical design scan returned no findings.
+Backend code/schema did not change. Work remains on `feat/account-settings-tabs`.
