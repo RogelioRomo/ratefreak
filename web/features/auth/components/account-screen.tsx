@@ -8,6 +8,7 @@ import { AccountDetails } from "./account-details";
 import { LogoutControl } from "./logout-control";
 import { LoadingState } from "@/components/ui/loading-state";
 
+import { LinkedProviderSettings } from "./linked-provider-settings";
 import { RecoverySettings } from "./recovery-settings";
 import { ProfileEditor } from "@/features/profiles/components/profile-editor";
 
@@ -28,6 +29,7 @@ export function AccountScreen() {
     {entryChecked ? <AccountDetails /> : <LoadingState label="Checking your session…" />}
     {entryChecked && <ProfileEditor />}
     {entryChecked && <RecoverySettings />}
+    {entryChecked && <LinkedProviderSettings />}
     <div hidden={!entryChecked}><LogoutControl /></div>
   </AuthPanel>;
 }

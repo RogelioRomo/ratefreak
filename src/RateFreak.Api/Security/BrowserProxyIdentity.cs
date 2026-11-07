@@ -9,6 +9,8 @@ internal static class BrowserProxyIdentity
 {
     private static readonly object ClientAddress = new();
 
+    public static bool IsAuthenticated(HttpContext context) => context.Items[ClientAddress] is IPAddress;
+
     public static string Partition(HttpContext context)
     {
         var address = context.Items[ClientAddress] as IPAddress ?? context.Connection.RemoteIpAddress;

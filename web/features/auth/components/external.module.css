@@ -1,0 +1,8 @@
+.options { display: grid; gap: 1rem; padding-block: 1.5rem; border-top: 1px solid var(--border); }
+.options p, .settings > p { color: var(--muted); font-size: 0.875rem; line-height: 1.7; overflow-wrap: anywhere; }
+.buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.buttons > button { flex: 1 1 10rem; }
+.notice { display: grid; justify-items: start; gap: 0.75rem; }
+.options .error { color: var(--error); }
+.settings { display: grid; gap: 1rem; margin-block: 2rem; }
+.settings h2 { font-family: var(--font-editorial); font-size: 1.75rem; font-weight: 500; }

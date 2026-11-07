@@ -11,7 +11,7 @@ Design: [frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
 - [x] Phase 2: local accounts and session lifecycle.
 - [x] Approve [Phase 3 catalog design](superpowers/specs/2026-10-31-frontend-catalog-design.md)
   and [implementation plan](superpowers/plans/2026-10-31-frontend-catalog.md).
-- [ ] Phase 2 follow-up: external sign-in and identity linking.
+- [x] Phase 2 follow-up: external sign-in and identity linking (2026-11-07; live activation remains separate).
 - [x] Phase 3: catalog browsing/search and details.
 - [x] Phase 3 follow-up: provider preview/import.
 - [x] Phase 4: library, ratings and reviews.
@@ -995,3 +995,24 @@ and authorized committing and merging setup to local main. Next development
 instant-navigation diagnostics use documented explicit opt-in (`manual-warning`)
 because the installation boundary intentionally withholds route segments. Demo
 accounts stay in its separate database; the existing project database is unchanged.
+
+
+## Google/GitHub browser follow-up — 2026-11-07
+
+Implemented the approved Next proxy browser integration: independently enabled
+login/signup options, profile completion for new provider identities and explicit
+linking from account settings. The API retains credentials, token exchanges,
+identity/replay/session policy and normal User assignment. Existing passwords,
+recovery codes and first-run setup remain supported. This supersedes the historical
+next-slice notes above; no real provider activation is included.
+
+Verification: 668 frontend and 625 backend tests pass, along with lint/typecheck,
+production build and EF model consistency. The controlled-provider real browser
+journey verifies Google onboarding, GitHub linking, same-account provider login and
+cancellation. All 48 responsive/theme checks pass, with no runtime exceptions or
+design scan findings. Independent review's browser-Back restoration defect was
+reproduced and fixed. See the [release record](frontend-release-verification.md)
+for evidence, limitations and remaining production gates. Dedicated temporary test
+services/database were cleaned up; the existing local project PostgreSQL remains
+running after its requested migration. No commit, merge, push or deployment for
+this browser slice has been requested or performed.

@@ -8,6 +8,8 @@ import { personalRoute } from "./personal-policy";
 import { providerIdentity } from "./provider-policy";
 
 export function isAllowedRoute(method: string, path: readonly string[]): boolean {
+  if (path.length === 3 && path[0] === "auth" && path[1] === "external") return (path[2] === "pending" && method === "GET") || (path[2] === "register" && method === "POST");
+  if (method === "GET" && path.length === 3 && path[0] === "users" && path[1] === "me" && path[2] === "logins") return true;
   if (path[0] === "setup") return (path.length === 1 && method === "POST") || (path.length === 2 && path[1] === "status" && method === "GET");
   if (path[0] === "users" && path.length === 2 && path[1] === "me" && method === "PATCH") return true;
   if (method === "GET" && path.length === 3 && path[0] === "users" && path[1] === "by-handle" && /^[a-z0-9_]{3,30}$/i.test(path[2])) return true;
@@ -21,7 +23,7 @@ export function isAllowedRoute(method: string, path: readonly string[]): boolean
     ["register", "login", "logout", "recovery-code", "reset-password"].includes(path[1]);
   if (method === "GET" && path[0] === "media") return path.length === 1 || (path.length === 2 && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(path[1]));
   return method === "GET" && path.length === 2 && (
-    (path[0] === "auth" && ["csrf", "recovery-status"].includes(path[1])) ||
+    (path[0] === "auth" && ["csrf", "recovery-status", "providers"].includes(path[1])) ||
     (path[0] === "users" && path[1] === "me")
   );
 }

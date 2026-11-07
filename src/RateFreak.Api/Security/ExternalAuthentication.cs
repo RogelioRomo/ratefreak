@@ -47,7 +47,7 @@ internal static class ExternalAuthentication
             options.SlidingExpiration = false;
         });
         builder.Services.AddSingleton(PartitionedRateLimiter.Create<HttpContext, string>(context =>
-            RateLimitPartition.GetFixedWindowLimiter(context.Connection.RemoteIpAddress?.ToString() ?? "unknown", _ =>
+            RateLimitPartition.GetFixedWindowLimiter(BrowserProxyIdentity.Partition(context), _ =>
                 new FixedWindowRateLimiterOptions { PermitLimit = 30, Window = TimeSpan.FromMinutes(1), QueueLimit = 0 })));
     }
     private static void Configure(OAuthOptions options, ExternalProvider configured, string provider, bool development)
@@ -61,6 +61,8 @@ internal static class ExternalAuthentication
         options.RemoteAuthenticationTimeout = TimeSpan.FromMinutes(5);
         options.BackchannelTimeout = TimeSpan.FromSeconds(10);
         options.BackchannelHttpHandler = new BoundedOAuthHandler();
+        options.CorrelationCookie.Name = $".AspNetCore.Correlation.{provider}.";
+        options.CorrelationCookie.Path = options.CallbackPath;
         options.CorrelationCookie.HttpOnly = true;
         options.CorrelationCookie.SameSite = SameSiteMode.Lax;
         options.CorrelationCookie.SecurePolicy = development ? CookieSecurePolicy.SameAsRequest : CookieSecurePolicy.Always;

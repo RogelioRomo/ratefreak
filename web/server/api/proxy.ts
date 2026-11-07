@@ -1,4 +1,7 @@
 import "server-only";
+import { oauthRoute, externalTicketRoute } from "./oauth-policy";
+import { proxyOAuthRequest } from "./oauth-proxy";
+import { oauthCookieHeader } from "./oauth-cookies";
 import { moderationQuery } from "./moderation-policy";
 import { commentList } from "./comment-policy";
 import { followList, followQuery } from "./follow-policy";
@@ -22,6 +25,7 @@ export function proxyProblem(status: number, title: string): Response {
 }
 
 export async function proxyRequest(request: Request, path: readonly string[]): Promise<Response> {
+  if (oauthRoute(request.method, path)) return proxyOAuthRequest(request, path);
   if (!["GET", "POST", "PUT", "PATCH", "DELETE"].includes(request.method)) return proxyProblem(405, "Method not allowed.");
   const incoming = new URL(request.url);
   const listKind = personalList(path);
@@ -80,7 +84,9 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
     return error instanceof ApiError ? proxyProblem(error.status, error.message) : proxyProblem(503, "Client attribution is unavailable.");
   }
   try {
-    const cookies = selectCookies(request.headers.get("cookie"), config.cookieNames);
+    const cookies = externalTicketRoute(path)
+      ? oauthCookieHeader(request.headers.get("cookie"), process.env.NODE_ENV === "development")
+      : selectCookies(request.headers.get("cookie"), config.cookieNames);
     if (cookies) headers.set("Cookie", cookies);
   } catch { return proxyProblem(400, "Invalid session cookies."); }
 

@@ -409,8 +409,8 @@ acknowledgement/navigation, never shared query/mutation caches or browser storag
 They are shown once; code replacement invalidates the previous one. Reset signs
 out every device and requires login. No verification/recovery email is sent, and
 admins cannot override recovery. See [ADR 0014](../docs/adr/0014-account-recovery.md)
-for loss-of-code and provider-only account behavior. Google/GitHub browser flows
-remain the next optional sign-in slice.
+for loss-of-code and provider-only account behavior. Optional Google/GitHub browser
+flows and explicit linking are described below.
 
 
 ## First-run setup
@@ -432,3 +432,45 @@ changes cannot clear the independent installation-status query cache. Once compl
 See the root README and [ADR 0015](../docs/adr/0015-installation-setup.md) for API
 secret provisioning, additive migration, existing-account upgrades and offline
 administrator maintenance. Existing databases are not migrated automatically.
+
+
+## Google and GitHub browser sign-in
+
+The login/signup forms display only enabled providers discovered from the API.
+Provider discovery failure leaves password forms usable. Account settings show
+linked providers and explicit Link actions; no unlinking or automatic email merge.
+New provider identities complete their handle/display name at
+`/auth/external/register`, then sign in as normal Users. Provider-only accounts
+recover through their provider; no local password/recovery code is created.
+
+Keep the existing `RATEFREAK_API_URL`, `RATEFREAK_WEB_ORIGIN`,
+`RATEFREAK_PROXY_SECRET` and authenticated client-IP configuration. Set API
+`Authentication:External:PublicOrigin` to the exact frontend origin, without a
+trailing slash, and register these callback URLs with the OAuth apps:
+
+```text
+<frontend-origin>/api/v1/auth/external/google/callback
+<frontend-origin>/api/v1/auth/external/github/callback
+```
+
+Google must be a Web application client; GitHub uses an OAuth App. Use separate
+local/production apps. API-only clients may still use the original API-origin
+flow. Set provider Enabled/ClientId/ClientSecret only in the API's private
+configuration. No provider credentials belong in Next environment variables or
+`NEXT_PUBLIC_`. Both remain disabled until explicitly configured.
+
+A dedicated adapter validates authorization hosts/paths, callback URL, state and
+PKCE parameters before returning a navigation URL. The browser navigates in the
+same tab. The callback forwards only bounded recognized OAuth parameters and
+follows exactly one fixed completion hop to the private API. It carries temporary
+HttpOnly external/correlation cookies, including bounded ticket chunks, and all
+independent issuance/deletion headers. Ordinary API routes still reject redirects.
+The API accepts the frontend origin only with valid shared-secret proxy attribution.
+It never trusts arbitrary forwarding headers. All auth responses are no-store.
+
+Destinations are fixed: home after sign-in/registration, account after linking,
+onboarding for new identities, and a sanitized error page after cancellation or
+failure. Codes/state never reach a rendered app page. Configure ingress logs and
+telemetry to omit callback queries, cookies and response bodies. Production
+acceptance still requires live credentials, HTTPS ingress, protected durable keys
+and the other release gates; local controlled-provider tests do not prove them.

@@ -10,6 +10,7 @@ import type { RegisterRequest } from "../interfaces/register-request";
 import { useRegister } from "../hooks/use-register";
 import { useSession } from "../hooks/use-session";
 import { FormError, fieldErrors } from "./form-error";
+import { ProviderOptions } from "./provider-options";
 import styles from "./auth.module.css";
 
 export function RegisterForm() {
@@ -39,6 +40,7 @@ export function RegisterForm() {
         <TextField name="password" label="Password" type="password" autoComplete="new-password" required minLength={12} maxLength={128} hint="12–128 characters, including uppercase, lowercase and a number; use at least four different characters." errors={fieldErrors(mutation.error, "password")} />
         <Button type="submit">{mutation.isPending ? "Creating account…" : "Create account"}</Button>
       </fieldset>
+      <ProviderOptions />
       <p className={styles.footer}>Already have an account? <Link href="/login">Log in</Link>.</p>
     </form></AuthEntry>
   );

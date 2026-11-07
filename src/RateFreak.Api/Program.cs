@@ -78,6 +78,7 @@ app.Use(async (context, next) =>
     await next(context);
 });
 app.UseInstallationGuard();
+app.UseExternalBrowserOrigin();
 app.UseExternalAuthenticationGuard();
 app.UseAuthentication();
 app.UseAuthorization();

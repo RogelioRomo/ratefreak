@@ -11,6 +11,7 @@ import { TextField } from "@/components/ui/text-field";
 import { useLogin } from "../hooks/use-login";
 import { useSession } from "../hooks/use-session";
 import { FormError, fieldErrors } from "./form-error";
+import { ProviderOptions } from "./provider-options";
 import styles from "./auth.module.css";
 
 export function LoginForm({ returnTo }: LoginContinuationProps = {}) {
@@ -33,6 +34,7 @@ export function LoginForm({ returnTo }: LoginContinuationProps = {}) {
         <TextField name="password" label="Password" type="password" autoComplete="current-password" required maxLength={128} errors={fieldErrors(mutation.error, "password")} />
         <Button type="submit">{mutation.isPending ? "Logging in…" : "Log in"}</Button>
       </fieldset>
+      <ProviderOptions />
       <p><Link href="/reset-password">Forgot your password?</Link></p>
       <p className={styles.footer}>New here? <Link href="/register">Create an account</Link>.</p>
     </form>

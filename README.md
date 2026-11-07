@@ -320,8 +320,10 @@ endpoint is included.
 The client initiates starts with a CSRF-protected POST and follows the OAuth
 redirect as a browser navigation. A fetch client must handle navigation deliberately;
 ordinary cross-origin fetch redirects are not a frontend login implementation.
-After callback, the browser reaches the fixed completion API JSON. No arbitrary
-return URL is accepted. Frontend buttons and final page redirects are future work.
+Direct API clients receive fixed completion JSON. The Next browser adapter now
+turns validated start redirects into navigation URLs, handles the provider callback
+and fixed completion hop, and sends the browser to clean frontend pages. No
+arbitrary return URL is accepted.
 Fetch a fresh CSRF token after authentication changes. All these responses, including
 errors and redirects, use no-store. Callback endpoints belong to middleware rather
 than the generated OpenAPI operation list.
@@ -349,11 +351,11 @@ their official setup guides:
 [Google](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/social/google-logins?view=aspnetcore-10.0),
 [GitHub](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps).
 Keep separate development/production credentials. Configure exact callbacks using
-the API's canonical browser origin, for example:
+the frontend's canonical browser origin when using Next, for example:
 
 ```text
-http://localhost:5081/api/v1/auth/external/google/callback
-http://localhost:5081/api/v1/auth/external/github/callback
+http://localhost:3000/api/v1/auth/external/google/callback
+http://localhost:3000/api/v1/auth/external/github/callback
 ```
 
 Use the actual running port/scheme. Production requires HTTPS. The enabled-provider
@@ -365,11 +367,14 @@ load that file. Put secrets in API user-secrets or deployment secret storage and
 enable only after credentials/callbacks are configured. No real credentials are
 included or activated. Google consent/audience restrictions still apply to live users.
 
-Before deployment, configure AllowedHosts, durable Data Protection keys and trusted
-HTTPS/proxy forwarding so request scheme/host exactly match PublicOrigin. A future
-Next.js proxy must also forward external/correlation cookies and callback traffic;
-do not rewrite callback origins opportunistically. This slice does not configure
-that proxy or publicly deploy the API.
+Before deployment, configure AllowedHosts and durable Data Protection keys. With
+Next, set `Authentication:External:PublicOrigin` to the exact `RATEFREAK_WEB_ORIGIN`
+(origin only, without a trailing slash). The existing shared proxy secret
+authenticates a narrowly scoped `X-RateFreak-Browser-Origin` bridge; only OAuth
+routes use the API-configured public scheme/host. Arbitrary forwarding headers
+never establish this trust. Keep the API private/restricted at ingress as designed.
+Direct API-only clients still use the actual canonical API origin and JSON flow.
+No provider credentials or public deployment are provisioned here.
 
 The additive `AddExternalSignIn` migration creates replay-state storage and replaces
 the nonunique login user index with unique `(user_id, login_provider)`. Existing
@@ -1059,8 +1064,9 @@ or offline. Consumed/replaced codes stop working. If a reset response is lost,
 try the new password; after login, generate a new code in settings. No automatic
 retry, email reset, admin override or local-password creation for external-only
 accounts is provided. Lost password plus lost code requires a previously linked
-provider; otherwise recovery is impossible. Google/GitHub remain optional backend
-capabilities, with browser integration/live configuration a separate follow-up.
+provider; otherwise recovery is impossible. Google/GitHub browser sign-in and
+explicit account linking are implemented; live activation still requires operator
+credentials and exact frontend callback registration.
 
 Apply the additive `AddAccountRecovery` migration using the existing reviewed
 migration process; the API does not migrate at startup. It adds recovery state and

@@ -1,7 +1,7 @@
 # Frontend release verification
 
 Date: 2026-11-06. Recovery-code verification follows the original pass below; public-launch approval remains pending.
-This record covers the current checkout, including uncommitted installation-setup work.
+This record covers local verification; later sections record setup and browser-auth follow-ups.
 Git records local commit state; these changes are not deployed or production verified.
 
 ## Original verification pass — 2026-11-05
@@ -224,3 +224,119 @@ for the user to enter. The demo was deliberately left running for manual testing
 check left setup unclaimed; the user subsequently tested the flow and confirmed
 it works, then explicitly requested a local commit and merge to main. Existing project accounts/database remain unchanged.
 This runtime state is temporary and must be rechecked in later sessions.
+
+### Existing local database migration — 2026-11-07
+
+At the user's request, applied `20261106225209_AddInstallationSetup` to the
+existing local project database after creating a restricted local PostgreSQL
+custom-format backup. Verified migration history and the singleton: `id = 1`,
+completed, no initial-admin ID. Existing-account installations are closed without
+automatic promotion. Verified preserved counts: 2 users, 8 catalog items and
+0 collections; current Admin memberships: 0. The database container was started
+for this operation and left running. No API/frontend server or provider was
+started, and no account was promoted. Backup is local only, under
+`/tmp/ratefreak-installation-migration/`; this does not satisfy the production
+backup/restore gate.
+
+## Google/GitHub browser integration — 2026-11-07
+
+Approved design: [browser sign-in](superpowers/specs/2026-11-07-external-sign-in-browser-design.md).
+The existing API OAuth integration now has optional login/signup buttons, new-user
+handle/display-name completion and explicit account-settings linking through Next.
+Provider credentials remain API-only and independently disabled until configured.
+No live provider activation, remote app registration, push or deployment occurred.
+
+| Check | Result |
+| --- | --- |
+| Frontend suite | 668 passed across 90 files |
+| Backend suite | 625 passed, zero skipped: 64 unit, 407 integration, 154 contracts |
+| Frontend lint / typecheck | Both exited 0 |
+| Next production build | Passed with onboarding and sanitized error routes |
+| EF model consistency | No pending model changes; no new migration needed |
+| Browser journey | Google onboarding, normal-role denial of staff API, GitHub linking, same-account GitHub login, cancellation and clean callback destinations passed |
+| Responsive/theme checks | 48 checks across six states, Light/Dark, widths 320/768/1024/1440; no overflow |
+| Keyboard / runtime | Skip link reachable by keyboard; no runtime exceptions |
+| Mechanical design scan | No findings |
+
+The dedicated OAuth adapter validates provider authorization hosts/paths, exact
+frontend callback URI, state and PKCE parameters. It forwards bounded recognized
+callback queries and bounded external/correlation cookies, follows only the fixed
+API completion hop and preserves independent cookie issuance/deletion headers.
+Ordinary proxy routes still reject redirects. The API uses its configured public
+origin only with authenticated shared-secret proxy attribution and an exactly
+matching browser-origin declaration; arbitrary forwarding headers cannot establish
+trust. Callback budgets now use authenticated client attribution like starts.
+Existing replay, CSRF, setup, recovery and explicit-linking protections remain.
+
+The independent review identified disabled provider controls surviving browser
+Back/bfcache restoration. A regression reproduced the failure; a persisted
+pageshow reset restores controls and the focused/full frontend suites pass.
+Link starts use local busy state so a session transition does not discard their
+error UI; backend original-session/stamp checks remain authoritative. Login starts
+continue coordinating with local password actions through the session provider.
+
+Browser evidence used real Chromium -> Next on 3103 -> a loopback HTTP bridge to
+the real API in TestServer -> a separate disposable PostgreSQL database migrated
+from empty. The test fixture explicitly initialized that disposable installation;
+no project account or setup marker was changed. Only external provider token/profile
+HTTP and provider authorization navigation were controlled; application/API responses
+were real. This proves browser/proxy integration, not real provider consent or
+production ingress. Captures include enabled login/signup, profile-completion form,
+linked-provider settings, expired onboarding and error states. Next Development
+diagnostics visible in captures are tooling. Temporary scripts, captures, private
+runtime state and results are under `/tmp/ratefreak-oauth-browser/`; they are local
+evidence, not shipped automation. Production ingress, cookies, keys, coordinated
+abuse controls and live Google/GitHub acceptance remain release gates.
+
+Dedicated OAuth test API/frontend processes were stopped, the disposable database
+container/volume removed and temporary runtime credentials/key material deleted.
+The project database container remains running after its earlier authorized
+migration. No browser-slice commit or merge has been made.
+
+### Localhost development reload follow-up — 2026-11-07
+
+The user reported repeated installation-status errors after starting the real app
+on localhost:3000. Direct API and both frontend setup-status HTTP probes returned
+200 with completed state. Real Chromium reproduced 185 main-frame navigations in
+eight seconds, repeatedly aborted setup requests and Turbopack entry-chunk
+`restart` messages. The failure was in development refresh, before the setup
+response could finish, rather than installation state or database availability.
+
+Stopped only the frontend, preserved its generated `.next/dev` cache under
+`/tmp/ratefreak-local/previous-dev-cache` and restarted with identical environment
+and a fresh development cache. The setup response then completed and the homepage
+rendered. A subsequent Chromium check confirmed both homepage and login remained
+stable without reloads, installation errors or runtime exceptions. No product
+code/security setting or database state changed. API/frontend remain running at
+localhost:5080/3000 for user testing. Runtime state and sanitized reproduction
+scripts/evidence are under `/tmp/ratefreak-local/`; frontend log is now
+`web-fresh.log` there.
+
+
+### Local provider activation and merge verification — 2026-11-07
+
+The user provisioned separate local GitHub and Google OAuth applications and
+supplied credentials in the ignored `.env`. At their request, copied the client
+IDs/secrets and enabled flags into the API's Development user-secrets store,
+using stdin and suppressing secret output. Kept public origin at
+`http://localhost:3000`. Restarted the API and verified both enabled flags through
+Next. The user subsequently confirmed that the live local provider flow works.
+This is user-reported local acceptance; deployed HTTPS/provider acceptance remains
+open. No credential values are included in committed files or this record.
+
+For the requested local commit/merge, reran all frontend/backend suites, lint,
+typecheck and production build, and checked the staged content for the supplied
+OAuth credentials. Frontend was stopped during generation/build, then restored
+with a fresh Development cache to avoid the earlier HMR loop. Browser checks
+verify stable home/login, successful setup-status resolution and both provider
+options without account writes or intercepted responses. Test logs are local under
+`/tmp/ratefreak-oauth-merge*`. Missing cached NuGet files required a restore before
+the backend rerun; this did not change dependency versions. No remote push or
+production deployment is authorized by this local merge request.
+
+Final rerun passed: 668 frontend tests across 90 files; 625 backend tests with no
+failures or skips (64 unit, 407 real PostgreSQL integration, 154 provider contracts).
+Lint, typecheck, production build, EF model consistency, browser stability/provider
+visibility and staged whitespace/credential checks passed. The earlier independent
+review's only material finding has regression coverage and is fixed. These checks
+apply to the same source tree selected for the requested local fast-forward merge.
