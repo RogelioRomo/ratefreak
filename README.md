@@ -1,23 +1,23 @@
 # RateFreak
 
-A monorepo containing a .NET 10 modular monolith API and a Next.js web app. Phase 1 foundation and Phase 2 local
-accounts/catalog reads, Phase 4 personal library/ratings/reviews, and Phase 5
-dynamic collections plus Phase 6a MusicBrainz albums, Phase 6b follows, Phase 6c IGDB games,
-Phase 6d review comments, Phase 6e additional Google/GitHub sign-in and Phase 6f
-moderation/reporting and Phase 6g public profiles/editing are implemented
-from `ratefreak-plan.md`.
-Next.js will be hosted separately and act as a thin browser-facing proxy; all
-accounts, authorization and business logic remain in .NET. Frontend Phases 1–2 live
-in `web/`: a responsive shell, shared UI, TanStack Query, local-account screens and
-a restricted browser-facing proxy. Catalog and other business-feature screens remain future phases;
-see `docs/frontend-checklist.md`. The Phase 3 TMDB adapter is
-implemented; local TMDB activation and live verification completed on 2026-10-29.
-The checked-in default remains disabled until a server-side token is configured.
-IGDB and MusicBrainz live search/preview checks passed on 2026-10-30 using supplied
-credentials/contact in a temporarily enabled process. Saved local flags remain
-disabled; `.env` is not automatically loaded by the API. Authenticated live imports
-and Google/GitHub live sign-in have not been verified. Last full backend suite:
-590 tests pass; frontend suite: 123 tests pass.
+RateFreak combines a .NET 10 modular monolith API, PostgreSQL and a Next.js web
+app. It supports provider discovery/import, user-created catalog items and categories,
+private libraries, ratings, reviews/comments, profiles/follows, list collections,
+account recovery, Google/GitHub sign-in and staff moderation.
+
+Start with [current status and remaining work](docs/STATUS.md). The core application
+is implemented locally; production deployment and operational/policy gates remain
+open. The Next.js app is a thin browser-facing proxy; .NET owns authentication,
+authorization and business rules. See [web setup](web/README.md),
+[release evidence and launch gates](docs/frontend-release-verification.md), and
+[operations](docs/custom-catalog-operations.md).
+
+Latest recorded checks, 2026-11-09: **554 backend tests and 644 frontend tests
+passed**, plus frontend lint and TypeScript. Earlier production-build/browser
+results are dated evidence, not verification of every later change. Local
+Google/GitHub acceptance is recorded; deployed provider acceptance remains open.
+The API does not automatically load `.env`; runtime provider enablement uses normal
+API configuration. Keep credentials out of source control.
 
 ## Repository and web app
 
@@ -33,7 +33,8 @@ pnpm --dir web install --frozen-lockfile
 pnpm --dir web dev
 ```
 
-Open http://localhost:3000. The homepage works without the backend.
+Open http://localhost:3000. The installation boundary requires a reachable,
+migrated API/database before showing normal application pages.
 Run `pnpm --dir web lint`, `pnpm --dir web typecheck`, `pnpm --dir web test`, and
 `pnpm --dir web build` to verify frontend changes. The backend setup follows.
 
@@ -225,8 +226,8 @@ explicitly using the EF update command above. Its rollback removes follows data;
 EF commits each migration downgrade separately, so a later refusal does not undo
 already-completed downgrades. Back up before any intentional rollback.
 
-Public review comments and IGDB are implemented. Moderation, feeds, public profiles
-and optional collection discussions remain deferred.
+Review comments, IGDB, staff moderation and public profiles are implemented.
+Feeds and collection discussions remain optional future work; see [current status](docs/STATUS.md).
 
 ## Accounts: Phase 2 first slice
 
@@ -280,7 +281,8 @@ Local password accounts intentionally have unverified emails and use saved-code
 password recovery without email delivery; see [ADR 0014](docs/adr/0014-account-recovery.md).
 External sign-in below provides provider-managed authentication/recovery. Before
 public launch, finish HTTPS/ingress and key-storage hardening, verify recovery on
-the deployed release, and review abuse controls/account retention. Profile editing, public profiles, admin endpoints and further media providers remain pending. TMDB activation is
+the deployed release, and review abuse controls/account retention. Profile editing,
+public profiles, moderation endpoints, IGDB and MusicBrainz are implemented. TMDB activation is
 verified locally; IGDB and MusicBrainz live search/preview are also verified using
 the supplied credentials/contact. Normal runtime enablement remains a configuration
 step; authenticated live imports were not part of those read-only checks.
@@ -444,12 +446,13 @@ triples. Namespaces distinguish, for example, TMDB movie 42 from TV 42. A canoni
 record can have several provider mappings. Titles are never used as unique identity.
 Deletion is restricted while external mappings exist.
 
-The catalog starts empty and contains no demo records. TMDB imports are available through the authenticated Phase 3 flow below; there is
-no general-purpose catalog write endpoint. No external image or metadata
-URL is fetched by this slice. Current search uses bounded offset pagination and
-substring scans; add search indexes/another pagination strategy when measured
-volume requires them. Email verification and password recovery remain pending
-before public launch.
+The catalog starts empty and contains no bundled demo records. Provider imports
+use the authenticated flows below; custom items use the dedicated creation and
+management endpoints. The original catalog-read slice fetches no external metadata
+or images. Search uses bounded offset pagination and substring scans; consider
+indexes or another pagination strategy when measured volume requires them.
+Saved-code recovery is implemented; email verification/delivery is intentionally
+excluded. See [current status](docs/STATUS.md) for launch work.
 
 
 ## TMDB integration (Phase 3)
@@ -463,11 +466,12 @@ metadata/image usage and commercial rights require that review. Search caching,
 artwork copying/proxying and automatic metadata refresh are not implemented.
 
 Attribution: **This product uses the TMDB API but is not endorsed or certified by
-TMDB.** Source: [The Movie Database](https://www.themoviedb.org). The future
-frontend must display this notice and an [approved TMDB logo](https://www.themoviedb.org/about/logos-attribution)
-in its About/Credits section, with RateFreak's branding more prominent. The backend
-provider-capability endpoint exposes the notice and source link; this does not
-replace the future UI's logo/attribution requirement.
+TMDB.** Source: [The Movie Database](https://www.themoviedb.org). The provider UI
+displays the attribution notice and source link. Required
+[approved TMDB logo](https://www.themoviedb.org/about/logos-attribution) placement
+and complete deployed attribution/rights acceptance remain release work; keep
+RateFreak branding more prominent. The capability notice alone does not establish
+compliance with every provider requirement.
 
 Create a TMDB account and request developer API access in
 [account API settings](https://www.themoviedb.org/settings/api). Use the **API Read
@@ -527,8 +531,10 @@ longer waits are passed back. No quota or SLA is assumed from TMDB.
 Automated contract tests use representative fake HTTP responses; integration tests
 run imports against real PostgreSQL including concurrent duplicate requests. No
 real credentials or live TMDB calls are needed for normal test runs. **Local live TMDB
-verification passed on 2026-10-29** (search, preview, protected import and repeat identity). Email verification,
-password recovery and deployment hardening remain required before public launch.
+verification passed on 2026-10-29** (search, preview, protected import and repeat identity).
+Saved-code recovery is implemented; local email verification/delivery is intentionally
+excluded by [ADR 0014](docs/adr/0014-account-recovery.md). Production acceptance and
+operational/policy gates remain open.
 
 
 ## Personal library, ratings and reviews (Phase 4)
@@ -596,9 +602,9 @@ Apply `AddPersonalMedia` with the EF database update command above. The additive
 migration creates `user_media`, `ratings`, `reviews`, constraints and indexes only.
 The original backend Phase4 added no frontend; the web app now exposes library,
 ratings and public reviews, including two authenticated own-record reads with no
-schema change. Private reviews and new moderation interfaces remain outside this slice; collections are
-implemented separately in Phase 5 below.
-Email ownership/recovery and production hardening remain required before public launch.
+schema change. Private reviews are not supported; public review/comment moderation
+and list collections are implemented separately. Saved-code recovery is implemented,
+while deployed acceptance and production policy/operational gates remain open.
 
 
 ## Custom catalog items, categories and lists
@@ -819,8 +825,9 @@ rollback. Without albums, downgrade/reapply preserves existing movies/TV.
 core CC0 data from supplementary data; its API documentation distinguishes free
 non-commercial service from commercial plans. Review applicable terms before
 public/commercial launch. Cover art is a separate service and is deferred.
-Comments/moderation, books and existing email/recovery/deployment requirements
-remain pending. This completes Phase 6a, not all of Phase 6.
+Comments and moderation are implemented. Provider-backed books and production
+readiness remain pending; use [current status](docs/STATUS.md), rather than the
+original Phase 6 backlog, for remaining work.
 
 
 ## IGDB video games (Phase 6c)
@@ -900,8 +907,8 @@ activation or public-launch readiness.
 
 ## Review comments (Phase 6d)
 
-Flat comments are available on public reviews. Collections, threaded replies,
-moderation/reporting and notifications are separate future work.
+Flat comments are available on public reviews, with reporting and staff moderation.
+Collection discussions, threaded replies and notifications are not implemented.
 
 | Method | Route | Contract |
 | --- | --- | --- |
@@ -1023,7 +1030,8 @@ exist, preventing accidental republication/history loss. Restoration leaves audi
 history, so it does not make rollback eligible. Prefer forward migration fixes and
 backups; do not delete history merely to bypass the guard. Coarse database transaction
 locking serializes moderation/reporting and review/comment writes; assess throughput
-before large deployment. Suspensions, appeals, notifications and frontend remain deferred.
+before large deployment. Staff moderation has a frontend; account suspensions,
+appeals and notifications remain deferred.
 
 ### Public profiles and editing
 
@@ -1066,9 +1074,10 @@ updated display names through their existing joins.
 `AddUserBios` adds one nullable bounded users.bio column and a CHECK. Downgrade locks
 the table and refuses while any bio exists, preventing silent text loss. Prefer
 forward fixes; review backup/data policy before intentional rollback. No avatar
-uploads, handle/email/password changes, public library, profile reports/moderation,
-frontend or deployment. Profile moderation and account erasure/export/retention
-policy remain public-launch work.
+uploads, handle/email changes, public library or profile reports/moderation.
+Public profile and profile-editing screens are implemented, and saved-code password
+reset is separate. Profile moderation and account erasure/export/retention policy
+remain public-launch work.
 
 
 ## Saved-code password recovery (2026-11-06)

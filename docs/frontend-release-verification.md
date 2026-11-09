@@ -1,8 +1,39 @@
-# Frontend release verification
+# Release verification and production gates
 
-Date: 2026-11-06. Recovery-code verification follows the original pass below; public-launch approval remains pending.
-This record covers local verification; later sections record setup and browser-auth follow-ups.
-Git records local commit state; these changes are not deployed or production verified.
+Updated: 2026-11-09. This record distinguishes local verification from deployed
+acceptance. [STATUS.md](STATUS.md) owns the current backlog; the release-gate table
+below owns production acceptance. Older sections are dated evidence, including
+historical commit/migration/activation statements, not current operating instructions.
+
+## Latest local verification — 2026-11-09
+
+Source baseline: local main `91a5cce`, containing the custom catalog/list rewrite,
+category workflow refinements, UI spacing and silent background session checks.
+
+| Check | Result |
+| --- | --- |
+| Frontend suite | 644 passed across 87 files |
+| Backend solution suite | 554 passed, zero skipped: 27 unit, 373 PostgreSQL integration, 154 provider contracts |
+| Frontend ESLint / TypeScript | Passed |
+| Staged whitespace check | Passed before the commit |
+| Session regression tests | Returning to a window/tab retains header links and visible/enabled drafts; confirmed expiry removes private content |
+| Browser verification of today's changes | Not completed: installed Chromium could not start because `libnspr4.so` was missing |
+| Production/Release builds and EF drift | Earlier checks passed on 2026-11-08; not rerun for today's UI/session changes |
+
+Lower test totals than older snapshots follow retirement of field/entry collection
+behavior; counts alone do not prove equivalent coverage. Session errors and explicit
+account transitions still gate private UI; only routine pending refetches became silent.
+No deployed end-to-end acceptance or production deployment is recorded by this pass.
+
+Current integration facts superseding earlier notes:
+
+- First-run setup migrated into the local project database on 2026-11-07.
+- Local Google/GitHub activation and user-reported acceptance were recorded on
+  2026-11-07; production HTTPS callback/consent checks remain open.
+- The authorized local test-data cutover and four catalog/list migrations completed
+  on 2026-11-08. This does not authorize another installation's reset or migration.
+- Account tabs, OAuth and catalog/list work are integrated into local main; dated
+  statements that they remain on an uncommitted feature branch are historical.
 
 ## Original verification pass — 2026-11-05
 
@@ -42,16 +73,19 @@ and Chromium CDP on port 9222. They contain no credentials.
 
 ## Outstanding release gates
 
-These remain open under the existing [backend launch requirements](implementation-checklist.md)
-and [deployment direction](adr/0001-deployment-and-authentication.md).
+These remain open under the [current roadmap](STATUS.md) and accepted
+[deployment direction](adr/0001-deployment-and-authentication.md). Historical
+backend requirement lists are superseded where later ADRs changed the policy.
 
 | Gate | Evidence needed before launch |
 | --- | --- |
 | Account retention/deletion | Saved-code recovery and the no-email-verification policy are now accepted and locally implemented ([ADR 0014](adr/0014-account-recovery.md)); retention/deletion/export policy remains open, and recovery still needs deployed acceptance |
+| Profile moderation and staff policy | Profile reporting/moderation, staff-access/operator attribution and audit-retention behavior need completion/definition before launch |
+| Catalog/list compatibility and storage | Confirm external clients and target-database migration/data handling; provision persistent protected artwork storage outside wwwroot |
 | Real production ingress | Deployed HTTPS origins, exact write Origin, matching server secrets and verified Vercel address headers, or a separately verified adapter for another host |
 | Production sessions | Real `__Host-` Secure/HttpOnly cookies, independent Set-Cookie forwarding/deletion, CSRF rejection, all-device logout and no private response caching through the actual ingress |
 | Durable Data Protection | Restricted persistent key storage, encryption/protected storage, restart and replica continuity, and controlled key recovery |
-| Database recovery | Protected backups and a successful isolated restore drill with migration/version checks; no production rollback without a reviewed recovery plan |
+| Database and artwork recovery | Coordinated protected database/artwork backups and a successful isolated restore drill with migration/version and file-access checks; no production rollback without a reviewed recovery plan |
 | Abuse controls | Coordinated/perimeter budgets for multiple API instances; current rate limiters are process-local |
 | Provider rights and attribution | Approved metadata/artwork storage and usage terms, required notices/logos, and commercial licensing where applicable |
 | Operational checks | Private health monitoring, sanitized logging, secret rotation, representative load testing and deployed client-disconnect propagation |
@@ -369,9 +403,11 @@ committed or merged; it is available locally on `feat/account-settings-tabs`.
 - [x] Custom item/category/list UI and exact multipart/proxy routes; viewer-scoped caches.
 - [x] Backend554/554 and frontend638/638; lint/typecheck and production/Release builds pass.
 - [x] Chromium owner/anonymous lifecycle and image restart/replace/remove proof; keyboard and responsive Light/Dark captures.
-- [x] Independent review findings fixed and re-reviewed; changes remain uncommitted in the isolated worktree.
+- [x] Independent review findings fixed and re-reviewed; initially uncommitted in the isolated worktree, subsequently committed on main as `91a5cce` (2026-11-09).
 - [x] Local test database cutover explicitly authorized; backup, scoped reset, four migrations, preservation checks and API readiness passed.
 - [ ] Production rollout: confirm external clients and separately arrange hosting/deployment.
 
 See [execution evidence](superpowers/plans/2026-11-08-custom-catalog-and-list-collections.md#execution-evidence--2026-11-08)
-and [operations](custom-catalog-operations.md). No existing database was reset or deployed.
+and [operations](custom-catalog-operations.md). Implementation tests used disposable
+databases; the separately authorized local test-data cutover followed on 2026-11-08.
+No production reset or deployment is recorded.

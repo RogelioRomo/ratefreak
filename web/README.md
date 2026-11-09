@@ -3,6 +3,9 @@
 Next.js App Router with TypeScript, ESLint, and CSS Modules. This app shares
 one repository with the .NET API, but has its own dependencies and deployment.
 Use Node.js 24 LTS and pnpm 10 (the exact pnpm version is pinned in package.json).
+See [current project status](../docs/STATUS.md) for completed features and remaining
+work, and [release verification](../docs/frontend-release-verification.md) for dated
+evidence and production gates.
 
 From the repository root:
 
@@ -122,7 +125,7 @@ instead of being interpreted as logged out.
 ## Catalog
 
 `/catalog` browses the local catalog without signing in. Submit the labeled title
-search and media-type filter to update the URL; pagination preserves filters,
+search and category filter to update the URL; pagination preserves filters,
 and Back/Forward restores them. Pages contain up to 20 titles. Invalid URL
 filters show a reset link without requesting data. Empty/no-match/out-of-range
 pages provide recovery, and failures provide retry or rate-limit guidance.
@@ -307,7 +310,9 @@ Account link to these pages. `/account` offers display name (1–80 characters)
 and plain-text bio (up to 500 characters) editing. Empty bio clears it. Both
 fields are submitted together; concurrent same-field updates use the backend's
 last-write-wins behavior. Unknown save outcomes require reloading before another
-save. Session uncertainty hides the editor while preserving same-account drafts.
+save. Routine session checks leave the editor visible and usable. Initial unknown
+identity, explicit transitions and session-check failures hide private controls
+while preserving same-account drafts.
 
 The proxy additionally allows exact `GET users/by-handle/{handle}` and
 `PATCH users/me`, with existing Origin/CSRF/body/no-store protections.
@@ -370,8 +375,9 @@ Spoilers require explicit reveal. Every decision requires a reason and inline
 confirmation bound to the exact server revision. Conflicts retain the reason and
 require fresh inspection; deleted targets permit dismissal only.
 
-Private staff caches are account scoped. Session uncertainty conceals/disables
-content and aborts work; authorization denial removes private data and persists
+Private staff caches are account scoped. Routine session checks retain the last
+verified identity and UI. Unknown/failed sessions and explicit transitions
+conceal/disable content and abort work; authorization denial removes private data and persists
 until an explicit successful access check. Unknown write outcomes block replay.
 Moderator-role administration is separate and has no frontend/proxy route.
 

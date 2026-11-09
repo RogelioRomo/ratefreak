@@ -1,6 +1,8 @@
 # Frontend delivery checklist
 
-Design: [frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
+Updated: 2026-11-09. Current status/backlog: [STATUS.md](STATUS.md).
+Original design: [phased frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
+This milestone list is current; dated notes below preserve execution history.
 
 - [x] Agree on feature-by-feature delivery and separate implementation sessions.
 - [x] Agree on separate interface files, focused components and TanStack Query.
@@ -11,7 +13,7 @@ Design: [frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
 - [x] Phase 2: local accounts and session lifecycle.
 - [x] Approve [Phase 3 catalog design](superpowers/specs/2026-10-31-frontend-catalog-design.md)
   and [implementation plan](superpowers/plans/2026-10-31-frontend-catalog.md).
-- [x] Phase 2 follow-up: external sign-in and identity linking (2026-11-07; live activation remains separate).
+- [x] Phase 2 follow-up: external sign-in and identity linking (local provider acceptance recorded 2026-11-07; deployed acceptance remains open).
 - [x] Phase 3: catalog browsing/search and details.
 - [x] Phase 3 follow-up: provider preview/import.
 - [x] Phase 4: library, ratings and reviews.
@@ -20,16 +22,30 @@ Design: [frontend roadmap](superpowers/specs/2026-10-30-frontend-design.md).
 - [x] Phase 5: collection metadata and visibility.
 - [x] Approve [Phase 5 fields/entries design](superpowers/specs/2026-11-01-frontend-collection-contents-design.md).
 - [x] Review [Phase 5 fields/entries implementation plan](superpowers/plans/2026-11-01-frontend-collection-contents.md); preserve native execution.
-- [x] Phase 5 follow-up: fields, items and schema-change confirmation.
+- [x] Historical Phase 5 follow-up: fields/items/schema changes delivered, then retired by ADR 0016 on 2026-11-08.
 - [x] Phase 6 first slice: public profiles and profile editing.
 - [x] Phase 6 second slice: follows and follower/following lists.
 - [x] Phase 6 final slice: review comments.
 - [x] Phase 7 first slice: public review/comment reporting.
 - [x] Phase 7 second slice: staff moderation, visibility and audit.
 - [x] Phase 7: local cross-feature release checks and readiness record.
-- [ ] Phase 7 remaining: production deployment verification and launch gates.
+- [x] Saved-code recovery and secret-protected first-run administrator setup.
+- [x] Custom catalog items/categories, protected image uploads and list-only collections.
+- [x] Category workflow/spacing refinements and silent routine session checks (2026-11-09).
+- [ ] Phase 7 remaining: production deployment verification and [launch gates](frontend-release-verification.md#outstanding-release-gates).
 
-## Resume notes
+## Latest status — 2026-11-09
+
+Combined work is committed on local main as `91a5cce`. Latest recorded frontend
+checks: 644 tests across 87 files, ESLint and TypeScript pass. Backend: 554 tests,
+zero skips. See [latest release evidence](frontend-release-verification.md#latest-local-verification--2026-11-09)
+for build/browser limitations. All next-work items live in [STATUS.md](STATUS.md).
+
+## Historical delivery notes
+
+Everything below is dated evidence. “Next”, branch/commit state, unchecked tasks,
+provider activation and temporary runtime paths apply to the note's date. Later
+records and STATUS.md supersede them. Do not restart finished phases from these notes.
 
 2026-11-05 local release verification completed. See
 [release verification record](frontend-release-verification.md) for launch gates.
@@ -931,19 +947,12 @@ navigation cancellation was observed reaching the proxy.
 
 No deferred minor code-review findings.
 
-## Suggested next-session prompt
+## Current next-session starting point
 
-> Continue RateFreak frontend Phase7 release verification after reporting and staff moderation, then
-> release verification. Phase6 profiles/editing, follows and review comments are
-> complete, including real backend/browser checks. Read this checklist, the roadmap,
-> web/README.md, web/AGENTS.md and DESIGN.md first. Preserve all current uncommitted
-> profiles/follows/comments work; do not assume integration into Git has happened.
-> Reporting/staff moderation are implemented; read the newest resume notes and Git status.
-> Ground release checks in actual API/authorization contracts and current operational settings.
-> Keep interfaces separate, components focused and TanStack Query for server state.
-> Verify with dedicated local data and guarded cleanup. No automatic commit, merge,
-> push, deployment, provider activation or promotion of real accounts to staff.
-> External sign-in remains an optional separate follow-up.
+Read [STATUS.md](STATUS.md), the relevant accepted ADRs and the release gates.
+Use Git to establish current source state. Dated execution notes do not authorize
+new migrations, test-data resets, provider activation, staff promotion or deployment.
+Select a pending item and establish its scope before implementation.
 
 
 ## Account recovery codes — 2026-11-06
@@ -1048,9 +1057,11 @@ Backend code/schema did not change. Work remains on `feat/account-settings-tabs`
 - [x] Custom item/category/list UI and exact multipart/proxy routes; viewer-scoped caches.
 - [x] Backend554/554 and frontend638/638; lint/typecheck and production/Release builds pass.
 - [x] Chromium owner/anonymous lifecycle and image restart/replace/remove proof; keyboard and responsive Light/Dark captures.
-- [x] Independent review findings fixed and re-reviewed; changes remain uncommitted in the isolated worktree.
+- [x] Independent review findings fixed and re-reviewed; initially uncommitted in the isolated worktree, subsequently committed on main as `91a5cce` (2026-11-09).
 - [x] Local test database cutover explicitly authorized; backup, scoped reset, four migrations, preservation checks and API readiness passed.
 - [ ] Production rollout: confirm external clients and separately arrange hosting/deployment.
 
 See [execution evidence](superpowers/plans/2026-11-08-custom-catalog-and-list-collections.md#execution-evidence--2026-11-08)
-and [operations](custom-catalog-operations.md). No existing database was reset or deployed.
+and [operations](custom-catalog-operations.md). Implementation tests used disposable
+databases; the separately authorized local test-data cutover followed on 2026-11-08.
+No production reset or deployment is recorded.

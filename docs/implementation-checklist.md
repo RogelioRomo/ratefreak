@@ -1,12 +1,22 @@
-# Implementation checklist and changelog
+# Implementation history and verification log
 
-Updated 2026-10-30. Implemented Phase 0–5, Phase 6a MusicBrainz albums,
-Phase 6b follows, Phase 6c IGDB games, Phase 6d public review comments and
-Phase 6e additional GitHub/Google sign-in, Phase 6f moderation/reporting and
-Phase 6g public profiles/editing.
-Collection discussions and further providers remain separate Phase 6 work.
+Current status and backlog: [STATUS.md](STATUS.md), updated 2026-11-09.
+Production acceptance: [release gates](frontend-release-verification.md#outstanding-release-gates).
+The catalog/list rewrite and UI/session changes are committed on local main as
+`91a5cce`; latest verification is 554 backend and 644 frontend tests passing.
 
-## Current continuation — first-run installation setup (2026-11-06)
+## Reading this history
+
+The sections below preserve dated implementation evidence through 2026-11-08.
+Branch names, test totals, unchecked tasks, temporary services and “uncommitted” or
+“not migrated” statements describe their section's time, not today's state.
+Recovery, setup, browser OAuth, profiles and moderation are implemented. Local
+Google/GitHub acceptance and the authorized local collection cutover are recorded
+in the release evidence. Email verification/recovery-mail requirements are
+superseded by ADR 0014; dynamic fields/entries are superseded by ADR 0016.
+Do not use historical remaining-priority lists as the current backlog.
+
+## Historical continuation — first-run installation setup (2026-11-06)
 
 User approved secret-protected browser setup before normal app use. Implemented on
 `feat/installation-setup`: persistent singleton, secret-verified atomic first-admin
@@ -22,7 +32,7 @@ no commit, merge, push or deployment is included. Next independent feature remai
 optional Google/GitHub browser sign-in/linking. Production operational/policy gates
 remain open.
 
-## Previous continuation — saved-code recovery (2026-11-06)
+## Historical continuation — saved-code recovery (2026-11-06)
 
 After frontend release verification, the user approved saved-code recovery without
 local email verification or email delivery. [ADR 0014](adr/0014-account-recovery.md)
@@ -936,9 +946,11 @@ multi-instance MusicBrainz pacing requires coordination before such deployment.
 - [x] Custom item/category/list UI and exact multipart/proxy routes; viewer-scoped caches.
 - [x] Backend554/554 and frontend638/638; lint/typecheck and production/Release builds pass.
 - [x] Chromium owner/anonymous lifecycle and image restart/replace/remove proof; keyboard and responsive Light/Dark captures.
-- [x] Independent review findings fixed and re-reviewed; changes remain uncommitted in the isolated worktree.
+- [x] Independent review findings fixed and re-reviewed; initially uncommitted in the isolated worktree, subsequently committed on main as `91a5cce` (2026-11-09).
 - [x] Local test database cutover explicitly authorized; backup, scoped reset, four migrations, preservation checks and API readiness passed.
 - [ ] Production rollout: confirm external clients and separately arrange hosting/deployment.
 
 See [execution evidence](superpowers/plans/2026-11-08-custom-catalog-and-list-collections.md#execution-evidence--2026-11-08)
-and [operations](custom-catalog-operations.md). No existing database was reset or deployed.
+and [operations](custom-catalog-operations.md). Implementation tests used disposable
+databases; the separately authorized local test-data cutover followed on 2026-11-08.
+No production reset or deployment is recorded.

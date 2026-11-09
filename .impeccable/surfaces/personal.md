@@ -33,9 +33,8 @@ Below public catalog details, separate Community rating, Your library, Your
 rating, Your review and Community reviews with quiet rules and serif headings.
 Keep form width at most 48rem. Tracking status and optional native date inputs
 share three columns on desktop and stack at 48rem. Changing status preserves
-dates; explain optional dates and reject completion before start. Rating uses a
-labeled native select from zero to five in half steps, with a distinct unrated
-placeholder and separate removal action. Public averages/counts come from actual
+dates; explain optional dates and reject completion before start. Rating uses the shared half-star radio control from zero to five, with explicit
+unrated feedback and a separate removal action. Public averages/counts come from actual
 data; show No ratings yet when absent.
 
 Review editing uses a visibly labeled plain textarea, a spoiler checkbox and an
@@ -59,9 +58,10 @@ distinct from absent personal records. Public details, rating and reviews remain
 available while private controls are concealed. Never interpret a failed read as
 an empty saved record.
 
-During a same-account session check, retain form state under hidden, inert and
-disabled controls, block private reads and abort pending writes. Restore drafts
-only after verification; confirmed logout or an account change discards them.
+Routine background session checks retain the last verified identity and leave
+forms/drafts visible and usable (2026-11-09). Initial unknown identity, explicit
+transitions and failed checks still conceal/disable private controls and pause
+private work. Confirmed logout or an account change discards old drafts.
 Review-page history, unrelated successful saves and write failures preserve drafts.
 Initial session discovery retains only known public query namespaces; private or
 unknown cached data is cleared, and real identity changes still clear prior state.

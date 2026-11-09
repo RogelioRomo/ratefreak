@@ -4,7 +4,11 @@ Status: accepted, 2026-10-30. User approved direct integration and written desig
 
 Use server-side ASP.NET Core OAuth handlers and existing Identity/session cookies.
 Keep password registration/login. Avoid adding an email-delivery dependency or a
-hosted authentication service. Password reset and mail verification remain deferred.
+hosted authentication service. The original deferral of password recovery was
+superseded by [ADR 0014](0014-account-recovery.md): saved-code recovery is
+implemented and local email verification/recovery mail are intentionally excluded.
+Browser integration and local provider acceptance were completed later; deployed
+acceptance remains open. See [current status](../STATUS.md).
 
 Provider identity is immutable (provider, subject), never email or username. Existing
 users explicitly link while authenticated; matching email never signs into or merges

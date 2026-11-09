@@ -37,7 +37,10 @@ CSRF and bounded bodies. UI session checks run on protected entry, mount,
 focus/pageshow and every minute while visible. Credential-free BroadcastChannel
 signals revalidate other windows; identity transitions cancel queries and clear
 cache/CSRF state. The backend remains authoritative, including for expired or
-revoked cookies between checks. No account data is embedded in static route HTML.
+revoked cookies between checks. Routine pending checks retain the last verified
+identity and UI (2026-11-09 refinement); initial discovery, explicit account
+transitions and failed checks still gate private content. Confirmed identity changes
+clear old private state. No account data is embedded in static route HTML.
 
 References:
 

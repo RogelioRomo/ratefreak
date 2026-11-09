@@ -1,8 +1,10 @@
 # RateFreak Backend — Architecture & Implementation Plan
 
-> **Purpose:** Implementation specification and reusable context for an LLM coding assistant.  
-> **Status:** Proposed design; decisions requiring confirmation are listed below.  
-> **Scope:** Entire RateFreak backend, built from scratch in .NET. Frontend is explicitly out of scope for now.
+> **Historical plan:** Original backend architecture and implementation proposal.
+> For current scope, implemented features and remaining work, use [docs/STATUS.md](docs/STATUS.md).
+> The API and frontend are now implemented. ADR 0014 supersedes email-verification/recovery-mail requirements;
+> ADR 0016 supersedes dynamic collection fields and free-standing entries.
+> The original phases, pending decisions and instructions below are retained as history, not an active backlog.
 
 ## 1. Product vision
 
@@ -475,7 +477,8 @@ Until decided, implement conservative defaults and explicitly document assumptio
 
 ## 15. Instructions for an LLM implementation assistant
 
-Use this document as the source specification for building the RateFreak backend from scratch.
+Historical instructions follow. For new work, start with [current status](docs/STATUS.md)
+and accepted ADRs; do not rebuild completed features from this original proposal.
 
 **Working rules:**
 

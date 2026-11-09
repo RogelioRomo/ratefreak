@@ -37,8 +37,9 @@ settings; never automatically retry or persist plaintext for redisplay.
 
 External-only users recover through their existing providers; recovery codes do
 not create local passwords for them. Provider identities, roles, profiles and owned
-data are unchanged. Google/GitHub browser sign-in/linking is the next separate
-slice; app credentials/live activation are not implied by this work.
+data are unchanged. Google/GitHub browser sign-in/linking was implemented in a
+subsequent slice, with local user acceptance recorded on 2026-11-07; production
+provider acceptance remains separate. See [current status](../STATUS.md).
 
 If password and code are both lost, only an already linked provider can restore
 access. Make this limitation explicit before users dismiss their code. Retention/

@@ -1,6 +1,8 @@
 # Custom catalog items and list-only collections — preliminary plan
 
-**Status:** Preliminary, for discussion. This document records the agreed direction,
+**Status:** Historical preliminary discussion, superseded by the approved
+[2026-11-08 plan](2026-11-08-custom-catalog-and-list-collections.md) and
+[ADR 0016](../../adr/0016-custom-catalog-and-list-collections.md). This document records the agreed direction,
 proposed technical approach and remaining decisions. It is not an executable
 implementation plan or approval to run a database reset now.
 

@@ -1,5 +1,11 @@
 # Custom Catalog and List Collections Implementation Plan
 
+Status update, 2026-11-09: implemented, locally integrated and committed as
+`91a5cce`. The explicitly authorized local test-data cutover is recorded at the end
+of this plan. Earlier instructions to leave work uncommitted or avoid existing
+local migrations describe the original authorization boundary. Production rollout
+remains separate; use [current status](../../STATUS.md) for next steps.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans for native execution, or superpowers:subagent-driven-development if the user chooses per-task delegation. Steps use checkbox syntax for tracking.
 
 **Goal:** Create privately or publicly rated custom catalog items with one filesystem-backed image and organize shared item identities in lists.

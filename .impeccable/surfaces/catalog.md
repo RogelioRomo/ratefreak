@@ -1,14 +1,16 @@
 # Catalog surface
 
-Implemented 2026-10-31. Mode: Operate. Extend the approved editorial culture
+Implemented 2026-10-31; category controls updated 2026-11-09. Mode: Operate. Extend the approved editorial culture
 journal system in `DESIGN.md`; reuse shared shell, buttons, feedback, semantic
 theme tokens and Tabler icons. This surface introduces no new visual primitives.
 
 ## Browse and filter
 
 `/catalog` pairs a Fraunces heading with a short explanation, then a native labeled
-title search, media-type select and explicit Search catalog button. Submitted
-`q`, `type` and `page` belong in the URL. New filters reset pagination; browser
+title search, category dropdown and explicit Search catalog button. The internal
+item-type selector is no longer shown on `/catalog`. Submitted `q`, `categoryId`
+and `page` belong in the URL; legacy type query parameters remain supported.
+The links below the heading use a wrapping row with 1.5rem horizontal gaps. New filters reset pagination; browser
 Back/Forward restores submitted controls and results. Do not query per keystroke
 or retain old results beneath newly submitted filters.
 

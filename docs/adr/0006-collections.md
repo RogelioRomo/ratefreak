@@ -6,7 +6,7 @@ Direction update, 2026-11-08: the user approved proceeding with
 [custom catalog items and list-only collections](../superpowers/specs/2026-11-08-custom-catalog-and-list-collections-design.md).
 Its [implementation plan](../superpowers/plans/2026-11-08-custom-catalog-and-list-collections.md)
 replaces the field/custom-entry direction below with catalog item references.
-The list-only replacement is implemented in the current development worktree; see
+The list-only replacement is implemented and committed on local main as `91a5cce`; see
 [ADR 0016](0016-custom-catalog-and-list-collections.md). The text below preserves
 the historical field-based contract. No database clearing or deployment is implied.
 

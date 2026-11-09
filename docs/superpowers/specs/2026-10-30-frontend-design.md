@@ -1,7 +1,8 @@
 # RateFreak frontend design and phased roadmap
 
-Date: 2026-10-30. Status: approved in conversation, including the written
-Phase 1 design. Implementation has not started.
+Date: 2026-10-30. Historical approved frontend roadmap. The phases are now
+implemented locally; use [current status](../../STATUS.md) for remaining work and
+current decisions. The original scope and implementation wording below are dated.
 
 ## Intent
 

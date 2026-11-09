@@ -77,42 +77,38 @@ pagination. Library entries are artwork-led rows with wrapping title links,
 readable status and saved dates; reuse the catalog artwork fallback.
 
 Tracking, rating and public review editing remain separate native forms. Keep
-optional date inputs, a labeled score select including zero, a plain textarea and
+optional date inputs, the half-star rating control including zero, a plain textarea and
 spoiler checkbox. Explain public visibility before publishing and use inline
 confirmation for library removal and review deletion. Render public reviews as
 literal text with spoilers initially concealed behind explicit reveal controls.
 
-Keep session checks distinct from empty or anonymous states. Conceal private
-controls during checks while retaining same-account drafts; disable interaction
-and private reads, cancel pending writes, and discard drafts on confirmed logout
-or account changes. Review pagination, failed writes and unrelated saves preserve
+Keep initial/failed session checks distinct from empty or anonymous states. Routine
+background checks retain the last verified identity, visible controls and drafts.
+Unknown/failed sessions and explicit account transitions conceal/disable private
+controls and pause private work. Confirmed logout/account changes discard old drafts. Review pagination, failed writes and unrelated saves preserve
 drafts. No new visual primitives are needed. Surface guidance and evidence are in
 [.impeccable/surfaces/personal.md](.impeccable/surfaces/personal.md).
 
 ## Collections
 
-Mode: Operate. Collection summaries, creation, owner metadata editing, fields and
-entries reuse Fraunces headings, DM Sans text, flat divided sections and semantic
-theme tokens. Present wrapping title links, owner, plain-text description and
-visibility in a semantic list; use a labeled shared scope select with explicit
-Apply and URL-owned pagination. Creation places the heading beside the native
-metadata form on desktop and stacks at 48rem. Summary rows stack at 32rem.
+Mode: Operate. Collections are lists of existing catalog identities, following
+[ADR 0016](docs/adr/0016-custom-catalog-and-list-collections.md). Dynamic field
+builders, copied entry titles and custom value editors are retired.
 
-Collection detail uses Entries and Fields sections with one inline owner editor
-at a time. Entry details use labeled values, preserving line breaks and wrapping
-long text. Keep field definitions as divided rows with explicit position controls;
-use native text, number-text and date inputs, and shared custom Yes/No and select
-controls with visible labels.
-Optional values have an explicit Set a value checkbox, distinguishing unset from
-empty text, false and zero. Reuse the existing input surfaces, small radius,
-accent focus outline and shared buttons; no new visual primitives or animation.
+Keep Fraunces headings, DM Sans text, flat divided sections, semantic theme tokens,
+wrapping title links, owner/visibility metadata and URL-owned scope/pagination.
+Collection creation/editing retains the existing metadata forms and responsive grid.
+Details show Items, with explicit owner actions to add, reorder and remove catalog
+memberships. Only one inline editor is active at a time. Keep 1.5rem below the
+Edit metadata/Add item row before the next divider. Removing a membership preserves
+the catalog item and its ratings/reviews. Unavailable memberships have a separately
+confirmed removal action without exposing private item details.
 
-Explain public visibility and permanent value loss before action. Failed writes
-retain drafts; conflicts require deliberate reload with a draft-replacement
-warning. Keep session-checking content concealed and inactive while preserving
-same-account drafts. Field removal requires a fresh impact preview and explicit
-confirmation; entry removal names the entry before confirmation. Surface guidance
-and evidence are in [.impeccable/surfaces/collections.md](.impeccable/surfaces/collections.md).
+Conflicts preserve drafts and require deliberate refresh; uncertain write outcomes
+block automatic retries. Routine background session checks preserve visible UI and
+same-account drafts. Initial identity discovery, explicit transitions and failed
+checks still gate private content; confirmed identity changes discard old drafts.
+Surface guidance is in [.impeccable/surfaces/collections.md](.impeccable/surfaces/collections.md).
 
 ## Light, dark and system
 

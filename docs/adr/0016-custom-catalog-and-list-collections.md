@@ -29,6 +29,8 @@ edits remain possible after a member becomes unavailable. No automatic pruning.
 The schema migration refuses legacy rows rather than deleting them. An offline,
 exact-target, dry-run-first test-data reset is separate and requires an explicit
 acknowledgement. External consumer confirmation and operator-approved data handling
-remain deployment gates. No existing database was reset by implementation work.
+remain deployment gates. Implementation tests did not reset existing databases;
+a subsequent user-authorized local test-data cutover completed on 2026-11-08.
+See [current status](../STATUS.md) for integration and deployment state.
 See the [operations runbook](../custom-catalog-operations.md) and approved
 [design](../superpowers/specs/2026-11-08-custom-catalog-and-list-collections-design.md).
