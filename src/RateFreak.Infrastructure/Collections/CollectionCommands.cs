@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using RateFreak.Application.Collections;
 using RateFreak.Domain.Collections;
 using RateFreak.Infrastructure.Persistence;
+using RateFreak.Infrastructure.Moderation;
 
 namespace RateFreak.Infrastructure.Collections;
 
@@ -13,6 +14,8 @@ internal sealed class CollectionCommands(RateFreakDbContext db) : ICollectionCom
         var errors = CollectionValidation.Metadata(request.Name, request.Description, visibility);
         if (errors.Count != 0) return new(CollectionStatus.Invalid, Errors: errors);
         await using var tx = await db.Database.BeginTransactionAsync(ct);
+        await ModerationLock.AcquireAsync(db, ct);
+        if (!await db.Users.AnyAsync(user => user.Id == ownerId, ct)) return new(CollectionStatus.NotFound);
         var collection = new Collection(ownerId, request.Name!, request.Description, visibility);
         db.Collections.Add(collection);
         await db.SaveChangesAsync(ct);

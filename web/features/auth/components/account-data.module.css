@@ -1,0 +1,16 @@
+.settings { display: grid; gap: 1.5rem; max-width: 44rem; }
+.settings h2, .settings h3 { margin: 0; }
+.settings p { line-height: 1.65; color: var(--muted); }
+.confirmation, .confirmation form { display: grid; gap: 1rem; }
+.settings h2, .dialog h2 { font-family: var(--font-editorial); font-weight: 500; font-size: 1.75rem; }
+.settings h3 { font-size: 1.125rem; line-height: 1.4; }
+.settings h3 + p { margin-block: .75rem 1rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+.danger { border-top: 1px solid var(--border); padding-top: 1.5rem; }
+.destructive:hover:not(:disabled) { background: #84232b !important; }
+.destructive { background: #a62c35 !important; color: white !important; }
+.overlay { position: fixed; inset: 0; z-index: 100; background: rgb(0 0 0 / .6); display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.dialog { background: var(--surface, var(--background, #fff)); color: var(--foreground); width: min(100%, 42rem); max-height: 90dvh; overflow: auto; padding: clamp(1rem, 4vw, 2rem); border-radius: 1rem; display: grid; gap: 1rem; box-shadow: 0 20px 80px rgb(0 0 0 / .3); }
+.dialog h2, .dialog p { margin: 0; }
+.dialog p + p { margin-top: .75rem; }
+.dialog p { line-height: 1.55; }

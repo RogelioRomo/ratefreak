@@ -82,10 +82,19 @@ internal static class ApiSecurity
                 await Results.Problem(statusCode: StatusCodes.Status429TooManyRequests,
                     title: "Too many requests. Please try again later.").ExecuteAsync(context.HttpContext);
             };
+            // Ownership confirmation has independent account and IP windows. A
+            // composite account/IP key would let either dimension evade its budget.
+            options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
+                context.GetEndpoint()?.Metadata.GetMetadata<EnableRateLimitingAttribute>()?.PolicyName == "lifecycle-confirm"
+                    ? RateLimitPartition.GetFixedWindowLimiter("lifecycle:" + BrowserProxyIdentity.Partition(context),
+                        _ => new FixedWindowRateLimiterOptions
+                        { PermitLimit = 20, Window = TimeSpan.FromMinutes(10), QueueLimit = 0, AutoReplenishment = true })
+                    : RateLimitPartition.GetNoLimiter("unlimited"));
             AddLimit(options, "external-auth-start", 10, TimeSpan.FromMinutes(1));
             AddLimit(options, "external-auth-read", 60, TimeSpan.FromMinutes(1));
             AddLimit(options, "external-auth-register", 5, TimeSpan.FromHours(1));
             AddAccountLimit(options, "external-auth-link", 10);
+            AddAccountLimit(options, "lifecycle-confirm", 10, TimeSpan.FromMinutes(10));
             AddLimit(options, "setup-read", 60, TimeSpan.FromMinutes(1));
             AddLimit(options, "setup-write", 5, TimeSpan.FromMinutes(15));
             AddLimit(options, "registration", 5, TimeSpan.FromHours(1));
@@ -119,10 +128,10 @@ internal static class ApiSecurity
         return Task.CompletedTask;
     }
 
-    private static void AddAccountLimit(RateLimiterOptions options, string name, int permits) =>
+    private static void AddAccountLimit(RateLimiterOptions options, string name, int permits, TimeSpan? window = null) =>
         options.AddPolicy(name, context => RateLimitPartition.GetFixedWindowLimiter(
             context.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "anonymous", _ => new FixedWindowRateLimiterOptions
-            { PermitLimit = permits, Window = TimeSpan.FromMinutes(1), QueueLimit = 0, AutoReplenishment = true }));
+            { PermitLimit = permits, Window = window ?? TimeSpan.FromMinutes(1), QueueLimit = 0, AutoReplenishment = true }));
 
     private static void AddLimit(RateLimiterOptions options, string name, int permits, TimeSpan window) =>
         options.AddPolicy(name, context => RateLimitPartition.GetFixedWindowLimiter(

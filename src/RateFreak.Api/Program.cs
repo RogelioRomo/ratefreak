@@ -6,6 +6,11 @@ using RateFreak.Api.Middleware;
 using RateFreak.Api.Security;
 using RateFreak.Infrastructure;
 
+if (args.Contains("--replay-account-erasures", StringComparer.Ordinal))
+{
+    Environment.ExitCode = await RateFreak.Api.Maintenance.AccountErasureReplay.ExecuteAsync(args);
+    return;
+}
 if (args.Contains("--reset-test-collection-data", StringComparer.Ordinal))
 {
     Environment.ExitCode = await RateFreak.Api.Maintenance.CollectionListReset.ExecuteAsync(args);
@@ -93,6 +98,7 @@ app.MapHealthEndpoints();
 app.MapInstallationEndpoints();
 app.MapAccountEndpoints();
 app.MapAccountRecoveryEndpoints();
+app.MapAccountDataEndpoints();
 app.MapUserProfileEndpoints();
 app.MapExternalAccountEndpoints();
 app.MapCatalogEndpoints();

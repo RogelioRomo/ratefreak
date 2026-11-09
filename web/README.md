@@ -460,3 +460,28 @@ failure. Codes/state never reach a rendered app page. Configure ingress logs and
 telemetry to omit callback queries, cookies and response bodies. Production
 acceptance still requires live credentials, HTTPS ingress, protected durable keys
 and the other release gates; local controlled-provider tests do not prove them.
+
+
+## Account data controls
+
+The account **Data and privacy** tab offers a ZIP export and permanent deletion.
+Both require fresh local-password or already-linked provider confirmation. The
+final accessible deletion dialog explains immediate personal-data erasure,
+30-day backup expiration, 365-day resolved moderation retention, open reports
+and preserved public catalog contributions. It requires the exact handle and a
+separate final destructive action; Cancel/Escape leave the account intact.
+
+Lifecycle grants use short-lived HttpOnly cookies, never URL parameters or browser
+storage. `/account?dataAction=export|delete` selects the return flow only; the API
+checks the grant before every action. Ordinary background session checks remain
+silent. Confirmed deletion clears private requests, query caches, CSRF state and
+other tabs through the existing identity transition.
+
+The proxy allowlists lifecycle endpoints/cookies and provider completion shapes.
+ZIP export responses preserve attachment filenames, stream within the 256 MiB
+limit and use a dedicated five-minute timeout with cancellation; other API requests
+keep their usual budgets. The browser revokes temporary download object URLs.
+No password, grant or exported content is persisted in TanStack caches or web storage.
+
+Deletion requires the API's `AccountData__ErasureJournalPath` configuration; backup
+expiration is an operational release gate. See [account operations](../docs/account-data-operations.md).

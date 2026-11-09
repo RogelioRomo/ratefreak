@@ -38,7 +38,7 @@ it("supports vertical arrow navigation, Home, End and one tab stop", async () =>
   mount(); const overview = await screen.findByRole("tab", { name: "Overview" }); overview.focus();
   fireEvent.keyDown(overview, { key: "ArrowDown" }); const profile = screen.getByRole("tab", { name: "Profile" });
   expect(profile).toHaveFocus(); expect(profile).toHaveAttribute("aria-selected", "true"); expect(overview).toHaveAttribute("tabindex", "-1");
-  fireEvent.keyDown(profile, { key: "End" }); const recovery = screen.getByRole("tab", { name: "Password recovery" }); expect(recovery).toHaveFocus();
+  fireEvent.keyDown(profile, { key: "End" }); const recovery = screen.getByRole("tab", { name: "Data and privacy" }); expect(recovery).toHaveFocus();
   fireEvent.keyDown(recovery, { key: "ArrowDown" }); expect(overview).toHaveFocus();
   fireEvent.keyDown(overview, { key: "ArrowUp" }); expect(recovery).toHaveFocus();
   fireEvent.keyDown(recovery, { key: "Home" }); expect(overview).toHaveFocus();

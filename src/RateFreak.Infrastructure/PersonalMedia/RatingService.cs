@@ -18,6 +18,7 @@ internal sealed class RatingService(RateFreakDbContext context) : IRatingService
         var rating = new Rating(userId, mediaId, score);
         await using var tx = await context.Database.BeginTransactionAsync(ct);
         await ModerationLock.AcquireAsync(context, ct);
+        if (!await context.Users.AnyAsync(user => user.Id == userId, ct)) return null;
         if (!await context.MediaItems.Where(CatalogAccess.Readable(userId)).AnyAsync(x => x.Id == mediaId, ct)) return null;
         await context.Database.ExecuteSqlInterpolatedAsync($"""
             INSERT INTO ratings (id, user_id, media_item_id, score, created_at, updated_at)

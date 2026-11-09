@@ -52,6 +52,7 @@ internal sealed class CategoryService(RateFreakDbContext db, IModerationService 
         var name = Name(request.Name); var scope = request.Scope ?? "private";
         if (name is null || scope is not ("private" or "public")) return Result(CatalogStatus.Invalid);
         await using var tx = await db.Database.BeginTransactionAsync(ct); await ModerationLock.AcquireAsync(db, ct);
+        if (!await db.Users.AnyAsync(u => u.Id == actorId, ct)) return Result(CatalogStatus.Forbidden);
         var normalized = name.ToUpperInvariant();
         if (await db.Categories.AnyAsync(c => c.NormalizedName == normalized && c.Scope == scope && (scope == "public" || c.OwnerUserId == actorId), ct)) return Result(CatalogStatus.Conflict);
         var category = new Category(name, scope, actorId); db.Add(category);
@@ -65,6 +66,7 @@ internal sealed class CategoryService(RateFreakDbContext db, IModerationService 
         var name = Name(request.Name);
         if (name is null || request.ExpectedRevision is null or <= 0 || admin && !ModerationRules.Text(request.Reason)) return Result(CatalogStatus.Invalid);
         await using var tx = await db.Database.BeginTransactionAsync(ct); await ModerationLock.AcquireAsync(db, ct);
+        if (!await db.Users.AnyAsync(u => u.Id == actorId, ct)) return Result(CatalogStatus.Forbidden);
         if (admin && !await moderation.HasAccessAsync(actorId, true, ct)) return Result(CatalogStatus.Forbidden);
         var category = await db.Categories.SingleOrDefaultAsync(c => c.Id == id && (admin ? c.Scope == "public" : c.Scope == "private" && c.OwnerUserId == actorId), ct);
         if (category is null) return Result(CatalogStatus.NotFound);
@@ -81,6 +83,7 @@ internal sealed class CategoryService(RateFreakDbContext db, IModerationService 
     {
         if (request.ExpectedRevision is null or <= 0 || !ModerationRules.Text(request.Reason)) return Result(CatalogStatus.Invalid);
         await using var tx = await db.Database.BeginTransactionAsync(ct); await ModerationLock.AcquireAsync(db, ct);
+        if (!await db.Users.AnyAsync(u => u.Id == actorId, ct)) return Result(CatalogStatus.Forbidden);
         if (!await moderation.HasAccessAsync(actorId, true, ct)) return Result(CatalogStatus.Forbidden);
         var category = await db.Categories.SingleOrDefaultAsync(c => c.Id == id && c.Scope == "public", ct);
         if (category is null) return Result(CatalogStatus.NotFound);
@@ -94,6 +97,7 @@ internal sealed class CategoryService(RateFreakDbContext db, IModerationService 
     {
         if (request.ExpectedRevision is null or <= 0 || request.TargetExpectedRevision is null or <= 0 || request.TargetId is null || request.TargetId == id || !ModerationRules.Text(request.Reason)) return Result(CatalogStatus.Invalid);
         await using var tx = await db.Database.BeginTransactionAsync(ct); await ModerationLock.AcquireAsync(db, ct);
+        if (!await db.Users.AnyAsync(u => u.Id == actorId, ct)) return Result(CatalogStatus.Forbidden);
         if (!await moderation.HasAccessAsync(actorId, true, ct)) return Result(CatalogStatus.Forbidden);
         var source = await db.Categories.SingleOrDefaultAsync(c => c.Id == id && c.Scope == "public", ct);
         var target = await db.Categories.SingleOrDefaultAsync(c => c.Id == request.TargetId && c.Scope == "public", ct);

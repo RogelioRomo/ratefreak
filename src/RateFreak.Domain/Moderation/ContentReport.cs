@@ -6,7 +6,7 @@ public sealed class ContentReport
     public string TargetType { get; set; } = null!;
     public Guid TargetId { get; set; }
     public Guid OriginalReporterId { get; set; }
-    public Guid OriginalAuthorId { get; set; }
+    public Guid? OriginalAuthorId { get; set; }
     public Guid? ReporterId { get; set; }
     public Guid? ReviewId { get; set; }
     public Guid? ItemId { get; set; }

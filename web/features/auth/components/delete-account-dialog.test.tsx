@@ -1,0 +1,56 @@
+// @vitest-environment jsdom
+import { fireEvent, render, screen } from "@testing-library/react";
+import { expect, it, vi } from "vitest";
+import { DeleteAccountDialog } from "./delete-account-dialog";
+it("explains separate retention deadlines and requires the exact handle", () => {
+    const confirm = vi.fn();
+    render(<DeleteAccountDialog handle="reader" pending={false} onCancel={() => { }} onConfirm={confirm} onExport={() => { }}/>);
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toHaveTextContent("immediately");
+    expect(dialog).toHaveTextContent("24 hours");
+    expect(dialog).toHaveTextContent("30 days");
+    expect(dialog).toHaveTextContent("90 days while your account exists");
+    expect(dialog).toHaveTextContent("365 days after resolution");
+    expect(dialog).toHaveTextContent("Open reports remain until resolved");
+    expect(dialog).toHaveTextContent("without account attribution");
+    const button = screen.getByRole("button", { name: "Permanently delete account" });
+    expect(button).toBeDisabled();
+    fireEvent.change(screen.getByLabelText("Type your handle reader"), { target: { value: "Reader" } });
+    expect(button).toBeDisabled();
+    fireEvent.change(screen.getByLabelText("Type your handle reader"), { target: { value: "reader" } });
+    fireEvent.click(button);
+    expect(confirm).toHaveBeenCalledWith("reader");
+});
+it("focuses Cancel, traps keyboard focus, supports Escape and restores trigger focus", () => {
+    const cancel = vi.fn();
+    const trigger = document.createElement("button");
+    document.body.append(trigger);
+    trigger.focus();
+    const view = render(<DeleteAccountDialog handle="reader" pending={false} onCancel={cancel} onConfirm={() => { }} onExport={() => { }}/>);
+    const button = screen.getByRole("button", { name: "Cancel" });
+    expect(button).toHaveFocus();
+    fireEvent.keyDown(button, { key: "Tab", shiftKey: true });
+    expect(screen.getByLabelText("Type your handle reader")).toHaveFocus();
+    fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+    expect(cancel).toHaveBeenCalledOnce();
+    view.unmount();
+    expect(trigger).toHaveFocus();
+    trigger.remove();
+});
+it("makes background content inert and keeps focus contained while deletion is pending", () => {
+    const outside = document.createElement("button");
+    document.body.append(outside);
+    outside.focus();
+    const view = render(<DeleteAccountDialog handle="reader" pending onCancel={() => { }} onConfirm={() => { }} onExport={() => { }}/>);
+    expect(outside).toHaveAttribute("inert");
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toHaveFocus();
+    fireEvent.keyDown(dialog, { key: "Tab" });
+    expect(dialog).toHaveFocus();
+    outside.focus();
+    expect(dialog).toHaveFocus();
+    view.unmount();
+    expect(outside).not.toHaveAttribute("inert");
+    expect(outside).toHaveFocus();
+    outside.remove();
+});

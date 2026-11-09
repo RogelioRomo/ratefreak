@@ -13,7 +13,7 @@ internal static class CatalogConfiguration
             {
                 table.HasCheckConstraint("ck_media_items_type", "media_type IN ('movie', 'tv_show', 'album', 'video_game', 'custom')");
                 table.HasCheckConstraint("ck_media_items_visibility", "visibility IN ('public', 'private')");
-                table.HasCheckConstraint("ck_media_items_provenance", "(provenance = 'system' AND creator_user_id IS NULL AND media_type <> 'custom' AND visibility = 'public') OR (provenance = 'user' AND creator_user_id IS NOT NULL AND media_type = 'custom')");
+                table.HasCheckConstraint("ck_media_items_provenance", "(provenance = 'system' AND creator_user_id IS NULL AND media_type <> 'custom' AND visibility = 'public') OR (provenance = 'user' AND (creator_user_id IS NOT NULL OR visibility = 'public') AND media_type = 'custom')");
                 table.HasCheckConstraint("ck_media_items_revision", "revision > 0");
                 table.HasCheckConstraint("ck_media_items_title", "length(btrim(title)) > 0");
                 table.HasCheckConstraint("ck_media_items_metadata", "jsonb_typeof(metadata) = 'object'");

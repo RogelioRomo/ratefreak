@@ -39,6 +39,7 @@ internal sealed class LibraryService(RateFreakDbContext context) : ILibraryServi
         // Hold the upsert lock until the response is loaded; concurrent DELETE must wait.
         await using var tx = await context.Database.BeginTransactionAsync(ct);
         await ModerationLock.AcquireAsync(context, ct);
+        if (!await context.Users.AnyAsync(user => user.Id == userId, ct)) return null;
         if (!await context.MediaItems.Where(CatalogAccess.Readable(userId)).AnyAsync(x => x.Id == mediaId, ct)) return null;
         await context.Database.ExecuteSqlInterpolatedAsync($"""
             INSERT INTO user_media (id, user_id, media_item_id, status, started_at, completed_at, created_at, updated_at)

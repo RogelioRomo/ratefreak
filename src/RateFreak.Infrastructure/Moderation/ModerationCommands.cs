@@ -25,7 +25,7 @@ internal sealed partial class ModerationService
         await using var tx=await db.Database.BeginTransactionAsync(ct);await ModerationLock.AcquireAsync(db,ct);await LockUser(actor,ct);
         if(!await HasAccessAsync(actor,type == "category",ct))return new(ModerationStatus.Forbidden);
         await LockTarget(type,id,ct);var target=await TargetAsync(type,id,ct);if(target is null)return new(ModerationStatus.NotFound);
-        if(target.Author!.Id==actor)return new(ModerationStatus.Forbidden);
+        if(target.Author != null && target.Author.Id==actor)return new(ModerationStatus.Forbidden);
         if(target.UpdatedAt!=request.ExpectedTargetUpdatedAt)return new(ModerationStatus.Conflict);
         if(target.Hidden!=request.Hidden.Value)
         {

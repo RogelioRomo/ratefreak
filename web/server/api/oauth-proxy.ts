@@ -86,6 +86,7 @@ export async function proxyOAuthRequest(request: Request, path: readonly string[
     const data = JSON.parse(new TextDecoder().decode(bytes));
     controller.signal.throwIfAborted();
     if (!data || typeof data !== "object" || Array.isArray(data)) return failure();
+    if (data.reauthenticated === true && data.provider === route.provider && ["export", "delete"].includes(data.operation)) return navigate(`/account?dataAction=${data.operation}`);
     if (data.requiresRegistration === true && data.provider === route.provider) return navigate("/auth/external/register");
     if (data.linked === true && data.provider === route.provider) return navigate("/account");
     if (typeof data.id === "string" && /^[0-9a-f]{8}-[0-9a-f-]{27}$/i.test(data.id) && typeof data.handle === "string" && typeof data.email === "string" && typeof data.displayName === "string" && typeof data.createdAt === "string") return navigate("/");

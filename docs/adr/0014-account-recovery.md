@@ -43,10 +43,10 @@ provider acceptance remains separate. See [current status](../STATUS.md).
 
 If password and code are both lost, only an already linked provider can restore
 access. Make this limitation explicit before users dismiss their code. Retention/
-erasure/export policy remains a separate launch gate. Minimal account recovery
+erasure/export policy is now defined in [ADR 0017](0017-account-data-lifecycle.md);
+production backup expiration, erasure journaling and restore replay remain launch gates. Minimal account recovery
 security events record account ID, action and UTC timestamp, without credentials
-or actor IP. Account deletion cascades these events; time-based retention policy
-must be settled before launch. Events are distinct from content moderation audit.
+or actor IP. Account deletion cascades these events; events expire after 90 days while the account is active under ADR 0017. Events are distinct from content moderation audit.
 
 Recovery changes use an additive migration, with no automatic application at API
 startup. Existing accounts have no recovery verifier until they enroll. Deployment,

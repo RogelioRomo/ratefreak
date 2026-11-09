@@ -12,7 +12,7 @@ authorization and business rules. See [web setup](web/README.md),
 [release evidence and launch gates](docs/frontend-release-verification.md), and
 [operations](docs/custom-catalog-operations.md).
 
-Latest recorded checks, 2026-11-09: **554 backend tests and 644 frontend tests
+Latest recorded checks, 2026-11-09: **578 backend tests and 664 frontend tests
 passed**, plus frontend lint and TypeScript. Earlier production-build/browser
 results are dated evidence, not verification of every later change. Local
 Google/GitHub acceptance is recorded; deployed provider acceptance remains open.
@@ -385,6 +385,46 @@ removes transient challenges and restores the old index, preserving users, hashe
 and login mappings; in-flight sign-ins must restart. Old application versions do
 not understand these flows. See ADR 0010 and the approved external-sign-in design.
 
+## Account export and deletion
+
+Account settings include **Data and privacy**. Exports and permanent deletion
+require fresh confirmation using the current local password or an already-linked
+Google/GitHub identity. A final deletion dialog explains retention, offers Cancel
+and requires the exact current handle; provider callbacks never delete automatically.
+
+| Method | Route | Behavior |
+| --- | --- | --- |
+| GET | `/api/v1/users/me/data` | Account confirmation options and retention policy; no-store |
+| POST | `/api/v1/users/me/data/confirm` | `{ operation: "export" or "delete", password }`; issues a five-minute, single-use HttpOnly operation grant |
+| POST | `/api/v1/users/me/data/external/{provider}/start` | `{ operation }`; confirms an already-linked provider identity on the same account |
+| POST | `/api/v1/users/me/data/export` | `{}` and export grant; private ZIP attachment, maximum 256 MiB |
+| POST | `/api/v1/users/me/data/delete` | `{ handle }` and deletion grant; removes the account and revokes sessions |
+
+All routes require authentication; POSTs require antiforgery protection. The
+grant is account/security-stamp/operation bound and cannot be replayed after
+logout, recovery or use. No credentials, recovery codes, provider subjects,
+private storage paths or staff-only notes belong in the export.
+
+Deletion removes live account/personal data and private contributions. Public
+custom items and categories retain their IDs, metadata, artwork and moderation
+state without account attribution so other people's references keep working.
+Private-item erasure also removes dependent references/discussions; reviews take
+their comments with them. The last administrator must appoint another first.
+
+Recovery events expire after 90 days while active and immediately on deletion.
+Pseudonymized resolved moderation records expire 365 days after resolution; open
+reports remain until resolved. Public catalog contributions remain. Backup copies
+must expire within **30 days**, enforced by the deployment operator, with an
+independent erasure journal replayed before any restored database serves traffic.
+Do not promise that all retained records disappear on a single date.
+
+Configure `AccountData__ErasureJournalPath` to an absolute, preprovisioned durable
+file outside normal database/artwork backups before enabling deletion. Unconfigured/unavailable
+journaling prevents deletion; export is independent. See [ADR 0017](docs/adr/0017-account-data-lifecycle.md)
+and the [account operations runbook](docs/account-data-operations.md) for backup
+expiration, restore replay, cleanup and migration acceptance. Production acceptance
+requires evidence from the actual backup store and an isolated restore drill.
+
 ## Structure and project references
 
 ```text
@@ -659,8 +699,8 @@ Unpublishing keeps other people's ratings/reviews/comments and list memberships 
 storage. They become inaccessible to other ordinary users, including their authors;
 the item creator retains access to previously public contributions. Republishing
 restores eligible contributions without clearing moderation holds. Archive never
-cascades shared data. Account deletion is not added; restrictive catalog/category
-owner FKs prevent unsafe cascades.
+cascades shared data. Account deletion separately removes private content and
+detaches ownership of public contributions; see [account data controls](#account-export-and-deletion).
 
 The common access policy covers catalog search/detail, ratings/aggregates, reviews,
 comments, reports, library and collection reads/writes. Authorization precedes paging

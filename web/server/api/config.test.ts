@@ -12,13 +12,13 @@ describe("proxy configuration", () => {
     vi.stubEnv("NODE_ENV", "production");
     expect(readApiProxyConfig()).toMatchObject({
       apiOrigin: "https://api.test", timeoutMs: 10_000,
-      cookieNames: ["__Host-ratefreak.session", "__Host-ratefreak.csrf"],
+      cookieNames: ["__Host-ratefreak.session", "__Host-ratefreak.csrf", "__Secure-ratefreak.lifecycle"],
     });
   });
 
   it("selects local HTTP cookie names only in development", () => {
     vi.stubEnv("RATEFREAK_API_URL", "http://localhost:5080");
     vi.stubEnv("NODE_ENV", "development");
-    expect(readApiProxyConfig().cookieNames).toEqual(["ratefreak.session", "ratefreak.csrf"]);
+    expect(readApiProxyConfig().cookieNames).toEqual(["ratefreak.session", "ratefreak.csrf", "ratefreak.lifecycle"]);
   });
 });

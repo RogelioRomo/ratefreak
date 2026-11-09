@@ -12,6 +12,7 @@ export function oauthRoute(method: string, path: readonly string[]) {
   if (method === "POST" && path.length === 5 && path[0] === "users" && path[1] === "me" && path[2] === "logins" && oauthProvider(path[3]) && path[4] === "start") {
     return { provider: path[3], kind: "start" as const };
   }
+  if (method === "POST" && path.length === 6 && path.slice(0,4).join("/") === "users/me/data/external" && oauthProvider(path[4]) && path[5] === "start") return { provider: path[4], kind: "start" as const };
   return null;
 }
 

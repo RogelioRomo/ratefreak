@@ -67,6 +67,25 @@ Initial session discovery retains only known public query namespaces; private or
 unknown cached data is cleared, and real identity changes still clear prior state.
 Never replay an attempted write after login or display a stale account's outcome.
 
+## Account data and final deletion confirmation
+
+Account settings include Data and privacy. Export produces a private ZIP after
+fresh ownership confirmation. Deletion opens a modal that makes background content
+inert, keeps keyboard focus inside, supports Cancel/Escape and restores trigger
+focus. It requires the exact current handle and a final Permanently delete account
+button. Pending deletion keeps focus on the dialog while actions are disabled.
+
+Disclose immediate account/personal/recovery erasure, 90-day recovery-event retention
+while active, private-artwork cleanup retry, 30-day backup policy, 365-day resolved
+moderation retention, open-report retention until resolution and public catalog
+contributions remaining without attribution. Keep the distinction between product
+policy and actual backup-provider expiration in the operator runbook.
+
+Confirmed deletion clears identity/private caches and navigates to the public
+account-deleted confirmation page. Suppress the ordinary account-page login
+redirect only during that deletion navigation; failed deletion restores normal
+session gating. Background session refresh behavior remains silent.
+
 ## Evidence and limits
 
 Compared the approved spec/plan with personal components/CSS, shared tokens,

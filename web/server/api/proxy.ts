@@ -1,4 +1,5 @@
 import "server-only";
+import { exportStream, maxExportBytes } from "./export-stream";
 import { isArtworkUpload, categoryQuery } from "./artwork-policy";
 import { oauthRoute, externalTicketRoute } from "./oauth-policy";
 import { proxyOAuthRequest } from "./oauth-proxy";
@@ -29,6 +30,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   if (oauthRoute(request.method, path)) return proxyOAuthRequest(request, path);
   if (!["GET", "POST", "PUT", "PATCH", "DELETE"].includes(request.method)) return proxyProblem(405, "Method not allowed.");
   const incoming = new URL(request.url);
+  const isExport = request.method === "POST" && path.join("/") === "users/me/data/export";
   const artworkUpload = isArtworkUpload(request.method, path);
   let categoryParams: URLSearchParams | null = null;
   try { categoryParams = categoryQuery(request.method, path, incoming.searchParams); }
@@ -104,7 +106,9 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   const timer = setTimeout(() => {
     timedOut = true;
     controller.abort(new DOMException("Request timed out.", "TimeoutError"));
-  }, config.timeoutMs);
+  }, isExport ? 300_000 : config.timeoutMs);
+  let streaming = false;
+  const cleanup = () => { clearTimeout(timer); request.signal.removeEventListener("abort", cancel); };
 
   try {
     const requestBody = mutation ? await readRequestBody(request, controller.signal, artworkUpload ? 5 * 1024 * 1024 + 65_536 : 65_536) : undefined;
@@ -125,6 +129,16 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
       if (value) responseHeaders.set(name, value);
     }
     for (const cookie of upstream.headers.getSetCookie()) responseHeaders.append("Set-Cookie", cookie);
+    if (isExport && upstream.ok) {
+      if (!upstream.body || upstream.headers.get("Content-Type")?.split(";",1)[0].trim() !== "application/zip" || Number(upstream.headers.get("Content-Length") ?? 0) > maxExportBytes) {
+        await upstream.body?.cancel(); return proxyProblem(502, "The account export is unavailable or exceeds 256 MiB.");
+      }
+      const disposition = upstream.headers.get("Content-Disposition");
+      if (disposition && /^attachment;/i.test(disposition)) responseHeaders.set("Content-Disposition", disposition);
+      responseHeaders.set("X-Content-Type-Options", "nosniff");
+      streaming = true;
+      return new Response(exportStream(upstream, controller, cleanup), { status: upstream.status, headers: responseHeaders });
+    }
     // Read within the timeout so slow response bodies cannot outlive the budget.
     const body = upstream.status === 204 ? null : await upstream.arrayBuffer();
     controller.signal.throwIfAborted();
@@ -134,7 +148,6 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
     if (error instanceof ApiError) return proxyProblem(error.status, "Request body is too large.");
     return timedOut ? proxyProblem(504, "The API timed out.") : proxyProblem(502, "The API is unavailable.");
   } finally {
-    clearTimeout(timer);
-    request.signal.removeEventListener("abort", cancel);
+    if (!streaming) cleanup();
   }
 }

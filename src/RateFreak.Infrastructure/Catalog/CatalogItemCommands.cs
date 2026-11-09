@@ -35,6 +35,7 @@ internal sealed class CatalogItemCommands(RateFreakDbContext db) : ICatalogItemC
         var visibility = request.Visibility ?? "private";
         if (!Valid(request.Title, request.Description) || visibility is not ("private" or "public")) return Result(CatalogStatus.Invalid);
         await using var tx = await db.Database.BeginTransactionAsync(ct); await ModerationLock.AcquireAsync(db, ct);
+        if (!await db.Users.AnyAsync(u => u.Id == actorId, ct)) return Result(CatalogStatus.Forbidden);
         var category = await CategoryAsync(actorId, request.CategoryId, visibility == "public", ct); if (category is null) return Result(CatalogStatus.Invalid);
         var item = MediaItem.CreateCustom(actorId, request.Title!, request.Description, category.Id); db.Add(item); await db.SaveChangesAsync(ct);
         if (visibility == "public") await db.MediaItems.Where(m => m.Id == item.Id).ExecuteUpdateAsync(s => s.SetProperty(m => m.Visibility, "public"), ct);
@@ -44,6 +45,7 @@ internal sealed class CatalogItemCommands(RateFreakDbContext db) : ICatalogItemC
     {
         if (request.ExpectedRevision is null or <= 0 || !Valid(request.Title, request.Description)) return Result(CatalogStatus.Invalid);
         await using var tx = await db.Database.BeginTransactionAsync(ct); await ModerationLock.AcquireAsync(db, ct);
+        if (!await db.Users.AnyAsync(u => u.Id == actorId, ct)) return Result(CatalogStatus.Forbidden);
         var item = await db.MediaItems.AsNoTracking().SingleOrDefaultAsync(m => m.Id == id && m.CreatorUserId == actorId && m.Provenance == "user", ct);
         if (item is null) return Result(CatalogStatus.NotFound); if (item.Revision != request.ExpectedRevision) return Result(CatalogStatus.Conflict);
         var category = await CategoryAsync(actorId, request.CategoryId, item.Visibility == "public", ct); if (category is null) return Result(CatalogStatus.Invalid);
@@ -54,6 +56,7 @@ internal sealed class CatalogItemCommands(RateFreakDbContext db) : ICatalogItemC
     {
         if (request.ExpectedRevision is null or <= 0 || action is not ("publish" or "unpublish" or "archive" or "restore")) return Result(CatalogStatus.Invalid);
         await using var tx = await db.Database.BeginTransactionAsync(ct); await ModerationLock.AcquireAsync(db, ct);
+        if (!await db.Users.AnyAsync(u => u.Id == actorId, ct)) return Result(CatalogStatus.Forbidden);
         var item = await db.MediaItems.AsNoTracking().SingleOrDefaultAsync(m => m.Id == id && m.CreatorUserId == actorId && m.Provenance == "user", ct);
         if (item is null) return Result(CatalogStatus.NotFound); if (item.Revision != request.ExpectedRevision) return Result(CatalogStatus.Conflict);
         if (action == "publish" && (item.IsArchived || item.IsHidden || await CategoryAsync(actorId, item.CategoryId, true, ct) is null)) return Result(CatalogStatus.Invalid);

@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function AccountDeletedPage() { return <section><h1>Your account has been deleted.</h1><p>Your live account and personal contributions have been removed. Public catalog entries remain without attribution. Backup copies expire within 30 days; open moderation reports remain until resolved and resolved records expire 365 days after resolution.</p><Link href="/">Return to RateFreak</Link></section>; }

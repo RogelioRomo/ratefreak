@@ -28,7 +28,7 @@ export function readApiProxyConfig(): ApiProxyConfig {
   return {
     apiOrigin,
     webOrigin: process.env.RATEFREAK_WEB_ORIGIN ? readOrigin(process.env.RATEFREAK_WEB_ORIGIN) : undefined,
-    cookieNames: [`${prefix}ratefreak.session`, `${prefix}ratefreak.csrf`],
+    cookieNames: [`${prefix}ratefreak.session`, `${prefix}ratefreak.csrf`, `${process.env.NODE_ENV === "development" ? "" : "__Secure-"}ratefreak.lifecycle`],
     timeoutMs: 10_000,
     proxySecret,
     clientIpMode: clientIpMode as "vercel" | "loopback" | undefined,

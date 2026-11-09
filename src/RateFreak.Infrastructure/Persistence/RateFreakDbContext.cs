@@ -53,6 +53,18 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
             state.HasKey(s => s.Id);
             state.Property(s => s.Id).ValueGeneratedNever();
         });
+        modelBuilder.Entity<AccountDataGrant>(grant =>
+        {
+            grant.ToTable("account_data_grants"); grant.HasKey(g => g.Hash);
+            grant.Property(g => g.Hash).HasMaxLength(64); grant.Property(g => g.SecurityStamp).HasMaxLength(256);
+            grant.Property(g => g.Operation).HasMaxLength(8); grant.HasIndex(g => g.ExpiresAt);
+            grant.HasOne<AccountUser>().WithMany().HasForeignKey(g => g.UserId).OnDelete(DeleteBehavior.Cascade);
+        });
+        modelBuilder.Entity<AccountExportBudget>(budget =>
+        {
+            budget.ToTable("account_export_budgets"); budget.HasKey(g => g.UserId);
+            budget.HasOne<AccountUser>().WithOne().HasForeignKey<AccountExportBudget>(g => g.UserId).OnDelete(DeleteBehavior.Cascade);
+        });
         modelBuilder.Entity<AccountRecoveryState>(state =>
         {
             state.ToTable("account_recovery_states");

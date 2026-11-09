@@ -5,6 +5,7 @@ import { LoadingState } from "@/components/ui/loading-state";
 import { ErrorState } from "@/components/ui/error-state";
 import { ProfileEditor } from "@/features/profiles/components/profile-editor";
 import { useSession } from "../hooks/use-session";
+import { AccountDataSettings } from "./account-data-settings";
 import { AccountDetails } from "./account-details";
 import { RecoverySettings } from "./recovery-settings";
 import { LinkedProviderSettings } from "./linked-provider-settings";
@@ -16,11 +17,12 @@ const tabs = [
   { id: "profile", label: "Profile" },
   { id: "sign-in", label: "Sign-in options" },
   { id: "recovery", label: "Password recovery" },
+  { id: "data", label: "Data and privacy" },
 ] as const;
 
-export function AccountSections() {
+export function AccountSections({ onDeletionPendingChange }: { onDeletionPendingChange?: (pending: boolean) => void }) {
   const session = useSession();
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(() => typeof window !== "undefined" && ["export", "delete"].includes(new URLSearchParams(window.location.search).get("dataAction") ?? "") ? 4 : 0);
   const buttons = useRef<Array<HTMLButtonElement | null>>([]);
   const unavailable = !session.account || session.isTransitioning;
   function navigate(event: KeyboardEvent<HTMLButtonElement>, index: number) {
@@ -54,6 +56,7 @@ export function AccountSections() {
         {tab.id === "profile" && <ProfileEditor />}
         {tab.id === "sign-in" && <LinkedProviderSettings />}
         {tab.id === "recovery" && <RecoverySettings />}
+        {tab.id === "data" && <AccountDataSettings active={selected === index} onDeletionPendingChange={onDeletionPendingChange} />}
       </div>)}
     </div>
   </div>;

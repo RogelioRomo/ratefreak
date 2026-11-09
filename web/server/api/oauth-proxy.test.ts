@@ -117,3 +117,10 @@ it("bounds completion response bodies", async () => {
   upstream.mockResolvedValueOnce(redirect("/api/v1/auth/external/complete")).mockResolvedValueOnce(new Response("x".repeat(65537)));
   const response = await call(request("auth/external/google/callback?state=x&code=y")); expect(response.headers.get("location")).toContain("/auth/external/error?reason=failed");
 });
+it.each(["export","delete"])("relays lifecycle reauthentication completion for %s without a query grant",async operation=>{
+ upstream.mockResolvedValueOnce(redirect("/api/v1/auth/external/complete")).mockResolvedValueOnce(Response.json({reauthenticated:true,operation,provider:"github"},{headers:{"Set-Cookie":"ratefreak.lifecycle=grant; Path=/api/v1/users/me/data; HttpOnly; SameSite=Strict"}}));
+ const response=await call(request("auth/external/github/callback?state=protected&code=private"));expect(response.headers.get("location")).toBe(`http://web.test/account?dataAction=${operation}`);expect(response.headers.getSetCookie()[0]).toContain("HttpOnly");expect(response.headers.get("location")).not.toContain("grant");
+});
+it("guards and relays lifecycle provider confirmation starts",async()=>{
+ const path="users/me/data/external/google/start";upstream.mockResolvedValue(redirect(google));expect((await call(post(path))).status).toBe(200);upstream.mockClear();expect((await call(post(path,{Origin:"https://evil.test"}))).status).toBe(403);expect(upstream).not.toHaveBeenCalled();
+});

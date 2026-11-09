@@ -5,7 +5,61 @@ acceptance. [STATUS.md](STATUS.md) owns the current backlog; the release-gate ta
 below owns production acceptance. Older sections are dated evidence, including
 historical commit/migration/activation statements, not current operating instructions.
 
-## Latest local verification — 2026-11-09
+## Account lifecycle verification — 2026-11-09
+
+Source: account lifecycle working tree on `aeb416e`; not committed or deployed.
+
+| Check | Result |
+| --- | --- |
+| Frontend suite | 664 passed across 90 files |
+| Backend test projects | 578 passed, zero skipped: 27 unit, 397 PostgreSQL integration, 154 provider contracts |
+| Frontend TypeScript / ESLint | Passed |
+| Next production build / API Release publish | Passed |
+| EF model consistency | No pending model changes |
+| Real browser account journey | Passed ZIP download, desktop/mobile final dialog, exact-handle confirmation, Cancel/Escape/focus restoration, deletion confirmation navigation, old-session rejection and public/private catalog handling |
+| Actual ZIP inspection | Valid archive; owned public/private content included, credential/storage fields absent |
+| Persistence/deployment changes during feature verification | Only disposable databases migrated and disposable test accounts erased; subsequent explicitly authorized local migration is recorded below |
+
+An initial solution test attempt found Windows NuGet paths in two project asset
+files. After restoring metadata from the existing Linux cache, unit/provider
+projects passed; the full integration project passed separately. The totals above
+combine those latest passing project runs, not a claim that the initial command
+exited successfully.
+
+Browser checks used a separate localhost Development API and frontend source copy
+with a disposable PostgreSQL container and journal. No response interception was
+used. Chromium's missing libraries were extracted into `/tmp` without changing
+system packages. Desktop and mobile captures were inspected. This is local
+acceptance, not proof of production HTTPS cookies, real OAuth provider consent,
+external backup expiration or an infrastructure restore drill. Temporary browser
+artifacts are not durable evidence fixtures; the automated regression tests and
+operator procedures remain in the repository.
+
+Fresh-review findings were fixed with regression tests: the final dialog now
+repeats the active-account 90-day event policy; torn journal suffixes preserve
+complete intents; real browser testing caught and verified a fix for a deletion
+success/login redirect race. A journal must be durably preprovisioned with private
+permissions, and the migration's unsafe ownership downgrade refuses to fabricate
+lost authors. See [account operations](account-data-operations.md).
+
+## Authorized local account migration — 2026-11-09
+
+At the user's explicit request, applied
+`20261109171007_AddAccountDataLifecycle` to the existing local `ratefreak` database
+in `ratefreak-postgres-1`, starting from `20261108211351_ConvertCollectionsToLists`.
+Created a private custom-format pre-migration backup and verified its archive
+catalog. Confirmed the new migration history entry, both lifecycle tables and
+nullable report-author column. All row counts and content fingerprints across
+25 existing application tables remained identical. No account was erased and no
+existing content was reset. No deployment, application restart or erasure-journal
+provisioning was part of this action.
+
+The local backup and machine-readable verification live in ignored `.local/`
+paths; they contain installation data and are not committed documentation assets.
+The backup is subject to the approved maximum 30-day retention policy. This local
+migration does not establish production backup expiration or restore readiness.
+
+## Earlier UI/session verification — 2026-11-09
 
 Source baseline: local main `91a5cce`, containing the custom catalog/list rewrite,
 category workflow refinements, UI spacing and silent background session checks.
@@ -79,13 +133,13 @@ backend requirement lists are superseded where later ADRs changed the policy.
 
 | Gate | Evidence needed before launch |
 | --- | --- |
-| Account retention/deletion | Saved-code recovery and the no-email-verification policy are now accepted and locally implemented ([ADR 0014](adr/0014-account-recovery.md)); retention/deletion/export policy remains open, and recovery still needs deployed acceptance |
-| Profile moderation and staff policy | Profile reporting/moderation, staff-access/operator attribution and audit-retention behavior need completion/definition before launch |
+| Account retention/deletion | [ADR 0017](adr/0017-account-data-lifecycle.md) defines export/deletion and 90/365-day event retention with 30-day backup expiration. Verify lifecycle flows, independent durable erasure journaling, actual backup expiration and restore replay in the target deployment; see [runbook](account-data-operations.md) |
+| Profile moderation and staff policy | Complete profile reporting/moderation and staff-access/operator attribution policies; verify deployed bounded moderation retention per ADR 0017 |
 | Catalog/list compatibility and storage | Confirm external clients and target-database migration/data handling; provision persistent protected artwork storage outside wwwroot |
 | Real production ingress | Deployed HTTPS origins, exact write Origin, matching server secrets and verified Vercel address headers, or a separately verified adapter for another host |
 | Production sessions | Real `__Host-` Secure/HttpOnly cookies, independent Set-Cookie forwarding/deletion, CSRF rejection, all-device logout and no private response caching through the actual ingress |
 | Durable Data Protection | Restricted persistent key storage, encryption/protected storage, restart and replica continuity, and controlled key recovery |
-| Database and artwork recovery | Coordinated protected database/artwork backups and a successful isolated restore drill with migration/version and file-access checks; no production rollback without a reviewed recovery plan |
+| Database and artwork recovery | Coordinated protected database/artwork backups expiring within 30 days and an isolated restore drill with independent account-erasure replay, migration/version and file-access checks; no production rollback without a reviewed recovery plan |
 | Abuse controls | Coordinated/perimeter budgets for multiple API instances; current rate limiters are process-local |
 | Provider rights and attribution | Approved metadata/artwork storage and usage terms, required notices/logos, and commercial licensing where applicable |
 | Operational checks | Private health monitoring, sanitized logging, secret rotation, representative load testing and deployed client-disconnect propagation |

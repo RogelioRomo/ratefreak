@@ -54,6 +54,12 @@ public static class DependencyInjection
         services.AddScoped<LocalAccountRegistration>();
         services.AddScoped<IAccountService, AccountService>();
         services.AddScoped<IAccountRecoveryService, AccountRecoveryService>();
+        services.AddOptions<AccountDataOptions>().Bind(configuration.GetSection("AccountData"));
+        services.AddSingleton<AccountErasureJournal>();
+        services.AddScoped<AccountDataService>();
+        services.AddScoped<IAccountDataService>(p => p.GetRequiredService<AccountDataService>());
+        services.AddScoped<IAccountErasureMaintenance, AccountDataMaintenance>();
+        services.AddHostedService<AccountDataRetentionWorker>();
         services.AddScoped<IUserProfileService, UserProfileService>();
         services.AddScoped<IExternalAccountService, ExternalAccountService>();
         services.AddScoped<RateFreak.Application.Social.IFollowService, RateFreak.Infrastructure.Social.FollowService>();

@@ -2,6 +2,7 @@ import "server-only";
 
 function allowed(name: string, development: boolean): boolean {
   const prefix = development ? "" : "__Host-";
+  if (name === `${development ? "" : "__Secure-"}ratefreak.lifecycle`) return true;
   if ([`${prefix}ratefreak.session`, `${prefix}ratefreak.csrf`, `${prefix}ratefreak.external`].includes(name)) return true;
   if (new RegExp(`^${prefix}ratefreak\\.externalC[1-5]$`).test(name)) return true;
   // The framework appends a random base64url correlation ID to this scheme prefix.

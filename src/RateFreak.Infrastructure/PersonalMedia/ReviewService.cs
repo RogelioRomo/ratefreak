@@ -39,6 +39,7 @@ internal sealed class ReviewService(RateFreakDbContext context) : IReviewService
         var review = new Review(userId, mediaId, request.Body!, request.IsSpoiler);
         await using var tx = await context.Database.BeginTransactionAsync(ct);
         await ModerationLock.AcquireAsync(context, ct);
+        if (!await context.Users.AnyAsync(user => user.Id == userId, ct)) return new(ReviewWriteStatus.NotFound);
         if (!await context.MediaItems.Where(CatalogAccess.Readable(userId)).AnyAsync(x => x.Id == mediaId, ct)) return new(ReviewWriteStatus.NotFound);
         var count = await context.Database.ExecuteSqlInterpolatedAsync($"""
             INSERT INTO reviews (id, user_id, media_item_id, body, is_spoiler, created_at, updated_at)

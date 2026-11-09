@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "../hooks/use-session";
 import { useQueryClient } from "@tanstack/react-query";
@@ -18,6 +18,13 @@ export function AccountScreen() {
   const client = useQueryClient();
   const cached = client.getQueryData<AccountProfile | null>(sessionQueryKey);
   const [entryChecked, setEntryChecked] = useState(false);
+  // This screen outlives its private panels when the identity cache is cleared.
+  // Hold its ordinary login redirect until an explicit deletion has either
+  // failed or navigated to the public confirmation page.
+  const deletionNavigation = useRef(false);
+  const onDeletionPendingChange = useCallback((pending: boolean) => {
+    deletionNavigation.current = pending;
+  }, []);
   const { refresh } = session;
   useEffect(() => {
     let active = true;
@@ -25,10 +32,10 @@ export function AccountScreen() {
     return () => { active = false; };
   }, [refresh]);
   useEffect(() => {
-    if (entryChecked && session.account === null && !session.isLoading && !session.isTransitioning && !session.error) router.replace("/login");
+    if (!deletionNavigation.current && entryChecked && session.account === null && !session.isLoading && !session.isTransitioning && !session.error) router.replace("/login");
   }, [entryChecked, session.account, session.isLoading, session.isTransitioning, session.error, router]);
   return <section className={styles.account}>
     <header className={styles.heading}><h1>Your account.</h1><p>A space that’s yours.</p></header>
-    {entryChecked ? cached ? <AccountSections key={cached.id} /> : <AccountDetails /> : <LoadingState label="Checking your session…" />}
+    {entryChecked ? cached ? <AccountSections key={cached.id} onDeletionPendingChange={onDeletionPendingChange} /> : <AccountDetails /> : <LoadingState label="Checking your session…" />}
   </section>;
 }

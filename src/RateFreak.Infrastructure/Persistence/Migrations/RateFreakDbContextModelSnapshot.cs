@@ -462,7 +462,7 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         {
                             t.HasCheckConstraint("ck_media_items_metadata", "jsonb_typeof(metadata) = 'object'");
 
-                            t.HasCheckConstraint("ck_media_items_provenance", "(provenance = 'system' AND creator_user_id IS NULL AND media_type <> 'custom' AND visibility = 'public') OR (provenance = 'user' AND creator_user_id IS NOT NULL AND media_type = 'custom')");
+                            t.HasCheckConstraint("ck_media_items_provenance", "(provenance = 'system' AND creator_user_id IS NULL AND media_type <> 'custom' AND visibility = 'public') OR (provenance = 'user' AND (creator_user_id IS NOT NULL OR visibility = 'public') AND media_type = 'custom')");
 
                             t.HasCheckConstraint("ck_media_items_revision", "revision > 0");
 
@@ -606,7 +606,7 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("item_id");
 
-                    b.Property<Guid>("OriginalAuthorId")
+                    b.Property<Guid?>("OriginalAuthorId")
                         .HasColumnType("uuid")
                         .HasColumnName("original_author_id");
 
@@ -981,6 +981,61 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         {
                             t.HasCheckConstraint("ck_user_follows_no_self", "follower_id <> followee_id");
                         });
+                });
+
+            modelBuilder.Entity("RateFreak.Infrastructure.Authentication.AccountDataGrant", b =>
+                {
+                    b.Property<string>("Hash")
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)")
+                        .HasColumnName("hash");
+
+                    b.Property<DateTimeOffset>("ExpiresAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("expires_at");
+
+                    b.Property<string>("Operation")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("character varying(8)")
+                        .HasColumnName("operation");
+
+                    b.Property<string>("SecurityStamp")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("security_stamp");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Hash");
+
+                    b.HasIndex("ExpiresAt");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("account_data_grants", (string)null);
+                });
+
+            modelBuilder.Entity("RateFreak.Infrastructure.Authentication.AccountExportBudget", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.Property<int>("Attempts")
+                        .HasColumnType("integer")
+                        .HasColumnName("attempts");
+
+                    b.Property<DateTimeOffset>("WindowEndsAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("window_ends_at");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("account_export_budgets", (string)null);
                 });
 
             modelBuilder.Entity("RateFreak.Infrastructure.Authentication.AccountRecoveryEvent", b =>
@@ -1416,6 +1471,24 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                     b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
                         .WithMany()
                         .HasForeignKey("FollowerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RateFreak.Infrastructure.Authentication.AccountDataGrant", b =>
+                {
+                    b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RateFreak.Infrastructure.Authentication.AccountExportBudget", b =>
+                {
+                    b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
+                        .WithOne()
+                        .HasForeignKey("RateFreak.Infrastructure.Authentication.AccountExportBudget", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
