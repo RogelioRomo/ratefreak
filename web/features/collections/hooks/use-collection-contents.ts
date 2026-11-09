@@ -10,7 +10,7 @@ export function useCollectionContents(viewer:string,id:string,page:number|null,a
  return useQuery({queryKey:['collections',viewer,'page-snapshot',id.toLowerCase(),page],enabled:active&&page!==null&&isMediaId(id),retry:false,queryFn:async({signal})=>{
   const result=await loadPageSnapshot(id,page!,signal);signal.throwIfAborted();
   client.setQueryData(collectionKeys.detail(viewer,id),result.details);
-  client.setQueryData(['collections',viewer,'items',id.toLowerCase(),result.details.collection.revision,result.details.collection.schemaVersion,page],result.page);
+  client.setQueryData(['collections',viewer,'items',id.toLowerCase(),result.details.collection.revision,page],result.page);
   return result;
  }});
 }
@@ -19,7 +19,7 @@ export function useEntryContents(viewer:string,id:string,itemId:string,active:bo
  return useQuery({queryKey:['collections',viewer,'entry-snapshot',id.toLowerCase(),itemId.toLowerCase()],enabled:active&&isMediaId(id)&&isMediaId(itemId),retry:false,queryFn:async({signal})=>{
   const result=await loadEntrySnapshot(id,itemId,signal);signal.throwIfAborted();
   client.setQueryData(collectionKeys.detail(viewer,id),result.details);
-  client.setQueryData(['collections',viewer,'item',id.toLowerCase(),result.details.collection.revision,result.details.collection.schemaVersion,itemId.toLowerCase()],result.item);
+  client.setQueryData(['collections',viewer,'item',id.toLowerCase(),result.details.collection.revision,itemId.toLowerCase()],result.item);
   return result;
  }});
 }

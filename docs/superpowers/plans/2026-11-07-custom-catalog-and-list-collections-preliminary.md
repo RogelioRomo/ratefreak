@@ -194,25 +194,29 @@ recovered without a separately retained backup. No rollback promises data recove
 
 Implement in dependent slices; do not expose unfinished privacy paths.
 
-- [ ] **Phase 1 — finalize policy and contracts.** Resolve the decisions below;
+- [x] **Phase 1 — finalize policy and contracts.** Resolve the decisions below;
   write an approved design/ADR and executable implementation plan. Update
   ADR 0006's collection direction when the replacement design is approved.
-- [ ] **Phase 2 — catalog/category foundation and access policy.** Domain/catalog
+  Completed 2026-11-08: [approved replacement design](../specs/2026-11-08-custom-catalog-and-list-collections-design.md)
+  and [executable plan](2026-11-08-custom-catalog-and-list-collections.md).
+  Native implementation and independent review completed in the isolated worktree;
+  real cutover remains gated and no existing database reset was executed.
+- [x] **Phase 2 — catalog/category foundation and access policy.** Domain/catalog
   models, `RateFreakDbContext` configurations/migrations, category/item contracts,
   access checks across personal media, social and collection readers/writers.
   Prove owner/private/public behavior before public routing/UI activation.
-- [ ] **Phase 3 — user-created item/category API and moderation.** Create/edit,
+- [x] **Phase 3 — user-created item/category API and moderation.** Create/edit,
   publish/visibility changes, category reuse/creation and conflict handling,
   reporting/moderation, audit and abuse controls. Provider import keeps its existing
   trusted behavior and does not accept arbitrary user categories as provider types.
-- [ ] **Phase 4 — custom item frontend.** Create item, category picker/create,
+- [x] **Phase 4 — custom item frontend.** Create item, category picker/create,
   visibility choice, own-item management and common item detail using existing
   rating/review/comment controls. Update discovery/filter labels and applicable
   library/profile surfaces; no dynamic field builder.
-- [ ] **Phase 5 — list-only collection cutover.** Scoped test-data reset, simpler
+- [x] **Phase 5 — list-only collection cutover.** Scoped test-data reset, simpler
   relational memberships and API, remove field/free-title editors, and use one
   accessible-item picker for existing and user-created catalog items.
-- [ ] **Phase 6 — complete acceptance.** Fresh PostgreSQL migrations, existing
+- [x] **Phase 6 — complete acceptance.** Fresh PostgreSQL migrations, existing
   provider regression suite, private-data leak/concurrency tests, API/proxy
   contracts, frontend tests, build, keyboard and responsive Light/Dark browser
   journeys. Record results and obtain independent review before merge.
@@ -249,3 +253,13 @@ These do not block this preliminary document; they do affect the final design.
   `CollectionQueries.cs` and `CollectionFieldCommands.cs`
 - [Existing collection ADR](../../adr/0006-collections.md) (current implementation;
   this preliminary proposal does not yet supersede its accepted contract).
+
+
+## Implementation completion — 2026-11-08
+
+Phases above describe local implementation and verification. Phase 5 includes the
+guarded reset tool and disposable-database proof, **not** a live reset. See the
+[execution evidence](2026-11-08-custom-catalog-and-list-collections.md#execution-evidence--2026-11-08)
+and [ADR 0016](../../adr/0016-custom-catalog-and-list-collections.md).
+External consumers and real cutover require operator confirmation. Historical open
+decisions in section 8 were resolved in the approved replacement design.

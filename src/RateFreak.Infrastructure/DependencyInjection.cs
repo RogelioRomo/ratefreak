@@ -57,7 +57,16 @@ public static class DependencyInjection
         services.AddScoped<IUserProfileService, UserProfileService>();
         services.AddScoped<IExternalAccountService, ExternalAccountService>();
         services.AddScoped<RateFreak.Application.Social.IFollowService, RateFreak.Infrastructure.Social.FollowService>();
+        services.AddOptions<RateFreak.Infrastructure.Artwork.ArtworkOptions>().Bind(configuration.GetSection("Artwork"))
+            .Validate(o => !o.Enabled || !string.IsNullOrWhiteSpace(o.RootPath) && Path.IsPathFullyQualified(o.RootPath) && !o.RootPath.Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar).Any(p => p.Equals("wwwroot", StringComparison.OrdinalIgnoreCase)), "Artwork requires an absolute persistent directory outside wwwroot.").ValidateOnStart();
+        services.AddSingleton<RateFreak.Infrastructure.Artwork.ArtworkCleanupService>();
+        services.AddHostedService(p => p.GetRequiredService<RateFreak.Infrastructure.Artwork.ArtworkCleanupService>());
+        services.AddSingleton<IArtworkStorage, RateFreak.Infrastructure.Artwork.FileArtworkStorage>();
+        services.AddSingleton<IArtworkDecoder, RateFreak.Infrastructure.Artwork.ArtworkDecoder>();
+        services.AddScoped<IArtworkService, RateFreak.Infrastructure.Artwork.ArtworkService>();
         services.AddScoped<ICatalogQueries, CatalogQueries>();
+        services.AddScoped<ICategoryService, CategoryService>();
+        services.AddScoped<ICatalogItemCommands, CatalogItemCommands>();
         services.AddScoped<ILibraryService, LibraryService>();
         services.AddScoped<IRatingService, RatingService>();
         services.AddScoped<IReviewService, ReviewService>();
@@ -65,7 +74,6 @@ public static class DependencyInjection
         services.AddScoped<ICollectionQueries, CollectionQueries>();
         services.AddScoped<ICollectionCommands, CollectionCommands>();
         services.AddScoped<ICollectionItemCommands, CollectionItemCommands>();
-        services.AddScoped<ICollectionFieldCommands, CollectionFieldCommands>();
         services.AddOptions<TmdbOptions>().Bind(configuration.GetSection("Providers:Tmdb"))
             .Validate(options => options.IsValid(), "TMDB configuration is invalid: check timeout, language and enabled-provider access token.")
             .ValidateOnStart();

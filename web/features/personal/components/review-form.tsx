@@ -30,12 +30,12 @@ export function ReviewForm({ accountId, mediaId, saved }: ReviewFormProps) {
         throw error;
       }
     }, keys).then(outcome => { if (outcome) { setRecord(outcome.value); setMessage("Review saved."); } });
-  }}><p className={styles.hint}>Reviews are public. Keep personal information out of your review.</p><PersonalError error={write.error} />{bodyError && <p role="alert">{bodyError}</p>}
+  }}><p className={styles.hint}>Review visibility follows this item. Keep personal information out of your review.</p><PersonalError error={write.error} />{bodyError && <p role="alert">{bodyError}</p>}
     {conflict && <div role="status"><p>{existing ? "Load your saved review to edit it. Your draft is still below." : "An existing review is unavailable. Your draft is kept; it has not replaced that review."}</p>{existing && <Button variant="secondary" onClick={() => { setRecord(existing); setBody(existing.body); setSpoiler(existing.isSpoiler); setConflict(false); write.clearError(); setMessage("Saved review loaded."); }}>Load saved review</Button>}</div>}
-    <fieldset disabled={write.pending}><label htmlFor="review-body">Your public review</label><textarea id="review-body" required maxLength={10000} rows={7} value={body} onChange={e => setBody(e.target.value)} />
+    <fieldset disabled={write.pending}><label htmlFor="review-body">Review text</label><textarea id="review-body" required maxLength={10000} rows={7} value={body} onChange={e => setBody(e.target.value)} />
       <label className={styles.checkbox}><input type="checkbox" checked={spoiler} onChange={e => setSpoiler(e.target.checked)} />Contains spoilers</label>
-      <div className={styles.actions}><Button type="submit" disabled={conflict}><IconPencil size={17} aria-hidden="true" />{write.pending ? "Saving…" : record ? "Save review" : "Publish review"}</Button>{record && !confirm && <Button variant="secondary" onClick={() => setConfirm(true)}>Delete review</Button>}</div>
-      {confirm && <div className={styles.confirm}><p>Delete your public review? Your library and rating will stay.</p><Button variant="secondary" onClick={() => {
+      <div className={styles.actions}><Button type="submit" disabled={conflict}><IconPencil size={17} aria-hidden="true" />{write.pending ? "Saving…" : "Save review"}</Button>{record && !confirm && <Button variant="secondary" onClick={() => setConfirm(true)}>Delete review</Button>}</div>
+      {confirm && <div className={styles.confirm}><p>Delete your review? Your library and rating will stay.</p><Button variant="secondary" onClick={() => {
         void write.run(signal => deletePersonal(`reviews/${record!.id}`, signal), keys).then(outcome => { if (outcome) { setRecord(null); setBody(""); setSpoiler(false); setConfirm(false); setMessage("Review deleted."); } });
       }}>Confirm deletion</Button><Button variant="secondary" onClick={() => setConfirm(false)}>Cancel</Button></div>}
     </fieldset>{message && <p role="status">{message}</p>}

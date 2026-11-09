@@ -1,19 +1,20 @@
 "use client";
 import { useState } from "react";
-import { IconDeviceGamepad2, IconDisc, IconMovie, IconDeviceTv } from "@tabler/icons-react";
+import { IconDeviceGamepad2, IconDisc, IconMovie, IconDeviceTv, IconPhoto } from "@tabler/icons-react";
 import type { MediaArtworkProps } from "../interfaces/component-props";
 import styles from "./media-artwork.module.css";
 
 export function supportedArtwork(reference: string | null): string | null {
   if (!reference) return null;
   // Only the canonical HTTPS formats emitted by the inspected provider adapters.
+  if (/^\/api\/v1\/media\/[0-9a-f-]{36}\/artwork\/[0-9a-f-]{36}$/i.test(reference)) return reference;
   if (/^https:\/\/image\.tmdb\.org\/t\/p\/w500\/[A-Za-z0-9_-]+\.[A-Za-z0-9]+$/.test(reference) || /^https:\/\/images\.igdb\.com\/igdb\/image\/upload\/t_cover_big\/[A-Za-z0-9_-]+\.jpg$/.test(reference)) return reference;
   return null;
 }
 export function MediaArtwork({ reference, title, type }: MediaArtworkProps) {
   const [failedReference, setFailedReference] = useState<string | null>(null);
   const src = supportedArtwork(reference);
-  const Icon = type === "album" ? IconDisc : type === "video_game" ? IconDeviceGamepad2 : type === "tv_show" ? IconDeviceTv : IconMovie;
+  const Icon = type === "custom" ? IconPhoto : type === "album" ? IconDisc : type === "video_game" ? IconDeviceGamepad2 : type === "tv_show" ? IconDeviceTv : IconMovie;
   return <div className={styles.artwork}>
     {src && failedReference !== src
       // eslint-disable-next-line @next/next/no-img-element -- provider allowlist, no generic image proxy or optimization required.

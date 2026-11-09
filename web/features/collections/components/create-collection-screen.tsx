@@ -37,6 +37,6 @@ function CreateForm({viewer,active}: CollectionSessionState) {
     {write.error && <p role="alert">{writeMessage(write.error)}</p>}
     {write.outcomeUnknown && <p role="alert">The outcome is unknown. Check your collections before creating again. <Link href="/collections?scope=mine">Check My collections</Link></p>}
     <div className={styles.actions}><Button type="submit" disabled={write.pending || !active}>{write.pending ? "Creating…" : "Create collection"}</Button><Link className={styles.link} href="/collections">Back to collections</Link></div>
-    <p className={styles.hint}>Entry and custom-field interfaces are coming in the next slice.</p>
+    <p className={styles.hint}>Add existing catalog items after creating your list.</p>
   </form>;
 }

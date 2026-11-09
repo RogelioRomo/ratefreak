@@ -10,5 +10,5 @@ it('sends viewer list filters and cancellable detail reads',async()=>{
 });
 it('creates without fields and replaces all metadata using the loaded revision',async()=>{
  const signal=new AbortController().signal;await createCollection({name:'Cinema',description:null,visibility:'private'},signal);await updateCollection(id,{expectedRevision:7,name:'Films',description:'Notes',visibility:'public'},signal);
- const writes=mock.mock.calls.filter(([,o])=>o?.method!=='GET');expect(writes.map(([,o])=>o?.method)).toEqual(['POST','PATCH']);expect(JSON.parse(String(writes[0][1]?.body))).toEqual({name:'Cinema',description:null,visibility:'private',fields:[]});expect(JSON.parse(String(writes[1][1]?.body))).toEqual({expectedRevision:7,name:'Films',description:'Notes',visibility:'public'});expect(writes[1][1]?.signal).toBe(signal);
+ const writes=mock.mock.calls.filter(([,o])=>o?.method!=='GET');expect(writes.map(([,o])=>o?.method)).toEqual(['POST','PATCH']);expect(JSON.parse(String(writes[0][1]?.body))).toEqual({name:'Cinema',description:null,visibility:'private'});expect(JSON.parse(String(writes[1][1]?.body))).toEqual({expectedRevision:7,name:'Films',description:'Notes',visibility:'public'});expect(writes[1][1]?.signal).toBe(signal);
 });

@@ -9,9 +9,12 @@ internal static class CollectionMutation
 {
     // Every writer locks the same parent before inspecting schema, revision or items.
     // Call only inside the writer's explicit transaction.
-    public static Task<Collection?> LockAsync(RateFreakDbContext db, Guid ownerId, Guid id, CancellationToken ct) =>
-        db.Collections.FromSqlInterpolated($"SELECT * FROM collections WHERE id = {id} AND owner_user_id = {ownerId} FOR UPDATE")
+    public static async Task<Collection?> LockAsync(RateFreakDbContext db, Guid ownerId, Guid id, CancellationToken ct)
+    {
+        await RateFreak.Infrastructure.Moderation.ModerationLock.AcquireAsync(db, ct);
+        return await db.Collections.FromSqlInterpolated($"SELECT * FROM collections WHERE id = {id} AND owner_user_id = {ownerId} FOR UPDATE")
             .SingleOrDefaultAsync(ct);
+    }
 
     public static CollectionResult<T>? Check<T>(Collection? collection, long? expectedRevision) where T : class =>
         collection is null ? new(CollectionStatus.NotFound)

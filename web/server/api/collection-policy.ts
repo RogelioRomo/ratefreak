@@ -5,8 +5,8 @@ export function collectionRoute(method: string, path: readonly string[]): boolea
   if(path.length === 1) return ["GET","POST"].includes(method);
   if(!isMediaId(path[1])) return false;
   if(path.length === 2) return ["GET","PATCH"].includes(method);
+  if(path.length === 3 && path[2] === "unavailable-items") return method === "DELETE";
   if(path[2] === "items") return path.length === 3 ? ["GET","POST"].includes(method) : path.length === 4 && isMediaId(path[3]) && ["GET","PATCH","DELETE"].includes(method);
-  if(path[2] === "fields") return path.length === 3 ? method === "POST" : isMediaId(path[3] ?? "") && (path.length === 4 ? ["PATCH","DELETE"].includes(method) : path.length === 5 && path[4] === "deletion-impact" && method === "GET");
   return false;
 }
 export function validateCollectionQuery(params: URLSearchParams): URLSearchParams {
@@ -25,9 +25,9 @@ export function collectionQuery(method: string, path: readonly string[], params:
   if(!collectionRoute(method,path)) return null;
   if(method === "GET" && path.length === 1) return validateCollectionQuery(params);
   const items = method === "GET" && path.length === 3 && path[2] === "items";
-  const remove = method === "DELETE" && path.length === 4;
+  const remove = method === "DELETE" && (path.length === 4 || path.length === 3 && path[2] === "unavailable-items");
   if(!items && !remove) return null;
-  const allowed = items ? ["page","pageSize"] : path[2] === "fields" ? ["expectedRevision","confirm"] : ["expectedRevision"];
+  const allowed = items ? ["page","pageSize"] : ["expectedRevision"];
   for(const key of params.keys())if(!allowed.includes(key)||params.getAll(key).length!==1)throw new Error("Invalid collection query.");
   const result = new URLSearchParams();
   for(const key of allowed){const value=params.get(key);if(value===null){if(remove)throw new Error("Missing revision/confirmation.");continue;}if(key === "confirm"){if(value !== "true")throw new Error("Confirmation required.");}else if(!/^\d+$/.test(value)||!Number.isSafeInteger(+value)||+value<1||+value>(key === "page" ? 10000 : key === "pageSize" ? 100 : Number.MAX_SAFE_INTEGER))throw new Error("Invalid bounds.");result.set(key,key === "confirm"?value:String(+value));}

@@ -8,7 +8,6 @@ public sealed class Collection
     public string? Description { get; private set; }
     public string Visibility { get; private set; } = "private";
     public long Revision { get; private set; } = 1;
-    public long SchemaVersion { get; private set; } = 1;
     public DateTimeOffset CreatedAt { get; private set; } = DateTimeOffset.UtcNow;
     public DateTimeOffset UpdatedAt { get; private set; } = DateTimeOffset.UtcNow;
     private Collection() { }
@@ -16,6 +15,6 @@ public sealed class Collection
     { OwnerUserId = ownerUserId; Name = name.Trim(); Description = description; Visibility = visibility; }
     public void SetMetadata(string name, string? description, string visibility)
     { Name = name.Trim(); Description = description; Visibility = visibility; }
-    public void Advance(bool schema = false)
-    { Revision = checked(Revision + 1); if (schema) SchemaVersion = checked(SchemaVersion + 1); UpdatedAt = DateTimeOffset.UtcNow; }
+    public void Advance()
+    { Revision = checked(Revision + 1); UpdatedAt = DateTimeOffset.UtcNow; }
 }

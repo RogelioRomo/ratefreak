@@ -1,4 +1,5 @@
 import "server-only";
+import { isArtworkUpload, categoryQuery } from "./artwork-policy";
 import { oauthRoute, externalTicketRoute } from "./oauth-policy";
 import { proxyOAuthRequest } from "./oauth-proxy";
 import { oauthCookieHeader } from "./oauth-cookies";
@@ -28,6 +29,10 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   if (oauthRoute(request.method, path)) return proxyOAuthRequest(request, path);
   if (!["GET", "POST", "PUT", "PATCH", "DELETE"].includes(request.method)) return proxyProblem(405, "Method not allowed.");
   const incoming = new URL(request.url);
+  const artworkUpload = isArtworkUpload(request.method, path);
+  let categoryParams: URLSearchParams | null = null;
+  try { categoryParams = categoryQuery(request.method, path, incoming.searchParams); }
+  catch { return proxyProblem(400, "Invalid category filters."); }
   const listKind = personalList(path);
   const socialList = request.method === "GET" && (followList(path) || commentList(path));
   let collectionParams: URLSearchParams | null = null;
@@ -37,7 +42,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   try { moderationParams = moderationQuery(request.method,path,incoming.searchParams); }
   catch { return proxyProblem(400,"Invalid moderation filters."); }
   const externalSearch = path.length === 3 && path[0] === "media" && path[1] === "external" && path[2] === "search";
-  if ((incoming.search && !((moderationParams !== null || collectionParams !== null || (request.method === "GET" && ((path.length === 1 && path[0] === "media") || externalSearch || listKind || socialList))))) || incoming.pathname !== `/api/v1/${path.join("/")}`) {
+  if ((incoming.search && !((categoryParams !== null || moderationParams !== null || collectionParams !== null || (request.method === "GET" && ((path.length === 1 && path[0] === "media") || externalSearch || listKind || socialList))))) || incoming.pathname !== `/api/v1/${path.join("/")}`) {
     return proxyProblem(404, "API route not found.");
   }
   if (!isAllowedRoute(request.method, path)) {
@@ -65,6 +70,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   }
   if (collectionParams !== null) {const value=collectionParams.toString();query=value?`?${value}`:"";}
   if (moderationParams !== null) query = `?${moderationParams}`;
+  if (categoryParams !== null) { const value = categoryParams.toString(); query = value ? `?${value}` : ""; }
   let upstreamPath = incoming.pathname;
   if (path.length === 5 && path[0] === "media" && path[1] === "external") {
     const identity = providerIdentity(path[2], path[3], path[4])!;
@@ -78,7 +84,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   const headers = new Headers({ Accept: "application/json" });
   const mutation = request.method !== "GET";
   try {
-    if (mutation) validateMutation(request, config);
+    if (mutation) validateMutation(request, config, artworkUpload);
     clientAttributionHeaders(request, config).forEach((value, name) => headers.set(name, value));
   } catch (error) {
     return error instanceof ApiError ? proxyProblem(error.status, error.message) : proxyProblem(503, "Client attribution is unavailable.");
@@ -101,9 +107,9 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   }, config.timeoutMs);
 
   try {
-    const requestBody = mutation ? await readRequestBody(request, controller.signal) : undefined;
+    const requestBody = mutation ? await readRequestBody(request, controller.signal, artworkUpload ? 5 * 1024 * 1024 + 65_536 : 65_536) : undefined;
     if (mutation) {
-      headers.set("Content-Type", "application/json");
+      headers.set("Content-Type", artworkUpload ? request.headers.get("Content-Type")! : "application/json");
       headers.set("X-CSRF-TOKEN", request.headers.get("X-CSRF-TOKEN")!);
     }
     const upstream = await fetch(`${config.apiOrigin}${upstreamPath}${query}`, {
@@ -114,7 +120,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
       return proxyProblem(502, "Unexpected API redirect.");
     }
     const responseHeaders = new Headers({ "Cache-Control": "no-store" });
-    for (const name of ["Content-Type", "Retry-After"]) {
+    for (const name of ["Content-Type", "Retry-After", "X-Content-Type-Options"]) {
       const value = upstream.headers.get(name);
       if (value) responseHeaders.set(name, value);
     }

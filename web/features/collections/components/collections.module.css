@@ -28,6 +28,7 @@
 .form [role="alert"] { color: var(--error); line-height: 1.6; }
 .form [role="status"] { color: var(--accent); }
 .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.workspaceActions { margin-bottom: 1.5rem; }
 .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 4rem; }
 @media (max-width: 48rem) { .heading { display: block; } .heading > .link { margin-top: 1rem; } .split { grid-template-columns: minmax(0, 1fr); gap: 1rem; } }
 @media (max-width: 32rem) { .list li { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; } .filters { display: grid; grid-template-columns: minmax(0, 1fr); } .filters > div { max-width: none; } }

@@ -6,6 +6,11 @@ using RateFreak.Api.Middleware;
 using RateFreak.Api.Security;
 using RateFreak.Infrastructure;
 
+if (args.Contains("--reset-test-collection-data", StringComparer.Ordinal))
+{
+    Environment.ExitCode = await RateFreak.Api.Maintenance.CollectionListReset.ExecuteAsync(args);
+    return;
+}
 var appointAdmin = args.Contains("--appoint-admin", StringComparer.Ordinal);
 if (appointAdmin && (args.Length != 4 || args[0] != "--appoint-admin" || args[2] != "--reason" ||
     !Guid.TryParse(args[1], out var requestedAccount) || requestedAccount == Guid.Empty ||
@@ -72,7 +77,7 @@ app.UseStatusCodePages();
 app.UseBrowserProxyIdentity();
 app.Use(async (context, next) =>
 {
-    if (context.GetEndpoint()?.Metadata.GetMetadata<ProfileNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<CollectionNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<FollowNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<CommentNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/moderation") || context.Request.Path.StartsWithSegments("/api/v1/admin") || context.GetEndpoint()?.Metadata.GetMetadata<ReportingNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/auth") || context.Request.Path.StartsWithSegments("/api/v1/users/me") ||
+    if (context.Request.Path.StartsWithSegments("/api/v1/media") || context.Request.Path.StartsWithSegments("/api/v1/reviews") || context.Request.Path.StartsWithSegments("/api/v1/categories") || context.GetEndpoint()?.Metadata.GetMetadata<ProfileNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<CollectionNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<FollowNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<CommentNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/moderation") || context.Request.Path.StartsWithSegments("/api/v1/admin") || context.GetEndpoint()?.Metadata.GetMetadata<ReportingNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/auth") || context.Request.Path.StartsWithSegments("/api/v1/users/me") ||
         (context.Request.Path.StartsWithSegments("/api/v1/media") && (context.Request.Path.Value!.EndsWith("/rating", StringComparison.Ordinal) || context.Request.Path.Value!.EndsWith("/review", StringComparison.Ordinal))))
         context.Response.Headers.CacheControl = "no-store";
     await next(context);
@@ -91,6 +96,9 @@ app.MapAccountRecoveryEndpoints();
 app.MapUserProfileEndpoints();
 app.MapExternalAccountEndpoints();
 app.MapCatalogEndpoints();
+app.MapCategoryEndpoints();
+app.MapCustomItemEndpoints();
+app.MapArtworkEndpoints();
 app.MapMediaProviderEndpoints();
 app.MapPersonalMediaEndpoints();
 app.MapCollectionEndpoints();

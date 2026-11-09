@@ -11,8 +11,8 @@ public sealed record ReviewCommentPage(IReadOnlyList<ReviewCommentDetails> Items
 
 public interface IReviewCommentService
 {
-    Task<ReviewCommentPage?> ListAsync(Guid reviewId, int page, int pageSize, CancellationToken ct);
-    Task<ReviewCommentDetails?> FindAsync(Guid commentId, CancellationToken ct);
+    Task<ReviewCommentPage?> ListAsync(Guid? viewerId, Guid reviewId, int page, int pageSize, CancellationToken ct);
+    Task<ReviewCommentDetails?> FindAsync(Guid? viewerId, Guid commentId, CancellationToken ct);
     Task<ReviewCommentDetails?> CreateAsync(Guid userId, Guid reviewId, ReviewCommentRequest request, CancellationToken ct);
     Task<ReviewCommentDetails?> UpdateAsync(Guid userId, Guid commentId, ReviewCommentRequest request, CancellationToken ct);
     Task<bool> DeleteAsync(Guid userId, Guid commentId, CancellationToken ct);

@@ -113,8 +113,11 @@ variables, query keys and browser storage. Login/logout cancel old requests, res
 pending CSRF issuance and clear old cached data. Session checks run on protected
 entry, mount, window focus/pageshow, and every minute while active. BroadcastChannel
 notifies other windows of identity changes using a signal with no account payload.
-Private content is hidden while identity is being revalidated; network/429 errors
-are shown explicitly instead of being interpreted as logged out.
+Routine background session checks retain the last verified identity, keeping
+navigation, page layout and drafts stable. Confirmed identity changes clear old
+private state. Initial discovery, explicit account transitions and session-check
+failures still gate private content; network/429 errors are shown explicitly
+instead of being interpreted as logged out.
 
 ## Catalog
 
@@ -204,78 +207,55 @@ PUT/DELETE, public aggregate/review-list GET, review POST and review-ID PATCH/DE
 routes. Only library and review lists accept their bounded validated query keys.
 Every write retains existing exact Origin, attribution, JSON/body and CSRF guards.
 The two new .NET reads are `GET users/me/library/{mediaId}` and
-`GET media/{mediaId}/review`; they derive the owner from session, return404 when
+`GET media/{mediaId}/review`; they derive the owner from session, return 404 when
 absent, and never reveal hidden review content. No schema migration is needed.
 
-## Collections
+## Custom catalog and collections
 
-`/collections` lists public collections plus the signed-in viewer's own private
-collections. Apply All accessible or My collections explicitly; scope and 20-item
-paging live in the URL. Anonymous My collections offers login. Collection reads
-wait for verified session identity and use viewer-specific cache keys, including
-an explicit anonymous identity. Content is concealed during identity checks.
+`/catalog/new` creates private-default custom items using title, description and an
+explicit existing/new category. One optional uploaded image follows item privacy.
+`/catalog/mine` includes owned private/archived items and links to
+`/catalog/{id}/edit` for corrections, image replacement/removal, publication and
+archive/restore. Restore always returns to private. Generic subjects reuse the
+existing rating/review/comment controls and neutral tracking statuses.
 
-`/collections/new` creates a collection with name, optional description and
-Private/Public visibility; Private is the default. Existing owners can edit these
-fields at `/collections/{guid}`. Public visibility also exposes existing entries.
-Collection detail also supports typed fields, paginated entries and owner entry
-creation. There is no collection deletion control.
+`/catalog/categories` searches accessible categories, renames owned private categories,
+and offers administrator public-category rename/merge/hide/restore. Admin listing
+includes held categories and never other users' private categories. Public category
+creation is immediate; duplicate conflicts prompt reuse. Seeded and self-created
+public category reports are not offered. Item/category reports integrate with the
+existing staff queue and current-content inspection, including access-checked staff
+artwork URLs scoped to retained reports when the item becomes private.
 
-Edits send all metadata plus the loaded revision. Background refreshes preserve
-dirty drafts and their revision. A conflict retains the draft and requires an
-explicit Reload latest metadata before another save; reloading replaces the draft
-and refreshes the detail snapshot. Writes never retry automatically. An uncertain
-create offers My collections to check the result before creating again. Session
-checks conceal and retain same-account drafts, cancel pending writes and pause
-reads; confirmed identity changes discard them. GUID cache identities are canonical
-lowercase. Visibility saves clear obsolete snapshots for other viewers.
+Catalog and collection pickers support categories independently of legacy format
+filters; provider discovery keeps its own supported type restrictions. Artwork uses
+exact same-origin access-checked URLs alongside existing provider URL allowlists.
+Never use an image optimizer or static uploads route for private artwork.
 
-The proxy adds only GET/POST `collections` and GET/PATCH `collections/{guid}`.
-Only the GET list accepts `ownOnly`, `page`, `pageSize`; unknown/duplicate filters
-and other query-bearing routes are rejected. Existing Origin, CSRF, JSON/body,
-cookie, attribution, cancellation and no-store protections remain required.
-Login continuations add only canonical `/collections`, `/collections/new` and
-lowercase-GUID detail paths, without query strings or automatic write replay.
-No backend changes or migrations are needed for these collection interfaces.
+Collections are lists of existing catalog identities. Create metadata, search/select
+an accessible item, add at a position, reorder or explicitly confirm membership
+removal. Ratings/reviews remain on the item across all lists. Field definitions,
+free entry titles, JSON data editors and field deletion-impact interfaces are removed.
+Private items require the creator's private list on insertion; publishing a list with
+private/held/archived members is blocked. Existing public lists hide newly inaccessible
+members and exclude them from totals. Owners can explicitly confirm removal of all
+unavailable memberships to recover a blocked private list without seeing hidden
+identities. Public-list metadata edits remain available. All writes retain
+expected-revision protection.
 
-### Fields and entries
+Query keys include viewer identity for catalog, community aggregates/reviews,
+comments and collection readers; identity transitions cancel/clear scoped data.
+Session checks conceal retained drafts until verified. Definite conflicts require
+explicit reload; uncertain writes are not silently replayed. After an uncertain
+image upload, reload the saved item/revision before retrying. A failed list refresh
+after a confirmed save blocks additional writes until refreshing succeeds.
 
-Collection owners can define up to 30 text, number, boolean, date or select fields.
-Keys and types are immutable; labels, required settings, configuration and integer
-positions are editable. Required/configuration changes must preserve every saved
-entry's validity; incompatible proposals return a conflict without changing data.
-Adding a required field is disabled for a populated collection. Positions permit
-ties; there is no automatic renumbering or drag sorting.
-
-Add entry supports a custom title or explicit selection from the local catalog.
-Canonical identity cannot change on edit and duplicate canonical titles within
-one collection are rejected. No provider import or personal-library write happens
-as a side effect. Entry paging uses `itemsPage` in the collection URL. Dedicated
-`/collections/{guid}/items/{guid}` pages show literal field values and owner-only
-editing/removal. Optional Set a value toggles distinguish unset from false, zero
-and empty text. Replacement writes preserve all unchanged values.
-
-Dynamic numbers and numeric bounds use a feature-owned exact JSON/decimal codec,
-preserving the backend's .NET decimal range without JavaScript rounding. Shared
-transport callbacks are opt-in; other features retain their existing JSON behavior.
-Collection/item read bundles bracket the item read with two collection-revision
-reads and retry once if it changed. Drafts keep the revision loaded at editor
-initialization. Only one owner editor opens locally at a time. Confirmed writes
-close their editor before refresh; a failed/interrupted refresh blocks further
-writes and retries only the read.
-
-Field removal requires a fresh owner-only impact preview and explicit permanent
-deletion confirmation, including when no entries have populated values. Deletion
-uses the preview's revision; a stale revision or session uncertainty invalidates
-consent and requires a new preview/click. Removing an entry likewise requires
-fresh review and explicit confirmation; catalog/personal data remain independent.
-
-The proxy additionally permits exact collection item GET/POST, item-ID GET/PATCH/
-DELETE, field POST, field-ID PATCH/DELETE and deletion-impact GET paths. Item lists
-accept only page/pageSize. DELETE queries accept a positive safe-integer
-expectedRevision; field DELETE additionally requires exactly confirm=true.
-Other query-bearing field/item routes stay closed. Origin/CSRF/JSON/body-limit,
-attribution, cookie, cancellation and no-store protections apply throughout.
+The API proxy allows multipart only on the exact artwork PUT route, preserves its
+boundary/CSRF/origin checks and bounds the body to 5 MiB plus 64 KiB framing. Other writes
+remain bounded JSON. Binary image responses preserve safe content type/nosniff and
+no-store. Retired collection field and impact routes have no proxy allowances.
+See [operations](../docs/custom-catalog-operations.md) before enabling filesystem
+uploads or cutting an existing database over to lists.
 
 ## Appearance
 
@@ -324,7 +304,7 @@ See the [root README](../README.md) for backend setup and API contracts.
 `/users/{handle}` shows display name, handle, public bio and member date.
 Handles use case-insensitive lookup; email remains private. Review authors and
 Account link to these pages. `/account` offers display name (1–80 characters)
-and plain-text bio (up to500 characters) editing. Empty bio clears it. Both
+and plain-text bio (up to 500 characters) editing. Empty bio clears it. Both
 fields are submitted together; concurrent same-field updates use the backend's
 last-write-wins behavior. Unknown save outcomes require reloading before another
 save. Session uncertainty hides the editor while preserving same-account drafts.

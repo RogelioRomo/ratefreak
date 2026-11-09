@@ -11,11 +11,20 @@ internal static class CatalogConfiguration
         {
             item.ToTable("media_items", table =>
             {
-                table.HasCheckConstraint("ck_media_items_type", "media_type IN ('movie', 'tv_show', 'album', 'video_game')");
+                table.HasCheckConstraint("ck_media_items_type", "media_type IN ('movie', 'tv_show', 'album', 'video_game', 'custom')");
+                table.HasCheckConstraint("ck_media_items_visibility", "visibility IN ('public', 'private')");
+                table.HasCheckConstraint("ck_media_items_provenance", "(provenance = 'system' AND creator_user_id IS NULL AND media_type <> 'custom' AND visibility = 'public') OR (provenance = 'user' AND creator_user_id IS NOT NULL AND media_type = 'custom')");
+                table.HasCheckConstraint("ck_media_items_revision", "revision > 0");
                 table.HasCheckConstraint("ck_media_items_title", "length(btrim(title)) > 0");
                 table.HasCheckConstraint("ck_media_items_metadata", "jsonb_typeof(metadata) = 'object'");
             });
             item.HasKey(x => x.Id);
+            item.Property(x => x.Visibility).HasMaxLength(10).IsRequired();
+            item.Property(x => x.Provenance).HasMaxLength(10).IsRequired();
+            item.HasOne<RateFreak.Infrastructure.Authentication.AccountUser>().WithMany().HasForeignKey(x => x.CreatorUserId).OnDelete(DeleteBehavior.Restrict);
+            item.HasOne(x => x.Category).WithMany().HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.Restrict);
+            item.HasIndex(x => new { x.CreatorUserId, x.Id });
+            item.HasIndex(x => new { x.CategoryId, x.Title, x.Id });
             item.Property(x => x.MediaType).HasMaxLength(20).IsRequired();
             item.Property(x => x.Title).HasMaxLength(300).IsRequired();
             item.Property(x => x.Description).HasMaxLength(20000);

@@ -135,8 +135,8 @@ describe("catalog routes", () => {
     expect((await proxyRequest(makeRequest(path), path.split("?")[0].split("/"))).status).toBe(404);
     expect(fetchMock).not.toHaveBeenCalled();
   });
-  it("rejects POST media", async () => {
-    expect((await proxyRequest(makeRequest("media", { method: "POST" }), ["media"])).status).toBe(405);
+  it("requires write configuration for POST media", async () => {
+    expect((await proxyRequest(makeRequest("media", { method: "POST" }), ["media"])).status).toBe(503);
   });
 });
 

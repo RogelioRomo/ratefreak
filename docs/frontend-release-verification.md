@@ -359,3 +359,19 @@ new authenticated backend write/consent test. No real user/account data changed.
 Evidence and captures: `/tmp/ratefreak-account-tabs/`. Local frontend was restored
 with a fresh Development cache after the production build. This slice is not
 committed or merged; it is available locally on `feat/account-settings-tabs`.
+
+
+## Custom catalog and list collections — 2026-11-08
+
+- [x] Private-default custom items/categories, common access predicates and retained contributions.
+- [x] One host-filesystem image, safe decoding, access-checked delivery and failure/cleanup proof.
+- [x] Reference-only collection memberships, revision checks, guarded migration and offline reset tool.
+- [x] Custom item/category/list UI and exact multipart/proxy routes; viewer-scoped caches.
+- [x] Backend554/554 and frontend638/638; lint/typecheck and production/Release builds pass.
+- [x] Chromium owner/anonymous lifecycle and image restart/replace/remove proof; keyboard and responsive Light/Dark captures.
+- [x] Independent review findings fixed and re-reviewed; changes remain uncommitted in the isolated worktree.
+- [x] Local test database cutover explicitly authorized; backup, scoped reset, four migrations, preservation checks and API readiness passed.
+- [ ] Production rollout: confirm external clients and separately arrange hosting/deployment.
+
+See [execution evidence](superpowers/plans/2026-11-08-custom-catalog-and-list-collections.md#execution-evidence--2026-11-08)
+and [operations](custom-catalog-operations.md). No existing database was reset or deployed.

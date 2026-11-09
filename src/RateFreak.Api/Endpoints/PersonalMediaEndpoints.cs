@@ -23,7 +23,7 @@ internal static class PersonalMediaEndpoints
         {
             var errors = PageErrors(page, pageSize);
             if (status is not null && !PersonalMediaRules.ValidStatus(status)) errors["status"] = ["Unsupported tracking status."];
-            if (type is not null && !MediaTypes.IsSupported(type)) errors["type"] = ["Type must be movie, tv_show, album or video_game."];
+            if (type is not null && !MediaTypes.IsCatalogType(type)) errors["type"] = ["Type must be movie, tv_show, album or video_game."];
             if (errors.Count != 0) return Results.ValidationProblem(errors);
             return Results.Ok(await service.ListAsync(UserId(user), new(status, type, page, pageSize), ct));
         }).RequireRateLimiting("personal-read").Produces<PersonalPage<LibraryItem>>().ProducesValidationProblem()
@@ -47,16 +47,16 @@ internal static class PersonalMediaEndpoints
             .WithSummary("Replace your tracking status and optional dates");
         Write(library.MapDelete("/{mediaId:guid}", async (Guid mediaId, ClaimsPrincipal user, ILibraryService service, CancellationToken ct) =>
         {
-            await service.DeleteAsync(UserId(user), mediaId, ct); return Results.NoContent();
+            return await service.DeleteAsync(UserId(user), mediaId, ct) ? Results.NoContent() : Results.NotFound();
         })).Produces(204).WithSummary("Remove a library entry without deleting ratings or reviews");
     }
 
     private static void MapRatings(WebApplication app)
     {
         var media = app.MapGroup("/api/v1/media/{mediaId:guid}").WithTags("Ratings");
-        media.MapGet("/ratings", async (Guid mediaId, IRatingService service, CancellationToken ct) =>
+        media.MapGet("/ratings", async (Guid mediaId, ClaimsPrincipal user, IRatingService service, CancellationToken ct) =>
         {
-            var result = await service.AggregateAsync(mediaId, ct);
+            var result = await service.AggregateAsync(ViewerId(user), mediaId, ct);
             return result is null ? Results.NotFound() : Results.Ok(result);
         }).RequireRateLimiting("catalog").Produces<RatingAggregate>().ProducesProblem(404).ProducesProblem(429)
             .WithSummary("Get the count and average of local community ratings (0–5)");
@@ -75,7 +75,7 @@ internal static class PersonalMediaEndpoints
         })).Produces<RatingDetails>().ProducesValidationProblem().ProducesProblem(404).WithSummary("Set your rating from 0 to 5 in half-point steps");
         Write(media.MapDelete("/rating", async (Guid mediaId, ClaimsPrincipal user, IRatingService service, CancellationToken ct) =>
         {
-            await service.DeleteAsync(UserId(user), mediaId, ct); return Results.NoContent();
+            return await service.DeleteAsync(UserId(user), mediaId, ct) ? Results.NoContent() : Results.NotFound();
         })).Produces(204).WithSummary("Remove your rating");
     }
 
@@ -89,11 +89,11 @@ internal static class PersonalMediaEndpoints
         }).WithTags("Reviews").RequireAuthorization().RequireRateLimiting("personal-read")
             .Produces<ReviewDetails>().ProducesProblem(401).ProducesProblem(404)
             .WithSummary("Get your own visible review for a title");
-        media.MapGet("", async (Guid mediaId, IReviewService service, CancellationToken ct, int page = 1, int pageSize = 20) =>
+        media.MapGet("", async (Guid mediaId, ClaimsPrincipal user, IReviewService service, CancellationToken ct, int page = 1, int pageSize = 20) =>
         {
             var errors = PageErrors(page, pageSize);
             if (errors.Count != 0) return Results.ValidationProblem(errors);
-            var result = await service.ListAsync(mediaId, page, pageSize, ct);
+            var result = await service.ListAsync(ViewerId(user), mediaId, page, pageSize, ct);
             return result is null ? Results.NotFound() : Results.Ok(result);
         }).RequireRateLimiting("catalog").Produces<PersonalPage<ReviewDetails>>().ProducesValidationProblem().ProducesProblem(404).ProducesProblem(429)
             .WithSummary("List public plain-text reviews, newest first");
@@ -110,9 +110,9 @@ internal static class PersonalMediaEndpoints
         })).Produces<ReviewDetails>(201).ProducesValidationProblem().ProducesProblem(404).ProducesProblem(409)
             .WithSummary("Create your one public review for a media item");
         var reviews = app.MapGroup("/api/v1/reviews").WithTags("Reviews");
-        reviews.MapGet("/{id:guid}", async (Guid id, IReviewService service, CancellationToken ct) =>
+        reviews.MapGet("/{id:guid}", async (Guid id, ClaimsPrincipal user, IReviewService service, CancellationToken ct) =>
         {
-            var result = await service.FindAsync(id, ct);
+            var result = await service.FindAsync(ViewerId(user), id, ct);
             return result is null ? Results.NotFound() : Results.Ok(result);
         }).RequireRateLimiting("catalog").Produces<ReviewDetails>().ProducesProblem(404).ProducesProblem(429)
             .WithSummary("Get a public plain-text review");
@@ -140,4 +140,6 @@ internal static class PersonalMediaEndpoints
         if (pageSize is < 1 or > 100) errors["pageSize"] = ["Page size must be between 1 and 100."];
         return errors;
     }
+    private static Guid? ViewerId(ClaimsPrincipal user) => Guid.TryParse(user.FindFirstValue(ClaimTypes.NameIdentifier), out var id) ? id : null;
+
 }

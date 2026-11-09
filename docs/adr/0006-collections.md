@@ -2,6 +2,14 @@
 
 Status: Accepted. User approved the full design and implementation plan on 2026-10-30.
 
+Direction update, 2026-11-08: the user approved proceeding with
+[custom catalog items and list-only collections](../superpowers/specs/2026-11-08-custom-catalog-and-list-collections-design.md).
+Its [implementation plan](../superpowers/plans/2026-11-08-custom-catalog-and-list-collections.md)
+replaces the field/custom-entry direction below with catalog item references.
+The list-only replacement is implemented in the current development worktree; see
+[ADR 0016](0016-custom-catalog-and-list-collections.md). The text below preserves
+the historical field-based contract. No database clearing or deployment is implied.
+
 Collections support mixed canonical media and custom entries, private/public
 visibility (default private), and owner-only editing. Relational collections,
 fields and items store custom configuration/data as JSONB with bounded runtime

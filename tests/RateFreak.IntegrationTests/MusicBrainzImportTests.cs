@@ -63,8 +63,8 @@ public sealed class MusicBrainzImportTests(AccountDatabase database) : IClassFix
         Assert.Equal(4.5m,(await Json(await client.GetAsync($"/api/v1/media/{mediaId}/ratings",Ct))).GetProperty("average").GetDecimal());
         await Json(await client.PostAsJsonAsync($"/api/v1/media/{mediaId}/reviews",new { body="A fine album" },Ct),HttpStatusCode.Created);
         var collection=await Json(await client.PostAsJsonAsync("/api/v1/collections",new { name="Albums" },Ct),HttpStatusCode.Created);var collectionId=collection.GetProperty("collection").GetProperty("id").GetGuid();
-        await Json(await client.PostAsJsonAsync($"/api/v1/collections/{collectionId}/items",new { expectedRevision=1,mediaItemId=mediaId,data=new {} },Ct),HttpStatusCode.Created);
-        Assert.Equal(HttpStatusCode.Conflict,(await client.PostAsJsonAsync($"/api/v1/collections/{collectionId}/items",new { expectedRevision=2,mediaItemId=mediaId,data=new {} },Ct)).StatusCode);
+        await Json(await client.PostAsJsonAsync($"/api/v1/collections/{collectionId}/items",new { expectedRevision=1,mediaItemId=mediaId },Ct),HttpStatusCode.Created);
+        Assert.Equal(HttpStatusCode.Conflict,(await client.PostAsJsonAsync($"/api/v1/collections/{collectionId}/items",new { expectedRevision=2,mediaItemId=mediaId },Ct)).StatusCode);
     }
     [Theory]
     [InlineData("bad","album","musicbrainz")]

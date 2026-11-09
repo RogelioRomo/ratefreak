@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { ApiError } from "@/shared/api/api-error";
 import { Button } from "@/components/ui/button";
@@ -13,13 +13,14 @@ import type { CollectionDetails, CollectionMetadata } from "../interfaces/collec
 import { MetadataFields } from "./metadata-fields";
 import styles from "./collections.module.css";
 function initialValue(saved: CollectionDetails): CollectionMetadata {return {name:saved.collection.name,description:saved.collection.description ?? "",visibility:saved.collection.visibility};}
-export function CollectionEditor({saved,accountId,active,onCancel,onSaved,reload}: CollectionEditorProps) {
+export function CollectionEditor({saved,accountId,active,onCancel,onSaved,reload,onUnavailable}: CollectionEditorProps) {
   const [snapshot,setSnapshot] = useState(saved);
   const [value,setValue] = useState(()=>initialValue(saved));
   const [errors,setErrors] = useState<Record<string,string[]>>({});
   const [conflict,setConflict] = useState(false), [reloadFailed,setReloadFailed] = useState(false);
   const client = useQueryClient(), write = useCollectionWrite();
   const id = snapshot.collection.id;
+  useEffect(() => { if (write.error instanceof ApiError && write.error.status === 404) onUnavailable?.(); }, [write.error, onUnavailable]);
   if (write.error instanceof ApiError && write.error.status === 404) return <section><h2>Collection unavailable.</h2><p>This collection is missing or isn’t accessible to you.</p></section>;
   return <form className={styles.form} aria-label="Edit collection" noValidate onSubmit={async event=>{
     event.preventDefault(); if (!active || conflict) return;

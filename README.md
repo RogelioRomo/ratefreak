@@ -601,108 +601,137 @@ implemented separately in Phase 5 below.
 Email ownership/recovery and production hardening remain required before public launch.
 
 
-## Dynamic collections (Phase 5)
+## Custom catalog items, categories and lists
 
-Collections can combine catalog media and custom entries, with `text`, `number`,
-`boolean`, `date` and `select` fields. Visibility is `private` by default or `public`;
-only the owner can edit. Private collections return 404 to everyone else. Public
-lists include public collections plus the signed-in caller's private collections;
-`ownOnly=true` lists only your collections and requires sign-in. All collection
-responses use no-store because visibility may change. Text must be rendered as text.
+Catalog items now include user-created subjects alongside the four provider-backed
+media types. Existing UUIDs, provider mappings, ratings and reviews are preserved.
+Provider import still accepts only its supported media types; dynamic categories
+are separate UUIDs, not provider namespaces or new media-type constants.
 
-Create a collection with `POST /api/v1/collections`:
+Create/reuse an accessible category with `GET /api/v1/categories?q=Flowers` and
+`POST /api/v1/categories` with `{ "name": "Flowers", "scope": "public" }`.
+Omitted scope defaults private. Names normalize Unicode, case and whitespace;
+public normalized names are unique, private names are unique per owner. Public
+categories are immediately shared. Searching a merged public name returns its active
+target; old category UUID filters resolve through the retained alias.
+
+Create an item with `POST /api/v1/media`:
 
 ```json
 {
-  "name": "Movie night",
-  "visibility": "private",
-  "fields": [
-    { "key": "watched_with", "label": "Watched with", "fieldType": "text",
-      "required": false, "configuration": { "maxLength": 200 }, "position": 0 }
-  ]
+  "title": "Blue hydrangea",
+  "description": "A flower in my garden.",
+  "categoryId": "CATEGORY_UUID",
+  "visibility": "private"
 }
 ```
 
-Creation returns 201 with Location and `{ collection, fields }`. The collection
-contains its owner summary, metadata, `revision` and `schemaVersion` (both start at 1).
-Every write to an existing collection requires `expectedRevision`; a stale value
-returns 409, without applying changes. Every successful mutation returns
-`X-Collection-Revision` with the new revision, including 204 responses. Fetch the
-collection again after a conflict and review its current state before retrying.
-All writes use the existing cookie and fresh CSRF token flow; unknown body fields
-are rejected, including client-supplied ownership and immutable properties.
+Visibility defaults private. Custom items use type `custom`, one optional image,
+existing 0–5 half-point personal ratings, reviews and review comments. No custom
+field schemas, separate ratings, mandatory release dates or arbitrary image URLs.
+The title limit is 300 characters; description limit is 20,000. All mutation DTOs
+reject unknown/duplicate members and derive ownership from the authenticated session.
 
-| Method | Route under `/api/v1/collections` | Behavior |
+Creator operations use the current `expectedRevision`:
+
+| Method | Route | Behavior |
 | --- | --- | --- |
-| POST | `/` | Create metadata and initial fields atomically |
-| GET | `/` | List accessible collections; optional `ownOnly`, `page`, `pageSize` |
-| GET | `/{id}` | Metadata, ordered fields and current revision |
-| PATCH | `/{id}` | Replace name, description and visibility with expectedRevision |
-| POST | `/{id}/fields` | `{ expectedRevision, field: { ...definition } }` |
-| PATCH | `/{id}/fields/{fieldId}` | Replace label, required, configuration and position |
-| GET | `/{id}/fields/{fieldId}/deletion-impact` | Owner-only populated-item count and revision |
-| DELETE | `/{id}/fields/{fieldId}?expectedRevision=N&confirm=true` | Permanently remove field and its values |
-| GET | `/{id}/items` | Paginated accessible items, ordered by position then UUID |
-| POST | `/{id}/items` | Add canonical media or custom entry |
-| GET | `/{id}/items/{itemId}` | Accessible entry details |
-| PATCH | `/{id}/items/{itemId}` | Replace custom title, data and position |
-| DELETE | `/{id}/items/{itemId}?expectedRevision=N` | Remove entry; 204 with new revision |
+| PATCH | `/api/v1/media/{id}` | Replace title, description and category |
+| GET | `/api/v1/media?ownOnly=true` | Own management list, including archived items |
+| GET | `/api/v1/media/{id}/manage` | Creator-only management detail |
+| POST | `/api/v1/media/{id}/publish` | Explicit publication with active public category |
+| POST | `/api/v1/media/{id}/unpublish` | Preserve contributions/memberships; restrict access |
+| POST | `/api/v1/media/{id}/archive` | Reversible removal from ordinary surfaces |
+| POST | `/api/v1/media/{id}/restore` | Restore to private status |
+| PUT | `/api/v1/media/{id}/artwork` | Multipart file + expectedRevision |
+| DELETE | `/api/v1/media/{id}/artwork` | JSON expectedRevision; remove current image |
 
-Add a custom entry with `POST /{id}/items`:
+A private item may use its creator's private category or a public category. A public
+item must use an active public category. To publish from a private category, explicitly
+select/reuse/create a public category; other private items are never published implicitly.
+Unpublishing keeps other people's ratings/reviews/comments and list memberships in
+storage. They become inaccessible to other ordinary users, including their authors;
+the item creator retains access to previously public contributions. Republishing
+restores eligible contributions without clearing moderation holds. Archive never
+cascades shared data. Account deletion is not added; restrictive catalog/category
+owner FKs prevent unsafe cascades.
 
-```json
-{ "expectedRevision": 1, "title": "Local short film",
-  "data": { "watched_with": "Friends" }, "position": 0 }
-```
+The common access policy covers catalog search/detail, ratings/aggregates, reviews,
+comments, reports, library and collection reads/writes. Authorization precedes paging
+and counts. Inaccessible direct IDs return 404, including personal-row deletes;
+absent personal rows on an accessible item still delete idempotently with 204.
+Ordinary admin browsing has no private-item bypass. The existing transaction-scoped
+moderation advisory lock now also serializes visibility-sensitive item/list writes.
 
-For a canonical entry, supply `mediaItemId` and omit `title`; the catalog supplies
-its title. Each canonical media item may occur once per collection (duplicate 409),
-but can appear in other collections. Custom entries may repeat titles. The item
-kind and media reference are immutable. Item PATCH replaces the full data object,
-custom title and position; omitted optional data keys are cleared. Custom titles
-are required; canonical titles cannot be overridden. No library/rating/review
-records are created or changed by collection operations.
+Existing public lists remain editable when a member becomes unavailable. Owners can
+explicitly confirm `DELETE /api/v1/collections/{id}/unavailable-items?expectedRevision=N`
+to remove unavailable references without exposing hidden IDs/counts. This operation
+never deletes catalog items or contributions and is never automatic.
 
-Field keys/types are immutable; label changes preserve values. Adding a required
-field to a nonempty collection returns 409. Making a field required or tightening
-its configuration succeeds only if every existing item remains valid. A successful
-field change increments schemaVersion as well as revision; item and metadata
-changes increment revision only. Positions are nonnegative integers; ties use UUID
-ordering. Creation defaults omitted positions to zero; replacement requires them.
+### Uploaded artwork
 
-Deletion is permanent: first fetch deletion-impact, show its populatedItemCount,
-and ask the owner to confirm before sending DELETE with that revision. Missing or
-false confirmation returns 400. Any intervening collection edit makes the revision
-stale (409), requiring a fresh preview. The API removes the definition and all its
-keys, including null-valued keys, in one transaction. Null/absent values do not
-count as populated. Unrelated fields/entries survive; affected item timestamps update.
+Enable uploads with `Artwork__Enabled=true` and an absolute `Artwork__RootPath`,
+for example `/var/lib/ratefreak/uploads`. The service account must own a persistent
+read/write directory outside `wwwroot`; container deployments must mount it durably.
+The database stores only asset UUID, file key and metadata, never image bytes.
 
-Limits: 30 fields; names 1–120, descriptions ≤2000, labels 1–80, custom titles 1–200.
-Keys are 1–40 lowercase ASCII letters/digits/underscores, starting with a letter;
-`id`, `title`, `media_item_id`, `created_at`, `updated_at` are reserved. Keys are unique.
-Configuration is type-specific: text `maxLength` 1–4000 (default 1000); number
-optional inclusive decimal `min`/`max`; boolean/date `{}`; select `options` contains
-1–50 unique nonblank strings of at most 80 characters, matched exactly. Dates use
-valid `YYYY-MM-DD`; values are never coerced. Required fields reject absent/null
-values and blank text. Optional fields may be absent/null. Unknown keys, duplicate
-JSON keys, malformed Unicode, NUL, invalid types/bounds, irrelevant configuration
-and custom JSON deeper than 16 are rejected with 400. Numeric values and bounds must be exactly representable as
-.NET decimal; rounding/underflow is rejected. Persisted numbers use the validated
-decimal representation so extreme exponent syntax cannot reach PostgreSQL unchanged.
-Duplicate property names are rejected during deserialization of all API JSON request
-bodies, before binding can hide earlier values. Existing 64 KiB body cap applies.
+Accept one static JPEG/PNG/WebP input up to 5 MiB and 20 megapixels (at most 8192 pixels
+per axis). SkiaSharp 4.155.0 re-encodes WebP at up to 2048 pixels on the longest edge,
+strips metadata and applies orientation. Invalid/animated images and SVG are rejected.
+Ordinary request limits stay 64 KiB; only multipart artwork PUT allows 5 MiB plus 64 KiB
+framing. Uploads share the existing authenticated write budget.
 
-Lists default to page 1/pageSize 20, bounded at 10000/100. Public-accessible reads
-share the catalog 60/IP/minute budget, including signed-in calls; owner-only deletion
-previews share personal-read 60/account/minute. Writes share personal-write
-30/account/minute. 429 includes Retry-After. These limits remain per API instance.
+Images are served through `/api/v1/media/{id}/artwork/{assetId}` with a fresh access
+check, `Cache-Control: no-store` and `X-Content-Type-Options: nosniff`. Do not expose
+uploads as static files or send private images through the Next image optimizer.
+Replacement uses a new file/UUID, then switches its database reference transactionally;
+old URLs stop resolving. Filesystem and database commits are not one transaction:
+failed promotions/references preserve the old asset, and bounded hourly cleanup
+removes unreferenced files older than 24 hours while protecting active staging leases.
+Back up and restore database metadata and uploaded files together. See the
+[operations runbook](docs/custom-catalog-operations.md).
 
-Apply `20261030160901_AddCollections` explicitly with the existing EF database
-update command. Account deletion cascades collections/fields/items at DB level;
-catalog deletion is restricted while referenced. No collection deletion endpoint,
-field archive/restore, bulk migration, collaboration or frontend is included.
-Email verification/recovery and deployment hardening remain required before launch.
+### Category and item moderation
 
+Signed-in users report public custom items/categories through `/media/{id}/reports`
+and `/categories/{id}/reports`, using the existing reporting budget and CSRF rules.
+Moderators/Admins can inspect/hold public custom items; Admin alone manages public
+categories. Public category rename/merge/hide/restore endpoints are under
+`/api/v1/moderation/categories/{id}/{action}`; requests require current revision(s)
+and a reason. Admin category listing includes hidden categories but never other
+people's private categories. Seeded categories cannot be merged or hidden.
+
+Existing role rechecks, self-moderation prohibition, audit metadata and moderation
+holds remain. A retained report permits staff to inspect its formerly-public target
+and current artwork through report-specific staff routes, without granting general
+private-item browsing. Direct staff artwork inspection is limited to public items.
+Reports show current content, not an immutable historical image/content snapshot.
+
+### List-only collections
+
+Collections retain name, description, owner, visibility, timestamps and revision.
+Creation accepts `{ name, description, visibility }`; adding an entry accepts
+`{ expectedRevision, mediaItemId, position }`; updating an entry accepts only
+`{ expectedRevision, position }`. All existing `/collections` and `/items` URLs remain.
+Reads project membership metadata and a live `media` summary. Removing a membership
+never deletes the item or its ratings/reviews. Each item occurs once per list.
+
+Private items may be added only to their creator's private lists. Publishing a list
+with private/archived/held members is rejected. A member that later becomes private
+stays stored, but inaccessible members disappear from visitor results and totals.
+The owner may see their own private item in an already-public list; visitors cannot.
+
+`/fields` and deletion-impact routes, custom entry titles/data and schemaVersion
+are retired. Legacy payloads are rejected. Existing-collection writes keep expected
+revision checks, parent locking and `X-Collection-Revision`; stale writes return409.
+
+**Upgrade gate:** `ConvertCollectionsToLists` refuses to remove schema while any old
+memberships or fields remain. It never deletes them automatically. The separately
+invoked offline test reset tool defaults to counts-only and requires an exact database
+name plus `--confirm-test-data-loss` to clear only test entries/fields and advance
+collection revisions. No live reset has been performed by this implementation.
+Stop old writers, confirm external consumers and follow the operations runbook before
+an actual cutover. Deleted test field values cannot be recovered by schema rollback.
 
 ## MusicBrainz albums (Phase 6a)
 

@@ -11,14 +11,10 @@ internal sealed class CollectionCommands(RateFreakDbContext db) : ICollectionCom
     {
         var visibility = request.Visibility ?? "private";
         var errors = CollectionValidation.Metadata(request.Name, request.Description, visibility);
-        foreach (var error in CollectionValidation.ValidateFields(request.Fields ?? [])) errors[error.Key] = error.Value;
         if (errors.Count != 0) return new(CollectionStatus.Invalid, Errors: errors);
         await using var tx = await db.Database.BeginTransactionAsync(ct);
         var collection = new Collection(ownerId, request.Name!, request.Description, visibility);
         db.Collections.Add(collection);
-        foreach (var field in request.Fields ?? [])
-            db.CollectionFields.Add(new CollectionField(collection.Id, field.Key!, field.Label!, field.FieldType!, field.Required,
-                CollectionMapping.Configuration(field.Configuration), field.Position ?? 0));
         await db.SaveChangesAsync(ct);
         var result = await new CollectionQueries(db).OwnedDetailsAsync(collection, ct);
         await tx.CommitAsync(ct);
@@ -33,6 +29,8 @@ internal sealed class CollectionCommands(RateFreakDbContext db) : ICollectionCom
         if (rejected is not null) return rejected;
         var errors = CollectionValidation.Metadata(request.Name, request.Description, request.Visibility);
         if (errors.Count != 0) return new(CollectionStatus.Invalid, Errors: errors);
+        if (collection!.Visibility != "public" && request.Visibility == "public" && await db.CollectionItems.Where(x => x.CollectionId == id).AnyAsync(x => db.MediaItems.Any(m => m.Id == x.MediaItemId && (m.Visibility != "public" || m.Category.Scope != "public" || m.IsArchived || m.IsHidden || m.Category.IsHidden)), ct))
+            return CollectionMutation.Invalid<CollectionDetails>("visibility", "Remove unavailable or private items before publishing this list.");
         collection!.SetMetadata(request.Name!, request.Description, request.Visibility!);
         collection.Advance();
         await db.SaveChangesAsync(ct);

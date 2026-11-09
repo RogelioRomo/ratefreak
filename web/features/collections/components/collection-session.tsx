@@ -5,7 +5,7 @@ import { useSession } from "@/features/auth/hooks/use-session";
 import { LoadingState } from "@/components/ui/loading-state";
 import { Button } from "@/components/ui/button";
 import type { CollectionSessionProps } from "../interfaces/component-props";
-export function CollectionSession({children, requireAccount = false, returnTo}: CollectionSessionProps) {
+export function CollectionSession({children, requireAccount = false, subject = "collections", returnTo}: CollectionSessionProps) {
   const session = useSession();
   const {refresh} = session;
   const [checked, setChecked] = useState(false);
@@ -19,7 +19,7 @@ export function CollectionSession({children, requireAccount = false, returnTo}: 
   return <>
     {session.error ? <section><p role="alert">Your session could not be checked.</p><Button variant="secondary" onClick={() => void refresh()}>Retry session</Button></section>
       : !active ? <LoadingState label="Checking your session…" />
-      : requireAccount && viewer === "anonymous" ? <section><p>Sign in to manage your collections.</p><Link href={`/login?${new URLSearchParams({returnTo})}`}>Log in to continue</Link></section> : null}
+      : requireAccount && viewer === "anonymous" ? <section><p>Sign in to manage your {subject}.</p><Link href={`/login?${new URLSearchParams({returnTo})}`}>Log in to continue</Link></section> : null}
     {permitted && <div key={viewer} hidden={!active} inert={!active}><fieldset disabled={!active} style={{border:0, padding:0, margin:0, minWidth:0}}>{children({viewer: viewer!, accountId: viewer === "anonymous" ? null : viewer!, active})}</fieldset></div>}
   </>;
 }

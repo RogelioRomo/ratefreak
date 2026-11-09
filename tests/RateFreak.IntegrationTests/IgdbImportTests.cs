@@ -77,7 +77,7 @@ public sealed class IgdbImportTests(AccountDatabase database) : IClassFixture<Ac
         await Json(await client.PostAsJsonAsync($"/api/v1/media/{id}/reviews",new { body="Good game" },Ct),HttpStatusCode.Created);
         var collection=await Json(await client.PostAsJsonAsync("/api/v1/collections",new { name="Games" },Ct),HttpStatusCode.Created);
         var collectionId=collection.GetProperty("collection").GetProperty("id").GetGuid();
-        await Json(await client.PostAsJsonAsync($"/api/v1/collections/{collectionId}/items",new { expectedRevision=1,mediaItemId=id,data=new {} },Ct),HttpStatusCode.Created);
+        await Json(await client.PostAsJsonAsync($"/api/v1/collections/{collectionId}/items",new { expectedRevision=1,mediaItemId=id },Ct),HttpStatusCode.Created);
     }
 
     [Theory]

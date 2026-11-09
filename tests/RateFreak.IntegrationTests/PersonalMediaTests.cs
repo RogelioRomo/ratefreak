@@ -255,8 +255,11 @@ public sealed class PersonalMediaTests(AccountDatabase database) : IClassFixture
         Assert.Equal(HttpStatusCode.NotFound, (await client.PostAsJsonAsync($"/api/v1/media/{id}/reviews", new { body = "Text" }, Ct)).StatusCode);
         Assert.Equal(HttpStatusCode.NotFound, (await client.GetAsync($"/api/v1/media/{id}/ratings", Ct)).StatusCode);
         Assert.Equal(HttpStatusCode.NotFound, (await client.GetAsync($"/api/v1/media/{id}/reviews", Ct)).StatusCode);
-        Assert.Equal(HttpStatusCode.NoContent, (await client.DeleteAsync("/api/v1/users/me/library/" + id, Ct)).StatusCode);
-        Assert.Equal(HttpStatusCode.NoContent, (await client.DeleteAsync($"/api/v1/media/{id}/rating", Ct)).StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, (await client.DeleteAsync("/api/v1/users/me/library/" + id, Ct)).StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, (await client.DeleteAsync($"/api/v1/media/{id}/rating", Ct)).StatusCode);
+        var existingId = await Media();
+        Assert.Equal(HttpStatusCode.NoContent, (await client.DeleteAsync("/api/v1/users/me/library/" + existingId, Ct)).StatusCode);
+        Assert.Equal(HttpStatusCode.NoContent, (await client.DeleteAsync($"/api/v1/media/{existingId}/rating", Ct)).StatusCode);
     }
 
     [Fact]

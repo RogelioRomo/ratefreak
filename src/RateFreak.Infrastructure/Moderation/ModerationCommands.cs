@@ -15,13 +15,15 @@ internal sealed partial class ModerationService
         // PostgreSQL timestamp precision is microseconds; guarantee distinct versions even on fast repeats.
         var now=DateTimeOffset.UtcNow; if(now<=previous.AddTicks(10))now=previous.AddTicks(10);
         if(type=="review")await db.Reviews.Where(x=>x.Id==id).ExecuteUpdateAsync(s=>s.SetProperty(x=>x.IsHidden,hidden).SetProperty(x=>x.UpdatedAt,now),ct);
+        else if(type=="item")await db.MediaItems.Where(x=>x.Id==id).ExecuteUpdateAsync(s=>s.SetProperty(x=>x.IsHidden,hidden).SetProperty(x=>x.Revision,x=>x.Revision+1).SetProperty(x=>x.UpdatedAt,now),ct);
+        else if(type=="category")await db.Categories.Where(x=>x.Id==id && !x.IsSeeded).ExecuteUpdateAsync(s=>s.SetProperty(x=>x.IsHidden,hidden).SetProperty(x=>x.Revision,x=>x.Revision+1).SetProperty(x=>x.UpdatedAt,now),ct);
         else await db.ReviewComments.Where(x=>x.Id==id).ExecuteUpdateAsync(s=>s.SetProperty(x=>x.IsHidden,hidden).SetProperty(x=>x.UpdatedAt,now),ct);
     }
     public async Task<ModerationResult> VisibilityAsync(Guid actor,string type,Guid id,VisibilityRequest request,CancellationToken ct)
     {
         if(!ModerationRules.Text(request.Reason)||request.Hidden is null||request.ExpectedTargetUpdatedAt is null)return new(ModerationStatus.Invalid);
         await using var tx=await db.Database.BeginTransactionAsync(ct);await ModerationLock.AcquireAsync(db,ct);await LockUser(actor,ct);
-        if(!await HasAccessAsync(actor,false,ct))return new(ModerationStatus.Forbidden);
+        if(!await HasAccessAsync(actor,type == "category",ct))return new(ModerationStatus.Forbidden);
         await LockTarget(type,id,ct);var target=await TargetAsync(type,id,ct);if(target is null)return new(ModerationStatus.NotFound);
         if(target.Author!.Id==actor)return new(ModerationStatus.Forbidden);
         if(target.UpdatedAt!=request.ExpectedTargetUpdatedAt)return new(ModerationStatus.Conflict);
@@ -39,9 +41,10 @@ internal sealed partial class ModerationService
         await using var tx=await db.Database.BeginTransactionAsync(ct);await ModerationLock.AcquireAsync(db,ct);await LockUser(actor,ct);
         if(!await HasAccessAsync(actor,false,ct))return new(ModerationStatus.Forbidden);
         var r=await db.ContentReports.SingleOrDefaultAsync(x=>x.Id==id,ct);if(r is null)return new(ModerationStatus.NotFound);
+        if(r.TargetType == "category" && !await HasAccessAsync(actor,true,ct))return new(ModerationStatus.Forbidden);
         if(r.OriginalAuthorId==actor)return new(ModerationStatus.Forbidden);
         if(r.Status!="open")return new(ModerationStatus.Conflict);
-        if ((r.TargetType == "review" ? r.ReviewId : r.CommentId) is Guid liveId) await LockTarget(r.TargetType,liveId,ct);
+        if (LiveId(r) is Guid liveId) await LockTarget(r.TargetType,liveId,ct);
         var target=await LiveTarget(r,ct);
         if(target is null ? request.Decision=="hide"||request.ExpectedTargetUpdatedAt is not null : target.UpdatedAt!=request.ExpectedTargetUpdatedAt)return new(ModerationStatus.Conflict);
         if(request.Decision=="hide"&&!target!.Hidden)await ChangeVisibility(r.TargetType,r.TargetId,true,target.UpdatedAt,ct);

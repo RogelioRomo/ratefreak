@@ -36,16 +36,23 @@ it.each(['POST','PATCH'])('retains mutation protections for %s',async method=>{
  const response=await send(headers);expect(response.status).toBe(200);expect(response.headers.get('cache-control')).toBe('no-store');
  const forwarded=new Headers(fetchMock.mock.calls[0][1]?.headers);expect(forwarded.get('X-CSRF-TOKEN')).toBe('token');expect(forwarded.get('X-RateFreak-Proxy-Key')).toBe('b'.repeat(64));
 });
-it('opens only exact field/item methods and validates delete queries by method',async()=>{
- for(const kind of ['items','fields']){expect(isAllowedRoute('POST',['collections',id,kind])).toBe(true);expect(isAllowedRoute('PATCH',['collections',id,kind,id])).toBe(true);expect(isAllowedRoute('DELETE',['collections',id,kind,id])).toBe(true);}
- expect(isAllowedRoute('GET',['collections',id,'fields'])).toBe(false);expect(isAllowedRoute('GET',['collections',id,'fields',id])).toBe(false);expect(isAllowedRoute('GET',['collections',id,'fields',id,'deletion-impact'])).toBe(true);
- vi.stubEnv('RATEFREAK_WEB_ORIGIN','http://web.test');vi.stubEnv('RATEFREAK_API_URL','http://localhost:5080');vi.stubEnv('RATEFREAK_PROXY_SECRET','b'.repeat(64));vi.stubEnv('RATEFREAK_CLIENT_IP_MODE','loopback');
- const headers={Origin:'http://web.test','Content-Type':'application/json','X-CSRF-TOKEN':'token'};
- for(const query of ['expectedRevision=0&confirm=true','expectedRevision=9007199254740992&confirm=true','expectedRevision=1&confirm=false','expectedRevision=1&confirm=true&confirm=true','expectedRevision=1','expectedRevision=1&confirm=true&target=x'])expect((await proxyRequest(new Request(`http://web.test/api/v1/collections/${id}/fields/${id}?${query}`,{method:'DELETE',headers}),['collections',id,'fields',id])).status).toBe(400);
- const response=await proxyRequest(new Request(`http://web.test/api/v1/collections/${id}/fields/${id}?expectedRevision=4&confirm=true`,{method:'DELETE',headers}),['collections',id,'fields',id]);expect(response.status).toBe(200);expect(response.headers.get('cache-control')).toBe('no-store');
- expect(fetchMock.mock.calls[0][0]).toBe(`http://localhost:5080/api/v1/collections/${id}/fields/${id}?expectedRevision=4&confirm=true`);
+it('retires all field and impact routes while keeping list membership methods', async () => {
+ for (const method of ['POST','PATCH','DELETE','GET']) {
+   expect(isAllowedRoute(method,['collections',id,'fields'])).toBe(false);
+   expect(isAllowedRoute(method,['collections',id,'fields',id])).toBe(false);
+   expect(isAllowedRoute(method,['collections',id,'fields',id,'deletion-impact'])).toBe(false);
+ }
+ for (const method of ['PATCH','DELETE','GET']) expect(isAllowedRoute(method,['collections',id,'items',id])).toBe(true);
+ expect(isAllowedRoute('POST',['collections',id,'items'])).toBe(true);
 });
-it.each([['POST','items'],['PATCH','fields'],['DELETE','items']])('new %s %s path retains exact Origin enforcement',async(method,kind)=>{
+it.each([['POST','items'],['PATCH','items'],['DELETE','items']])('new %s %s path retains exact Origin enforcement',async(method,kind)=>{
  vi.stubEnv('RATEFREAK_WEB_ORIGIN','http://web.test');vi.stubEnv('RATEFREAK_API_URL','http://localhost:5080');vi.stubEnv('RATEFREAK_PROXY_SECRET','b'.repeat(64));vi.stubEnv('RATEFREAK_CLIENT_IP_MODE','loopback');const path=method==='POST'?['collections',id,kind]:['collections',id,kind,id];const query=method==='DELETE'?'?expectedRevision=1':'';
  expect((await proxyRequest(new Request(`http://web.test/api/v1/${path.join('/')}${query}`,{method,headers:{Origin:'http://evil.test','Content-Type':'application/json','X-CSRF-TOKEN':'token'},body:'{}'}),path)).status).toBe(403);expect(fetchMock).not.toHaveBeenCalled();
+});
+
+it('only allows revision-checked unavailable membership removal',async()=>{
+ const path=['collections',id,'unavailable-items'];
+ expect(isAllowedRoute('DELETE',path)).toBe(true);
+ for(const method of ['GET','POST','PATCH'])expect(isAllowedRoute(method,path)).toBe(false);
+ expect((await proxyRequest(new Request(`http://web.test/api/v1/${path.join('/')}`,{method:'DELETE'}),path)).status).toBe(400);
 });

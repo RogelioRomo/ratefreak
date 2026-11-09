@@ -1,4 +1,5 @@
 "use client";
+import { useCatalogViewer } from "@/features/custom-catalog/hooks/use-catalog-viewer";
 import { useQuery } from "@tanstack/react-query";
 import type { LibraryFilters } from "../interfaces/personal";
 import { getLibrary, getTracking, getRating, getOwnReview, getAggregate, getReviews } from "../api/personal";
@@ -14,5 +15,5 @@ export const useLibrary = (account: string, filters: LibraryFilters | null) => u
 export const useTracking = (account: string, id: string, active = true) => useQuery({ queryKey: personalKeys.tracking(account, id), queryFn: ({ signal }) => getTracking(id, signal), enabled: !!account && active, retry: false });
 export const useRating = (account: string, id: string, active = true) => useQuery({ queryKey: personalKeys.rating(account, id), queryFn: ({ signal }) => getRating(id, signal), enabled: !!account && active, retry: false });
 export const useOwnReview = (account: string, id: string, active = true) => useQuery({ queryKey: personalKeys.review(account, id), queryFn: ({ signal }) => getOwnReview(id, signal), enabled: !!account && active, retry: false });
-export const useAggregate = (id: string) => useQuery({ queryKey: personalKeys.aggregate(id), queryFn: ({ signal }) => getAggregate(id, signal), retry: false });
-export const useReviews = (id: string, page: number | null) => useQuery({ queryKey: [...personalKeys.reviews(id), page], queryFn: ({ signal }) => getReviews(id, page!, signal), enabled: page !== null, retry: false });
+export function useAggregate(id: string) { const { viewer, active } = useCatalogViewer(); return useQuery({ queryKey: [...personalKeys.aggregate(id), viewer], queryFn: ({ signal }) => getAggregate(id, signal), enabled: active, retry: false }); }
+export function useReviews(id: string, page: number | null) { const { viewer, active } = useCatalogViewer(); return useQuery({ queryKey: [...personalKeys.reviews(id), viewer, page], queryFn: ({ signal }) => getReviews(id, page!, signal), enabled: active && page !== null, retry: false }); }

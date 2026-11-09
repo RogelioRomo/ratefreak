@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using RateFreak.Application.Catalog;
 using RateFreak.Application.Collections;
 using RateFreak.Domain.Collections;
+using RateFreak.Infrastructure.Catalog;
 using RateFreak.Infrastructure.Persistence;
 
 namespace RateFreak.Infrastructure.Collections;
@@ -10,68 +12,47 @@ internal sealed class CollectionItemCommands(RateFreakDbContext db) : ICollectio
 {
     public async Task<CollectionResult<ItemDetails>> AddAsync(Guid ownerId, Guid id, ItemCreate request, CancellationToken ct)
     {
-        await using var tx = await db.Database.BeginTransactionAsync(ct);
-        var collection = await CollectionMutation.LockAsync(db, ownerId, id, ct);
-        var rejected = CollectionMutation.Check<ItemDetails>(collection, request.ExpectedRevision);
-        if (rejected is not null) return rejected;
-        var error = await Validate(id, request.MediaItemId, request.Title, request.Data, request.Position ?? 0, ct);
-        if (error is not null) return error;
-        string? mediaTitle = null;
-        if (request.MediaItemId is { } mediaId)
-        {
-            mediaTitle = await db.MediaItems.Where(x => x.Id == mediaId).Select(x => x.Title).SingleOrDefaultAsync(ct);
-            if (mediaTitle is null) return new(CollectionStatus.NotFound);
-            if (await db.CollectionItems.AnyAsync(x => x.CollectionId == id && x.MediaItemId == mediaId, ct)) return new(CollectionStatus.Conflict);
-        }
-        var item = new CollectionItem(id, request.MediaItemId, request.Title, CollectionValidation.StorageObject(request.Data), request.Position ?? 0);
-        db.CollectionItems.Add(item); collection!.Advance();
+        await using var tx = await db.Database.BeginTransactionAsync(ct); var collection = await CollectionMutation.LockAsync(db, ownerId, id, ct);
+        var rejected = CollectionMutation.Check<ItemDetails>(collection, request.ExpectedRevision); if (rejected is not null) return rejected;
+        if (request.MediaItemId is null || request.MediaItemId == Guid.Empty || request.Position is < 0) return CollectionMutation.Invalid<ItemDetails>("mediaItemId", "An existing item and nonnegative position are required.");
+        var media = await db.MediaItems.AsNoTracking().Where(CatalogAccess.Readable(ownerId)).SingleOrDefaultAsync(m => m.Id == request.MediaItemId, ct);
+        if (media is null) return new(CollectionStatus.NotFound);
+        if (media.Visibility != "public" && (media.CreatorUserId != ownerId || collection!.Visibility != "private")) return CollectionMutation.Invalid<ItemDetails>("mediaItemId", "Private items require your own private list.");
+        if (await db.CollectionItems.AnyAsync(i => i.CollectionId == id && i.MediaItemId == media.Id, ct)) return new(CollectionStatus.Conflict);
+        var item = new CollectionItem(id, media.Id, request.Position ?? 0); db.Add(item); collection!.Advance();
         try { await db.SaveChangesAsync(ct); }
-        catch (DbUpdateException ex) when (ex.InnerException is PostgresException { SqlState: PostgresErrorCodes.ForeignKeyViolation, ConstraintName: "FK_collection_items_media_items_media_item_id" })
-        { return new(CollectionStatus.NotFound); }
-        catch (DbUpdateException ex) when (ex.InnerException is PostgresException { SqlState: PostgresErrorCodes.UniqueViolation, ConstraintName: "ux_collection_items_media" })
-        { return new(CollectionStatus.Conflict); }
-        var result = CollectionMapping.Item(item, mediaTitle ?? item.Title!);
+        catch (DbUpdateException ex) when (ex.InnerException is PostgresException { SqlState: PostgresErrorCodes.UniqueViolation, ConstraintName: "ux_collection_items_media" }) { return new(CollectionStatus.Conflict); }
+        var result = new ItemDetails(item.Id, media.Id, new MediaSummary(media.Id, media.MediaType, media.Title, media.ReleaseDate, media.ImageReference), item.Position, item.CreatedAt, item.UpdatedAt);
         await tx.CommitAsync(ct); return new(CollectionStatus.Success, result, collection.Revision);
     }
-
     public async Task<CollectionResult<ItemDetails>> UpdateAsync(Guid ownerId, Guid id, Guid itemId, ItemUpdate request, CancellationToken ct)
     {
-        await using var tx = await db.Database.BeginTransactionAsync(ct);
-        var collection = await CollectionMutation.LockAsync(db, ownerId, id, ct);
-        var rejected = CollectionMutation.Check<ItemDetails>(collection, request.ExpectedRevision);
-        if (rejected is not null) return rejected;
-        var item = await db.CollectionItems.SingleOrDefaultAsync(x => x.CollectionId == id && x.Id == itemId, ct);
+        await using var tx = await db.Database.BeginTransactionAsync(ct); var collection = await CollectionMutation.LockAsync(db, ownerId, id, ct);
+        var rejected = CollectionMutation.Check<ItemDetails>(collection, request.ExpectedRevision); if (rejected is not null) return rejected;
+        var item = await db.CollectionItems.SingleOrDefaultAsync(i => i.Id == itemId && i.CollectionId == id && db.MediaItems.Where(CatalogAccess.Readable(ownerId)).Any(m => m.Id == i.MediaItemId), ct);
         if (item is null) return new(CollectionStatus.NotFound);
-        if (request.Position is null) return CollectionMutation.Invalid<ItemDetails>("position", "Position is required for replacement.");
-        var error = await Validate(id, item.MediaItemId, request.Title, request.Data, request.Position.Value, ct);
-        if (error is not null) return error;
-        item.SetValues(request.Title, CollectionValidation.StorageObject(request.Data), request.Position.Value); collection!.Advance();
-        await db.SaveChangesAsync(ct);
-        var title = item.MediaItemId is { } mediaId ? await db.MediaItems.Where(x => x.Id == mediaId).Select(x => x.Title).SingleAsync(ct) : item.Title!;
-        var result = CollectionMapping.Item(item, title);
-        await tx.CommitAsync(ct); return new(CollectionStatus.Success, result, collection.Revision);
+        if (request.Position is null or < 0) return CollectionMutation.Invalid<ItemDetails>("position", "A nonnegative position is required.");
+        item.Reorder(request.Position.Value); collection!.Advance(); await db.SaveChangesAsync(ct);
+        var media = await db.MediaItems.AsNoTracking().Where(m => m.Id == item.MediaItemId).Select(m => new MediaSummary(m.Id, m.MediaType, m.Title, m.ReleaseDate, m.ImageReference)).SingleAsync(ct);
+        await tx.CommitAsync(ct); return new(CollectionStatus.Success, new(item.Id, item.MediaItemId, media, item.Position, item.CreatedAt, item.UpdatedAt), collection.Revision);
     }
-
-    public async Task<CollectionResult<CollectionRevision>> DeleteAsync(Guid ownerId, Guid id, Guid itemId, long? expectedRevision, CancellationToken ct)
+    public async Task<CollectionResult<CollectionRevision>> ClearUnavailableAsync(Guid ownerId, Guid id, long? expectedRevision, CancellationToken ct)
     {
         await using var tx = await db.Database.BeginTransactionAsync(ct);
         var collection = await CollectionMutation.LockAsync(db, ownerId, id, ct);
         var rejected = CollectionMutation.Check<CollectionRevision>(collection, expectedRevision);
         if (rejected is not null) return rejected;
-        var item = await db.CollectionItems.SingleOrDefaultAsync(x => x.Id == itemId && x.CollectionId == id, ct);
-        if (item is null) return new(CollectionStatus.NotFound);
-        db.CollectionItems.Remove(item); collection!.Advance();
-        await db.SaveChangesAsync(ct); await tx.CommitAsync(ct);
+        await db.CollectionItems.Where(i => i.CollectionId == id && !db.MediaItems.Where(CatalogAccess.Readable(ownerId)).Any(m => m.Id == i.MediaItemId)).ExecuteDeleteAsync(ct);
+        // Always advance; the response reveals neither hidden identities nor counts.
+        collection!.Advance(); await db.SaveChangesAsync(ct); await tx.CommitAsync(ct);
         return new(CollectionStatus.Success, new(collection.Revision), collection.Revision);
     }
-
-    private async Task<CollectionResult<ItemDetails>?> Validate(Guid id, Guid? mediaId, string? title, System.Text.Json.JsonElement data, int position, CancellationToken ct)
+    public async Task<CollectionResult<CollectionRevision>> DeleteAsync(Guid ownerId, Guid id, Guid itemId, long? expectedRevision, CancellationToken ct)
     {
-        var fields = await db.CollectionFields.AsNoTracking().Where(x => x.CollectionId == id).ToListAsync(ct);
-        var errors = CollectionValidation.ValidateData(data, fields.Select(CollectionMapping.Definition).ToList());
-        if (mediaId is not null && title is not null) errors["title"] = ["Canonical entries use the catalog title."];
-        if (mediaId is null && !CollectionRules.ValidText(title?.Trim(), 200)) errors["title"] = ["A custom title of 1–200 valid characters is required."];
-        if (position < 0) errors["position"] = ["Position must be nonnegative."];
-        return errors.Count == 0 ? null : new(CollectionStatus.Invalid, Errors: errors);
+        await using var tx = await db.Database.BeginTransactionAsync(ct); var collection = await CollectionMutation.LockAsync(db, ownerId, id, ct);
+        var rejected = CollectionMutation.Check<CollectionRevision>(collection, expectedRevision); if (rejected is not null) return rejected;
+        var item = await db.CollectionItems.SingleOrDefaultAsync(i => i.Id == itemId && i.CollectionId == id && db.MediaItems.Where(CatalogAccess.Readable(ownerId)).Any(m => m.Id == i.MediaItemId), ct);
+        if (item is null) return new(CollectionStatus.NotFound);
+        db.Remove(item); collection!.Advance(); await db.SaveChangesAsync(ct); await tx.CommitAsync(ct); return new(CollectionStatus.Success, new(collection.Revision), collection.Revision);
     }
 }

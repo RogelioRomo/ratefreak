@@ -15,9 +15,10 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
     public DbSet<RateFreak.Domain.Social.UserFollow> UserFollows => Set<RateFreak.Domain.Social.UserFollow>();
 
     public DbSet<Collection> Collections => Set<Collection>();
-    public DbSet<CollectionField> CollectionFields => Set<CollectionField>();
     public DbSet<CollectionItem> CollectionItems => Set<CollectionItem>();
 
+    public DbSet<Category> Categories => Set<Category>();
+    public DbSet<CategoryAlias> CategoryAliases => Set<CategoryAlias>();
     public DbSet<MediaItem> MediaItems => Set<MediaItem>();
     public DbSet<MediaExternalId> MediaExternalIds => Set<MediaExternalId>();
 
@@ -33,6 +34,8 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ConfigureCatalog();
+        modelBuilder.ConfigureArtwork();
+        modelBuilder.ConfigureCategories();
         modelBuilder.ConfigureModeration();
         modelBuilder.ConfigureSocial();
         modelBuilder.ConfigureReviewComments();

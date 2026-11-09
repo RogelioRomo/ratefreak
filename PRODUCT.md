@@ -9,7 +9,7 @@ web
 ## Product Purpose
 
 RateFreak brings movies, TV, albums and video games into one personal media
-catalog, with library tracking, ratings, reviews and user-defined collections.
+catalog, alongside user-created subjects, library tracking, ratings, reviews and lists.
 The approved delivery roadmap is `docs/frontend-checklist.md` and its linked design.
 
 ## Users
@@ -22,13 +22,17 @@ they enjoy across formats. More specific audience research remains open.
 The frontend currently supports local registration, login and account/session
 management, plus public catalog browsing, title/type search, pagination and
 media details, provider discovery/preview and explicit authenticated catalog import.
-Private library tracking, ratings and public review creation/editing are now
-available on catalog details, with a dedicated library page. Accessible collection
-browsing, private-default creation and owner metadata/visibility editing are now
-available, alongside typed custom-field definition/configuration, custom or catalog
-entries, entry value editing and explicit confirmed field/entry removal. Accessible
-collections expose their entries read-only to visitors. Social interfaces remain
-planned; homepage copy must distinguish current functionality from planned functionality.
+Private library tracking, ratings and item-scoped reviews/comments use the common
+catalog identity. People can create private or public custom items with title,
+description, an explicit category and one optional uploaded image stored on the host
+filesystem outside wwwroot. Own-item management includes corrections, explicit
+publication, private changes and reversible archival. Public categories are shared
+immediately, with scoped duplicate checks and admin rename/merge/hide/restore.
+Collections organize existing accessible catalog items as lists, with ordering,
+revision-safe editing and membership removal that preserves ratings/reviews.
+Public list results/counts apply item visibility. Dynamic field builders and
+free-standing custom entries are retired. Existing databases require the separately
+scoped, reviewed test-data cutover before the list schema can apply.
 
 Use the existing Next.js App Router, TypeScript, CSS Modules and TanStack Query.
 Keep object interfaces in separate files. The .NET API owns business rules and

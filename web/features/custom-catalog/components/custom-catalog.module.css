@@ -1,0 +1,18 @@
+.screen { padding-block: 3rem 4rem; }
+.heading { margin-bottom: 2rem; max-width: 65ch; }
+.heading h1 { font: 500 clamp(2.5rem, 6vw, 5rem)/1.1 var(--font-editorial); letter-spacing: -0.04em; text-wrap: balance; }
+.heading p, .hint { color: var(--muted); line-height: 1.7; margin-top: 0.75rem; }
+.form { display: grid; gap: 1.5rem; max-width: 46rem; }
+.field { display: grid; gap: 0.5rem; min-width: 0; }
+.field label, .field legend { font-weight: 600; font-size: 0.875rem; }
+.field input, .field textarea { width: 100%; min-width: 0; min-height: 3rem; padding: 0.75rem; font: inherit; color: var(--foreground); background: var(--input-surface); border: 1px solid var(--input-border); border-radius: var(--radius-small); }
+.field textarea { resize: vertical; line-height: 1.6; }
+.section { border: 0; border-top: 1px solid var(--border); padding: 1.5rem 0; display: grid; gap: 1rem; min-width: 0; }
+.section h2 { font: 500 1.75rem/1.2 var(--font-editorial); }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.actions a, .link { color: var(--accent); display: inline-flex; align-items: center; min-height: 2.75rem; }
+.error { color: var(--error); line-height: 1.6; }
+.list { list-style: none; padding: 0; }
+.list li { padding-block: 1.5rem; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+.list a { color: var(--accent); overflow-wrap: anywhere; }
+.preview { max-width: 15rem; }

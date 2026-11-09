@@ -23,6 +23,8 @@ public sealed class ModerationMigrationTests
         async Task Refused()
         {
             await Assert.ThrowsAsync<PostgresException>(() => migrator.MigrateAsync(prior, ct)); Assert.Single(await db.Database.GetAppliedMigrationsAsync(ct), m => m.EndsWith("_AddModeration", StringComparison.Ordinal)); Assert.True(await db.Reviews.AnyAsync(x => x.Id == review.Id, ct));
+            // Earlier migration Down operations commit individually; restore the current schema before the next fixture write.
+            await db.Database.MigrateAsync(ct);
         }
         await db.Reviews.Where(x => x.Id == review.Id).ExecuteUpdateAsync(s => s.SetProperty(x => x.IsHidden, true), ct); await Refused();
         await db.Reviews.Where(x => x.Id == review.Id).ExecuteUpdateAsync(s => s.SetProperty(x => x.IsHidden, false), ct);

@@ -7,7 +7,7 @@ import type { SessionContextValue } from "@/features/auth/interfaces/session-con
 import type { CollectionDetails } from "../interfaces/collections";
 export const id = 'a1111111-1111-1111-1111-111111111111';
 export const account = { id:'owner',handle:'reader',displayName:'Reader',email:'reader@example.test',createdAt:'2026-11-01' };
-export const details: CollectionDetails = {collection:{id,owner:{id:'owner',handle:'reader',displayName:'Reader'},name:'Cinema',description:'Personal notes',visibility:'private',revision:1,schemaVersion:1,createdAt:'2026-11-01',updatedAt:'2026-11-01'},fields:[]};
+export const details: CollectionDetails = {collection:{id,owner:{id:'owner',handle:'reader',displayName:'Reader'},name:'Cinema',description:'Personal notes',visibility:'private',revision:1,createdAt:'2026-11-01',updatedAt:'2026-11-01'}};
 export function sessionValue(): SessionContextValue { return {account,isLoading:false,isTransitioning:false,error:null,refresh:vi.fn(async()=>{}),runExclusive:async fn=>fn(),changeIdentity:vi.fn()}; }
 export function mount(node: ReactNode, initial=sessionValue()) {
  const client=new QueryClient({defaultOptions:{queries:{retry:false,gcTime:Infinity},mutations:{retry:false}}});

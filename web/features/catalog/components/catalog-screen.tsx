@@ -16,8 +16,12 @@ export function CatalogScreen() {
   const catalog = useCatalog(filters);
   const limited = catalog.error instanceof ApiError && catalog.error.status === 429;
   return <div className={styles.screen}>
-    <header className={styles.heading}><h1>The catalog.</h1><p>Films, shows, records and games.<br />Explore what’s made its way into RateFreak.</p></header>
-    <Link className={styles.recovery} href="/catalog/discover">Find titles from providers</Link>
+    <header className={styles.heading}><h1>The catalog.</h1><p>Provider titles and things people create.<br />Find something worth rating.</p></header>
+    <nav className={styles.actions} aria-label="Catalog actions">
+      <Link className={styles.recovery} href="/catalog/discover">Find titles from providers</Link>
+      <Link className={styles.recovery} href="/catalog/new">Create an item</Link>
+      <Link className={styles.recovery} href="/catalog/mine">My items</Link>
+    </nav>
     {!filters ? <><ErrorState title="Invalid catalog filters." description="This link contains unsupported or repeated filters. Reset them to browse the catalog." /><Link className={styles.recovery} href="/catalog">Reset filters</Link></> : <>
       <CatalogFilters key={search.toString()} filters={filters} />
       {catalog.isPending ? <LoadingState label="Loading catalog…" /> : catalog.isError ? <ErrorState title={limited ? "Too many requests." : "Catalog unavailable."} description={limited ? "Please wait a moment before trying again." : "We couldn’t load these titles. Please try again."} onRetry={() => void catalog.refetch()} /> : <CatalogResults data={catalog.data} filters={filters} />}

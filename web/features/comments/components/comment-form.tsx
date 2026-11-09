@@ -27,7 +27,7 @@ export function CommentForm({ reviewId, available, comment, onSaved, onCancel }:
   } else if (result.kind === "rejected") setError(result.error);
   else setUncertain(true);
  }}>
-  <p>Comments are public. Use plain text and mark spoilers.</p>
+  <p>Comments follow the item’s visibility. Use plain text and mark spoilers.</p>
   <CommentError error={error} />
   {uncertain && <p role="alert">We couldn’t confirm the save. Check the discussion before posting again. Reloading discards this draft. <Button variant="secondary" onClick={() => window.location.reload()}>Reload discussion</Button></p>}
   <fieldset disabled={!available || write.pending || uncertain}>

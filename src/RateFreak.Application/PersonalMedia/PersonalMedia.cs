@@ -26,20 +26,20 @@ public interface ILibraryService
     Task<LibraryItem?> FindAsync(Guid userId, Guid mediaId, CancellationToken ct);
     Task<PersonalPage<LibraryItem>> ListAsync(Guid userId, LibraryQuery query, CancellationToken ct);
     Task<LibraryItem?> PutAsync(Guid userId, Guid mediaId, LibraryRequest request, CancellationToken ct);
-    Task DeleteAsync(Guid userId, Guid mediaId, CancellationToken ct);
+    Task<bool> DeleteAsync(Guid userId, Guid mediaId, CancellationToken ct);
 }
 public interface IRatingService
 {
     Task<RatingDetails?> FindAsync(Guid userId, Guid mediaId, CancellationToken ct);
     Task<RatingDetails?> PutAsync(Guid userId, Guid mediaId, decimal score, CancellationToken ct);
-    Task DeleteAsync(Guid userId, Guid mediaId, CancellationToken ct);
-    Task<RatingAggregate?> AggregateAsync(Guid mediaId, CancellationToken ct);
+    Task<bool> DeleteAsync(Guid userId, Guid mediaId, CancellationToken ct);
+    Task<RatingAggregate?> AggregateAsync(Guid? viewerId, Guid mediaId, CancellationToken ct);
 }
 public interface IReviewService
 {
     Task<ReviewDetails?> FindOwnAsync(Guid userId, Guid mediaId, CancellationToken ct);
-    Task<PersonalPage<ReviewDetails>?> ListAsync(Guid mediaId, int page, int pageSize, CancellationToken ct);
-    Task<ReviewDetails?> FindAsync(Guid reviewId, CancellationToken ct);
+    Task<PersonalPage<ReviewDetails>?> ListAsync(Guid? viewerId, Guid mediaId, int page, int pageSize, CancellationToken ct);
+    Task<ReviewDetails?> FindAsync(Guid? viewerId, Guid reviewId, CancellationToken ct);
     Task<ReviewWriteResult> CreateAsync(Guid userId, Guid mediaId, ReviewRequest request, CancellationToken ct);
     Task<ReviewDetails?> UpdateAsync(Guid userId, Guid reviewId, ReviewRequest request, CancellationToken ct);
     Task<bool> DeleteAsync(Guid userId, Guid reviewId, CancellationToken ct);

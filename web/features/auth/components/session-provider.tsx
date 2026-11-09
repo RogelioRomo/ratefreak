@@ -67,7 +67,9 @@ export function SessionProvider({ children }: ChildrenProps) {
   const { refetch } = query;
   const refresh = useCallback(async () => { await refetch(); }, [refetch]);
   const isLoading = query.isPending;
-  const account = isLoading || query.isFetching || query.isError || isTransitioning ? undefined : query.data;
+  // Keep the last verified identity during routine refetches so navigation and
+  // page content stay mounted. Errors and explicit account changes still gate UI.
+  const account = isLoading || query.isError || isTransitioning ? undefined : query.data;
   const value = useMemo<SessionContextValue>(() => ({
     account, isLoading, isTransitioning, error: query.error, refresh, runExclusive, changeIdentity,
   }), [account, isLoading, isTransitioning, query.error, refresh, runExclusive, changeIdentity]);

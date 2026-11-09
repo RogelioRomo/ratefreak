@@ -1,3 +1,4 @@
+using RateFreak.Infrastructure.Catalog;
 using System.Data;
 using Microsoft.EntityFrameworkCore;
 using RateFreak.Application.Moderation;
@@ -17,17 +18,39 @@ internal sealed partial class ModerationService(RateFreakDbContext db) : IModera
 
     public async Task<ModerationTarget?> TargetAsync(string type, Guid id, CancellationToken ct)
     {
+        var target = await TargetCoreAsync(type, id, false, ct);
+        if (target is not null && type == "item")
+        {
+            var asset = await db.Set<RateFreak.Domain.Catalog.ArtworkAsset>().Where(a => a.ItemId == id).Select(a => (Guid?)a.AssetId).SingleOrDefaultAsync(ct);
+            if (asset is not null) target = target with { ImageReference = $"/api/v1/moderation/media/{id}/artwork/{asset}" };
+        }
+        return target;
+    }
+    private async Task<ModerationTarget?> TargetCoreAsync(string type, Guid id, bool retainedReport, CancellationToken ct)
+    {
+        var publicItems = db.MediaItems.Where(m => m.Visibility == "public");
         if (type == "review")
             return await (from r in db.Reviews.AsNoTracking() join u in db.Users.AsNoTracking() on r.UserId equals u.Id
-                where r.Id == id select new ModerationTarget(r.Id,"review",new StaffIdentity(u.Id,u.UserName!,u.DisplayName),r.Body,r.IsSpoiler,r.IsHidden,r.UpdatedAt)).SingleOrDefaultAsync(ct);
+                where r.Id == id && (retainedReport || publicItems.Any(m => m.Id == r.MediaItemId))
+                select new ModerationTarget(r.Id,"review",new StaffIdentity(u.Id,u.UserName!,u.DisplayName),r.Body,r.IsSpoiler,r.IsHidden,r.UpdatedAt)).SingleOrDefaultAsync(ct);
         if (type == "comment")
             return await (from c in db.ReviewComments.AsNoTracking() join u in db.Users.AsNoTracking() on c.UserId equals u.Id
-                where c.Id == id select new ModerationTarget(c.Id,"comment",new StaffIdentity(u.Id,u.UserName!,u.DisplayName),c.Body,c.IsSpoiler,c.IsHidden,c.UpdatedAt)).SingleOrDefaultAsync(ct);
+                where c.Id == id && (retainedReport || db.Reviews.Any(r => r.Id == c.ReviewId && publicItems.Any(m => m.Id == r.MediaItemId)))
+                select new ModerationTarget(c.Id,"comment",new StaffIdentity(u.Id,u.UserName!,u.DisplayName),c.Body,c.IsSpoiler,c.IsHidden,c.UpdatedAt)).SingleOrDefaultAsync(ct);
+        if (type == "item")
+            return await (from m in db.MediaItems.AsNoTracking() join u in db.Users.AsNoTracking() on m.CreatorUserId equals u.Id
+                where m.Id == id && m.Provenance == "user" && (retainedReport || m.Visibility == "public")
+                select new ModerationTarget(m.Id,"item",new StaffIdentity(u.Id,u.UserName!,u.DisplayName),m.Title,false,m.IsHidden,m.UpdatedAt,m.Description,null)).SingleOrDefaultAsync(ct);
+        if (type == "category")
+            return await (from c in db.Categories.AsNoTracking() join u in db.Users.AsNoTracking() on c.OwnerUserId equals u.Id
+                where c.Id == id && c.Scope == "public" && !c.IsSeeded
+                select new ModerationTarget(c.Id,"category",new StaffIdentity(u.Id,u.UserName!,u.DisplayName),c.Name,false,c.IsHidden,c.UpdatedAt)).SingleOrDefaultAsync(ct);
         return null;
     }
+    private static Guid? LiveId(ContentReport report) => report.TargetType switch
+    { "review" => report.ReviewId, "comment" => report.CommentId, "item" => report.ItemId, "category" => report.CategoryId, _ => null };
     private Task<ModerationTarget?> LiveTarget(ContentReport report, CancellationToken ct) =>
-        (report.TargetType == "review" ? report.ReviewId : report.CommentId) is Guid id
-            ? TargetAsync(report.TargetType, id, ct) : Task.FromResult<ModerationTarget?>(null);
+        LiveId(report) is Guid id ? TargetCoreAsync(report.TargetType, id, true, ct) : Task.FromResult<ModerationTarget?>(null);
 
     private IQueryable<ReportSummary> Summaries(IQueryable<ContentReport> reports) =>
         from r in reports join u in db.Users.AsNoTracking() on r.ReporterId equals u.Id into users
@@ -46,7 +69,13 @@ internal sealed partial class ModerationService(RateFreakDbContext db) : IModera
         await using var tx=await db.Database.BeginTransactionAsync(IsolationLevel.RepeatableRead,ct);
         var r=await db.ContentReports.AsNoTracking().SingleOrDefaultAsync(x=>x.Id==id,ct);if(r is null)return null;
         var summary=new ReportSummary(r.Id,r.TargetType,r.TargetId,await Identity(r.ReporterId,ct),r.Reason,r.Status,r.CreatedAt);
-        var result=new ReportDetail(summary,r.Details,await LiveTarget(r,ct),r.Decision,r.ResolutionReason,r.ResolvedAt);
+        var target = await LiveTarget(r,ct);
+        if (target is not null && r.TargetType == "item")
+        {
+            var asset = await db.Set<RateFreak.Domain.Catalog.ArtworkAsset>().Where(a => a.ItemId == r.ItemId).Select(a => (Guid?)a.AssetId).SingleOrDefaultAsync(ct);
+            if (asset is not null) target = target with { ImageReference = $"/api/v1/moderation/reports/{id}/artwork/{asset}" };
+        }
+        var result=new ReportDetail(summary,r.Details,target,r.Decision,r.ResolutionReason,r.ResolvedAt);
         await tx.CommitAsync(ct);return result;
     }
     public async Task<ModerationPage<ModerationAuditEntry>> AuditAsync(string? type,Guid? id,int page,int pageSize,CancellationToken ct)
@@ -64,7 +93,11 @@ internal sealed partial class ModerationService(RateFreakDbContext db) : IModera
         _ = await db.Users.FromSqlInterpolated($"SELECT * FROM users WHERE id = {id} FOR UPDATE").AsNoTracking().ToListAsync(ct);
     private async Task LockTarget(string type,Guid id,CancellationToken ct)
     {
-        if(type=="review")
+        if(type == "item")
+            _ = await db.MediaItems.FromSqlInterpolated($"SELECT * FROM media_items WHERE id = {id} FOR UPDATE").AsNoTracking().ToListAsync(ct);
+        else if(type == "category")
+            _ = await db.Categories.FromSqlInterpolated($"SELECT * FROM catalog_categories WHERE id = {id} FOR UPDATE").AsNoTracking().ToListAsync(ct);
+        else if(type=="review")
             _=await db.Reviews.FromSqlInterpolated($"SELECT * FROM reviews WHERE id = {id} FOR UPDATE").AsNoTracking().ToListAsync(ct);
         else
         {
@@ -78,12 +111,17 @@ internal sealed partial class ModerationService(RateFreakDbContext db) : IModera
         if(!ModerationRules.Report(request))return new(ModerationStatus.Invalid);
         await using var tx=await db.Database.BeginTransactionAsync(ct);await ModerationLock.AcquireAsync(db,ct);await LockUser(actor,ct);
         if(!await db.Users.AnyAsync(x=>x.Id==actor,ct))return new(ModerationStatus.Forbidden);
+        var readableItems = db.MediaItems.Where(CatalogAccess.Readable(actor));
+        if (type == "item" && !await readableItems.AnyAsync(m => m.Id == id && m.Visibility == "public" && m.Provenance == "user", ct)) return new(ModerationStatus.NotFound);
+        if (type == "category" && !await db.Categories.AnyAsync(c => c.Id == id && c.Scope == "public" && !c.IsHidden && !c.IsSeeded, ct)) return new(ModerationStatus.NotFound);
+        if (type == "review" && !await db.Reviews.AnyAsync(r => r.Id == id && readableItems.Any(m => m.Id == r.MediaItemId), ct)) return new(ModerationStatus.NotFound);
+        if (type == "comment" && !await db.ReviewComments.AnyAsync(c => c.Id == id && db.Reviews.Any(r => r.Id == c.ReviewId && readableItems.Any(m => m.Id == r.MediaItemId)), ct)) return new(ModerationStatus.NotFound);
         await LockTarget(type,id,ct);var target=await TargetAsync(type,id,ct);
         if(target is null||target.Hidden)return new(ModerationStatus.NotFound);
         if(type=="comment"&&!await db.ReviewComments.Where(x=>x.Id==id).AnyAsync(x=>db.Reviews.Any(r=>r.Id==x.ReviewId&&!r.IsHidden),ct))return new(ModerationStatus.NotFound);
         if(target.Author!.Id==actor)return new(ModerationStatus.Invalid);
         if(await db.ContentReports.AnyAsync(x=>x.OriginalReporterId==actor&&x.TargetType==type&&x.TargetId==id,ct))return new(ModerationStatus.Conflict);
-        var report=new ContentReport { TargetType=type,TargetId=id,OriginalReporterId=actor,ReporterId=actor,OriginalAuthorId=target.Author.Id,ReviewId=type=="review"?id:null,CommentId=type=="comment"?id:null,Reason=request.Reason!,Details=string.IsNullOrWhiteSpace(request.Details)?null:request.Details.Trim() };
+        var report=new ContentReport { TargetType=type,TargetId=id,OriginalReporterId=actor,ReporterId=actor,OriginalAuthorId=target.Author.Id,ReviewId=type=="review"?id:null,CommentId=type=="comment"?id:null,ItemId=type=="item"?id:null,CategoryId=type=="category"?id:null,Reason=request.Reason!,Details=string.IsNullOrWhiteSpace(request.Details)?null:request.Details.Trim() };
         db.Add(report);await db.SaveChangesAsync(ct);await tx.CommitAsync(ct);
         return new(ModerationStatus.Success,new ReportAcknowledgement(report.Id,report.Status,report.CreatedAt));
     }

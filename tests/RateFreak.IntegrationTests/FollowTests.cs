@@ -159,7 +159,7 @@ public sealed class FollowTests(AccountDatabase database) : IClassFixture<Accoun
         limited = await client.DeleteAsync(missing, Ct);
         Assert.Equal(HttpStatusCode.TooManyRequests, limited.StatusCode);
         Assert.NotNull(limited.Headers.RetryAfter);
-        Assert.Equal(HttpStatusCode.NoContent, (await client.DeleteAsync("/api/v1/users/me/library/" + Guid.NewGuid(), Ct)).StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, (await client.DeleteAsync("/api/v1/users/me/library/" + Guid.NewGuid(), Ct)).StatusCode);
         await using var development = new ApiFactory(environment: "Development", connectionString: database.ConnectionString);
         using var docs = Client(development);
         using var other = Client(factory); await SignIn(other);
@@ -177,7 +177,7 @@ public sealed class FollowTests(AccountDatabase database) : IClassFixture<Accoun
     {
         await using var factory = Factory(); using var owner = Client(factory); using var follower = Client(factory);
         var ownerId = await SignIn(owner); await SignIn(follower);
-        var created = await owner.PostAsJsonAsync("/api/v1/collections", new { name = "Private", visibility = "private", fields = Array.Empty<object>() }, Ct);
+        var created = await owner.PostAsJsonAsync("/api/v1/collections", new { name = "Private", visibility = "private" }, Ct);
         Assert.Equal(HttpStatusCode.Created, created.StatusCode);
         var collection = await created.Content.ReadFromJsonAsync<JsonElement>(Ct);
         var id = collection.GetProperty("collection").GetProperty("id").GetGuid();

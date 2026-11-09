@@ -17,13 +17,14 @@ public sealed class VideoGamesMigrationTests
         await using var db=new RateFreakDbContext(new DbContextOptionsBuilder<RateFreakDbContext>().UseNpgsql(postgres.GetConnectionString()).Options);
         // Pin this guard regression to its migration; later downgrades commit separately.
         await db.GetService<IMigrator>().MigrateAsync("20261030212206_AddVideoGames",Ct);
-        var game=new MediaItem("video_game","Preserved game");db.Add(game);await db.SaveChangesAsync(Ct);
+        var gameId=Guid.NewGuid();
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO media_items (id,media_type,title,metadata,created_at,updated_at) VALUES ({gameId}, 'video_game', 'Preserved game', '{{}}', now(), now())",Ct);
         var history=(await db.Database.GetAppliedMigrationsAsync(Ct)).ToArray();
         var error=await Assert.ThrowsAsync<Npgsql.PostgresException>(()=>db.GetService<IMigrator>().MigrateAsync("20261030211018_AddUserFollows",Ct));
         Assert.Contains("video games exist",error.Message,StringComparison.OrdinalIgnoreCase);
-        Assert.Equal(history,(await db.Database.GetAppliedMigrationsAsync(Ct)).ToArray());Assert.True(await db.MediaItems.AnyAsync(x=>x.Id==game.Id,Ct));
+        Assert.Equal(history,(await db.Database.GetAppliedMigrationsAsync(Ct)).ToArray());Assert.True(await db.MediaItems.AnyAsync(x=>x.Id==gameId,Ct));
         // The widened constraint remains usable after a rejected downgrade.
-        db.Add(new MediaItem("video_game","Another game"));await db.SaveChangesAsync(Ct);
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO media_items (id,media_type,title,metadata,created_at,updated_at) VALUES ({Guid.NewGuid()}, 'video_game', 'Another game', '{{}}', now(), now())",Ct);
     }
     [Fact]
     public async Task Safe_downgrade_and_reapply_preserve_existing_catalog_and_follows_schema()

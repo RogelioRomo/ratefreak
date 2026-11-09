@@ -24,12 +24,12 @@ internal static class CollectionEndpoints
         {
             var value = await queries.FindAsync(Viewer(user), id, ct);
             return value is null ? Results.NotFound() : Results.Ok(value);
-        })).Produces<CollectionDetails>().ProducesProblem(404).WithSummary("Get an accessible collection and its fields");
+        })).Produces<CollectionDetails>().ProducesProblem(404).WithSummary("Get an accessible list");
         Write(group.MapPost("", async (CollectionCreate request, ClaimsPrincipal user, ICollectionCommands commands, HttpContext context, CancellationToken ct) =>
         {
             var result = await commands.CreateAsync(Owner(user), request, ct);
             return Response(result, context, result.Value is null ? null : $"/api/v1/collections/{result.Value.Collection.Id}");
-        })).Produces<CollectionDetails>(201).WithSummary("Create a collection and its initial fields");
+        })).Produces<CollectionDetails>(201).WithSummary("Create a list");
         Write(group.MapPatch("/{id:guid}", async (Guid id, CollectionUpdate request, ClaimsPrincipal user, ICollectionCommands commands, HttpContext context, CancellationToken ct) =>
             Response(await commands.UpdateAsync(Owner(user), id, request, ct), context)))
             .Produces<CollectionDetails>().WithSummary("Replace your collection metadata using its current revision");
@@ -50,31 +50,17 @@ internal static class CollectionEndpoints
         {
             var result = await commands.AddAsync(Owner(user), id, request, ct);
             return Response(result, context, result.Value is null ? null : $"/api/v1/collections/{id}/items/{result.Value.Id}");
-        })).Produces<ItemDetails>(201).WithSummary("Add a canonical media or custom entry");
+        })).Produces<ItemDetails>(201).WithSummary("Add an existing accessible catalog item");
         Write(group.MapPatch("/{id:guid}/items/{itemId:guid}", async (Guid id, Guid itemId, ItemUpdate request, ClaimsPrincipal user, ICollectionItemCommands commands, HttpContext context, CancellationToken ct) =>
             Response(await commands.UpdateAsync(Owner(user), id, itemId, request, ct), context)))
-            .Produces<ItemDetails>().WithSummary("Replace an entry's custom data, title and position");
+            .Produces<ItemDetails>().WithSummary("Change a list membership position");
+        Write(group.MapDelete("/{id:guid}/unavailable-items", async (Guid id, ClaimsPrincipal user, ICollectionItemCommands commands, HttpContext context, CancellationToken ct,
+            long? expectedRevision = null) => Response(await commands.ClearUnavailableAsync(Owner(user), id, expectedRevision, ct), context, delete: true)))
+            .Produces(204).WithSummary("Explicitly remove unavailable memberships from your list without exposing their identities");
         Write(group.MapDelete("/{id:guid}/items/{itemId:guid}", async (Guid id, Guid itemId, ClaimsPrincipal user, ICollectionItemCommands commands, HttpContext context, CancellationToken ct,
             long? expectedRevision = null) => Response(await commands.DeleteAsync(Owner(user), id, itemId, expectedRevision, ct), context, delete: true)))
             .Produces(204).WithSummary("Delete your collection entry using its current revision");
-        Write(group.MapPost("/{id:guid}/fields", async (Guid id, FieldCreate request, ClaimsPrincipal user, ICollectionFieldCommands commands, HttpContext context, CancellationToken ct) =>
-        {
-            var result = await commands.AddAsync(Owner(user), id, request, ct);
-            // Fields are represented by the collection detail resource.
-            return Response(result, context, result.Value is null ? null : $"/api/v1/collections/{id}");
-        })).Produces<FieldDetails>(201).WithSummary("Add a validated field to your collection");
-        Write(group.MapPatch("/{id:guid}/fields/{fieldId:guid}", async (Guid id, Guid fieldId, FieldUpdate request, ClaimsPrincipal user, ICollectionFieldCommands commands, HttpContext context, CancellationToken ct) =>
-            Response(await commands.UpdateAsync(Owner(user), id, fieldId, request, ct), context)))
-            .Produces<FieldDetails>().WithSummary("Replace mutable field properties while preserving valid stored data");
-        group.MapGet("/{id:guid}/fields/{fieldId:guid}/deletion-impact", async (Guid id, Guid fieldId, ClaimsPrincipal user, ICollectionQueries queries, CancellationToken ct) =>
-        {
-            var value = await queries.DeletionImpactAsync(Owner(user), id, fieldId, ct);
-            return value is null ? Results.NotFound() : Results.Ok(value);
-        }).RequireAuthorization().RequireRateLimiting("personal-read").Produces<DeletionImpact>().ProducesProblem(401).ProducesProblem(404).ProducesProblem(429)
-            .WithSummary("Preview the permanent deletion impact for one of your fields");
-        Write(group.MapDelete("/{id:guid}/fields/{fieldId:guid}", async (Guid id, Guid fieldId, ClaimsPrincipal user, ICollectionFieldCommands commands, HttpContext context, CancellationToken ct,
-            long? expectedRevision = null, bool confirm = false) => Response(await commands.DeleteAsync(Owner(user), id, fieldId, expectedRevision, confirm, ct), context, delete: true)))
-            .Produces(204).WithSummary("Permanently delete a field and its values with confirmation and the preview revision");
+
     }
 
     private static RouteHandlerBuilder Read(RouteHandlerBuilder route) => route.RequireRateLimiting("catalog").ProducesProblem(429);

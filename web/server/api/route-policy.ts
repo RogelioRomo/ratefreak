@@ -1,4 +1,5 @@
 import "server-only";
+import { customCatalogRoute } from "./artwork-policy";
 import { moderationRoute } from "./moderation-policy";
 import { reportingRoute } from "./reporting-policy";
 import { commentRoute } from "./comment-policy";
@@ -13,6 +14,7 @@ export function isAllowedRoute(method: string, path: readonly string[]): boolean
   if (path[0] === "setup") return (path.length === 1 && method === "POST") || (path.length === 2 && path[1] === "status" && method === "GET");
   if (path[0] === "users" && path.length === 2 && path[1] === "me" && method === "PATCH") return true;
   if (method === "GET" && path.length === 3 && path[0] === "users" && path[1] === "by-handle" && /^[a-z0-9_]{3,30}$/i.test(path[2])) return true;
+  if (customCatalogRoute(method, path)) return true;
   if (moderationRoute(method, path) || reportingRoute(method, path) || commentRoute(method, path) || followRoute(method, path) || collectionRoute(method, path) || personalRoute(method, path)) return true;
   if (path[0] === "media") {
     if (method === "POST" && path.length === 2 && path[1] === "import") return true;

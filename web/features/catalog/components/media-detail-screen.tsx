@@ -1,4 +1,6 @@
 "use client";
+import { CatalogReportControls } from "@/features/custom-catalog/components/catalog-report-controls";
+import { useCatalogViewer } from "@/features/custom-catalog/hooks/use-catalog-viewer";
 import { TitleActivity } from "@/features/personal/components/title-activity";
 import Link from "next/link";
 import { IconArrowLeft } from "@tabler/icons-react";
@@ -13,6 +15,7 @@ import styles from "./media-detail-screen.module.css";
 
 export function MediaDetailScreen({ id }: MediaDetailScreenProps) {
   const media = useMedia(id);
+  const { viewer } = useCatalogViewer();
   const missing = !isMediaId(id) || (media.error instanceof ApiError && media.error.status === 404);
   const limited = media.error instanceof ApiError && media.error.status === 429;
   return <div className={styles.screen}>
@@ -23,11 +26,12 @@ export function MediaDetailScreen({ id }: MediaDetailScreenProps) {
       : <><article className={styles.detail}>
         <div className={styles.artwork}><MediaArtwork reference={media.data.imageReference} title={media.data.title} type={media.data.type} /></div>
         <div className={styles.content}>
-          <p className={styles.type}>{mediaLabels[media.data.type]}</p>
+          <p className={styles.type}>{media.data.category?.name ?? mediaLabels[media.data.type]}</p>
           <h1>{media.data.title}</h1>
-          <p className={styles.date}>{media.data.releaseDate ? <time dateTime={media.data.releaseDate}>{new Date(`${media.data.releaseDate}T00:00:00Z`).toLocaleDateString("en", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })}</time> : "Release date unavailable"}</p>
+          {media.data.creatorUserId === viewer && <Link href={`/catalog/${id}/edit`}>Manage item</Link>}
+          {media.data.type !== "custom" && <p className={styles.date}>{media.data.releaseDate ? <time dateTime={media.data.releaseDate}>{new Date(`${media.data.releaseDate}T00:00:00Z`).toLocaleDateString("en", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })}</time> : "Release date unavailable"}</p>}
           <section className={styles.description} aria-labelledby="about-title"><h2>About this title</h2><p>{media.data.description?.trim() || "No description available yet."}</p></section>
         </div>
-      </article><TitleActivity mediaId={id.toLowerCase()} /></>}
+      </article><CatalogReportControls item={media.data} /><TitleActivity mediaId={id.toLowerCase()} /></>}
   </div>;
 }

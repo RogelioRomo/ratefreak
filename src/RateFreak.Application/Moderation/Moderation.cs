@@ -12,7 +12,7 @@ public sealed record VisibilityRequest(bool? Hidden, string? Reason, DateTimeOff
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
 public sealed record RoleRequest(string? Reason);
 public sealed record StaffIdentity(Guid Id, string Handle, string DisplayName);
-public sealed record ModerationTarget(Guid Id, string TargetType, StaffIdentity? Author, string Body, bool IsSpoiler, bool Hidden, DateTimeOffset UpdatedAt);
+public sealed record ModerationTarget(Guid Id, string TargetType, StaffIdentity? Author, string Body, bool IsSpoiler, bool Hidden, DateTimeOffset UpdatedAt, string? Description = null, string? ImageReference = null);
 public sealed record ReportAcknowledgement(Guid Id, string Status, DateTimeOffset CreatedAt);
 public sealed record ReportSummary(Guid Id, string TargetType, Guid TargetId, StaffIdentity? Reporter, string Reason, string Status, DateTimeOffset CreatedAt);
 public sealed record ReportDetail(ReportSummary Report, string? Details, ModerationTarget? Target, string? Decision, string? ResolutionReason, DateTimeOffset? ResolvedAt);

@@ -1,8 +1,7 @@
 import "server-only";
 import { ApiError } from "@/shared/api/api-error";
 
-export async function readRequestBody(request: Request, signal: AbortSignal = request.signal): Promise<Uint8Array<ArrayBuffer>> {
-  const limit = 65_536;
+export async function readRequestBody(request: Request, signal: AbortSignal = request.signal, limit = 65_536): Promise<Uint8Array<ArrayBuffer>> {
   if (Number(request.headers.get("content-length")) > limit) throw new ApiError(413);
   signal.throwIfAborted();
   if (!request.body) return new Uint8Array();

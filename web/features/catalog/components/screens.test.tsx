@@ -7,6 +7,10 @@ import { CatalogScreen } from "./catalog-screen";
 import { MediaDetailScreen } from "./media-detail-screen";
 
 vi.mock("@/features/personal/components/title-activity", () => ({ TitleActivity: () => null }));
+vi.mock("@/features/custom-catalog/api/custom-catalog", async importOriginal => ({
+  ...await importOriginal<typeof import("@/features/custom-catalog/api/custom-catalog")>(),
+  getCategories: async () => ({ items: [{ id: "b1111111-1111-1111-1111-111111111111", name: "Board games", scope: "public", revision: 1 }], page: 1, pageSize: 100, totalCount: 1 }),
+}));
 const route = vi.hoisted(() => ({ query: "", push: vi.fn() }));
 vi.mock("next/navigation", () => ({ useSearchParams: () => new URLSearchParams(route.query), useRouter: () => ({ push: route.push }) }));
 const fetchMock = vi.fn<typeof fetch>();
@@ -33,23 +37,39 @@ it("submits explicit filters and resets pagination", async () => {
   fetchMock.mockResolvedValue(Response.json(page));
   setup();
   fireEvent.change(screen.getByRole("searchbox", { name: "Title" }), { target: { value: "  A & B  " } });
-  selectValue(screen.getByLabelText("Media type"), "album");
+  expect(screen.queryByRole("combobox", { name: "Item type" })).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole("button", { name: "Search catalog" }));
-  expect(route.push).toHaveBeenCalledWith("/catalog?q=A+%26+B&type=album");
+  expect(route.push).toHaveBeenCalledWith("/catalog?q=A+%26+B");
   expect(fetchMock).toHaveBeenCalledTimes(1);
+});
+it("offers categories directly and submits the selected category with the other filters", async () => {
+  route.query = "q=old&type=movie&page=3";
+  fetchMock.mockResolvedValue(Response.json(page));
+  const view = setup();
+  const category = screen.getByRole("combobox", { name: "Category" });
+  await waitFor(() => expect(category.parentElement?.querySelector('option[value="b1111111-1111-1111-1111-111111111111"]')).toBeInTheDocument());
+  selectValue(category, "b1111111-1111-1111-1111-111111111111");
+  fireEvent.click(screen.getByRole("button", { name: "Search catalog" }));
+  expect(route.push).toHaveBeenCalledWith("/catalog?q=old&categoryId=b1111111-1111-1111-1111-111111111111");
+  route.query = "categoryId=b1111111-1111-1111-1111-111111111111";
+  view.rerender(<CatalogScreen />);
+  await waitFor(() => expect(screen.getByRole("combobox", { name: "Category" })).toHaveTextContent("Board games"));
+  selectValue(screen.getByRole("combobox", { name: "Category" }), "");
+  fireEvent.click(screen.getByRole("button", { name: "Search catalog" }));
+  expect(route.push).toHaveBeenLastCalledWith("/catalog");
 });
 it("restores form inputs on URL changes and isolates a late response", async () => {
   let resolve!: (response: Response) => void;
   fetchMock.mockImplementationOnce(() => new Promise(r => { resolve = r; })).mockResolvedValue(Response.json({ ...page, items: [{ ...item, title: "New result" }] }));
   const view = setup();
-  route.query = "q=new&type=album&page=2";
+  route.query = "q=new&categoryId=b1111111-1111-1111-1111-111111111111&page=2";
   view.rerender(<CatalogScreen />);
   expect(screen.getByRole("searchbox")).toHaveValue("new");
-  expect(screen.getByLabelText("Media type")).toHaveTextContent("Albums");
+  await waitFor(() => expect(screen.getByRole("combobox", { name: "Category" })).toHaveTextContent("Board games"));
   expect(await screen.findByText("New result")).toBeInTheDocument();
   await act(async () => { resolve(Response.json(page)); });
   expect(screen.queryByText(item.title.trim())).not.toBeInTheDocument();
-  expect(screen.getByRole("link", { name: /previous/i })).toHaveAttribute("href", "/catalog?q=new&type=album");
+  expect(screen.getByRole("link", { name: /previous/i })).toHaveAttribute("href", "/catalog?q=new&categoryId=b1111111-1111-1111-1111-111111111111");
   route.query = "";
   view.rerender(<CatalogScreen />);
   expect(screen.getByRole("searchbox")).toHaveValue("");
