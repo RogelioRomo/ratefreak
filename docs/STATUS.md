@@ -1,8 +1,9 @@
 # Current project status and roadmap
 
 Updated: 2026-11-09. Account lifecycle (`bd3d78e`), staff management (`30c57e7`)
-and profile moderation are implemented and verified locally. See Git history for
-the current integration commit.
+and profile moderation (`a0a7aa0`) are committed and verified locally. Admin
+revocation and staff-policy documentation are implemented and verified locally;
+see Git history for the current integration commit.
 No production deployment is recorded.
 The application is implemented and verified locally; production readiness remains open.
 This page is the current status and backlog, replacing next-step instructions in
@@ -19,6 +20,7 @@ older plans and resume notes. It records work and decisions, not deployment auth
 | [Release verification](frontend-release-verification.md) | Verification evidence and the authoritative production release gates |
 | [Catalog operations](custom-catalog-operations.md) | Artwork storage, backups and guarded collection migration |
 | [Account operations](account-data-operations.md) | Retention, durable erasure journal and restore replay |
+| [Staff operations](staff-access-operations.md) | Staff permissions, named operator attribution and deployment acceptance |
 | [Architecture decisions](adr/) | Accepted decisions; later superseding ADRs take precedence |
 
 Plans under `superpowers/` and the original [backend plan](../ratefreak-plan.md)
@@ -49,7 +51,9 @@ are evidence references, not durable deployment artifacts or guaranteed running 
   surfaces; owner corrections stay hidden until staff explicitly restore them.
 - Staff management inside moderation: admin-only account search, staff/all-account
   filters, current role indicators, confirmed moderator grant/revoke with audit
-  reasons, and per-account audit links. Admin roles remain operator-managed.
+  reasons, and per-account audit links. Admin removal is supported in the UI and
+  `--revoke-admin`, with last-Admin protection, preserved Moderator/user access,
+  and actor-attributed audit history. Granting Admin remains operator-managed.
 - Catalog category-only browsing controls, separate existing/new category workflows,
   spacing improvements and silent routine background session checks.
 
@@ -62,6 +66,11 @@ Current decisions:
 - Profile moderation reversibly hides both display name and bio, keeps the account
   usable, uses the existing lifetime report-deduplication rule, and stores no text
   snapshots ([ADR 0018](adr/0018-profile-text-moderation.md)).
+- Staff permissions follow current database roles and existing report-scoped
+  inspection. Operator identity requires protected named host/deployment records;
+  the application's `operator` actor alone does not identify a person. See
+  [ADR 0019](adr/0019-staff-access-and-operator-attribution.md). Deployed attribution,
+  external-record retention and Admin removal/recovery acceptance remain open.
 - Routine session refetches retain the last verified identity and UI. Initial
   discovery, explicit account transitions and session-check errors still gate
   private content; confirmed logout/account changes clear old private state.
@@ -71,17 +80,18 @@ Current decisions:
 
 | Check | Latest recorded result |
 | --- | --- |
-| Frontend tests, 2026-11-09 | 682 passed across 95 files for profile moderation |
-| Backend tests, 2026-11-09 | 592 passed, zero skipped: 27 unit, 411 PostgreSQL integration, 154 provider contracts; historical migration fixtures now seed only columns present at their target version |
+| Frontend tests, 2026-11-09 | 687 passed across 95 files for Admin revocation |
+| Backend tests, 2026-11-09 | 600 passed, zero skipped: 27 unit, 419 PostgreSQL integration, 154 provider contracts; includes concurrent last-Admin protection, CLI argument checks, API permissions/CSRF, idempotency, audit attribution and retained registered-user/Moderator access |
 | Frontend ESLint / TypeScript, 2026-11-09 | Passed |
-| Frontend production build / API Release publish / EF model consistency | Passed on 2026-11-09 for profile moderation |
+| Frontend production build / API Release publish | Passed on 2026-11-09 for Admin revocation; no schema changes. EF model consistency previously passed for profile moderation |
 | Local Google/GitHub acceptance | User confirmed the local provider flow on 2026-11-07; deployed HTTPS acceptance remains open |
 | Account lifecycle browser verification, 2026-11-09 | Real local Chromium/API/Next/disposable PostgreSQL journey passed: ZIP, desktop/mobile dialog, cancel/focus, deletion, replayed session rejection and public/private content handling; earlier UI checks retain their original evidence limits |
-| Staff management browser verification, 2026-11-09 | Real Chromium/API/Next/disposable PostgreSQL passed: read-only Admin, searched account directory, grant/revoke and audit reasons, cancel/focus, current-role refresh, moderator/admin denial isolation, revoked-session rejection, and layouts at 1440/768/390/320px. No browser runtime errors. Temporary evidence: `/tmp/ratefreak-staff-browser/results.json` and screenshots; no persistent roles changed by these checks |
+| Original staff management browser verification, 2026-11-09 | Before Admin-removal controls: real Chromium/API/Next/disposable PostgreSQL passed read-only Admin, account search, moderator grant/revoke and audit reasons, cancel/focus, role refresh, moderator/admin denial isolation and layouts. Temporary evidence: `/tmp/ratefreak-staff-browser/results.json`; no persistent roles changed |
 | Profile moderation browser verification, 2026-11-09 | Real Chromium/API/Next/disposable PostgreSQL passed report → staff hide/resolve → owner correction staying hidden → staff restore; public profile/review handle fallbacks, audit reasons, confirmation cancellation, logout concealment, and 1440/768/390/320px layouts. No browser runtime errors. Temporary evidence: `/tmp/ratefreak-profile-browser/results.json` and inspection screenshots. Test services/database removed after checks |
+| Admin revocation browser verification, 2026-11-09 | Real Chromium/API/Next/disposable PostgreSQL passed UI removal/reason/confirmation, cancel/focus, account audit, retained Moderator/user access, current-session Admin denial, last-Admin 409 and refresh-before-retry, self-removal concealment, offline last-Admin refusal and 1440/768/390/320px layouts. No browser runtime errors. Temporary evidence: `/tmp/ratefreak-admin-revoke-browser/results.json` and screenshots; temporary services/database removed |
 | Persistent local database | Setup migration applied 2026-11-07; authorized collection cutover 2026-11-08; account lifecycle migration 2026-11-09 with backup/preservation checks. Profile migration `20261110014234_AddProfileModeration` applied locally under the approved design on 2026-11-09 (PST), with a private mode-0600 backup and unchanged original row counts/content fingerprints across all 27 existing application tables. Evidence: `.local/localhost/profile-moderation-migration-verification.json` |
-| Local runtime | Updated API on localhost:5080 and frontend on localhost:3000 verified healthy; public profile contract and protected moderation proxy checked after migration |
-| Git integration | Catalog/list rewrite `91a5cce`, account lifecycle `bd3d78e`, staff management `30c57e7`; profile moderation integration follows in Git history |
+| Local runtime | Updated API on localhost:5080 and frontend on localhost:3000 verified healthy; Staff management page and anonymous rejection at the new Admin-removal route checked. No migration or persistent role changes for this feature |
+| Git integration | Catalog/list rewrite `91a5cce`, account lifecycle `bd3d78e`, staff management `30c57e7`, profile moderation `a0a7aa0`; Admin revocation/policy integration follows in Git history |
 
 Lower test totals than older snapshots reflect the removal of retired collection
 field/entry behavior. Counts describe the executed suites; they do not establish
@@ -106,8 +116,17 @@ implementation specification.
 - [x] Add profile reporting/moderation with approved handling of display name/bio,
   current staff access, owner correction/restoration, erasure integration and
   reviewed additive migration ([design](superpowers/specs/2026-11-09-profile-moderation-design.md)).
-- [ ] Finalize staff-access and operator-attribution policies. Account erasure and
-  bounded moderation retention are defined in ADR 0017; deployed acceptance remains open.
+- [x] Define staff-access and operator-attribution policies in
+  [ADR 0019](adr/0019-staff-access-and-operator-attribution.md) and the
+  [staff operations runbook](staff-access-operations.md), using named host/deployment
+  records without a new application identity field. Operational acceptance remains
+  open: named attribution, external record protection/365-day expiration, and a
+  deployed Admin removal/recovery acceptance. Admin removal/recovery is now locally
+  tested through Staff management and offline commands; deployment verification
+  and named external records remain required.
+- [x] Add Admin revocation in Staff management and the offline operator command,
+  protecting the last Admin and retaining Moderator/registered-user access
+  ([implementation record](superpowers/plans/2026-11-09-admin-revocation.md)).
 - [x] Add administrator UI for moderator-role management within existing moderation
   ([design](superpowers/specs/2026-11-09-staff-management-design.md)). Account lookup,
   current roles, reasoned grant/revoke and audit links are verified locally;
@@ -145,6 +164,6 @@ as the detailed acceptance checklist. Remaining categories are:
 - [ ] End-to-end acceptance using ordinary/staff accounts on the deployed candidate.
 - [ ] Fresh production/Release builds and browser checks for the final source revision.
 
-Suggested next work: finalize staff-access/operator policies, then verify account
-lifecycle setup, backup expiration and a staging deployment
+Suggested next work: verify account lifecycle setup, backup expiration and restore
+replay, then prepare staging with staff-operations acceptance evidence
 against the release gates. No production deployment is recorded by this consolidation.

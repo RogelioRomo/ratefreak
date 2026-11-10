@@ -45,6 +45,10 @@ internal static class ModerationEndpoints
             return Results.Ok(await service.AccountsAsync(q, staffOnly, page, pageSize, ct));
         }).WithTags("Moderator administration").RequireAuthorization("admin").RequireRateLimiting("moderation-read")
             .Produces<ModerationPage<StaffAccount>>().ProducesValidationProblem().ProducesProblem(401).ProducesProblem(403).ProducesProblem(429);
+        app.MapDelete("/api/v1/admin/administrators/{id:guid}", async (Guid id, [Microsoft.AspNetCore.Mvc.FromBody] RoleRequest request, ClaimsPrincipal user, IModerationService service, CancellationToken ct) =>
+            Result(await service.RevokeAdminAsync(Actor(user), id, request.Reason ?? "", ct)))
+            .WithTags("Administrator removal").RequireAuthorization("admin").AddEndpointFilter<AntiforgeryFilter>().RequireRateLimiting("role-write")
+            .Produces(204).ProducesValidationProblem().ProducesProblem(401).ProducesProblem(403).ProducesProblem(404).ProducesProblem(409).ProducesProblem(429);
         var admin = app.MapGroup("/api/v1/admin/moderators").WithTags("Moderator administration").RequireAuthorization("admin");
         foreach (var verb in new[] { "PUT", "DELETE" })
             admin.MapMethods("/{id:guid}", [verb], async (Guid id, [Microsoft.AspNetCore.Mvc.FromBody] RoleRequest request, ClaimsPrincipal user, IModerationService service, CancellationToken ct) =>

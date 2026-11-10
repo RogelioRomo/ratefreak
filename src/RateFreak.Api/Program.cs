@@ -17,15 +17,19 @@ if (args.Contains("--reset-test-collection-data", StringComparer.Ordinal))
     return;
 }
 var appointAdmin = args.Contains("--appoint-admin", StringComparer.Ordinal);
-if (appointAdmin && (args.Length != 4 || args[0] != "--appoint-admin" || args[2] != "--reason" ||
+var revokeAdmin = args.Contains("--revoke-admin", StringComparer.Ordinal);
+var adminCommand = appointAdmin || revokeAdmin;
+var commandName = revokeAdmin ? "--revoke-admin" : "--appoint-admin";
+var operationName = revokeAdmin ? "revocation" : "appointment";
+if (adminCommand && (appointAdmin && revokeAdmin || args.Length != 4 || args[0] != commandName || args[2] != "--reason" ||
     !Guid.TryParse(args[1], out var requestedAccount) || requestedAccount == Guid.Empty ||
     !RateFreak.Application.Moderation.ModerationRules.Text(args[3])))
 {
-    Console.Error.WriteLine("Usage: --appoint-admin <existing-account-uuid> --reason <reason>");
+    Console.Error.WriteLine($"Usage: {commandName} <existing-account-uuid> --reason <reason>");
     Environment.ExitCode = 2;
     return;
 }
-if (appointAdmin)
+if (adminCommand)
 {
     // Build a maintenance host without starting it: no HTTP listener or automatic migration.
     var maintenance = Host.CreateApplicationBuilder(new HostApplicationBuilderSettings
@@ -41,14 +45,19 @@ if (appointAdmin)
     await using var scope = host.Services.CreateAsyncScope();
     try
     {
-        var result = await scope.ServiceProvider.GetRequiredService<RateFreak.Application.Moderation.IModerationService>()
-            .AppointAdminAsync(Guid.Parse(args[1]), args[3], CancellationToken.None);
+        var service = scope.ServiceProvider.GetRequiredService<RateFreak.Application.Moderation.IModerationService>();
+        var result = revokeAdmin
+            ? await service.RevokeAdminAsync(Guid.Parse(args[1]), args[3], CancellationToken.None)
+            : await service.AppointAdminAsync(Guid.Parse(args[1]), args[3], CancellationToken.None);
         Environment.ExitCode = result.Status == RateFreak.Application.Moderation.ModerationStatus.Success ? 0 : 2;
-        Console.WriteLine(Environment.ExitCode == 0 ? "Admin appointment complete." : "Admin appointment rejected.");
+        Console.WriteLine(Environment.ExitCode == 0 ? $"Admin {operationName} complete." :
+            result.Status == RateFreak.Application.Moderation.ModerationStatus.Conflict
+                ? "Admin revocation rejected: another administrator must remain."
+                : $"Admin {operationName} rejected.");
     }
     catch
     {
-        Console.Error.WriteLine("Admin appointment failed. Check database configuration and schema.");
+        Console.Error.WriteLine($"Admin {operationName} failed. Check database configuration and schema.");
         Environment.ExitCode = 1;
     }
     return;

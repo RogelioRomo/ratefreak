@@ -2,6 +2,12 @@
 
 Status: Accepted design, 2026-10-30; implementation verification in checklist.
 
+Later decisions supersede this initial slice's retention and access-policy limits:
+[ADR 0017](0017-account-data-lifecycle.md) defines erasure/retention,
+[ADR 0018](0018-profile-text-moderation.md) adds profile moderation, and
+[ADR 0019](0019-staff-access-and-operator-attribution.md) defines current staff
+access and required named host/deployment attribution for operator actions.
+
 Ordinary signed-in accounts may report public reviews/comments. Identity Moderator
 and Admin memberships authorize private moderation; Admin alone assigns/revokes
 Moderator. Admin implicitly moderates. No privileged role on registration or through

@@ -36,6 +36,8 @@ public interface IModerationService
     Task<ModerationResult> VisibilityAsync(Guid actor, string type, Guid id, VisibilityRequest request, CancellationToken ct);
     Task<ModerationResult> ModeratorAsync(Guid actor, Guid user, bool grant, string reason, CancellationToken ct);
     Task<ModerationResult> AppointAdminAsync(Guid user, string reason, CancellationToken ct);
+    Task<ModerationResult> RevokeAdminAsync(Guid user, string reason, CancellationToken ct);
+    Task<ModerationResult> RevokeAdminAsync(Guid actor, Guid user, string reason, CancellationToken ct);
 }
 public static class ModerationRules
 {

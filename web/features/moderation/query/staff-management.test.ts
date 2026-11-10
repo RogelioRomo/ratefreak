@@ -7,6 +7,8 @@ const id='a1111111-1111-1111-1111-111111111111';
 it('allows only the directory read and exact moderator writes',()=>{
  expect(isAllowedRoute('GET',['admin','accounts'])).toBe(true);
  for(const method of ['PUT','DELETE'])expect(isAllowedRoute(method,['admin','moderators',id])).toBe(true);
+ expect(isAllowedRoute('DELETE',['admin','administrators',id])).toBe(true);
+ for(const method of ['GET','POST','PUT','PATCH'])expect(isAllowedRoute(method,['admin','administrators',id])).toBe(false);
  for(const [method,path] of [['POST',['admin','moderators',id]],['GET',['admin','moderators',id]],['PUT',['admin','accounts',id]],['PUT',['admin','moderators','bad']],['PUT',['admin','moderators',id,'extra']]] as const)expect(isAllowedRoute(method,path)).toBe(false);
 });
 it('canonicalizes bounded account filters and preserves literal search text',()=>{

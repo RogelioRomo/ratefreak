@@ -85,4 +85,23 @@ internal sealed partial class ModerationService
         Event(actor,grant?"grant_"+name.ToLowerInvariant():"revoke_"+name.ToLowerInvariant(),"account",user,reason,!grant,grant);
         await db.SaveChangesAsync(ct);
     }
+
+    public Task<ModerationResult> RevokeAdminAsync(Guid user,string reason,CancellationToken ct) =>
+        RevokeAdminCoreAsync(null,user,reason,ct);
+
+    public Task<ModerationResult> RevokeAdminAsync(Guid actor,Guid user,string reason,CancellationToken ct) =>
+        RevokeAdminCoreAsync(actor,user,reason,ct);
+
+    private async Task<ModerationResult> RevokeAdminCoreAsync(Guid? actor,Guid user,string reason,CancellationToken ct)
+    {
+        if(!ModerationRules.Text(reason))return new(ModerationStatus.Invalid);
+        await using var tx=await db.Database.BeginTransactionAsync(ct);await ModerationLock.AcquireAsync(db,ct);
+        foreach(var id in (actor.HasValue?new[]{actor.Value,user}:new[]{user}).Distinct().Order())await LockUser(id,ct);
+        if(actor.HasValue&&!await HasAccessAsync(actor.Value,true,ct))return new(ModerationStatus.Forbidden);
+        if(!await db.Users.AnyAsync(x=>x.Id==user,ct))return new(ModerationStatus.NotFound);
+        var administrators=from membership in db.UserRoles join role in db.Roles on membership.RoleId equals role.Id
+            where role.NormalizedName=="ADMIN" select membership.UserId;
+        if(await administrators.ContainsAsync(user,ct)&&await administrators.CountAsync(ct)<=1)return new(ModerationStatus.Conflict);
+        await SetRole(actor,user,"Admin",false,reason,ct);await tx.CommitAsync(ct);return new(ModerationStatus.Success);
+    }
 }

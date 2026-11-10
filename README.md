@@ -1014,6 +1014,7 @@ posts or resolve reports against them.
 | GET | `/api/v1/admin/accounts` | Admin; public account identity and current staff roles |
 | PUT | `/api/v1/admin/moderators/{userId}` | Admin + CSRF; grant Moderator |
 | DELETE | `/api/v1/admin/moderators/{userId}` | Admin + CSRF; revoke Moderator |
+| DELETE | `/api/v1/admin/administrators/{userId}` | Admin + CSRF; revoke Admin, 409 if last Admin |
 
 Reports accept `{reason, details?}`. Reasons: `spam`, `harassment`, `hate`,
 `sexual_content`, `violence`, `spoiler`, `other`. Details are trimmed plain text up
@@ -1034,9 +1035,14 @@ JSON properties return400. No HTTP endpoint grants Admin.
 The moderation navigation includes **Staff management** at `/moderation/staff`.
 Administrators can search by handle/display name, switch between staff-only
 (default) and all accounts, and grant/revoke Moderator with confirmation and a
-required audit reason. Admin rows are read-only. Each account links to its audit
+required audit reason. Admin rows offer **Revoke Admin**, with a separate reason
+and confirmation; granting Admin remains operator-managed. Each account links to its audit
 history. An administrator-access denial on this page does not remove a moderator's
 access to reports. Failed or uncertain role changes require reloading current roles.
+Admin removal preserves any Moderator membership and registered-user access. The
+last Admin cannot be removed; a 409 explains that another Admin must remain.
+Self-removal immediately conceals admin-only content. No operation removes baseline
+registered-user access or grants Admin over HTTP.
 
 The account-directory API accepts `q` (maximum 100 characters; case-insensitive
 literal substring), `staffOnly=true|false` (default true), and the paging options
@@ -1066,12 +1072,28 @@ shell with normal API database configuration. For example, from the repository:
 dotnet run --project src/RateFreak.Api --no-launch-profile -- --appoint-admin <account-uuid> --reason "Initial administrator appointment"
 ```
 
+Remove an existing administrator with the supported offline command:
+
+```bash
+dotnet run --project src/RateFreak.Api --no-launch-profile -- --revoke-admin <account-uuid> --reason "Administrator access no longer needed"
+```
+
+Revocation is serialized with other role changes and account erasure. It refuses
+to remove the last Admin, records a real removal as `revoke_admin` attributed to
+the operator, and is idempotent on an existing non-Admin account. It preserves
+Moderator membership, account data and security stamps; current-role authorization
+rejects subsequent Admin requests from existing sessions. Exit 2 also covers
+last-administrator refusal. The UI uses the same protections and records the
+authenticated account as actor. Ordinary Moderator removal continues through the
+existing UI/API.
+
 The command exits without starting HTTP or applying migrations, records an operator
 audit event, and is idempotent. Exit0 success,2 invalid/missing account,1 operational
 failure. No account is created; credentials/emails never establish privilege. Keep
 secrets in normal environment/user-secrets storage; `.env` is not loaded automatically.
 Use the same environment/content-root configuration as your normal runtime. Admin
-changes beyond moderator assignment remain operator-managed. Automated tests
+appointments remain operator-managed; Admin removal is also available to current
+Admins in Staff management. Automated tests
 appoint staff only in disposable databases; local operator appointments are separate.
 
 Reports and audit metadata survive account/content deletion via nullable live
@@ -1080,10 +1102,15 @@ No profile/post-body snapshots, emails or handles are copied into these records.
 Resolved reports and related events expire after 365 days; standalone events after
 365 days. Open reports remain until resolved. Account erasure removes the deleted
 reporter's supplied details; retained staff notes may still contain identifiers.
-Before public launch, verify operational retention/restore setup and finalize
-staff-access/operator policies. History records app decisions but is not tamper-proof
-against database administrators. Operator events identify an offline
-operator action; deployment/OS logs must identify the person when required.
+Before public launch, verify operational retention/restore setup and the
+[staff-access policy](docs/adr/0019-staff-access-and-operator-attribution.md).
+History records app decisions but is not tamper-proof against database
+administrators. Operator events identify an offline action; protected named
+host/deployment records must identify the person responsible. See the
+[staff operations runbook](docs/staff-access-operations.md) for correlation fields,
+365-day external-record retention and deployed acceptance. Offline appointment and
+revocation commands are locally tested; removal/recovery and their named-operator
+records still require verification in the actual deployment before launch.
 
 `AddModeration` is additive and defaults existing content to visible. Its downgrade
 locks the affected tables and refuses if hidden content, reports or audit history

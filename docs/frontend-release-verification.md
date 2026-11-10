@@ -134,7 +134,7 @@ backend requirement lists are superseded where later ADRs changed the policy.
 | Gate | Evidence needed before launch |
 | --- | --- |
 | Account retention/deletion | [ADR 0017](adr/0017-account-data-lifecycle.md) defines export/deletion and 90/365-day event retention with 30-day backup expiration. Verify lifecycle flows, independent durable erasure journaling, actual backup expiration and restore replay in the target deployment; see [runbook](account-data-operations.md) |
-| Profile moderation and staff policy | Complete profile reporting/moderation and staff-access/operator attribution policies; verify deployed bounded moderation retention per ADR 0017 |
+| Profile moderation and staff operations | Profile moderation and Admin removal are implemented locally; policy is defined in [ADR 0019](adr/0019-staff-access-and-operator-attribution.md). Verify deployed permissions/retention, authenticated named operator correlation, protected external records with 365-day expiration, and actual deployed Admin removal/recovery with last-Admin protection; see [staff runbook](staff-access-operations.md). Granting Admin remains operator-only; removal is supported in Staff management and `--revoke-admin` |
 | Catalog/list compatibility and storage | Confirm external clients and target-database migration/data handling; provision persistent protected artwork storage outside wwwroot |
 | Real production ingress | Deployed HTTPS origins, exact write Origin, matching server secrets and verified Vercel address headers, or a separately verified adapter for another host |
 | Production sessions | Real `__Host-` Secure/HttpOnly cookies, independent Set-Cookie forwarding/deletion, CSRF rejection, all-device logout and no private response caching through the actual ingress |
