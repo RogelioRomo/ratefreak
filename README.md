@@ -1008,6 +1008,7 @@ posts or resolve reports against them.
 | POST | `/api/v1/moderation/reviews/{id}/visibility` | Staff + CSRF; hide/restore |
 | POST | `/api/v1/moderation/comments/{id}/visibility` | Staff + CSRF; hide/restore |
 | GET | `/api/v1/moderation/audit` | Staff; optional `targetType`, `targetId` filters |
+| GET | `/api/v1/admin/accounts` | Admin; public account identity and current staff roles |
 | PUT | `/api/v1/admin/moderators/{userId}` | Admin + CSRF; grant Moderator |
 | DELETE | `/api/v1/admin/moderators/{userId}` | Admin + CSRF; revoke Moderator |
 
@@ -1026,6 +1027,20 @@ reasons are trimmed1..1000 plain-text UTF-16 units. Successful commands204. Same
 visibility and role requests are idempotent and produce no extra audit event.
 Role requests, including DELETE, carry a JSON `{reason}` body. Unknown/duplicate
 JSON properties return400. No HTTP endpoint grants Admin.
+
+The moderation navigation includes **Staff management** at `/moderation/staff`.
+Administrators can search by handle/display name, switch between staff-only
+(default) and all accounts, and grant/revoke Moderator with confirmation and a
+required audit reason. Admin rows are read-only. Each account links to its audit
+history. An administrator-access denial on this page does not remove a moderator's
+access to reports. Failed or uncertain role changes require reloading current roles.
+
+The account-directory API accepts `q` (maximum 100 characters; case-insensitive
+literal substring), `staffOnly=true|false` (default true), and the paging options
+below. It sorts by handle then account UUID, exposes only `id`, `handle`,
+`displayName`, `isAdmin`, and `isModerator`, and rejects unknown/duplicate filters.
+The browser uses a fixed page size of 20. Directory reads use the moderation-read
+budget and all directory responses are no-store.
 
 Lists use page1..10000/pageSize1..100 (defaults1/20). Reports sort oldest first,
 audit newest first, with UUID tie order. Responses/errors use no-store; anonymous401,
@@ -1053,8 +1068,8 @@ audit event, and is idempotent. Exit0 success,2 invalid/missing account,1 operat
 failure. No account is created; credentials/emails never establish privilege. Keep
 secrets in normal environment/user-secrets storage; `.env` is not loaded automatically.
 Use the same environment/content-root configuration as your normal runtime. Admin
-changes beyond moderator assignment remain operator-managed; no real Admin has
-been appointed by implementation tests outside their isolated databases.
+changes beyond moderator assignment remain operator-managed. Automated tests
+appoint staff only in disposable databases; local operator appointments are separate.
 
 Reports and audit metadata survive account/content deletion via nullable live
 references and retained opaque UUIDs. No copies of post bodies/emails/handles are

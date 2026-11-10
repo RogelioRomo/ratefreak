@@ -4,11 +4,12 @@ import {useMutation,useQueryClient} from '@tanstack/react-query';
 import {ApiError} from '@/shared/api/api-error';
 import {useStaff} from '../query/context';
 import {staffRequest} from '../query/access';
-export function useStaffWrite(available:boolean){
+import type {StaffScope} from '../query/access';
+export function useStaffWrite(available:boolean,scope:StaffScope='staff'){
  const staff=useStaff(),client=useQueryClient(),active=staff.active&&available;
  const controller=useRef<AbortController|null>(null),operation=useRef<((signal:AbortSignal)=>Promise<void>)|null>(null),latest=useRef(active);
  const [pending,setPending]=useState(false);
- const mutation=useMutation({mutationFn:async()=>{if(!operation.current||!controller.current)throw Error('Action unavailable.');await staffRequest(client,staff.accountId,operation.current,controller.current.signal);},retry:false,gcTime:0});
+ const mutation=useMutation({mutationFn:async()=>{if(!operation.current||!controller.current)throw Error('Action unavailable.');await staffRequest(client,staff.accountId,operation.current,controller.current.signal,scope);},retry:false,gcTime:0});
  useLayoutEffect(()=>{latest.current=active;if(!active)controller.current?.abort();},[active]);
  useEffect(()=>()=>{controller.current?.abort();operation.current=null;},[]);
  async function run(execute:(signal:AbortSignal)=>Promise<void>){

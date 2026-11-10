@@ -12,3 +12,16 @@ it('latches denial outside cache, aborts all account requests and removes only t
  await expect(staffRequest(client,'one',async()=> 'should not run')).rejects.toMatchObject({status:403});
 });
 it('explicit authorization clearing permits a fresh read',async()=>{const client=new QueryClient(),store=accessStore(client);store.deny('one',401);store.allow('one');expect(await staffRequest(client,'one',async()=>42)).toBe(42);});
+it('admin denial conceals admin data while preserving moderation requests and access',async()=>{
+ const client=new QueryClient();client.setQueryData(['staff','one','admin','accounts'],{private:'roles'});client.setQueryData(['staff','one','reports'],{queue:true});
+ await expect(staffRequest(client,'one',async()=>{throw new ApiError(403);},undefined,'admin')).rejects.toMatchObject({status:403});
+ expect(client.getQueryData(['staff','one','admin','accounts'])).toBeUndefined();
+ expect(client.getQueryData(['staff','one','reports'])).toBeDefined();expect(accessStore(client).denied('one')).toBe(0);
+ expect(accessStore(client).denied('one','admin')).toBe(403);
+ expect(await staffRequest(client,'one',async()=>42)).toBe(42);
+});
+it('an admin request returning 401 denies all staff access',async()=>{
+ const client=new QueryClient();client.setQueryData(['staff','one','reports'],{queue:true});
+ await expect(staffRequest(client,'one',async()=>{throw new ApiError(401);},undefined,'admin')).rejects.toMatchObject({status:401});
+ expect(accessStore(client).denied('one')).toBe(401);expect(client.getQueryData(['staff','one','reports'])).toBeUndefined();
+});

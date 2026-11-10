@@ -1,5 +1,6 @@
 import { isMediaId } from '@/features/catalog/query/filters';
 import type { StaffFilters } from '../interfaces/moderation';
+import {staffAccountFilters} from './staff-management';
 export function staffFilters(params:URLSearchParams,kind:'reports'|'audit',api=false):StaffFilters {
  const allowed=kind==='reports'?['status','page']:['targetType','targetId','page'];if(api)allowed.push('pageSize');
  for(const key of params.keys())if(!allowed.includes(key)||params.getAll(key).length!==1)throw Error('Invalid moderation filters.');
@@ -15,6 +16,7 @@ export function staffParams(filters:StaffFilters,api=false):URLSearchParams {
 }
 export function safeStaffReturnTo(value:string):string|null {
  const [path,query]=value.split('?');if(value.includes('#')||value.split('?').length>2)return null;
+ if(path==='/moderation/staff'){try{staffAccountFilters(new URLSearchParams(query));return value;}catch{return null;}}
  if(path==='/moderation'||path==='/moderation/audit'){try{staffFilters(new URLSearchParams(query),path.endsWith('audit')?'audit':'reports');return value;}catch{return null;}}
  const parts=path.split('/');return !query&&parts.length===4&&parts[1]==='moderation'&&['reports','reviews','comments','media','categories'].includes(parts[2])&&isMediaId(parts[3])&&parts[3]===parts[3].toLowerCase()?value:null;
 }

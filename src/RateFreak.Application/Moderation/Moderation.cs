@@ -12,6 +12,7 @@ public sealed record VisibilityRequest(bool? Hidden, string? Reason, DateTimeOff
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
 public sealed record RoleRequest(string? Reason);
 public sealed record StaffIdentity(Guid Id, string Handle, string DisplayName);
+public sealed record StaffAccount(Guid Id, string Handle, string DisplayName, bool IsAdmin, bool IsModerator);
 public sealed record ModerationTarget(Guid Id, string TargetType, StaffIdentity? Author, string Body, bool IsSpoiler, bool Hidden, DateTimeOffset UpdatedAt, string? Description = null, string? ImageReference = null);
 public sealed record ReportAcknowledgement(Guid Id, string Status, DateTimeOffset CreatedAt);
 public sealed record ReportSummary(Guid Id, string TargetType, Guid TargetId, StaffIdentity? Reporter, string Reason, string Status, DateTimeOffset CreatedAt);
@@ -25,6 +26,7 @@ public sealed record ModerationResult(ModerationStatus Status, object? Value = n
 public interface IModerationService
 {
     Task<bool> HasAccessAsync(Guid actor, bool adminOnly, CancellationToken ct);
+    Task<ModerationPage<StaffAccount>> AccountsAsync(string? q, bool staffOnly, int page, int pageSize, CancellationToken ct);
     Task<ModerationResult> ReportAsync(Guid actor, string type, Guid id, ReportRequest request, CancellationToken ct);
     Task<ModerationPage<ReportSummary>> ReportsAsync(string status, int page, int pageSize, CancellationToken ct);
     Task<ReportDetail?> ReportAsync(Guid id, CancellationToken ct);

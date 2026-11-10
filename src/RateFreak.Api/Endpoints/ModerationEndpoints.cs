@@ -37,6 +37,14 @@ internal static class ModerationEndpoints
         staff.MapGet("/audit", async (IModerationService service, CancellationToken ct, string? targetType = null, Guid? targetId = null, int page = 1, int pageSize = 20) =>
             !Paging(page, pageSize) || targetType is not (null or "review" or "comment" or "account" or "item" or "category") ? Invalid() : Results.Ok(await service.AuditAsync(targetType, targetId, page, pageSize, ct)))
             .RequireRateLimiting("moderation-read").Produces<ModerationPage<ModerationAuditEntry>>();
+        app.MapGet("/api/v1/admin/accounts", async (HttpRequest request, IModerationService service, CancellationToken ct,
+            string? q = null, bool staffOnly = true, int page = 1, int pageSize = 20) =>
+        {
+            if (!Paging(page, pageSize) || q?.Length > 100 || !ModerationRules.Text(q, false) ||
+                request.Query.Any(pair => pair.Key is not ("q" or "staffOnly" or "page" or "pageSize") || pair.Value.Count != 1)) return Invalid();
+            return Results.Ok(await service.AccountsAsync(q, staffOnly, page, pageSize, ct));
+        }).WithTags("Moderator administration").RequireAuthorization("admin").RequireRateLimiting("moderation-read")
+            .Produces<ModerationPage<StaffAccount>>().ProducesValidationProblem().ProducesProblem(401).ProducesProblem(403).ProducesProblem(429);
         var admin = app.MapGroup("/api/v1/admin/moderators").WithTags("Moderator administration").RequireAuthorization("admin");
         foreach (var verb in new[] { "PUT", "DELETE" })
             admin.MapMethods("/{id:guid}", [verb], async (Guid id, [Microsoft.AspNetCore.Mvc.FromBody] RoleRequest request, ClaimsPrincipal user, IModerationService service, CancellationToken ct) =>

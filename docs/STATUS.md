@@ -1,8 +1,8 @@
 # Current project status and roadmap
 
-Updated: 2026-11-09. Git baseline: local `main`, commit `aeb416e`.
-Account lifecycle work below is implemented and verified in the working tree;
-it has not been committed or deployed.
+Updated: 2026-11-09. Git baseline: `bd3d78e` (account lifecycle committed on local `main`).
+Staff management is implemented and verified on `feat/staff-management`.
+It has not been deployed.
 The application is implemented and verified locally; production readiness remains open.
 This page is the current status and backlog, replacing next-step instructions in
 older plans and resume notes. It records work and decisions, not deployment authorization.
@@ -44,6 +44,9 @@ are evidence references, not durable deployment artifacts or guaranteed running 
   revision checks and explicit removal of unavailable memberships.
 - Reporting and staff moderation for reviews, comments, custom items and categories,
   with visibility controls and audit history. Profile reporting is still pending.
+- Staff management inside moderation: admin-only account search, staff/all-account
+  filters, current role indicators, confirmed moderator grant/revoke with audit
+  reasons, and per-account audit links. Admin roles remain operator-managed.
 - Catalog category-only browsing controls, separate existing/new category workflows,
   spacing improvements and silent routine background session checks.
 
@@ -62,12 +65,13 @@ Current decisions:
 
 | Check | Latest recorded result |
 | --- | --- |
-| Frontend tests, 2026-11-09 | 664 passed across 90 files |
-| Backend tests, 2026-11-09 | 578 passed, zero skipped: 27 unit, 397 PostgreSQL integration, 154 provider contracts |
+| Frontend tests, 2026-11-09 | 675 passed across 92 files for staff management |
+| Backend tests, 2026-11-09 | 585 passed, zero skipped: 27 unit, 404 PostgreSQL integration, 154 provider contracts; executed suites separately after restoring existing dependency paths from the prior platform |
 | Frontend ESLint / TypeScript, 2026-11-09 | Passed |
-| Frontend production build, API Release publish and EF model consistency | Passed on 2026-11-09 for the account lifecycle working tree |
+| Frontend production build / API Release publish | Passed on 2026-11-09 for staff management; EF model consistency previously passed for account lifecycle, with no schema changes in this slice |
 | Local Google/GitHub acceptance | User confirmed the local provider flow on 2026-11-07; deployed HTTPS acceptance remains open |
 | Account lifecycle browser verification, 2026-11-09 | Real local Chromium/API/Next/disposable PostgreSQL journey passed: ZIP, desktop/mobile dialog, cancel/focus, deletion, replayed session rejection and public/private content handling; earlier UI checks retain their original evidence limits |
+| Staff management browser verification, 2026-11-09 | Real Chromium/API/Next/disposable PostgreSQL passed: read-only Admin, searched account directory, grant/revoke and audit reasons, cancel/focus, current-role refresh, moderator/admin denial isolation, revoked-session rejection, and layouts at 1440/768/390/320px. No browser runtime errors. Temporary evidence: `/tmp/ratefreak-staff-browser/results.json` and screenshots; no persistent roles changed by these checks |
 | Persistent local database | Setup migration applied 2026-11-07; authorized test-data collection cutover completed 2026-11-08; account lifecycle migration applied 2026-11-09 after explicit user authorization, with a private backup and unchanged data verified across 25 existing tables |
 | Git integration | Catalog/list rewrite and 2026-11-09 UI/session changes committed together as `91a5cce` |
 
@@ -95,8 +99,10 @@ implementation specification.
   history. Decide the handling of reported profile text and staff access.
 - [ ] Finalize staff-access and operator-attribution policies. Account erasure and
   bounded moderation retention are defined in ADR 0017; deployed acceptance remains open.
-- [ ] Decide whether an administrator UI for moderator-role management is needed;
-  backend grant/revoke and offline administrator appointment already exist.
+- [x] Add administrator UI for moderator-role management within existing moderation
+  ([design](superpowers/specs/2026-11-09-staff-management-design.md)). Account lookup,
+  current roles, reasoned grant/revoke and audit links are verified locally;
+  offline administrator appointment remains the way to grant Admin.
 
 Further features remain separate scope decisions:
 
