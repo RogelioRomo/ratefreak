@@ -5,14 +5,19 @@ app. It supports provider discovery/import, user-created catalog items and categ
 private libraries, ratings, reviews/comments, profiles/follows, list collections,
 account recovery, Google/GitHub sign-in and staff moderation.
 
+RateFreak is intended for open-source, self-hosted distribution. A single-host Docker reference installation is available in
+[the self-hosting guide](docs/self-hosting.md); the existing `deploy/compose.yaml`
+continues to start the development database only. See the
+[self-hosted release plan](docs/self-hosted-release-plan.md).
+
 Start with [current status and remaining work](docs/STATUS.md). The core application
-is implemented locally; production deployment and operational/policy gates remain
+is implemented locally; self-hosted release and operational/policy gates remain
 open. The Next.js app is a thin browser-facing proxy; .NET owns authentication,
 authorization and business rules. See [web setup](web/README.md),
 [release evidence and launch gates](docs/frontend-release-verification.md), and
 [operations](docs/custom-catalog-operations.md).
 
-Latest recorded checks, 2026-11-09: **578 backend tests and 664 frontend tests
+Latest recorded checks, 2026-11-10: **603 backend tests and 719 frontend tests
 passed**, plus frontend lint and TypeScript. Earlier production-build/browser
 results are dated evidence, not verification of every later change. Local
 Google/GitHub acceptance is recorded; deployed provider acceptance remains open.
@@ -112,7 +117,8 @@ Configuration:
 | `ASPNETCORE_URLS` | No | Listener binding; launch profile uses `http://localhost:5080` |
 | `AllowedHosts` | In deployment | Defaults to `localhost;127.0.0.1`; set your API hostname in production |
 | `Authentication__DataProtectionKeysPath` | Outside Development | Absolute durable directory for cookie/CSRF encryption keys; Development defaults to ignored `src/RateFreak.Api/.local/keys` |
-| `POSTGRES_DB/USER/PASSWORD/PORT` | Compose only | Local database settings from `.env` |
+| `POSTGRES_DB/USER/PASSWORD/PORT` | Development Compose only | Local database settings from `.env` |
+| `BrowserProxy__AllowPrivateHttp` / `BrowserProxy__PublicOrigin` | Reference private HTTP hop | Explicitly bridge only service-authenticated requests to a fixed HTTPS browser origin; ordinary forwarding headers do not establish trust |
 
 ## 4. Apply the first migration explicitly
 

@@ -127,8 +127,24 @@ and Chromium CDP on port 9222. They contain no credentials.
 
 ## Outstanding release gates
 
+The 2026-11-10 [self-hosted reference verification](self-hosted-reference-verification.md)
+records passing production image builds, trusted ingress/HTTPS/Chromium, 719 web,
+603 backend and 30 operator tests, maintenance failures, staff operations and
+coordinated recovery. Reference packaging is implemented; the table below also
+contains per-installation duties and remaining public-release checks. Local
+acceptance does not establish off-host replication, expiration or operator-record
+protection for other installations.
+
+The 2026-11-10 [isolated local restore drill](account-restore-verification.md)
+passed coordinated database/artwork restore and Release erasure replay. It does
+not close target-host journal durability, actual backup expiration or deployed
+recovery gates. The release target is self-hosted open-source distribution; see
+the [self-hosted release plan](self-hosted-release-plan.md). Verify a reproducible
+reference installation before release and document instance-specific checks for
+operators. A centrally hosted production service is not required.
+
 These remain open under the [current roadmap](STATUS.md) and accepted
-[deployment direction](adr/0001-deployment-and-authentication.md). Historical
+[deployment direction](adr/0020-self-hosted-open-source-distribution.md). Historical
 backend requirement lists are superseded where later ADRs changed the policy.
 
 | Gate | Evidence needed before launch |
@@ -136,7 +152,7 @@ backend requirement lists are superseded where later ADRs changed the policy.
 | Account retention/deletion | [ADR 0017](adr/0017-account-data-lifecycle.md) defines export/deletion and 90/365-day event retention with 30-day backup expiration. Verify lifecycle flows, independent durable erasure journaling, actual backup expiration and restore replay in the target deployment; see [runbook](account-data-operations.md) |
 | Profile moderation and staff operations | Profile moderation and Admin removal are implemented locally; policy is defined in [ADR 0019](adr/0019-staff-access-and-operator-attribution.md). Verify deployed permissions/retention, authenticated named operator correlation, protected external records with 365-day expiration, and actual deployed Admin removal/recovery with last-Admin protection; see [staff runbook](staff-access-operations.md). Granting Admin remains operator-only; removal is supported in Staff management and `--revoke-admin` |
 | Catalog/list compatibility and storage | Confirm external clients and target-database migration/data handling; provision persistent protected artwork storage outside wwwroot |
-| Real production ingress | Deployed HTTPS origins, exact write Origin, matching server secrets and verified Vercel address headers, or a separately verified adapter for another host |
+| Portable packaging and ingress | Complete frontend/API/database reference installation; real HTTPS origins, exact write Origin, matching server secrets and a verified trusted reverse-proxy/client-address adapter without requiring Vercel |
 | Production sessions | Real `__Host-` Secure/HttpOnly cookies, independent Set-Cookie forwarding/deletion, CSRF rejection, all-device logout and no private response caching through the actual ingress |
 | Durable Data Protection | Restricted persistent key storage, encryption/protected storage, restart and replica continuity, and controlled key recovery |
 | Database and artwork recovery | Coordinated protected database/artwork backups expiring within 30 days and an isolated restore drill with independent account-erasure replay, migration/version and file-access checks; no production rollback without a reviewed recovery plan |

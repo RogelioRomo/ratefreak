@@ -1,0 +1,13 @@
+{
+    admin off
+}
+{$RATEFREAK_PUBLIC_ORIGIN} {
+    {$RATEFREAK_CADDY_TLS}
+    reverse_proxy web:3000 {
+        # Replace browser-supplied values, using the edge's actual TCP peer.
+        header_up X-RateFreak-Ingress-Key {$RATEFREAK_INGRESS_KEY}
+        header_up X-RateFreak-Ingress-IP {http.request.remote.host}
+        # Stream exports and propagate disconnects; don't buffer response bodies.
+        flush_interval 100ms
+    }
+}

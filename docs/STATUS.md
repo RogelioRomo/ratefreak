@@ -1,11 +1,14 @@
 # Current project status and roadmap
 
-Updated: 2026-11-09. Account lifecycle (`bd3d78e`), staff management (`30c57e7`)
+Updated: 2026-11-10. Account lifecycle (`bd3d78e`), staff management (`30c57e7`)
 and profile moderation (`a0a7aa0`) are committed and verified locally. Admin
 revocation and staff-policy documentation are implemented and verified locally;
 see Git history for the current integration commit.
 No production deployment is recorded.
-The application is implemented and verified locally; production readiness remains open.
+The application is implemented and verified locally; self-hosted release readiness remains open.
+The product is intended for open-source distribution so operators can host their
+own instances. A project-owned production deployment is not the release objective
+([ADR 0020](adr/0020-self-hosted-open-source-distribution.md)).
 This page is the current status and backlog, replacing next-step instructions in
 older plans and resume notes. It records work and decisions, not deployment authorization.
 
@@ -20,6 +23,10 @@ older plans and resume notes. It records work and decisions, not deployment auth
 | [Release verification](frontend-release-verification.md) | Verification evidence and the authoritative production release gates |
 | [Catalog operations](custom-catalog-operations.md) | Artwork storage, backups and guarded collection migration |
 | [Account operations](account-data-operations.md) | Retention, durable erasure journal and restore replay |
+| [Local restore verification](account-restore-verification.md) | Disposable backup/restore and Release erasure replay evidence |
+| [Self-hosted release plan](self-hosted-release-plan.md) | Portable installation, packaging and open-source release work |
+| [Self-hosting guide](self-hosting.md) | Reference installation, configuration, upgrades and recovery |
+| [Reference verification](self-hosted-reference-verification.md) | Packaging, HTTPS, maintenance and recovery evidence/limits |
 | [Staff operations](staff-access-operations.md) | Staff permissions, named operator attribution and deployment acceptance |
 | [Architecture decisions](adr/) | Accepted decisions; later superseding ADRs take precedence |
 
@@ -80,6 +87,8 @@ Current decisions:
 
 | Check | Latest recorded result |
 | --- | --- |
+| Self-hosted reference, 2026-11-10 | Complete private Compose/API/web/tools package and optional Caddy verified on Linux amd64. 719 frontend, 603 backend, 30 operator tests passed; real HTTPS/Chromium, DB permissions, migration/recreation, staff operations, coordinated restore/replay and incomplete-restore refusal passed. Controlled long export edge test: cancellation propagated, 504 at 300.01s. See [reference evidence](self-hosted-reference-verification.md) |
+| Isolated account restore drill, 2026-11-10 | PostgreSQL 17 database/artwork backup restored into a separate disposable database; fresh Release CLI replay, exact-database refusal, second replay, private erasure/artwork cleanup, public detachment and moderation preservation passed. Focused integration tests: 13 passed, zero skipped. Existing project data unchanged. See [scope and limits](account-restore-verification.md) |
 | Frontend tests, 2026-11-09 | 687 passed across 95 files for Admin revocation |
 | Backend tests, 2026-11-09 | 600 passed, zero skipped: 27 unit, 419 PostgreSQL integration, 154 provider contracts; includes concurrent last-Admin protection, CLI argument checks, API permissions/CSRF, idempotency, audit attribution and retained registered-user/Moderator access |
 | Frontend ESLint / TypeScript, 2026-11-09 | Passed |
@@ -144,14 +153,22 @@ Further features remain separate scope decisions:
   acceptance desired for the target environment. Automated import tests and earlier
   provider-specific local evidence already exist; do not treat all live imports as untested.
 
-## Production readiness
+## Self-hosted release readiness
 
-The frontend delivery milestone still open is Phase 7 production verification.
+The frontend delivery milestone still open is Phase 7 production verification,
+applied to a documented self-hosted reference installation. Instance-specific
+operational checks remain the responsibility of each operator.
 Use the [release-gate table](frontend-release-verification.md#outstanding-release-gates)
 as the detailed acceptance checklist. Remaining categories are:
 
-- [ ] Target hosting and deployed HTTPS/Origin/proxy configuration; the accepted
-  direction is Vercel for Next.js and a separately hosted API.
+- [x] Portable production API/web/tools images, private reference Compose and
+  optional Caddy; [installation/upgrade/recovery guide](self-hosting.md) and local
+  [acceptance evidence](self-hosted-reference-verification.md). The original
+  `deploy/compose.yaml` remains the development database setup.
+- [x] Hosting-independent authenticated ingress/client-address handling, explicit
+  authenticated HTTPS bridging for private HTTP, real HTTPS/Origin checks and
+  spoofing/budget rejection on the reference installation. Other topologies need
+  their own verified proxy configuration.
 - [ ] Real production cookies, CSRF, logout/recovery and Google/GitHub callbacks.
 - [ ] Durable protected Data Protection keys and persistent PostgreSQL/artwork storage.
 - [ ] Coordinated database/artwork backups expiring within 30 days, a protected independent
@@ -163,7 +180,13 @@ as the detailed acceptance checklist. Remaining categories are:
   the completed local test-data cutover does not authorize another reset.
 - [ ] End-to-end acceptance using ordinary/staff accounts on the deployed candidate.
 - [ ] Fresh production/Release builds and browser checks for the final source revision.
+- [ ] Open-source license selection, redistribution/provider notices, contributor
+  and security guidance, versioned artifacts and self-hosting/upgrade documentation.
 
-Suggested next work: verify account lifecycle setup, backup expiration and restore
-replay, then prepare staging with staff-operations acceptance evidence
-against the release gates. No production deployment is recorded by this consolidation.
+The [reference-installation design](superpowers/specs/2026-11-10-self-hosted-reference-installation-design.md)
+is implemented and verified locally. Suggested next work: choose the open-source
+license and prepare contributor/security guidance, dependency/provider review and
+versioned release automation using the [release plan](self-hosted-release-plan.md).
+Each operator still verifies their own journal protection, backup expiration,
+staff records and infrastructure acceptance. No public deployment or publication
+is recorded.

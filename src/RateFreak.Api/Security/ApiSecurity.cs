@@ -20,6 +20,7 @@ internal static class ApiSecurity
             .Validate(options => options.SharedSecret is null ||
                 (options.SharedSecret.Length == 64 && options.SharedSecret.All(Uri.IsHexDigit)),
                 "BrowserProxy:SharedSecret must contain exactly 64 hexadecimal characters when configured.")
+            .Validate(options => options.HasValidPrivateOrigin(), "Private HTTP proxy bridging requires a service key and a fixed HTTPS BrowserProxy:PublicOrigin.")
             .ValidateOnStart();
         builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 64 * 1024);
         builder.Services.AddOptions<SessionOptions>().Bind(builder.Configuration.GetSection("Authentication"))

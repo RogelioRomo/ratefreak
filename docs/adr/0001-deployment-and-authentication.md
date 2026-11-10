@@ -2,6 +2,10 @@
 
 Status: Accepted direction (2026-10-28). Authentication implementation is Phase 2.
 
+The Vercel hosting direction below is superseded by
+[ADR 0020](0020-self-hosted-open-source-distribution.md). RateFreak targets
+self-hosted open-source distribution; the browser/API security boundary remains.
+
 Deploy the .NET API independently from a Next.js frontend hosted on Vercel.
 The browser talks to a thin Next.js backend-for-frontend; Next.js forwards
 requests to .NET. .NET owns accounts, authorization and all business data.

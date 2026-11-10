@@ -20,7 +20,8 @@ internal static class BrowserProxyIdentity
 
     public static void UseBrowserProxyIdentity(this WebApplication app) => app.Use(async (context, next) =>
     {
-        var secret = context.RequestServices.GetRequiredService<IOptions<BrowserProxyOptions>>().Value.SharedSecret;
+        var options = context.RequestServices.GetRequiredService<IOptions<BrowserProxyOptions>>().Value;
+        var secret = options.SharedSecret;
         var keys = context.Request.Headers["X-RateFreak-Proxy-Key"];
         var addresses = context.Request.Headers["X-RateFreak-Client-IP"];
         if (string.IsNullOrEmpty(secret) || (keys.Count == 0 && addresses.Count == 0))
@@ -40,6 +41,17 @@ internal static class BrowserProxyIdentity
 
         // Attribution affects abuse budgets only, never the authenticated principal.
         context.Items[ClientAddress] = address;
-        await next(context);
+        // The operator's fixed HTTPS origin describes the authenticated browser hop.
+        // Never derive scheme/host from caller-supplied forwarding headers.
+        var scheme = context.Request.Scheme;
+        var host = context.Request.Host;
+        if (options.AllowPrivateHttp && !context.Request.IsHttps)
+        {
+            var origin = new Uri(options.PublicOrigin!, UriKind.Absolute);
+            context.Request.Scheme = origin.Scheme;
+            context.Request.Host = new HostString(origin.Authority);
+        }
+        try { await next(context); }
+        finally { context.Request.Scheme = scheme; context.Request.Host = host; }
     });
 }

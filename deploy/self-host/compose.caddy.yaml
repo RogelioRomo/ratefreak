@@ -1,0 +1,21 @@
+services:
+  caddy:
+    image: caddy:2@sha256:ce773ec7a742ce15ee6bf2bb5f65882b9e2a4487b10733e6f1484f86e6b5d8bc
+    restart: unless-stopped
+    ports: ['80:80', '443:443']
+    environment:
+      RATEFREAK_PUBLIC_ORIGIN: ${RATEFREAK_PUBLIC_ORIGIN}
+      RATEFREAK_CADDY_TLS: ${RATEFREAK_CADDY_TLS:-}
+    entrypoint: [/bin/sh, /etc/ratefreak/edge-entrypoint.sh]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./edge-entrypoint.sh:/etc/ratefreak/edge-entrypoint.sh:ro
+      - ${RATEFREAK_INSTANCE_DIR}/runtime/web/ingress:/run/ratefreak/ingress:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks: [ingress]
+    depends_on:
+      web: {condition: service_healthy}
+volumes:
+  caddy_data:
+  caddy_config:

@@ -4,5 +4,7 @@ export interface ApiProxyConfig {
   cookieNames: readonly string[];
   timeoutMs: number;
   proxySecret?: string;
-  clientIpMode?: "vercel" | "loopback";
+  ingressSecret?: string;
+  allowPrivateApiHttp?: boolean;
+  clientIpMode?: "vercel" | "loopback" | "trusted-proxy";
 }

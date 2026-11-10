@@ -86,7 +86,7 @@ Restart both processes after configuring. Use `pnpm --dir web dev`, then open
 requires a loopback API origin. Local browsers intentionally share the local IP
 budget, as direct local callers would. It is not a public hosting mode.
 
-Production attribution supports the planned Vercel host: set client IP mode to
+An optional Vercel adapter remains available: set client IP mode to
 `vercel`, configure the real HTTPS origins and matching secret, and deploy through
 Vercel (`VERCEL=1`). Only its `x-vercel-forwarded-for` address is accepted; ordinary
 caller forwarding/key/address headers are discarded. Next constructs its own
@@ -97,9 +97,10 @@ attribution headers are ignored and direct connection IP budgets remain in effec
 Both server settings are therefore required to isolate proxied production clients.
 
 No fixed Vercel egress IP or trust-all ASP.NET forwarded-header configuration is
-assumed. A different production ingress needs a separately verified attribution
-adapter. Confirm actual platform headers, secrets and HTTPS in deployment;
-multi-instance shared abuse budgets and account-recovery policy remain release work.
+assumed. Self-hosted ingress uses the authenticated `trusted-proxy` adapter
+described below; verify your proxy supplies the specified trusted headers. Confirm
+actual platform headers, secrets and HTTPS in each installation; shared abuse
+budgets for multiple instances remain separate operational work.
 
 See [Vercel's request-header contract](https://vercel.com/docs/headers/request-headers).
 
@@ -485,3 +486,21 @@ No password, grant or exported content is persisted in TanStack caches or web st
 
 Deletion requires the API's `AccountData__ErasureJournalPath` configuration; backup
 expiration is an operational release gate. See [account operations](../docs/account-data-operations.md).
+
+## Self-hosted trusted ingress
+
+Production self-hosting uses `RATEFREAK_CLIENT_IP_MODE=trusted-proxy`, a separate
+64-hex `RATEFREAK_INGRESS_SECRET`, the existing API shared secret, and an exact
+HTTPS `RATEFREAK_WEB_ORIGIN`. The edge must overwrite `X-RateFreak-Ingress-Key`
+and `X-RateFreak-Ingress-IP` on every request using the ingress secret and a
+single verified socket-peer address. Next validates them before any API request;
+caller forwarding/service/Vercel headers cannot substitute for them.
+
+For a private single-host network only, set
+`RATEFREAK_ALLOW_PRIVATE_API_HTTP=true` to use an upstream such as
+`http://api:8080`. Public plaintext upstreams are rejected. A single-label service
+hostname is an operator trust declaration: ensure it actually resolves on your
+private network. Use HTTPS for cross-host links. Keep Next/API/database ports
+private; the ingress credential does not justify public container listeners.
+Never reuse the API service secret for ingress. Existing Vercel and Development
+loopback modes retain their original restrictions.

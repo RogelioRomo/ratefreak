@@ -1,4 +1,6 @@
 using System.Net;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc.Testing;
 using RateFreak.Api.Security;
@@ -89,5 +91,25 @@ public sealed class BrowserProxyTests
         me.Headers.Add("X-User-Id", Guid.NewGuid().ToString());
         using var unauthorized = await client.SendAsync(me, Cancellation);
         Assert.Equal(HttpStatusCode.Unauthorized, unauthorized.StatusCode);
+    }
+
+    [Theory]
+    [InlineData(false, true, HttpStatusCode.InternalServerError)]
+    [InlineData(true, false, HttpStatusCode.InternalServerError)]
+    [InlineData(true, true, HttpStatusCode.OK)]
+    public async Task Private_http_bridge_requires_explicit_configuration_and_authenticated_proxy(bool enabled, bool authenticated, HttpStatusCode expected)
+    {
+        await using var original = Factory();
+        await using var factory = original.WithWebHostBuilder(builder => builder.ConfigureAppConfiguration((_, configuration) => configuration.AddInMemoryCollection(new Dictionary<string, string?>
+        {
+            ["BrowserProxy:AllowPrivateHttp"] = enabled.ToString(),
+            ["BrowserProxy:PublicOrigin"] = "https://browser.example"
+        })));
+        using var client = factory.CreateClient(new WebApplicationFactoryClientOptions { BaseAddress = new Uri("http://localhost"), AllowAutoRedirect = false });
+        client.DefaultRequestHeaders.Add("X-Forwarded-Proto", "https");
+        using var response = await Token(client, authenticated ? "192.0.2.8" : null, authenticated ? Secret : null);
+        Assert.Equal(expected, response.StatusCode);
+        if (expected == HttpStatusCode.OK)
+            Assert.Contains(response.Headers.GetValues("Set-Cookie"), cookie => cookie.StartsWith("__Host-ratefreak.csrf=", StringComparison.Ordinal) && cookie.Contains("secure", StringComparison.OrdinalIgnoreCase));
     }
 }

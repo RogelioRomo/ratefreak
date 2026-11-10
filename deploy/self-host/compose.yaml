@@ -1,0 +1,121 @@
+services:
+  postgres:
+    image: postgres:17-bookworm@sha256:665dc7b37ac52a17e298511414c21d23ffa4e6a6ef6225b3e5d59c7afb35e994
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ratefreak
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/ratefreak/postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ${RATEFREAK_INSTANCE_DIR:?Initialize an instance}/runtime/postgres:/run/ratefreak:ro
+      - ./database.sql:/docker-entrypoint-initdb.d/10-roles.sql:ro
+    networks: [database]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U postgres -d ratefreak']
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+  api:
+    image: ratefreak-api:local
+    restart: unless-stopped
+    read_only: true
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    tmpfs: ['/tmp:uid=10001,gid=10001,mode=1777']
+    environment: &api-environment
+      ASPNETCORE_ENVIRONMENT: Production
+      DOTNET_ENVIRONMENT: Production
+      DOTNET_BUNDLE_EXTRACT_BASE_DIR: /tmp/ratefreak-bundle
+      AllowedHosts: api
+      BrowserProxy__AllowPrivateHttp: 'true'
+      BrowserProxy__PublicOrigin: ${RATEFREAK_PUBLIC_ORIGIN}
+      Authentication__DataProtectionKeysPath: /data/keys
+      Authentication__External__PublicOrigin: ${RATEFREAK_PUBLIC_ORIGIN:?Set a public origin}
+      Artwork__Enabled: 'true'
+      Artwork__RootPath: /data/artwork
+      AccountData__ErasureJournalPath: ${RATEFREAK_API_ERASURE_JOURNAL_PATH:-}
+    volumes: &api-volumes
+      - ${RATEFREAK_INSTANCE_DIR}/runtime/api:/run/ratefreak:ro
+      - ${RATEFREAK_INSTANCE_DIR}/storage/artwork:/data/artwork
+      - ${RATEFREAK_INSTANCE_DIR}/storage/keys:/data/keys
+      - ${RATEFREAK_INSTANCE_DIR}/independent:/independent
+    depends_on:
+      postgres: {condition: service_healthy}
+    networks: [application, database]
+    healthcheck:
+      test: [CMD, curl, --fail, --silent, http://api:8080/health/ready]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  web:
+    image: ratefreak-web:local
+    restart: unless-stopped
+    read_only: true
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    tmpfs:
+      - /tmp:uid=10001,gid=10001,mode=1777
+      - /app/.next/cache:uid=10001,gid=10001,mode=0700
+    environment:
+      NODE_ENV: production
+      RATEFREAK_API_URL: http://api:8080
+      RATEFREAK_WEB_ORIGIN: ${RATEFREAK_PUBLIC_ORIGIN}
+      RATEFREAK_CLIENT_IP_MODE: trusted-proxy
+      RATEFREAK_ALLOW_PRIVATE_API_HTTP: 'true'
+    volumes:
+      - ${RATEFREAK_INSTANCE_DIR}/runtime/web:/run/ratefreak:ro
+    depends_on:
+      api: {condition: service_healthy}
+    networks: [ingress, application]
+    healthcheck:
+      test: [CMD, python3, -c, "import socket; socket.create_connection(('127.0.0.1',3000),3).close()"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  storage-init:
+    image: ratefreak-tools:local
+    user: '0:0'
+    command: [prepare]
+    profiles: [maintenance]
+    volumes:
+      - ${RATEFREAK_INSTANCE_DIR}:/instance
+    network_mode: none
+
+  migrate:
+    image: ratefreak-tools:local
+    command: [migrate]
+    profiles: [maintenance]
+    environment: *api-environment
+    volumes:
+      - ${RATEFREAK_INSTANCE_DIR}/runtime/tools:/run/ratefreak:ro
+      - ${RATEFREAK_INSTANCE_DIR}/storage/keys:/data/keys
+    networks: [database]
+    depends_on:
+      postgres: {condition: service_healthy}
+
+  tools:
+    image: ratefreak-tools:local
+    profiles: [maintenance]
+    environment:
+      <<: *api-environment
+      AccountData__ErasureJournalPath: /independent/account-erasures.jsonl
+    volumes:
+      - ${RATEFREAK_INSTANCE_DIR}/runtime/tools:/run/ratefreak:ro
+      - ${RATEFREAK_INSTANCE_DIR}/storage/artwork:/data/artwork
+      - ${RATEFREAK_INSTANCE_DIR}/storage/keys:/data/keys
+      - ${RATEFREAK_INSTANCE_DIR}/independent:/independent
+    networks: [database]
+    depends_on:
+      postgres: {condition: service_healthy}
+
+networks:
+  ingress:
+  application:
+  database:
+    internal: true
+volumes:
+  postgres_data:
