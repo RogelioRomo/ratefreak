@@ -41,5 +41,5 @@ internal sealed class LocalAccountRegistration(UserManager<AccountUser> users, R
     }
 
     private static AccountProfile Profile(AccountUser user) =>
-        new(user.Id, user.UserName!, user.DisplayName, user.Email!, user.CreatedAt, user.Bio);
+        new(user.Id, user.UserName!, user.DisplayName, user.Email!, user.CreatedAt, user.Bio, user.IsProfileHidden);
 }

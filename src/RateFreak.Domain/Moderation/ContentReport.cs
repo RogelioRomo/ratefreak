@@ -12,6 +12,7 @@ public sealed class ContentReport
     public Guid? ItemId { get; set; }
     public Guid? CategoryId { get; set; }
     public Guid? CommentId { get; set; }
+    public Guid? ProfileId { get; set; }
     public string Reason { get; set; } = null!;
     public string? Details { get; set; }
     public string Status { get; set; } = "open";

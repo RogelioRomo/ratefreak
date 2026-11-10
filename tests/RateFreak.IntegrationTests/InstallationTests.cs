@@ -142,7 +142,7 @@ public sealed class InstallationTests : IAsyncLifetime
     {
         await using var db = Db(); var migrator = db.GetService<IMigrator>();
         await migrator.MigrateAsync("20261106222423_AddAccountRecovery",Ct);
-        var id=Guid.NewGuid(); db.Users.Add(new AccountUser { Id=id, UserName="legacy_user", NormalizedUserName="LEGACY_USER", Email="legacy@example.test", NormalizedEmail="LEGACY@EXAMPLE.TEST", DisplayName="Legacy" }); await db.SaveChangesAsync(Ct);
+        var id=Guid.NewGuid(); await HistoricalAccountSeed.InsertAsync(db, new AccountUser { Id=id, UserName="legacy_user", NormalizedUserName="LEGACY_USER", Email="legacy@example.test", NormalizedEmail="LEGACY@EXAMPLE.TEST", DisplayName="Legacy" }, Ct);
         await db.Database.MigrateAsync(Ct);
         await using var f = Factory(); using var c = Client(f); Assert.False((await Status(c)).GetProperty("required").GetBoolean());
         Assert.Empty(await db.UserRoles.ToListAsync(Ct)); Assert.Equal(id, (await db.Users.SingleAsync(Ct)).Id);

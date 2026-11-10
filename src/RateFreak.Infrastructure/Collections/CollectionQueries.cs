@@ -13,7 +13,7 @@ internal sealed class CollectionQueries(RateFreakDbContext db) : ICollectionQuer
     private IQueryable<Collection> Accessible(Guid? viewer) => db.Collections.AsNoTracking().Where(c => c.Visibility == "public" || c.OwnerUserId == viewer && viewer != null);
     private IQueryable<CollectionSummary> Summaries(IQueryable<Collection> query) =>
         from c in query join owner in db.Users.AsNoTracking() on c.OwnerUserId equals owner.Id
-        select new CollectionSummary(c.Id, new(owner.Id, owner.UserName!, owner.DisplayName), c.Name, c.Description, c.Visibility, c.Revision, c.CreatedAt, c.UpdatedAt);
+        select new CollectionSummary(c.Id, new(owner.Id, owner.UserName!, owner.IsProfileHidden ? owner.UserName! : owner.DisplayName), c.Name, c.Description, c.Visibility, c.Revision, c.CreatedAt, c.UpdatedAt);
     private IQueryable<CollectionItem> VisibleItems(Guid? viewer, Guid id) => db.CollectionItems.AsNoTracking().Where(i => i.CollectionId == id && db.MediaItems.Where(CatalogAccess.Readable(viewer)).Any(m => m.Id == i.MediaItemId));
     private IQueryable<ItemDetails> Details(IQueryable<CollectionItem> query) =>
         from i in query join m in db.MediaItems.AsNoTracking() on i.MediaItemId equals m.Id

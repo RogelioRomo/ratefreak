@@ -40,7 +40,7 @@ function Editor({ account, available }: ProfileEditorProps) {
       void write.client.invalidateQueries({ queryKey: ["collections"] });
       setMessage("Profile saved.");
     } else setUncertain(true);
-  }}><h2>Edit public profile</h2><p>Your display name and bio are visible to everyone.</p>
+  }}><h2>Edit public profile</h2><p>{account.profileTextHidden ? "Your profile text is hidden by moderation. You can save corrections, but staff must restore it before your name and bio become public again." : "Your display name and bio are visible to everyone."}</p>
     {write.error && <p role="alert">{write.error instanceof ApiError && write.error.status === 400 ? "Please check your profile details." : write.error instanceof ApiError && write.error.status === 429 ? "Too many changes. Please wait before trying again." : "We couldn’t confirm the save. Reload your account to check before saving again."}</p>}
     {blocked && <p role="alert">Check your account by reloading before saving again.</p>}
     <fieldset disabled={!available || write.pending || blocked}>

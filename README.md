@@ -1000,13 +1000,16 @@ posts or resolve reports against them.
 | --- | --- | --- |
 | POST | `/api/v1/reviews/{id}/reports` | Signed-in + CSRF; report public review |
 | POST | `/api/v1/comments/{id}/reports` | Signed-in + CSRF; report public comment |
+| POST | `/api/v1/users/{id}/reports` | Signed-in + CSRF; report another account's visible profile text |
 | GET | `/api/v1/moderation/reports` | Staff; `status=open` or `resolved` |
 | GET | `/api/v1/moderation/reports/{id}` | Staff; private report and current target |
 | POST | `/api/v1/moderation/reports/{id}/resolve` | Staff + CSRF; dismiss or hide |
 | GET | `/api/v1/moderation/reviews/{id}` | Staff; inspect even hidden content/version |
 | GET | `/api/v1/moderation/comments/{id}` | Staff; inspect even under hidden parent |
+| GET | `/api/v1/moderation/profiles/{id}` | Staff; inspect current name/bio and profile version, including hidden text |
 | POST | `/api/v1/moderation/reviews/{id}/visibility` | Staff + CSRF; hide/restore |
 | POST | `/api/v1/moderation/comments/{id}/visibility` | Staff + CSRF; hide/restore |
+| POST | `/api/v1/moderation/profiles/{id}/visibility` | Staff + CSRF; hide/restore profile text |
 | GET | `/api/v1/moderation/audit` | Staff; optional `targetType`, `targetId` filters |
 | GET | `/api/v1/admin/accounts` | Admin; public account identity and current staff roles |
 | PUT | `/api/v1/admin/moderators/{userId}` | Admin + CSRF; grant Moderator |
@@ -1072,11 +1075,14 @@ changes beyond moderator assignment remain operator-managed. Automated tests
 appoint staff only in disposable databases; local operator appointments are separate.
 
 Reports and audit metadata survive account/content deletion via nullable live
-references and retained opaque UUIDs. No copies of post bodies/emails/handles are
-retained; original report details and decision reasons are retained. There is no
-automatic expiry or purge in this slice. Before public launch, establish retention,
-erasure/export and staff access policies. History is append-only through the app,
-not tamper-proof against database administrators. Operator events identify an offline
+references and pseudonymized UUIDs under [ADR 0017](docs/adr/0017-account-data-lifecycle.md).
+No profile/post-body snapshots, emails or handles are copied into these records.
+Resolved reports and related events expire after 365 days; standalone events after
+365 days. Open reports remain until resolved. Account erasure removes the deleted
+reporter's supplied details; retained staff notes may still contain identifiers.
+Before public launch, verify operational retention/restore setup and finalize
+staff-access/operator policies. History records app decisions but is not tamper-proof
+against database administrators. Operator events identify an offline
 operator action; deployment/OS logs must identify the person when required.
 
 `AddModeration` is additive and defaults existing content to visible. Its downgrade
@@ -1096,10 +1102,13 @@ appeals and notifications remain deferred.
 | GET | `/api/v1/users/by-handle/{handle}` | Public profile by case-insensitive handle |
 | PATCH | `/api/v1/users/me` | Signed-in owner + CSRF; partial display name/bio edit |
 
-Public profiles contain **only** `id`, `handle`, `displayName`, `bio`, `createdAt`.
+Public profiles contain **only** `id`, `handle`, `displayName`, `bio`, `createdAt`,
+and `profileTextHidden`. Hidden text returns the handle as `displayName` and null
+`bio`, including when the owner views their public profile. Review/comment authors,
+follow lists, collection owners and staff identity summaries use the same fallback.
 Email, security fields, roles, private library/ratings and provider mappings remain
 private. Missing users404; malformed handles400. Handles remain fixed and retain
-their registered casing. No all-user directory or private-profile switch. Existing
+their registered casing. No public all-user directory or private-profile switch. Existing
 follower/following routes remain separate. Public author-post lists are not added.
 
 PATCH accepts only `{displayName?, bio?}`. Omitted fields are preserved; supply at
@@ -1110,7 +1119,8 @@ text and escape it in the UI. Unknown/duplicate properties, wrong types and inva
 values400. Handles, email, passwords and roles cannot be changed here. Successful
 PATCH200 returns the private owner `AccountProfile`, including email and bio.
 Registration, local/external login/onboarding and existing GET `/users/me` consistently
-include `bio` (null until edited), preserving existing owner fields.
+include `bio` (null until edited) and `profileTextHidden` (false until moderated),
+preserving existing owner fields and the owner's current hidden text.
 
 All profile responses/errors are no-store, including matched case/trailing-slash
 variants. Public reads share profile-read60/IP/min; edits10/account/min. Budgets are
@@ -1118,7 +1128,9 @@ independent of social/catalog limits;429 Retry-After, no queue, per API instance
 Unauthenticated edits401; invalid/missing CSRF400. Caller identity comes from the
 session, never the request body. There is no edit-by-target-ID operation.
 
-Updates change only supplied profile fields and UpdatedAt. Disjoint concurrent edits
+Actual text changes update supplied fields, UpdatedAt and a dedicated profile
+version under a user-row lock; no-op edits do not advance the profile version.
+Disjoint concurrent edits
 preserve both; same-field edits are last-write-wins. Profile edits leave credentials,
 Identity stamps, role/login mappings and sessions unchanged. Existing authentication
 middleware can independently renew session cookies. EF concurrency checks prevent
@@ -1129,10 +1141,26 @@ updated display names through their existing joins.
 `AddUserBios` adds one nullable bounded users.bio column and a CHECK. Downgrade locks
 the table and refuses while any bio exists, preventing silent text loss. Prefer
 forward fixes; review backup/data policy before intentional rollback. No avatar
-uploads, handle/email changes, public library or profile reports/moderation.
-Public profile and profile-editing screens are implemented, and saved-code password
-reset is separate. Profile moderation and account erasure/export/retention policy
-remain public-launch work.
+uploads, handle/email changes or public-library view is added.
+
+Profile pages offer reporting for another account's visible profile text. Reports
+use the existing queue, reasons, reporting budget and lifetime reporter/target
+duplicate rule. Moderators/Admins can inspect current name/bio, hide/restore both
+fields with a reason, or hide and resolve/dismiss reports. Staff cannot decide
+their own profile. Hidden text cannot be reported again while hidden. The profile
+and account remain usable; this does not suspend the account or change its handle.
+Owners can edit hidden text, but only staff restoration publishes it. Visibility
+and resolution requests must include the current dedicated profile timestamp;
+stale decisions409, and unrelated sign-in/security updates do not change that version.
+
+`20261110014234_AddProfileModeration` adds default-visible state, profile versions
+and a nullable profile-report reference. Apply the reviewed migration before
+starting this API version. Down refuses hidden profiles, profile reports or profile
+audit history. Account deletion nulls live references and pseudonymizes profile
+targets under the existing erasure/replay and retention workflow. No historical
+profile-text snapshots or private-account inspection are added. See
+[ADR 0018](docs/adr/0018-profile-text-moderation.md) and the
+[account operations runbook](docs/account-data-operations.md).
 
 
 ## Saved-code password recovery (2026-11-06)

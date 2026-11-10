@@ -16,7 +16,7 @@ internal static class ModerationConfiguration
         {
             r.ToTable("content_reports", t =>
             {
-                t.HasCheckConstraint("ck_report_target", "target_id <> '00000000-0000-0000-0000-000000000000' AND ((target_type = 'review' AND comment_id IS NULL AND item_id IS NULL AND category_id IS NULL AND (review_id IS NULL OR review_id = target_id)) OR (target_type = 'comment' AND review_id IS NULL AND item_id IS NULL AND category_id IS NULL AND (comment_id IS NULL OR comment_id = target_id)) OR (target_type = 'item' AND review_id IS NULL AND comment_id IS NULL AND category_id IS NULL AND (item_id IS NULL OR item_id = target_id)) OR (target_type = 'category' AND review_id IS NULL AND comment_id IS NULL AND item_id IS NULL AND (category_id IS NULL OR category_id = target_id)))");
+                t.HasCheckConstraint("ck_report_target", "target_id <> '00000000-0000-0000-0000-000000000000' AND ((target_type = 'profile' AND review_id IS NULL AND comment_id IS NULL AND item_id IS NULL AND category_id IS NULL AND (profile_id IS NULL OR profile_id = target_id)) OR (profile_id IS NULL AND ((target_type = 'review' AND comment_id IS NULL AND item_id IS NULL AND category_id IS NULL AND (review_id IS NULL OR review_id = target_id)) OR (target_type = 'comment' AND review_id IS NULL AND item_id IS NULL AND category_id IS NULL AND (comment_id IS NULL OR comment_id = target_id)) OR (target_type = 'item' AND review_id IS NULL AND comment_id IS NULL AND category_id IS NULL AND (item_id IS NULL OR item_id = target_id)) OR (target_type = 'category' AND review_id IS NULL AND comment_id IS NULL AND item_id IS NULL AND (category_id IS NULL OR category_id = target_id)))))");
                 t.HasCheckConstraint("ck_report_reason", "reason IN ('spam','harassment','hate','sexual_content','violence','spoiler','other')");
                 t.HasCheckConstraint("ck_report_status", "(status = 'open' AND resolved_at IS NULL AND decision IS NULL AND resolution_reason IS NULL AND resolved_by IS NULL) OR (status = 'resolved' AND resolved_at IS NOT NULL AND decision IS NOT NULL AND decision IN ('hide','dismiss') AND resolution_reason IS NOT NULL AND resolved_by IS NOT NULL)");
                 t.HasCheckConstraint("ck_report_details", "(details IS NULL OR length(details) <= 1000) AND (reason <> 'other' OR (details IS NOT NULL AND length(btrim(details)) > 0))");
@@ -27,6 +27,7 @@ internal static class ModerationConfiguration
             r.HasIndex(x => new { x.OriginalReporterId, x.TargetType, x.TargetId }).IsUnique();
             r.HasIndex(x => new { x.Status, x.CreatedAt, x.Id });
             r.HasOne<AccountUser>().WithMany().HasForeignKey(x => x.ReporterId).OnDelete(DeleteBehavior.SetNull);
+            r.HasOne<AccountUser>().WithMany().HasForeignKey(x => x.ProfileId).OnDelete(DeleteBehavior.SetNull);
             r.HasOne<RateFreak.Domain.Catalog.MediaItem>().WithMany().HasForeignKey(x => x.ItemId).OnDelete(DeleteBehavior.SetNull);
             r.HasOne<RateFreak.Domain.Catalog.Category>().WithMany().HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.SetNull);
             r.HasOne<Review>().WithMany().HasForeignKey(x => x.ReviewId).OnDelete(DeleteBehavior.SetNull);

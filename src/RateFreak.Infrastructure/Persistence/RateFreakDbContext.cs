@@ -86,6 +86,8 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
                 "bio IS NULL OR (length(btrim(bio, ' ' || chr(9) || chr(10) || chr(13))) > 0 AND length(bio) <= 500)"));
             // Prevent stale full-row Identity updates from reverting separately committed profile edits.
             user.Property(u => u.Bio).HasMaxLength(500).IsConcurrencyToken();
+            user.Property(u => u.IsProfileHidden).HasDefaultValue(false).IsConcurrencyToken();
+            user.Property(u => u.ProfileUpdatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP").IsConcurrencyToken();
             user.Property(u => u.UpdatedAt).IsConcurrencyToken();
             user.Property(u => u.UserName).HasMaxLength(30).IsRequired();
             user.Property(u => u.NormalizedUserName).HasMaxLength(30).IsRequired();

@@ -8,7 +8,7 @@ export function staffFilters(params:URLSearchParams,kind:'reports'|'audit',api=f
  if(params.has('pageSize')&&params.get('pageSize')!=='20')throw Error('Invalid page size.');
  if(kind==='reports'){const status=params.get('status')??'open';if(!['open','resolved'].includes(status))throw Error('Invalid status.');return {page:Number(page),status:status as 'open'|'resolved'};}
  const type=params.get('targetType'),id=params.get('targetId');
- if(type!==null&&type!==''&&!['review','comment','item','category','account'].includes(type)||id!==null&&id!==''&&(!isMediaId(id)||id!==id.toLowerCase()))throw Error('Invalid audit target.');
+ if(type!==null&&type!==''&&!['review','comment','item','category','account','profile'].includes(type)||id!==null&&id!==''&&(!isMediaId(id)||id!==id.toLowerCase()))throw Error('Invalid audit target.');
  return {page:Number(page),...(type?{targetType:type as StaffFilters['targetType']}:{}),...(id?{targetId:id}:{})};
 }
 export function staffParams(filters:StaffFilters,api=false):URLSearchParams {
@@ -18,5 +18,5 @@ export function safeStaffReturnTo(value:string):string|null {
  const [path,query]=value.split('?');if(value.includes('#')||value.split('?').length>2)return null;
  if(path==='/moderation/staff'){try{staffAccountFilters(new URLSearchParams(query));return value;}catch{return null;}}
  if(path==='/moderation'||path==='/moderation/audit'){try{staffFilters(new URLSearchParams(query),path.endsWith('audit')?'audit':'reports');return value;}catch{return null;}}
- const parts=path.split('/');return !query&&parts.length===4&&parts[1]==='moderation'&&['reports','reviews','comments','media','categories'].includes(parts[2])&&isMediaId(parts[3])&&parts[3]===parts[3].toLowerCase()?value:null;
+ const parts=path.split('/');return !query&&parts.length===4&&parts[1]==='moderation'&&['reports','reviews','comments','media','categories','profiles'].includes(parts[2])&&isMediaId(parts[3])&&parts[3]===parts[3].toLowerCase()?value:null;
 }

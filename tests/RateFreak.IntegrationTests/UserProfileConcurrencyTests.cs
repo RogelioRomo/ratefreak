@@ -40,8 +40,13 @@ public sealed partial class UserProfileTests
             catch (PostgresException error) when (error.SqlState == PostgresErrorCodes.LockNotAvailable) { Blocked = true; }
         }
         private bool Match(DbCommand command) => UserId != Guid.Empty && !Attempted && command.CommandText.Contains("UPDATE users", StringComparison.Ordinal);
-        public override async ValueTask<InterceptionResult<int>> NonQueryExecutingAsync(DbCommand command, CommandEventData eventData, InterceptionResult<int> result, CancellationToken ct = default)
-        { if (!after && Match(command)) await Delete(ct); return result; }
+        public override async ValueTask<InterceptionResult<DbDataReader>> ReaderExecutingAsync(DbCommand command, CommandEventData eventData, InterceptionResult<DbDataReader> result, CancellationToken ct = default)
+        {
+            // Profile edits now acquire a row lock before UPDATE. Race deletion
+            // before that first lock, rather than after the lock already protects the row.
+            if (!after && UserId != Guid.Empty && !Attempted && command.CommandText.Contains("FOR UPDATE", StringComparison.Ordinal)) await Delete(ct);
+            return result;
+        }
         public override async ValueTask<int> NonQueryExecutedAsync(DbCommand command, CommandExecutedEventData eventData, int result, CancellationToken ct = default)
         { if (after && Match(command)) await Delete(ct); return result; }
     }

@@ -14,7 +14,8 @@ internal sealed partial class ModerationService
     {
         // PostgreSQL timestamp precision is microseconds; guarantee distinct versions even on fast repeats.
         var now=DateTimeOffset.UtcNow; if(now<=previous.AddTicks(10))now=previous.AddTicks(10);
-        if(type=="review")await db.Reviews.Where(x=>x.Id==id).ExecuteUpdateAsync(s=>s.SetProperty(x=>x.IsHidden,hidden).SetProperty(x=>x.UpdatedAt,now),ct);
+        if(type=="profile")await db.Users.Where(x=>x.Id==id).ExecuteUpdateAsync(s=>s.SetProperty(x=>x.IsProfileHidden,hidden).SetProperty(x=>x.ProfileUpdatedAt,now),ct);
+        else if(type=="review")await db.Reviews.Where(x=>x.Id==id).ExecuteUpdateAsync(s=>s.SetProperty(x=>x.IsHidden,hidden).SetProperty(x=>x.UpdatedAt,now),ct);
         else if(type=="item")await db.MediaItems.Where(x=>x.Id==id).ExecuteUpdateAsync(s=>s.SetProperty(x=>x.IsHidden,hidden).SetProperty(x=>x.Revision,x=>x.Revision+1).SetProperty(x=>x.UpdatedAt,now),ct);
         else if(type=="category")await db.Categories.Where(x=>x.Id==id && !x.IsSeeded).ExecuteUpdateAsync(s=>s.SetProperty(x=>x.IsHidden,hidden).SetProperty(x=>x.Revision,x=>x.Revision+1).SetProperty(x=>x.UpdatedAt,now),ct);
         else await db.ReviewComments.Where(x=>x.Id==id).ExecuteUpdateAsync(s=>s.SetProperty(x=>x.IsHidden,hidden).SetProperty(x=>x.UpdatedAt,now),ct);

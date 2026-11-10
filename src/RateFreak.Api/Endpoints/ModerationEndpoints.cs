@@ -10,7 +10,7 @@ internal static class ModerationEndpoints
 {
     public static void MapModerationEndpoints(this WebApplication app)
     {
-        foreach (var (segment, type) in new[] { ("reviews", "review"), ("comments", "comment"), ("media", "item"), ("categories", "category") })
+        foreach (var (segment, type) in new[] { ("reviews", "review"), ("comments", "comment"), ("media", "item"), ("categories", "category"), ("users", "profile") })
         {
             app.MapPost($"/api/v1/{segment}/{{id:guid}}/reports", async (Guid id, ReportRequest request, ClaimsPrincipal user, IModerationService service, CancellationToken ct) =>
             {
@@ -27,7 +27,7 @@ internal static class ModerationEndpoints
             await service.ReportAsync(id, ct) is { } result ? Results.Ok(result) : Results.NotFound()).RequireRateLimiting("moderation-read").Produces<ReportDetail>();
         Write(staff.MapPost("/reports/{id:guid}/resolve", async (Guid id, ResolveRequest request, ClaimsPrincipal user, IModerationService service, CancellationToken ct) =>
             Result(await service.ResolveAsync(Actor(user), id, request, ct))));
-        foreach (var (segment, type) in new[] { ("reviews", "review"), ("comments", "comment"), ("media", "item"), ("categories", "category") })
+        foreach (var (segment, type) in new[] { ("reviews", "review"), ("comments", "comment"), ("media", "item"), ("categories", "category"), ("profiles", "profile") })
         {
             staff.MapGet($"/{segment}/{{id:guid}}", async (Guid id, IModerationService service, CancellationToken ct) =>
                 await service.TargetAsync(type, id, ct) is { } result ? Results.Ok(result) : Results.NotFound()).RequireRateLimiting("moderation-read").Produces<ModerationTarget>();
@@ -35,7 +35,7 @@ internal static class ModerationEndpoints
                 Result(await service.VisibilityAsync(Actor(user), type, id, request, ct))));
         }
         staff.MapGet("/audit", async (IModerationService service, CancellationToken ct, string? targetType = null, Guid? targetId = null, int page = 1, int pageSize = 20) =>
-            !Paging(page, pageSize) || targetType is not (null or "review" or "comment" or "account" or "item" or "category") ? Invalid() : Results.Ok(await service.AuditAsync(targetType, targetId, page, pageSize, ct)))
+            !Paging(page, pageSize) || targetType is not (null or "review" or "comment" or "account" or "item" or "category" or "profile") ? Invalid() : Results.Ok(await service.AuditAsync(targetType, targetId, page, pageSize, ct)))
             .RequireRateLimiting("moderation-read").Produces<ModerationPage<ModerationAuditEntry>>();
         app.MapGet("/api/v1/admin/accounts", async (HttpRequest request, IModerationService service, CancellationToken ct,
             string? q = null, bool staffOnly = true, int page = 1, int pageSize = 20) =>

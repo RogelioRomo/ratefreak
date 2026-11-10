@@ -8,6 +8,10 @@ const state = vi.hoisted(() => ({ account: { id: "owner", handle: "owner", displ
 vi.mock("@/features/auth/hooks/use-session", () => ({ useSession: () => state }));
 beforeEach(() => { state.isTransitioning = false; vi.stubGlobal("fetch", vi.fn()); });
 function setup() { const client = new QueryClient({ defaultOptions: { queries: { retry: false } } }); client.setQueryData(sessionQueryKey, state.account); const element = <QueryClientProvider client={client}><ProfileEditor /></QueryClientProvider>; return { ...render(element), element, client }; }
+it("explains that editing hidden text requires staff restoration", () => {
+ const view=setup();view.client.setQueryData(sessionQueryKey,{...state.account,profileTextHidden:true});view.rerender(<QueryClientProvider client={view.client}><ProfileEditor/></QueryClientProvider>);
+ expect(screen.getByText(/Your profile text is hidden by moderation/)).toBeVisible();expect(screen.getByLabelText('Display name')).toHaveValue('Original');
+});
 it("retains draft through session uncertainty and associates server validation", async () => {
  const view = setup(); fireEvent.change(screen.getByLabelText("Display name"), { target: { value: "Draft" } });
  state.isTransitioning = true; view.rerender(view.element); expect(screen.getByLabelText("Display name")).toHaveValue("Draft");

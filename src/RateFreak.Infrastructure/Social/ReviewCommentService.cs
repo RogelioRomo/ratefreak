@@ -17,7 +17,7 @@ internal sealed class ReviewCommentService(RateFreakDbContext db) : IReviewComme
     private IQueryable<ReviewCommentDetails> Items(IQueryable<ReviewComment> comments) =>
         from comment in comments
         join author in db.Users.AsNoTracking() on comment.UserId equals author.Id
-        select new ReviewCommentDetails(comment.Id, comment.ReviewId, new CommentAuthor(author.Id, author.UserName!, author.DisplayName),
+        select new ReviewCommentDetails(comment.Id, comment.ReviewId, new CommentAuthor(author.Id, author.UserName!, author.IsProfileHidden ? author.UserName! : author.DisplayName),
             comment.Body, comment.IsSpoiler, comment.CreatedAt, comment.UpdatedAt);
 
     public async Task<ReviewCommentPage?> ListAsync(Guid? viewerId, Guid reviewId, int page, int pageSize, CancellationToken ct)

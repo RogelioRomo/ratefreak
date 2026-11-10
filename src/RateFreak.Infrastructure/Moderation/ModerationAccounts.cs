@@ -11,7 +11,7 @@ internal sealed partial class ModerationService
         await using var tx = await db.Database.BeginTransactionAsync(IsolationLevel.RepeatableRead, ct);
         var roles = from membership in db.UserRoles join role in db.Roles on membership.RoleId equals role.Id
                     select new { membership.UserId, role.NormalizedName };
-        var accounts = db.Users.AsNoTracking().Select(user => new { user.Id, Handle = user.UserName!, user.DisplayName,
+        var accounts = db.Users.AsNoTracking().Select(user => new { user.Id, Handle = user.UserName!, DisplayName = user.IsProfileHidden ? user.UserName! : user.DisplayName,
             IsAdmin = roles.Any(r => r.UserId == user.Id && r.NormalizedName == "ADMIN"),
             IsModerator = roles.Any(r => r.UserId == user.Id && r.NormalizedName == "MODERATOR") });
         if (staffOnly) accounts = accounts.Where(a => a.IsAdmin || a.IsModerator);

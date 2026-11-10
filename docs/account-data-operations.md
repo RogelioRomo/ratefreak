@@ -124,6 +124,21 @@ subsequently deleted test account before reopening production traffic.
 
 ## Export and runtime acceptance
 
+Profile moderation adds migration `20261110014234_AddProfileModeration`. Apply it
+before starting the corresponding API, with writers stopped and a private backup.
+It adds default-visible profile hiding, a profile-specific version and a nullable
+live report reference without changing existing profile text. Downgrade refuses
+hidden profiles, profile reports or profile audit history; it never clears those
+records to make an older application work. Prefer forward fixes once moderation
+has been used. Restore a matching application/schema pair and replay erasures
+before reopening traffic.
+
+Profile erasure removes the live report reference and pseudonymizes profile target
+IDs in reports/audit events. Verify deleted-target reports can only be dismissed,
+and replay does not create new references or change an existing pseudonym. Exports
+include the owner's current name/bio and `profileTextHidden`, with no copied report
+target text or staff notes. Owner corrections remain hidden until staff restore.
+
 Exports are private ZIP attachments, generated after fresh confirmation, limited
 to 256 MiB. The browser proxy streams them within a five-minute budget. Account
 data, personal contributions, owned catalog/list data and current owned artwork

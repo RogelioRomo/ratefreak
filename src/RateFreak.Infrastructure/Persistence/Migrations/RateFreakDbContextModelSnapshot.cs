@@ -614,6 +614,10 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("original_reporter_id");
 
+                    b.Property<Guid?>("ProfileId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("profile_id");
+
                     b.Property<string>("Reason")
                         .IsRequired()
                         .HasMaxLength(32)
@@ -665,6 +669,8 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("ItemId");
 
+                    b.HasIndex("ProfileId");
+
                     b.HasIndex("ReporterId");
 
                     b.HasIndex("ReviewId");
@@ -682,7 +688,7 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
 
                             t.HasCheckConstraint("ck_report_status", "(status = 'open' AND resolved_at IS NULL AND decision IS NULL AND resolution_reason IS NULL AND resolved_by IS NULL) OR (status = 'resolved' AND resolved_at IS NOT NULL AND decision IS NOT NULL AND decision IN ('hide','dismiss') AND resolution_reason IS NOT NULL AND resolved_by IS NOT NULL)");
 
-                            t.HasCheckConstraint("ck_report_target", "target_id <> '00000000-0000-0000-0000-000000000000' AND ((target_type = 'review' AND comment_id IS NULL AND item_id IS NULL AND category_id IS NULL AND (review_id IS NULL OR review_id = target_id)) OR (target_type = 'comment' AND review_id IS NULL AND item_id IS NULL AND category_id IS NULL AND (comment_id IS NULL OR comment_id = target_id)) OR (target_type = 'item' AND review_id IS NULL AND comment_id IS NULL AND category_id IS NULL AND (item_id IS NULL OR item_id = target_id)) OR (target_type = 'category' AND review_id IS NULL AND comment_id IS NULL AND item_id IS NULL AND (category_id IS NULL OR category_id = target_id)))");
+                            t.HasCheckConstraint("ck_report_target", "target_id <> '00000000-0000-0000-0000-000000000000' AND ((target_type = 'profile' AND review_id IS NULL AND comment_id IS NULL AND item_id IS NULL AND category_id IS NULL AND (profile_id IS NULL OR profile_id = target_id)) OR (profile_id IS NULL AND ((target_type = 'review' AND comment_id IS NULL AND item_id IS NULL AND category_id IS NULL AND (review_id IS NULL OR review_id = target_id)) OR (target_type = 'comment' AND review_id IS NULL AND item_id IS NULL AND category_id IS NULL AND (comment_id IS NULL OR comment_id = target_id)) OR (target_type = 'item' AND review_id IS NULL AND comment_id IS NULL AND category_id IS NULL AND (item_id IS NULL OR item_id = target_id)) OR (target_type = 'category' AND review_id IS NULL AND comment_id IS NULL AND item_id IS NULL AND (category_id IS NULL OR category_id = target_id)))))");
                         });
                 });
 
@@ -1133,6 +1139,13 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("email_confirmed");
 
+                    b.Property<bool>("IsProfileHidden")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("is_profile_hidden");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean")
                         .HasColumnName("lockout_enabled");
@@ -1164,6 +1177,13 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean")
                         .HasColumnName("phone_number_confirmed");
+
+                    b.Property<DateTimeOffset>("ProfileUpdatedAt")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("profile_updated_at")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text")
@@ -1387,6 +1407,11 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                     b.HasOne("RateFreak.Domain.Catalog.MediaItem", null)
                         .WithMany()
                         .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
+                        .WithMany()
+                        .HasForeignKey("ProfileId")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)

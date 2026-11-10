@@ -24,6 +24,9 @@ public sealed class UserProfilesMigrationTests
         db.AddRange(user, media, history); await db.SaveChangesAsync(ct); db.ChangeTracker.Clear();
         var migrator = db.GetService<IMigrator>(); const string prior = "20261031003720_AddModeration";
         await Assert.ThrowsAsync<PostgresException>(() => migrator.MigrateAsync(prior, ct));
+        // Later migrations may already have rolled back before the bio guard refuses.
+        // Restore the current schema before querying through the current EF model.
+        await db.Database.MigrateAsync(ct);
         Assert.Equal("Do not discard", (await db.Users.AsNoTracking().SingleAsync(ct)).Bio);
         Assert.Single(await db.Database.GetAppliedMigrationsAsync(ct), name => name.EndsWith("_AddUserBios", StringComparison.Ordinal));
         var invalid = await Assert.ThrowsAsync<PostgresException>(() => db.Database.ExecuteSqlInterpolatedAsync($"UPDATE users SET bio={'\t'.ToString()} WHERE id={user.Id}", ct)); Assert.Equal(PostgresErrorCodes.CheckViolation, invalid.SqlState);

@@ -6,6 +6,8 @@ public sealed class AccountUser : IdentityUser<Guid>
 {
     public string DisplayName { get; set; } = string.Empty;
     public string? Bio { get; set; }
+    public bool IsProfileHidden { get; set; }
+    public DateTimeOffset ProfileUpdatedAt { get; set; } = DateTimeOffset.UtcNow;
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
     public DateTimeOffset UpdatedAt { get; set; } = DateTimeOffset.UtcNow;
 }

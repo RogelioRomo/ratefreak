@@ -1,8 +1,9 @@
 # Current project status and roadmap
 
-Updated: 2026-11-09. Git baseline: `bd3d78e` (account lifecycle committed on local `main`).
-Staff management is implemented and verified on `feat/staff-management`.
-It has not been deployed.
+Updated: 2026-11-09. Account lifecycle (`bd3d78e`), staff management (`30c57e7`)
+and profile moderation are implemented and verified locally. See Git history for
+the current integration commit.
+No production deployment is recorded.
 The application is implemented and verified locally; production readiness remains open.
 This page is the current status and backlog, replacing next-step instructions in
 older plans and resume notes. It records work and decisions, not deployment authorization.
@@ -42,8 +43,10 @@ are evidence references, not durable deployment artifacts or guaranteed running 
   filesystem image, owner management and reversible archival.
 - Collections as lists of existing catalog items, with ordering, visibility,
   revision checks and explicit removal of unavailable memberships.
-- Reporting and staff moderation for reviews, comments, custom items and categories,
-  with visibility controls and audit history. Profile reporting is still pending.
+- Reporting and staff moderation for reviews, comments, custom items, categories
+  and profile text, with visibility controls and audit history. Profile hiding
+  replaces public display names with handles and omits bios across public identity
+  surfaces; owner corrections stay hidden until staff explicitly restore them.
 - Staff management inside moderation: admin-only account search, staff/all-account
   filters, current role indicators, confirmed moderator grant/revoke with audit
   reasons, and per-account audit links. Admin roles remain operator-managed.
@@ -56,6 +59,9 @@ Current decisions:
   Saved codes and already-linked providers handle recovery ([ADR 0014](adr/0014-account-recovery.md)).
 - Dynamic collection fields and free-standing collection entries are retired.
   Custom subjects are catalog items that lists reference ([ADR 0016](adr/0016-custom-catalog-and-list-collections.md)).
+- Profile moderation reversibly hides both display name and bio, keeps the account
+  usable, uses the existing lifetime report-deduplication rule, and stores no text
+  snapshots ([ADR 0018](adr/0018-profile-text-moderation.md)).
 - Routine session refetches retain the last verified identity and UI. Initial
   discovery, explicit account transitions and session-check errors still gate
   private content; confirmed logout/account changes clear old private state.
@@ -65,15 +71,17 @@ Current decisions:
 
 | Check | Latest recorded result |
 | --- | --- |
-| Frontend tests, 2026-11-09 | 675 passed across 92 files for staff management |
-| Backend tests, 2026-11-09 | 585 passed, zero skipped: 27 unit, 404 PostgreSQL integration, 154 provider contracts; executed suites separately after restoring existing dependency paths from the prior platform |
+| Frontend tests, 2026-11-09 | 682 passed across 95 files for profile moderation |
+| Backend tests, 2026-11-09 | 592 passed, zero skipped: 27 unit, 411 PostgreSQL integration, 154 provider contracts; historical migration fixtures now seed only columns present at their target version |
 | Frontend ESLint / TypeScript, 2026-11-09 | Passed |
-| Frontend production build / API Release publish | Passed on 2026-11-09 for staff management; EF model consistency previously passed for account lifecycle, with no schema changes in this slice |
+| Frontend production build / API Release publish / EF model consistency | Passed on 2026-11-09 for profile moderation |
 | Local Google/GitHub acceptance | User confirmed the local provider flow on 2026-11-07; deployed HTTPS acceptance remains open |
 | Account lifecycle browser verification, 2026-11-09 | Real local Chromium/API/Next/disposable PostgreSQL journey passed: ZIP, desktop/mobile dialog, cancel/focus, deletion, replayed session rejection and public/private content handling; earlier UI checks retain their original evidence limits |
 | Staff management browser verification, 2026-11-09 | Real Chromium/API/Next/disposable PostgreSQL passed: read-only Admin, searched account directory, grant/revoke and audit reasons, cancel/focus, current-role refresh, moderator/admin denial isolation, revoked-session rejection, and layouts at 1440/768/390/320px. No browser runtime errors. Temporary evidence: `/tmp/ratefreak-staff-browser/results.json` and screenshots; no persistent roles changed by these checks |
-| Persistent local database | Setup migration applied 2026-11-07; authorized test-data collection cutover completed 2026-11-08; account lifecycle migration applied 2026-11-09 after explicit user authorization, with a private backup and unchanged data verified across 25 existing tables |
-| Git integration | Catalog/list rewrite and 2026-11-09 UI/session changes committed together as `91a5cce` |
+| Profile moderation browser verification, 2026-11-09 | Real Chromium/API/Next/disposable PostgreSQL passed report → staff hide/resolve → owner correction staying hidden → staff restore; public profile/review handle fallbacks, audit reasons, confirmation cancellation, logout concealment, and 1440/768/390/320px layouts. No browser runtime errors. Temporary evidence: `/tmp/ratefreak-profile-browser/results.json` and inspection screenshots. Test services/database removed after checks |
+| Persistent local database | Setup migration applied 2026-11-07; authorized collection cutover 2026-11-08; account lifecycle migration 2026-11-09 with backup/preservation checks. Profile migration `20261110014234_AddProfileModeration` applied locally under the approved design on 2026-11-09 (PST), with a private mode-0600 backup and unchanged original row counts/content fingerprints across all 27 existing application tables. Evidence: `.local/localhost/profile-moderation-migration-verification.json` |
+| Local runtime | Updated API on localhost:5080 and frontend on localhost:3000 verified healthy; public profile contract and protected moderation proxy checked after migration |
+| Git integration | Catalog/list rewrite `91a5cce`, account lifecycle `bd3d78e`, staff management `30c57e7`; profile moderation integration follows in Git history |
 
 Lower test totals than older snapshots reflect the removal of retired collection
 field/entry behavior. Counts describe the executed suites; they do not establish
@@ -95,8 +103,9 @@ implementation specification.
   authorization. All row counts and content fingerprints across 25 existing tables
   were unchanged. The erasure journal still requires provisioning/configuration;
   other installations require their own reviewed migration/setup.
-- [ ] Add profile reporting/moderation, recorded as pre-launch work in the backend
-  history. Decide the handling of reported profile text and staff access.
+- [x] Add profile reporting/moderation with approved handling of display name/bio,
+  current staff access, owner correction/restoration, erasure integration and
+  reviewed additive migration ([design](superpowers/specs/2026-11-09-profile-moderation-design.md)).
 - [ ] Finalize staff-access and operator-attribution policies. Account erasure and
   bounded moderation retention are defined in ADR 0017; deployed acceptance remains open.
 - [x] Add administrator UI for moderator-role management within existing moderation
@@ -136,6 +145,6 @@ as the detailed acceptance checklist. Remaining categories are:
 - [ ] End-to-end acceptance using ordinary/staff accounts on the deployed candidate.
 - [ ] Fresh production/Release builds and browser checks for the final source revision.
 
-Suggested next work: address profile moderation and staff-access/operator policies,
-then verify account lifecycle setup, backup expiration and a staging deployment
+Suggested next work: finalize staff-access/operator policies, then verify account
+lifecycle setup, backup expiration and a staging deployment
 against the release gates. No production deployment is recorded by this consolidation.

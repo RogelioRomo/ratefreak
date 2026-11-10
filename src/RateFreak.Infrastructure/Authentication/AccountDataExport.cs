@@ -37,7 +37,7 @@ internal sealed partial class AccountDataService
             await using var snapshot = await db.Database.BeginTransactionAsync(IsolationLevel.RepeatableRead, ct);
             // Database reads start only after catalog coordination; local artwork remains stable until archive is finished.
             var account = await db.Users.AsNoTracking().Where(u => u.Id == userId && u.SecurityStamp == stamp)
-                .Select(u => new { u.Id, Handle = u.UserName, u.DisplayName, u.Email, u.Bio, u.CreatedAt, u.UpdatedAt }).SingleOrDefaultAsync(ct);
+                .Select(u => new { u.Id, Handle = u.UserName, u.DisplayName, u.Email, u.Bio, ProfileTextHidden = u.IsProfileHidden, u.CreatedAt, u.UpdatedAt }).SingleOrDefaultAsync(ct);
             if (account == null) throw new AccountDataException(401, "Your session has expired.");
             var readable = db.MediaItems.Where(CatalogAccess.Readable(userId));
             using (var zip = new ZipArchive(new ArchiveWriteStream(file, ArchiveLimit), ZipArchiveMode.Create, true))

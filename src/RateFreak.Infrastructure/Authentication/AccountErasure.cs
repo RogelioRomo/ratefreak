@@ -43,11 +43,15 @@ internal sealed partial class AccountDataService
         await db.MediaItems.Where(m => m.CreatorUserId == id).ExecuteUpdateAsync(s => s.SetProperty(m => m.CreatorUserId, (Guid?)null).SetProperty(m => m.Revision, m => m.Revision + 1).SetProperty(m => m.UpdatedAt, now), ct);
         await db.Categories.Where(c => c.OwnerUserId == id).ExecuteUpdateAsync(s => s.SetProperty(c => c.OwnerUserId, (Guid?)null).SetProperty(c => c.Revision, c => c.Revision + 1).SetProperty(c => c.UpdatedAt, now), ct);
         var pseudonym = Guid.NewGuid();
+        // Null the live reference in the same statement as the target rewrite so
+        // the report-shape constraint remains valid throughout erasure and replay.
+        await db.ContentReports.Where(r => r.TargetType == "profile" && r.TargetId == id).ExecuteUpdateAsync(s => s
+            .SetProperty(r => r.ProfileId, (Guid?)null).SetProperty(r => r.TargetId, pseudonym), ct);
         await db.ContentReports.Where(r => r.OriginalReporterId == id).ExecuteUpdateAsync(s => s.SetProperty(r => r.OriginalReporterId, pseudonym).SetProperty(r => r.ReporterId, (Guid?)null).SetProperty(r => r.Details, "Reporter account deleted."), ct);
         await db.ContentReports.Where(r => r.OriginalAuthorId == id).ExecuteUpdateAsync(s => s.SetProperty(r => r.OriginalAuthorId, (Guid?)pseudonym), ct);
         await db.ContentReports.Where(r => r.ResolvedBy == id).ExecuteUpdateAsync(s => s.SetProperty(r => r.ResolvedBy, (Guid?)pseudonym), ct);
         await db.ModerationEvents.Where(e => e.ActorId == id).ExecuteUpdateAsync(s => s.SetProperty(e => e.ActorId, (Guid?)pseudonym), ct);
-        await db.ModerationEvents.Where(e => e.TargetType == "account" && e.TargetId == id).ExecuteUpdateAsync(s => s.SetProperty(e => e.TargetId, pseudonym), ct);
+        await db.ModerationEvents.Where(e => (e.TargetType == "account" || e.TargetType == "profile") && e.TargetId == id).ExecuteUpdateAsync(s => s.SetProperty(e => e.TargetId, pseudonym), ct);
         await db.Users.Where(u => u.Id == id).ExecuteDeleteAsync(ct);
         return keys;
     }

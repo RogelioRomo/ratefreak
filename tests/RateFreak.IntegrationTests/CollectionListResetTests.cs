@@ -20,7 +20,7 @@ public sealed class CollectionListResetTests
         await using var db = new RateFreakDbContext(new DbContextOptionsBuilder<RateFreakDbContext>().UseNpgsql(pg.GetConnectionString()).Options);
         var migration = typeof(RateFreakDbContext).Assembly.GetTypes().Single(t => t.Name == "AddArtworkMetadata").GetCustomAttributes(typeof(MigrationAttribute), false).Cast<MigrationAttribute>().Single().Id;
         await db.GetService<IMigrator>().MigrateAsync(migration, ct);
-        var user = new AccountUser { Id = Guid.NewGuid(), UserName = "reset_owner", NormalizedUserName = "RESET_OWNER", Email = "reset@test.example", NormalizedEmail = "RESET@TEST.EXAMPLE", DisplayName = "Owner" }; var media = new MediaItem("movie", "Preserved subject"); db.AddRange(user, media); await db.SaveChangesAsync(ct);
+        var user = new AccountUser { Id = Guid.NewGuid(), UserName = "reset_owner", NormalizedUserName = "RESET_OWNER", Email = "reset@test.example", NormalizedEmail = "RESET@TEST.EXAMPLE", DisplayName = "Owner" }; var media = new MediaItem("movie", "Preserved subject"); await HistoricalAccountSeed.InsertAsync(db, user, ct); db.Add(media); await db.SaveChangesAsync(ct);
         var rating = new RateFreak.Domain.PersonalMedia.Rating(user.Id, media.Id, 4.5m); var review = new RateFreak.Domain.PersonalMedia.Review(user.Id, media.Id, "Preserved review", false); db.AddRange(rating, review); await db.SaveChangesAsync(ct);
         var list = Guid.NewGuid(); var entry = Guid.NewGuid(); var field = Guid.NewGuid();
         await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO collections (id,owner_user_id,name,visibility,revision,schema_version,created_at,updated_at) VALUES ({list},{user.Id},'Preserved garden','private',7,1,now(),now())",ct);

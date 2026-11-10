@@ -19,7 +19,8 @@ public sealed partial class ModerationTests
         Assert.Equal(HttpStatusCode.Forbidden, (await mod.GetAsync(path, Ct)).StatusCode);
         Assert.Equal(HttpStatusCode.OK, (await mod.GetAsync("/api/v1/moderation/reports", Ct)).StatusCode);
         await Role(adminId, "Admin");
-        var response = await admin.GetAsync(path, Ct); var page = await Json(response);
+        var account = await Json(await admin.GetAsync("/api/v1/users/me", Ct));
+        var response = await admin.GetAsync(path + "?q=" + account.GetProperty("handle").GetString(), Ct); var page = await Json(response);
         Assert.True(response.Headers.CacheControl?.NoStore);
         var row = page.GetProperty("items").EnumerateArray().Single(x => x.GetProperty("id").GetGuid() == adminId);
         Assert.Equal(new[] { "displayName", "handle", "id", "isAdmin", "isModerator" }, row.EnumerateObject().Select(p => p.Name).Order().ToArray());

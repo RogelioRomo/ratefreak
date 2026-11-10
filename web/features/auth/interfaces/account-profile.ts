@@ -5,4 +5,5 @@ export interface AccountProfile {
   email: string;
   createdAt: string;
   bio?: string | null;
+  profileTextHidden?: boolean;
 }
