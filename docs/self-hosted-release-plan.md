@@ -75,8 +75,11 @@ other topologies and each operator's external obligations retain their own check
   required attribution and separately supplied provider credentials.
   Initial review recorded 2026-11-13: [dependency/image findings](dependency-redistribution-review.md),
   [package inventory](dependency-inventory.md) and [provider findings](provider-terms-review.md).
-  Final artifact notices/native-library source compliance, TMDB branding/credits,
-  operator eligibility guidance and applicable full agreements remain open.
+  Provider credits for all three providers and image package notice collection are
+  implemented; [candidate image/native evidence](release-compliance-verification.md)
+  records verification and remaining source-delivery/provenance requirements.
+  [Applicable provider agreements](provider-agreement-evidence.md) and each operator's
+  eligibility/acceptance remain separate requirements; this checkbox stays open.
 - [x] Add a self-hosting quickstart, configuration reference, upgrade/recovery
   instructions, supported versions/limitations and troubleshooting.
 - [ ] Add contribution and security-reporting guidance, release/versioning process

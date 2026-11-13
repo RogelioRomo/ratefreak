@@ -1,0 +1,4 @@
+# Preserve retrieved third-party license bytes and their recorded hashes.
+# Upstream whitespace is evidence, not project formatting to normalize.
+deploy/compliance/supplements/* -text -whitespace
+deploy/compliance/native/sharp-libvips-* -text -whitespace

@@ -27,6 +27,8 @@ older plans and resume notes. It records work and decisions, not deployment auth
 | [Self-hosted release plan](self-hosted-release-plan.md) | Portable installation, packaging and open-source release work |
 | [Dependency redistribution review](dependency-redistribution-review.md) | Package/image license findings, inventory scope and notice/source follow-up |
 | [Provider terms review](provider-terms-review.md) | Provider attribution, service eligibility and unresolved content-rights checks |
+| [Credits/compliance evidence](release-compliance-verification.md) | Implemented provider credits, packaged notices, native-source evidence and remaining obligations |
+| [Provider agreement evidence](provider-agreement-evidence.md) | Retrieved official agreements, access limits and operator acceptance requirements |
 | [Self-hosting guide](self-hosting.md) | Reference installation, configuration, upgrades and recovery |
 | [Reference verification](self-hosted-reference-verification.md) | Packaging, HTTPS, maintenance and recovery evidence/limits |
 | [Staff operations](staff-access-operations.md) | Staff permissions, named operator attribution and deployment acceptance |
@@ -65,6 +67,11 @@ are evidence references, not durable deployment artifacts or guaranteed running 
   and actor-attributed audit history. Granting Admin remains operator-managed.
 - Catalog category-only browsing controls, separate existing/new category workflows,
   spacing improvements and silent routine background session checks.
+- Permanent Credits page for TMDB, MusicBrainz and IGDB, approved TMDB logo/notice,
+  footer navigation and provider credits on imported catalog details. Production
+  images collect package license/notice texts, project LICENSE, OS/runtime copyright
+  evidence and native source/build provenance; this does not close source-distribution
+  or provider-agreement obligations.
 
 Current decisions:
 
@@ -89,6 +96,7 @@ Current decisions:
 
 | Check | Latest recorded result |
 | --- | --- |
+| Credits and notice packaging, 2026-11-13 | 722 frontend tests, lint/typecheck, frontend production build and seven notice-collector tests passed. All three candidate images built; package text/hash checks passed for API 35/web 63/tools 36 packages, with runtime/native evidence. Chromium desktop/mobile in both themes and independent UI review passed. All 33 selected libvips source archive/patch URLs acquired and hashed; corresponding-source/relinking and agreement acceptance remain separate gates. See [scope/limits](release-compliance-verification.md) |
 | Dependency/provider review, 2026-11-13 | Source/package metadata and official provider/license sources reviewed; [dependency findings](dependency-redistribution-review.md), [inventory](dependency-inventory.md) and [provider findings](provider-terms-review.md) recorded. Missing TMDB logo/About-Credits attribution, final artifact notice/source compliance and inaccessible full provider agreements remain open. This was not a final image scan, vulnerability audit or legal clearance |
 | Self-hosted reference, 2026-11-10 | Complete private Compose/API/web/tools package and optional Caddy verified on Linux amd64. 719 frontend, 603 backend, 30 operator tests passed; real HTTPS/Chromium, DB permissions, migration/recreation, staff operations, coordinated restore/replay and incomplete-restore refusal passed. Controlled long export edge test: cancellation propagated, 504 at 300.01s. See [reference evidence](self-hosted-reference-verification.md) |
 | Isolated account restore drill, 2026-11-10 | PostgreSQL 17 database/artwork backup restored into a separate disposable database; fresh Release CLI replay, exact-database refusal, second replay, private erasure/artwork cleanup, public detachment and moderation preservation passed. Focused integration tests: 13 passed, zero skipped. Existing project data unchanged. See [scope and limits](account-restore-verification.md) |
@@ -188,12 +196,14 @@ as the detailed acceptance checklist. Remaining categories are:
   and security guidance, versioned artifacts and self-hosting/upgrade documentation.
 
 The [reference-installation design](superpowers/specs/2026-11-10-self-hosted-reference-installation-design.md)
-is implemented and verified locally. The 2026-11-13 dependency/provider review is
-recorded; the redistribution/provider release gate remains open. Next work: resolve
-provider attribution and operator eligibility guidance, obtain applicable full
-agreements, and assemble exact-artifact license/notice and native-library source
-compliance evidence. See the [dependency review](dependency-redistribution-review.md)
-and [provider review](provider-terms-review.md). Contributor/security guidance and
+is implemented and verified locally. Provider credits and package notice assembly
+are implemented and verified; the redistribution/provider release gate remains open.
+Next work: close the remaining [provider agreement requirements](provider-agreement-evidence.md),
+verify a complete native/OS corresponding-source distribution and replacement/relinking
+mechanism, and resolve the exact-version scroll-bar license provenance limitation.
+See the [credits/compliance evidence](release-compliance-verification.md),
+[dependency review](dependency-redistribution-review.md) and [provider review](provider-terms-review.md).
+Contributor/security guidance and
 versioned release automation follow using the [release plan](self-hosted-release-plan.md).
 Each operator still verifies their own journal protection, backup expiration,
 staff records and infrastructure acceptance. No public deployment or publication

@@ -45,3 +45,5 @@
     text-align: center;
   }
 }
+
+.credits { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--foreground); text-decoration: underline; text-underline-offset: 0.2em; }

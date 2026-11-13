@@ -1,0 +1,200 @@
+[
+  {
+    "file": "GPL-3.0-LICENSE.txt",
+    "url": "https://www.gnu.org/licenses/gpl-3.0.txt",
+    "retrieved": "2026-11-13",
+    "obtained_from": "Debian /usr/share/common-licenses/GPL-3 (official GNU text; direct download unavailable)",
+    "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "packages": [
+      "@img/sharp-libvips-linux-x64@1.3.4"
+    ],
+    "primary_license": false
+  },
+  {
+    "file": "Humanizer-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/Humanizr/Humanizer/3ebc38de585fc641a04b0e78ed69468453b0f8a1/LICENSE",
+    "retrieved": "2026-11-13",
+    "sha256": "e24ec7f2eea5c5f4b3e2c08308109ba99b49b4b56ea7ff0e0a178f2bdd4bbce8",
+    "packages": [
+      "Humanizer.Core@2.14.1"
+    ],
+    "primary_license": true
+  },
+  {
+    "file": "LGPL-3.0-LICENSE.txt",
+    "url": "https://www.gnu.org/licenses/lgpl-3.0.txt",
+    "retrieved": "2026-11-13",
+    "obtained_from": "Debian /usr/share/common-licenses/LGPL-3 (official GNU text; direct download unavailable)",
+    "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
+    "packages": [
+      "@img/sharp-libvips-linux-x64@1.3.4"
+    ],
+    "primary_license": true
+  },
+  {
+    "file": "Npgsql-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/npgsql/npgsql/a18021849f244716d3b68eefd705677f131f9ace/LICENSE",
+    "retrieved": "2026-11-13",
+    "sha256": "2e1d9cc6ed4eb7fe6fa82091846c06b4f58571a2c3b54777db6baeca10dd2d74",
+    "packages": [
+      "Npgsql@10.0.0"
+    ],
+    "primary_license": true
+  },
+  {
+    "file": "Swashbuckle-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/domaindrivendev/Swashbuckle.AspNetCore/7419fb7c21432e163f34faefd3053477bc506e22/LICENSE",
+    "retrieved": "2026-11-13",
+    "sha256": "c87a9ab2520595bc7c31343b5250e8f3779a65c6051612118b0accd200f24d07",
+    "packages": [
+      "Swashbuckle.AspNetCore.SwaggerUI@10.3.1"
+    ],
+    "primary_license": true
+  },
+  {
+    "file": "dotnet-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/dotnet/dotnet/44525024595742ebe09023abe709df51de65009b/LICENSE.TXT",
+    "retrieved": "2026-11-13",
+    "sha256": "ae48df11a335dc1a615f4f938b69cba73bcf4485c4f97af49b38efb0f216353b",
+    "packages": [
+      "Microsoft.EntityFrameworkCore@10.0.2",
+      "Microsoft.EntityFrameworkCore.Abstractions@10.0.2",
+      "Microsoft.EntityFrameworkCore.Analyzers@10.0.2",
+      "Microsoft.EntityFrameworkCore.Design@10.0.2",
+      "Microsoft.EntityFrameworkCore.Relational@10.0.2",
+      "dotnet-ef@10.0.2"
+    ],
+    "primary_license": true
+  },
+  {
+    "file": "efcore-pg-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/npgsql/efcore.pg/7624373747b28d693b45cea8174471d4b312e2a5/LICENSE",
+    "retrieved": "2026-11-13",
+    "sha256": "bc2fdab8551ca4022196dbbd3dc582ca65211209196a3459b1bab60cb71a9979",
+    "packages": [
+      "Npgsql.EntityFrameworkCore.PostgreSQL@10.0.0"
+    ],
+    "primary_license": true
+  },
+  {
+    "file": "libvips-embedded-LICENSE-NOTICES.txt",
+    "url": "https://github.com/lovell/sharp-libvips/tree/v1.3.4",
+    "retrieved": "2026-11-13",
+    "sha256": "ee9c9086373139c84531c005ef5b9a900ae4e198879fac9cee98e06d95166dca",
+    "packages": [
+      "@img/sharp-libvips-linux-x64@1.3.4"
+    ],
+    "provenance": "deploy/compliance/native/source-acquisition.json",
+    "limitation": "Source acquisition incomplete unless every entry is downloaded; nested Rust dependencies and binary reproduction remain unverified.",
+    "primary_license": false
+  },
+  {
+    "file": "next-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/vercel/next.js/v16.4.3/license.md",
+    "retrieved": "2026-11-13",
+    "sha256": "ee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224",
+    "packages": [
+      "@next/env@16.4.3",
+      "@next/swc-linux-x64-gnu@16.4.3"
+    ],
+    "primary_license": true
+  },
+  {
+    "file": "react-client-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/facebook/react/v19.3.0/LICENSE",
+    "retrieved": "2026-11-13",
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "packages": [
+      "client-only@0.0.1"
+    ],
+    "primary_license": true
+  },
+  {
+    "file": "remove-scroll-bar-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/theKashey/react-remove-scroll-bar/8ca9ba5ea52de03308fe8ced94f7b159a44d28ff/LICENSE",
+    "retrieved": "2026-11-13",
+    "sha256": "a79aae0c0f21990d9d963bb3c5a79cdcea9a46f8523ba55c58d7fe776b6ebc84",
+    "packages": [
+      "react-remove-scroll-bar@2.3.8"
+    ],
+    "limitation": "Published gitHead has no license file; text from pinned upstream master. Exact-version applicability requires confirmation.",
+    "primary_license": true
+  },
+  {
+    "file": "sharp-libvips-NOTICE.md",
+    "url": "https://raw.githubusercontent.com/lovell/sharp-libvips/v1.3.4/THIRD-PARTY-NOTICES.md",
+    "retrieved": "2026-11-13",
+    "sha256": "6f0d5086e3bcbee12bcdacf5878b31d1104002aeecaeb241d3fff466108082fe",
+    "packages": [
+      "@img/sharp-libvips-linux-x64@1.3.4"
+    ],
+    "primary_license": false
+  },
+  {
+    "file": "upstream-33e0af2c6132-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/dotnet/roslyn-analyzers/f2384e61845314d0e8ad74cc0fe67d1bd4e9f102/License.txt",
+    "retrieved": "2026-11-13",
+    "sha256": "ae48df11a335dc1a615f4f938b69cba73bcf4485c4f97af49b38efb0f216353b",
+    "packages": [
+      "Microsoft.CodeAnalysis.Analyzers@3.11.0"
+    ],
+    "primary_license": true
+  },
+  {
+    "file": "upstream-4b954e876d67-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/Microsoft/OpenAPI.NET/99fc3f830ca7a8e95f9db48babdf06118ecfa50f/LICENSE",
+    "retrieved": "2026-11-13",
+    "sha256": "5d177f23ecfeb0ea8e050b6a5a16355e1ae9a0b286436ca8f83ed08b3795be6b",
+    "packages": [
+      "Microsoft.OpenApi@2.7.5"
+    ],
+    "primary_license": true
+  },
+  {
+    "file": "upstream-7cfd662cb6be-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/dotnet/msbuild/995a3dce41788caebf2b8ca6602a7431f08bfd06/LICENSE",
+    "retrieved": "2026-11-13",
+    "sha256": "9aebac42398b50e652a84a7b92d70e85cd1a9c8746558a743dc6cec11b8d7d3e",
+    "packages": [
+      "Microsoft.Build.Framework@18.0.2"
+    ],
+    "primary_license": true
+  },
+  {
+    "file": "upstream-825827aa26de-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/dotnet/dotnet/44525024595742ebe09023abe709df51de65009b/LICENSE.TXT",
+    "retrieved": "2026-11-13",
+    "sha256": "ae48df11a335dc1a615f4f938b69cba73bcf4485c4f97af49b38efb0f216353b",
+    "packages": [
+      "Microsoft.AspNetCore.Authentication.Google@10.0.2",
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore@10.0.2",
+      "Microsoft.AspNetCore.OpenApi@10.0.2",
+      "Microsoft.Extensions.DependencyModel@10.0.2"
+    ],
+    "primary_license": true
+  },
+  {
+    "file": "upstream-b8bcd366771f-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/microsoft/vs-solutionpersistence/19c3ca7dc997dba2b3a86f6c666e9f717f34c8fe/LICENSE",
+    "retrieved": "2026-11-13",
+    "sha256": "b5cb7ff7859e7d282d98fc43ab081b0dda5dc659dc3385cf65740c759a7e6a6c",
+    "packages": [
+      "Microsoft.VisualStudio.SolutionPersistence@1.0.52"
+    ],
+    "primary_license": true
+  },
+  {
+    "file": "upstream-dba6193f31df-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/dotnet/roslyn/6c4a46a31302167b425d5e0a31ea83c9a9aa1d09/License.txt",
+    "retrieved": "2026-11-13",
+    "sha256": "ae48df11a335dc1a615f4f938b69cba73bcf4485c4f97af49b38efb0f216353b",
+    "packages": [
+      "Microsoft.CodeAnalysis.CSharp@5.0.0",
+      "Microsoft.CodeAnalysis.CSharp.Workspaces@5.0.0",
+      "Microsoft.CodeAnalysis.Common@5.0.0",
+      "Microsoft.CodeAnalysis.Workspaces.Common@5.0.0",
+      "Microsoft.CodeAnalysis.Workspaces.MSBuild@5.0.0"
+    ],
+    "primary_license": true
+  }
+]

@@ -504,3 +504,15 @@ private network. Use HTTPS for cross-host links. Keep Next/API/database ports
 private; the ingress credential does not justify public container listeners.
 Never reuse the API service secret for ingress. Existing Vercel and Development
 loopback modes retain their original restrictions.
+
+## Credits and dependency notices
+
+`/credits` acknowledges TMDB, MusicBrainz and IGDB and links the software/font
+licenses. Imported catalog details credit their persisted provider identities.
+
+Python 3 is required alongside Node/pnpm for notice collection. `pnpm dev` and
+`pnpm build` run `pnpm notices` first, generating `public/notices/` from the exact
+installed dependencies and pinned supplements. Do not edit this ignored output.
+Docker builds generate and retain the same notices. See the
+[collector instructions](../deploy/compliance/README.md) and
+[release evidence/remaining obligations](../docs/release-compliance-verification.md).

@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "notices": "python3 ../deploy/compliance/notices.py web . public/notices --supplements ../deploy/compliance/supplements --project-license ../LICENSE --evidence ../deploy/compliance/native --check",
+    "predev": "pnpm notices",
+    "prebuild": "pnpm notices",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

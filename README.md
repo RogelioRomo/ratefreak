@@ -34,7 +34,8 @@ lives in [`web/`](web/README.md), with its own pnpm lockfile. Deployment assets
 live in `deploy/` and shared documentation in `docs/`. Both apps can be changed
 in one pull request and deployed independently; no monorepo build tool is required.
 
-For the frontend, install Node.js 24 LTS and pnpm 10, then run from the repo root:
+For the frontend, install Node.js 24 LTS, pnpm 10 and Python 3 (for dependency
+notice collection), then run from the repo root:
 
 ```bash
 pnpm --dir web install --frozen-lockfile

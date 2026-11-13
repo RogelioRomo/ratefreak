@@ -18,3 +18,5 @@ TestResults/
 # Build outputs whose directory names contain a literal backslash
 **/bin\\*/
 **/obj\\*/
+# Generated from exact installed packages by pnpm notices / Docker builds.
+web/public/notices/

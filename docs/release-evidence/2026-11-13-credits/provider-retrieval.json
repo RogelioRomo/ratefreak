@@ -1,0 +1,18 @@
+[
+  {
+    "name": "tmdb",
+    "url": "https://www.themoviedb.org/api-terms-of-use",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "name": "twitch",
+    "url": "https://legal.twitch.com/en/legal/developer-agreement/",
+    "status": 200,
+    "bytes": 28664,
+    "sha256": "68d60cad4003f1148dbf1a05d4f67c946c8de220d17f0e4b5ef34ca199f839b3",
+    "decoded_html_sha256": "3c1123661265f4fd88200ea908a88e9781f571252e917c92124ee497e1d79eb1",
+    "decoded_html_bytes": 100890,
+    "last_modified_label": "12/04/2024",
+    "retrieved": "2026-11-13"
+  }
+]

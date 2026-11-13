@@ -28,6 +28,7 @@ it("provides one main landmark, skip navigation and working Home navigation", ()
   expect(within(main).getByRole("link", { name: /browse the catalog/i })).toHaveAttribute("href", "/catalog");
   expect(screen.getByRole("navigation", { name: "Main navigation" })).toHaveTextContent("Catalog");
   expect(screen.queryByRole("searchbox")).not.toBeInTheDocument();
+  expect(within(screen.getByRole("contentinfo")).getByRole("link", { name: "Credits" })).toHaveAttribute("href", "/credits");
   expect(within(screen.getByRole("contentinfo")).getByRole("group", { name: "Theme" })).toBeInTheDocument();
   expect(within(screen.getByRole("banner")).queryByRole("group", { name: "Theme" })).not.toBeInTheDocument();
   // The same theme control remains available when the active route changes.

@@ -5,6 +5,15 @@ remaining release work; it does not establish final artifact clearance or replac
 the licenses shipped by each dependency. Provider data is reviewed separately in
 [provider terms](provider-terms-review.md).
 
+**Implementation follow-up, 2026-11-13:** [Credits/compliance evidence](release-compliance-verification.md)
+supersedes the initial packaging gaps below: all three candidate images now carry
+project LICENSE, package notice texts/hashes, existing runtime/OS copyright files,
+and native source/build evidence. The web serves its notice bundle from Credits.
+Source distribution/relinking, exhaustive final artifact review and the recorded
+scroll-bar supplement provenance limitation remain open. The rest of this note
+preserves the initial review and its rationale; it is not a claim that all gaps
+listed below still describe the current Dockerfiles.
+
 ## Result and scope
 
 RateFreak's MIT license applies to project code. It does not relicense dependencies,

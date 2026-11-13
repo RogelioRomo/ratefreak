@@ -5,7 +5,15 @@ import persistence and provider attribution UI. This records public primary-sour
 findings and implementation gaps; it does not establish legal clearance or approve
 a commercial deployment. RateFreak's MIT license does not license provider content.
 
-## Release findings
+Follow-up: [agreement access and clause evidence](provider-agreement-evidence.md)
+records the retrieved official guidance, full-agreement retrieval attempts and
+precisely scoped remaining contract checks. UI findings below describe the initial
+inspection. [Credits/catalog attribution and notice packaging](release-compliance-verification.md)
+are now implemented and verified. The full Twitch agreement was obtained by direct
+retrieval; its scope/lifecycle questions and the still-inaccessible TMDB terms are
+recorded in the follow-up, which supersedes initial access findings below.
+
+## Initial release findings (see follow-up evidence)
 
 | Priority | Finding | Required follow-up |
 | --- | --- | --- |
@@ -123,11 +131,11 @@ Implementation evidence:
   attribution when users only browse imported content. Confirm placement against
   the operator's actual partnership agreement.
 
-The linked [Twitch Developer Services Agreement](https://legal.twitch.com/en/legal/developer-agreement/)
-returned a page shell without agreement text in this review. Credential handling,
-termination/deletion and redistribution clauses therefore remain unreviewed.
-The IGDB FAQ is useful evidence, not a replacement for that agreement or a
-commercial partner's signed terms.
+The initial browser retrieval of the [Twitch Developer Services Agreement](https://legal.twitch.com/en/legal/developer-agreement/)
+returned only a shell. Direct retrieval subsequently obtained the full text; see
+[section-level comparison and hash evidence](provider-agreement-evidence.md#twitch-full-text-follow-up).
+IGDB schedule/partnership scope and content lifecycle still need confirmation; the
+FAQ is not a substitute for the applicable agreement.
 
 ## Acceptance evidence still needed
 

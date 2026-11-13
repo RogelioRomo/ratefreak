@@ -107,6 +107,13 @@ it("renders details with honest absent metadata and artwork", async () => {
   expect(screen.getByText("No description available yet.")).toBeInTheDocument();
   expect(screen.getByRole("link", { name: /catalog/i })).toHaveAttribute("href", "/catalog");
 });
+it("credits persisted provider identities on catalog details without requesting provider capabilities", async () => {
+  fetchMock.mockResolvedValue(Response.json({ ...item, description: null, externalIds: [{ provider: "tmdb", namespace: "movie", externalId: "1", externalUrl: "https://untrusted.test", lastSyncedAt: null }] }));
+  setup(<MediaDetailScreen id={id} />);
+  expect(await screen.findByRole("link", { name: "TMDB" })).toHaveAttribute("href", "https://www.themoviedb.org");
+  expect(screen.getByRole("link", { name: "Provider credits" })).toHaveAttribute("href", "/credits");
+  expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/providers"))).toBe(false);
+});
 it.each([404, 503, 429])("handles detail %s", async (status) => {
   fetchMock.mockResolvedValue(Response.json({}, { status }));
   setup(<MediaDetailScreen id={id} />);

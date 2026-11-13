@@ -1,0 +1,868 @@
+{
+  "notice_path": "/app/notices",
+  "package_count": 35,
+  "packages": [
+    {
+      "name": "Humanizer.Core",
+      "version": "2.14.1",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Authentication.Google",
+      "version": "10.0.2",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+      "version": "10.0.2",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.AspNetCore.OpenApi",
+      "version": "10.0.2",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.Build.Framework",
+      "version": "18.0.2",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.CodeAnalysis.Analyzers",
+      "version": "3.11.0",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.CodeAnalysis.CSharp",
+      "version": "5.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.CodeAnalysis.CSharp.Workspaces",
+      "version": "5.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.CodeAnalysis.Common",
+      "version": "5.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.CodeAnalysis.Workspaces.Common",
+      "version": "5.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild",
+      "version": "5.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.EntityFrameworkCore",
+      "version": "10.0.2",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.EntityFrameworkCore.Abstractions",
+      "version": "10.0.2",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.EntityFrameworkCore.Analyzers",
+      "version": "10.0.2",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.EntityFrameworkCore.Design",
+      "version": "10.0.2",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.EntityFrameworkCore.Relational",
+      "version": "10.0.2",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.Extensions.DependencyModel",
+      "version": "10.0.2",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.OpenApi",
+      "version": "2.7.5",
+      "license": "MIT"
+    },
+    {
+      "name": "Microsoft.VisualStudio.SolutionPersistence",
+      "version": "1.0.52",
+      "license": "MIT"
+    },
+    {
+      "name": "Mono.TextTemplating",
+      "version": "3.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "Newtonsoft.Json",
+      "version": "13.0.3",
+      "license": "MIT"
+    },
+    {
+      "name": "Npgsql",
+      "version": "10.0.0",
+      "license": "PostgreSQL"
+    },
+    {
+      "name": "Npgsql.EntityFrameworkCore.PostgreSQL",
+      "version": "10.0.0",
+      "license": "PostgreSQL"
+    },
+    {
+      "name": "SkiaSharp",
+      "version": "4.155.0",
+      "license": "MIT"
+    },
+    {
+      "name": "SkiaSharp.NativeAssets.Linux.NoDependencies",
+      "version": "4.155.0",
+      "license": "MIT"
+    },
+    {
+      "name": "SkiaSharp.NativeAssets.Win32",
+      "version": "4.155.0",
+      "license": "MIT"
+    },
+    {
+      "name": "SkiaSharp.NativeAssets.macOS",
+      "version": "4.155.0",
+      "license": "MIT"
+    },
+    {
+      "name": "Swashbuckle.AspNetCore.SwaggerUI",
+      "version": "10.3.1",
+      "license": "MIT"
+    },
+    {
+      "name": "System.CodeDom",
+      "version": "6.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "System.Composition",
+      "version": "9.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "System.Composition.AttributedModel",
+      "version": "9.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "System.Composition.Convention",
+      "version": "9.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "System.Composition.Hosting",
+      "version": "9.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "System.Composition.Runtime",
+      "version": "9.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "System.Composition.TypedParts",
+      "version": "9.0.0",
+      "license": "MIT"
+    }
+  ],
+  "bundle_sha256": "d2b82843d05677490770c840a791e9e56fc5309186eabce9cac3b3c48e935aaf",
+  "missing": [],
+  "runtime": {
+    "license_texts": [
+      {
+        "path": "/usr/share/common-licenses/Apache-2.0",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      {
+        "path": "/usr/share/common-licenses/Artistic",
+        "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+      },
+      {
+        "path": "/usr/share/common-licenses/BSD",
+        "sha256": "5d588eb3b157d52112afea935c88a7ff9efddc1e2d95a42c25d3b96ad9055008"
+      },
+      {
+        "path": "/usr/share/common-licenses/CC0-1.0",
+        "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+      },
+      {
+        "path": "/usr/share/common-licenses/GFDL",
+        "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+      },
+      {
+        "path": "/usr/share/common-licenses/GFDL-1.2",
+        "sha256": "d8e94ae5fdb5433fcae2961aeb1a8cf17174d6f4a0465d24bf37dd8a038bd439"
+      },
+      {
+        "path": "/usr/share/common-licenses/GFDL-1.3",
+        "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+      },
+      {
+        "path": "/usr/share/common-licenses/GPL",
+        "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+      },
+      {
+        "path": "/usr/share/common-licenses/GPL-1",
+        "sha256": "d77d235e41d54594865151f4751e835c5a82322b0e87ace266567c3391a4b912"
+      },
+      {
+        "path": "/usr/share/common-licenses/GPL-2",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      {
+        "path": "/usr/share/common-licenses/GPL-3",
+        "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+      },
+      {
+        "path": "/usr/share/common-licenses/LGPL",
+        "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+      },
+      {
+        "path": "/usr/share/common-licenses/LGPL-2",
+        "sha256": "681e386e44a19d7d0674b4320272c90e66b6610b741e7e6305f8219c42e85366"
+      },
+      {
+        "path": "/usr/share/common-licenses/LGPL-2.1",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      {
+        "path": "/usr/share/common-licenses/LGPL-3",
+        "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+      },
+      {
+        "path": "/usr/share/common-licenses/MPL-1.1",
+        "sha256": "f849fc26a7a99981611a3a370e83078deb617d12a45776d6c4cada4d338be469"
+      },
+      {
+        "path": "/usr/share/common-licenses/MPL-2.0",
+        "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+      },
+      {
+        "path": "/usr/share/doc/apt/copyright",
+        "sha256": "b4701305243d8d746f4acaafe15d94f946251b05691bd6917fef41dd15e9ee12"
+      },
+      {
+        "path": "/usr/share/doc/base-files/copyright",
+        "sha256": "fd7e4aae7e7b05f217bcf2d02322825c360e66c52c4c2f1b28d784d6297a1c23"
+      },
+      {
+        "path": "/usr/share/doc/base-passwd/copyright",
+        "sha256": "0f1cde79bd80a75f9029ae9a8c252b642223027ef36f6989c63a8230aae576a7"
+      },
+      {
+        "path": "/usr/share/doc/bash/copyright",
+        "sha256": "06319d84c3e5ed096036f6a9310a030c7e84e50dff2b8a6792285c83ec0ada73"
+      },
+      {
+        "path": "/usr/share/doc/bsdutils/copyright",
+        "sha256": "3492fb92cb56cf517d9a899828b4f989038421a38736e49e5525ffbd33196eab"
+      },
+      {
+        "path": "/usr/share/doc/ca-certificates/copyright",
+        "sha256": "e85e1bcad3a915dc7e6f41412bc5bdeba275cadd817896ea0451f2140a93967c"
+      },
+      {
+        "path": "/usr/share/doc/coreutils/copyright",
+        "sha256": "d23a4fb17c4a2e5bc46dafe9d22192ecf3905473317e17139d210339dcf50fa9"
+      },
+      {
+        "path": "/usr/share/doc/curl/copyright",
+        "sha256": "a7c131b21e6e73b3b085a7d9f1637b68f5f92b832cc6f462e0c978fbe7841ccb"
+      },
+      {
+        "path": "/usr/share/doc/dash/copyright",
+        "sha256": "d98c53f281321baad38164aa9ae6e368a9253be6ec51bd26a759b5e72b326f4a"
+      },
+      {
+        "path": "/usr/share/doc/debconf/copyright",
+        "sha256": "57163c71bd8a5289660892827dd0dfaa7fef47f89deedc9dc6711ced7d0a28d7"
+      },
+      {
+        "path": "/usr/share/doc/debianutils/copyright",
+        "sha256": "aeb68ea374f488431b8963df24f05482692edfa70d7556d7e528dd06d255461c"
+      },
+      {
+        "path": "/usr/share/doc/diffutils/copyright",
+        "sha256": "ac6fcf18142bab7569188ae75b204a9e1c73c050c0f9467adaf080759e516123"
+      },
+      {
+        "path": "/usr/share/doc/dpkg/copyright",
+        "sha256": "6511e06b27f2297fde6ee8fb2e59807b7712dda61837ca00a0980da1e5df07ac"
+      },
+      {
+        "path": "/usr/share/doc/e2fsprogs/copyright",
+        "sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db"
+      },
+      {
+        "path": "/usr/share/doc/findutils/copyright",
+        "sha256": "601cc227b3e22ad219beeed7c86b9e146ddf9c88c25620f78169fd5451d4f966"
+      },
+      {
+        "path": "/usr/share/doc/gcc-14-base/copyright",
+        "sha256": "20390f8a6f3b1e4d7cb45dd8652dabb259bbef688cbad839bcdb0b9ba7252f79"
+      },
+      {
+        "path": "/usr/share/doc/gpgv/copyright",
+        "sha256": "2be9a9a5d7db2584cf984de83379d395bb4a33478404160d1d77d0060b5a1bd1"
+      },
+      {
+        "path": "/usr/share/doc/grep/copyright",
+        "sha256": "42d9b4d610396b1e8d1303dcb9487af3f5a2d2709623cf03a04cf76acdf6c5e3"
+      },
+      {
+        "path": "/usr/share/doc/gzip/copyright",
+        "sha256": "1ca5dd5098fe2e1c0f0d05196f5b3da8b414a807702e6ca8b536eb5fd3059130"
+      },
+      {
+        "path": "/usr/share/doc/hostname/copyright",
+        "sha256": "94189fc5a9a7b7224d96e1a0cfdfe9be0df2018b04bf21d591627ab96b30cad1"
+      },
+      {
+        "path": "/usr/share/doc/init-system-helpers/copyright",
+        "sha256": "7534601cc4fa513804d16490359f5831e7b6a1212da3bbf948bebdd4c8799783"
+      },
+      {
+        "path": "/usr/share/doc/libacl1/copyright",
+        "sha256": "9a2dfb4a5abc7e84be2cc41f1089be665519c9409549296f6c19de57ab1d37c2"
+      },
+      {
+        "path": "/usr/share/doc/libapt-pkg6.0t64/copyright",
+        "sha256": "b4701305243d8d746f4acaafe15d94f946251b05691bd6917fef41dd15e9ee12"
+      },
+      {
+        "path": "/usr/share/doc/libassuan0/copyright",
+        "sha256": "d704d521eb7ba7b9e3d82d85ac6caac4dfb4c784a4762f61a95fbb2733b05ff3"
+      },
+      {
+        "path": "/usr/share/doc/libattr1/copyright",
+        "sha256": "0cbec745d85ea775450b2d54fac55277197f429e52d611f72852ed420450620e"
+      },
+      {
+        "path": "/usr/share/doc/libaudit-common/copyright",
+        "sha256": "6c7011e93f643b112c4cc3622131e28a30477afad6c4f5efe466b13aa7f603cc"
+      },
+      {
+        "path": "/usr/share/doc/libaudit1/copyright",
+        "sha256": "6c7011e93f643b112c4cc3622131e28a30477afad6c4f5efe466b13aa7f603cc"
+      },
+      {
+        "path": "/usr/share/doc/libblkid1/copyright",
+        "sha256": "3492fb92cb56cf517d9a899828b4f989038421a38736e49e5525ffbd33196eab"
+      },
+      {
+        "path": "/usr/share/doc/libbrotli1/copyright",
+        "sha256": "24a64e5bb83d0960d1835696a1e23c0896ad6055b0ca47c66ab0eb9a766324b1"
+      },
+      {
+        "path": "/usr/share/doc/libbz2-1.0/copyright",
+        "sha256": "832ed535ff3c3d025a8d2348eb1b697b89addcf2eaadbc17650262040b9145e2"
+      },
+      {
+        "path": "/usr/share/doc/libc-bin/copyright",
+        "sha256": "d3c95b56fa33e28b57860580f0baf4e4f4de2a268a2b80f1d031a5191bade265"
+      },
+      {
+        "path": "/usr/share/doc/libc6/copyright",
+        "sha256": "d3c95b56fa33e28b57860580f0baf4e4f4de2a268a2b80f1d031a5191bade265"
+      },
+      {
+        "path": "/usr/share/doc/libcap-ng0/copyright",
+        "sha256": "567997de097e3738564c90e6fe13343b2daae21a7926d6fb161df41322c1840b"
+      },
+      {
+        "path": "/usr/share/doc/libcap2/copyright",
+        "sha256": "e60a5642e12e340060e4e519a65b2eb0330be2917854841c644e36268f607d54"
+      },
+      {
+        "path": "/usr/share/doc/libcom-err2/copyright",
+        "sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db"
+      },
+      {
+        "path": "/usr/share/doc/libcrypt1/copyright",
+        "sha256": "5a5e7ca0e9f3f9679977e3a3e9ede45ad92885a3297ea78e766979f9866c5a16"
+      },
+      {
+        "path": "/usr/share/doc/libcurl4t64/copyright",
+        "sha256": "a7c131b21e6e73b3b085a7d9f1637b68f5f92b832cc6f462e0c978fbe7841ccb"
+      },
+      {
+        "path": "/usr/share/doc/libdb5.3t64/copyright",
+        "sha256": "8b53da37d73289d9df7317b3a2dbe16491f1fa9fec8b77b86d69704b40ce2c26"
+      },
+      {
+        "path": "/usr/share/doc/libdebconfclient0/copyright",
+        "sha256": "cf63099896d1c0f6529c41b8d95738e6fea342ffba609187d339c4f38ce36ecc"
+      },
+      {
+        "path": "/usr/share/doc/libexpat1/copyright",
+        "sha256": "60919fe1a156395ff14511bb6ff79756c50ade2fff59ac60c9bae1d8a7fe6292"
+      },
+      {
+        "path": "/usr/share/doc/libext2fs2t64/copyright",
+        "sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db"
+      },
+      {
+        "path": "/usr/share/doc/libffi8/copyright",
+        "sha256": "737ff68f0eb104d3b0d96b291c3a8f40a775a3ec2b53f9b2e4bcfe3188bde118"
+      },
+      {
+        "path": "/usr/share/doc/libgcc-s1/copyright",
+        "sha256": "20390f8a6f3b1e4d7cb45dd8652dabb259bbef688cbad839bcdb0b9ba7252f79"
+      },
+      {
+        "path": "/usr/share/doc/libgcrypt20/copyright",
+        "sha256": "40162167dff80843a4b24aa8d0a4ffc50be5338d004ebe38f86ae3397ba9de3e"
+      },
+      {
+        "path": "/usr/share/doc/libgmp10/copyright",
+        "sha256": "7d366aef5ba325150246de1d7820c4c9926cd27ca61a69948492b26cd3b61601"
+      },
+      {
+        "path": "/usr/share/doc/libgnutls30t64/copyright",
+        "sha256": "51da5214308b87d6a0a2fbcaea1f7dbd15510be733e5921d9548ff6b88d84dd8"
+      },
+      {
+        "path": "/usr/share/doc/libgpg-error0/copyright",
+        "sha256": "0250e9e7cbf6c68c2bd05b6db1ea684988f91cd95da69f2936064cf302729fe5"
+      },
+      {
+        "path": "/usr/share/doc/libgssapi-krb5-2/copyright",
+        "sha256": "936728f4181718f42951b881c1e8f1386bf6b2723c4fbc533c374d6f42c71816"
+      },
+      {
+        "path": "/usr/share/doc/libhogweed6t64/copyright",
+        "sha256": "2cecdc7ac1913beb31299a41a8092fc936d9e6a1d00872fc3bf6e2263aecf842"
+      },
+      {
+        "path": "/usr/share/doc/libicu74/copyright",
+        "sha256": "5bbff5f646ce750ac0a347e7f91793279b7422a1119820b5f75d98879c201c68"
+      },
+      {
+        "path": "/usr/share/doc/libidn2-0/copyright",
+        "sha256": "41702469f28e8ff406345e3d1dd0c741f11bdfca319264f67036efd6aaa79e4b"
+      },
+      {
+        "path": "/usr/share/doc/libk5crypto3/copyright",
+        "sha256": "936728f4181718f42951b881c1e8f1386bf6b2723c4fbc533c374d6f42c71816"
+      },
+      {
+        "path": "/usr/share/doc/libkeyutils1/copyright",
+        "sha256": "c62fe37d22203046611112bc10a9e03a39a7f73bec1b061e7c615326166d9ff5"
+      },
+      {
+        "path": "/usr/share/doc/libkrb5-3/copyright",
+        "sha256": "936728f4181718f42951b881c1e8f1386bf6b2723c4fbc533c374d6f42c71816"
+      },
+      {
+        "path": "/usr/share/doc/libkrb5support0/copyright",
+        "sha256": "936728f4181718f42951b881c1e8f1386bf6b2723c4fbc533c374d6f42c71816"
+      },
+      {
+        "path": "/usr/share/doc/libldap2/copyright",
+        "sha256": "b4081907f0d9a4110736fa6540dc8ca9d7d60a20878b5d78f84916cc04907bdc"
+      },
+      {
+        "path": "/usr/share/doc/liblz4-1/copyright",
+        "sha256": "d3be0f43fe14da244f97c451bbae789c0acf868612598a69f5f22a289abeca40"
+      },
+      {
+        "path": "/usr/share/doc/liblzma5/copyright",
+        "sha256": "a2dc8fac0f496e1c58aff67018cf0c6b88336316afa5642f9335b71642e28aa8"
+      },
+      {
+        "path": "/usr/share/doc/libmd0/copyright",
+        "sha256": "4365ef6255ad553fce69dd4bc0e093472c5d0e41b8ea493a545cc926ce171aa6"
+      },
+      {
+        "path": "/usr/share/doc/libmount1/copyright",
+        "sha256": "3492fb92cb56cf517d9a899828b4f989038421a38736e49e5525ffbd33196eab"
+      },
+      {
+        "path": "/usr/share/doc/libncursesw6/copyright",
+        "sha256": "7c9d2c8dbee48b6f4bbbffb1f370cc5858de11cc4f5a70c5c622c274917e1c65"
+      },
+      {
+        "path": "/usr/share/doc/libnettle8t64/copyright",
+        "sha256": "2cecdc7ac1913beb31299a41a8092fc936d9e6a1d00872fc3bf6e2263aecf842"
+      },
+      {
+        "path": "/usr/share/doc/libnghttp2-14/copyright",
+        "sha256": "a34ae32a5eba61e535835a8de7c398f47e420247d339bc400a3b9c618ba29a3d"
+      },
+      {
+        "path": "/usr/share/doc/libnpth0t64/copyright",
+        "sha256": "df6909abb38f4e84d237d8617e948bdbb391b2004ecf573863011d54a88ccf22"
+      },
+      {
+        "path": "/usr/share/doc/libp11-kit0/copyright",
+        "sha256": "d33af1e069981d1c1b576cb22e4bc260a134ffa2fce6ddd3cbbbb5b181113f0c"
+      },
+      {
+        "path": "/usr/share/doc/libpam-modules/copyright",
+        "sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce"
+      },
+      {
+        "path": "/usr/share/doc/libpam-modules-bin/copyright",
+        "sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce"
+      },
+      {
+        "path": "/usr/share/doc/libpam-runtime/copyright",
+        "sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce"
+      },
+      {
+        "path": "/usr/share/doc/libpam0g/copyright",
+        "sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce"
+      },
+      {
+        "path": "/usr/share/doc/libpcre2-8-0/copyright",
+        "sha256": "030511beb4d9d620ad09914c369c36ec0528dcf301d1923cc643c948ee7c6a38"
+      },
+      {
+        "path": "/usr/share/doc/libproc2-0/copyright",
+        "sha256": "90a66617c36d83068b52bbb77cbfef1234f526bfa287156d9d05f7df4d339539"
+      },
+      {
+        "path": "/usr/share/doc/libpsl5t64/copyright",
+        "sha256": "bbafb0cf52d34465fc69f5ffd22d724224f6a2f28402c88b045c69d88af06aaf"
+      },
+      {
+        "path": "/usr/share/doc/libpython3-stdlib/copyright",
+        "sha256": "5b274dbb44b28a54b795b9471c07ab045054d6b8a86273cb9feb632b6fd2760d"
+      },
+      {
+        "path": "/usr/share/doc/libpython3.12-minimal/copyright",
+        "sha256": "f1cbf908e1daa8789b389fdcf17811ed36b675d736b39a103591399861350382"
+      },
+      {
+        "path": "/usr/share/doc/libpython3.12-stdlib/copyright",
+        "sha256": "f1cbf908e1daa8789b389fdcf17811ed36b675d736b39a103591399861350382"
+      },
+      {
+        "path": "/usr/share/doc/libreadline8t64/copyright",
+        "sha256": "854c6f5f249a109a913e1e58528445c4fec96f063ae8ba496bfb2b460bcc6866"
+      },
+      {
+        "path": "/usr/share/doc/librtmp1/copyright",
+        "sha256": "4302abcc1ea1b6cbe8d19c79b892acf78878030220210707c19006828866207c"
+      },
+      {
+        "path": "/usr/share/doc/libsasl2-2/copyright",
+        "sha256": "ddb128a81d3a140ef5b3574ae000a1a50d0cb9a2ec59917121a155f91b670166"
+      },
+      {
+        "path": "/usr/share/doc/libsasl2-modules-db/copyright",
+        "sha256": "ddb128a81d3a140ef5b3574ae000a1a50d0cb9a2ec59917121a155f91b670166"
+      },
+      {
+        "path": "/usr/share/doc/libseccomp2/copyright",
+        "sha256": "6da0653a365b80ab31478dbfe9e7c358e80d58b6d2b52b4e16b4dbb42d7d9f5c"
+      },
+      {
+        "path": "/usr/share/doc/libselinux1/copyright",
+        "sha256": "864f1bb189f609075d580b8c4aada16d85a44546884f1687989e1cacc8c56751"
+      },
+      {
+        "path": "/usr/share/doc/libsemanage-common/copyright",
+        "sha256": "fe5876a94047cafbeb8b164fd98304912d94b6028e19415f08b7a8a2f90645fe"
+      },
+      {
+        "path": "/usr/share/doc/libsemanage2/copyright",
+        "sha256": "fe5876a94047cafbeb8b164fd98304912d94b6028e19415f08b7a8a2f90645fe"
+      },
+      {
+        "path": "/usr/share/doc/libsepol2/copyright",
+        "sha256": "78d2a34606a0302057ec499a3b3c07bcbc43ca334064ce4c80891a0f69c8f6c6"
+      },
+      {
+        "path": "/usr/share/doc/libsmartcols1/copyright",
+        "sha256": "3492fb92cb56cf517d9a899828b4f989038421a38736e49e5525ffbd33196eab"
+      },
+      {
+        "path": "/usr/share/doc/libsqlite3-0/copyright",
+        "sha256": "78e9df8f8153c91c762ec970b82d224ac4d30f05aa7773e7e17e268141e53873"
+      },
+      {
+        "path": "/usr/share/doc/libss2/copyright",
+        "sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db"
+      },
+      {
+        "path": "/usr/share/doc/libssh-4/copyright",
+        "sha256": "1b33ec0b1d0d521afb21d8e6b98fa4abf52b1ffb69a8461a045db9d586ce141f"
+      },
+      {
+        "path": "/usr/share/doc/libssl3t64/copyright",
+        "sha256": "6a7da622fe0637a334d2a8fc470852d2ffb77d9a2b2f930f854e32a41ad6ef35"
+      },
+      {
+        "path": "/usr/share/doc/libstdc++6/copyright",
+        "sha256": "20390f8a6f3b1e4d7cb45dd8652dabb259bbef688cbad839bcdb0b9ba7252f79"
+      },
+      {
+        "path": "/usr/share/doc/libsystemd0/copyright",
+        "sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3"
+      },
+      {
+        "path": "/usr/share/doc/libtasn1-6/copyright",
+        "sha256": "572ad60ad184d8f52c6dc66d83a61a68f137db560b3452ce00588c9ecf128a65"
+      },
+      {
+        "path": "/usr/share/doc/libtinfo6/copyright",
+        "sha256": "7c9d2c8dbee48b6f4bbbffb1f370cc5858de11cc4f5a70c5c622c274917e1c65"
+      },
+      {
+        "path": "/usr/share/doc/libudev1/copyright",
+        "sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3"
+      },
+      {
+        "path": "/usr/share/doc/libunistring5/copyright",
+        "sha256": "dbbfee567c5eb53ad1c75ce666779e596b5f794b52be7f5834685ddd633185ea"
+      },
+      {
+        "path": "/usr/share/doc/libuuid1/copyright",
+        "sha256": "3492fb92cb56cf517d9a899828b4f989038421a38736e49e5525ffbd33196eab"
+      },
+      {
+        "path": "/usr/share/doc/libxxhash0/copyright",
+        "sha256": "53acfd069ef57d3a68fc03d3ecdbcb7939c8083bae3fe52851da69b0383d7ee0"
+      },
+      {
+        "path": "/usr/share/doc/libzstd1/copyright",
+        "sha256": "35e85e8e9bbb71492c5f5dddf39ed65b68775a02ad8d710c25d097b497f06c49"
+      },
+      {
+        "path": "/usr/share/doc/login/copyright",
+        "sha256": "a4c3e5b19700dd3cc5961663d204bd7150f65f913314682aede5931548c436d5"
+      },
+      {
+        "path": "/usr/share/doc/logsave/copyright",
+        "sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db"
+      },
+      {
+        "path": "/usr/share/doc/mawk/copyright",
+        "sha256": "f6b94f461b09398ef192207356d89d7bf59833fe03082a14b910b3c740f2a318"
+      },
+      {
+        "path": "/usr/share/doc/media-types/copyright",
+        "sha256": "5ded7c53199b6a1d089b0b7e231d77e5c84081c7156b372b3f11ad9c1c2c5cc7"
+      },
+      {
+        "path": "/usr/share/doc/mount/copyright",
+        "sha256": "3492fb92cb56cf517d9a899828b4f989038421a38736e49e5525ffbd33196eab"
+      },
+      {
+        "path": "/usr/share/doc/ncurses-base/copyright",
+        "sha256": "7c9d2c8dbee48b6f4bbbffb1f370cc5858de11cc4f5a70c5c622c274917e1c65"
+      },
+      {
+        "path": "/usr/share/doc/ncurses-bin/copyright",
+        "sha256": "7c9d2c8dbee48b6f4bbbffb1f370cc5858de11cc4f5a70c5c622c274917e1c65"
+      },
+      {
+        "path": "/usr/share/doc/netbase/copyright",
+        "sha256": "795b66147ea5ad692991caa7008ece551fb0fa88b9c53656223bd1518dc58ab2"
+      },
+      {
+        "path": "/usr/share/doc/openssl/copyright",
+        "sha256": "6a7da622fe0637a334d2a8fc470852d2ffb77d9a2b2f930f854e32a41ad6ef35"
+      },
+      {
+        "path": "/usr/share/doc/passwd/copyright",
+        "sha256": "a4c3e5b19700dd3cc5961663d204bd7150f65f913314682aede5931548c436d5"
+      },
+      {
+        "path": "/usr/share/doc/perl-base/copyright",
+        "sha256": "657ac19622868be1f2bf8ac3823a952b28c7a2a467f61353743e9c9d89291921"
+      },
+      {
+        "path": "/usr/share/doc/procps/copyright",
+        "sha256": "90a66617c36d83068b52bbb77cbfef1234f526bfa287156d9d05f7df4d339539"
+      },
+      {
+        "path": "/usr/share/doc/python3/copyright",
+        "sha256": "5b274dbb44b28a54b795b9471c07ab045054d6b8a86273cb9feb632b6fd2760d"
+      },
+      {
+        "path": "/usr/share/doc/python3-minimal/copyright",
+        "sha256": "5b274dbb44b28a54b795b9471c07ab045054d6b8a86273cb9feb632b6fd2760d"
+      },
+      {
+        "path": "/usr/share/doc/python3.12/copyright",
+        "sha256": "f1cbf908e1daa8789b389fdcf17811ed36b675d736b39a103591399861350382"
+      },
+      {
+        "path": "/usr/share/doc/python3.12-minimal/copyright",
+        "sha256": "f1cbf908e1daa8789b389fdcf17811ed36b675d736b39a103591399861350382"
+      },
+      {
+        "path": "/usr/share/doc/readline-common/copyright",
+        "sha256": "854c6f5f249a109a913e1e58528445c4fec96f063ae8ba496bfb2b460bcc6866"
+      },
+      {
+        "path": "/usr/share/doc/sed/copyright",
+        "sha256": "719320e425e8e6da53a55e0fcfa2f2ed9b1332cea16abd65321bd651b2a88568"
+      },
+      {
+        "path": "/usr/share/doc/sensible-utils/copyright",
+        "sha256": "4405a7fb92b693f790887d5f1d6b190e2fd00d824d80ef0b3d10e64cf21275dc"
+      },
+      {
+        "path": "/usr/share/doc/sysvinit-utils/copyright",
+        "sha256": "53c7ef3839f64b24cc25a0937d11ce228517a48be0cc794f0d67b7e209b2a9ba"
+      },
+      {
+        "path": "/usr/share/doc/tar/copyright",
+        "sha256": "a0a44d41b2a045eb5946a8952487151cfa6ff0cd080bbf4b2eec220751d23024"
+      },
+      {
+        "path": "/usr/share/doc/tzdata/copyright",
+        "sha256": "97fad960bf4aea7cb5faf6dc8a536bf91bf85a69a7869cfa8254a0162134c1d8"
+      },
+      {
+        "path": "/usr/share/doc/tzdata-legacy/copyright",
+        "sha256": "97fad960bf4aea7cb5faf6dc8a536bf91bf85a69a7869cfa8254a0162134c1d8"
+      },
+      {
+        "path": "/usr/share/doc/ubuntu-keyring/copyright",
+        "sha256": "191cdb1291b2fc3b9fdcd8648b16ab7f9e4f15b74dc5b30959a9fdcfb4782b6c"
+      },
+      {
+        "path": "/usr/share/doc/unminimize/copyright",
+        "sha256": "3d2c2c55ac1cc4a77652fa1d33aa7cb9b3f3cbc92c200c69f52b32825585085f"
+      },
+      {
+        "path": "/usr/share/doc/util-linux/copyright",
+        "sha256": "3492fb92cb56cf517d9a899828b4f989038421a38736e49e5525ffbd33196eab"
+      },
+      {
+        "path": "/usr/share/doc/zlib1g/copyright",
+        "sha256": "9e5b96d63773a5d177ba264254390f792be07e41748ebd94730981c6cac31cc6"
+      },
+      {
+        "path": "/usr/share/dotnet/LICENSE.txt",
+        "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310"
+      },
+      {
+        "path": "/usr/share/dotnet/ThirdPartyNotices.txt",
+        "sha256": "2dc8f8c5a39401e928b5784ab564eb8b3ceb99ead3df8f260e0cab7e0bbecc7a"
+      }
+    ],
+    "limitations": [
+      "Native embedded component license/source compliance requires separate review.",
+      "OS copyright files and source package names are not corresponding source archives.",
+      "ldd is host-architecture evidence only; other shipped architectures are not exercised."
+    ],
+    "native_binaries": [
+      {
+        "ldd": "not a dynamic executable",
+        "ldd_exit_code": 1,
+        "path": "/app/runtimes/linux-arm/native/libSkiaSharp.so",
+        "sha256": "d439f9976e0ec0315dd8087c31780e80d070492a444ec9880668c2ae8fee1efd",
+        "size": 8751936
+      },
+      {
+        "ldd": "not a dynamic executable",
+        "ldd_exit_code": 1,
+        "path": "/app/runtimes/linux-arm64/native/libSkiaSharp.so",
+        "sha256": "fb2f5d9374aef307ed4f92272cb57c1a11c975ab98291389a61b444b2fc473e1",
+        "size": 12168296
+      },
+      {
+        "ldd": "not a dynamic executable",
+        "ldd_exit_code": 1,
+        "path": "/app/runtimes/linux-bionic-arm64/native/libSkiaSharp.so",
+        "sha256": "5fdf0d9f1ba48768c2f9cbedf1bbea05913ad889d8b930c5c1d4cd4b26e4f1a2",
+        "size": 12451856
+      },
+      {
+        "ldd": "linux-vdso.so.1 (0x000078fc9c73d000)\n\tlibdl.so => not found\n\tlibm.so => not found\n\tlibc.so => not found",
+        "ldd_exit_code": 0,
+        "path": "/app/runtimes/linux-bionic-x64/native/libSkiaSharp.so",
+        "sha256": "a9203e712c241d576a098722176ee7b835bcc6d5501b742851bd8769cad7a7fc",
+        "size": 12364824
+      },
+      {
+        "ldd": "not a dynamic executable",
+        "ldd_exit_code": 1,
+        "path": "/app/runtimes/linux-loongarch64/native/libSkiaSharp.so",
+        "sha256": "8b6f2872c41fda2eb650bad2dcca3a2a03c8cd10dc739b68555f156605018461",
+        "size": 11627824
+      },
+      {
+        "ldd": "not a dynamic executable",
+        "ldd_exit_code": 1,
+        "path": "/app/runtimes/linux-musl-arm/native/libSkiaSharp.so",
+        "sha256": "d165aeace187b37f01fff019bf049ec3864e4f598904b886cca4e415931580c1",
+        "size": 8781388
+      },
+      {
+        "ldd": "not a dynamic executable",
+        "ldd_exit_code": 1,
+        "path": "/app/runtimes/linux-musl-arm64/native/libSkiaSharp.so",
+        "sha256": "483a1104b08bc97c8ebd5611fc2bc8f5d02948e9ef31cffae136b63b9a3796ef",
+        "size": 12283224
+      },
+      {
+        "ldd": "not a dynamic executable",
+        "ldd_exit_code": 1,
+        "path": "/app/runtimes/linux-musl-loongarch64/native/libSkiaSharp.so",
+        "sha256": "9ed7a5629b52487c2e0b5fa87dd299ad4fd82d148e119ef06fe8cf2d0141af18",
+        "size": 11996248
+      },
+      {
+        "ldd": "not a dynamic executable",
+        "ldd_exit_code": 1,
+        "path": "/app/runtimes/linux-musl-riscv64/native/libSkiaSharp.so",
+        "sha256": "2477c0558fae1e451ee26dfdd93bf1d6be16e2a69633ab078daa849950a06d6d",
+        "size": 11146176
+      },
+      {
+        "ldd": "linux-vdso.so.1 (0x000072303248e000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x0000723031892000)\n\tlibc.musl-x86_64.so.1 => not found\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007230317a9000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000723031596000)\n\t/lib64/ld-linux-x86-64.so.2 (0x0000723032490000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x0000723031568000)",
+        "ldd_exit_code": 0,
+        "path": "/app/runtimes/linux-musl-x64/native/libSkiaSharp.so",
+        "sha256": "bc1d9134cf3e573615fec26f7ad411e1380718e202b6adf8667b0bbccb45ec6c",
+        "size": 12414560
+      },
+      {
+        "ldd": "not a dynamic executable",
+        "ldd_exit_code": 1,
+        "path": "/app/runtimes/linux-riscv64/native/libSkiaSharp.so",
+        "sha256": "a280f84169f9024bc1a0bd0115e2220ab7a0da1468df48ccb728a93824cb64f9",
+        "size": 10975608
+      },
+      {
+        "ldd": "linux-vdso.so.1 (0x00007333b6ea6000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007333b62ab000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007333b62a6000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007333b62a1000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007333b61b8000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007333b5fa5000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007333b6ea8000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007333b5f9e000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007333b5f70000)",
+        "ldd_exit_code": 0,
+        "path": "/app/runtimes/linux-x64/native/libSkiaSharp.so",
+        "sha256": "26a5cf2cfb4529cf00caabc7e9f381ff59641c36690a6e658f8e3e4fa9ac850e",
+        "size": 12287632
+      },
+      {
+        "ldd": "not a dynamic executable",
+        "ldd_exit_code": 1,
+        "path": "/app/runtimes/linux-x86/native/libSkiaSharp.so",
+        "sha256": "72e2d38cbc41e47544d06e04469ffba6f1f36a6bb0524e56fd14ad5facbc2c8e",
+        "size": 13236624
+      }
+    ],
+    "native_components": [],
+    "os_packages_sha256": "2ca0e07e90d51e2c3e33227a618e68d1dfa7ab559e6cbd4b49d4618b999c6b5e",
+    "schema": 1,
+    "scope": "OS metadata, existing runtime notices and application native payloads in this image"
+  },
+  "image": "ratefreak-api:credits-review",
+  "image_id": "sha256:4455f572ee9550fa648a942d32988802d3b67f205510a44087b6c9a184ec6005",
+  "reviewed": "2026-11-13"
+}

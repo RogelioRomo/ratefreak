@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { AppShellProps } from "./interfaces/app-shell-props";
 import { SiteHeader } from "./site-header";
 import { ThemeControl } from "./theme-control";
@@ -12,6 +13,7 @@ export function AppShell({ children, className }: AppShellProps) {
       <footer className={styles.footer}>
         <span>RateFreak</span>
         <p>A little more you. A little less algorithm.</p>
+        <Link className={styles.credits} href="/credits">Credits</Link>
         <ThemeControl />
       </footer>
     </div>

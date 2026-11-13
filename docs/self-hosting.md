@@ -11,7 +11,10 @@ CDN chains and multiple replicas are not yet verified release configurations.
 Use a checkout matching the application version. No Vercel account or shared
 RateFreak credentials are required. OAuth and metadata providers default off;
 local accounts and custom catalog entries work independently. This package does
-not choose the project's open-source license or publish container images.
+not publish container images. Project code is MIT licensed; dependencies and
+provider content retain separate terms. Read the [provider agreement checklist](provider-agreement-evidence.md)
+before enabling providers and the [release notice/source evidence](release-compliance-verification.md)
+before redistributing images. Application credits are available at `/credits`.
 
 ## Install
 

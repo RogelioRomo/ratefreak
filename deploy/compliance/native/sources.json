@@ -1,0 +1,20 @@
+[
+  {
+    "file": "sharp-libvips-versions.properties",
+    "url": "https://raw.githubusercontent.com/lovell/sharp-libvips/v1.3.4/versions.properties",
+    "sha256": "c0ad634f7c2ac8994f831dd0bcb5c60043db7ba4ddd9cc2dbc3703b15f4ec7e5",
+    "retrieved": "2026-11-13"
+  },
+  {
+    "file": "sharp-libvips-build.sh",
+    "url": "https://raw.githubusercontent.com/lovell/sharp-libvips/v1.3.4/build/posix.sh",
+    "sha256": "333031b3b49bf1a16d0b9d6812d98f67c404218932ef8c0b389388524a524b36",
+    "retrieved": "2026-11-13"
+  },
+  {
+    "file": "sharp-libvips-BUILD-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/lovell/sharp-libvips/v1.3.4/LICENSE",
+    "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+    "retrieved": "2026-11-13"
+  }
+]

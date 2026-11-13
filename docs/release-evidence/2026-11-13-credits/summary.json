@@ -1,0 +1,23 @@
+[
+  {
+    "image": "ratefreak-api:credits-review",
+    "id": "sha256:4455f572ee9550fa648a942d32988802d3b67f205510a44087b6c9a184ec6005",
+    "packages": 35,
+    "runtime_license_files": 144,
+    "native_binaries": 13
+  },
+  {
+    "image": "ratefreak-web:credits-review",
+    "id": "sha256:06b94da5647bf9c55e2d2e702aa6c9123329632f5e5e0b1117e89ee5876ef55b",
+    "packages": 63,
+    "runtime_license_files": 275,
+    "native_binaries": 2
+  },
+  {
+    "image": "ratefreak-tools:credits-review",
+    "id": "sha256:e6cf0899458c75c2080c26d2a014267bcaa4bd27532c94591e3a6a49c3ddee1f",
+    "packages": 36,
+    "runtime_license_files": 175,
+    "native_binaries": 13
+  }
+]
