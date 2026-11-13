@@ -25,6 +25,8 @@ older plans and resume notes. It records work and decisions, not deployment auth
 | [Account operations](account-data-operations.md) | Retention, durable erasure journal and restore replay |
 | [Local restore verification](account-restore-verification.md) | Disposable backup/restore and Release erasure replay evidence |
 | [Self-hosted release plan](self-hosted-release-plan.md) | Portable installation, packaging and open-source release work |
+| [Dependency redistribution review](dependency-redistribution-review.md) | Package/image license findings, inventory scope and notice/source follow-up |
+| [Provider terms review](provider-terms-review.md) | Provider attribution, service eligibility and unresolved content-rights checks |
 | [Self-hosting guide](self-hosting.md) | Reference installation, configuration, upgrades and recovery |
 | [Reference verification](self-hosted-reference-verification.md) | Packaging, HTTPS, maintenance and recovery evidence/limits |
 | [Staff operations](staff-access-operations.md) | Staff permissions, named operator attribution and deployment acceptance |
@@ -87,6 +89,7 @@ Current decisions:
 
 | Check | Latest recorded result |
 | --- | --- |
+| Dependency/provider review, 2026-11-13 | Source/package metadata and official provider/license sources reviewed; [dependency findings](dependency-redistribution-review.md), [inventory](dependency-inventory.md) and [provider findings](provider-terms-review.md) recorded. Missing TMDB logo/About-Credits attribution, final artifact notice/source compliance and inaccessible full provider agreements remain open. This was not a final image scan, vulnerability audit or legal clearance |
 | Self-hosted reference, 2026-11-10 | Complete private Compose/API/web/tools package and optional Caddy verified on Linux amd64. 719 frontend, 603 backend, 30 operator tests passed; real HTTPS/Chromium, DB permissions, migration/recreation, staff operations, coordinated restore/replay and incomplete-restore refusal passed. Controlled long export edge test: cancellation propagated, 504 at 300.01s. See [reference evidence](self-hosted-reference-verification.md) |
 | Isolated account restore drill, 2026-11-10 | PostgreSQL 17 database/artwork backup restored into a separate disposable database; fresh Release CLI replay, exact-database refusal, second replay, private erasure/artwork cleanup, public detachment and moderation preservation passed. Focused integration tests: 13 passed, zero skipped. Existing project data unchanged. See [scope and limits](account-restore-verification.md) |
 | Frontend tests, 2026-11-09 | 687 passed across 95 files for Admin revocation |
@@ -185,9 +188,13 @@ as the detailed acceptance checklist. Remaining categories are:
   and security guidance, versioned artifacts and self-hosting/upgrade documentation.
 
 The [reference-installation design](superpowers/specs/2026-11-10-self-hosted-reference-installation-design.md)
-is implemented and verified locally. Next work: review dependency/image redistribution
-and provider metadata/artwork terms and required notices. Then prepare contributor/security
-guidance and versioned release automation using the [release plan](self-hosted-release-plan.md).
+is implemented and verified locally. The 2026-11-13 dependency/provider review is
+recorded; the redistribution/provider release gate remains open. Next work: resolve
+provider attribution and operator eligibility guidance, obtain applicable full
+agreements, and assemble exact-artifact license/notice and native-library source
+compliance evidence. See the [dependency review](dependency-redistribution-review.md)
+and [provider review](provider-terms-review.md). Contributor/security guidance and
+versioned release automation follow using the [release plan](self-hosted-release-plan.md).
 Each operator still verifies their own journal protection, backup expiration,
 staff records and infrastructure acceptance. No public deployment or publication
 is recorded.

@@ -1,6 +1,6 @@
 # Self-hosted open-source release plan
 
-Draft updated 2026-11-10 following the user's clarification. Product direction is
+Draft updated 2026-11-13 with dependency/provider review findings. Product direction is
 defined in [ADR 0020](adr/0020-self-hosted-open-source-distribution.md). This is a
 proposed work sequence, not an approved implementation specification.
 
@@ -73,6 +73,10 @@ other topologies and each operator's external obligations retain their own check
   [MIT](../LICENSE), selected 2026-11-11.
 - [ ] Review dependency/image redistribution and metadata/artwork provider terms,
   required attribution and separately supplied provider credentials.
+  Initial review recorded 2026-11-13: [dependency/image findings](dependency-redistribution-review.md),
+  [package inventory](dependency-inventory.md) and [provider findings](provider-terms-review.md).
+  Final artifact notices/native-library source compliance, TMDB branding/credits,
+  operator eligibility guidance and applicable full agreements remain open.
 - [x] Add a self-hosting quickstart, configuration reference, upgrade/recovery
   instructions, supported versions/limitations and troubleshooting.
 - [ ] Add contribution and security-reporting guidance, release/versioning process
