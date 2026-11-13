@@ -69,7 +69,8 @@ other topologies and each operator's external obligations retain their own check
 
 ## 4. Prepare the public project
 
-- [ ] Choose an open-source license with the project owner and add its license file.
+- [x] Choose an open-source license with the project owner and add its license file:
+  [MIT](../LICENSE), selected 2026-11-11.
 - [ ] Review dependency/image redistribution and metadata/artwork provider terms,
   required attribution and separately supplied provider credentials.
 - [x] Add a self-hosting quickstart, configuration reference, upgrade/recovery

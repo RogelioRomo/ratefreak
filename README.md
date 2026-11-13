@@ -10,6 +10,9 @@ RateFreak is intended for open-source, self-hosted distribution. A single-host D
 continues to start the development database only. See the
 [self-hosted release plan](docs/self-hosted-release-plan.md).
 
+RateFreak is licensed under the [MIT License](LICENSE). Third-party dependencies,
+provider metadata and artwork remain subject to their own licenses and terms.
+
 Start with [current status and remaining work](docs/STATUS.md). The core application
 is implemented locally; self-hosted release and operational/policy gates remain
 open. The Next.js app is a thin browser-facing proxy; .NET owns authentication,

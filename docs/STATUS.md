@@ -1,6 +1,6 @@
 # Current project status and roadmap
 
-Updated: 2026-11-10. Account lifecycle (`bd3d78e`), staff management (`30c57e7`)
+Updated: 2026-11-13. MIT license selected on 2026-11-11 and added to the repository. Account lifecycle (`bd3d78e`), staff management (`30c57e7`)
 and profile moderation (`a0a7aa0`) are committed and verified locally. Admin
 revocation and staff-policy documentation are implemented and verified locally;
 see Git history for the current integration commit.
@@ -180,13 +180,14 @@ as the detailed acceptance checklist. Remaining categories are:
   the completed local test-data cutover does not authorize another reset.
 - [ ] End-to-end acceptance using ordinary/staff accounts on the deployed candidate.
 - [ ] Fresh production/Release builds and browser checks for the final source revision.
-- [ ] Open-source license selection, redistribution/provider notices, contributor
+- [x] Open-source license selection: [MIT](../LICENSE), selected 2026-11-11.
+- [ ] Redistribution/provider notices, contributor
   and security guidance, versioned artifacts and self-hosting/upgrade documentation.
 
 The [reference-installation design](superpowers/specs/2026-11-10-self-hosted-reference-installation-design.md)
-is implemented and verified locally. Suggested next work: choose the open-source
-license and prepare contributor/security guidance, dependency/provider review and
-versioned release automation using the [release plan](self-hosted-release-plan.md).
+is implemented and verified locally. Next work: review dependency/image redistribution
+and provider metadata/artwork terms and required notices. Then prepare contributor/security
+guidance and versioned release automation using the [release plan](self-hosted-release-plan.md).
 Each operator still verifies their own journal protection, backup expiration,
 staff records and infrastructure acceptance. No public deployment or publication
 is recorded.
