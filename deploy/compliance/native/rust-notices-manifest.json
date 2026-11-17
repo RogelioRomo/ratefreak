@@ -1,0 +1,3272 @@
+{
+  "bundle_sha256": "f8c08e75d6903fd6c6e07b54a63e982a736f80e26ff39329126b31910b807445",
+  "missing": [],
+  "notice_texts_complete": true,
+  "packages": [
+    {
+      "authors": [
+        "Jonas Schievink <jonasschievink@gmail.com>",
+        "oyvindln <oyvindln@users.noreply.github.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "0BSD OR MIT OR Apache-2.0",
+      "metadata_sha256": "8f30dbd092f3acc475b9d339736cd7b64c6489bc47cd234a7f2232fc52e2d490",
+      "name": "adler2",
+      "repository": "https://github.com/oyvindln/adler2",
+      "texts": [
+        {
+          "file": "LICENSE-0BSD",
+          "sha256": "861399f8c21c042b110517e76dc6b63a2b334276c8cf17412fc3c8908ca8dc17"
+        },
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "8ada45cd9f843acf64e4722ae262c622a2b3b3007c7310ef36ac1061a30f6adb"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "2.0.1"
+    },
+    {
+      "authors": [
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unlicense OR MIT",
+      "metadata_sha256": "7ff243aed78547f286729c3c60d97577fbc685546120263548d7c4f2a3884bc1",
+      "name": "aho-corasick",
+      "repository": "https://github.com/BurntSushi/aho-corasick",
+      "texts": [
+        {
+          "file": "COPYING",
+          "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
+        },
+        {
+          "file": "UNLICENSE",
+          "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c"
+        }
+      ],
+      "version": "1.1.5"
+    },
+    {
+      "authors": [
+        "Brendan Zabarauskas <bjzaba@yahoo.com.au>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Apache-2.0",
+      "metadata_sha256": "78766a0a5bf02b991509fcd5423e2b845f526f28ea6b670f8b77bcbe531ac3d1",
+      "name": "approx",
+      "repository": "https://github.com/brendanzab/approx",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5"
+        }
+      ],
+      "version": "0.5.1"
+    },
+    {
+      "authors": [
+        "Josh Stone <cuviper@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Apache-2.0 OR MIT",
+      "metadata_sha256": "ed7c832b4250c3be736e040d68688c2b83a5b164a93ef533e61532cbe0d44e99",
+      "name": "autocfg",
+      "repository": "https://github.com/cuviper/autocfg",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "27995d58ad5c1145c1a8cd86244ce844886958a35eb2b78c6b772748669999ac"
+        }
+      ],
+      "version": "1.5.1"
+    },
+    {
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "562e660adbb084de042fc9ecc5ac7ba32b5f565d53188823bab9159a027b2b44",
+      "name": "bitflags",
+      "repository": "https://github.com/bitflags/bitflags",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+        }
+      ],
+      "version": "2.13.2"
+    },
+    {
+      "authors": [
+        "Lokathor <zefria@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "metadata_sha256": "7b99bce6fd19ac16efd0fa94051b95f6cee7945f9d76842e072e4176a152794c",
+      "name": "bytemuck",
+      "repository": "https://github.com/Lokathor/bytemuck",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "e3ba223bb1423f0aad8c3dfce0fe3148db48926d41e6fbc3afbbf5ff9e1c89cb"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "9df9ba60a11af705f2e451b53762686e615d86f76b169cf075c3237730dbd7e2"
+        },
+        {
+          "file": "LICENSE-ZLIB",
+          "sha256": "84b34dd7608f7fb9b17bd588a6bf392bf7de504e2716f024a77d89f1b145a151"
+        }
+      ],
+      "version": "1.25.2"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "Unlicense OR MIT",
+      "metadata_sha256": "86ad0165e3fa2ad3ef17783be36336461747077416ee2279cc47a85cbfe9b786",
+      "name": "byteorder-lite",
+      "repository": "https://github.com/image-rs/byteorder-lite",
+      "texts": [
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
+        },
+        {
+          "file": "UNLICENSE",
+          "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c"
+        }
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "authors": [
+        "The gtk-rs Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "785db139e58c8e8d15fa9d5846bd4f5a7e918eadbcffa56ec9926f1048617073",
+      "name": "cairo-rs",
+      "repository": "https://github.com/gtk-rs/gtk-rs-core",
+      "texts": [
+        {
+          "file": "COPYRIGHT",
+          "sha256": "dae402989de65164815b7e2b6bc2b9576285434c3785934c8b6ece0fa055960d"
+        },
+        {
+          "file": "LICENSE",
+          "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+        }
+      ],
+      "version": "0.22.9"
+    },
+    {
+      "authors": [
+        "The gtk-rs Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "beecf00f91e767e724c4faff655c5384da39d7f38c1ffc90e84e792f9996ca21",
+      "name": "cairo-sys-rs",
+      "repository": "https://github.com/gtk-rs/gtk-rs-core",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+        }
+      ],
+      "version": "0.22.9"
+    },
+    {
+      "authors": [
+        "Jorge Aparicio <jorge@japaric.io>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "fce66320ad4fa962c38c22656375a2db2666d39d2e7010736cedf98abe95db71",
+      "name": "cast",
+      "repository": "https://github.com/japaric/cast.rs",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "005b3f9b4687364514bbaea2a25e96d54ce6a59277d157386e8259cbcae8e095"
+        }
+      ],
+      "version": "0.3.0"
+    },
+    {
+      "authors": [
+        "Embark <opensource@embark-studios.com>",
+        "Jake Shadle <jake.shadle@embark-studios.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "e84397dc0141a1d00fb4d736012daf8e3ea83b5641b0cc9b021542606c6cdf8e",
+      "name": "cfg-expr",
+      "repository": "https://github.com/EmbarkStudios/cfg-expr",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "090a294a492ab2f41388252312a65cf2f0e423330b721a68c6665ac64766753b"
+        }
+      ],
+      "version": "0.20.9"
+    },
+    {
+      "authors": [
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "d646663ec1bd4e8e795bd6a386cff9c374880d6237bbfa36bbac08b7f26ce65c",
+      "name": "cfg-if",
+      "repository": "https://github.com/rust-lang/cfg-if",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+        }
+      ],
+      "version": "1.0.5"
+    },
+    {
+      "authors": [
+        "Thom Chiovoloni <chiovolonit@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT/Apache-2.0",
+      "metadata_sha256": "2d28bd95b602d0d4b1e7bd7937b3119712fe8b3679025be4030c4518b7b65f13",
+      "name": "core_detect",
+      "repository": "https://github.com/thomcc/core_detect",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "769f80b5bcb42ed0af4e4d2fd74e1ac9bf843cb80c5a29219d1ef3544428a6bb"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "8569ebf6bf52937b961d9c9c934d8400a2bb6b09651a9afacbb3fc18fe5c09b1"
+        }
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "authors": [
+        "Sam Rijs <srijs@airpost.net>",
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "30261035ec5967fb1560c961b2d5205dd1e54d2b2a2e07151e40b0749ca9d080",
+      "name": "crc32fast",
+      "repository": "https://github.com/srijs/rust-crc32fast",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "61d383b05b87d78f94d2937e2580cce47226d17823c0430fbcad09596537efcf"
+        }
+      ],
+      "version": "1.5.2"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "d000cd463fb12a575d291905e3e4d125382964542626839eb818ade1e26db9b4",
+      "name": "crossbeam-deque",
+      "repository": "https://github.com/crossbeam-rs/crossbeam",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "5734ed989dfca1f625b40281ee9f4530f91b2411ec01cb748223e7eb87e201ab"
+        }
+      ],
+      "version": "0.8.8"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "630ac9711ae7d4844bd8b60929934e28c945c87a28eab65e320f940efb247805",
+      "name": "crossbeam-epoch",
+      "repository": "https://github.com/crossbeam-rs/crossbeam",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "5734ed989dfca1f625b40281ee9f4530f91b2411ec01cb748223e7eb87e201ab"
+        }
+      ],
+      "version": "0.9.21"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "e7a383373c60dea49a5c0dd2558aebbdae26ba9b07878d4f8fa004a5538e2b80",
+      "name": "crossbeam-utils",
+      "repository": "https://github.com/crossbeam-rs/crossbeam",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "5734ed989dfca1f625b40281ee9f4530f91b2411ec01cb748223e7eb87e201ab"
+        }
+      ],
+      "version": "0.8.23"
+    },
+    {
+      "authors": [
+        "Simon Sapin <simon.sapin@exyr.org>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MPL-2.0",
+      "metadata_sha256": "0ac783c96e15668a9efd9e43c9218953c49bf1441779ea622d065d7b643c7697",
+      "name": "cssparser",
+      "repository": "https://github.com/servo/rust-cssparser",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+        }
+      ],
+      "version": "0.37.0"
+    },
+    {
+      "authors": [
+        "Emilio Cobos \u00c1lvarez <emilio@crisal.io>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MPL-2.0",
+      "metadata_sha256": "ee2bd594e562cdcb1393ad1c9fe977eb9e850b6cb46aa70bdd637caf1f0d498b",
+      "name": "cssparser-color",
+      "repository": "https://github.com/servo/rust-cssparser",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+        }
+      ],
+      "version": "0.5.0"
+    },
+    {
+      "authors": [
+        "Simon Sapin <simon.sapin@exyr.org>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MPL-2.0",
+      "metadata_sha256": "d46e8543833c2cee37123f3eb4e6d52a86efeffae4caa07a832053fbe9b8857b",
+      "name": "cssparser-macros",
+      "repository": "https://github.com/servo/rust-cssparser",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+        }
+      ],
+      "version": "0.7.1"
+    },
+    {
+      "authors": [
+        "Simon Sapin <simon.sapin@exyr.org>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "ac3f3b509933f078f66133d775fe8c7900920722a34761626246e580df9f776d",
+      "name": "data-url",
+      "repository": "https://github.com/servo/rust-url",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "b38f11f6096706e6de553dabe2a7ed142d59b6fa8c97e290c67496154745cdd5"
+        }
+      ],
+      "version": "0.3.2"
+    },
+    {
+      "authors": [
+        "Jelte Fennema <github-tech@jeltef.nl>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "f11dd5e6c080995c76e0916fc4e573b57457d145aff5c26e7bdcf243481a014c",
+      "name": "derive_more",
+      "repository": "https://github.com/JelteF/derive_more",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "8a35369f3ca263b3c62fbb5032947e53b6bfebc6c8a4d1bb982de1c069f6fba5"
+        }
+      ],
+      "version": "2.1.1"
+    },
+    {
+      "authors": [
+        "Jelte Fennema <github-tech@jeltef.nl>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "a9c5ce200f3ea3822be272c1af53129a992b9e31f51b08c928ff340740d7c1c5",
+      "name": "derive_more-impl",
+      "repository": "https://github.com/JelteF/derive_more",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "8a35369f3ca263b3c62fbb5032947e53b6bfebc6c8a4d1bb982de1c069f6fba5"
+        }
+      ],
+      "version": "2.1.1"
+    },
+    {
+      "authors": [
+        "Jane Lusby <jlusby@yaah.dev>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "76473a3a2f0227263f6b6dbf575516c75e4eeaf2d8eb26c6f40f4107983b70da",
+      "name": "displaydoc",
+      "repository": "https://github.com/yaahc/displaydoc",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "0.2.7"
+    },
+    {
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "7fdaeda50f9aff37983b1c0ef73f8b15264ffb174e43059b9c936d14e95eacaa",
+      "name": "dtoa",
+      "repository": "https://github.com/dtolnay/dtoa",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "1.0.11"
+    },
+    {
+      "authors": [
+        "Xidorn Quan <me@upsuper.org>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MPL-2.0",
+      "metadata_sha256": "f6316d9ba867b8cdcdc39142bcc1690f769cc54e41c4425b96fe33ee442e11b5",
+      "name": "dtoa-short",
+      "repository": "https://github.com/upsuper/dtoa-short",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5"
+        }
+      ],
+      "version": "0.3.5"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "f0cf9ec7dc95332b186eea993b9b043f6ccb536b136bc1345955da0311dcb784",
+      "name": "either",
+      "repository": "https://github.com/rayon-rs/either",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545"
+        }
+      ],
+      "version": "1.18.0"
+    },
+    {
+      "authors": [
+        "Henri Sivonen <hsivonen@hsivonen.fi>"
+      ],
+      "ecosystem": "cargo",
+      "license": "(Apache-2.0 OR MIT) AND BSD-3-Clause",
+      "metadata_sha256": "ace3ec693f442b04d536d0dfdcb9d93e8ff32e8cc700b8c582cb2bc97a30413c",
+      "name": "encoding_rs",
+      "repository": "https://github.com/hsivonen/encoding_rs",
+      "texts": [
+        {
+          "file": "COPYRIGHT",
+          "sha256": "11789f45bb180841cd362a5eee6789c68ddb573a11105e30768c308a6add0190"
+        },
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c"
+        },
+        {
+          "file": "LICENSE-WHATWG",
+          "sha256": "838118388fe5c2e7f1dbbaeed13e1c7f3ebf88be91319c7c1d77c18e987d1a50"
+        }
+      ],
+      "version": "0.8.41"
+    },
+    {
+      "authors": [
+        "Stjepan Glavina <stjepang@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Apache-2.0 OR MIT",
+      "metadata_sha256": "3f01725ad91d1a1705762821e9231ea15ddfa62648143516e68d64021ae31e08",
+      "name": "fastrand",
+      "repository": "https://github.com/smol-rs/fastrand",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "2.5.0"
+    },
+    {
+      "authors": [
+        "The image-rs Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "d5f832103c61c132a406b738c55d0fbc31de926186ded715816bc56ee04e3c53",
+      "name": "fdeflate",
+      "repository": "https://github.com/image-rs/fdeflate",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "c77a4cf9da729987d0fe7ccd811e3bd27393914ddf3d23467c18cc22954513b3"
+        }
+      ],
+      "version": "0.3.7"
+    },
+    {
+      "authors": [
+        "Alex Crichton <alex@alexcrichton.com>",
+        "Josh Triplett <josh@joshtriplett.org>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "1365f28dd7ad9f83ebcc9afd545d7cdcedb284bf6e059081b0e1d1847ce6a94e",
+      "name": "flate2",
+      "repository": "https://github.com/rust-lang/flate2-rs",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "025436edff4cfcdde17a5811fdea78892d8482efd1abdec5a17872d07a4f2112"
+        }
+      ],
+      "version": "1.1.10"
+    },
+    {
+      "authors": [
+        "Mike Dilger <mike@mikedilger.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "b5a46b715d8b448cfe1079ab15691faff54d64e1f41803ed4c9bc6d255f3afde",
+      "name": "float-cmp",
+      "repository": "https://github.com/mikedilger/float-cmp",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "40be1e77825d7e49485a2e43d89bed29dfff29f8f529e71d3c683656021f0d08"
+        }
+      ],
+      "version": "0.10.0"
+    },
+    {
+      "authors": [
+        "The rust-url developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "118b1d87e862ea329b8bc84b389085a2f8e049d4c0b8b3c38ac2bffbe3501928",
+      "name": "form_urlencoded",
+      "repository": "https://github.com/servo/rust-url",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "20c7855c364d57ea4c97889a5e8d98470a9952dade37bd9248b9a54431670e5e"
+        }
+      ],
+      "version": "1.2.2"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "df27c9b8846e1c63057ae3b753328aa37c8c6a8b79c02beb12b6e6e375e780ee",
+      "name": "futures-channel",
+      "repository": "https://github.com/rust-lang/futures-rs",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+        }
+      ],
+      "version": "0.3.34"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "fa88cec6d0c527df4ff51ad034de09d3c552f6174ab8e4aa83cfaeacc36c4c7d",
+      "name": "futures-core",
+      "repository": "https://github.com/rust-lang/futures-rs",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+        }
+      ],
+      "version": "0.3.34"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "7c6f37af69a02c53db2bd3bedfc2e079d6644dbb454c1706be280670a37e1781",
+      "name": "futures-executor",
+      "repository": "https://github.com/rust-lang/futures-rs",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+        }
+      ],
+      "version": "0.3.34"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "c42a07cdf88ac680f96f75df035d3193a449eec157d75b1c9e9024a05848654b",
+      "name": "futures-io",
+      "repository": "https://github.com/rust-lang/futures-rs",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+        }
+      ],
+      "version": "0.3.34"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "fdb87996803b9b64594a0849d2b396f2581d79451adb8f1b91ed56da8c9421c3",
+      "name": "futures-macro",
+      "repository": "https://github.com/rust-lang/futures-rs",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+        }
+      ],
+      "version": "0.3.34"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "7d9159735fa6a29df379bfff623f6cece41584334ca022ebd34ef56152637fa8",
+      "name": "futures-task",
+      "repository": "https://github.com/rust-lang/futures-rs",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+        }
+      ],
+      "version": "0.3.34"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "7e672d306e8de25359ed9c452e7cdc115121dc7e985008af31c85a36b70ac835",
+      "name": "futures-util",
+      "repository": "https://github.com/rust-lang/futures-rs",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+        }
+      ],
+      "version": "0.3.34"
+    },
+    {
+      "authors": [
+        "The gtk-rs Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "b9e82a4cbd2b5d390843356fcfbe0d1cc95be6fefc238bdc5377cc376f04f6e5",
+      "name": "gio",
+      "repository": "https://github.com/gtk-rs/gtk-rs-core",
+      "texts": [
+        {
+          "file": "COPYRIGHT",
+          "sha256": "dae402989de65164815b7e2b6bc2b9576285434c3785934c8b6ece0fa055960d"
+        },
+        {
+          "file": "LICENSE",
+          "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+        }
+      ],
+      "version": "0.22.9"
+    },
+    {
+      "authors": [
+        "The gtk-rs Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "578c9b87a6c34b50d326c18057b176bf991bb485b70abe30338618f7e243d330",
+      "name": "gio-sys",
+      "repository": "https://github.com/gtk-rs/gtk-rs-core",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+        }
+      ],
+      "version": "0.22.9"
+    },
+    {
+      "authors": [
+        "The gtk-rs Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "8a2efb1811ac0966b09912620d0421798ab956dce7d872147178d066a9b4ef08",
+      "name": "glib",
+      "repository": "https://github.com/gtk-rs/gtk-rs-core",
+      "texts": [
+        {
+          "file": "COPYRIGHT",
+          "sha256": "dae402989de65164815b7e2b6bc2b9576285434c3785934c8b6ece0fa055960d"
+        },
+        {
+          "file": "LICENSE",
+          "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+        }
+      ],
+      "version": "0.22.9"
+    },
+    {
+      "authors": [
+        "The gtk-rs Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "06931f5d6d87e3502edbad7b721c2b875073ee1664cb36f26590369781f6b002",
+      "name": "glib-macros",
+      "repository": "https://github.com/gtk-rs/gtk-rs-core",
+      "texts": [
+        {
+          "file": "COPYRIGHT",
+          "sha256": "dae402989de65164815b7e2b6bc2b9576285434c3785934c8b6ece0fa055960d"
+        },
+        {
+          "file": "LICENSE",
+          "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+        }
+      ],
+      "version": "0.22.9"
+    },
+    {
+      "authors": [
+        "The gtk-rs Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "bef0d2f7360a2c0910585533e5a056d49f37748af4ae569c4ce5be1e988fd43e",
+      "name": "glib-sys",
+      "repository": "https://github.com/gtk-rs/gtk-rs-core",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+        }
+      ],
+      "version": "0.22.9"
+    },
+    {
+      "authors": [
+        "The gtk-rs Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "592abeff5453f63e4813ff5963cff82a2ca006a357254f63144d8677ad6e60a1",
+      "name": "gobject-sys",
+      "repository": "https://github.com/gtk-rs/gtk-rs-core",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+        }
+      ],
+      "version": "0.22.9"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "db0e63b72de157a2f5194458b73b6542c3f4e17e33ab34a71d0260bfc035467e",
+      "name": "heck",
+      "repository": "https://github.com/withoutboats/heck",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0"
+        }
+      ],
+      "version": "0.5.0"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "eb60eb645a6c36df23200ec8694c58e030eb2f4ef70a76152e5522080388432f",
+      "name": "icu_collections",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "2.3.0"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "cd218a4f3330c50ee39f51802480889c8a4a3f96b3e52556f6da6b74e53f7119",
+      "name": "icu_locale_core",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "2.3.0"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "11cf0b1e76f8fa54533106c3bcac78e76a657a4f5ea235c475eed7345d09d897",
+      "name": "icu_normalizer",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "2.3.0"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "c9bd42cf03d21ec7be29781dbb11387ffc4e1671aebe47bfa792621be794c651",
+      "name": "icu_normalizer_data",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "2.3.0"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "4123f8c99535526157f3e7b58c9aa2fbe8b10d88e28407886c76f3c1169a104e",
+      "name": "icu_properties",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "2.3.0"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "a1daca899288d4f0b78ba1ae2d78d6d754ff6fd906558761908e7b2421de2895",
+      "name": "icu_properties_data",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "2.3.0"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "51999be87b06d1b086d911242dabfc0647f0fc1ba2be05cb87c19a1d668b1e73",
+      "name": "icu_provider",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "2.3.1"
+    },
+    {
+      "authors": [
+        "The rust-url developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "f24a386a071c661e10acc366022adc8278d4f2ca8899d3b50b83e965d3933d00",
+      "name": "idna",
+      "repository": "https://github.com/servo/rust-url/",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "b38f11f6096706e6de553dabe2a7ed142d59b6fa8c97e290c67496154745cdd5"
+        }
+      ],
+      "version": "1.1.0"
+    },
+    {
+      "authors": [
+        "The rust-url developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Apache-2.0 OR MIT",
+      "metadata_sha256": "a5be3efe6b6b3ee7823820c9a3d47f318234f6a5fd48ab878d33cac9bc3ee573",
+      "name": "idna_adapter",
+      "repository": "https://github.com/hsivonen/idna_adapter",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "8b43ce8accd61e9d370b5ca9e9c4f953279b5c239926c62315b40e24df51b726"
+        }
+      ],
+      "version": "1.2.2"
+    },
+    {
+      "authors": [
+        "The image-rs Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "b45592b42e4f065d5258379bac78e2a00ab6e50bbeec265fcceeea9cf5829c26",
+      "name": "image",
+      "repository": "https://github.com/image-rs/image",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "c77a4cf9da729987d0fe7ccd811e3bd27393914ddf3d23467c18cc22954513b3"
+        }
+      ],
+      "version": "0.25.10"
+    },
+    {
+      "authors": [
+        "bluss"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "62dea4c41dff0c454c3198715885ca13ae6cdf1a5d3b5a5ec68ef42750ccbaf2",
+      "name": "itertools",
+      "repository": "https://github.com/rust-itertools/itertools",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545"
+        }
+      ],
+      "version": "0.15.0"
+    },
+    {
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "894c215e4e7e973b556b0e9627bf9b6a719a043fac9b5af9838660816392a09f",
+      "name": "itoa",
+      "repository": "https://github.com/dtolnay/itoa",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "1.0.18"
+    },
+    {
+      "authors": [
+        "Pyfisch <pyfisch@gmail.com>",
+        "Tpt <thomas@pellissier-tanon.fr>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT/Apache-2.0",
+      "metadata_sha256": "6570415cdc06de62cc03c4fb0b25ac172ab5a629991cad17f1c1a735cbe6578e",
+      "name": "language-tags",
+      "repository": "https://github.com/pyfisch/rust-language-tags",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "e03e58ea9205f51989b7a50f450051b24e6516cc1f0b920222dcda992072be99"
+        }
+      ],
+      "version": "0.3.2"
+    },
+    {
+      "authors": [
+        "Marvin L\u00f6bel <loebel.marvin@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "7556429fefb497526c5abdaa2c36d8ce4eb86c23d72763eb396652b9eaffc210",
+      "name": "lazy_static",
+      "repository": "https://github.com/rust-lang-nursery/lazy-static.rs",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "0621878e61f0d0fda054bcbe02df75192c28bde1ecc8289cbd86aeba2dd72720"
+        }
+      ],
+      "version": "1.5.0"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "95159789ef9c9aaee8230b13be5c89594833a7bf2db299e61eb23b512cb67144",
+      "name": "libc",
+      "repository": "https://github.com/rust-lang/libc",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "123a331b5dbf04c30097fa43b8f858bc85df671fe776de498d01f3d6b7c1f69e"
+        }
+      ],
+      "version": "0.2.189"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "0cc7f82691b669873f759afd43bc2c9387088bfb973ad6037decce4d94f31fe3",
+      "name": "litemap",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "0.8.3"
+    },
+    {
+      "authors": [
+        "Jan Hudec <bulb@ucw.cz>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "c485513f59b62ad34dbb9aff643d8813625d145f352beb281cd79407235e33c6",
+      "name": "locale_config",
+      "repository": "https://github.com/rust-locale/locale_config/",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "0ceba5b58dfaeb0281ccd2da83a34eed8b3c5d5e0c1e1b947ce93000043f0200"
+        }
+      ],
+      "version": "0.3.0"
+    },
+    {
+      "authors": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "dd67edbeff9cee46c3ea6411098aeec7363cb4fe865006c8eca321d321332484",
+      "name": "lock_api",
+      "repository": "https://github.com/Amanieu/parking_lot",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
+        }
+      ],
+      "version": "0.4.14"
+    },
+    {
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "a6b553a374b237960e65d91de04e102a1755a7a20ff21f2c1ef6ba74b9d0ab76",
+      "name": "log",
+      "repository": "https://github.com/rust-lang/log",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+        }
+      ],
+      "version": "0.4.34"
+    },
+    {
+      "authors": [
+        "The html5ever Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "df5bfe616acd0adeb69ad210eb63bfb9125cb025574c7dcdc7714dc1eff228a9",
+      "name": "markup5ever",
+      "repository": "https://github.com/servo/html5ever",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "86dd7f026f916daf7511e39951ad8ea8cf55a8db67ae64060dacf829761c18f3"
+        }
+      ],
+      "version": "0.39.0"
+    },
+    {
+      "authors": [
+        "bluss",
+        "R. Janis Goldschmidt"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT/Apache-2.0",
+      "metadata_sha256": "7a812761b8f7e50532e5c2dd0eb59c69fd4c714632dcc7a46a9b35cc3e1b4ebd",
+      "name": "matrixmultiply",
+      "repository": "https://github.com/bluss/matrixmultiply/",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "792d075c7bad6dac258a44e799eb64cbf465e24d9932d27669be08c5ec957e27"
+        }
+      ],
+      "version": "0.3.11"
+    },
+    {
+      "authors": [
+        "Andrew Gallant <jamslam@gmail.com>",
+        "bluss"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unlicense OR MIT",
+      "metadata_sha256": "a14f68b8fa55f15fd03b15dced37bcf66a0a628f568eedc82817cdb7f9281951",
+      "name": "memchr",
+      "repository": "https://github.com/BurntSushi/memchr",
+      "texts": [
+        {
+          "file": "COPYING",
+          "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
+        },
+        {
+          "file": "UNLICENSE",
+          "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c"
+        }
+      ],
+      "version": "2.8.3"
+    },
+    {
+      "authors": [
+        "Frommi <daniil.liferenko@gmail.com>",
+        "oyvindln <oyvindln@users.noreply.github.com>",
+        "Rich Geldreich richgel99@gmail.com"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Zlib OR Apache-2.0",
+      "metadata_sha256": "f0d2683434f1c0d3cd9b8080031e82aa5089c9be1779cc5101e065883258d77d",
+      "name": "miniz_oxide",
+      "repository": "https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "4108245a1f2df9d4e94df8abed5b4ba0759bb2f9b40a6b939f1be141077ae50b"
+        },
+        {
+          "file": "LICENSE-APACHE.md",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+        },
+        {
+          "file": "LICENSE-MIT.md",
+          "sha256": "799e9ca9d179295ef372f25d3769cdda7d25bb2668add6a6a1e22d1e4c678b8d"
+        },
+        {
+          "file": "LICENSE-ZLIB.md",
+          "sha256": "0a54e647fe54104658b5e563c04c6f9edf251710e47bce692e0bd990a4ddaa39"
+        }
+      ],
+      "version": "0.8.9"
+    },
+    {
+      "authors": [
+        "Frommi <daniil.liferenko@gmail.com>",
+        "oyvindln <oyvindln@users.noreply.github.com>",
+        "Rich Geldreich richgel99@gmail.com"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Zlib OR Apache-2.0",
+      "metadata_sha256": "50b7813993bf57d2ece90fa780a330d1d5177723b8606c7d214f51d265d30c74",
+      "name": "miniz_oxide",
+      "repository": "https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "4108245a1f2df9d4e94df8abed5b4ba0759bb2f9b40a6b939f1be141077ae50b"
+        },
+        {
+          "file": "LICENSE-APACHE.md",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+        },
+        {
+          "file": "LICENSE-MIT.md",
+          "sha256": "799e9ca9d179295ef372f25d3769cdda7d25bb2668add6a6a1e22d1e4c678b8d"
+        },
+        {
+          "file": "LICENSE-ZLIB.md",
+          "sha256": "0a54e647fe54104658b5e563c04c6f9edf251710e47bce692e0bd990a4ddaa39"
+        }
+      ],
+      "version": "0.9.1"
+    },
+    {
+      "authors": [
+        "Radzivon Bartoshyk"
+      ],
+      "ecosystem": "cargo",
+      "license": "BSD-3-Clause OR Apache-2.0",
+      "metadata_sha256": "290c7622a797623db3c35105061673a1231ee462e529fe717bde96b96ff49679",
+      "name": "moxcms",
+      "repository": "https://github.com/awxkee/moxcms.git",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE.md",
+          "sha256": "90bf2d659c43045111b65c733ab2a6d4cbcb422a098368c8c58a9ba3db4ed0c5"
+        },
+        {
+          "file": "LICENSE.md",
+          "sha256": "2aa92cada6431e75615e3fe6cb1a9082c98f777d48ae1c087c0da0e37f7b8bff"
+        }
+      ],
+      "version": "0.8.1"
+    },
+    {
+      "authors": [
+        "Caleb Zulawski <caleb.zulawski@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "69b4af6c9469f25941c4000a12167579d165448cda5a8be502547a0756e65c1b",
+      "name": "multiversion",
+      "repository": "https://github.com/calebzulawski/multiversion",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "3c92a19e541755a97e51b4c963aa4335bbf93b64574dfbc36a5636c2899f3ab9"
+        }
+      ],
+      "version": "0.9.0"
+    },
+    {
+      "authors": [
+        "Caleb Zulawski <caleb.zulawski@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "d90a3deb908f4bc453a11f6a0956e46b80d5422d8aa2b6881ed7d6aa1fd2e140",
+      "name": "multiversion-macros",
+      "repository": "https://github.com/calebzulawski/multiversion",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "3c92a19e541755a97e51b4c963aa4335bbf93b64574dfbc36a5636c2899f3ab9"
+        }
+      ],
+      "version": "0.9.0"
+    },
+    {
+      "authors": [
+        "Henri Sivonen <hsivonen@hsivonen.fi>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Apache-2.0 OR MIT",
+      "metadata_sha256": "41b3f7f835fd5296571889c57b2d02f7c758389062447633ae6048a82ee06302",
+      "name": "multiversion_no_op",
+      "repository": "https://github.com/hsivonen/multiversion_no_op",
+      "texts": [
+        {
+          "file": "COPYRIGHT",
+          "sha256": "d2a809eafabba137f508bea16a1b93d8ff24df7da6f38129d830db9bc118bdfe"
+        },
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c"
+        }
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "855eab9c2aec95d6dba697a09f235ab4f72d2846850d46815a60c68f55af676b",
+      "name": "mutants",
+      "repository": "https://github.com/sourcefrog/cargo-mutants",
+      "supplement_sources": [
+        {
+          "file": "mutants-LICENSE.txt",
+          "full_text": true,
+          "packages": [
+            "mutants@0.0.4"
+          ],
+          "primary_license": true,
+          "provenance": "workspace root at exact .cargo_vcs_info commit",
+          "retrieved": "2026-11-17",
+          "selected_license": "MIT",
+          "sha256": "479cbeb2506157776cf80abe31df18065d0fe50b5816ff77bfd75d5deb04ab5c",
+          "url": "https://raw.githubusercontent.com/sourcefrog/cargo-mutants/14011d08c42a7cd368698fe28f77eb4cd0b65bf0/LICENSE"
+        }
+      ],
+      "texts": [
+        {
+          "file": "supplement/mutants-LICENSE.txt",
+          "sha256": "479cbeb2506157776cf80abe31df18065d0fe50b5816ff77bfd75d5deb04ab5c"
+        }
+      ],
+      "version": "0.0.4"
+    },
+    {
+      "authors": [
+        "S\u00e9bastien Crozet <developer@crozet.re>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Apache-2.0",
+      "metadata_sha256": "1158414cc69b0c60c5a08d1817941a5e78c40bfcf29dc0fbb7952694275193c4",
+      "name": "nalgebra",
+      "repository": "https://github.com/dimforge/nalgebra",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c"
+        }
+      ],
+      "version": "0.35.0"
+    },
+    {
+      "authors": [
+        "Andreas Longva",
+        "S\u00e9bastien Crozet <developer@crozet.re>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Apache-2.0",
+      "metadata_sha256": "531b772b2b1c2e25c5521ecdb571bc38b0f428efa6b72f1d5e96c42a62a2a440",
+      "name": "nalgebra-macros",
+      "repository": "https://github.com/dimforge/nalgebra",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c"
+        }
+      ],
+      "version": "0.3.0"
+    },
+    {
+      "authors": [
+        "Matt Brubeck <mbrubeck@limpet.net>",
+        "Jonathan Reem <jonathan.reem@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "c89bebeeaf164811c20eca172f592e26a1d21d8d91b3c9a367ad745015eb78e2",
+      "name": "new_debug_unreachable",
+      "repository": "https://github.com/mbrubeck/rust-debug-unreachable",
+      "texts": [
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "f7715d38a3fa1b4ac97c5729740752505a39cb92ee83ab5b102aeb5eaa7cdea4"
+        }
+      ],
+      "version": "1.0.6"
+    },
+    {
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "c3eb0628759922920b1ad0c233f2977ac6fd609876e27d88f6088400887aa937",
+      "name": "num-complex",
+      "repository": "https://github.com/rust-num/num-complex",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+        }
+      ],
+      "version": "0.4.6"
+    },
+    {
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "a0fc4aee99b0663bb80ce2fc8052491b7e28872765711266faddb2ed0474cb96",
+      "name": "num-integer",
+      "repository": "https://github.com/rust-num/num-integer",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+        }
+      ],
+      "version": "0.1.47"
+    },
+    {
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "5d0e183e1c4b1ad6fe8a288f51ee840ae06c72be900608ea4c3ccc0380e62d01",
+      "name": "num-rational",
+      "repository": "https://github.com/rust-num/num-rational",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+        }
+      ],
+      "version": "0.4.2"
+    },
+    {
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "dd701a0da6cce7e6e047cc944b2330f3c5e48cd64329e10942ea7d9299d435be",
+      "name": "num-traits",
+      "repository": "https://github.com/rust-num/num-traits",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+        }
+      ],
+      "version": "0.2.19"
+    },
+    {
+      "authors": [
+        "The gtk-rs Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "3de4ede78fc213f987af4814ec8c588309dcbf743c4eb82e315c55445257407c",
+      "name": "pango",
+      "repository": "https://github.com/gtk-rs/gtk-rs-core",
+      "texts": [
+        {
+          "file": "COPYRIGHT",
+          "sha256": "dae402989de65164815b7e2b6bc2b9576285434c3785934c8b6ece0fa055960d"
+        },
+        {
+          "file": "LICENSE",
+          "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+        }
+      ],
+      "version": "0.22.9"
+    },
+    {
+      "authors": [
+        "The gtk-rs Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "53467eee1a4ceabc964d776cecbdac6772601e398585a16e7c0c877f48780e5c",
+      "name": "pango-sys",
+      "repository": "https://github.com/gtk-rs/gtk-rs-core",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+        }
+      ],
+      "version": "0.22.9"
+    },
+    {
+      "authors": [
+        "The gtk-rs Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "46e37068ba7ff0d265f4c3a99fd4ce357ab8133acc546ca6d2d2871367e758ae",
+      "name": "pangocairo",
+      "repository": "https://github.com/gtk-rs/gtk-rs-core",
+      "texts": [
+        {
+          "file": "COPYRIGHT",
+          "sha256": "dae402989de65164815b7e2b6bc2b9576285434c3785934c8b6ece0fa055960d"
+        },
+        {
+          "file": "LICENSE",
+          "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+        }
+      ],
+      "version": "0.22.9"
+    },
+    {
+      "authors": [
+        "The gtk-rs Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "33ab4fd4256c93a870468474819f9f0365edf83789c5c998c0b77b2ea9184fed",
+      "name": "pangocairo-sys",
+      "repository": "https://github.com/gtk-rs/gtk-rs-core",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "8cf56d10131ce201cf69ab74b111d3ebac1acca3833d7efb39ae357224b70edb"
+        }
+      ],
+      "version": "0.22.9"
+    },
+    {
+      "authors": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "3a52d781dd42d10f8c2dd3336bb61c4beaa850b5d62ebe7580070b8d0a4e3b98",
+      "name": "parking_lot",
+      "repository": "https://github.com/Amanieu/parking_lot",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
+        }
+      ],
+      "version": "0.12.5"
+    },
+    {
+      "authors": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "617b6fd7c1133961c993fd5baa560180d688f6d42f59b73da11fb90089a93ca7",
+      "name": "parking_lot_core",
+      "repository": "https://github.com/Amanieu/parking_lot",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
+        }
+      ],
+      "version": "0.9.12"
+    },
+    {
+      "authors": [
+        "The rust-url developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "e4ea043c47bbd5551fc5fcf8151eab94428b4be6f2337834a0f9020a4392fb19",
+      "name": "percent-encoding",
+      "repository": "https://github.com/servo/rust-url/",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "b38f11f6096706e6de553dabe2a7ed142d59b6fa8c97e290c67496154745cdd5"
+        }
+      ],
+      "version": "2.3.2"
+    },
+    {
+      "authors": [
+        "Steven Fackler <sfackler@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "5bf09dcab55c8fb28fc1ac96beb1b75b595ea026373e2f92b70cc395394579b0",
+      "name": "phf",
+      "repository": "https://github.com/rust-phf/rust-phf",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "0ab4d106b6faac07fb6a051815fd1b4d862d730895e2d7d7358c2f13565e7a38"
+        }
+      ],
+      "version": "0.13.1"
+    },
+    {
+      "authors": [
+        "Steven Fackler <sfackler@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "e60b819dc0d390ddaaeaa0646b495e4aab3f4cf68b7bd158f928f18892eba2e7",
+      "name": "phf_codegen",
+      "repository": "https://github.com/rust-phf/rust-phf",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "0ab4d106b6faac07fb6a051815fd1b4d862d730895e2d7d7358c2f13565e7a38"
+        }
+      ],
+      "version": "0.13.1"
+    },
+    {
+      "authors": [
+        "Steven Fackler <sfackler@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "cb36f4b88da746daff3dbf428941278844bfb848c9afb8c742a7f534c2cc9441",
+      "name": "phf_generator",
+      "repository": "https://github.com/rust-phf/rust-phf",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "0ab4d106b6faac07fb6a051815fd1b4d862d730895e2d7d7358c2f13565e7a38"
+        }
+      ],
+      "version": "0.13.1"
+    },
+    {
+      "authors": [
+        "Steven Fackler <sfackler@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "a197994797a8b6b345f1882f3639f95e3f363d2bf57eb4bb4d610b51079d58d0",
+      "name": "phf_macros",
+      "repository": "https://github.com/rust-phf/rust-phf",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "0ab4d106b6faac07fb6a051815fd1b4d862d730895e2d7d7358c2f13565e7a38"
+        }
+      ],
+      "version": "0.13.1"
+    },
+    {
+      "authors": [
+        "Steven Fackler <sfackler@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "3d20d918764d9c014251ee6c51c41275b075ef63cbf81ee138ef39ed485e807d",
+      "name": "phf_shared",
+      "repository": "https://github.com/rust-phf/rust-phf",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "0ab4d106b6faac07fb6a051815fd1b4d862d730895e2d7d7358c2f13565e7a38"
+        }
+      ],
+      "version": "0.13.1"
+    },
+    {
+      "authors": [
+        "Steven Fackler <sfackler@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "0fffc15fdec42e2167775df25d6e3491e21550c27ae73d547a03f44fba70f070",
+      "name": "phf_shared",
+      "repository": "https://github.com/rust-phf/rust-phf",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "0ab4d106b6faac07fb6a051815fd1b4d862d730895e2d7d7358c2f13565e7a38"
+        }
+      ],
+      "version": "0.14.0"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "Apache-2.0 OR MIT",
+      "metadata_sha256": "473f9cfe9738986d0d1c46e306bd11ad3e36bca8f1eab5bbe9f7297313fb33f4",
+      "name": "pin-project-lite",
+      "repository": "https://github.com/taiki-e/pin-project-lite",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "0.2.17"
+    },
+    {
+      "authors": [
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "26612dc6bbb8c045f4c91f95fc026b926e9adb942655dddfd21ffecf2595b70b",
+      "name": "pkg-config",
+      "repository": "https://github.com/rust-lang/pkg-config-rs",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+        }
+      ],
+      "version": "0.3.34"
+    },
+    {
+      "authors": [
+        "The image-rs Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "642c5d3c2bf538404cf1d5c4aac254d033e0854af844610435fd13e910bf93aa",
+      "name": "png",
+      "repository": "https://github.com/image-rs/image-png",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "eaf40297c75da471f7cda1f3458e8d91b4b2ec866e609527a13acfa93b638652"
+        }
+      ],
+      "version": "0.18.1"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "62824fe5126abde181302cc0e4054ab6939355645ab8f12dd939ca1105604560",
+      "name": "potential_utf",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "0.1.6"
+    },
+    {
+      "authors": [
+        "Emilio Cobos \u00c1lvarez <emilio@crisal.io>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "594bc4437727edbf58c7cb9f88c3c1d80e89439dd4a505ef4771f9f344819386",
+      "name": "precomputed-hash",
+      "repository": "https://github.com/emilio/precomputed-hash",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "7ca6700600dfa9c9497bf5556365067daa802c871ea78239f129309c7a2048f7"
+        }
+      ],
+      "version": "0.1.1"
+    },
+    {
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>",
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "6bdbe54a7f052e552dcfca90351764476e2767237ec3f954df8bd9f602861056",
+      "name": "proc-macro2",
+      "repository": "https://github.com/dtolnay/proc-macro2",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "1.0.107"
+    },
+    {
+      "authors": [
+        "Radzivon Bartoshyk"
+      ],
+      "ecosystem": "cargo",
+      "license": "BSD-3-Clause OR Apache-2.0",
+      "metadata_sha256": "9260684ebef37231391bd46c3aaa628fd034746ffba5154a5544791810382966",
+      "name": "pxfm",
+      "repository": "https://github.com/awxkee/pxfm",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE.md",
+          "sha256": "90bf2d659c43045111b65c733ab2a6d4cbcb422a098368c8c58a9ba3db4ed0c5"
+        },
+        {
+          "file": "LICENSE.md",
+          "sha256": "2aa92cada6431e75615e3fe6cb1a9082c98f777d48ae1c087c0da0e37f7b8bff"
+        }
+      ],
+      "version": "0.1.30"
+    },
+    {
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "13d8c50837f14aff48cd622349f98fb2c46350b7a0c08fd574cf7de4def27d06",
+      "name": "quote",
+      "repository": "https://github.com/dtolnay/quote",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "1.0.47"
+    },
+    {
+      "authors": [
+        "bluss"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT/Apache-2.0",
+      "metadata_sha256": "1e819807b4bb3f1b8e234da6867a1b8ac68cab22972476e4d98646c7502b921e",
+      "name": "rawpointer",
+      "repository": "https://github.com/bluss/rawpointer/",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545"
+        }
+      ],
+      "version": "0.2.1"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "bcc6eda50025991d8db6ccaaad2e26477072a359762451a4e55a7e700ad0e42d",
+      "name": "rayon",
+      "repository": "https://github.com/rayon-rs/rayon",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "0621878e61f0d0fda054bcbe02df75192c28bde1ecc8289cbd86aeba2dd72720"
+        }
+      ],
+      "version": "1.12.0"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "ab50ad4709436f6bda04e5345444f1197b1eda2bd3b49f9412c0cb318111b5a2",
+      "name": "rayon-core",
+      "repository": "https://github.com/rayon-rs/rayon",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "0621878e61f0d0fda054bcbe02df75192c28bde1ecc8289cbd86aeba2dd72720"
+        }
+      ],
+      "version": "1.13.0"
+    },
+    {
+      "authors": [
+        "Simon Sapin <simon.sapin@exyr.org>",
+        "Yevhenii Reizner <razrfalcon@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "e5e028612dddc1a9b4ead3c7458cc5a5446b0beb7c3fef5bded3181a7d600581",
+      "name": "rctree",
+      "repository": "https://github.com/RazrFalcon/rctree",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "554c76c3cb6277827297f0af0ce2dedc0d2bcfef92517f9b4766762ac502eb72"
+        }
+      ],
+      "version": "0.6.0"
+    },
+    {
+      "authors": [
+        "The Rust Project Developers",
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "d6695aba00bda6017a25464bdf2c8e8c0d7e769389416d03d53de58cb62dc873",
+      "name": "regex",
+      "repository": "https://github.com/rust-lang/regex",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+        }
+      ],
+      "version": "1.13.1"
+    },
+    {
+      "authors": [
+        "The Rust Project Developers",
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "25d528e0bd6dd67c78462d3c7a426698b5d6e702052b25daf7599c0a211315b6",
+      "name": "regex-automata",
+      "repository": "https://github.com/rust-lang/regex",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+        }
+      ],
+      "version": "0.4.18"
+    },
+    {
+      "authors": [
+        "The Rust Project Developers",
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "10c3f14629c0900ac452dd6d55a62aab561bbabbdf5774a802c8d223933cfa3b",
+      "name": "regex-syntax",
+      "repository": "https://github.com/rust-lang/regex",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+        },
+        {
+          "file": "src/unicode_tables/LICENSE-UNICODE",
+          "sha256": "74db5baf44a41b1000312c673544b3374e4198af5605c7f9080a402cec42cfa3"
+        }
+      ],
+      "version": "0.8.11"
+    },
+    {
+      "authors": [
+        "Kornel Lesi\u0144ski <kornel@geekhood.net>",
+        "James Forster <james.forsterer@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "b4f54a7ad19733e2a1057ac33221a65c9fa2f1cd902cebeeaf57a98fefd276a4",
+      "name": "rgb",
+      "repository": "https://github.com/kornelski/rust-rgb",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "457b464bc0fba8a3d67d2458569104f5611869f0c1563a1a12d9c51a0bca9261"
+        }
+      ],
+      "version": "0.8.53"
+    },
+    {
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Apache-2.0 OR MIT",
+      "metadata_sha256": "7e6727beb038213a2aa02f90cbbfb1d6651a9fda56f241dd95110a0cb287efc9",
+      "name": "rustc-hash",
+      "repository": "https://github.com/rust-lang/rustc-hash",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "95bd3988beee069fa2848f648dab43cc6e0b2add2ad6bcb17360caf749802bcc"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+        }
+      ],
+      "version": "2.1.3"
+    },
+    {
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "fc211ccd64d3ad59a0715c1a6f8cbfbbd83045f644194394595d16646eee9947",
+      "name": "rustversion",
+      "repository": "https://github.com/dtolnay/rustversion",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "1.0.23"
+    },
+    {
+      "authors": [
+        "Lokathor <zefria@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "metadata_sha256": "2b6d8bb3d10aaf57629b49332915b50f768c7ad7f329ff04526261e25a1d6c6f",
+      "name": "safe_arch",
+      "repository": "https://github.com/Lokathor/safe_arch",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE.md",
+          "sha256": "e3ba223bb1423f0aad8c3dfce0fe3148db48926d41e6fbc3afbbf5ff9e1c89cb"
+        },
+        {
+          "file": "LICENSE-MIT.md",
+          "sha256": "e57011537d230b14e790f6666dc00816f7b371ebbd7da8a12491e51086fec278"
+        },
+        {
+          "file": "LICENSE-ZLIB.md",
+          "sha256": "c43b9a9b1387ed53d2c49263838261129a010e280e3a174a792242c3e2c98db9"
+        }
+      ],
+      "version": "1.2.0"
+    },
+    {
+      "authors": [
+        "bluss"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "68899251551903e2e1ba03c927f12e4c19fc8a15e8bd3756610f53f5ec075b48",
+      "name": "scopeguard",
+      "repository": "https://github.com/bluss/scopeguard",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "fb77f0a9c53e473abe5103c8632ef9f0f2874d4fb3f17cb2d8c661aab9cee9d7"
+        }
+      ],
+      "version": "1.2.0"
+    },
+    {
+      "authors": [
+        "The Servo Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MPL-2.0",
+      "metadata_sha256": "f883725ad3e3ce9100c7b236858942d9182581c1ae6fe1511b41aa130657589b",
+      "name": "selectors",
+      "repository": "https://github.com/servo/stylo",
+      "supplement_sources": [
+        {
+          "file": "selectors-MPL-2.0.txt",
+          "full_text": true,
+          "packages": [
+            "selectors@0.40.0"
+          ],
+          "primary_license": true,
+          "provenance": "Canonical full license named by exact source headers; no root LICENSE in source tree",
+          "retrieved": "2026-11-17",
+          "selected_license": "MPL-2.0",
+          "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85",
+          "url": "https://www.mozilla.org/media/MPL/2.0/index.815ca599c9df.txt"
+        }
+      ],
+      "texts": [
+        {
+          "file": "supplement/selectors-MPL-2.0.txt",
+          "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+        }
+      ],
+      "version": "0.40.0"
+    },
+    {
+      "authors": [
+        "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "6883caefd46e86eb15d22d3a6d274ad304c5e7934ab70eb58d81b7c4a29ef9db",
+      "name": "serde",
+      "repository": "https://github.com/serde-rs/serde",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "1.0.229"
+    },
+    {
+      "authors": [
+        "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "c6049e170e4f7c2b48749fefab59db583bfac4e466cde6d0c53e4f49bc5044f7",
+      "name": "serde_core",
+      "repository": "https://github.com/serde-rs/serde",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "1.0.229"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "9fdef53ff77894a933022135dfcf0733c9257807a23a387176b2de16b4cb48ba",
+      "name": "serde_spanned",
+      "repository": "https://github.com/toml-rs/toml",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6"
+        }
+      ],
+      "version": "1.1.1"
+    },
+    {
+      "authors": [
+        "The Servo Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "9ab5a069f46a8d0122c464cf007abe362a3212e82ccfa1afd9dab3d969bf85a9",
+      "name": "servo_arc",
+      "repository": "https://github.com/servo/stylo",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "0.4.3"
+    },
+    {
+      "authors": [
+        "sebcrozet <developer@crozet.re>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Apache-2.0",
+      "metadata_sha256": "0770f19ec7af5df8ea21e60b1cca05c6c777ec6012e69a4df78b57777400ca9f",
+      "name": "simba",
+      "repository": "https://github.com/dimforge/simba",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c"
+        }
+      ],
+      "version": "0.10.2"
+    },
+    {
+      "authors": [
+        "Marvin Countryman <me@maar.vin>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "6981052c018f374476e9dd4186c0df3f4f5f0108a6c6b627409a2644b06e925b",
+      "name": "simd-adler32",
+      "repository": "https://github.com/mcountryman/simd-adler32",
+      "texts": [
+        {
+          "file": "LICENSE.md",
+          "sha256": "42a35170233e83e18856792e748de4c1ce4a63b2afce9a370c89ef3fe23f9f2d"
+        }
+      ],
+      "version": "0.3.10"
+    },
+    {
+      "authors": [
+        "Hans Kratz <hans@appfour.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "dc92a9d5ab620ca866e5b2e5a5ea0f356de3499e605ed7f14f69d9c6aed5028c",
+      "name": "simdutf8",
+      "repository": "https://github.com/rusticstuff/simdutf8",
+      "texts": [
+        {
+          "file": "LICENSE-Apache",
+          "sha256": "0cec06e0e55fbc3dc5cee4fca9b607f66cb8f4e4dbcf3b3c013594dd156732e9"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f"
+        }
+      ],
+      "version": "0.1.5"
+    },
+    {
+      "authors": [
+        "Frank Denis <github@pureftpd.org>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT/Apache-2.0",
+      "metadata_sha256": "e7b84f7acf4a759417326d28525baa2986f25e4bf8c96b146ed5e375bafb2959",
+      "name": "siphasher",
+      "repository": "https://github.com/jedisct1/rust-siphash",
+      "texts": [
+        {
+          "file": "COPYING",
+          "sha256": "c962ee4d1d05ddc138b202b2540219ebc57893fcf97b364852094a9a94ce1365"
+        }
+      ],
+      "version": "1.0.3"
+    },
+    {
+      "authors": [
+        "Carl Lerche <me@carllerche.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "11f31284be0c30b612f4e2c2e46aa14494a81639b12661f01f07394e270c0070",
+      "name": "slab",
+      "repository": "https://github.com/tokio-rs/slab",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "8ce0830173fdac609dfb4ea603fdc002c2f4af0dc9b1a005653f5da9cf534b18"
+        }
+      ],
+      "version": "0.4.12"
+    },
+    {
+      "authors": [
+        "The Servo Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "44df6dd3dfafb141907507e89b95b5d0bae344079bb1d0aa54fd6b63d43396ca",
+      "name": "smallvec",
+      "repository": "https://github.com/servo/rust-smallvec",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9"
+        }
+      ],
+      "version": "1.16.1"
+    },
+    {
+      "authors": [
+        "Robert Grosse <n210241048576@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "5cddd84a243940e60e772ecba2f05b28b00cbd825d341d9e0b0881dcae7847dc",
+      "name": "stable_deref_trait",
+      "repository": "https://github.com/storyyeller/stable_deref_trait",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "5e05b024f653a5ce199e77cbbbd42fb5553562ec714b819421ed0c3e552a75d7"
+        }
+      ],
+      "version": "1.2.1"
+    },
+    {
+      "authors": [
+        "The Servo Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "582cec8cde18a71b0ea1f884fca0ec677b45706fe37aa4895c85b83911529d45",
+      "name": "string_cache",
+      "repository": "https://github.com/servo/string-cache",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "62065228e42caebca7e7d7db1204cbb867033de5982ca4009928915e4095f3a3"
+        }
+      ],
+      "version": "0.10.0"
+    },
+    {
+      "authors": [
+        "The Servo Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "2f06f8d13779109f38bd823d209a9721570a9faef2267a44121bc67e6fa5ede7",
+      "name": "string_cache",
+      "repository": "https://github.com/servo/string-cache",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "62065228e42caebca7e7d7db1204cbb867033de5982ca4009928915e4095f3a3"
+        }
+      ],
+      "version": "0.9.0"
+    },
+    {
+      "authors": [
+        "The Servo Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "d91dfd12ed48ccd50b1741f654212421e59907aca5ed443a44bb69e66bd66ccb",
+      "name": "string_cache_codegen",
+      "repository": "https://github.com/servo/string-cache",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "62065228e42caebca7e7d7db1204cbb867033de5982ca4009928915e4095f3a3"
+        }
+      ],
+      "version": "0.6.1"
+    },
+    {
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "da8b83ac2c66a7b404dc55d88ae42592f70714823251f51b620ae349b246a18f",
+      "name": "syn",
+      "repository": "https://github.com/dtolnay/syn",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "2.0.119"
+    },
+    {
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "69b7b5a4f75d37bac9745ced65bf9b715ddc4ecb32308df7d796c55e9cbae40f",
+      "name": "syn",
+      "repository": "https://github.com/dtolnay/syn",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "3.0.6"
+    },
+    {
+      "authors": [
+        "Nika Layzell <nika@thelayzells.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "dd0a548424e191ce36d03a6cc7b91fffe22b80fac2c7e4896b5ef6909f5ce51d",
+      "name": "synstructure",
+      "repository": "https://github.com/mystor/synstructure",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "219920e865eee70b7dcfc948a86b099e7f4fe2de01bcca2ca9a20c0a033f2b59"
+        }
+      ],
+      "version": "0.14.0"
+    },
+    {
+      "authors": [
+        "Guillaume Desmottes <guillaume.desmottes@collabora.com>",
+        "Josh Triplett <josh@joshtriplett.org>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "81cf2dd1529e27748e910db790339c86819e6ea87cbf902a2c7ca68cdc1c2f83",
+      "name": "system-deps",
+      "repository": "https://github.com/gdesmott/system-deps",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "7.0.8"
+    },
+    {
+      "authors": [
+        "Guillaume Desmottes <guillaume.desmottes@collabora.com>",
+        "Josh Triplett <josh@joshtriplett.org>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "130a7c555c6bd98a60ccbaa00840fd79ed47f66ded14d716ffb3a46fe49942ce",
+      "name": "system-deps",
+      "repository": "https://github.com/gdesmott/system-deps",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "version": "9.0.0"
+    },
+    {
+      "authors": [
+        "Dan Gohman <sunfish@mozilla.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Apache-2.0 WITH LLVM-exception",
+      "metadata_sha256": "68c92fd64e0ba0311fffd938aa03a2c58a13341c37523da1dd465c7eea9269ea",
+      "name": "target-lexicon",
+      "repository": "https://github.com/bytecodealliance/target-lexicon",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5"
+        }
+      ],
+      "version": "0.13.5"
+    },
+    {
+      "authors": [
+        "Keegan McAllister <mcallister.keegan@gmail.com>",
+        "Simon Sapin <simon.sapin@exyr.org>",
+        "Chris Morgan <me@chrismorgan.info>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "beec6d4748444afbbfaef9115641a339628edf850c81e511f76370fa9806326b",
+      "name": "tendril",
+      "repository": "https://github.com/servo/html5ever",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "60a7062291b01ba068f300612cdbdc20382ac1d4934f07bcdd7167c15299f309"
+        }
+      ],
+      "version": "0.5.1"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "1ec97910b7a311b0fae11af824cfff9ff935b82db4d08d37b3f1c927171f90ff",
+      "name": "tinystr",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "0.8.4"
+    },
+    {
+      "authors": [
+        "Lokathor <zefria@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "metadata_sha256": "431976069fdb12e129521aa4c5c09d225d80a84afe678130d41bdd51ec361688",
+      "name": "tinyvec",
+      "repository": "https://github.com/Lokathor/tinyvec",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE.md",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "file": "LICENSE-MIT.md",
+          "sha256": "fd80a26fbb3f644af1fa994134446702932968519797227e07a1368dea80f0bc"
+        },
+        {
+          "file": "LICENSE-ZLIB.md",
+          "sha256": "84b34dd7608f7fb9b17bd588a6bf392bf7de504e2716f024a77d89f1b145a151"
+        }
+      ],
+      "version": "1.13.3"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "bc28e3a3d98ba539f4933dae2e9cbd11c7c43360b09693e16a7ab197dd2af00a",
+      "name": "toml",
+      "repository": "https://github.com/toml-rs/toml",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6"
+        }
+      ],
+      "version": "1.1.6+spec-1.1.0"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "97287a69ce6e80e64f90577d254185694042c91903c908001e8c3073e00bea3d",
+      "name": "toml_datetime",
+      "repository": "https://github.com/toml-rs/toml",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6"
+        }
+      ],
+      "version": "1.1.1+spec-1.1.0"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "23bf7bc66a7090d0048555ec05a81216a5d335e5648952d7fb266c7529a7ad90",
+      "name": "toml_parser",
+      "repository": "https://github.com/toml-rs/toml",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6"
+        }
+      ],
+      "version": "1.1.3+spec-1.1.0"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "00785a81eae34b3298dfdde78a6bd96fe3ec000de46edd509bd13b7cab7a9870",
+      "name": "typenum",
+      "repository": "https://github.com/paholg/typenum",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "db11fec9946737df39ca3898d9cd8c10ec6f6c3a884a6802b0ad0b81b4e8f23a"
+        },
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "516b24e051bf5630880ebbd55c40a25ce9552ebaf8970a53e8976eb70e522406"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f"
+        }
+      ],
+      "version": "1.20.1"
+    },
+    {
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+      "metadata_sha256": "f70dabc0fe831788a202762e62cc76c19941680960e2e2710d1ee9e79877d9af",
+      "name": "unicode-ident",
+      "repository": "https://github.com/dtolnay/unicode-ident",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        },
+        {
+          "file": "LICENSE-UNICODE",
+          "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1"
+        }
+      ],
+      "version": "1.0.26"
+    },
+    {
+      "authors": [
+        "The rust-url developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "7003e5562b5ab8454b9d78376303151af79011f5dd684c1891e0f46bc9112016",
+      "name": "url",
+      "repository": "https://github.com/servo/rust-url",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "b38f11f6096706e6de553dabe2a7ed142d59b6fa8c97e290c67496154745cdd5"
+        }
+      ],
+      "version": "2.5.8"
+    },
+    {
+      "authors": [
+        "Henri Sivonen <hsivonen@hsivonen.fi>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Apache-2.0 OR MIT",
+      "metadata_sha256": "df82c17a094e56a7c66d9aba1f68a1c3647518694c25326f09c5634a9012f21e",
+      "name": "utf8_iter",
+      "repository": "https://github.com/hsivonen/utf8_iter",
+      "texts": [
+        {
+          "file": "COPYRIGHT",
+          "sha256": "c30152c94a6d75e021adbc52b3a52470366a46edb917e17deae3259251af244c"
+        },
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c"
+        }
+      ],
+      "version": "1.0.4"
+    },
+    {
+      "authors": [
+        "Tim Visee <3a4fb3964f@sinenomine.email>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "2f85f557b31c4fa3a232317843adda223d603662217f19401278b74924370b1f",
+      "name": "version-compare",
+      "repository": "https://gitlab.com/timvisee/version-compare",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "cedfcc7ace1639adb054bd4a19b6f8585ccb2429a60b4bf51bfeb0601058c22c"
+        }
+      ],
+      "version": "0.2.1"
+    },
+    {
+      "authors": [
+        "The html5ever Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "4a8ed4e4c1fe5977a0a879099fbb3a2754821dabe9d14c83728847de0c8a7226",
+      "name": "web_atoms",
+      "repository": "https://github.com/servo/html5ever",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "86dd7f026f916daf7511e39951ad8ea8cf55a8db67ae64060dacf829761c18f3"
+        }
+      ],
+      "version": "0.2.6"
+    },
+    {
+      "authors": [
+        "Lokathor <zefria@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "metadata_sha256": "8b39f6e7126bbfbda260a50438fc4c20ba4d579aa0560a7b11368fdac75ed6b1",
+      "name": "wide",
+      "repository": "https://github.com/Lokathor/wide",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE.txt",
+          "sha256": "d64ac6ba60c7352115244dcfcb46c24f934603dd92e64835beafe7631c485abc"
+        },
+        {
+          "file": "LICENSE-MIT.txt",
+          "sha256": "69c62cda6938d510467c134dc0b5c83fb9c8ca847b9cd9d9d2fe9ab427c82100"
+        },
+        {
+          "file": "LICENSE-ZLIB.txt",
+          "sha256": "3c6921f3dfec0bed0cfa2d632616edd7380a875c8ad76c7b23dc59892259f62c"
+        }
+      ],
+      "version": "1.7.1"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT",
+      "metadata_sha256": "cff392f2e5af8a662aed09551f50bbe74eafa5a53dc051c62add73ea82a3cab0",
+      "name": "winnow",
+      "repository": "https://github.com/winnow-rs/winnow",
+      "texts": [
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "cb5aedb296c5246d1f22e9099f925a65146f9f0d6b4eebba97fd27a6cdbbab2d"
+        }
+      ],
+      "version": "1.0.4"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "fb3b4d69110d0714243299545a6c3fb79c714673b7279768c0bd8227c4c2a6ee",
+      "name": "writeable",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "0.6.4"
+    },
+    {
+      "authors": [
+        "The xml5ever project developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "metadata_sha256": "215f97178a86f8bed48c763e84ff30e7d8611972c3edd1dae4a3b24afac6155d",
+      "name": "xml5ever",
+      "repository": "https://github.com/servo/html5ever",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "86dd7f026f916daf7511e39951ad8ea8cf55a8db67ae64060dacf829761c18f3"
+        }
+      ],
+      "version": "0.39.0"
+    },
+    {
+      "authors": [
+        "Manish Goregaokar <manishsmail@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "5162db7018f95fa001cf9b7fbb067bb9446d5a2aa5e1a316567f6195b1f2af49",
+      "name": "yoke",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "0.8.3"
+    },
+    {
+      "authors": [
+        "Manish Goregaokar <manishsmail@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "29c42935f83db7a96f15850514e67263760d55e22af368ce5c8fc7366edd21c2",
+      "name": "yoke-derive",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "0.8.3"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "df8e84cb1898a8daae112228b118fed4861c8c3e9174bb761baf041790c1235a",
+      "name": "zerofrom",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "0.1.8"
+    },
+    {
+      "authors": [
+        "Manish Goregaokar <manishsmail@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "0bc9ebe5d49afbfb7e9a32272ea24dfef28889c2c4cb4f153168f1f1c2bee837",
+      "name": "zerofrom-derive",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "0.1.8"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "b9da7ef44f8fe9a47a64f019628f22c65f52c7e2a427891fee3b83ce7b646375",
+      "name": "zerotrie",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "0.2.5"
+    },
+    {
+      "authors": [
+        "The ICU4X Project Developers"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "11216eeba19169e8bec8d703c0c452367747e20e1ca319fc48feda7f0b1e8fba",
+      "name": "zerovec",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "0.11.8"
+    },
+    {
+      "authors": [
+        "Manish Goregaokar <manishsmail@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "Unicode-3.0",
+      "metadata_sha256": "b34f777e761fd83dea749dc9179aaee9327f0842329894aab47e7fa567e42473",
+      "name": "zerovec-derive",
+      "repository": "https://github.com/unicode-org/icu4x",
+      "texts": [
+        {
+          "file": "LICENSE",
+          "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+        }
+      ],
+      "version": "0.11.6"
+    },
+    {
+      "authors": [],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0 OR Zlib",
+      "metadata_sha256": "c17da79ddd25919908712cdd9a9e7e0273d53bda0b5be554a08270431a325b28",
+      "name": "zune-core",
+      "repository": "https://github.com/etemesi254/zune-image",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "d30047bca3b516639339a3c279bb84c3483124fb5a9dafe3c75056a85090e745"
+        },
+        {
+          "file": "LICENSE-ZLIB",
+          "sha256": "d201d14804d3bcd3b944147173175e4abfbd838b7c8069b6bd3452496bf13e6c"
+        }
+      ],
+      "version": "0.5.3"
+    },
+    {
+      "authors": [
+        "caleb <etemesicaleb@gmail.com>"
+      ],
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0 OR Zlib",
+      "metadata_sha256": "0ff579eaf0dbe4cb0529bc3e5256cd25eff1ae146289f40a4f77442171b5995b",
+      "name": "zune-jpeg",
+      "repository": "https://github.com/etemesi254/zune-image/tree/dev/crates/zune-jpeg",
+      "texts": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "d30047bca3b516639339a3c279bb84c3483124fb5a9dafe3c75056a85090e745"
+        },
+        {
+          "file": "LICENSE-ZLIB",
+          "sha256": "d201d14804d3bcd3b944147173175e4abfbd838b7c8069b6bd3452496bf13e6c"
+        }
+      ],
+      "version": "0.5.15"
+    }
+  ],
+  "schema": 1,
+  "scope": "installed package graph; final artifacts and native source obligations require separate verification"
+}

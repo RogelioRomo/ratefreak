@@ -1,0 +1,186 @@
+[
+  {
+    "file": "selectors-MPL-2.0.txt",
+    "url": "https://www.mozilla.org/media/MPL/2.0/index.815ca599c9df.txt",
+    "retrieved": "2026-11-17",
+    "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85",
+    "packages": [
+      "selectors@0.40.0"
+    ],
+    "provenance": "Canonical full license named by exact source headers; no root LICENSE in source tree",
+    "selected_license": "MPL-2.0",
+    "full_text": true,
+    "primary_license": true
+  },
+  {
+    "file": "anes-LICENSE-MIT.txt",
+    "url": "https://raw.githubusercontent.com/zrzka/anes-rs/378ac7461ecac29fde9e10df7b08359d1315a9ad/LICENSE-MIT",
+    "retrieved": "2026-11-17",
+    "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "packages": [
+      "anes@0.1.6"
+    ],
+    "provenance": "exact .cargo_vcs_info commit",
+    "selected_license": "MIT",
+    "full_text": true,
+    "primary_license": true
+  },
+  {
+    "file": "defmt-parser-LICENSE-MIT.txt",
+    "url": "https://raw.githubusercontent.com/knurling-rs/defmt/4a8cdb44891ed57b8ff5a023b6bec7137c48708f/LICENSE-MIT",
+    "retrieved": "2026-11-17",
+    "sha256": "2710a622a896bba67356913d4d0492cab5465f61b2ecce6d880aeb483834fb50",
+    "packages": [
+      "defmt-parser@1.0.0"
+    ],
+    "provenance": "workspace root at exact .cargo_vcs_info commit",
+    "selected_license": "MIT",
+    "full_text": true,
+    "primary_license": true
+  },
+  {
+    "file": "mutants-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/sourcefrog/cargo-mutants/14011d08c42a7cd368698fe28f77eb4cd0b65bf0/LICENSE",
+    "retrieved": "2026-11-17",
+    "sha256": "479cbeb2506157776cf80abe31df18065d0fe50b5816ff77bfd75d5deb04ab5c",
+    "packages": [
+      "mutants@0.0.4"
+    ],
+    "provenance": "workspace root at exact .cargo_vcs_info commit",
+    "selected_license": "MIT",
+    "full_text": true,
+    "primary_license": true
+  },
+  {
+    "file": "r-efi-5.3.0-AUTHORS.txt",
+    "url": "https://raw.githubusercontent.com/r-efi/r-efi/97b55bed1c2c91dcbf787674849f05337ff80b33/AUTHORS",
+    "retrieved": "2026-11-17",
+    "sha256": "ff92bed461f50338dd703a9ba9aee496a425957873df1d91192776e4bdf5dda7",
+    "packages": [
+      "r-efi@5.3.0"
+    ],
+    "provenance": "AUTHORS embeds MIT text and copyright; present in crate, detector missed filename",
+    "selected_license": "MIT",
+    "full_text": true,
+    "identical_to_vendored_authors": true,
+    "primary_license": true
+  },
+  {
+    "file": "r-efi-6.0.0-AUTHORS.txt",
+    "url": "https://raw.githubusercontent.com/r-efi/r-efi/7e1b0322d31d625f81a5656096330934f9cd835d/AUTHORS",
+    "retrieved": "2026-11-17",
+    "sha256": "d027e91dbc9cdbb2f1190068e498bd6b61cff022b6a032b191021ba658d96111",
+    "packages": [
+      "r-efi@6.0.0"
+    ],
+    "provenance": "AUTHORS embeds MIT text and copyright; present in crate, detector missed filename",
+    "selected_license": "MIT",
+    "full_text": true,
+    "identical_to_vendored_authors": true,
+    "primary_license": true
+  },
+  {
+    "file": "winapi-i686-LICENSE-MIT.txt",
+    "url": "https://raw.githubusercontent.com/retep998/winapi-rs/796a8e6c2971dc2ff1bcff166e6671284f9b5b6b/i686/LICENSE-MIT",
+    "retrieved": "2026-11-17",
+    "sha256": "ce7bc3499fee93d5022ef430d5e4201e79a6d9154f3974e42f41349f0569e09b",
+    "packages": [
+      "winapi-i686-pc-windows-gnu@0.4.0"
+    ],
+    "provenance": "Upstream architecture-subpackage MIT notice at release tag 0.3.9, pinned source commit. Exact 0.4.0 content comparison did not match this later tree; qualified upstream notice only, not exact-version confirmation.",
+    "selected_license": "MIT",
+    "full_text": true,
+    "primary_license": true
+  },
+  {
+    "file": "winapi-x86_64-LICENSE-MIT.txt",
+    "url": "https://raw.githubusercontent.com/retep998/winapi-rs/796a8e6c2971dc2ff1bcff166e6671284f9b5b6b/x86_64/LICENSE-MIT",
+    "retrieved": "2026-11-17",
+    "sha256": "ce7bc3499fee93d5022ef430d5e4201e79a6d9154f3974e42f41349f0569e09b",
+    "packages": [
+      "winapi-x86_64-pc-windows-gnu@0.4.0"
+    ],
+    "provenance": "Upstream architecture-subpackage MIT notice at release tag 0.3.9, pinned source commit. Exact 0.4.0 content comparison did not match this later tree; qualified upstream notice only, not exact-version confirmation.",
+    "selected_license": "MIT",
+    "full_text": true,
+    "primary_license": true
+  },
+  {
+    "file": "difflib-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/DimaKudosh/difflib/f035fb8e656f27119e23eca9d5b996df14f3885e/LICENSE",
+    "retrieved": "2026-11-17",
+    "sha256": "6725d1437fc6c77301f2ff0e7d52914cf4f9509213e1078dc77d9356dbe6eac5",
+    "packages": [
+      "difflib@0.4.0"
+    ],
+    "provenance": "Pinned upstream source tree; all 7 packaged non-normalized-manifest files (source/tests/examples/Cargo.toml.orig) match Git blob hashes exactly. No release tag or cargo VCS info.",
+    "selected_license": "MIT",
+    "full_text": true,
+    "primary_license": true
+  },
+  {
+    "file": "malloc_buf-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/SSheldon/malloc_buf/d9a3e539642bd90e07df458d226b19cdfa606863/LICENSE",
+    "retrieved": "2026-11-17",
+    "sha256": "aced7b57e474a63edb5a724954222bf7659c01ceef0e648a03af799582991db7",
+    "packages": [
+      "malloc_buf@0.0.6"
+    ],
+    "provenance": "Pinned later upstream tree; exact 0.0.6 release tree has no LICENSE. Applicability to exact release remains qualified.",
+    "selected_license": "MIT",
+    "full_text": true,
+    "primary_license": true
+  },
+  {
+    "file": "block-0.1.6-declaration.json",
+    "url": "https://crates.io/api/v1/crates/block/0.1.6/download",
+    "retrieved": "2026-11-17",
+    "sha256": "a626c410aa5c5b00a7f907d70b4d8376316a3707797fc41733526621d85195f3",
+    "packages": [
+      "block@0.1.6"
+    ],
+    "provenance": "Declaration extracted from verified vendored crate Cargo.toml; not full license text. macOS/Objective-C dependency family; actual target inclusion determined by build graph.",
+    "full_text": false,
+    "unresolved": true,
+    "primary_license": false
+  },
+  {
+    "file": "malloc_buf-0.0.6-declaration.json",
+    "url": "https://crates.io/api/v1/crates/malloc_buf/0.0.6/download",
+    "retrieved": "2026-11-17",
+    "sha256": "cb13113330ce4b30a2e36d657936d78471e4c9c8caab940f6d64eefb69a94e60",
+    "packages": [
+      "malloc_buf@0.0.6"
+    ],
+    "provenance": "Declaration extracted from verified vendored crate Cargo.toml; not full license text. macOS/Objective-C dependency family; actual target inclusion determined by build graph.",
+    "full_text": false,
+    "unresolved": true,
+    "primary_license": false
+  },
+  {
+    "file": "objc-foundation-0.1.1-declaration.json",
+    "url": "https://crates.io/api/v1/crates/objc-foundation/0.1.1/download",
+    "retrieved": "2026-11-17",
+    "sha256": "8592f63aa94e8d778eac6f1251017122748a35389a7982aab42654f90309c362",
+    "packages": [
+      "objc-foundation@0.1.1"
+    ],
+    "provenance": "Declaration extracted from verified vendored crate Cargo.toml; not full license text. macOS/Objective-C dependency family; actual target inclusion determined by build graph.",
+    "full_text": false,
+    "unresolved": true,
+    "primary_license": false
+  },
+  {
+    "file": "objc_id-0.1.1-declaration.json",
+    "url": "https://crates.io/api/v1/crates/objc_id/0.1.1/download",
+    "retrieved": "2026-11-17",
+    "sha256": "1df4c1797159eb80ebf80a7dc858206f42b380916197bd1a23b501ae300b1a5e",
+    "packages": [
+      "objc_id@0.1.1"
+    ],
+    "provenance": "Declaration extracted from verified vendored crate Cargo.toml; not full license text. macOS/Objective-C dependency family; actual target inclusion determined by build graph.",
+    "full_text": false,
+    "unresolved": true,
+    "primary_license": false
+  }
+]

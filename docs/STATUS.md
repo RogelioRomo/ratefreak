@@ -1,6 +1,9 @@
 # Current project status and roadmap
 
-Updated: 2026-11-13. MIT license selected on 2026-11-11 and added to the repository. Account lifecycle (`bd3d78e`), staff management (`30c57e7`)
+Updated: 2026-11-17. Application-native source packaging and modified-library
+replacement are verified; scroll-bar license provenance is documented through
+exact artifact/source equivalence. MIT license selected on 2026-11-11 and added
+to the repository. Account lifecycle (`bd3d78e`), staff management (`30c57e7`)
 and profile moderation (`a0a7aa0`) are committed and verified locally. Admin
 revocation and staff-policy documentation are implemented and verified locally;
 see Git history for the current integration commit.
@@ -28,6 +31,7 @@ older plans and resume notes. It records work and decisions, not deployment auth
 | [Dependency redistribution review](dependency-redistribution-review.md) | Package/image license findings, inventory scope and notice/source follow-up |
 | [Provider terms review](provider-terms-review.md) | Provider attribution, service eligibility and unresolved content-rights checks |
 | [Credits/compliance evidence](release-compliance-verification.md) | Implemented provider credits, packaged notices, native-source evidence and remaining obligations |
+| [Native source package verification](native-source-package-verification.md) | Image-bound source sidecar, offline rebuild/replacement proof and remaining OS/publication scope |
 | [Provider agreement evidence](provider-agreement-evidence.md) | Retrieved official agreements, access limits and operator acceptance requirements |
 | [Self-hosting guide](self-hosting.md) | Reference installation, configuration, upgrades and recovery |
 | [Reference verification](self-hosted-reference-verification.md) | Packaging, HTTPS, maintenance and recovery evidence/limits |
@@ -72,6 +76,11 @@ are evidence references, not durable deployment artifacts or guaranteed running 
   images collect package license/notice texts, project LICENSE, OS/runtime copyright
   evidence and native source/build provenance; this does not close source-distribution
   or provider-agreement obligations.
+- Verified Linux amd64 libvips source sidecar with locked Rust sources and an
+  offline source rebuild. A deliberately modified aggregate loads under the normal
+  web runtime identity and passes raster/SVG processing. Native Rust notices cover
+  all 162 observed compiled registry dependencies. The sidecar remains local and
+  separate from OS/API/tools source-delivery requirements.
 
 Current decisions:
 
@@ -96,6 +105,7 @@ Current decisions:
 
 | Check | Latest recorded result |
 | --- | --- |
+| Native source packaging, 2026-11-17 | 18 compliance and 30 operator tests passed. Fresh web candidate built with complete collected texts for 162 observed Rust packages. A 406-input, approximately 192 MiB source sidecar was created twice with identical SHA-256 and bound to the final image ID. Full native build passed with network disabled; a source-marked replacement passed exact path/hash, PNG and SVG-to-WebP checks under UID 10001/read-only/no-network. Scroll-bar provenance resolved through the qualified artifact/source chain. See [evidence and limits](native-source-package-verification.md) |
 | Credits and notice packaging, 2026-11-13 | 722 frontend tests, lint/typecheck, frontend production build and seven notice-collector tests passed. All three candidate images built; package text/hash checks passed for API 35/web 63/tools 36 packages, with runtime/native evidence. Chromium desktop/mobile in both themes and independent UI review passed. All 33 selected libvips source archive/patch URLs acquired and hashed; corresponding-source/relinking and agreement acceptance remain separate gates. See [scope/limits](release-compliance-verification.md) |
 | Dependency/provider review, 2026-11-13 | Source/package metadata and official provider/license sources reviewed; [dependency findings](dependency-redistribution-review.md), [inventory](dependency-inventory.md) and [provider findings](provider-terms-review.md) recorded. Missing TMDB logo/About-Credits attribution, final artifact notice/source compliance and inaccessible full provider agreements remain open. This was not a final image scan, vulnerability audit or legal clearance |
 | Self-hosted reference, 2026-11-10 | Complete private Compose/API/web/tools package and optional Caddy verified on Linux amd64. 719 frontend, 603 backend, 30 operator tests passed; real HTTPS/Chromium, DB permissions, migration/recreation, staff operations, coordinated restore/replay and incomplete-restore refusal passed. Controlled long export edge test: cancellation propagated, 504 at 300.01s. See [reference evidence](self-hosted-reference-verification.md) |
@@ -196,12 +206,15 @@ as the detailed acceptance checklist. Remaining categories are:
   and security guidance, versioned artifacts and self-hosting/upgrade documentation.
 
 The [reference-installation design](superpowers/specs/2026-11-10-self-hosted-reference-installation-design.md)
-is implemented and verified locally. Provider credits and package notice assembly
-are implemented and verified; the redistribution/provider release gate remains open.
+is implemented and verified locally. Provider credits, package notices, the scoped
+application-native source sidecar and modified-library replacement are verified.
+The scroll-bar notice now has documented artifact/source equivalence without a
+dependency change. The redistribution/provider release gate remains open.
 Next work: close the remaining [provider agreement requirements](provider-agreement-evidence.md),
-verify a complete native/OS corresponding-source distribution and replacement/relinking
-mechanism, and resolve the exact-version scroll-bar license provenance limitation.
-See the [credits/compliance evidence](release-compliance-verification.md),
+complete the base-OS/remaining image source-delivery and final artifact audit,
+then deliver the matching source sidecar alongside any authorized binary publication.
+See the [native source evidence](native-source-package-verification.md),
+[credits/compliance evidence](release-compliance-verification.md),
 [dependency review](dependency-redistribution-review.md) and [provider review](provider-terms-review.md).
 Contributor/security guidance and
 versioned release automation follow using the [release plan](self-hosted-release-plan.md).

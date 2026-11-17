@@ -1,0 +1,9 @@
+{
+  "name": "objc-foundation",
+  "version": "0.1.1",
+  "authors": [
+    "Steven Sheldon"
+  ],
+  "license": "MIT",
+  "repository": "http://github.com/SSheldon/rust-objc-foundation"
+}

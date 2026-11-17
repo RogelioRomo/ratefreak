@@ -1,0 +1,9 @@
+{
+  "name": "block",
+  "version": "0.1.6",
+  "authors": [
+    "Steven Sheldon"
+  ],
+  "license": "MIT",
+  "repository": "http://github.com/SSheldon/rust-block"
+}

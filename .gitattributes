@@ -2,3 +2,4 @@
 # Upstream whitespace is evidence, not project formatting to normalize.
 deploy/compliance/supplements/* -text -whitespace
 deploy/compliance/native/sharp-libvips-* -text -whitespace
+deploy/compliance/rust-supplements/* -text -whitespace

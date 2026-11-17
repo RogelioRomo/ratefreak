@@ -1,0 +1,9 @@
+{
+  "name": "malloc_buf",
+  "version": "0.0.6",
+  "authors": [
+    "Steven Sheldon"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/SSheldon/malloc_buf"
+}

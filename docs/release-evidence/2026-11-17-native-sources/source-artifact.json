@@ -1,0 +1,9 @@
+{
+  "file": "ratefreak-libvips-8.18.7-linux-amd64-sources.tar.gz",
+  "sha256": "40e3fecfaa8c18ed6e102ed2a3b46fb9a4a23f8fc08d9ac81df1897cb55122ca",
+  "bytes": 201183102,
+  "image_id": "sha256:d5fabe162b2cd4719f6e0cd8d1f7b727d1302f86a15cdeea0bbd77aa12a5bc53",
+  "scope": "Linux amd64 application libvips aggregate source/build inputs; excludes OS and API/tools sources",
+  "reproducible_archive_verified": true,
+  "input_files": 406
+}

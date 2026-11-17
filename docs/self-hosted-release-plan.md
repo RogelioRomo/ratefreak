@@ -80,6 +80,11 @@ other topologies and each operator's external obligations retain their own check
   records verification and remaining source-delivery/provenance requirements.
   [Applicable provider agreements](provider-agreement-evidence.md) and each operator's
   eligibility/acceptance remain separate requirements; this checkbox stays open.
+  Follow-up 2026-11-17: [scroll-bar provenance](scroll-bar-license-provenance.md)
+  is documented through exact artifact/source equivalence, and an image-bound
+  application-native source sidecar passed offline rebuild/modified replacement
+  verification. [Source-package evidence](native-source-package-verification.md)
+  retains remaining OS/other-image source, final audit and publication scope.
 - [x] Add a self-hosting quickstart, configuration reference, upgrade/recovery
   instructions, supported versions/limitations and troubleshooting.
 - [ ] Add contribution and security-reporting guidance, release/versioning process

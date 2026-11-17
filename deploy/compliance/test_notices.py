@@ -76,6 +76,20 @@ class NoticesTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "missing/1"):
                 notices.nuget_packages(root, [assets])
 
+    def test_rust_notice_collection_uses_only_requested_built_packages_and_fails_missing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            p = root / "example-1.0.0"
+            p.mkdir()
+            (p / "Cargo.toml").write_text('[package]\nname = "example"\nversion = "1.0.0"\nlicense = "MIT"\n')
+            (p / "LICENSE-MIT").write_text("Published copyright and license")
+            records = notices.rust_packages(root, [{"name": "example", "version": "1.0.0"}])
+            self.assertEqual(len(records), 1)
+            self.assertEqual(records[0]["ecosystem"], "cargo")
+            self.assertIn(b"Published copyright", records[0]["texts"][0][1])
+            with self.assertRaisesRegex(ValueError, "missing@1"):
+                notices.rust_packages(root, [{"name": "missing", "version": "1"}])
+
     def test_nuget_keeps_license_and_native_notice_and_repository_provenance(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

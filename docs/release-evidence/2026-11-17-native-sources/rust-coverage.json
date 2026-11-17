@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "original_lock_sha256": "e79e2a2735a0b5b151bb4133becd3008223fabedd34a8b787a872edab9854941",
+  "edited_lock_sha256": "5723e14ce316e9058c76257848e18ab52624c98d16f758b5f8a73b5007b2ab8b",
+  "original_registry_crates": 357,
+  "edited_registry_crates": 353,
+  "edited_is_subset": true,
+  "all_archives_verified_against_lock_checksums": true,
+  "offline_metadata_passed": true,
+  "cargo_version": "1.99.1",
+  "rustc_version": "1.99.1",
+  "source": "librsvg-2.63.2",
+  "scope": "Source dependency coverage; no binary rebuild claimed"
+}

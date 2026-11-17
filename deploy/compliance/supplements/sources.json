@@ -77,6 +77,18 @@
     "primary_license": true
   },
   {
+    "file": "librsvg-rust-LICENSE-NOTICES.txt",
+    "url": "https://download.gnome.org/sources/librsvg/2.63/librsvg-2.63.2.tar.xz",
+    "retrieved": "2026-11-17",
+    "sha256": "f8c08e75d6903fd6c6e07b54a63e982a736f80e26ff39329126b31910b807445",
+    "packages": [
+      "@img/sharp-libvips-linux-x64@1.3.4"
+    ],
+    "primary_license": false,
+    "provenance": "docs/librsvg-rust-notice-provenance.md",
+    "scope": "162 registry packages observed compiling in the Linux amd64 native source rebuild; a conservative compiled dependency notice set, not proof every crate is linked into the final binary."
+  },
+  {
     "file": "libvips-embedded-LICENSE-NOTICES.txt",
     "url": "https://github.com/lovell/sharp-libvips/tree/v1.3.4",
     "retrieved": "2026-11-13",
@@ -117,8 +129,10 @@
     "packages": [
       "react-remove-scroll-bar@2.3.8"
     ],
-    "limitation": "Published gitHead has no license file; text from pinned upstream master. Exact-version applicability requires confirmation.",
-    "primary_license": true
+    "primary_license": true,
+    "applicability_evidence": "docs/scroll-bar-license-provenance.md",
+    "provenance": "Exact 2.3.8 distribution declares MIT; its 26 non-manifest files match 2.3.7, whose source is the direct base of the maintainer license-only merge. Later upstream notice retained without claiming it shipped in the original archive.",
+    "verified": "2026-11-17"
   },
   {
     "file": "sharp-libvips-NOTICE.md",

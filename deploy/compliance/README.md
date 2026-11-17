@@ -24,7 +24,9 @@ is covered by recursively collected texts; this does not audit its binary closur
 supplement provenance. `--check` fails for a missing primary license text or a
 supplement hash mismatch. **Text presence is not license applicability or complete
 compliance.** In particular, the scroll-bar supplement records its version
-provenance limit and native corresponding-source obligations remain separate.
+provenance through exact artifact/source equivalence; see the
+[follow-up evidence](../../docs/scroll-bar-license-provenance.md). Native and OS
+source-delivery obligations retain their own scope and checks.
 The generated concatenated text is `THIRD-PARTY-NOTICES.txt`; the project license
 is `LICENSE.txt`. Generated web output is ignored by Git and must not be edited.
 
@@ -54,3 +56,29 @@ On dependency updates, recollect notices, review changed provenance/licenses,
 refresh native source evidence, build images and verify their actual payloads.
 Do not copy an old manifest onto a new image or interpret a passed text-presence
 check as resolving the remaining release gates.
+
+## Native source sidecar
+
+The [source-package verification](../../docs/native-source-package-verification.md)
+records the 406-input sidecar, full offline native rebuild, source-modified
+replacement test and remaining OS/publication scope. The reviewed source manifest
+is `native/source-bundle.lock.json`. `source_bundle.py fetch/create/verify` provides
+portable collection, image binding and reproducible source-archive generation.
+Source archives stay outside Git; the manifest, hashes, helpers and evidence are
+versioned here. Do not substitute a different image/component set without review.
+
+`rust_sources.py` reconstructs a Cargo directory source from locked `.crate`
+archives. `rebuild_native.py` runs the pinned recipe inside its prepared builder
+without network. `verify_native.py` checks the rebuilt source marker and exact
+library loaded by Sharp in a disposable runtime.
+
+For Rust notices, after preparing the vendor sources:
+
+```bash
+python3 deploy/compliance/notices.py rust .local/release-compliance/rust/verified-vendor /tmp/ratefreak-rust-notices --built deploy/compliance/native/rust-built-packages.json --supplements deploy/compliance/rust-supplements --check
+```
+
+The observed Linux build's 162 registry packages have complete collected texts;
+the resulting notice bundle is included with the npm libvips package notices.
+The original 357-crate source set includes unbuilt target/dev dependencies; its
+separately recorded provenance limits are not silently promoted to runtime claims.

@@ -1,0 +1,6 @@
+gcc (GCC) 15.2.1 20260123 (Red Hat 15.2.1-7)
+rustc 1.102.0-nightly (5df8c02af 2026-11-16)
+cargo 1.102.0-nightly (ede6cefea 2026-11-11)
+cargo-c 0.10.26+cargo-0.100.0
+1.12.1
+1.13.2.git.kitware.jobserver-pipe-1

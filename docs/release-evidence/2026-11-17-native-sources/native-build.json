@@ -1,0 +1,210 @@
+{
+  "schema": 1,
+  "network": "none",
+  "cpus": 4,
+  "memory_limit_bytes": 8589934592,
+  "exit_code": 0,
+  "source_profile_sha256_at_start": "d46c6a7f23d58e5bca455854729d68b7fe09b09057d832c02c1ecf71d8242eed",
+  "build_log_sha256": "f091cde12659dd7a748493501c568a0bab940b41b7daa95166630c2a3c30f62a",
+  "built_lock_sha256": "5723e14ce316e9058c76257848e18ab52624c98d16f758b5f8a73b5007b2ab8b",
+  "static_relink_archives": [
+    {
+      "file": "libaom.a",
+      "sha256": "e62264b66ef5d0f0e3187e01c19cedfbf25ed6cbeb6a42273ac4ef87ec8dc43a",
+      "bytes": 7686258
+    },
+    {
+      "file": "libarchive.a",
+      "sha256": "07954f6b2b13d02d176854fec29a8759438fec0a07cf1dcbd36eb5f50a160eb3",
+      "bytes": 1466236
+    },
+    {
+      "file": "libcairo-gobject.a",
+      "sha256": "f8bd180fdfe0145730132acf47bb6257c191b40a52e2d85f0b129e3968baebd8",
+      "bytes": 60888
+    },
+    {
+      "file": "libcairo.a",
+      "sha256": "617b1d32c6ad66e3629f90f1fa7751120fc37822448beacbc6a4b1a7ce42a64c",
+      "bytes": 1884094
+    },
+    {
+      "file": "libcgif.a",
+      "sha256": "49ddb778385dc9457982e43a21b61719941d2760518f346e054a8676f4a498cb",
+      "bytes": 17092
+    },
+    {
+      "file": "libexif.a",
+      "sha256": "a3dba8362a0e5fd3e3bbf9d081c5839581585f7560d75d78ae0c99c8e172abe1",
+      "bytes": 339004
+    },
+    {
+      "file": "libexpat.a",
+      "sha256": "ce34f9cd3cbc5bd39a045a1827457395ba1e7f3abc52edb32eac8c16aa356271",
+      "bytes": 329464
+    },
+    {
+      "file": "libffi.a",
+      "sha256": "11fd11f085b0237c6063f6e4a978958bab2dd19da2a0aa7a8bdb1636be350b97",
+      "bytes": 98110
+    },
+    {
+      "file": "libfontconfig.a",
+      "sha256": "0554c77e44512ffd946497e12d0cb34137989a41a2ff4849cbf0a9fcf8cecf15",
+      "bytes": 745644
+    },
+    {
+      "file": "libfreetype.a",
+      "sha256": "620598abed198eb04aa7de84ca64351155b40f77bc6c44637a3d863dde67a52f",
+      "bytes": 1108954
+    },
+    {
+      "file": "libfribidi.a",
+      "sha256": "e461278701dc942507f809425cefe2ee87b2f9e87e207f24f65445523ed98e6a",
+      "bytes": 151834
+    },
+    {
+      "file": "libgio-2.0.a",
+      "sha256": "ca6c88bf65be4c58b13d10429d04378e2bf9009e19c608fa320b9f20c7f4b9eb",
+      "bytes": 4725762
+    },
+    {
+      "file": "libgirepository-2.0.a",
+      "sha256": "77de966c6c0b668aefeff6e4a94d93c6b6bbc007edec1e5992546867a683cd3c",
+      "bytes": 680606
+    },
+    {
+      "file": "libglib-2.0.a",
+      "sha256": "251311f4a000d305308f6c0ba14a9f8770a3a002ee8a280f3dfc42b8a0d126f3",
+      "bytes": 1997872
+    },
+    {
+      "file": "libgmodule-2.0.a",
+      "sha256": "dcc44a286f830375a5cced9d2b3eeec62a7d18fb756e664a88aed9a9152e9cf1",
+      "bytes": 17446
+    },
+    {
+      "file": "libgobject-2.0.a",
+      "sha256": "3c06902a43d0a265f2794c9c2ea441452fc71f0fe4938468f8c1d99866732d52",
+      "bytes": 631432
+    },
+    {
+      "file": "libgthread-2.0.a",
+      "sha256": "759446a34e4384209ce93008a02f83e7c6c9f56cb06553d5a84e8b2bf22072b1",
+      "bytes": 2318
+    },
+    {
+      "file": "libharfbuzz.a",
+      "sha256": "40e29a6f7c3b507a47658b0aefcdfa5dfb05740abbce5dea47dc065120d3b4ff",
+      "bytes": 3043314
+    },
+    {
+      "file": "libheif.a",
+      "sha256": "ff8a39993d0074ccf39ac62f979719d2d78258a67f854a3470a8defd1a70777b",
+      "bytes": 8747130
+    },
+    {
+      "file": "libhwy.a",
+      "sha256": "28f81967de9b8eab1dee666234ecbe0c57157866d2de015e2ab1efe4d48147c2",
+      "bytes": 130932
+    },
+    {
+      "file": "libimagequant.a",
+      "sha256": "27c700da7c17ce601485bda2adbca48c4ddff3b974096e89968d65c3033d4171",
+      "bytes": 86150
+    },
+    {
+      "file": "libjpeg.a",
+      "sha256": "6fc8593f96c24a57d8ad2f5c1828376d18d84fed89f422237fb18333900adb52",
+      "bytes": 1000820
+    },
+    {
+      "file": "liblcms2.a",
+      "sha256": "0d6eb755802ea370a058de081475482156f315bbbcc65dd8bb1006fc4923f428",
+      "bytes": 963968
+    },
+    {
+      "file": "libpango-1.0.a",
+      "sha256": "09aefaa1bd3f188c3aa71c2dcb281de1ff3c86c694c5b8463d2b2fb4bf0c0552",
+      "bytes": 884874
+    },
+    {
+      "file": "libpangocairo-1.0.a",
+      "sha256": "a8e94504787f0ab649c2658a30191622cfb0915c0fa8d86fe94cc80b7a766c83",
+      "bytes": 117496
+    },
+    {
+      "file": "libpangoft2-1.0.a",
+      "sha256": "c763c8d4b93b8c5c3c5ffeda2ae19eeb7d2f8ee90128216575c9821b6f4530fb",
+      "bytes": 198818
+    },
+    {
+      "file": "libpixman-1.a",
+      "sha256": "d21a13f5de10659f7a11661104bffcf3e7275530ab49efe8c1c7c07e1f451c2b",
+      "bytes": 918740
+    },
+    {
+      "file": "libpng.a",
+      "sha256": "45ea49a146dae18960f8998ca23f5a9a0d4b43f7cf9a0fec36b9de87ad4386b6",
+      "bytes": 337552
+    },
+    {
+      "file": "libpng16.a",
+      "sha256": "45ea49a146dae18960f8998ca23f5a9a0d4b43f7cf9a0fec36b9de87ad4386b6",
+      "bytes": 337552
+    },
+    {
+      "file": "librsvg-2.a",
+      "sha256": "c2844befe532668a5469a9684414592e5a7de6c8ef2f934e8788382e30de0f64",
+      "bytes": 93309950
+    },
+    {
+      "file": "libsharpyuv.a",
+      "sha256": "65dda40c1e50d6d1292cf1d62e589ab11fdab3c0affc73156b6cec72350c7b19",
+      "bytes": 37064
+    },
+    {
+      "file": "libtiff.a",
+      "sha256": "1fc153ed392086a2c6f7d9203d45d2646e60eeab3935b685cb54b8b70626f2b2",
+      "bytes": 824252
+    },
+    {
+      "file": "libuhdr.a",
+      "sha256": "5aaec20cd996b69c35b2c9f9b42ba3207c73e29dc5f04ec0f932259bacf9ff60",
+      "bytes": 1586900
+    },
+    {
+      "file": "libvips.a",
+      "sha256": "ca139d65f27a7fc7eb509d370b4ed1452c7e48c4deff7eda23b51cac905e590d",
+      "bytes": 6413860
+    },
+    {
+      "file": "libwebp.a",
+      "sha256": "1a9db331ff92554984075c13807bae6a6473c5f6082472009e5427224644fbdc",
+      "bytes": 758278
+    },
+    {
+      "file": "libwebpdemux.a",
+      "sha256": "27f15b0a5685920b8324662efb1fb874d13b2f40e3e2d19a54594cffe394ef90",
+      "bytes": 17450
+    },
+    {
+      "file": "libwebpmux.a",
+      "sha256": "bb009a4d95742bca470e4767412ce4b9da778d166fd680a9e670a4d15642f036",
+      "bytes": 55824
+    },
+    {
+      "file": "libxml2.a",
+      "sha256": "6b1bef07d0751e040c401fbf99a781acf31801d6776e348ab27ab2e17bf30485",
+      "bytes": 559128
+    },
+    {
+      "file": "libz.a",
+      "sha256": "39cb086806bdad0392b3b41be65e5d7b96686ba60ac7335c291e0e38f857a60b",
+      "bytes": 344750
+    }
+  ],
+  "observed_registry_crates": 162,
+  "scope": "Linux amd64 libvips aggregate; toolchain preparation used network, native compilation did not",
+  "builder_image_id": "sha256:dcd90b3211de093e77da8c09dfeba6a16ac7b1a9768b6da1458ac75c2a01e552"
+}

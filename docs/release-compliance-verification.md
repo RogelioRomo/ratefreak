@@ -3,6 +3,12 @@
 Recorded: 2026-11-13. This change adds credits and notice packaging. Public
 publication remains gated by the unresolved obligations below.
 
+**Follow-up 2026-11-17:** [native source-package verification](native-source-package-verification.md)
+supersedes the initial application-native and scroll-bar provenance gaps recorded
+here. The source sidecar, offline rebuild, source-modified replacement and observed
+Rust notices are verified. OS/remaining-image source delivery and provider agreement
+requirements remain open; no publication has occurred.
+
 ## Provider credit
 
 `/credits` is linked from the shared footer and credits TMDB, MusicBrainz and IGDB.
@@ -73,10 +79,12 @@ every architecture. No claim of added ARM support is made.
   platform/toolchain/build inputs, applicable patches and replacement/relinking
   requirements against the actual binaries. Preserve needed installation
   information where the distribution/license conditions require it.
-- Review exact-version applicability of the `react-remove-scroll-bar` license
-  supplement: its published commit omitted a license file, so the retrieved text
-  is from a separately pinned upstream commit. The limitation is recorded in its
-  source entry; text collection does not settle that uncertainty.
+  The application-native portion now has the verified sidecar/rebuild/replacement
+  follow-up above; OS and remaining-image coverage retain their separate checks.
+- The `react-remove-scroll-bar` notice provenance task was addressed on 2026-11-17
+  through exact npm runtime-file equivalence and the maintainer's license-only
+  source ancestry. The original distribution omission and unavailable gitHead
+  remain documented historical facts, not claims of inspected source.
 - Complete a final artifact audit (including embedded/vendored runtime and browser
   components), current vulnerability review and repeat checks for the final release
   revision and every supported architecture. OS copyright preservation is not

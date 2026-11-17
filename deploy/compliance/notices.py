@@ -100,6 +100,29 @@ def nuget_packages(root, assets=None, include_packages=()):
     return records
 
 
+def rust_packages(root, built=None):
+    import tomllib
+    selected = None if built is None else {f"{p['name']}@{p['version']}" for p in built}
+    records = []
+    for path in sorted(root.glob("*/Cargo.toml")):
+        raw = path.read_bytes()
+        package = tomllib.loads(raw.decode())["package"]
+        key = f"{package['name']}@{package['version']}"
+        if selected is not None and key not in selected:
+            continue
+        records.append({"name": package["name"], "version": package["version"],
+                        "ecosystem": "cargo", "license": package.get("license", "UNKNOWN"),
+                        "repository": package.get("repository"), "authors": package.get("authors", []),
+                        "metadata_sha256": digest(raw), "texts": text_files(path.parent)})
+    if selected is not None:
+        found = {f"{p['name']}@{p['version']}" for p in records}
+        if selected - found:
+            raise ValueError("Missing built Rust sources: " + ", ".join(sorted(selected - found)))
+    if not records:
+        raise ValueError("No vendored Rust package sources found")
+    return records
+
+
 def write_bundle(records, output, supplements=None):
     output.mkdir(parents=True, exist_ok=True)
     manifest = {"schema": 1, "scope": "installed package graph; final artifacts and native source obligations require separate verification",
@@ -143,17 +166,23 @@ def write_bundle(records, output, supplements=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("kind", choices=["web", "nuget"])
+    parser.add_argument("kind", choices=["web", "nuget", "rust"])
     parser.add_argument("root", type=Path)
     parser.add_argument("output", type=Path)
     parser.add_argument("--supplements", type=Path)
     parser.add_argument("--assets", type=Path, action="append", help="restrict NuGet collection to restored application assets")
     parser.add_argument("--include-package", action="append", default=[], help="require an additional restored NuGet package as name/version (e.g. the EF tool)")
+    parser.add_argument("--built", type=Path, help="JSON name/version list of Rust packages observed in the native build")
     parser.add_argument("--check", action="store_true", help="fail if any package lacks a license/notice text")
     parser.add_argument("--project-license", type=Path)
     parser.add_argument("--evidence", type=Path, help="include reviewed native source/build provenance")
     args = parser.parse_args()
-    records = web_packages(args.root) if args.kind == "web" else nuget_packages(args.root, args.assets, args.include_package)
+    if args.kind == "web":
+        records = web_packages(args.root)
+    elif args.kind == "rust":
+        records = rust_packages(args.root, json.loads(args.built.read_text()) if args.built else None)
+    else:
+        records = nuget_packages(args.root, args.assets, args.include_package)
     manifest = write_bundle(records, args.output, args.supplements)
     if args.project_license:
         (args.output / "LICENSE.txt").write_bytes(args.project_license.read_bytes())

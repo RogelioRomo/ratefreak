@@ -14,6 +14,14 @@ scroll-bar supplement provenance limitation remain open. The rest of this note
 preserves the initial review and its rationale; it is not a claim that all gaps
 listed below still describe the current Dockerfiles.
 
+**Source-package follow-up, 2026-11-17:** the [native source verification](native-source-package-verification.md)
+records a reproducible application-native sidecar, complete collected notices for
+162 observed Rust build dependencies, a full offline native rebuild and successful
+source-modified replacement in the web image. The scroll-bar supplement now has
+[qualified code-equivalence provenance](scroll-bar-license-provenance.md).
+These resolve the scoped application-native packaging/provenance tasks; OS source
+delivery, remaining image audit and actual publication are not claimed complete.
+
 ## Result and scope
 
 RateFreak's MIT license applies to project code. It does not relicense dependencies,

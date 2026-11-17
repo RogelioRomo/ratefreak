@@ -15,6 +15,9 @@ not publish container images. Project code is MIT licensed; dependencies and
 provider content retain separate terms. Read the [provider agreement checklist](provider-agreement-evidence.md)
 before enabling providers and the [release notice/source evidence](release-compliance-verification.md)
 before redistributing images. Application credits are available at `/credits`.
+The verified [application-native source sidecar](native-source-package-verification.md)
+must accompany its matching image when a binary release is authorized. It does
+not replace base-OS or other applicable source-delivery obligations.
 
 ## Install
 
