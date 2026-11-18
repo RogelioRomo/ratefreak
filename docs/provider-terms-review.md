@@ -10,8 +10,12 @@ records the retrieved official guidance, full-agreement retrieval attempts and
 precisely scoped remaining contract checks. UI findings below describe the initial
 inspection. [Credits/catalog attribution and notice packaging](release-compliance-verification.md)
 are now implemented and verified. The full Twitch agreement was obtained by direct
-retrieval; its scope/lifecycle questions and the still-inaccessible TMDB terms are
-recorded in the follow-up, which supersedes initial access findings below.
+retrieval. On 2026-11-18, full TMDB API/site terms were also retrieved: a six-month
+cache limit and termination purge raise a scope question for indefinite imports.
+The user will seek TMDB clarification; no automatic-expiry change is approved.
+See the [current agreement disposition](provider-agreement-evidence.md#current-disposition-2026-11-18)
+and [Open Library/MusicBrainz follow-up](provider-public-guidance-2026-11-18.md).
+These supersede initial access findings below; provider-enabled clearance remains open.
 
 ## Initial release findings (see follow-up evidence)
 

@@ -1,10 +1,94 @@
 # Provider agreement access and remaining decisions
 
-Reviewed 2026-11-13. This supplements the [provider review](provider-terms-review.md).
+Reviewed 2026-11-13; current disposition updated 2026-11-18. This supplements the [provider review](provider-terms-review.md).
 It distinguishes retrieved public guidance from agreements that were not obtained.
 No agreement was accepted, no account was authenticated and no provider credentials
 were used. Public documentation is not a substitute for an operator's applicable
 contract or permission to redistribute underlying copyrighted artwork.
+
+## Current disposition, 2026-11-18
+
+**The missing TMDB agreement was obtained. Its retention and termination clauses
+raise a scope question for permanent database imports; provider-enabled release
+clearance remains open. The user will seek TMDB support clarification.**
+Earlier retrieval failures and findings below are historical where superseded by
+this section. This follow-up used public pages without account authentication,
+provider API calls, agreement acceptance or outbound correspondence.
+
+| Provider | Resolved by this review | Still required |
+| --- | --- | --- |
+| TMDB | Full API and incorporated site terms retrieved; storage, termination and commercial clauses identified | Clarify how the cache clause applies to database imports before deciding lifecycle changes; optimizer/derivative and attribution wording clarification |
+| IGDB | Current documentation expressly permits local storage; full Twitch agreement retrieved again | Written scope clarification for public catalog storage/display, updates, removal and termination; operator partnership when applicable |
+| MusicBrainz | Core-data and hosted-service rules rechecked | Instance eligibility/contact and aggregate pacing; maintain reviewed core-field scope |
+| Open Library | Metadata caching supported; direct cover-source guidance confirmed | Cover proxy/optimizer and Archive terms scope clarification; application registration and operator usage record |
+
+The detailed [Open Library/MusicBrainz research](provider-public-guidance-2026-11-18.md)
+separates explicit guidance from unresolved interpretations. Ready-to-review
+[provider questions](provider-agreement-questions.md) have been drafted but not sent.
+
+### TMDB: retrieved clauses and engineering consequence
+
+The [API terms](https://www.themoviedb.org/api-terms-of-use) display an update date
+of October 20, 2023. Section 1.C prohibits caching information beyond six months
+and restricts derivatives. Section 1.D requires stopping use and purging content
+when the license ends. Sections 1.A/2 restrict transfer, sublicensing and commercial
+use; section 3 specifies logo/notice attribution. These terms incorporate the
+[site terms](https://www.themoviedb.org/terms-of-use), which separately address
+noncommercial use and content rights. [FAQ attribution wording](https://developer.themoviedb.org/docs/faq)
+differs from section 3; the UI currently follows the FAQ.
+
+Implementation comparison: imported fields persist without expiry; repeat import
+returns the existing item without refreshing. The five-minute/one-hour request
+cache does not bound PostgreSQL retention. The image cache minimum TTL likewise
+does not guarantee eventual deletion during outages. No provider-content purge
+workflow exists. Treat this as an unresolved retention/lifecycle question, rather
+than assuming normalized records are exempt or that a violation is confirmed.
+Ask about resizing/re-encoding under the
+derivative restriction and reconcile the attribution wording before release.
+
+Do not delete existing catalog rows as a research action. A separate design must
+cover provider fields, stable internal references, user-authored content, removal
+requests, caches and restored backups under the applicable permission.
+
+### IGDB: confirmed storage guidance, unresolved agreement scope
+
+The current [IGDB business FAQ](https://api-docs.igdb.com/#business-related-faq)
+allows local storage and serving retrieved data, prefers that approach, and allows
+retention after partnership termination. It still directs commercial integrations
+to the partner program. This supports persistent metadata, not a conclusion that
+every termination or content-rights issue is waived.
+
+The [Twitch agreement](https://legal.twitch.com/en/legal/developer-agreement/)
+still displays `12/04/2024`. Section I limits schedules by the activity/materials
+and gives conflicting executed agreements priority. VI.A broadly defines data
+covered by the data policy; VI.C/F and IX address sharing and deletion. VII
+requires accuracy/updates and attribution. Schedule 1 defines its APIs by reference
+to the Twitch developer site and has a storage exception for authorized uses or
+rights, otherwise a 24-hour cache. The FAQ alone does not settle how those clauses
+apply to IGDB catalog fields/artwork. Do not impose an invented blanket 24-hour
+IGDB expiry or treat partnership termination as developer-agreement termination.
+
+Request confirmation of the governing terms, permitted public display/retention,
+refresh duties and removal scope. No written exception or operator partnership
+was obtained during this review.
+
+### Dated retrieval evidence
+
+Approved direct public retrieval returned HTTP 200 for all four sources below.
+The browsing service still denied TMDB terms retrieval; direct HTTP succeeded.
+Snapshots remain ignored under
+`.local/release-compliance/provider-agreements/2026-11-18/`.
+
+| Snapshot | Bytes | SHA-256 |
+| --- | --- | --- |
+| TMDB API terms HTML | 119602 | `1e027f7950f7eee3382b9141e1665458dfbcefe29f42e1ead3e0e87d37081dca` |
+| TMDB site terms HTML | 132233 | `5182df8668d4c783c63036de403b119d49e2e95a6ae1fec2366f5815139153f2` |
+| Twitch raw gzip response | 28639 | `aea37acf021c95ef3a276bde27a83054f99e4c5da2dd6455eb8b592cd8931b6f` |
+| Twitch decoded HTML | 101415 | `8fbde374e022e4e29d0e0abb6e49a7399c430a7fe43ed90d6340ffa57a13332d` |
+| IGDB documentation HTML | 1290053 | `2d15dbf2290d2b1f6c441a78c230af6028de2e54f10561d02b8d773d2f4bd34d` |
+
+Hashes identify the retrieved bytes, not immutable contract versions. Actual
+operators must keep their applicable terms/permissions and acceptance records.
 
 ## Retrieved official sources
 
@@ -98,7 +182,7 @@ retention permission nor an arbitrary expiry should be inferred.
   credentials/contact details and record applicable commercial eligibility before
   enabling them. A shared release credential is not part of the proposed package.
 
-## Remaining blockers, precisely scoped
+## Remaining blockers recorded 2026-11-13 (superseded above)
 
 1. **TMDB contract evidence:** obtain the full applicable terms and record provisions
    on permanent storage, cache, redistribution, takedown and termination. No cache

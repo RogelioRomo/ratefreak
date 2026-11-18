@@ -15,6 +15,15 @@ not publish container images. Project code is MIT licensed; dependencies and
 provider content retain separate terms. Read the [provider agreement checklist](provider-agreement-evidence.md)
 before enabling providers and the [release notice/source evidence](release-compliance-verification.md)
 before redistributing images. Application credits are available at `/credits`.
+The 2026-11-18 agreement review left a provider-enabled release question open:
+how TMDB's six-month cache restriction applies to permanent database imports.
+Imports currently have no expiry or provider-content purge workflow; the user
+will seek support clarification before deciding retention changes. This is not
+a confirmed violation. IGDB agreement scope and Open Library cover
+optimization also need clarification. Short request-cache TTLs do not resolve
+database retention. Follow the [current disposition](provider-agreement-evidence.md#current-disposition-2026-11-18)
+before claiming an enabled instance meets provider terms; no runtime settings
+were changed by the review.
 The verified [application-native source sidecar](native-source-package-verification.md)
 must accompany its matching image when a binary release is authorized. It does
 not replace base-OS or other applicable source-delivery obligations.
@@ -250,6 +259,14 @@ erasure records or secrets there. Existing protected uploaded artwork remains in
 The API's shared public metadata cache is process-local (five-minute searches,
 one-hour details), and resets on API restart. Each API replica needs coordinated
 provider budgets when sharing egress.
+
+Open Library requests application registration in its
+[API guidance](https://openlibrary.org/developers/api). Configuring a contact email
+identifies requests; it does not submit the registration form. Record the actual
+operator/application, intended use and deployment egress before making the form's
+acknowledgments. Metadata caching guidance does not by itself approve the
+same-origin cover optimizer. See the
+[registration and cover-scope review](provider-public-guidance-2026-11-18.md).
 
 ## Secret rotation
 

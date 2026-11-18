@@ -75,11 +75,17 @@ other topologies and each operator's external obligations retain their own check
   required attribution and separately supplied provider credentials.
   Initial review recorded 2026-11-13: [dependency/image findings](dependency-redistribution-review.md),
   [package inventory](dependency-inventory.md) and [provider findings](provider-terms-review.md).
-  Provider credits for all three providers and image package notice collection are
+  Provider credits for all four providers and image package notice collection are
   implemented; [candidate image/native evidence](release-compliance-verification.md)
   records verification and remaining source-delivery/provenance requirements.
   [Applicable provider agreements](provider-agreement-evidence.md) and each operator's
   eligibility/acceptance remain separate requirements; this checkbox stays open.
+  Follow-up 2026-11-18: TMDB API/site terms were retrieved; their retention and
+  termination clauses require clarification for permanent database imports. The
+  user chose to retain TMDB and contact support; this is not a confirmed violation.
+  [Current disposition](provider-agreement-evidence.md#current-disposition-2026-11-18)
+  and [unsent provider questions](provider-agreement-questions.md) record lifecycle,
+  optimizer, IGDB scope and operator decisions still needed.
   Follow-up 2026-11-17: [scroll-bar provenance](scroll-bar-license-provenance.md)
   is documented through exact artifact/source equivalence, and an image-bound
   application-native source sidecar passed offline rebuild/modified replacement
@@ -87,8 +93,14 @@ other topologies and each operator's external obligations retain their own check
   retains remaining OS/other-image source, final audit and publication scope.
 - [x] Add a self-hosting quickstart, configuration reference, upgrade/recovery
   instructions, supported versions/limitations and troubleshooting.
-- [ ] Add contribution and security-reporting guidance, release/versioning process
-  and automated verification for the supported installation/artifacts.
+- [x] Add [contributor guidance](../CONTRIBUTING.md) and a
+  [security policy](../SECURITY.md): setup and applicable checks, private reporting,
+  report scope, data protection and self-hosted responsibilities (2026-11-18).
+- [x] Enable and verify GitHub private vulnerability reporting. The owner enabled
+  it on 2026-11-18, and the subsequent public API check confirmed `enabled=true`.
+  No test report was submitted; maintainer notification delivery is unverified.
+- [ ] Define the release/versioning process and automate verification for the
+  supported installation/artifacts.
 - [ ] Review tracked files and release artifacts for secrets, local user data and
   machine-specific configuration before publishing.
 

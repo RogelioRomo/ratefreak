@@ -173,11 +173,83 @@ category, the expanded media-type constraint, unchanged counts/fingerprints for
 all 26 other application tables, and unchanged original category rows. The only
 row additions were one migration-history row and the Books seed. Private backup
 and evidence are ignored under `.local/localhost/books-migration/`; no database
-content or credentials are included in the commit. The database container remains
-running for local development. Open Library remains disabled pending a monitored
+content or credentials are included in the commit. The database container remained
+running for local development. At migration time, Open Library remained disabled
+pending a monitored
 operator contact email in `Providers:OpenLibrary:Contact`.
 
 Fresh pre-commit verification passed 196 provider/cache contract tests and all
 775 frontend tests across 102 files. The migration command rebuilt the API and
 its dependencies successfully. The earlier whole-suite/build/browser evidence
 above remains the feature validation record.
+
+## Live local activation, 2026-11-18
+
+Started the existing local API on localhost:5080 with settings loaded from the
+ignored root `.env`, including the operator's enabled flag and contact email.
+The local runner does not load `.env` itself; these settings must be passed in
+its startup environment. No contact email or credentials are recorded here.
+
+- Readiness and provider capabilities returned HTTP 200; Open Library was enabled.
+- A real search for `Fantastic Mr Fox` returned HTTP 200 with 20 work results,
+  including `OL45804W`, Roald Dahl, first publication year 1970 and CoverID 6498519.
+- The real `OL45804W` preview returned HTTP 200 with description, enriched author
+  name and cover reference. The work omitted publication year, correctly retained
+  as unavailable rather than copied from search or fabricated.
+- An immediate repeated preview returned identical data in 4 ms versus 1.126 s
+  for the initial request. This timing is consistent with the metadata cache;
+  upstream call counts were not instrumented in this check.
+
+Sanitized local response/timing evidence is saved under
+`.local/localhost/openlibrary-live/verification.json`. The API was left running.
+These were read-only API checks: no catalog import, account change, browser
+journey, image-byte retrieval or deployment acceptance was performed.
+
+## Live local browser acceptance and cover correction, 2026-11-18
+
+Used the real Open Library provider with the contact configured in `.env`, an
+isolated API on localhost:5081, a development frontend on localhost:3001 and a
+new disposable PostgreSQL database. Existing application migrations initialized
+only that database. A temporary administrator initialized it; browser registration
+created a separate ordinary reader account for the import checks.
+
+- Anonymous preview offered login; importing with a valid anonymous CSRF token
+  returned 401. Login returned the reader to the requested preview. Authenticated
+  import without CSRF returned 400.
+- Browser search for `Fantastic Mr Fox`, preview, CSRF-bearing import (201), and
+  saved catalog details passed. The author, description, cover and Open Library
+  source identity/attribution were retained. Repeating import returned 200 with
+  `created=false` and the original catalog ID.
+- A database query confirmed exactly one book, one `openlibrary/work/OL45804W`
+  identity and zero personal-library entries. Import does not add to a library.
+- The imported cover decoded successfully. Catalog screenshots/checks covered
+  1440px and 390px in Light and Dark; discovery covered both widths. No horizontal
+  overflow or browser runtime errors were observed.
+
+The initial search exposed a real cover-adapter defect: newer covers redirect
+through `archive.org/download/l_covers_0012/l_covers_0012_89.zip/0012895064-L.jpg`
+and matching numbered Archive storage. The validator supported only the earlier
+`olcovers…` layout, rejecting these valid redirects with 502. Three public redirect
+chains were traced to successful image/jpeg responses before editing code.
+
+The correction accepts this additional layout with bucket, bundle and ten-digit
+filename derived from the requested CoverID. Existing hostname, protocol, DNS,
+query, byte, time and capacity checks remain. Regression tests first reproduced
+five failures, then all 34 cover tests passed, including mismatched ID/bucket,
+unrelated hosts/paths and duplicate query rejection. All eight covers checked
+through the optimizer returned HTTP 200 after the fix; Chromium decoded all 10
+covers present in the search results. Results without cover references retain
+their normal fallback.
+
+Final verification: 794 frontend tests across 102 files, lint, typecheck and
+production build passed. The first sandboxed build compiled but failed to parse
+the TypeScript subprocess configuration; the complete build passed outside the
+sandbox. No application dependency was added. The local migration tool required
+restoring existing NuGet dependencies because generated assets referenced a
+Windows cache path. Browser tooling/libraries were provisioned only under `/tmp`.
+
+Sanitized response, database, redirect and image evidence plus screenshots are
+saved in ignored `.local/localhost/openlibrary-browser/`. Temporary API/frontend
+processes were stopped and the disposable database was removed. The existing
+database was untouched. Browser acceptance used the development frontend; this
+does not replace final production-image, HTTPS or self-hosted release acceptance.

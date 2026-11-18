@@ -1,6 +1,6 @@
 # Current project status and roadmap
 
-Updated: 2026-11-17. Application-native source packaging and modified-library
+Updated: 2026-11-18. Application-native source packaging and modified-library
 replacement are verified; scroll-bar license provenance is documented through
 exact artifact/source equivalence. MIT license selected on 2026-11-11 and added
 to the repository. Account lifecycle (`bd3d78e`), staff management (`30c57e7`)
@@ -13,8 +13,13 @@ Next.js/eslint-config-next are patched to 16.4.6 for the optimizer security fix.
 The Books migration `20261118034056_AddBooks` is applied to the persistent local
 database after an authorized private backup and data-preservation verification;
 The local `.env` now contains the Open Library contact email and enabled setting;
-the API must receive these environment variables at startup. Live activation
-with this configuration has not yet been verified. The example settings are in
+the API must receive these environment variables at startup. Local live activation
+was verified on 2026-11-18: enabled capability, real search and work preview all
+returned HTTP 200 using the configured contact. Real Chromium search, ordinary
+account import, duplicate import and saved catalog details were also verified
+against a disposable local database. A second observed Archive cover redirect
+format was fixed with regression tests; all 10 available search covers decoded
+afterward. The example settings are in
 `.env.example`; no real contact email is stored in Git. See [books/cache evidence](books-and-provider-cache-verification.md).
 No production deployment is recorded.
 The application is implemented and verified locally; self-hosted release readiness remains open.
@@ -29,6 +34,8 @@ older plans and resume notes. It records work and decisions, not deployment auth
 | Document | Purpose |
 | --- | --- |
 | [Root README](../README.md) | Local setup, configuration and API contracts |
+| [Contributing](../CONTRIBUTING.md) | Contributor setup, architecture boundaries, applicable checks and pull-request expectations |
+| [Security policy](../SECURITY.md) | Private-reporting instructions/setup status, report scope and self-hosted security responsibilities |
 | [Web README](../web/README.md) | Frontend setup, proxy and browser behavior |
 | [Frontend checklist](frontend-checklist.md) | Delivery milestones and dated frontend history |
 | [Implementation history](implementation-checklist.md) | Dated backend verification and implementation history |
@@ -42,6 +49,10 @@ older plans and resume notes. It records work and decisions, not deployment auth
 | [Credits/compliance evidence](release-compliance-verification.md) | Implemented provider credits, packaged notices, native-source evidence and remaining obligations |
 | [Native source package verification](native-source-package-verification.md) | Image-bound source sidecar, offline rebuild/replacement proof and remaining OS/publication scope |
 | [Provider agreement evidence](provider-agreement-evidence.md) | Retrieved official agreements, access limits and operator acceptance requirements |
+| [Provider clarification drafts](provider-agreement-questions.md) | Unsent provider-specific questions about retention, image optimization, termination and operator eligibility |
+| [Open Library/MusicBrainz guidance](provider-public-guidance-2026-11-18.md) | Current registration, cover display, Archive terms scope, core-data and hosted-service findings |
+| [Wikidata trial](wikidata-evaluation-2026-11-18.md) | Live movie/TV search and field coverage; sparse posters and classification/label/date handling |
+| [Wikidata usage review](wikidata-usage-review-2026-11-18.md) | CC0 structured-data reuse versus hosted API policies and separate image/text licenses |
 | [Books/cache verification](books-and-provider-cache-verification.md) | Open Library work imports, all-provider metadata cache, persistent image cache and verification limits |
 | [Self-hosting guide](self-hosting.md) | Reference installation, configuration, upgrades and recovery |
 | [Reference verification](self-hosted-reference-verification.md) | Packaging, HTTPS, maintenance and recovery evidence/limits |
@@ -97,6 +108,10 @@ are evidence references, not durable deployment artifacts or guaranteed running 
   web runtime identity and passes raster/SVG processing. Native Rust notices cover
   all 162 observed compiled registry dependencies. The sidecar remains local and
   separate from OS/API/tools source-delivery requirements.
+- Contributor guidance and security policy with setup/check commands, data and
+  credential handling, contribution licensing and private-reporting instructions.
+  The owner enabled GitHub private vulnerability reporting on 2026-11-18;
+  the public API confirmed `enabled=true`. Notification delivery was not tested.
 
 Current decisions:
 
@@ -137,7 +152,11 @@ Current decisions:
 | Profile moderation browser verification, 2026-11-09 | Real Chromium/API/Next/disposable PostgreSQL passed report → staff hide/resolve → owner correction staying hidden → staff restore; public profile/review handle fallbacks, audit reasons, confirmation cancellation, logout concealment, and 1440/768/390/320px layouts. No browser runtime errors. Temporary evidence: `/tmp/ratefreak-profile-browser/results.json` and inspection screenshots. Test services/database removed after checks |
 | Admin revocation browser verification, 2026-11-09 | Real Chromium/API/Next/disposable PostgreSQL passed UI removal/reason/confirmation, cancel/focus, account audit, retained Moderator/user access, current-session Admin denial, last-Admin 409 and refresh-before-retry, self-removal concealment, offline last-Admin refusal and 1440/768/390/320px layouts. No browser runtime errors. Temporary evidence: `/tmp/ratefreak-admin-revoke-browser/results.json` and screenshots; temporary services/database removed |
 | Persistent local database | Books migration `20261118034056_AddBooks` applied on 2026-11-17 (PST) after explicit authorization, a validated private mode-0600 backup, and unchanged fingerprints/counts for all 26 other application tables and original category rows. Local evidence: `.local/localhost/books-migration/verification.json`. Setup migration applied 2026-11-07; authorized collection cutover 2026-11-08; account lifecycle migration 2026-11-09 with backup/preservation checks. Profile migration `20261110014234_AddProfileModeration` applied locally under the approved design on 2026-11-09 (PST), with a private mode-0600 backup and unchanged original row counts/content fingerprints across all 27 existing application tables. Evidence: `.local/localhost/profile-moderation-migration-verification.json` |
-| Local runtime | Updated API on localhost:5080 and frontend on localhost:3000 verified healthy; Staff management page and anonymous rejection at the new Admin-removal route checked. No migration or persistent role changes for this feature |
+| Open Library live activation, 2026-11-18 | API started with local `.env`; readiness, enabled capability, real Fantastic Mr Fox search and `OL45804W` preview returned HTTP 200. Author enrichment and cover reference present; repeated identical preview returned in 4 ms. Local evidence: `.local/localhost/openlibrary-live/verification.json`. Read-only checks; no authenticated import/browser acceptance claimed |
+| Open Library live browser acceptance, 2026-11-18 | Real provider/API/Chromium with a disposable migrated database: ordinary reader import 201, repeat import 200/same ID, anonymous rejection 401 with valid CSRF, authenticated missing-CSRF rejection 400, saved metadata/attribution and decoded cover. Exactly one book/work identity and zero personal-library rows. Catalog at 1440/390px in Light/Dark and discovery at both widths had no horizontal overflow or runtime errors. Fixed the second observed Archive cover format; 34 focused tests and all 794 frontend tests passed, plus lint, typecheck and production build. All 10 available search covers decoded after the fix. Sanitized evidence: `.local/localhost/openlibrary-browser/`. Existing database untouched; temporary database/services removed. This is local development acceptance, not a production image/deployment qualification |
+| Provider agreement follow-up, 2026-11-18 | Full TMDB API/site terms retrieved and hashed; six-month cache ceiling and termination purge raise a retention/lifecycle scope question for permanent database imports, pending user-led support clarification. No violation is established. Twitch/IGDB storage guidance rechecked; scope clarification still needed. Open Library registration/direct-cover guidance and Archive terms reviewed; MusicBrainz core-field/service distinction reconfirmed. Unsent clarification drafts prepared. No agreements accepted, providers contacted or runtime/data changes made; [current disposition](provider-agreement-evidence.md#current-disposition-2026-11-18) |
+| Wikidata feasibility trial, 2026-11-18 | Read-only live searches and batch metadata for six films/six series. All selected works resolved across tested search routes and had names, descriptions, dates and IMDb IDs; general search ranked five first. Direct type filters improved ranking but needed an anime subclass addition. Five records had a general image; only one had poster data. CC0 structured-data imports supported; API and image licenses remain separate. [Evidence and limits](wikidata-evaluation-2026-11-18.md). No adapter, migration, provider-setting or database changes |
+| Local runtime | API on localhost:5080 started and readiness verified on 2026-11-18 with `.env` provider configuration. Frontend on localhost:3000 was verified in earlier work; not started or rechecked during this activation check |
 | Git integration | Catalog/list rewrite `91a5cce`, account lifecycle `bd3d78e`, staff management `30c57e7`, profile moderation `a0a7aa0`; Admin revocation/policy integration follows in Git history |
 
 Lower test totals than older snapshots reflect the removal of retired collection
@@ -221,24 +240,40 @@ as the detailed acceptance checklist. Remaining categories are:
 - [ ] End-to-end acceptance using ordinary/staff accounts on the deployed candidate.
 - [ ] Fresh production/Release builds and browser checks for the final source revision.
 - [x] Open-source license selection: [MIT](../LICENSE), selected 2026-11-11.
-- [ ] Redistribution/provider notices, contributor
-  and security guidance, versioned artifacts and self-hosting/upgrade documentation.
+- [ ] Remaining redistribution/provider notices, release/versioning automation and
+  versioned artifacts. Contributor/security guidance and private-reporting
+  activation are complete; maintainer notification delivery remains untested.
+  Self-hosting/upgrade instructions exist.
 
 The [reference-installation design](superpowers/specs/2026-11-10-self-hosted-reference-installation-design.md)
 is implemented and verified locally. Provider credits, package notices, the scoped
 application-native source sidecar and modified-library replacement are verified.
 The scroll-bar notice now has documented artifact/source equivalence without a
 dependency change. The redistribution/provider release gate remains open.
-Next work: close the remaining [provider agreement requirements](provider-agreement-evidence.md),
-complete the base-OS/remaining image source-delivery and final artifact audit,
+On 2026-11-18, the user chose to keep TMDB and contact its support team about
+whether the caching terms cover permanent database imports. That clarification
+is pending; no support message was sent by the agent. The
+[Wikidata trial](wikidata-evaluation-2026-11-18.md) remains feasibility evidence,
+not a replacement decision. No provider migration, automatic expiry or
+fetching-only implementation is authorized by that decision. Do not treat the
+scope question as a confirmed violation or the pending clarification as clearance.
+Independent release work can continue: final artifact/source-delivery review,
+release automation and verification of the supported
+installation. [Contributor](../CONTRIBUTING.md) and [security](../SECURITY.md)
+guidance are added; GitHub private reporting is enabled and API-verified.
+Provider-dependent release work remains: resolve refresh/removal requirements and the remaining
+[provider agreement questions](provider-agreement-questions.md) (including IGDB
+scope and Open Library cover optimization), and record each operator's eligibility.
+TMDB contract retrieval is complete; provider-enabled release clearance is not.
+Complete the base-OS/remaining image source-delivery and final artifact audit,
 then deliver the matching source sidecar alongside any authorized binary publication.
 The Books/cache candidate changes source and Next.js package versions; final
 release artifacts and image-bound source/evidence must match that candidate.
 See the [native source evidence](native-source-package-verification.md),
 [credits/compliance evidence](release-compliance-verification.md),
 [dependency review](dependency-redistribution-review.md) and [provider review](provider-terms-review.md).
-Contributor/security guidance and
-versioned release automation follow using the [release plan](self-hosted-release-plan.md).
+Maintainer notification verification and versioned release automation remain under the
+[release plan](self-hosted-release-plan.md).
 Each operator still verifies their own journal protection, backup expiration,
 staff records and infrastructure acceptance. No public deployment or publication
 is recorded.
