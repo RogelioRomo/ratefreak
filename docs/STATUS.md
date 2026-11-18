@@ -12,7 +12,10 @@ persistent public provider-artwork caching are implemented and locally verified.
 Next.js/eslint-config-next are patched to 16.4.6 for the optimizer security fix.
 The Books migration `20261118034056_AddBooks` is applied to the persistent local
 database after an authorized private backup and data-preservation verification;
-Open Library activation still requires an operator contact email. See [books/cache evidence](books-and-provider-cache-verification.md).
+The local `.env` now contains the Open Library contact email and enabled setting;
+the API must receive these environment variables at startup. Live activation
+with this configuration has not yet been verified. The example settings are in
+`.env.example`; no real contact email is stored in Git. See [books/cache evidence](books-and-provider-cache-verification.md).
 No production deployment is recorded.
 The application is implemented and verified locally; self-hosted release readiness remains open.
 The product is intended for open-source distribution so operators can host their
