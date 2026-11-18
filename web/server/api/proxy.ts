@@ -1,4 +1,5 @@
 import "server-only";
+import { notificationList, validateNotificationBody } from "./notification-policy";
 import { exportStream, maxExportBytes } from "./export-stream";
 import { isArtworkUpload, categoryQuery } from "./artwork-policy";
 import { oauthRoute, externalTicketRoute } from "./oauth-policy";
@@ -36,7 +37,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   try { categoryParams = categoryQuery(request.method, path, incoming.searchParams); }
   catch { return proxyProblem(400, "Invalid category filters."); }
   const listKind = personalList(path);
-  const socialList = request.method === "GET" && (followList(path) || commentList(path));
+  const socialList = request.method === "GET" && (followList(path) || commentList(path) || notificationList(request.method, path));
   let collectionParams: URLSearchParams | null = null;
   try { collectionParams = collectionQuery(request.method,path,incoming.searchParams); }
   catch { return proxyProblem(400,"Invalid collection filters."); }
@@ -112,6 +113,10 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
 
   try {
     const requestBody = mutation ? await readRequestBody(request, controller.signal, artworkUpload ? 5 * 1024 * 1024 + 65_536 : 65_536) : undefined;
+    if (mutation && path[0] === "notifications") {
+      try { validateNotificationBody(requestBody!); }
+      catch { return proxyProblem(400, "Notification commands require an empty object."); }
+    }
     if (mutation) {
       headers.set("Content-Type", artworkUpload ? request.headers.get("Content-Type")! : "application/json");
       headers.set("X-CSRF-TOKEN", request.headers.get("X-CSRF-TOKEN")!);

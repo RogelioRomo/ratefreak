@@ -912,6 +912,71 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RateFreak.Domain.Social.Notification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<Guid>("ActorId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("actor_id");
+
+                    b.Property<Guid?>("CommentId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("comment_id");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<Guid?>("FollowActorId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("follow_actor_id");
+
+                    b.Property<Guid?>("FollowRecipientId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("follow_recipient_id");
+
+                    b.Property<string>("Kind")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("character varying(16)")
+                        .HasColumnName("kind");
+
+                    b.Property<DateTimeOffset?>("ReadAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("read_at");
+
+                    b.Property<Guid>("RecipientId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("recipient_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommentId")
+                        .IsUnique();
+
+                    b.HasIndex("ActorId", "RecipientId")
+                        .IsUnique()
+                        .HasFilter("kind = 'follow'");
+
+                    b.HasIndex("FollowActorId", "FollowRecipientId");
+
+                    b.HasIndex("RecipientId", "CreatedAt")
+                        .HasFilter("read_at IS NULL");
+
+                    b.HasIndex("RecipientId", "CreatedAt", "Id");
+
+                    b.ToTable("notifications", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_notifications_no_self", "actor_id <> recipient_id");
+
+                            t.HasCheckConstraint("ck_notifications_source", "(kind = 'follow' AND comment_id IS NULL AND follow_actor_id IS NOT NULL AND follow_recipient_id IS NOT NULL AND follow_actor_id = actor_id AND follow_recipient_id = recipient_id) OR (kind = 'comment' AND comment_id IS NOT NULL AND follow_actor_id IS NULL AND follow_recipient_id IS NULL)");
+                        });
+                });
+
             modelBuilder.Entity("RateFreak.Domain.Social.ReviewComment", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1468,6 +1533,31 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("RateFreak.Domain.Social.Notification", b =>
+                {
+                    b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
+                        .WithMany()
+                        .HasForeignKey("ActorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RateFreak.Domain.Social.ReviewComment", null)
+                        .WithMany()
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
+                        .WithMany()
+                        .HasForeignKey("RecipientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RateFreak.Domain.Social.UserFollow", null)
+                        .WithMany()
+                        .HasForeignKey("FollowActorId", "FollowRecipientId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("RateFreak.Domain.Social.ReviewComment", b =>

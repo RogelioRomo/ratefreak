@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using RateFreak.Domain.Social;
 using RateFreak.Application.Social;
 using RateFreak.Infrastructure.Persistence;
 
@@ -31,11 +32,18 @@ internal sealed class FollowService(RateFreakDbContext db) : IFollowService
         try
         {
             // Parameterized insert preserves the original timestamp on concurrent/replayed PUTs.
-            await db.Database.ExecuteSqlInterpolatedAsync($"""
+            await using var tx = await db.Database.BeginTransactionAsync(ct);
+            var inserted = await db.Database.ExecuteSqlInterpolatedAsync($"""
                 INSERT INTO user_follows (follower_id, followee_id, created_at)
                 VALUES ({actorId}, {targetId}, {DateTimeOffset.UtcNow})
                 ON CONFLICT (follower_id, followee_id) DO NOTHING
                 """, ct);
+            if (inserted != 0) { db.Add(new Notification(targetId, actorId)); await db.SaveChangesAsync(ct); }
+            await tx.CommitAsync(ct);
+        }
+        catch (DbUpdateException error) when (error.InnerException is PostgresException { SqlState: PostgresErrorCodes.ForeignKeyViolation })
+        {
+            return FollowStatus.Missing;
         }
         catch (PostgresException exception) when (exception.SqlState == PostgresErrorCodes.ForeignKeyViolation)
         {

@@ -78,6 +78,7 @@ public static class DependencyInjection
         services.AddScoped<IRatingService, RatingService>();
         services.AddScoped<IReviewService, ReviewService>();
         services.AddScoped<IReviewCommentService, ReviewCommentService>();
+        services.AddScoped<INotificationService, NotificationService>();
         services.AddScoped<ICollectionQueries, CollectionQueries>();
         services.AddScoped<ICollectionCommands, CollectionCommands>();
         services.AddScoped<ICollectionItemCommands, CollectionItemCommands>();

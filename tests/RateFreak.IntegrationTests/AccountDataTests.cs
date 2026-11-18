@@ -65,6 +65,8 @@ public sealed class AccountDataTests(AccountDatabase database) : IClassFixture<A
         var retained = MediaItem.CreateCustom(id, "Retained public", "Keep", publicCategory.Id); var removed = MediaItem.CreateCustom(id, "Private item", "Remove", privateCategory.Id); db.AddRange(retained, removed); await db.SaveChangesAsync(Ct);
         await db.MediaItems.Where(m => m.Id == retained.Id).ExecuteUpdateAsync(s => s.SetProperty(m => m.Visibility, "public").SetProperty(m => m.IsHidden, true), Ct);
         db.AddRange(new LibraryEntry(other.Id, retained.Id, "planned", null, null), new LibraryEntry(other.Id, removed.Id, "planned", null, null), new Review(other.Id, removed.Id, "Dependent review", false));
+        db.AddRange(new RateFreak.Domain.Social.UserFollow { FollowerId=id, FolloweeId=other.Id }, new RateFreak.Domain.Social.UserFollow { FollowerId=other.Id, FolloweeId=id }); await db.SaveChangesAsync(Ct);
+        db.AddRange(new RateFreak.Domain.Social.Notification(id,other.Id),new RateFreak.Domain.Social.Notification(other.Id,id)); await db.SaveChangesAsync(Ct);
         var report = new ContentReport { TargetType = "item", TargetId = retained.Id, ItemId = retained.Id, OriginalAuthorId = id, OriginalReporterId = other.Id, ReporterId = other.Id, Reason = "spam" }; db.Add(report);
         var submitted = new ContentReport { TargetType = "item", TargetId = retained.Id, ItemId = retained.Id, OriginalAuthorId = id, OriginalReporterId = id, ReporterId = id, Reason = "other", Details = "Personal report text" }; db.Add(submitted);
         db.Add(new ModerationEvent { ActorId = id, Action = "appoint", TargetType = "account", TargetId = id, Reason = "Operator reason" }); await db.SaveChangesAsync(Ct);
@@ -76,6 +78,7 @@ public sealed class AccountDataTests(AccountDatabase database) : IClassFixture<A
             var service = scope.ServiceProvider.GetRequiredService<IAccountDataService>(); var user = await db.Users.AsNoTracking().SingleAsync(u => u.Id == id, Ct);
             var grant = await service.ConfirmAsync(id, user.SecurityStamp!, new("delete", Password), Ct); Assert.NotNull(grant);
             await service.DeleteAsync(id, user.SecurityStamp!, grant, handle, Ct); db.ChangeTracker.Clear();
+            Assert.False(await db.Notifications.AnyAsync(n => n.RecipientId == id || n.ActorId == id, Ct));
             Assert.False(await db.Users.AnyAsync(u => u.Id == id, Ct)); Assert.False(await db.MediaItems.AnyAsync(m => m.Id == removed.Id, Ct));
             var item = await db.MediaItems.SingleAsync(m => m.Id == retained.Id, Ct); Assert.Null(item.CreatorUserId); Assert.True(item.IsHidden); Assert.Equal("user", item.Provenance); Assert.Equal(2, item.Revision);
             Assert.True(await db.LibraryEntries.AnyAsync(e => e.UserId == other.Id && e.MediaItemId == retained.Id, Ct)); Assert.False(await db.Reviews.AnyAsync(r => r.MediaItemId == removed.Id, Ct));
@@ -166,6 +169,12 @@ public sealed class AccountDataTests(AccountDatabase database) : IClassFixture<A
         var (factory,client,id,handle)=await Setup();await using var ownedFactory=factory;using var ownedClient=client;
         await using var scope=factory.Services.CreateAsyncScope();var db=scope.ServiceProvider.GetRequiredService<RateFreakDbContext>();var service=scope.ServiceProvider.GetRequiredService<IAccountDataService>();
         var user=await db.Users.SingleAsync(u=>u.Id==id,Ct);var category=new Category("Rollback "+Guid.NewGuid(),"public",id);db.Add(category);await db.SaveChangesAsync(Ct);
+        var observer=new AccountUser {Id=Guid.NewGuid(),UserName="observer_"+Guid.NewGuid().ToString("N")[..10],Email=Guid.NewGuid()+"@example.test",DisplayName="Observer"};
+        Assert.True((await scope.ServiceProvider.GetRequiredService<UserManager<AccountUser>>().CreateAsync(observer,Password)).Succeeded);
+        var retained=MediaItem.CreateCustom(id,"Retained on replay",null,category.Id); db.Add(retained); await db.SaveChangesAsync(Ct);
+        await db.MediaItems.Where(m=>m.Id==retained.Id).ExecuteUpdateAsync(s=>s.SetProperty(m=>m.Visibility,"public"),Ct);
+        db.AddRange(new RateFreak.Domain.Social.UserFollow {FollowerId=id,FolloweeId=observer.Id},new RateFreak.Domain.Social.UserFollow {FollowerId=observer.Id,FolloweeId=id}); await db.SaveChangesAsync(Ct);
+        db.AddRange(new RateFreak.Domain.Social.Notification(id,observer.Id),new RateFreak.Domain.Social.Notification(observer.Id,id)); await db.SaveChangesAsync(Ct);
         var path=Path.Combine(Path.GetTempPath(),"pending-erasure-"+Guid.NewGuid()+".jsonl");
         using (File.Create(path)) { }
         if (!OperatingSystem.IsWindows()) File.SetUnixFileMode(path, UnixFileMode.UserRead | UnixFileMode.UserWrite);scope.ServiceProvider.GetRequiredService<IOptions<AccountDataOptions>>().Value.ErasureJournalPath=path;
@@ -175,6 +184,7 @@ public sealed class AccountDataTests(AccountDatabase database) : IClassFixture<A
             var grant=await service.ConfirmAsync(id,user.SecurityStamp!,new("delete",Password),Ct);Assert.NotNull(grant);
             await Assert.ThrowsAsync<Npgsql.PostgresException>(()=>service.DeleteAsync(id,user.SecurityStamp!,grant,handle,Ct));
             Assert.True(await db.Users.AnyAsync(u=>u.Id==id,Ct));Assert.True(await db.Categories.AnyAsync(c=>c.Id==category.Id&&c.OwnerUserId==id,Ct));
+            Assert.Equal(2,await db.Notifications.CountAsync(n=>n.RecipientId==id||n.ActorId==id,Ct));
             var record=JsonDocument.Parse((await File.ReadAllLinesAsync(path,Ct)).Single());Assert.False(record.RootElement.GetProperty("Completed").GetBoolean());
         }
         finally{await db.Database.ExecuteSqlRawAsync("DROP TRIGGER reject_lifecycle_delete ON users; DROP FUNCTION reject_lifecycle_delete();",Ct);}
@@ -182,6 +192,7 @@ public sealed class AccountDataTests(AccountDatabase database) : IClassFixture<A
         {
             await scope.ServiceProvider.GetRequiredService<IAccountErasureMaintenance>().ReplayAsync(Ct);db.ChangeTracker.Clear();
             Assert.False(await db.Users.AnyAsync(u=>u.Id==id,Ct));Assert.Null((await db.Categories.SingleAsync(c=>c.Id==category.Id,Ct)).OwnerUserId);
+            Assert.False(await db.Notifications.AnyAsync(n=>n.RecipientId==id||n.ActorId==id,Ct)); Assert.Null((await db.MediaItems.SingleAsync(m=>m.Id==retained.Id,Ct)).CreatorUserId);
             var lines=await File.ReadAllLinesAsync(path,Ct);Assert.True(JsonDocument.Parse(lines.Last()).RootElement.GetProperty("Completed").GetBoolean());
         }
         finally{File.Delete(path);}

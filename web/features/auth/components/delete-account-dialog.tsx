@@ -64,7 +64,7 @@ export function DeleteAccountDialog({ handle, pending, onCancel, onConfirm, onEx
       <div id="delete-account-retention">
         <p>This cannot be undone. Your live account, personal data and recovery events are deleted immediately.</p>
         <p>Recovery events are kept for up to 90 days while your account exists. Deleting your account removes them immediately.</p>
-        <p>Your library, ratings, reviews, comments, follows and collections are removed. Comments by others on your reviews are removed too. Deleting private catalog items also removes their dependent references and discussions.</p>
+        <p>Your library, ratings, reviews, comments, follows, notifications and collections are removed. Comments by others on your reviews are removed too. Deleting private catalog items also removes their dependent references and discussions.</p>
         <p>Private artwork is removed immediately where possible. If removal fails, the hourly orphan sweep retries files older than 24 hours. Backup copies expire within 30 days.</p>
         <p>Pseudonymized moderation records may still contain identifying information. Resolved records expire 365 days after resolution. Open reports remain until resolved.</p>
         <p>Public catalog items and categories remain without account attribution. Their artwork and other people’s references remain.</p>

@@ -1340,3 +1340,26 @@ rows, category references/aliases or category edits exist. Review/apply explicit
 using the existing migration procedures. It was applied to the project’s local
 persistent database on 2026-11-17 after explicit authorization, backup and
 data-preservation checks; other installations still require their own migration.
+
+
+## In-app notifications
+
+The private `/notifications` inbox covers new followers and comments by others on
+your reviews. It includes unread badges, 60-second foreground refresh, read/unread,
+mark-all-read, individual deletion and confirmed clear-inbox. Clearing includes
+hidden entries; later notifications remain. Source comments/follows stay intact.
+Current visibility governs entries and counts; names use public profile fallbacks.
+
+The authenticated API exposes GET `/api/v1/notifications` (page/pageSize) and
+`/api/v1/notifications/unread-count`, PUT/DELETE `/notifications/{id}/read`, POST
+`/notifications/read-all`, and DELETE `/notifications/{id}` or `/notifications`
+(all paths use `/api/v1`). Writes require CSRF and an absent body or `{}`; other
+payloads are rejected. Responses are no-store. See the complete
+[contract and verification](docs/notifications-verification.md).
+
+Apply `20261118195946_AddNotifications` explicitly using the normal backup and
+migration workflow before running the matching release. Existing events are not
+backfilled. Notifications have no fixed expiry, are included in exports when
+currently accessible, and are removed by source/account deletion or inbox actions.
+Inbox clearing does not create restore-proof erasure records; the existing backup
+lifecycle applies. See [account operations](docs/account-data-operations.md).

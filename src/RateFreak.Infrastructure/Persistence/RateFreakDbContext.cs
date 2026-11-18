@@ -12,6 +12,7 @@ namespace RateFreak.Infrastructure.Persistence;
 public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> options)
     : IdentityDbContext<AccountUser, IdentityRole<Guid>, Guid>(options)
 {
+    public DbSet<RateFreak.Domain.Social.Notification> Notifications => Set<RateFreak.Domain.Social.Notification>();
     public DbSet<RateFreak.Domain.Social.UserFollow> UserFollows => Set<RateFreak.Domain.Social.UserFollow>();
 
     public DbSet<Collection> Collections => Set<Collection>();
@@ -38,6 +39,7 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
         modelBuilder.ConfigureCategories();
         modelBuilder.ConfigureModeration();
         modelBuilder.ConfigureSocial();
+        modelBuilder.ConfigureNotifications();
         modelBuilder.ConfigureReviewComments();
         modelBuilder.ConfigureCollections();
         modelBuilder.ConfigurePersonalMedia();

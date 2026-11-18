@@ -8,7 +8,7 @@ database or deploying a release.
 
 | Data | Retention |
 | --- | --- |
-| Live account/profile, credentials/recovery codes, library, ratings, reviews, authored comments, follows, owned lists and private catalog content | Removed when deletion commits |
+| Live account/profile, credentials/recovery codes, library, ratings, reviews, authored comments, follows, notifications, owned lists and private catalog content | Removed when deletion commits |
 | Recovery security events | Up to 90 days while an account exists; removed immediately with the account |
 | Private artwork | Immediate removal attempted after commit; hourly orphan cleanup retries unreferenced files older than 24 hours |
 | Resolved moderation reports and their related events | 365 days after report resolution; pseudonymized at account deletion |
@@ -21,6 +21,18 @@ database or deploying a release.
 Do not tell users that absolutely all their data vanishes after 30, 90 or 365 days.
 The final confirmation dialog must disclose these separate schedules. Staff notes
 can contain identifying text; pseudonymization is not a promise of anonymity.
+
+## Notification inbox data
+
+Notifications have no fixed expiry. Members can delete individual entries or clear
+their entire inbox, including temporarily hidden entries, without deleting source
+comments or follows. Source/account deletion also removes their entries. Account
+exports include only currently accessible, undeleted notifications. Account
+deletion and erasure replay remove received and actor-linked entries.
+
+Inbox deletion/clearing affects the live database and does not append account
+erasure journal entries; existing backups expire within 30 days and may restore
+earlier inbox state. See [notification behavior](notifications-verification.md).
 
 ## Configure deletion before enabling it
 

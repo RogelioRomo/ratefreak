@@ -43,6 +43,7 @@ internal sealed class ReviewCommentService(RateFreakDbContext db) : IReviewComme
         var parent = await AccessibleParents(userId).AsNoTracking().SingleOrDefaultAsync(x => x.Id == reviewId, ct);
         if (parent is null || parent.IsHidden) return null;
         db.Add(comment);
+        if (parent.UserId != userId) db.Add(new Notification(parent.UserId, userId, comment.Id));
         try
         {
             await db.SaveChangesAsync(ct);

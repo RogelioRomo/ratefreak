@@ -55,6 +55,7 @@ internal sealed partial class AccountDataService
                     select new { comment.Id, comment.ReviewId, review.MediaItemId,
                         Title = readable.Where(m => m.Id == review.MediaItemId).Select(m => m.Title).FirstOrDefault(),
                         comment.Body, comment.IsSpoiler, comment.IsHidden, comment.CreatedAt, comment.UpdatedAt });
+                await Query("notifications.json", RateFreak.Infrastructure.Social.NotificationService.Project(db, userId));
                 await Query("collections.json", db.Collections.Where(x => x.OwnerUserId == userId));
                 await Query("collection-items.json", db.CollectionItems.Where(x => db.Collections.Any(c => c.Id == x.CollectionId && c.OwnerUserId == userId)).Select(x => new { x.Id, x.CollectionId, x.MediaItemId, x.Position, Title = readable.Where(m => m.Id == x.MediaItemId).Select(m => m.Title).FirstOrDefault() }));
                 await Query("following.json", from f in db.UserFollows join u in db.Users on f.FolloweeId equals u.Id where f.FollowerId == userId select new { accountId = u.Id, handle = u.UserName, f.CreatedAt });

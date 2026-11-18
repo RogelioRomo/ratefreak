@@ -45,7 +45,7 @@ public sealed class BookMigrationTests
     public async Task Downgrade_with_books_is_refused_without_removing_history_or_content()
     {
         await using var postgres = new PostgreSqlBuilder("postgres:17").Build(); await postgres.StartAsync(Ct);
-        await using var db = Db(postgres.GetConnectionString()); await db.Database.MigrateAsync(Ct);
+        await using var db = Db(postgres.GetConnectionString()); await db.GetService<IMigrator>().MigrateAsync("20261118034056_AddBooks", Ct);
         var book = new MediaItem("book", "Retained book"); db.Add(book); await db.SaveChangesAsync(Ct);
         var before = (await db.Database.GetAppliedMigrationsAsync(Ct)).ToArray();
         var error = await Assert.ThrowsAsync<Npgsql.PostgresException>(() => db.GetService<IMigrator>().MigrateAsync(Previous, Ct)); Assert.Contains("books", error.Message, StringComparison.OrdinalIgnoreCase);

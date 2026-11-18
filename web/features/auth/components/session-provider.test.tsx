@@ -114,3 +114,19 @@ it("propagates identity changes to a second browser client without credentials",
     await waitFor(() => expect(right.result.current.account).toBeNull());
   } finally { left.unmount(); right.unmount(); first.client.clear(); second.client.clear(); }
 });
+
+it("immediately gates private state when another tab signals an identity change", async () => {
+  vi.stubGlobal("BroadcastChannel", BroadcastChannel);
+  const {client,wrapper}=harness(); getAccount.mockResolvedValue(account);
+  const hook=renderHook(useSession,{wrapper}); const sender=new BroadcastChannel("ratefreak-session");
+  try {
+    await waitFor(()=>expect(hook.result.current.account?.id).toBe("a"));
+    let finish!:(value:typeof account)=>void;
+    getAccount.mockImplementation(()=>new Promise(resolve=>{finish=resolve;}));
+    sender.postMessage({type:"identity-changed"});
+    await waitFor(()=>expect(finish).toBeTypeOf("function"));
+    expect(hook.result.current.account).toBeUndefined(); expect(hook.result.current.isTransitioning).toBe(true);
+    await act(async()=>{finish({...account,id:"b"});});
+    await waitFor(()=>expect(hook.result.current.account?.id).toBe("b"));
+  } finally {sender.close();hook.unmount();client.clear();}
+});
