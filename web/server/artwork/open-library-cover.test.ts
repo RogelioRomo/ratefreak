@@ -10,6 +10,33 @@ beforeEach(() => { transport.request.mockReset(); transport.lookup.mockReset(); 
 const id = "6498519";
 const archive = "https://archive.org/download/olcovers649/olcovers649-L.zip/6498519-L.jpg";
 const storage = "https://ia601804.us.archive.org/view_archive.php?archive=/17/items/olcovers649/olcovers649-L.zip&file=6498519-L.jpg";
+const shardedArchive = "https://archive.org/download/l_covers_0012/l_covers_0012_89.zip/0012895064-L.jpg";
+const shardedStorage = "https://ia800100.us.archive.org/view_archive.php?archive=/5/items/l_covers_0012/l_covers_0012_89.zip&file=0012895064-L.jpg";
+
+it.each([
+  ["12895064", shardedArchive], ["12895064", shardedStorage],
+  ["10294562", "https://archive.org/download/l_covers_0010/l_covers_0010_29.zip/0010294562-L.jpg"],
+  ["13815236", "https://ia601909.us.archive.org/view_archive.php?archive=/31/items/l_covers_0013/l_covers_0013_81.zip&file=0013815236-L.jpg"],
+])("allows the observed sharded cover chain for %s: %s", (coverId, url) => {
+  expect(allowedCoverUrl(new URL(url), coverId)).toBe(true);
+});
+
+it.each([
+  shardedArchive.replace("0012895064-L.jpg", "0012895065-L.jpg"),
+  shardedArchive.replaceAll("l_covers_0012", "l_covers_0013"),
+  shardedArchive.replace("_89.zip", "_90.zip"),
+  shardedArchive.replace("0012895064-L.jpg", "12895064-L.jpg"),
+  shardedArchive.replace("https:", "http:"),
+  shardedArchive.replace("archive.org", "archive.org.evil.test"),
+  shardedArchive + "?download=1", shardedArchive + "#fragment",
+  shardedStorage.replace("0012895064-L.jpg", "0012895065-L.jpg"),
+  shardedStorage.replace("_89.zip", "_90.zip"),
+  shardedStorage.replace("/5/items/", "/5/private/"),
+  shardedStorage.replace("ia800100.us.archive.org", "evil.archive.org"),
+  shardedStorage + "&file=0012895064-L.jpg", shardedStorage + "&redirect=https://evil.test",
+])("rejects mismatched or unrelated sharded redirects %s", url => {
+  expect(allowedCoverUrl(new URL(url), "12895064")).toBe(false);
+});
 
 it.each([`https://covers.openlibrary.org/b/id/${id}-L.jpg?default=false`, archive, storage])("allows the observed cover chain %s", url => {
   expect(allowedCoverUrl(new URL(url), id)).toBe(true);
@@ -39,6 +66,12 @@ it("follows only the validated chain and returns bounded raster bytes", async ()
   const response = await fetchOpenLibraryCover(id, new AbortController().signal);
   expect(response.status).toBe(200); expect(response.headers.get("content-type")).toBe("image/jpeg");
   expect([...new Uint8Array(await response.arrayBuffer())]).toEqual([1, 2, 3]); expect(transport.request).toHaveBeenCalledTimes(3);
+});
+it("retrieves raster bytes through the observed padded-ID sharded redirects", async () => {
+  respond([{ status: 302, headers: { location: shardedArchive } }, { status: 302, headers: { location: shardedStorage } }, { status: 200, headers: { "content-type": "image/jpeg" }, body: new Uint8Array([1, 2, 3]) }]);
+  const response = await fetchOpenLibraryCover("12895064", new AbortController().signal);
+  expect(response.status).toBe(200);
+  expect([...new Uint8Array(await response.arrayBuffer())]).toEqual([1, 2, 3]);
 });
 it("rejects private DNS results before opening a socket", async () => {
   transport.lookup.mockResolvedValue([{ address: "127.0.0.1", family: 4 }]);

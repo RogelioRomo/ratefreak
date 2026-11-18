@@ -16,11 +16,18 @@ export function allowedCoverUrl(url: URL, id: string): boolean {
   if (!idPattern.test(id) || url.protocol !== "https:" || url.username || url.password || url.port || url.hash) return false;
   if (url.hostname === "covers.openlibrary.org") return url.pathname === `/b/id/${id}-L.jpg` && url.search === "?default=false";
   const archivePath = new RegExp(`^/download/olcovers([0-9]+)/olcovers\\1-L\\.zip/${id}-L\\.jpg$`);
-  if (url.hostname === "archive.org") return archivePath.test(url.pathname) && !url.search;
+  // Newer covers use a ten-digit filename and buckets derived from that ID.
+  const paddedId = id.padStart(10, "0");
+  const bucket = `l_covers_${paddedId.slice(0, 4)}`;
+  const bundle = `${bucket}_${paddedId.slice(4, 6)}.zip`;
+  const filename = `${paddedId}-L.jpg`;
+  if (url.hostname === "archive.org") return !url.search && (archivePath.test(url.pathname) || url.pathname === `/download/${bucket}/${bundle}/${filename}`);
   if (!/^ia[0-9]{6}\.(?:us|eu)\.archive\.org$/.test(url.hostname) || url.pathname !== "/view_archive.php") return false;
   const params = url.searchParams;
   if ([...params.keys()].length !== 2 || params.getAll("archive").length !== 1 || params.getAll("file").length !== 1) return false;
-  return /^\/[0-9]{1,3}\/items\/olcovers([0-9]+)\/olcovers\1-L\.zip$/.test(params.get("archive") ?? "") && params.get("file") === `${id}-L.jpg`;
+  const archive = params.get("archive") ?? "";
+  return (/^\/[0-9]{1,3}\/items\/olcovers([0-9]+)\/olcovers\1-L\.zip$/.test(archive) && params.get("file") === `${id}-L.jpg`)
+    || (/^\/[0-9]{1,3}\/items\//.test(archive) && archive.replace(/^\/[0-9]{1,3}\/items\//, "") === `${bucket}/${bundle}` && params.get("file") === filename);
 }
 
 async function publicRequest(url: URL, signal: AbortSignal): Promise<IncomingMessage> {
