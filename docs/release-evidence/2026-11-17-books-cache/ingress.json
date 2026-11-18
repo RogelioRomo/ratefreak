@@ -1,0 +1,20 @@
+{
+  "directSourceBlocked": {
+    "/provider-artwork/openlibrary/12345": 404,
+    "/Provider-Artwork/OpenLibrary/12345": 404,
+    "/provider-artwork%2fopenlibrary/12345": 404
+  },
+  "optimizedCover": [
+    {
+      "status": 200,
+      "cache": "MISS",
+      "bytes": 30904
+    },
+    {
+      "status": 200,
+      "cache": "HIT",
+      "bytes": 30904
+    }
+  ],
+  "image": "sha256:e990c90ce33ab82d32b4fdc4e530d53c795b10a8ee7c0a7b42e3a230bf3a3c26"
+}

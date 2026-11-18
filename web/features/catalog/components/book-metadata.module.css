@@ -1,0 +1,2 @@
+.metadata { display: grid; gap: 0.5rem; margin-top: 1.5rem; color: var(--muted); font-size: 0.875rem; line-height: 1.6; overflow-wrap: anywhere; }
+.metadata a { color: var(--accent); display: inline-flex; align-items: center; min-height: 2.75rem; }

@@ -20,6 +20,11 @@ export function CreditsScreen() {
       <h2 id="igdb-credit">IGDB</h2>
       <p>Video game metadata and artwork are provided by <a href="https://www.igdb.com">IGDB</a>.</p>
     </section>
+    <section className={styles.section} aria-labelledby="openlibrary-credit">
+      <h2 id="openlibrary-credit">Open Library</h2>
+      <p>Book metadata and cover references are provided by <a href="https://openlibrary.org">Open Library</a>, an initiative of the Internet Archive maintained by its community.</p>
+      <p>Imported books link to their original work records. Contributed descriptions and cover artwork may carry existing rights; see <a href="https://openlibrary.org/developers/licensing">Open Library’s licensing statement</a>.</p>
+    </section>
     <section className={styles.section} aria-labelledby="software-credit">
       <h2 id="software-credit">Open-source software &amp; type</h2>
       <p>RateFreak is built with .NET, PostgreSQL, Next.js, React and other open-source projects. Interface icons are by Tabler. Fraunces and DM Sans are distributed under the SIL Open Font License.</p>

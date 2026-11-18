@@ -7,8 +7,9 @@ public static class MediaTypes
     public const string Album = "album";
     public const string Movie = "movie";
     public const string TvShow = "tv_show";
+    public const string Book = "book";
     public static bool IsCatalogType(string value) => value == Custom || IsSupported(value);
-    public static bool IsSupported(string value) => value is Movie or TvShow or Album or VideoGame;
+    public static bool IsSupported(string value) => value is Movie or TvShow or Album or VideoGame or Book;
 }
 
 public sealed class MediaItem

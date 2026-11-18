@@ -4,6 +4,7 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import { LoadingState } from "@/components/ui/loading-state";
 import { ErrorState } from "@/components/ui/error-state";
 import { MediaArtwork } from "@/features/catalog/components/media-artwork";
+import { BookMetadata } from "@/features/catalog/components/book-metadata";
 import { mediaLabels } from "@/features/catalog/query/filters";
 import type { ProviderPreviewProps } from "../interfaces/component-props";
 import { providerIdentity, providerNames } from "../query/identity";
@@ -22,8 +23,8 @@ export function ProviderPreviewScreen({ provider, type, externalId }: ProviderPr
     {identity && (capabilities.isPending || capabilities.isError || (cap?.enabled && (media.isPending || media.isError))) && <h1 className={styles.stateTitle}>Provider preview.</h1>}
     {!identity ? <><h1 className={styles.stateTitle}>Preview unavailable.</h1><ErrorState title="Invalid provider title." description="Return to discovery to find a valid title." /></> : capabilities.isPending ? <LoadingState label="Loading provider…" /> : capabilities.isError ? <ProviderError error={capabilities.error} onRetry={() => void capabilities.refetch()} /> : !cap?.enabled || !cap.supportedTypes.includes(identity.type) ? <><h1 className={styles.stateTitle}>Provider unavailable.</h1><p>This provider is not currently enabled. Browse the local catalog or try another provider.</p><Link className={styles.link} href="/catalog">Browse the catalog</Link></> : <>
       {media.isPending ? <LoadingState label="Loading preview…" /> : media.isError ? <ProviderError error={media.error} onRetry={() => void media.refetch()} /> : <article className={styles.detail}>
-        <div className={styles.artwork}><MediaArtwork reference={media.data.imageReference} title={media.data.title} type={media.data.type} /></div>
-        <div className={styles.content}><h1>{media.data.title}</h1><p className={styles.meta}>{mediaLabels[media.data.type]} · {providerNames[identity.provider]} preview</p><p className={styles.meta}>{media.data.releaseDate ? <time dateTime={media.data.releaseDate}>{media.data.releaseDate}</time> : "Release date unavailable"}</p>
+        <div className={styles.artwork}><MediaArtwork reference={media.data.imageReference} title={media.data.title} type={media.data.type} sizes="(max-width: 368px) calc(100vw - 3rem), 320px" /></div>
+        <div className={styles.content}><h1>{media.data.title}</h1><p className={styles.meta}>{mediaLabels[media.data.type]} · {providerNames[identity.provider]} preview</p>{media.data.type === "book" ? <BookMetadata metadata={media.data.metadata} externalId={identity.externalId} /> : <p className={styles.meta}>{media.data.releaseDate ? <time dateTime={media.data.releaseDate}>{media.data.releaseDate}</time> : "Release date unavailable"}</p>}
           <section className={styles.description} aria-labelledby="preview-about"><h2>About this title</h2><p>{media.data.description?.trim() || "No description available yet."}</p></section>
           <ImportControl identity={identity} />
         </div>

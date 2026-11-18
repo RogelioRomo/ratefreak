@@ -1,5 +1,5 @@
 import type { MediaType } from "@/features/catalog/interfaces/catalog-filters";
-export type ProviderName = "tmdb" | "musicbrainz" | "igdb";
+export type ProviderName = "tmdb" | "musicbrainz" | "igdb" | "openlibrary";
 export interface ProviderIdentity { provider: ProviderName; type: MediaType; externalId: string; }
 export interface ProviderCapability { name: ProviderName; enabled: boolean; supportedTypes: MediaType[]; attribution: string; attributionUrl: string; }
 export interface ProviderFilters { q: string; provider: ProviderName; type: MediaType; page: number; }

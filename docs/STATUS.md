@@ -7,6 +7,12 @@ to the repository. Account lifecycle (`bd3d78e`), staff management (`30c57e7`)
 and profile moderation (`a0a7aa0`) are committed and verified locally. Admin
 revocation and staff-policy documentation are implemented and verified locally;
 see Git history for the current integration commit.
+Open Library work-based books, shared metadata caching for every provider and
+persistent public provider-artwork caching are implemented and locally verified.
+Next.js/eslint-config-next are patched to 16.4.6 for the optimizer security fix.
+The Books migration `20261118034056_AddBooks` is applied to the persistent local
+database after an authorized private backup and data-preservation verification;
+Open Library activation still requires an operator contact email. See [books/cache evidence](books-and-provider-cache-verification.md).
 No production deployment is recorded.
 The application is implemented and verified locally; self-hosted release readiness remains open.
 The product is intended for open-source distribution so operators can host their
@@ -33,6 +39,7 @@ older plans and resume notes. It records work and decisions, not deployment auth
 | [Credits/compliance evidence](release-compliance-verification.md) | Implemented provider credits, packaged notices, native-source evidence and remaining obligations |
 | [Native source package verification](native-source-package-verification.md) | Image-bound source sidecar, offline rebuild/replacement proof and remaining OS/publication scope |
 | [Provider agreement evidence](provider-agreement-evidence.md) | Retrieved official agreements, access limits and operator acceptance requirements |
+| [Books/cache verification](books-and-provider-cache-verification.md) | Open Library work imports, all-provider metadata cache, persistent image cache and verification limits |
 | [Self-hosting guide](self-hosting.md) | Reference installation, configuration, upgrades and recovery |
 | [Reference verification](self-hosted-reference-verification.md) | Packaging, HTTPS, maintenance and recovery evidence/limits |
 | [Staff operations](staff-access-operations.md) | Staff permissions, named operator attribution and deployment acceptance |
@@ -53,7 +60,13 @@ are evidence references, not durable deployment artifacts or guaranteed running 
   account deletion with a retention-confirmation dialog, public catalog ownership
   detachment, bounded event cleanup and independent erasure journal/replay.
 - Provider search, preview and import for TMDB movies/TV, MusicBrainz albums and
-  IGDB games; shared catalog identities and metadata.
+  IGDB games and Open Library books; shared catalog identities and locally persisted
+  metadata. Books use work identities rather than separate ISBN/edition entries.
+- Shared bounded API metadata caching for every provider (five-minute searches,
+  one-hour details), request coalescing and independent caller cancellation.
+  Public provider artwork uses Next.js's persistent, bounded image cache; private
+  uploads/moderation artwork retain access checks and no-store. Open Library's
+  observed Archive redirects use a narrowly validated CoverID adapter.
 - Public catalog browsing/details, private libraries, tracking, half-star ratings,
   reviews, review comments, public profiles, profile editing and follows.
 - Custom catalog items with private/public visibility, categories, one protected
@@ -71,7 +84,7 @@ are evidence references, not durable deployment artifacts or guaranteed running 
   and actor-attributed audit history. Granting Admin remains operator-managed.
 - Catalog category-only browsing controls, separate existing/new category workflows,
   spacing improvements and silent routine background session checks.
-- Permanent Credits page for TMDB, MusicBrainz and IGDB, approved TMDB logo/notice,
+- Permanent Credits page for TMDB, MusicBrainz, IGDB and Open Library, approved TMDB logo/notice,
   footer navigation and provider credits on imported catalog details. Production
   images collect package license/notice texts, project LICENSE, OS/runtime copyright
   evidence and native source/build provenance; this does not close source-distribution
@@ -105,6 +118,7 @@ Current decisions:
 
 | Check | Latest recorded result |
 | --- | --- |
+| Books and shared provider caches, 2026-11-17 | 27 unit, 431 PostgreSQL/API integration and 196 provider contracts passed; 775 frontend tests, lint/typecheck, patched Next.js 16.4.6 production build/API Release publish, 32 operator and 18 compliance tests passed. The final non-root/read-only web candidate demonstrated MISS/HIT, six-request coalescing, cache retention across recreation and warm/stale outage behavior. Reference Caddy denied direct source paths while optimized covers worked. Independent-review resource-bound findings were reproduced and corrected. Real Open Library work/search/cover shapes and Chromium API-fixture desktop/mobile journeys in both themes were checked; see [scope and limits](books-and-provider-cache-verification.md) |
 | Native source packaging, 2026-11-17 | 18 compliance and 30 operator tests passed. Fresh web candidate built with complete collected texts for 162 observed Rust packages. A 406-input, approximately 192 MiB source sidecar was created twice with identical SHA-256 and bound to the final image ID. Full native build passed with network disabled; a source-marked replacement passed exact path/hash, PNG and SVG-to-WebP checks under UID 10001/read-only/no-network. Scroll-bar provenance resolved through the qualified artifact/source chain. See [evidence and limits](native-source-package-verification.md) |
 | Credits and notice packaging, 2026-11-13 | 722 frontend tests, lint/typecheck, frontend production build and seven notice-collector tests passed. All three candidate images built; package text/hash checks passed for API 35/web 63/tools 36 packages, with runtime/native evidence. Chromium desktop/mobile in both themes and independent UI review passed. All 33 selected libvips source archive/patch URLs acquired and hashed; corresponding-source/relinking and agreement acceptance remain separate gates. See [scope/limits](release-compliance-verification.md) |
 | Dependency/provider review, 2026-11-13 | Source/package metadata and official provider/license sources reviewed; [dependency findings](dependency-redistribution-review.md), [inventory](dependency-inventory.md) and [provider findings](provider-terms-review.md) recorded. Missing TMDB logo/About-Credits attribution, final artifact notice/source compliance and inaccessible full provider agreements remain open. This was not a final image scan, vulnerability audit or legal clearance |
@@ -119,7 +133,7 @@ Current decisions:
 | Original staff management browser verification, 2026-11-09 | Before Admin-removal controls: real Chromium/API/Next/disposable PostgreSQL passed read-only Admin, account search, moderator grant/revoke and audit reasons, cancel/focus, role refresh, moderator/admin denial isolation and layouts. Temporary evidence: `/tmp/ratefreak-staff-browser/results.json`; no persistent roles changed |
 | Profile moderation browser verification, 2026-11-09 | Real Chromium/API/Next/disposable PostgreSQL passed report → staff hide/resolve → owner correction staying hidden → staff restore; public profile/review handle fallbacks, audit reasons, confirmation cancellation, logout concealment, and 1440/768/390/320px layouts. No browser runtime errors. Temporary evidence: `/tmp/ratefreak-profile-browser/results.json` and inspection screenshots. Test services/database removed after checks |
 | Admin revocation browser verification, 2026-11-09 | Real Chromium/API/Next/disposable PostgreSQL passed UI removal/reason/confirmation, cancel/focus, account audit, retained Moderator/user access, current-session Admin denial, last-Admin 409 and refresh-before-retry, self-removal concealment, offline last-Admin refusal and 1440/768/390/320px layouts. No browser runtime errors. Temporary evidence: `/tmp/ratefreak-admin-revoke-browser/results.json` and screenshots; temporary services/database removed |
-| Persistent local database | Setup migration applied 2026-11-07; authorized collection cutover 2026-11-08; account lifecycle migration 2026-11-09 with backup/preservation checks. Profile migration `20261110014234_AddProfileModeration` applied locally under the approved design on 2026-11-09 (PST), with a private mode-0600 backup and unchanged original row counts/content fingerprints across all 27 existing application tables. Evidence: `.local/localhost/profile-moderation-migration-verification.json` |
+| Persistent local database | Books migration `20261118034056_AddBooks` applied on 2026-11-17 (PST) after explicit authorization, a validated private mode-0600 backup, and unchanged fingerprints/counts for all 26 other application tables and original category rows. Local evidence: `.local/localhost/books-migration/verification.json`. Setup migration applied 2026-11-07; authorized collection cutover 2026-11-08; account lifecycle migration 2026-11-09 with backup/preservation checks. Profile migration `20261110014234_AddProfileModeration` applied locally under the approved design on 2026-11-09 (PST), with a private mode-0600 backup and unchanged original row counts/content fingerprints across all 27 existing application tables. Evidence: `.local/localhost/profile-moderation-migration-verification.json` |
 | Local runtime | Updated API on localhost:5080 and frontend on localhost:3000 verified healthy; Staff management page and anonymous rejection at the new Admin-removal route checked. No migration or persistent role changes for this feature |
 | Git integration | Catalog/list rewrite `91a5cce`, account lifecycle `bd3d78e`, staff management `30c57e7`, profile moderation `a0a7aa0`; Admin revocation/policy integration follows in Git history |
 
@@ -164,7 +178,9 @@ implementation specification.
 
 Further features remain separate scope decisions:
 
-- [ ] Provider-backed books.
+- [x] Provider-backed books through Open Library, using shared work identities;
+  [design](superpowers/specs/2026-11-17-books-and-artwork-cache-design.md),
+  [verification/activation limits](books-and-provider-cache-verification.md).
 - [ ] Provider catalog correction, metadata refresh and provenance policy; custom
   item owners already have editing controls.
 - [ ] Optional activity feeds, collection discussions and notifications.
@@ -213,6 +229,8 @@ dependency change. The redistribution/provider release gate remains open.
 Next work: close the remaining [provider agreement requirements](provider-agreement-evidence.md),
 complete the base-OS/remaining image source-delivery and final artifact audit,
 then deliver the matching source sidecar alongside any authorized binary publication.
+The Books/cache candidate changes source and Next.js package versions; final
+release artifacts and image-bound source/evidence must match that candidate.
 See the [native source evidence](native-source-package-verification.md),
 [credits/compliance evidence](release-compliance-verification.md),
 [dependency review](dependency-redistribution-review.md) and [provider review](provider-terms-review.md).

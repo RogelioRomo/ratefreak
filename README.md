@@ -478,7 +478,7 @@ Public reads are available in Development Swagger at http://localhost:5080/swagg
 - `GET /api/v1/media?q=planet&type=movie&page=1&pageSize=20`
 - `GET /api/v1/media/{id}`
 
-Supported types are `movie`, `tv_show`, `album` and `video_game`; TV seasons/episodes and album
+Supported types are `movie`, `tv_show`, `album`, `video_game`, `book` and `custom`; TV seasons/episodes and album
 editions/tracks are deferred. Search
 matches literal, case-insensitive title substrings. Search text is trimmed and limited
 to 200 characters; null characters are rejected. Page defaults to 1 (maximum 10000),
@@ -875,8 +875,8 @@ rollback. Without albums, downgrade/reapply preserves existing movies/TV.
 core CC0 data from supplementary data; its API documentation distinguishes free
 non-commercial service from commercial plans. Review applicable terms before
 public/commercial launch. Cover art is a separate service and is deferred.
-Comments and moderation are implemented. Provider-backed books and production
-readiness remain pending; use [current status](docs/STATUS.md), rather than the
+Comments, moderation and Open Library books are implemented. Self-hosted release
+readiness remains open; use [current status](docs/STATUS.md), rather than the
 original Phase 6 backlog, for remaining work.
 
 
@@ -1278,3 +1278,61 @@ unreachable database fails closed and needs operator repair, not a setup reset.
 If setup succeeded but its response was lost, log in using the submitted account
 details and generate a recovery code in account settings. There are no reset emails
 or admin password overrides. See [ADR 0015](docs/adr/0015-installation-setup.md).
+
+## Open Library books and shared provider caching
+
+Open Library adds `book` through the existing search, preview and authenticated,
+CSRF-protected import routes:
+
+- `GET /api/v1/media/external/search?provider=openlibrary&type=book&q=Fantastic%20Mr%20Fox&page=1`
+- `GET /api/v1/media/external/openlibrary/book/OL45804W`
+- `POST /api/v1/media/import` with `{ "provider": "openlibrary", "externalId": "OL45804W", "mediaType": "book" }`
+
+One catalog entry represents an Open Library **work**, so editions share ratings,
+reviews and list memberships. ISBNs and edition IDs are not import identities.
+Imports retain the normalized title, available description/author data, optional
+first publication year, positive CoverID and source identity in PostgreSQL.
+Years are not fabricated into exact release dates. A work may omit a year even
+when an edition/search result has one. Optional author lookup failures preserve
+the work with author IDs and unavailable names. Catalog reads and repeated imports
+use the instance database, including when a provider is disabled/unavailable.
+
+| API configuration | Default / contract |
+| --- | --- |
+| `Providers:OpenLibrary:Enabled` | `false`; optional operator activation |
+| `Providers:OpenLibrary:Contact` | Required monitored contact email when enabled; included in identifying User-Agent; maximum 256 header-safe ASCII characters |
+| `Providers:OpenLibrary:TimeoutMilliseconds` | `10000`; allowed 2000–15000, including pacing/body time |
+
+No API key is required. The adapter serializes actual metadata/author requests at
+one/second per API process, requests explicit search fields and 20-result pages,
+and never bulk-crawls the API. Author enrichment batches at most 20 identities;
+metadata arrays and JSON responses are bounded. Shared-egress/multiple replicas
+still need aggregate request coordination. Follow [application registration and
+usage guidance](https://openlibrary.org/developers/api); use their downloadable
+dumps for bulk ingestion. Contact information is operational configuration,
+not a shared project credential.
+
+All providers (TMDB, MusicBrainz, IGDB and Open Library) now share bounded
+server-side metadata caching: successful searches for five minutes and details
+for one hour, up to 16 MiB/2048 retained entries and 64 distinct in-flight
+requests. Identical requests coalesce across viewers; provider/type/query/page/ID
+keys stay separate. Disabled adapters and invalid inputs are checked before cache
+hits. Errors and missing details are not retained. Individual caller cancellation
+does not cancel other interested viewers; abandoned shared work is cancelled and
+has a 20-second ceiling. The metadata cache resets with the API process; persisted
+catalog items remain in PostgreSQL. React Query also keeps its existing browser
+JSON cache/session isolation.
+
+Public provider images use the shared Next.js optimizer/disk cache, with a
+24-hour minimum TTL and 1 GiB capacity. Protected uploads remain locally stored,
+access-checked and `no-store`. See [cache/storage operations](docs/self-hosting.md#provider-configuration-and-image-cache),
+[verification and limits](docs/books-and-provider-cache-verification.md), and
+[Open Library rights guidance](docs/provider-terms-review.md#open-library-follow-up-2026-11-17).
+
+Migration `20261118034056_AddBooks` widens the type constraint and seeds Books.
+An existing public Books name or occupied seed ID refuses upgrade with an
+actionable error rather than repurposing user data. Downgrade refuses while book
+rows, category references/aliases or category edits exist. Review/apply explicitly
+using the existing migration procedures. It was applied to the project’s local
+persistent database on 2026-11-17 after explicit authorization, backup and
+data-preservation checks; other installations still require their own migration.

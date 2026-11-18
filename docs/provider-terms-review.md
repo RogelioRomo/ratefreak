@@ -153,3 +153,36 @@ FAQ is not a substitute for the applicable agreement.
 Verification for this note: read-only source inspection and official web pages on
 the date above. No provider credentials were used, no live import or legal agreement
 acceptance was performed, and no implementation was changed.
+
+## Open Library follow-up, 2026-11-17
+
+The new adapter imports normalized work metadata into the instance database.
+[API guidance](https://openlibrary.org/developers/api) encourages caching, identifies
+human-triggered search/lookup as supported usage, and prohibits API bulk harvesting
+and high-traffic commercial backend use. Identified applications have a published
+three-request/second budget; RateFreak conservatively uses one/second per API
+process, including retries/author enrichment. Each operator supplies a monitored
+contact email and reviews application registration guidance. Bulk replication
+belongs on the [monthly dump route](https://openlibrary.org/developers/dumps).
+
+[Licensing guidance](https://openlibrary.org/developers/licensing) asserts no new
+Internet Archive proprietary rights over the database while acknowledging possible
+preexisting rights in contributions. This supports an open reuse model, not a
+claim that every description/cover is public domain or covered by RateFreak's MIT
+license. Retain work IDs/source links and separately handle rights complaints.
+
+The [Covers API](https://openlibrary.org/dev/docs/api/covers) is intended for public
+cover display. Its 100/IP/five-minute identifier lookup limit excludes CoverID
+and OLID lookups. RateFreak uses positive CoverIDs, lazy images and bounded pages;
+it does not crawl cover IDs. The guidance requests direct cover-service `src` URLs.
+The owner's requested local image caching uses a same-origin Next.js optimizer
+instead; these reviewed pages do not explicitly approve that proxy arrangement.
+Metadata caching encouragement is not represented as cover-specific permission.
+This distinction remains in operator/release evidence; no unrestricted artwork
+redistribution right or provider agreement acceptance is claimed.
+
+A live CoverID request returned two HTTPS redirects through Archive storage and
+then a JPEG with `Cache-Control: public, max-age=10800`. The dedicated same-cover
+adapter validates those paths and public IPs before returning bounded raster data
+to the shared optimizer. This is technical interoperability evidence, not a
+general content-rights determination. See [implementation verification](books-and-provider-cache-verification.md).

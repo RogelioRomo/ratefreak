@@ -78,6 +78,7 @@ also rejects it permanently. Keep secrets out of screenshots, support tickets an
 | `runtime/` | Per-service private secret copies prepared for container identities |
 | `storage/artwork/` | API-only image files; never a static web directory |
 | `storage/keys/` | Durable ASP.NET Data Protection keys |
+| `storage/image-cache/` | Disposable public provider image cache, mounted into the web container; excluded from account/recovery backups |
 | `independent/account-erasures.jsonl` | Private durable erasure journal, excluded from ordinary backups |
 | `prepared.json`, `migrated.json`, `deployment.json` | Lifecycle acceptance/configuration records; not substitutes for database health |
 
@@ -183,6 +184,72 @@ app stopped. Do not start old artifacts against a newer schema or assume a guard
 downgrade can reconstruct discarded data. Prefer forward fixes or an isolated
 matching-version restore. Rebuilding replaces local image tags; retain the previous
 release artifacts/images before doing so if they are needed for recovery.
+
+## Provider configuration and image cache
+
+Optional provider settings belong in the protected instance
+`compose.override.yaml` (mode 0600), as other runtime overrides do. Example:
+
+```yaml
+services:
+  api:
+    environment:
+      Providers__OpenLibrary__Enabled: 'true'
+      Providers__OpenLibrary__Contact: 'replace-with-your-monitored-email@example.org'
+```
+
+Use a real monitored operator email before enabling the adapter; no API key is
+needed. Follow the normal stop/build/**prepare**/migrate/start upgrade sequence.
+Preparation creates `storage/image-cache` with UID/GID 10001 and mode 0700;
+it preserves existing cache files and refuses conflicting ownership/modes or
+symlinks. This cache is mounted at `/app/.next/cache/images`; it survives web
+container recreation while the rest of the cache parent remains temporary.
+Do not skip preparation and rely on Docker creating a root-owned bind source.
+
+Public TMDB, IGDB and Open Library images use that common bounded cache. MusicBrainz
+currently supplies no artwork. The minimum image TTL is 24 hours; upstream cache
+headers can make it longer. Capacity is 1 GiB with framework eviction. Different
+width/quality/format variants can each need an initial fetch. Cold/evicted images
+still require their source; retained expired images can be served stale during
+failed background refresh. This is a disposable performance cache, not an artwork
+backup or an unlimited offline guarantee.
+
+The Open Library cover route only accepts a numeric CoverID, validates every
+redirect to a known same-cover Archive path, pins public DNS results, and bounds
+time, bytes and redirect count. It admits at most eight simultaneous upstream
+cover operations with 64 waiting requests per web process; excess work returns
+503/Retry-After, and the ten-second deadline includes queue time. Unknown redirect layouts fail with the normal
+artwork fallback. The optimizer admits only that dedicated local source route;
+uploaded/API/moderation artwork cannot be requested through it. External source
+redirects remain disabled for other providers. The default optimizer also has
+explicit source, quality, size and response limits. Monitor CPU, egress and disk;
+this does not add a perimeter abuse-budget service.
+
+The `/provider-artwork/` namespace is an **internal optimizer source**, not a
+public endpoint. The bundled Caddy edge returns 404 for it before proxying; Next.js
+dispatches authorized optimizer source requests internally. Every alternate
+ingress must likewise reject the namespace (including normalized/encoded path
+variants) before forwarding. Browsers use `/_next/image`, which remains available.
+Keep the web service's direct port private. Otherwise callers could bypass the
+image cache by requesting the source route directly.
+
+For takedowns or immediate refresh, stop the web service and remove only the
+contents of `storage/image-cache`, preserving its directory ownership/mode;
+restart through the normal accepted lifecycle. There is no general per-image
+invalidation API. Browser copies may last until their HTTP TTL expires. Database
+metadata/import removal and permission revocation remain separate operator work;
+disabling an adapter does not erase prior imports or cached images.
+Purging alone does not prevent refetching a still-allowed source URL. When a
+removal must prevent future serving, also remove/block the affected source and
+its catalog references under the applicable provider/rights policy.
+
+The image cache contains only public provider artwork and is excluded from the
+coordinated database/artwork/key-recovery backups. Never put private uploads,
+erasure records or secrets there. Existing protected uploaded artwork remains in
+`storage/artwork`, behind current visibility/authorization checks and `no-store`.
+The API's shared public metadata cache is process-local (five-minute searches,
+one-hour details), and resets on API restart. Each API replica needs coordinated
+provider budgets when sharing egress.
 
 ## Secret rotation
 

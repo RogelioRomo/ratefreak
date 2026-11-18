@@ -37,6 +37,7 @@ public sealed class Category
         MediaTypes.TvShow => Guid.Parse("f11e0000-0000-0000-0000-000000000002"),
         MediaTypes.Album => Guid.Parse("f11e0000-0000-0000-0000-000000000003"),
         MediaTypes.VideoGame => Guid.Parse("f11e0000-0000-0000-0000-000000000004"),
+        MediaTypes.Book => Guid.Parse("f11e0000-0000-0000-0000-000000000005"),
         _ => throw new ArgumentException("No seeded category for this media type.")
     };
 }

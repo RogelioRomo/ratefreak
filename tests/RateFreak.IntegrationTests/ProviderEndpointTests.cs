@@ -17,7 +17,11 @@ public sealed class ProviderEndpointTests
         using var response = await client.GetAsync("/api/v1/media/providers", TestContext.Current.CancellationToken);
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         var json = await response.Content.ReadFromJsonAsync<JsonElement>(TestContext.Current.CancellationToken);
-        Assert.Equal(3, json.GetArrayLength());
+        Assert.Equal(4, json.GetArrayLength());
+        var books = json.EnumerateArray().Single(x => x.GetProperty("name").GetString() == "openlibrary");
+        Assert.False(books.GetProperty("enabled").GetBoolean());
+        Assert.Equal("book", books.GetProperty("supportedTypes")[0].GetString());
+        Assert.False(books.TryGetProperty("contact", out _));
         var igdb = json.EnumerateArray().Single(x => x.GetProperty("name").GetString() == "igdb");
         Assert.False(igdb.GetProperty("enabled").GetBoolean());
         Assert.Equal("video_game", igdb.GetProperty("supportedTypes")[0].GetString());
@@ -33,6 +37,8 @@ public sealed class ProviderEndpointTests
 
     [Theory]
     [InlineData("/api/v1/media/external/search?provider=igdb&q=Game&type=video_game")]
+    [InlineData("/api/v1/media/external/search?provider=openlibrary&q=Book&type=book")]
+    [InlineData("/api/v1/media/external/openlibrary/book/OL45804W")]
     [InlineData("/api/v1/media/external/igdb/video_game/1942")]
     [InlineData("/api/v1/media/external/search?q=Alien&type=movie")]
     [InlineData("/api/v1/media/external/tmdb/movie/11")]

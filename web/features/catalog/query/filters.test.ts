@@ -4,7 +4,7 @@ import { parseFilters, catalogHref, submittedFilters, filterParams } from "./fil
 it("defaults to first page with twenty results", () => {
   expect(parseFilters(new URLSearchParams())).toEqual({ q: "", type: "", page: 1, pageSize: 20 });
 });
-it.each(["q=a&q=b", "page=-1", "page=10001", "type=book", "type=constructor", "type=toString", "pageSize=50", "x=y", "q=%00"])("rejects invalid URL %s", (value) => {
+it.each(["q=a&q=b", "page=-1", "page=10001", "type=podcast", "type=constructor", "type=toString", "pageSize=50", "x=y", "q=%00"])("rejects invalid URL %s", (value) => {
   expect(parseFilters(new URLSearchParams(value))).toBeNull();
 });
 it("normalizes filters, resets page and encodes links", () => {

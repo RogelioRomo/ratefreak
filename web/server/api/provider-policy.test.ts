@@ -12,3 +12,8 @@ it('allows only exact provider routes/methods',()=>{
  expect(isAllowedRoute('POST',['media','external','search'])).toBe(false);
  expect(isAllowedRoute('GET',['media','external','tmdb','album','11'])).toBe(false);
 });
+it("admits work previews and book searches but rejects editions before upstream access", () => {
+ expect(isAllowedRoute("GET", ["media", "external", "openlibrary", "book", "OL45804W"])).toBe(true);
+ expect(isAllowedRoute("GET", ["media", "external", "openlibrary", "book", "OL45804M"])).toBe(false);
+ expect(validateProviderSearch(new URLSearchParams("q=Fox&provider=openlibrary&type=book")).toString()).toBe("q=Fox&provider=openlibrary&type=book&page=1");
+});

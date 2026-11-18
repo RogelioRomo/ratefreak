@@ -5,7 +5,7 @@ describe("catalog query boundary", () => {
   it("trims and canonically encodes search", () => {
     expect(validateCatalogQuery(new URLSearchParams("q=++film+%26+music++&type=movie&page=2&pageSize=20")).toString()).toBe("q=film+%26+music&type=movie&page=2&pageSize=20");
   });
-  it.each(["movie", "tv_show", "album", "video_game"])("accepts %s", (type) => {
+  it.each(["movie", "tv_show", "album", "video_game", "book"])("accepts %s", (type) => {
     expect(validateCatalogQuery(new URLSearchParams({ type })).get("type")).toBe(type);
   });
   it.each(["q=a&q=b", "target=x", "type=Movie", "page=0", "page=10001", "page=1.2", "page=1e2", "pageSize=0", "pageSize=101", "q=%00", `q=${"a".repeat(201)}`])("rejects %s", (query) => {

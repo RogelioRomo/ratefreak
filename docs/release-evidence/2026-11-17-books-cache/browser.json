@@ -1,0 +1,122 @@
+[
+  {
+    "image": "sha256:e990c90ce33ab82d32b4fdc4e530d53c795b10a8ee7c0a7b42e3a230bf3a3c26",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "theme": "dark",
+    "imports": 1,
+    "overflow": false,
+    "pageErrors": [],
+    "unexpectedRoutes": [],
+    "imageSources": [
+      {
+        "src": "http://127.0.0.1:3208/_next/image?url=%2Fprovider-artwork%2Fopenlibrary%2F6498519&w=960&q=75",
+        "width": 279
+      },
+      {
+        "src": "http://127.0.0.1:3208/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw500%2Fbrowser.jpg&w=960&q=75",
+        "width": 279
+      },
+      {
+        "src": "http://127.0.0.1:3208/_next/image?url=https%3A%2F%2Fimages.igdb.com%2Figdb%2Fimage%2Fupload%2Ft_cover_big%2Fbrowser.jpg&w=960&q=75",
+        "width": 279
+      },
+      {
+        "src": "/api/v1/media/a1111111-1111-1111-1111-111111111111/artwork/a1111111-1111-1111-1111-111111111111",
+        "width": 324
+      }
+    ]
+  },
+  {
+    "image": "sha256:e990c90ce33ab82d32b4fdc4e530d53c795b10a8ee7c0a7b42e3a230bf3a3c26",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "theme": "light",
+    "imports": 1,
+    "overflow": false,
+    "pageErrors": [],
+    "unexpectedRoutes": [],
+    "imageSources": [
+      {
+        "src": "http://127.0.0.1:3208/_next/image?url=%2Fprovider-artwork%2Fopenlibrary%2F6498519&w=960&q=75",
+        "width": 279
+      },
+      {
+        "src": "http://127.0.0.1:3208/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw500%2Fbrowser.jpg&w=960&q=75",
+        "width": 279
+      },
+      {
+        "src": "http://127.0.0.1:3208/_next/image?url=https%3A%2F%2Fimages.igdb.com%2Figdb%2Fimage%2Fupload%2Ft_cover_big%2Fbrowser.jpg&w=960&q=75",
+        "width": 279
+      },
+      {
+        "src": "/api/v1/media/a1111111-1111-1111-1111-111111111111/artwork/a1111111-1111-1111-1111-111111111111",
+        "width": 324
+      }
+    ]
+  },
+  {
+    "image": "sha256:e990c90ce33ab82d32b4fdc4e530d53c795b10a8ee7c0a7b42e3a230bf3a3c26",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "theme": "dark",
+    "imports": 1,
+    "overflow": false,
+    "pageErrors": [],
+    "unexpectedRoutes": [],
+    "imageSources": [
+      {
+        "src": "http://127.0.0.1:3208/_next/image?url=%2Fprovider-artwork%2Fopenlibrary%2F6498519&w=960&q=75",
+        "width": 230
+      },
+      {
+        "src": "http://127.0.0.1:3208/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw500%2Fbrowser.jpg&w=960&q=75",
+        "width": 230
+      },
+      {
+        "src": "http://127.0.0.1:3208/_next/image?url=https%3A%2F%2Fimages.igdb.com%2Figdb%2Fimage%2Fupload%2Ft_cover_big%2Fbrowser.jpg&w=960&q=75",
+        "width": 230
+      },
+      {
+        "src": "/api/v1/media/a1111111-1111-1111-1111-111111111111/artwork/a1111111-1111-1111-1111-111111111111",
+        "width": 324
+      }
+    ]
+  },
+  {
+    "image": "sha256:e990c90ce33ab82d32b4fdc4e530d53c795b10a8ee7c0a7b42e3a230bf3a3c26",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "theme": "light",
+    "imports": 1,
+    "overflow": false,
+    "pageErrors": [],
+    "unexpectedRoutes": [],
+    "imageSources": [
+      {
+        "src": "http://127.0.0.1:3208/_next/image?url=%2Fprovider-artwork%2Fopenlibrary%2F6498519&w=960&q=75",
+        "width": 230
+      },
+      {
+        "src": "http://127.0.0.1:3208/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw500%2Fbrowser.jpg&w=960&q=75",
+        "width": 230
+      },
+      {
+        "src": "http://127.0.0.1:3208/_next/image?url=https%3A%2F%2Fimages.igdb.com%2Figdb%2Fimage%2Fupload%2Ft_cover_big%2Fbrowser.jpg&w=960&q=75",
+        "width": 230
+      },
+      {
+        "src": "/api/v1/media/a1111111-1111-1111-1111-111111111111/artwork/a1111111-1111-1111-1111-111111111111",
+        "width": 324
+      }
+    ]
+  }
+]

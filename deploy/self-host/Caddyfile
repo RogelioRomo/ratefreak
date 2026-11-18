@@ -3,6 +3,10 @@
 }
 {$RATEFREAK_PUBLIC_ORIGIN} {
     {$RATEFREAK_CADDY_TLS}
+    # The image optimizer dispatches source requests inside Next.js. Deny this
+    # internal source namespace at the public edge so it cannot bypass its cache.
+    @providerCoverSource path_regexp providerCoverSource (?i)^/provider-artwork(?:/|$)
+    respond @providerCoverSource 404
     reverse_proxy web:3000 {
         # Replace browser-supplied values, using the edge's actual TCP peer.
         header_up X-RateFreak-Ingress-Key {$RATEFREAK_INGRESS_KEY}

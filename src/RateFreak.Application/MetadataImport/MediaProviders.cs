@@ -49,6 +49,12 @@ public static class MediaProviderInput
     public static bool TryIdentity(string? provider, string? type, string? externalId, out ProviderIdentity identity)
     {
         identity = null!;
+        if (provider == "openlibrary" && type == MediaTypes.Book && externalId is { Length: >= 4 and <= 18 }
+            && externalId.StartsWith("OL", StringComparison.Ordinal) && externalId.EndsWith('W')
+            && externalId[2] is >= '1' and <= '9' && externalId.AsSpan(2, externalId.Length - 3).IndexOfAnyExceptInRange('0', '9') < 0)
+        {
+            identity = new(provider, "work", externalId, $"https://openlibrary.org/works/{externalId}"); return true;
+        }
         if (provider == "tmdb" && ValidType(type) && TryId(externalId, out var tmdbId))
         {
             var ns = type == MediaTypes.Movie ? "movie" : "tv";

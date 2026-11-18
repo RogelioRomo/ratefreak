@@ -1,0 +1,163 @@
+{
+  "image": "sha256:e990c90ce33ab82d32b4fdc4e530d53c795b10a8ee7c0a7b42e3a230bf3a3c26",
+  "first": {
+    "tmdb": {
+      "status": 200,
+      "cache": "MISS",
+      "contentType": "image/webp",
+      "bytes": 30904
+    },
+    "igdb": {
+      "status": 200,
+      "cache": "MISS",
+      "contentType": "image/webp",
+      "bytes": 30904
+    },
+    "openlibrary": {
+      "status": 200,
+      "cache": "MISS",
+      "contentType": "image/webp",
+      "bytes": 30904
+    }
+  },
+  "second": {
+    "tmdb": {
+      "status": 200,
+      "cache": "HIT",
+      "contentType": "image/webp",
+      "bytes": 30904
+    },
+    "igdb": {
+      "status": 200,
+      "cache": "HIT",
+      "contentType": "image/webp",
+      "bytes": 30904
+    },
+    "openlibrary": {
+      "status": 200,
+      "cache": "HIT",
+      "contentType": "image/webp",
+      "bytes": 30904
+    }
+  },
+  "simultaneous": [
+    {
+      "status": 200,
+      "cache": "MISS",
+      "contentType": "image/webp",
+      "bytes": 30904
+    },
+    {
+      "status": 200,
+      "cache": "MISS",
+      "contentType": "image/webp",
+      "bytes": 30904
+    },
+    {
+      "status": 200,
+      "cache": "MISS",
+      "contentType": "image/webp",
+      "bytes": 30904
+    },
+    {
+      "status": 200,
+      "cache": "MISS",
+      "contentType": "image/webp",
+      "bytes": 30904
+    },
+    {
+      "status": 200,
+      "cache": "MISS",
+      "contentType": "image/webp",
+      "bytes": 30904
+    },
+    {
+      "status": 200,
+      "cache": "MISS",
+      "contentType": "image/webp",
+      "bytes": 30904
+    }
+  ],
+  "blocked": {
+    "/api/v1/media/a/artwork/b": 400,
+    "/api/v1/moderation/reports/a/artwork/b": 400,
+    "/private.jpg": 400,
+    "https://evil.test/a.jpg": 400,
+    "https://127.0.0.1/a.jpg": 400
+  },
+  "firstUpstreamRequests": [
+    {
+      "url": "https://image.tmdb.org/t/p/w500/proof.jpg",
+      "outage": false
+    },
+    {
+      "url": "https://images.igdb.com/igdb/image/upload/t_cover_big/proof.jpg",
+      "outage": false
+    },
+    {
+      "url": "https://covers.openlibrary.org/b/id/12345-L.jpg?default=false",
+      "outage": false
+    },
+    {
+      "url": "https://archive.org/download/olcovers1/olcovers1-L.zip/12345-L.jpg",
+      "outage": false
+    },
+    {
+      "url": "https://ia601804.us.archive.org/view_archive.php?archive=/17/items/olcovers1/olcovers1-L.zip&file=12345-L.jpg",
+      "outage": false
+    },
+    {
+      "url": "https://image.tmdb.org/t/p/w500/simultaneous.jpg",
+      "outage": false
+    }
+  ],
+  "afterRecreationDuringOutage": {
+    "tmdb": {
+      "status": 200,
+      "cache": "HIT",
+      "contentType": "image/webp",
+      "bytes": 30904
+    },
+    "igdb": {
+      "status": 200,
+      "cache": "HIT",
+      "contentType": "image/webp",
+      "bytes": 30904
+    },
+    "openlibrary": {
+      "status": 200,
+      "cache": "HIT",
+      "contentType": "image/webp",
+      "bytes": 30904
+    }
+  },
+  "coldDuringOutage": {
+    "status": 503,
+    "cache": null,
+    "contentType": null,
+    "bytes": 57
+  },
+  "secondUpstreamRequests": [
+    {
+      "url": "https://image.tmdb.org/t/p/w500/cold.jpg",
+      "outage": true
+    }
+  ],
+  "expiredDuringOutage": {
+    "status": 200,
+    "cache": "STALE",
+    "contentType": "image/webp",
+    "bytes": 30904
+  },
+  "expiredUpstreamRequests": [
+    {
+      "url": "https://image.tmdb.org/t/p/w500/proof.jpg",
+      "outage": true
+    }
+  ],
+  "liveCover": {
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 41632
+  }
+}

@@ -29,6 +29,9 @@ def owned_directory(path,uid=UID,gid=GID):
     if not path.is_dir() or info.st_uid!=uid or info.st_gid!=gid or stat.S_IMODE(info.st_mode)!=0o700:
         raise StorageError('Storage directory ownership or permissions differ; refusing implicit repair.')
 
+def prepare_image_cache(storage,uid=UID,gid=GID):
+    owned_directory(storage/'image-cache',uid,gid)
+
 def ensure_journal(path,uid=UID,gid=GID):
     no_links(path);owned_directory(path.parent,uid,gid)
     if not path.exists():
@@ -70,6 +73,7 @@ def prepare():
         elif directory.is_dir() and not any(directory.iterdir()) and directory.stat().st_uid==0:
             directory.chmod(0o700)
     for name in ['artwork','keys']:owned_directory(root/'storage'/name)
+    prepare_image_cache(root/'storage')
     # The journal directory itself belongs to the API, never the ordinary backup.
     independent=root/'independent'
     if not any(independent.iterdir()) and independent.stat().st_uid==0:os.chown(independent,UID,GID)
@@ -78,7 +82,7 @@ def prepare():
         uid,gid=(999,999) if service=='postgres' else (UID,GID)
         directory=root/'runtime'/service;owned_directory(directory,uid,gid)
         for name in names:copy_secret(root/'secrets'/name,directory/name,uid,gid)
-    print('Protected runtime secrets, artwork, keys and independent journal prepared.')
+    print('Protected runtime secrets, artwork, keys, image cache and independent journal prepared.')
 
 def connection(user,password,environment=None):
     values=os.environ if environment is None else environment

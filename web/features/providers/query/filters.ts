@@ -2,7 +2,7 @@ import type { ProviderCapability, ProviderFilters, ProviderName } from "../inter
 import type { DiscoveryState } from "../interfaces/discovery";
 import { providerTypes, validProviderType } from "./identity";
 export function availableProviders(capabilities: ProviderCapability[]): ProviderCapability[] {
-  return ["tmdb", "musicbrainz", "igdb"].flatMap(name => capabilities.filter(cap => cap.name === name && cap.enabled && cap.supportedTypes.some(type => validProviderType(name, type))));
+  return ["tmdb", "musicbrainz", "igdb", "openlibrary"].flatMap(name => capabilities.filter(cap => cap.name === name && cap.enabled && cap.supportedTypes.some(type => validProviderType(name, type))));
 }
 export function parseDiscovery(params: URLSearchParams, capabilities: ProviderCapability[]): DiscoveryState {
   const enabled = availableProviders(capabilities);

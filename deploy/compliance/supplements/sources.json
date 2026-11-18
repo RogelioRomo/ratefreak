@@ -210,5 +210,13 @@
       "Microsoft.CodeAnalysis.Workspaces.MSBuild@5.0.0"
     ],
     "primary_license": true
+  },
+  {
+    "file": "next-16.4.6-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/vercel/next.js/v16.4.6/license.md",
+    "retrieved": "2026-11-17",
+    "sha256": "ee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224",
+    "packages": ["@next/env@16.4.6", "@next/swc-linux-x64-gnu@16.4.6"],
+    "primary_license": true
   }
 ]

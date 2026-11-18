@@ -103,7 +103,13 @@ public sealed class MusicBrainzImportTests(AccountDatabase database) : IClassFix
     [Fact]
     public async Task Concurrent_album_imports_return_one_winner_without_orphans()
     {
-        var provider=new RacingProvider();await using var factory=new ApiFactory(connectionString:database.ConnectionString,configureServices:s=>s.AddSingleton<IMediaProvider>(provider));using var client=Client(factory);await SignIn(client);
+        // Exercise the database uniqueness race independently of metadata request
+        // coalescing, which intentionally makes only one upstream request.
+        var provider=new RacingProvider();await using var factory=new ApiFactory(connectionString:database.ConnectionString,configureServices:s=>
+        {
+            s.AddSingleton<IMediaProvider>(provider);
+            s.AddScoped<IMediaProviderRegistry, MediaProviderRegistry>();
+        });using var client=Client(factory);await SignIn(client);
         var id=Guid.NewGuid().ToString("D");await using var db=Db();var before=await db.MediaItems.CountAsync(Ct);
         var results=await Task.WhenAll(Import(client,id),Import(client,id));Assert.Single(results,x=>x.StatusCode==HttpStatusCode.Created);Assert.Single(results,x=>x.StatusCode==HttpStatusCode.OK);
         var first=await results[0].Content.ReadFromJsonAsync<ImportMediaResult>(Ct);var second=await results[1].Content.ReadFromJsonAsync<ImportMediaResult>(Ct);Assert.Equal(first!.MediaId,second!.MediaId);

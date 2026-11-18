@@ -67,6 +67,7 @@ services:
       RATEFREAK_ALLOW_PRIVATE_API_HTTP: 'true'
     volumes:
       - ${RATEFREAK_INSTANCE_DIR}/runtime/web:/run/ratefreak:ro
+      - ${RATEFREAK_INSTANCE_DIR}/storage/image-cache:/app/.next/cache/images
     depends_on:
       api: {condition: service_healthy}
     networks: [ingress, application]

@@ -19,7 +19,7 @@ export function validatePersonalQuery(params: URLSearchParams, kind: "library" |
   for (const key of params.keys()) if (!(kind === "library" ? ["status", "type", "page", "pageSize"] : ["page", "pageSize"]).includes(key) || params.getAll(key).length !== 1) throw new Error("Invalid personal query.");
   for (const key of ["status", "type", "page", "pageSize"]) {
     const value = params.get(key); if (value === null) continue;
-    if (key === "status" ? !["planned", "in_progress", "completed", "paused", "dropped"].includes(value) : key === "type" ? !["movie", "tv_show", "album", "video_game"].includes(value) : !/^\d+$/.test(value) || +value < 1 || +value > (key === "page" ? 10000 : 100)) throw new Error("Invalid personal filters.");
+    if (key === "status" ? !["planned", "in_progress", "completed", "paused", "dropped"].includes(value) : key === "type" ? !["movie", "tv_show", "album", "video_game", "book"].includes(value) : !/^\d+$/.test(value) || +value < 1 || +value > (key === "page" ? 10000 : 100)) throw new Error("Invalid personal filters.");
     result.set(key, key === "page" || key === "pageSize" ? String(+value) : value);
   }
   return result;

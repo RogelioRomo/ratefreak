@@ -1,6 +1,7 @@
 using RateFreak.Infrastructure.Social;
 using RateFreak.Application.Social;
 using RateFreak.Infrastructure.Providers.Igdb;
+using RateFreak.Infrastructure.Providers.OpenLibrary;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using RateFreak.Infrastructure.Providers.MusicBrainz;
 using RateFreak.Application.Collections;
@@ -111,7 +112,15 @@ public static class DependencyInjection
                 client, provider.GetRequiredService<IHttpClientFactory>().CreateClient("igdb-auth"),
                 provider.GetRequiredService<IOptions<IgdbOptions>>(),
                 provider.GetRequiredService<IgdbSession>(), provider.GetRequiredService<TimeProvider>()));
-        services.AddScoped<IMediaProviderRegistry, MediaProviderRegistry>();
+        services.AddSingleton<ProviderMetadataCache>();
+        services.AddOptions<OpenLibraryOptions>().Bind(configuration.GetSection("Providers:OpenLibrary"))
+            .Validate(options => options.IsValid(), "Open Library configuration is invalid: check timeout and enabled-provider contact email.").ValidateOnStart();
+        services.AddSingleton<OpenLibraryRequestGate>();
+        services.AddHttpClient<IMediaProvider, OpenLibraryMediaProvider>("openlibrary", client => client.Timeout = Timeout.InfiniteTimeSpan)
+            .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
+            { AllowAutoRedirect = false, PooledConnectionLifetime = TimeSpan.FromMinutes(5), MaxConnectionsPerServer = 1 })
+            .RedactLoggedHeaders(["User-Agent"]);
+        services.AddScoped<IMediaProviderRegistry, CachedMediaProviderRegistry>();
         services.AddScoped<IMediaImportService, MediaImportService>();
 
         services.AddHealthChecks().AddCheck<DatabaseReadinessCheck>("postgresql", tags: ["ready"],

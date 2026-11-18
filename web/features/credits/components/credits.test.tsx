@@ -7,7 +7,7 @@ import { CatalogCredits } from "./catalog-credits";
 it("credits all providers with an approved TMDB logo and required disclaimer", () => {
   render(<CreditsScreen />);
   expect(screen.getByRole("heading", { level: 1, name: "Credits" })).toBeInTheDocument();
-  for (const name of ["TMDB", "MusicBrainz", "IGDB"]) expect(screen.getByRole("heading", { name })).toBeInTheDocument();
+  for (const name of ["TMDB", "MusicBrainz", "IGDB", "Open Library"]) expect(screen.getByRole("heading", { name })).toBeInTheDocument();
   expect(screen.getByRole("img", { name: "TMDB" })).toHaveAttribute("src", "/branding/tmdb.svg");
   expect(screen.getByText("This product uses the TMDB API but is not endorsed or certified by TMDB.")).toBeInTheDocument();
   expect(screen.getByRole("link", { name: "Third-party software notices" })).toHaveAttribute("href", "/notices/THIRD-PARTY-NOTICES.txt");

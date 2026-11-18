@@ -71,6 +71,17 @@ class StorageTests(unittest.TestCase):
         entry_spec=importlib.util.spec_from_file_location('entrypoint',Path(__file__).with_name('entrypoint.py'))
         self.entry=importlib.util.module_from_spec(entry_spec);entry_spec.loader.exec_module(self.entry)
     def tearDown(self):self.temp.cleanup()
+    def test_public_image_cache_is_prepared_privately_and_repeat_preserves_its_files(self):
+        self.entry.prepare_image_cache(self.root,os.getuid(),os.getgid())
+        path=self.root/'image-cache';(path/'cached.webp').write_bytes(b'cached')
+        self.entry.prepare_image_cache(self.root,os.getuid(),os.getgid())
+        self.assertEqual(stat.S_IMODE(path.stat().st_mode),0o700)
+        self.assertEqual((path/'cached.webp').read_bytes(),b'cached')
+    def test_image_cache_preparation_refuses_symlinks_and_unsafe_existing_modes(self):
+        target=self.root/'keep';target.mkdir();(self.root/'image-cache').symlink_to(target,target_is_directory=True)
+        with self.assertRaises(self.entry.StorageError):self.entry.prepare_image_cache(self.root,os.getuid(),os.getgid())
+        (self.root/'image-cache').unlink();(self.root/'image-cache').mkdir(mode=0o755)
+        with self.assertRaises(self.entry.StorageError):self.entry.prepare_image_cache(self.root,os.getuid(),os.getgid())
     def test_journal_is_private_and_preserved_by_repeated_preparation(self):
         path=self.root/'independent/account-erasures.jsonl'
         self.entry.ensure_journal(path,os.getuid(),os.getgid())

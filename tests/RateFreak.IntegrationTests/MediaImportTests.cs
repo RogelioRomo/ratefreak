@@ -44,6 +44,9 @@ public sealed class MediaImportTests(AccountDatabase database) : IClassFixture<A
     {
         services.PostConfigure<TmdbOptions>(options => { options.Enabled = true; options.AccessToken = "fake-transport-secret"; });
         services.AddHttpClient<IMediaProvider, TmdbMediaProvider>().ConfigurePrimaryHttpMessageHandler(() => transport);
+        // This fixture deliberately synchronizes two upstream calls to force the
+        // database uniqueness race. Production coalescing is covered separately.
+        if (transport.SynchronizePair) services.AddScoped<IMediaProviderRegistry, MediaProviderRegistry>();
     });
     private static HttpClient Client(ApiFactory factory) => factory.CreateClient(new WebApplicationFactoryClientOptions
         { BaseAddress = new Uri("https://localhost"), AllowAutoRedirect = false });

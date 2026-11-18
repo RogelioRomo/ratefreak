@@ -10,5 +10,6 @@ it('accepts exact feature methods only',()=>{
  expect(isAllowedRoute('GET',['reviews',id])).toBe(true);expect(isAllowedRoute('PATCH',['users','me'])).toBe(true);
 });
 it('normalizes allowed list filters',()=>expect(validatePersonalQuery(new URLSearchParams('status=completed&type=album&page=2&pageSize=20'),'library').toString()).toBe('status=completed&type=album&page=2&pageSize=20'));
-it.each(['status=unknown','type=book','page=0','page=10001','pageSize=101','page=1&page=2','userId=spoof'])('rejects %s',q=>expect(()=>validatePersonalQuery(new URLSearchParams(q),'library')).toThrow());
+it.each(['status=unknown','type=podcast','page=0','page=10001','pageSize=101','page=1&page=2','userId=spoof'])('rejects %s',q=>expect(()=>validatePersonalQuery(new URLSearchParams(q),'library')).toThrow());
+it('accepts the new book library filter',()=>expect(validatePersonalQuery(new URLSearchParams('type=book'),'library').get('type')).toBe('book'));
 it('reviews accept only paging',()=>expect(()=>validatePersonalQuery(new URLSearchParams('status=planned'),'reviews')).toThrow());

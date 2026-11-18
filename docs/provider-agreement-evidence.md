@@ -139,3 +139,20 @@ credentials or confidential contracts.
 
 This checklist defines evidence to record; no operator acceptance or commercial
 agreement was made during this work.
+
+## Open Library implementation follow-up, 2026-11-17
+
+Open Library was selected for book work imports. Its published
+[API](https://openlibrary.org/developers/api), [licensing](https://openlibrary.org/developers/licensing),
+[search](https://openlibrary.org/dev/docs/api/search),
+[authors](https://openlibrary.org/dev/docs/api/authors) and
+[cover](https://openlibrary.org/dev/docs/api/covers) guidance was reviewed.
+The application retains normalized metadata/source identities and now caches
+successful external metadata across all providers. Public image caching has
+independent technical TTLs; it does not establish ownership or contractual rights.
+
+Open Library's cover guidance requests direct image URLs; the implemented
+same-origin optimizer changes that HTML URL. No explicit cover-proxy permission,
+new agreement acceptance, unrestricted contribution rights or populated-artifact
+redistribution clearance is claimed. Operator-specific usage and complaints/removal
+handling remain necessary. Earlier TMDB/Twitch/IGDB blockers are unchanged.

@@ -133,14 +133,27 @@ pages provide recovery, and failures provide retry or rate-limit guidance.
 
 `/catalog/{guid}` shows the title, format, release date, description and artwork.
 Missing records have a distinct not-found state; missing fields and failed
-images have honest fallbacks. Artwork accepts only the canonical HTTPS TMDB
-w500 and IGDB cover formats emitted by the existing provider adapters; other
-references are not loaded. No generic image proxy or metadata HTML rendering.
+images have honest fallbacks. Public provider artwork uses Next.js `<Image>` with
+a shared server disk cache: canonical TMDB w500, IGDB covers and Open Library
+CoverID references only. The minimum image TTL is 24 hours and disk capacity is
+1 GiB. Responsive variants share cached files across viewers; different sizes can
+require separate initial fetches. Cold misses still need the provider.
+Open Library covers use a dedicated same-CoverID redirect adapter before optimization.
+Private/custom uploads and moderation artwork retain direct, access-checked,
+`no-store` rendering and never enter the public optimizer. Provider metadata remains
+plain text; there is no arbitrary-host image proxy or metadata HTML rendering.
 
 Catalog data uses the existing API origin and requires the .NET API/database.
 There is no bundled seed catalog, automatic provider import or demo-data mode.
 Provider search/preview/import is available through Find titles. Query cancellation
 and complete filter keys prevent older searches replacing newer results.
+
+Open Library discovery uses `book` work identities such as `OL45804W`.
+Imported details show available authors, an honest first-publication year and a
+canonical work source link. Edition IDs and ISBNs do not create separate entries.
+The API also shares a bounded successful-metadata cache across every provider
+(five-minute searches, one-hour details); React Query remains the browser JSON
+cache and does not cache image bytes. See [provider configuration](../README.md#open-library-books-and-shared-provider-caching).
 
 ## Provider discovery and import
 
@@ -507,7 +520,7 @@ loopback modes retain their original restrictions.
 
 ## Credits and dependency notices
 
-`/credits` acknowledges TMDB, MusicBrainz and IGDB and links the software/font
+`/credits` acknowledges TMDB, MusicBrainz, IGDB and Open Library and links the software/font
 licenses. Imported catalog details credit their persisted provider identities.
 
 Python 3 is required alongside Node/pnpm for notice collection. `pnpm dev` and

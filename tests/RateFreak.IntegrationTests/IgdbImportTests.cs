@@ -115,7 +115,12 @@ public sealed class IgdbImportTests(AccountDatabase database) : IClassFixture<Ac
     [Fact]
     public async Task Concurrent_imports_have_one_winner_and_no_orphans()
     {
-        await using var factory=new ApiFactory(connectionString:database.ConnectionString,configureServices:s=>s.AddSingleton<IMediaProvider>(new RacingProvider()));using var client=Client(factory);await SignIn(client);
+        // Force the database race without the production metadata coalescer.
+        await using var factory=new ApiFactory(connectionString:database.ConnectionString,configureServices:s=>
+        {
+            s.AddSingleton<IMediaProvider>(new RacingProvider());
+            s.AddScoped<IMediaProviderRegistry, MediaProviderRegistry>();
+        });using var client=Client(factory);await SignIn(client);
         await using var db=Db();var before=await db.MediaItems.CountAsync(Ct);
         var results=await Task.WhenAll(Import(client,"7777"),Import(client,"7777"));
         Assert.Single(results,x=>x.StatusCode==HttpStatusCode.Created);Assert.Single(results,x=>x.StatusCode==HttpStatusCode.OK);
