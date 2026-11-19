@@ -962,7 +962,7 @@ activation or public-launch readiness.
 ## Review comments (Phase 6d)
 
 Flat comments are available on public reviews, with reporting and staff moderation.
-Collection discussions, threaded replies and notifications are not implemented.
+Collection discussions and threaded replies are not implemented. In-app notifications are documented below.
 
 | Method | Route | Contract |
 | --- | --- | --- |
@@ -1133,7 +1133,7 @@ history, so it does not make rollback eligible. Prefer forward migration fixes a
 backups; do not delete history merely to bypass the guard. Coarse database transaction
 locking serializes moderation/reporting and review/comment writes; assess throughput
 before large deployment. Staff moderation has a frontend; account suspensions,
-appeals and notifications remain deferred.
+appeals remain deferred. In-app notifications are documented below.
 
 ### Public profiles and editing
 
@@ -1147,7 +1147,7 @@ Public profiles contain **only** `id`, `handle`, `displayName`, `bio`, `createdA
 and `profileTextHidden`. Hidden text returns the handle as `displayName` and null
 `bio`, including when the owner views their public profile. Review/comment authors,
 follow lists, collection owners and staff identity summaries use the same fallback.
-Email, security fields, roles, private library/ratings and provider mappings remain
+Email, security fields, roles, private library data, unshared ratings and provider mappings remain
 private. Missing users404; malformed handles400. Handles remain fixed and retain
 their registered casing. No public all-user directory or private-profile switch. Existing
 follower/following routes remain separate. Public author-post lists are not added.
@@ -1363,3 +1363,55 @@ backfilled. Notifications have no fixed expiry, are included in exports when
 currently accessible, and are removed by source/account deletion or inbox actions.
 Inbox clearing does not create restore-proof erasure records; the existing backup
 lifecycle applies. See [account operations](docs/account-data-operations.md).
+
+
+## Home feeds and rating sharing
+
+Signed-in Home shows **Following** (the default) and **Community** activity tabs.
+Following contains current followees' public opinions; Community covers this
+instance, including your own activity. Signed-out visitors keep the introduction.
+Media filters cover Movies, Television, Music, Games, Books and Custom. Lists use
+20-entry cursor pages with an explicit Load more control, newest first. Tab,
+filter and cursor are linkable; Back or a fresh link resumes the requested slice.
+
+GET `/api/v1/feed` requires a session. Accepted parameters are `tab` (`following`
+or `community`, default `following`), optional `type` (`movie`, `tv_show`, `album`,
+`video_game`, `book`, `custom`) and an opaque `cursor` from the prior response.
+Unknown/repeated parameters, unsupported values and invalid/oversized/mismatched
+cursors return 400. The response is `{ items, nextCursor, hasFollowees }`; each
+entry contains `author`, catalog `media`, a nullable explicitly shared `score`, a
+nullable `review` (`id`, `excerpt`, `isSpoiler`) and `publishedAt`. Excerpts are
+bounded to 280 Unicode scalar values, and spoilers remain concealed until
+revealed. Use the existing review destination for full text, reporting and comments.
+The read uses the social-read rate budget (429 with Retry-After) and no-store.
+
+**Ratings stay private unless explicitly shared.** All existing ratings migrate
+to private. The item rating form's Share this rating checkbox controls individual
+attribution. A public review never exposes its author's private score. Public
+count/average semantics are unchanged by sharing. Own rating reads and private
+account exports include `isShared` and nullable `sharedAt`.
+
+PUT `/api/v1/media/{mediaId}/rating` accepts optional `isShared`: true opts in,
+false unshares, and omission preserves an existing rating's sharing state or
+creates a new private rating. Score-only clients remain compatible. The browser
+sends a sharing change only after an explicit checkbox edit, so an ordinary score
+save cannot overwrite a newer sharing choice in another tab. Only publicly
+available items may be explicitly shared. Removing a rating clears its form's
+opt-in before recreation.
+
+One feed entry combines an author's current eligible review and shared rating
+for an item. Publication uses review creation or rating-sharing time, whichever
+is later; routine edits do not bump it. Unsharing/removal/moderation affects the
+next read, and local mutations reset cached feeds. Private, archived or moderated
+items/categories never appear, even to owners/staff. Feed responses are current
+state rather than permanent activity logs. No library tracking events, feed
+polling, collection discussions or new notification kinds are added.
+
+The navigation notification link is a bell with an upper-right unread-count
+badge: hidden at zero/unavailable, exact from 1–99 and `99+` above 99. Its accessible
+label retains the exact count. Desktop/mobile navigation share the existing one
+count poller; the inbox behavior is unchanged.
+
+Migration `20261119013555_AddRatingSharingAndFeedIndexes` is additive and tested
+on disposable databases. It has not been applied to the persistent local database.
+See [feed verification and limitations](docs/home-feeds-verification.md).

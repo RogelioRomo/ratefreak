@@ -1,6 +1,10 @@
 # Current project status and roadmap
 
-Updated: 2026-11-18. Application-native source packaging and modified-library
+Updated: 2026-11-18. Home-page Following/Community feeds, explicit per-rating
+sharing and notification bell/count are implemented and verified locally on
+`feat/home-feeds`; see [feed evidence](home-feeds-verification.md). The additive
+sharing migration is not applied to the persistent local database.
+Application-native source packaging and modified-library
 replacement are verified; scroll-bar license provenance is documented through
 exact artifact/source equivalence. MIT license selected on 2026-11-11 and added
 to the repository. Account lifecycle (`bd3d78e`), staff management (`30c57e7`)
@@ -41,6 +45,7 @@ older plans and resume notes. It records work and decisions, not deployment auth
 | [Implementation history](implementation-checklist.md) | Dated backend verification and implementation history |
 | [Release verification](frontend-release-verification.md) | Verification evidence and the authoritative production release gates |
 | [Catalog operations](custom-catalog-operations.md) | Artwork storage, backups and guarded collection migration |
+| [Home feeds](home-feeds-verification.md) | Rating sharing, Following/Community, notification bell and verification limits |
 | [Notifications](notifications-verification.md) | Inbox behavior, API, retention and local acceptance evidence |
 | [Account operations](account-data-operations.md) | Retention, durable erasure journal and restore replay |
 | [Local restore verification](account-restore-verification.md) | Disposable backup/restore and Release erasure replay evidence |
@@ -67,6 +72,15 @@ Use this page and Git for current scope and commit state. Temporary local paths
 are evidence references, not durable deployment artifacts or guaranteed running services.
 
 ## Implemented
+
+- Signed-in Home Following/Community feeds with public reviews and explicitly
+  shared ratings, media filters, bounded cursor pages, spoilers and existing
+  review/report links. Ratings are private by default, including existing rows;
+  editing a score does not overwrite sharing consent from another tab. Feed reads
+  recheck public visibility and local changes clear cached feed pages. Navigation
+  now uses a bell with an unread-count badge. The additive sharing migration is
+  verified on disposable databases, not applied to the persistent local database;
+  [feed evidence and limitations](home-feeds-verification.md).
 
 - .NET API, PostgreSQL, migrations, health checks, OpenAPI and Next.js browser proxy.
 - Local accounts, first-run administrator setup, saved-code password recovery,
@@ -143,6 +157,7 @@ Current decisions:
 
 | Check | Latest recorded result |
 | --- | --- |
+| Home feeds/rating sharing, 2026-11-18 | 830 frontend, 27 unit, 456 PostgreSQL/API integration and 196 provider contracts passed; zero backend skips. Integration proof used complementary partitions plus the final budget/OpenAPI case. Lint/typecheck, final production build, API Release publish and model consistency passed. Real Chromium ordinary-account sharing/unsharing, 24-entry paging/Back, both tabs, media filtering, failed-refresh concealment, logout and notification bell/count passed. Both themes at 1440/768/390/320px had no overflow/runtime errors. All independent review findings addressed with regression proof. Query plans with 10,000 additional reviews were inspected; no production-scale load claim. Disposable services/database removed; persistent local database unchanged. [Evidence and limits](home-feeds-verification.md) |
 | In-app notifications, 2026-11-18 | 27 unit, 446 PostgreSQL/API integration, 196 provider contracts and 808 frontend tests passed; zero backend skips. Lint/typecheck and production build passed. Two-account real Chromium/API/Next/disposable database acceptance passed, including deletion/clear, later-arrival preservation in PostgreSQL, delayed navigation mark-read and cross-tab concealment. Both themes at 1440/768/390/320px had no overflow/runtime errors. Temporary services/database removed; the persistent database migration was subsequently applied with backup/restore validation and unchanged fingerprints for all 27 original application tables. [evidence and limits](notifications-verification.md) |
 | Books and shared provider caches, 2026-11-17 | 27 unit, 431 PostgreSQL/API integration and 196 provider contracts passed; 775 frontend tests, lint/typecheck, patched Next.js 16.4.6 production build/API Release publish, 32 operator and 18 compliance tests passed. The final non-root/read-only web candidate demonstrated MISS/HIT, six-request coalescing, cache retention across recreation and warm/stale outage behavior. Reference Caddy denied direct source paths while optimized covers worked. Independent-review resource-bound findings were reproduced and corrected. Real Open Library work/search/cover shapes and Chromium API-fixture desktop/mobile journeys in both themes were checked; see [scope and limits](books-and-provider-cache-verification.md) |
 | Native source packaging, 2026-11-17 | 18 compliance and 30 operator tests passed. Fresh web candidate built with complete collected texts for 162 observed Rust packages. A 406-input, approximately 192 MiB source sidecar was created twice with identical SHA-256 and bound to the final image ID. Full native build passed with network disabled; a source-marked replacement passed exact path/hash, PNG and SVG-to-WebP checks under UID 10001/read-only/no-network. Scroll-bar provenance resolved through the qualified artifact/source chain. See [evidence and limits](native-source-package-verification.md) |
@@ -215,7 +230,10 @@ Further features remain separate scope decisions:
   item owners already have editing controls.
 - [x] In-app notifications for new followers and comments on your reviews, including
   read controls, individual deletion and clear-inbox; [evidence](notifications-verification.md).
-- [ ] Optional activity feeds and collection discussions.
+- [x] Home-page Following and Community feeds of public reviews and individually
+  shared ratings, with private-by-default migration and notification bell/count;
+  [verification](home-feeds-verification.md). Persistent activation remains separate.
+- [ ] Optional collection discussions.
 - [ ] Account suspensions and appeals.
 - [ ] Optional avatars/social links and other profile expansion.
 - [ ] Persistent metadata-provider activation and any additional live import
