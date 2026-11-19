@@ -4,7 +4,7 @@ export interface TrackingInput { status: TrackingStatus; startedAt: string | nul
 export interface LibraryItem extends TrackingInput { media: MediaSummary; createdAt: string; updatedAt: string; }
 export interface PersonalPage<T> { items: T[]; page: number; pageSize: number; totalCount: number; }
 export interface LibraryFilters { status: TrackingStatus | ""; type: string; page: number; pageSize: number; }
-export interface RatingDetails { id: string; mediaId: string; score: number; createdAt: string; updatedAt: string; }
+export interface RatingDetails { id: string; mediaId: string; score: number; createdAt: string; updatedAt: string; isShared: boolean; sharedAt: string | null; }
 export interface RatingAggregate { count: number; average: number | null; }
 export interface ReviewInput { body: string; isSpoiler: boolean; }
 export interface ReviewAuthor { id: string; handle: string; displayName: string; }

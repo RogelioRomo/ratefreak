@@ -51,3 +51,5 @@
 /* Flatten retained form wrappers while preserving their hidden/inert/disabled guards. */
 .activityGrid .privateLayout:not([hidden]), .activityGrid .retained, .activityGrid .personal { display: contents; }
 @media (min-width: 40.0625rem) { .activityGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.sharing { display: flex; align-items: center; gap: .75rem; min-height: 2.75rem; margin-top: 1rem; }
+.sharing input { width: 1.125rem; height: 1.125rem; accent-color: var(--accent); }

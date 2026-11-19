@@ -1,4 +1,5 @@
 "use client";
+import { resetFeeds } from "@/features/feeds/query/keys";
 import { useEffect, useRef, useState } from "react";
 import { useQueryClient, type QueryKey } from "@tanstack/react-query";
 import { useSession } from "@/features/auth/hooks/use-session";
@@ -19,6 +20,7 @@ export function usePersonalWrite() {
     try {
       const value = await operation(controller.signal); controller.signal.throwIfAborted();
       await Promise.all(invalidate.map(queryKey => client.invalidateQueries({ queryKey }))); controller.signal.throwIfAborted();
+      await resetFeeds(client); controller.signal.throwIfAborted();
       return { value };
     } catch (failure) {
       if (!controller.signal.aborted) {

@@ -2,7 +2,7 @@ import type { LibraryItem, LibraryFilters, RatingDetails, ReviewDetails } from "
 export interface MediaActivityProps { mediaId: string; }
 export interface PrivateActivityProps extends MediaActivityProps { accountId: string; }
 export interface TrackingFormProps extends PrivateActivityProps { saved: LibraryItem | null; }
-export interface RatingFormProps extends PrivateActivityProps { saved: RatingDetails | null; }
+export interface RatingFormProps extends PrivateActivityProps { saved: RatingDetails | null; canShareRating?: boolean; }
 export interface ReviewFormProps extends PrivateActivityProps { saved: ReviewDetails | null; }
 export interface PersonalErrorProps { error: Error | null; }
 export interface PersonalReadErrorProps { error: Error; retry: () => void; }

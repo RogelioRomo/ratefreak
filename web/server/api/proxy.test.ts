@@ -266,3 +266,16 @@ describe("account recovery boundary", () => {
     expect((await proxyRequest(makeRequest("auth/recovery-status", { method: "POST" }), ["auth", "recovery-status"])).status).toBe(405);
   });
 });
+
+it("proxies authenticated feed filters and cursor without caching", async () => {
+  fetchMock.mockResolvedValue(Response.json({items:[],nextCursor:null,hasFollowees:false}));
+  const response = await proxyRequest(makeRequest("feed?tab=community&type=book&cursor=abc_123", {headers:{Cookie:"ratefreak.session=s"}}), ["feed"]);
+  expect(response.status).toBe(200);
+  expect(response.headers.get("cache-control")).toBe("no-store");
+  expect(String(fetchMock.mock.calls[0][0])).toBe("http://api.test:5080/api/v1/feed?tab=community&type=book&cursor=abc_123");
+});
+
+it.each(["tab=popular", "type=film", "tab=following&tab=community", "unknown=1", "cursor="+"x".repeat(1025)])("rejects invalid feed query %s",async query=>{
+  const response=await proxyRequest(makeRequest("feed?"+query),["feed"]);
+  expect(response.status).toBe(400);expect(fetchMock).not.toHaveBeenCalled();
+});

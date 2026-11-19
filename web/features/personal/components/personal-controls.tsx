@@ -12,7 +12,7 @@ import { RatingForm } from "./rating-form";
 import { ReviewForm } from "./review-form";
 import { PersonalReadError } from "./personal-error";
 import styles from "./personal.module.css";
-export function PersonalControls({ mediaId }: MediaActivityProps) {
+export function PersonalControls({ mediaId, canShareRating = false }: MediaActivityProps & { canShareRating?: boolean }) {
   const session = useSession();
   const [rememberedAccount, setRememberedAccount] = useState<string | null>(session.account?.id ?? null);
   const accountId = session.account === undefined ? rememberedAccount : session.account?.id ?? null;
@@ -24,11 +24,11 @@ export function PersonalControls({ mediaId }: MediaActivityProps) {
       : !active && session.account !== null ? <LoadingState label="Checking your session…" />
       : session.account === null ? <section className={styles.section}><h2>Make room for your take.</h2><p>Track this item, give it a score, or write a review.</p><Link className={styles.link} href={`/login?${new URLSearchParams({ returnTo: `/catalog/${mediaId}` })}`}>Log in to track, rate or review</Link></section> : null}
     {accountId && <div className={styles.privateLayout} hidden={!active} inert={!active}><fieldset className={styles.retained} disabled={!active}>
-      <PrivateForms key={`${accountId}:${mediaId}`} accountId={accountId} mediaId={mediaId} active={active} />
+      <PrivateForms key={`${accountId}:${mediaId}`} accountId={accountId} mediaId={mediaId} active={active} canShareRating={canShareRating} />
     </fieldset></div>}
   </>;
 }
-function PrivateForms({ accountId, mediaId, active }: RetainedActivityProps) {
+function PrivateForms({ accountId, mediaId, active, canShareRating }: RetainedActivityProps & { canShareRating?: boolean }) {
   const tracking = useTracking(accountId, mediaId, active), rating = useRating(accountId, mediaId, active), review = useOwnReview(accountId, mediaId, active);
   const session = useSession();
   const [expired, setExpired] = useState(false);
@@ -45,7 +45,7 @@ function PrivateForms({ accountId, mediaId, active }: RetainedActivityProps) {
       {tracking.isPending ? <LoadingState label="Loading tracking…" /> : tracking.data === undefined ? <PersonalReadError error={tracking.error!} retry={() => void tracking.refetch()} /> : <><TrackingForm accountId={accountId} mediaId={mediaId} saved={tracking.data} />{tracking.error && <PersonalReadError error={tracking.error} retry={() => void tracking.refetch()} />}</>}
     </section>
     <section className={styles.section} aria-labelledby="rating-heading"><h2 id="rating-heading">Your rating</h2>
-      {rating.isPending ? <LoadingState label="Loading your rating…" /> : rating.data === undefined ? <PersonalReadError error={rating.error!} retry={() => void rating.refetch()} /> : <><RatingForm accountId={accountId} mediaId={mediaId} saved={rating.data} />{rating.error && <PersonalReadError error={rating.error} retry={() => void rating.refetch()} />}</>}
+      {rating.isPending ? <LoadingState label="Loading your rating…" /> : rating.data === undefined ? <PersonalReadError error={rating.error!} retry={() => void rating.refetch()} /> : <><RatingForm accountId={accountId} mediaId={mediaId} saved={rating.data} canShareRating={canShareRating} />{rating.error && <PersonalReadError error={rating.error} retry={() => void rating.refetch()} />}</>}
     </section>
     <section className={styles.section} aria-labelledby="review-heading"><h2 id="review-heading">Your review</h2>
       {review.isPending ? <LoadingState label="Loading your review…" /> : review.data === undefined ? <PersonalReadError error={review.error!} retry={() => void review.refetch()} /> : <><ReviewForm accountId={accountId} mediaId={mediaId} saved={review.data} />{review.error && <PersonalReadError error={review.error} retry={() => void review.refetch()} />}</>}
