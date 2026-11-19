@@ -15,8 +15,9 @@ use the same avatar component. No social links or onboarding are added.
 
 Files, upload stages and leases use `<Artwork:RootPath>/avatars/`. Existing catalog
 images keep their current location. Database changes are additive in
-`20261119165037_AddProfileAvatars`; no persistent project database migration was
-performed. Existing accounts start with null avatars and revision zero.
+`20261119165037_AddProfileAvatars`. Initial feature acceptance used disposable
+databases; the subsequent authorized persistent local migration is recorded below.
+Existing accounts start with null avatars and revision zero.
 
 Both writes check the editor's expected account UUID (`X-RateFreak-Account-Id`),
 CSRF and avatar revision. The proxy explicitly forwards that account binding and
@@ -139,9 +140,8 @@ arbitrary concurrent OS-level path replacement is race-proof.
   requires owner removal before image restoration instead of granting unrestricted
   hidden-image access.
 
-No minor review findings remain deferred. Deployment/publication, production
-provider callbacks and migration of the persistent local database are outside
-this verification.
+No minor review findings remain deferred. Deployment/publication and production
+provider callbacks remain outside this verification.
 
 ## Local integration
 
@@ -149,7 +149,42 @@ On 2026-11-19 the user selected local merge. `main` fast-forwarded from `d83ee79
 to `019cd10`, preserving the exact reviewed implementation tree. The merged
 revision passed its fresh full suites: 32 unit, 460 PostgreSQL/API integration,
 196 provider contracts (zero backend skips), 841 frontend and 36 operator tests.
-The merged feature branch was then removed. No database migration or push is
-included. A pre-merge `git pull --ff-only` could
+The merged feature branch was then removed. The merge itself did not apply a database migration or push changes. A pre-merge `git pull --ff-only` could
 not authenticate to GitHub over SSH, so the operation integrates the existing
 local base without claiming remote freshness.
+
+## Persistent local migration, 2026-11-19
+
+After explicit user authorization, applied `20261119165037_AddProfileAvatars` to
+the existing local `ratefreak` database in `ratefreak-postgres-1`. The starting
+migration was `20261119013555_AddRatingSharingAndFeedIndexes`. Both application
+servers were already stopped and no other database clients were connected.
+
+Before applying, reviewed the generated transactional SQL: it only adds nullable
+`users.avatar_id`, `users.avatar_revision` defaulting to zero, `avatar_assets`, its
+primary/unique index and cascading user foreign key, plus the migration history
+entry. Created private database/artwork backups with mode 0600 under an ignored
+mode-0700 evidence directory. Validated the dump catalog and artwork archive
+contents, restored the database into an isolated temporary database, and matched
+every original table count/fingerprint. Upgrade, safe empty-avatar downgrade and
+reapply on that restore all preserved the original data. Removed the temporary
+database before applying to the persistent database.
+
+The persistent upgrade preserved all original columns, row counts and fingerprints
+for the 28 existing application tables, including original user, rating/sharing,
+review, library, account and staff fields. Original migration-history rows and
+uploaded artwork remained unchanged. The new avatar metadata table is empty, all
+existing accounts have null avatar IDs and revision zero, and the foreign key and
+indexes are present. A repeat application was a no-op. A final independent state
+check confirmed the target migration, 29 application tables and no other clients.
+
+Private backup paths, checksums, original-column fingerprints and results are in
+`.local/localhost/profile-avatar-migration/verification.json`. New backup copies
+are recorded to expire within 30 days under the existing operator retention
+policy; this operation does not change or delete older backups. Credentials and
+backup contents remain outside Git.
+
+Local API/frontend servers were left stopped. This operation verifies the schema
+and preservation of existing data; it does not add persistent account uploads,
+restart the app, provision its erasure journal, deploy or publish a release. Other
+installations still require their own backup/reviewed migration.
