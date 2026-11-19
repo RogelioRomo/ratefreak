@@ -47,7 +47,7 @@ internal sealed partial class AccountDataService
                 await Json("manifest.json", new { formatVersion = 1, exportedAt = DateTimeOffset.UtcNow, accountId = userId, artworkMapping = "artwork.json" }); await Json("account.json", account);
                 await Query("providers.json", db.UserLogins.Where(l => l.UserId == userId).Select(l => new { provider = l.LoginProvider }));
                 await Query("library.json", db.LibraryEntries.Where(x => x.UserId == userId).Select(x => new { x.Id, x.MediaItemId, Title = readable.Where(m => m.Id == x.MediaItemId).Select(m => m.Title).FirstOrDefault(), x.Status, x.StartedAt, x.CompletedAt, x.CreatedAt, x.UpdatedAt }));
-                await Query("ratings.json", db.Ratings.Where(x => x.UserId == userId).Select(x => new { x.Id, x.MediaItemId, Title = readable.Where(m => m.Id == x.MediaItemId).Select(m => m.Title).FirstOrDefault(), x.Score, x.CreatedAt, x.UpdatedAt }));
+                await Query("ratings.json", db.Ratings.Where(x => x.UserId == userId).Select(x => new { x.Id, x.MediaItemId, Title = readable.Where(m => m.Id == x.MediaItemId).Select(m => m.Title).FirstOrDefault(), x.Score, x.CreatedAt, x.UpdatedAt, x.IsShared, x.SharedAt }));
                 await Query("reviews.json", db.Reviews.Where(x => x.UserId == userId).Select(x => new { x.Id, x.MediaItemId, Title = readable.Where(m => m.Id == x.MediaItemId).Select(m => m.Title).FirstOrDefault(), x.Body, x.IsSpoiler, x.IsHidden, x.CreatedAt, x.UpdatedAt }));
                 await Query("comments.json", from comment in db.ReviewComments
                     join review in db.Reviews on comment.ReviewId equals review.Id

@@ -35,8 +35,8 @@ public sealed class DeletedAccountWriteTests(AccountDatabase database) : IClassF
                     .PutAsync(erasedAccount, item.Id, new("planned", null, null), ct));
                 break;
             case "rating":
-                Assert.Null(await scope.ServiceProvider.GetRequiredService<IRatingService>()
-                    .PutAsync(erasedAccount, item.Id, 4m, ct));
+                Assert.Equal(RateFreak.Application.Catalog.CatalogStatus.NotFound, (await scope.ServiceProvider.GetRequiredService<IRatingService>()
+                    .PutAsync(erasedAccount, item.Id, 4m, null, ct)).Status);
                 break;
             case "review":
                 Assert.Equal(ReviewWriteStatus.NotFound, (await scope.ServiceProvider.GetRequiredService<IReviewService>()

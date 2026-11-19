@@ -91,7 +91,7 @@ app.UseStatusCodePages();
 app.UseBrowserProxyIdentity();
 app.Use(async (context, next) =>
 {
-    if (context.Request.Path.StartsWithSegments("/api/v1/media") || context.Request.Path.StartsWithSegments("/api/v1/reviews") || context.Request.Path.StartsWithSegments("/api/v1/categories") || context.GetEndpoint()?.Metadata.GetMetadata<ProfileNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<CollectionNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<NotificationNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<FollowNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<CommentNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/moderation") || context.Request.Path.StartsWithSegments("/api/v1/admin") || context.GetEndpoint()?.Metadata.GetMetadata<ReportingNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/auth") || context.Request.Path.StartsWithSegments("/api/v1/users/me") ||
+    if (context.Request.Path.StartsWithSegments("/api/v1/media") || context.Request.Path.StartsWithSegments("/api/v1/reviews") || context.Request.Path.StartsWithSegments("/api/v1/categories") || context.GetEndpoint()?.Metadata.GetMetadata<ProfileNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<CollectionNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<NotificationNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<FeedNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<FollowNoStore>() is not null || context.GetEndpoint()?.Metadata.GetMetadata<CommentNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/moderation") || context.Request.Path.StartsWithSegments("/api/v1/admin") || context.GetEndpoint()?.Metadata.GetMetadata<ReportingNoStore>() is not null || context.Request.Path.StartsWithSegments("/api/v1/auth") || context.Request.Path.StartsWithSegments("/api/v1/users/me") ||
         (context.Request.Path.StartsWithSegments("/api/v1/media") && (context.Request.Path.Value!.EndsWith("/rating", StringComparison.Ordinal) || context.Request.Path.Value!.EndsWith("/review", StringComparison.Ordinal))))
         context.Response.Headers.CacheControl = "no-store";
     await next(context);
@@ -118,6 +118,7 @@ app.MapMediaProviderEndpoints();
 app.MapPersonalMediaEndpoints();
 app.MapCollectionEndpoints();
 app.MapFollowEndpoints();
+app.MapFeedEndpoints();
 app.MapNotificationEndpoints();
 app.MapReviewCommentEndpoints();
 app.MapModerationEndpoints();

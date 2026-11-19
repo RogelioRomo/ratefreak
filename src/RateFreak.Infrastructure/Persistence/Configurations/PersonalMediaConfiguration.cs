@@ -25,7 +25,12 @@ internal static class PersonalMediaConfiguration
         });
         model.Entity<Rating>(rating =>
         {
-            rating.ToTable("ratings", table => table.HasCheckConstraint("ck_ratings_score", "score >= 0 AND score <= 5 AND mod(score, 0.5) = 0"));
+            rating.ToTable("ratings", table => {
+                table.HasCheckConstraint("ck_ratings_score", "score >= 0 AND score <= 5 AND mod(score, 0.5) = 0");
+                table.HasCheckConstraint("ck_ratings_sharing", "(is_shared AND shared_at IS NOT NULL) OR (NOT is_shared AND shared_at IS NULL)");
+            });
+            rating.Property(x => x.IsShared).HasDefaultValue(false);
+            rating.HasIndex(x => new { x.SharedAt, x.UserId, x.MediaItemId }).HasFilter("is_shared");
             rating.HasKey(x => x.Id);
             // Unrestricted numeric avoids rounding an invalid quarter-step before CHECK evaluates.
             rating.Property(x => x.Score).HasColumnType("numeric");
@@ -40,6 +45,7 @@ internal static class PersonalMediaConfiguration
             review.Property(x => x.Body).HasMaxLength(10000).IsRequired();
             review.HasIndex(x => new { x.UserId, x.MediaItemId }).IsUnique().HasDatabaseName("ux_reviews_pair");
             review.HasIndex(x => new { x.MediaItemId, x.CreatedAt, x.Id });
+            review.HasIndex(x => new { x.CreatedAt, x.UserId, x.MediaItemId }).HasFilter("NOT is_hidden");
             review.HasOne<AccountUser>().WithMany().HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Cascade);
             review.HasOne<MediaItem>().WithMany().HasForeignKey(x => x.MediaItemId).OnDelete(DeleteBehavior.Restrict);
         });

@@ -63,6 +63,7 @@ public static class DependencyInjection
         services.AddHostedService<AccountDataRetentionWorker>();
         services.AddScoped<IUserProfileService, UserProfileService>();
         services.AddScoped<IExternalAccountService, ExternalAccountService>();
+        services.AddScoped<RateFreak.Application.Social.IFeedService, RateFreak.Infrastructure.Social.FeedService>();
         services.AddScoped<RateFreak.Application.Social.IFollowService, RateFreak.Infrastructure.Social.FollowService>();
         services.AddOptions<RateFreak.Infrastructure.Artwork.ArtworkOptions>().Bind(configuration.GetSection("Artwork"))
             .Validate(o => !o.Enabled || !string.IsNullOrWhiteSpace(o.RootPath) && Path.IsPathFullyQualified(o.RootPath) && !o.RootPath.Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar).Any(p => p.Equals("wwwroot", StringComparison.OrdinalIgnoreCase)), "Artwork requires an absolute persistent directory outside wwwroot.").ValidateOnStart();

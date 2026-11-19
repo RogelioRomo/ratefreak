@@ -829,6 +829,12 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
+                    b.Property<bool>("IsShared")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("is_shared");
+
                     b.Property<Guid>("MediaItemId")
                         .HasColumnType("uuid")
                         .HasColumnName("media_item_id");
@@ -836,6 +842,10 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                     b.Property<decimal>("Score")
                         .HasColumnType("numeric")
                         .HasColumnName("score");
+
+                    b.Property<DateTimeOffset?>("SharedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("shared_at");
 
                     b.Property<DateTimeOffset>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
@@ -853,9 +863,14 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ux_ratings_pair");
 
+                    b.HasIndex("SharedAt", "UserId", "MediaItemId")
+                        .HasFilter("is_shared");
+
                     b.ToTable("ratings", null, t =>
                         {
                             t.HasCheckConstraint("ck_ratings_score", "score >= 0 AND score <= 5 AND mod(score, 0.5) = 0");
+
+                            t.HasCheckConstraint("ck_ratings_sharing", "(is_shared AND shared_at IS NOT NULL) OR (NOT is_shared AND shared_at IS NULL)");
                         });
                 });
 
@@ -903,6 +918,9 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                     b.HasIndex("UserId", "MediaItemId")
                         .IsUnique()
                         .HasDatabaseName("ux_reviews_pair");
+
+                    b.HasIndex("CreatedAt", "UserId", "MediaItemId")
+                        .HasFilter("NOT is_hidden");
 
                     b.HasIndex("MediaItemId", "CreatedAt", "Id");
 

@@ -6,14 +6,14 @@ namespace RateFreak.Application.PersonalMedia;
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
 public sealed record LibraryRequest(string? Status, DateOnly? StartedAt, DateOnly? CompletedAt);
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
-public sealed record RatingRequest(decimal? Score);
+public sealed record RatingRequest(decimal? Score, bool? IsShared = null);
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
 public sealed record ReviewRequest(string? Body, bool IsSpoiler = false);
 public sealed record PersonalPage<T>(IReadOnlyList<T> Items, int Page, int PageSize, int TotalCount);
 public sealed record LibraryQuery(string? Status, string? Type, int Page, int PageSize);
 public sealed record LibraryItem(MediaSummary Media, string Status, DateOnly? StartedAt, DateOnly? CompletedAt,
     DateTimeOffset CreatedAt, DateTimeOffset UpdatedAt);
-public sealed record RatingDetails(Guid Id, Guid MediaId, decimal Score, DateTimeOffset CreatedAt, DateTimeOffset UpdatedAt);
+public sealed record RatingDetails(Guid Id, Guid MediaId, decimal Score, DateTimeOffset CreatedAt, DateTimeOffset UpdatedAt, bool IsShared = false, DateTimeOffset? SharedAt = null);
 public sealed record RatingAggregate(int Count, decimal? Average);
 public sealed record ReviewAuthor(Guid Id, string Handle, string DisplayName);
 public sealed record ReviewDetails(Guid Id, Guid MediaId, ReviewAuthor Author, string Body, bool IsSpoiler,
@@ -31,7 +31,7 @@ public interface ILibraryService
 public interface IRatingService
 {
     Task<RatingDetails?> FindAsync(Guid userId, Guid mediaId, CancellationToken ct);
-    Task<RatingDetails?> PutAsync(Guid userId, Guid mediaId, decimal score, CancellationToken ct);
+    Task<CatalogResult<RatingDetails>> PutAsync(Guid userId, Guid mediaId, decimal score, bool? isShared, CancellationToken ct);
     Task<bool> DeleteAsync(Guid userId, Guid mediaId, CancellationToken ct);
     Task<RatingAggregate?> AggregateAsync(Guid? viewerId, Guid mediaId, CancellationToken ct);
 }

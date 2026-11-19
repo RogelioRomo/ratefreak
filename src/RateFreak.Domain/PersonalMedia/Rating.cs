@@ -5,6 +5,8 @@ public sealed class Rating
     public Guid Id { get; private set; } = Guid.NewGuid();
     public Guid UserId { get; private set; }
     public Guid MediaItemId { get; private set; }
+    public bool IsShared { get; private set; }
+    public DateTimeOffset? SharedAt { get; private set; }
     public decimal Score { get; private set; }
     public DateTimeOffset CreatedAt { get; private set; } = DateTimeOffset.UtcNow;
     public DateTimeOffset UpdatedAt { get; private set; } = DateTimeOffset.UtcNow;

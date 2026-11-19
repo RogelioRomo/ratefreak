@@ -70,8 +70,13 @@ internal static class PersonalMediaEndpoints
         {
             if (!PersonalMediaRules.ValidScore(request.Score)) return Results.ValidationProblem(new Dictionary<string, string[]>
                 { ["score"] = ["Score is required and must be 0–5 in increments of 0.5."] });
-            var result = await service.PutAsync(UserId(user), mediaId, request.Score!.Value, ct);
-            return result is null ? Results.NotFound() : Results.Ok(result);
+            var result = await service.PutAsync(UserId(user), mediaId, request.Score!.Value, request.IsShared, ct);
+            return result.Status switch
+            {
+                RateFreak.Application.Catalog.CatalogStatus.NotFound => Results.NotFound(),
+                RateFreak.Application.Catalog.CatalogStatus.Invalid => Results.ValidationProblem(result.Errors!),
+                _ => Results.Ok(result.Value)
+            };
         })).Produces<RatingDetails>().ProducesValidationProblem().ProducesProblem(404).WithSummary("Set your rating from 0 to 5 in half-point steps");
         Write(media.MapDelete("/rating", async (Guid mediaId, ClaimsPrincipal user, IRatingService service, CancellationToken ct) =>
         {
