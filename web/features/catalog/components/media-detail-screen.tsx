@@ -36,6 +36,6 @@ export function MediaDetailScreen({ id }: MediaDetailScreenProps) {
           <section className={styles.description} aria-labelledby="about-title"><h2>About this title</h2><p>{media.data.description?.trim() || "No description available yet."}</p></section>
           <CatalogCredits type={media.data.type} providers={media.data.externalIds?.map(identity => identity.provider) ?? []} />
         </div>
-      </article><CatalogReportControls item={media.data} /><TitleActivity mediaId={id.toLowerCase()} canShareRating={media.data.visibility === "public" && media.data.category?.scope === "public" && !media.data.category.isHidden && !media.data.isHidden && !media.data.isArchived} /></>}
+      </article><CatalogReportControls item={media.data} /><TitleActivity mediaId={id.toLowerCase()} canShareRating={media.data.visibility === "public" && media.data.category?.scope === "public" && media.data.category.isHidden === false && media.data.isHidden === false && media.data.isArchived === false} /></>}
   </div>;
 }

@@ -78,4 +78,15 @@ public sealed class RatingSharingTests(AccountDatabase database) : IClassFixture
         client.DefaultRequestHeaders.Remove("X-CSRF-TOKEN");
         Assert.Equal(HttpStatusCode.BadRequest, (await client.PutAsJsonAsync(path, new { score = 4, isShared = false }, FeedTestSupport.Ct)).StatusCode);
     }
+    [Fact]
+    public async Task Concurrent_legacy_and_shared_puts_preserve_one_rating_and_publication_time()
+    {
+        await using var factory=new ApiFactory(connectionString:database.ConnectionString);using var client=FeedTestSupport.Client(factory);
+        var owner=await FeedTestSupport.SignIn(client);var id=await FeedTestSupport.Media(database);var path=$"/api/v1/media/{id}/rating";
+        var first=await FeedTestSupport.Json(await client.PutAsJsonAsync(path,new {score=0,isShared=true},FeedTestSupport.Ct));
+        var responses=await Task.WhenAll(Enumerable.Range(0,12).Select(i=>i%2==0?client.PutAsJsonAsync(path,new {score=4.5},FeedTestSupport.Ct):client.PutAsJsonAsync(path,new {score=0,isShared=true},FeedTestSupport.Ct)));
+        foreach(var response in responses){var saved=await FeedTestSupport.Json(response);Assert.True(saved.GetProperty("isShared").GetBoolean());Assert.Equal(first.GetProperty("sharedAt").GetDateTimeOffset(),saved.GetProperty("sharedAt").GetDateTimeOffset());}
+        await using var db=FeedTestSupport.Context(database);Assert.Single(await db.Ratings.Where(x=>x.UserId==owner&&x.MediaItemId==id).ToListAsync(FeedTestSupport.Ct));
+    }
+
 }

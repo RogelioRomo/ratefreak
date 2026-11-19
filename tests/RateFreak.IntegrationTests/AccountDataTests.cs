@@ -43,12 +43,23 @@ public sealed class AccountDataTests(AccountDatabase database) : IClassFixture<A
         var (factory, client, id, handle) = await Setup(); await using var ownedFactory = factory; using var ownedClient = client;
         using var forbidden = await client.PostAsJsonAsync("/api/v1/users/me/data/export", new { }, Ct);
         Assert.Equal(HttpStatusCode.BadRequest, forbidden.StatusCode);
+        var sharedMedia = await FeedTestSupport.Media(database);
+        var privateMedia = await FeedTestSupport.Media(database);
+        var sharedRating = await FeedTestSupport.Json(await client.PutAsJsonAsync($"/api/v1/media/{sharedMedia}/rating", new { score = 0, isShared = true }, Ct));
+        await FeedTestSupport.Json(await client.PutAsJsonAsync($"/api/v1/media/{privateMedia}/rating", new { score = 4.5 }, Ct));
         using var confirmation = await client.PostAsJsonAsync("/api/v1/users/me/data/confirm", new { operation = "export", password = Password }, Ct);
         Assert.Equal(HttpStatusCode.NoContent, confirmation.StatusCode);
         using var export = await client.PostAsJsonAsync("/api/v1/users/me/data/export", new { }, Ct);
         Assert.Equal(HttpStatusCode.OK, export.StatusCode); Assert.True(export.Headers.CacheControl?.NoStore);
         using var zip = new ZipArchive(await export.Content.ReadAsStreamAsync(Ct));
         Assert.NotNull(zip.GetEntry("manifest.json"));
+        using var ratings = await JsonDocument.ParseAsync(zip.GetEntry("ratings.json")!.Open(), cancellationToken: Ct);
+        var shared = Assert.Single(ratings.RootElement.EnumerateArray(), x => x.GetProperty("mediaItemId").GetGuid() == sharedMedia);
+        var privateRating = Assert.Single(ratings.RootElement.EnumerateArray(), x => x.GetProperty("mediaItemId").GetGuid() == privateMedia);
+        Assert.True(shared.GetProperty("isShared").GetBoolean());
+        Assert.Equal(sharedRating.GetProperty("sharedAt").GetDateTimeOffset(), shared.GetProperty("sharedAt").GetDateTimeOffset());
+        Assert.False(privateRating.GetProperty("isShared").GetBoolean()); Assert.Equal(JsonValueKind.Null, privateRating.GetProperty("sharedAt").ValueKind);
+
         using var reader = new StreamReader(zip.GetEntry("account.json")!.Open()); var json = await reader.ReadToEndAsync(Ct);
         Assert.Contains(handle, json); Assert.DoesNotContain("passwordHash", json); Assert.DoesNotContain("securityStamp", json);
         using var replay = await client.PostAsJsonAsync("/api/v1/users/me/data/export", new { }, Ct);

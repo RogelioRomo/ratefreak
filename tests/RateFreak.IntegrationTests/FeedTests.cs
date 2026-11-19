@@ -102,4 +102,15 @@ public sealed class FeedTests(AccountDatabase database) : IClassFixture<AccountD
         Assert.Empty((await Json(await reader.GetAsync("/api/v1/feed",Ct))).GetProperty("items").EnumerateArray());
     }
 
+    [Fact]
+    public async Task Feed_uses_social_read_budget_and_is_documented_in_OpenAPI()
+    {
+        await using var factory=new ApiFactory(connectionString:database.ConnectionString);using var client=Client(factory);await SignIn(client);
+        for(var i=0;i<60;i++)Assert.Equal(HttpStatusCode.OK,(await client.GetAsync("/api/v1/feed",Ct)).StatusCode);
+        var limited=await client.GetAsync("/api/v1/feed",Ct);Assert.Equal(HttpStatusCode.TooManyRequests,limited.StatusCode);Assert.NotNull(limited.Headers.RetryAfter);Assert.True(limited.Headers.CacheControl?.NoStore);
+        Assert.Equal(HttpStatusCode.OK,(await client.GetAsync("/api/v1/media",Ct)).StatusCode);
+        await using var development=new ApiFactory(environment:"Development",connectionString:database.ConnectionString);using var docs=Client(development);
+        var openapi=await docs.GetFromJsonAsync<JsonElement>("/openapi/v1.json",Ct);Assert.True(openapi.GetProperty("paths").GetProperty("/api/v1/feed").TryGetProperty("get",out _));
+    }
+
 }

@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { beforeEach, expect, it, vi } from 'vitest';
 import Home from '@/app/page';
@@ -11,7 +11,7 @@ const account={id:'owner',handle:'reader',displayName:'Reader',email:'reader@exa
 const entry={author:{id:'author',handle:'alex',displayName:'Alex'},media:{id:'a1111111-1111-1111-1111-111111111111',type:'book',title:'Dune',imageReference:null,releaseDate:null},score:null,review:{id:'review',excerpt:'The ending matters.',isSpoiler:true},publishedAt:'2026-11-18T12:00:00Z'};
 let session:SessionContextValue;let fetchMock:ReturnType<typeof vi.fn>;
 function setup(){const client=new QueryClient({defaultOptions:{queries:{retry:false,gcTime:0}}});const tree=()=> <QueryClientProvider client={client}><SessionContext.Provider value={session}><Home/></SessionContext.Provider></QueryClientProvider>;const view=render(tree());return {client,...view,update:()=>view.rerender(tree())};}
-beforeEach(()=>{route.query='';route.push.mockReset();session={account,error:null,isLoading:false,isTransitioning:false,refresh:vi.fn(),runExclusive:async<T,>(fn:()=>Promise<T>)=>fn(),changeIdentity:async()=>{}};fetchMock=vi.fn(async()=>Response.json({items:[entry],nextCursor:null,hasFollowees:true}));vi.stubGlobal('fetch',fetchMock);});
+beforeEach(()=>{route.query='';route.push.mockReset();session={account,error:null,isLoading:false,isTransitioning:false,refresh:vi.fn(async()=>{}),runExclusive:async<T,>(fn:()=>Promise<T>)=>fn(),changeIdentity:async()=>{}};fetchMock=vi.fn(async()=>Response.json({items:[entry],nextCursor:null,hasFollowees:true}));vi.stubGlobal('fetch',fetchMock);});
 it('shows signed-in home feeds and conceals spoilers and private scores',async()=>{
  setup();expect(await screen.findByRole('link',{name:'Following'})).toHaveAttribute('aria-current','page');
  expect(screen.getByRole('link',{name:'Community'})).toHaveAttribute('href','/?tab=community');
@@ -33,4 +33,14 @@ it('appends bounded pages without duplicate pairs and Back resumes the requested
 it('rejects invalid filters without fetching',()=>{route.query='tab=popular';setup();expect(screen.getByRole('alert')).toHaveTextContent('Invalid feed filters');expect(fetchMock).not.toHaveBeenCalled();});
 it('does not reuse the previous account feed when another account signs in',async()=>{
  const view=setup();await screen.findByRole('link',{name:'Dune'});fetchMock.mockImplementation(()=>new Promise(()=>{}));session={...session,account:{...account,id:'other'}};view.update();expect(screen.queryByRole('link',{name:'Dune'})).not.toBeInTheDocument();
+});
+it('sorts merged pages when unsharing moves an entry behind newer reviews',async()=>{
+ const middle={...entry,media:{...entry.media,id:'b1111111-1111-1111-1111-111111111111',title:'Middle review'},publishedAt:'2026-06-01T00:00:00Z'};
+ fetchMock.mockImplementation(async(url:unknown)=>Response.json(String(url).includes('cursor=next')?{items:[{...entry,publishedAt:'2026-01-01T00:00:00Z'}],nextCursor:null,hasFollowees:true}:{items:[entry,middle],nextCursor:'next',hasFollowees:true}));
+ const view=setup();fireEvent.click(await screen.findByRole('button',{name:'Load more'}));route.query='cursor=next';view.update();await waitFor(()=>expect(screen.queryByRole('button',{name:'Load more'})).not.toBeInTheDocument());expect(screen.getAllByRole('heading',{level:2}).map(node=>node.textContent)).toEqual(['Middle review','Dune']);
+});
+it('refreshes the session once when a retained-page error precedes another pages 401',async()=>{
+ const next={...entry,media:{...entry.media,id:'b1111111-1111-1111-1111-111111111111',title:'Other review'}};
+ fetchMock.mockImplementation(async(url:unknown)=>Response.json(String(url).includes('cursor=next')?{items:[next],nextCursor:null,hasFollowees:true}:{items:[entry],nextCursor:'next',hasFollowees:true}));const view=setup();fireEvent.click(await screen.findByRole('button',{name:'Load more'}));route.query='cursor=next';view.update();await screen.findByRole('link',{name:'Other review'});
+ fetchMock.mockImplementation(async(url:unknown)=>Response.json({}, {status:String(url).includes('cursor=next')?401:503}));await act(async()=>{await view.client.refetchQueries({queryKey:['feeds']});});await waitFor(()=>expect(session.refresh).toHaveBeenCalledTimes(1));expect(screen.queryByRole('link',{name:'Dune'})).not.toBeInTheDocument();expect(screen.queryByRole('link',{name:'Other review'})).not.toBeInTheDocument();
 });

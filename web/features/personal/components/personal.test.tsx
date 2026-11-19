@@ -6,6 +6,7 @@ import { beforeEach, expect, it, vi } from "vitest";
 import { SessionContext } from "@/features/auth/session/session-context";
 import type { SessionContextValue } from "@/features/auth/interfaces/session-context-value";
 import { resetCsrfState } from "@/shared/api/csrf";
+import { MediaDetailScreen } from "@/features/catalog/components/media-detail-screen";
 import { PersonalControls } from "./personal-controls";
 import { PublicReviews } from "./public-reviews";
 import { LibraryScreen } from "./library-screen";
@@ -28,7 +29,7 @@ beforeEach(()=>{route.query='';route.push.mockReset();route.replace.mockReset();
  return Response.json(entry);
  });});
 it('loads tracking dates and saves them unchanged on status edit',async()=>{setup(<PersonalControls mediaId={id}/>);await screen.findByDisplayValue('2026-01-01');selectValue(screen.getByLabelText('Tracking status'), 'paused');fireEvent.click(screen.getByRole('button',{name:'Save tracking'}));await screen.findByText('Tracking saved.');const call=mock.mock.calls.find(([url,opts])=>String(url).endsWith('/library/'+id)&&opts?.method==='PUT');expect(JSON.parse(String(call?.[1]?.body))).toEqual({status:'paused',startedAt:'2026-01-01',completedAt:'2026-01-02'});});
-it('treats zero as a real saved rating',async()=>{setup(<PersonalControls mediaId={id}/>);expect(await screen.findByRole('group',{name:'Your score'})).toHaveTextContent('0.0 / 5');fireEvent.click(screen.getByRole('button',{name:'Save rating'}));await screen.findByText('Rating saved.');expect(mock.mock.calls.find(([,o])=>o?.method==='PUT'&&o.body==='{"score":0,"isShared":false}')).toBeTruthy();});
+it('treats zero as a real saved rating',async()=>{setup(<PersonalControls mediaId={id}/>);expect(await screen.findByRole('group',{name:'Your score'})).toHaveTextContent('0.0 / 5');fireEvent.click(screen.getByRole('button',{name:'Save rating'}));await screen.findByText('Rating saved.');expect(mock.mock.calls.find(([,o])=>o?.method==='PUT'&&o.body==='{"score":0}')).toBeTruthy();});
 it('confirms tracking removal and preserves independent resources',async()=>{setup(<PersonalControls mediaId={id}/>);fireEvent.click(await screen.findByRole('button',{name:'Remove from library'}));expect(screen.getByText('Your rating and review will stay.')).toBeInTheDocument();expect(mock.mock.calls.some(([,o])=>o?.method==='DELETE')).toBe(false);fireEvent.click(screen.getByRole('button',{name:'Confirm removal'}));await screen.findByText('Removed from your library.');expect(mock.mock.calls.filter(([,o])=>o?.method==='DELETE')).toHaveLength(1);expect(screen.getByRole('group',{name:'Your score'})).toHaveTextContent('0.0 / 5');});
 it('rejects reversed tracking dates without writing',async()=>{setup(<PersonalControls mediaId={id}/>);await screen.findByLabelText('Completed on');fireEvent.change(screen.getByLabelText('Completed on'),{target:{value:'2025-01-01'}});fireEvent.submit(screen.getByRole('form',{name:'Tracking'}));expect(await screen.findByText('Completion must not precede start.')).toBeInTheDocument();expect(mock.mock.calls.some(([,o])=>o?.method==='PUT')).toBe(false);});
 it('edits a review literally and keeps drafts across public page changes/refetch',async()=>{const view=setup(<PersonalControls mediaId={id}/>);const input=await screen.findByLabelText('Review text');expect(input).toHaveValue('<b>Literal text</b>');fireEvent.change(input,{target:{value:'My unsaved draft'}});route.query='reviewsPage=2';view.rerender(<PersonalControls mediaId={id}/>);await act(async()=>view.client.invalidateQueries({queryKey:['personal','owner','review',id]}));expect(screen.getByLabelText('Review text')).toHaveValue('My unsaved draft');fireEvent.click(screen.getByRole('button',{name:'Save review'}));await screen.findByText('Review saved.');expect(mock.mock.calls.find(([,o])=>o?.method==='PATCH')?.[1]?.body).toBe('{"body":"My unsaved draft","isSpoiler":true}');});
@@ -78,7 +79,7 @@ it('cancels a pending write during session checking without losing its draft or 
  session={...session,account:undefined};view.rerender(<PersonalControls mediaId={id}/>);expect(signal?.aborted).toBe(true);
  session={...session,account};view.rerender(<PersonalControls mediaId={id}/>);await act(async()=>resolve(Response.json({...review,body:'Late result'})));expect(screen.getByLabelText('Review text')).toHaveValue('Keep this pending draft');expect(screen.queryByText('Review saved.')).not.toBeInTheDocument();expect(screen.getByRole('button',{name:'Save review'})).toBeEnabled();expect(mock.mock.calls.filter(([,o])=>o?.method==='PATCH')).toHaveLength(1);
 });
-it('saves a half-star selection through the existing numeric rating API',async()=>{setup(<PersonalControls mediaId={id}/>);fireEvent.click(await screen.findByRole('radio',{name:'4.5 stars'}));fireEvent.click(screen.getByRole('button',{name:'Save rating'}));await screen.findByText('Rating saved.');expect(mock.mock.calls.find(([url,o])=>String(url).endsWith('/rating')&&o?.method==='PUT')?.[1]?.body).toBe('{"score":4.5,"isShared":false}');});
+it('saves a half-star selection through the existing numeric rating API',async()=>{setup(<PersonalControls mediaId={id}/>);fireEvent.click(await screen.findByRole('radio',{name:'4.5 stars'}));fireEvent.click(screen.getByRole('button',{name:'Save rating'}));await screen.findByText('Rating saved.');expect(mock.mock.calls.find(([url,o])=>String(url).endsWith('/rating')&&o?.method==='PUT')?.[1]?.body).toBe('{"score":4.5}');});
 it('retains a report draft and concealed spoiler after a background review failure',async()=>{
  session={...session,account:{...account,id:'reporter'}};const view=setup(<PublicReviews mediaId={id}/>);
  fireEvent.click(await screen.findByRole('button',{name:'Report review'}));fireEvent.change(screen.getByLabelText('Details'),{target:{value:'Report draft'}});
@@ -91,4 +92,21 @@ it('requires explicit per-rating opt-in and supports unsharing',async()=>{
  fireEvent.click(sharing);fireEvent.click(screen.getByRole('button',{name:'Save rating'}));
  await screen.findByText('Rating saved.');
  expect(JSON.parse(String(mock.mock.calls.find(([u,o])=>String(u).endsWith('/rating')&&o?.method==='PUT')?.[1]?.body))).toMatchObject({isShared:true});
+});
+it('clears opt-in after removing a shared rating so recreation stays private',async()=>{
+ setup(<PersonalControls mediaId={id} canShareRating/>);const sharing=await screen.findByRole('checkbox',{name:'Share this rating'});fireEvent.click(sharing);fireEvent.click(screen.getByRole('button',{name:'Save rating'}));await screen.findByText('Rating saved.');
+ fireEvent.click(screen.getByRole('button',{name:'Remove rating'}));await screen.findByText('Rating removed.');expect(sharing).not.toBeChecked();
+ fireEvent.click(screen.getByRole('radio',{name:'4.5 stars'}));fireEvent.click(screen.getByRole('button',{name:'Save rating'}));await screen.findByText('Rating saved.');const body=JSON.parse(String(mock.mock.calls.filter(([,o])=>o?.method==='PUT').at(-1)?.[1]?.body));expect(body.isShared??false).toBe(false);
+});
+it('score edits do not overwrite a sharing decision made in another tab',async()=>{
+ const original=mock.getMockImplementation()!;mock.mockImplementation((url,options)=>String(url).endsWith('/rating')&&options?.method==='GET'?Promise.resolve(Response.json({id:'rating',mediaId:id,score:0,isShared:true,sharedAt:'2026-01-01',createdAt:'2026-01-01',updatedAt:'2026-01-01'})):original(url,options));
+ const view=setup(<PersonalControls mediaId={id} canShareRating/>);expect(await screen.findByRole('checkbox',{name:'Share this rating'})).toBeChecked();
+ mock.mockImplementation((url,options)=>String(url).endsWith('/rating')&&options?.method==='GET'?Promise.resolve(Response.json({id:'rating',mediaId:id,score:0,isShared:false,sharedAt:null,createdAt:'2026-01-01',updatedAt:'2026-01-02'})):original(url,options));
+ await act(async()=>{await view.client.invalidateQueries({queryKey:['personal','owner','rating',id]});});await waitFor(()=>expect(screen.getByRole('checkbox',{name:'Share this rating'})).not.toBeChecked());
+ fireEvent.click(screen.getByRole('radio',{name:'4.5 stars'}));fireEvent.click(screen.getByRole('button',{name:'Save rating'}));await screen.findByText('Rating saved.');const body=JSON.parse(String(mock.mock.calls.filter(([,o])=>o?.method==='PUT').at(-1)?.[1]?.body));expect(body.isShared).not.toBe(true);
+});
+
+it('does not offer rating sharing when catalog visibility flags are unknown',async()=>{
+ const original=mock.getMockImplementation()!;mock.mockImplementation((url,options)=>String(url).endsWith('/ratings')?Promise.resolve(Response.json({count:0,average:null})):String(url)==='/api/v1/media/'+id?Promise.resolve(Response.json({...media,description:null,metadata:{},externalIds:[],createdAt:'2026-01-01',updatedAt:'2026-01-01',visibility:'public',category:{id:'category',name:'Movies',scope:'public',isHidden:false,revision:1}})):original(url,options));
+ setup(<MediaDetailScreen id={id}/>);expect(await screen.findByRole('checkbox',{name:'Share this rating'})).toBeDisabled();
 });

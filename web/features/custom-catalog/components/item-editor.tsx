@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { resetFeeds } from "@/features/feeds/query/keys";
 import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,7 @@ export function ItemEditor({ initial, viewer, active }: ItemEditorProps) {
   const write = useCollectionWrite(); const client = useQueryClient(); const disabled = write.pending || !active;
   const needsReload = write.outcomeUnknown || write.error instanceof ApiError && write.error.status === 409;
   const run = async (operation: (signal: AbortSignal) => Promise<CustomItem>) => {
-    const result = await write.run(async signal => { const item = await operation(signal); signal.throwIfAborted(); setSaved(item); void client.invalidateQueries({ predicate: q => ["catalog", "categories", "personal", "community", "collections", "review-discussion", "comments", "custom-items"].includes(String(q.queryKey[0])) }); return item; });
+    const result = await write.run(async signal => { const item = await operation(signal); signal.throwIfAborted(); setSaved(item); await resetFeeds(client); signal.throwIfAborted(); void client.invalidateQueries({ predicate: q => ["catalog", "categories", "personal", "community", "collections", "review-discussion", "comments", "custom-items"].includes(String(q.queryKey[0])) }); return item; });
     return result;
   };
   const input = { title: title.trim(), description: description.trim() || null, categoryId, visibility };

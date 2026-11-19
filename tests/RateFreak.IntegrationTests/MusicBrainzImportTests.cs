@@ -118,8 +118,10 @@ public sealed class MusicBrainzImportTests(AccountDatabase database) : IClassFix
     [Fact]
     public async Task Downgrade_with_albums_is_refused_without_changing_history_or_records()
     {
-        using var transport=new Transport();await using var factory=Factory(transport);using var client=Client(factory);await SignIn(client);
-        var imported=await Json(await Import(client,Guid.NewGuid().ToString("D")),HttpStatusCode.Created);var id=imported.GetProperty("mediaId").GetGuid();await using var db=Db();
+        // Downgrade proof needs its own schema: other import tests retain list memberships.
+        await using var postgres=new Testcontainers.PostgreSql.PostgreSqlBuilder("postgres:17").Build();await postgres.StartAsync(Ct);
+        await using var db=new RateFreakDbContext(new DbContextOptionsBuilder<RateFreakDbContext>().UseNpgsql(postgres.GetConnectionString()).Options);
+        await db.Database.MigrateAsync(Ct);var album=new RateFreak.Domain.Catalog.MediaItem("album","Retained album");db.Add(album);await db.SaveChangesAsync(Ct);var id=album.Id;
         // Pin this regression to the album migration. EF commits later migration
         // downgrades separately before reaching the guarded album downgrade.
         await db.GetService<IMigrator>().MigrateAsync("20261030164447_AddAlbums", Ct);

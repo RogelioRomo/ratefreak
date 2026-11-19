@@ -60,3 +60,9 @@ it("reloads a conflicting saved revision while preserving edited fields", async 
   const writes = fetchMock.mock.calls.filter(([, init]) => init?.method === "PATCH");
   expect(JSON.parse(String(writes[1][1]?.body))).toMatchObject({ expectedRevision: 2, title: "My retained correction" });
 });
+it('clears cached feed pages after making a catalog item private',async()=>{
+ fetchMock.mockImplementation(async(url,init)=>String(url).includes('csrf')?Response.json({requestToken:'csrf'}):String(url).includes('/categories')?Response.json({items:[saved.category],page:1,pageSize:20,totalCount:1}):init?.method==='POST'?Response.json({...saved,revision:2}):Response.json(saved));
+ const client=new QueryClient({defaultOptions:{queries:{retry:false}}});const feedKey=['feeds',id,'community','',null];client.setQueryData(feedKey,{items:[{private:'old public entry'}]});
+ render(<QueryClientProvider client={client}><SessionContext.Provider value={{account:{id,handle:'gardener',displayName:'Gardener',email:'a@example.test',createdAt:'2026-01-01'},isLoading:false,isTransitioning:false,error:null,refresh:vi.fn(),runExclusive:fn=>fn(),changeIdentity:vi.fn()}}><ItemEditor initial={{...saved,visibility:'public'}} viewer={id} active/></SessionContext.Provider></QueryClientProvider>);
+ fireEvent.click(screen.getByRole('button',{name:'Make private'}));await waitFor(()=>expect(client.getQueryData(feedKey)).toBeUndefined());
+});
