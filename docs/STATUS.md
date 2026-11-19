@@ -1,8 +1,8 @@
 # Current project status and roadmap
 
 Updated: 2026-11-19. Custom uploaded profile avatars with a person-icon fallback
-are implemented and verified on `feat/profile-avatars`; integration into `main`
-remains separate. Avatar images/stages/leases use the dedicated `avatars/` folder
+are implemented, verified and merged locally into `main` at `019cd10`. Avatar
+images/stages/leases use the dedicated `avatars/` folder
 inside the configured artwork root. The additive migration
 `20261119165037_AddProfileAvatars` is prepared and verified on disposable databases;
 it has **not** been applied to the persistent local database. Full backend and
@@ -94,9 +94,9 @@ are evidence references, not durable deployment artifacts or guaranteed running 
   filesystem folder. Writes bind to expected account/revision with CSRF; checked
   URLs respect current visibility, replacement/removal and retained staff inspection
   scope. Profile hiding covers avatar/name/bio together. Account export, deletion,
-  bounded cleanup and mixed-folder backup/restore/replay are verified. Implemented
-  on `feat/profile-avatars`; persistent migration and main integration remain
-  separate. [Evidence](profile-avatars-verification.md), [ADR 0021](adr/0021-profile-avatars.md).
+  bounded cleanup and mixed-folder backup/restore/replay are verified. Merged
+  locally into `main` at `019cd10`; persistent migration remains separate.
+  [Evidence](profile-avatars-verification.md), [ADR 0021](adr/0021-profile-avatars.md).
 
 - Signed-in Home Following/Community feeds with public reviews and explicitly
   shared ratings, media filters, bounded cursor pages, spoilers and existing
@@ -264,12 +264,12 @@ Further features remain separate scope decisions:
 - [ ] Optional collection discussions.
 - [ ] Account suspensions and appeals.
 - [x] Custom uploaded profile avatars with a fallback and dedicated `avatars/`
-  folder, implemented and verified on `feat/profile-avatars` (2026-11-19).
+  folder, implemented, verified and merged locally into `main` (2026-11-19).
   [Design](superpowers/specs/2026-11-19-profile-avatars-design.md),
   [implementation plan](superpowers/plans/2026-11-19-profile-avatars.md) and
-  [verification](profile-avatars-verification.md). Main integration and persistent
-  migration remain separate. Social links and other profile expansion are outside
-  this feature's scope.
+  [verification](profile-avatars-verification.md). Persistent migration remains
+  separate. Social links and other profile expansion are outside this feature's
+  scope.
 - [ ] Persistent metadata-provider activation and any additional live import
   acceptance desired for the target environment. Automated import tests and earlier
   provider-specific local evidence already exist; do not treat all live imports as untested.

@@ -1,6 +1,7 @@
 # Profile avatar verification
 
-Date: 2026-11-19. Implementation branch: `feat/profile-avatars`.
+Date: 2026-11-19. Implemented on `feat/profile-avatars`; fast-forwarded locally
+into `main` at `019cd10` after the user selected local integration.
 
 ## Behavior
 
@@ -141,3 +142,14 @@ arbitrary concurrent OS-level path replacement is race-proof.
 No minor review findings remain deferred. Deployment/publication, production
 provider callbacks and migration of the persistent local database are outside
 this verification.
+
+## Local integration
+
+On 2026-11-19 the user selected local merge. `main` fast-forwarded from `d83ee79`
+to `019cd10`, preserving the exact reviewed implementation tree. The merged
+revision passed its fresh full suites: 32 unit, 460 PostgreSQL/API integration,
+196 provider contracts (zero backend skips), 841 frontend and 36 operator tests.
+The merged feature branch was then removed. No database migration or push is
+included. A pre-merge `git pull --ff-only` could
+not authenticate to GitHub over SSH, so the operation integrates the existing
+local base without claiming remote freshness.

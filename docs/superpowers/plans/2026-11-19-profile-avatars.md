@@ -119,8 +119,9 @@
 
 All five tasks are implemented and verified. Task commits were combined after
 integrated proof; see the execution rulings and
-[final verification](../../profile-avatars-verification.md). Persistent migration,
-merge, push and publication are separate operations.
+[final verification](../../profile-avatars-verification.md). The user subsequently
+selected local integration, and `main` fast-forwarded to `019cd10` on 2026-11-19.
+Persistent migration, push and publication remain separate operations.
 
 ## Execution rulings after independent review
 
