@@ -1,8 +1,8 @@
 # Current project status and roadmap
 
 Updated: 2026-11-18. Home-page Following/Community feeds, explicit per-rating
-sharing and notification bell/count are implemented and verified locally on
-`feat/home-feeds`; see [feed evidence](home-feeds-verification.md). The additive
+sharing and notification bell/count are implemented, verified locally and merged
+into `main`; see [feed evidence](home-feeds-verification.md). The additive
 sharing migration is not applied to the persistent local database.
 Application-native source packaging and modified-library
 replacement are verified; scroll-bar license provenance is documented through

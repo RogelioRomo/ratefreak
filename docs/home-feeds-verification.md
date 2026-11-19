@@ -108,3 +108,16 @@ upgrade preserves an old rating's ID, score and original timestamps while settin
 false/null sharing state. It is not applied to the persistent local database.
 Disposable browser services/database were removed after acceptance. No existing
 running instance, production deployment or release artifact has been updated. Provider agreements and self-hosted release gates remain open.
+
+
+## Local integration
+
+The user selected local merge on 2026-11-18. `main` was fast-forwarded from
+`3fc0127` to feature tip `d7bf8c8`. Verification on the merged checkout passed
+`pnpm --dir web test` (830 tests) and a complete single invocation of
+`dotnet test RateFreak.sln` (27 unit, 456 PostgreSQL/API integration and 196
+provider-contract tests; zero skips). This post-merge full run supplements the
+partitioned feature-branch proof above. Original untracked planning documents
+and selected local evidence were preserved under `.local/home-feeds-merge/`.
+The temporary feature worktree/local branch were cleaned up after verification.
+No remote push, persistent-database migration or application restart was performed.
