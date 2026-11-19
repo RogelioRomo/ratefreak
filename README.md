@@ -1413,5 +1413,8 @@ label retains the exact count. Desktop/mobile navigation share the existing one
 count poller; the inbox behavior is unchanged.
 
 Migration `20261119013555_AddRatingSharingAndFeedIndexes` is additive and tested
-on disposable databases. It has not been applied to the persistent local database.
-See [feed verification and limitations](docs/home-feeds-verification.md).
+on disposable databases. It was applied to the persistent local database on
+2026-11-18 after explicit authorization, validated private backup/restore and an
+isolated upgrade rehearsal. All original application data was preserved and
+existing ratings remain private. Other installations require their own reviewed
+upgrade. See [feed verification and limitations](docs/home-feeds-verification.md).

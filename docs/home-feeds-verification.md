@@ -105,7 +105,8 @@ not changes to account export or provider behavior.
 Migration `20261119013555_AddRatingSharingAndFeedIndexes` adds private-default
 sharing fields, a state/time consistency constraint and partial feed indexes. Its
 upgrade preserves an old rating's ID, score and original timestamps while setting
-false/null sharing state. It is not applied to the persistent local database.
+false/null sharing state. The user subsequently authorized its application to the
+persistent local database; see the local migration record below.
 Disposable browser services/database were removed after acceptance. No existing
 running instance, production deployment or release artifact has been updated. Provider agreements and self-hosted release gates remain open.
 
@@ -120,4 +121,33 @@ provider-contract tests; zero skips). This post-merge full run supplements the
 partitioned feature-branch proof above. Original untracked planning documents
 and selected local evidence were preserved under `.local/home-feeds-merge/`.
 The temporary feature worktree/local branch were cleaned up after verification.
-No remote push, persistent-database migration or application restart was performed.
+At merge time, no remote push, persistent-database migration or application
+restart was performed. The subsequent authorized schema upgrade is recorded below.
+
+
+## Authorized persistent local migration
+
+On 2026-11-18, the user explicitly requested application of
+`20261119013555_AddRatingSharingAndFeedIndexes`. The target was the existing
+loopback PostgreSQL `ratefreak` database in `ratefreak-postgres-1`, previously at
+`20261118195946_AddNotifications`. API port 5080 and frontend port 3000 were
+already stopped and no database clients were connected; no servers were started.
+
+A private mode-0600 custom-format backup was created, inspected and restored into
+an isolated database. All original table fingerprints matched. The upgrade was
+then rehearsed on that restore, preserving all 28 original application tables and
+every original rating field; the temporary database was removed. After SQL review,
+the same transaction-wrapped migration was applied to the persistent database.
+
+Post-upgrade original-column fingerprints/counts match for all 28 application
+tables; the existing rating is private with a null sharing timestamp. Both new
+partial indexes and the validated state/time constraint exist, and `is_shared`
+is non-null with false default. Migration history advanced by exactly one entry.
+A repeat application changed no original data. Database and optional artwork
+backups are private local artifacts, excluded from Git, and follow the existing
+maximum-30-day retention policy.
+
+Private operational evidence: `.local/localhost/rating-sharing-migration/verification.json`.
+The backup and restore/rehearsal logs reside alongside it. This is verified local
+schema application, not live authenticated/browser acceptance on a running
+persistent installation or production release clearance.
