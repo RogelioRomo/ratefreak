@@ -1,6 +1,6 @@
 namespace RateFreak.Application.Social;
 
-public sealed record NotificationActor(Guid Id, string Handle, string DisplayName);
+public sealed record NotificationActor(Guid Id, string Handle, string DisplayName, string? AvatarUrl = null);
 public sealed record NotificationDetails(Guid Id, string Kind, NotificationActor Actor, Guid? CommentId,
     Guid? ReviewId, Guid? MediaItemId, DateTimeOffset CreatedAt, DateTimeOffset? ReadAt);
 public sealed record NotificationPage(IReadOnlyList<NotificationDetails> Items, int Page, int PageSize, int TotalCount, int UnreadCount);

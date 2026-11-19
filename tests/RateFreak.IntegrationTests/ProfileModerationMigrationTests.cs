@@ -25,7 +25,7 @@ public sealed class ProfileModerationMigrationTests
         var stored = await db.Users.AsNoTracking().SingleAsync(ct); Assert.Equal("Kept name", stored.DisplayName); Assert.Equal("Kept bio", stored.Bio); Assert.False(stored.IsProfileHidden); Assert.True(stored.ProfileUpdatedAt > DateTimeOffset.UnixEpoch);
         await db.Users.ExecuteUpdateAsync(s => s.SetProperty(u => u.IsProfileHidden, true), ct);
         await Assert.ThrowsAsync<PostgresException>(() => migrator.MigrateAsync(prior, ct));
-        Assert.True((await db.Users.AsNoTracking().SingleAsync(ct)).IsProfileHidden);
+        Assert.True(await db.Users.AsNoTracking().Select(u => u.IsProfileHidden).SingleAsync(ct));
         await db.Users.ExecuteUpdateAsync(s => s.SetProperty(u => u.IsProfileHidden, false), ct);
         var report = new ContentReport { TargetType = "profile", TargetId = user.Id, ProfileId = user.Id, OriginalReporterId = Guid.NewGuid(), OriginalAuthorId = user.Id, Reason = "spam" };
         db.Add(report); await db.SaveChangesAsync(ct);

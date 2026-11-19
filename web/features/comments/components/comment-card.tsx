@@ -1,4 +1,5 @@
 "use client";
+import { Avatar } from "@/features/profiles/components/avatar";
 import Link from "next/link";
 import { ReportControl } from "@/features/reporting/components/report-control";
 import { useState } from "react";
@@ -21,7 +22,7 @@ export function CommentCard({ comment, enabled = true, onDeleted }: CommentCardP
  const owned = cached?.id.toLowerCase() === comment.author.id.toLowerCase();
  const available = enabled && owned && session.account?.id === cached?.id && !session.error && !session.isTransitioning;
  return <article className={styles.comment}>
-  <header><h3><Link href={`/users/${comment.author.handle}`}>{comment.author.displayName}</Link></h3><p className={styles.meta}>@{comment.author.handle} · <time dateTime={comment.createdAt}>{comment.createdAt.slice(0, 10)}</time>{comment.updatedAt !== comment.createdAt && " · Edited"}</p></header>
+  <header><h3><Avatar reference={comment.author.avatarUrl} /><Link href={`/users/${comment.author.handle}`}>{comment.author.displayName}</Link></h3><p className={styles.meta}>@{comment.author.handle} · <time dateTime={comment.createdAt}>{comment.createdAt.slice(0, 10)}</time>{comment.updatedAt !== comment.createdAt && " · Edited"}</p></header>
   {comment.isSpoiler && <Button variant="secondary" aria-expanded={revealed} onClick={() => setRevealed(!revealed)}>{revealed ? "Hide comment spoilers" : "Show comment spoilers"}</Button>}
   {(!comment.isSpoiler || revealed) && <p className={styles.body}>{comment.body}</p>}
   <ReportControl target={{type:"comment",id:comment.id,authorId:comment.author.id}} available={enabled}/>

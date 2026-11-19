@@ -31,7 +31,11 @@ function Editor({ account, available }: ProfileEditorProps) {
     const result = await write.run(signal => saveProfile({ displayName: String(data.get("displayName")).trim(), bio: String(data.get("bio")).trim() || null }, signal));
     if (result) {
       setUncertain(false);
-      write.client.setQueryData(sessionQueryKey, result.value);
+      write.client.setQueryData<AccountProfile | null>(sessionQueryKey, current => {
+        if (current?.id !== account.id) return current;
+        return (current.avatarRevision ?? 0) > (result.value.avatarRevision ?? 0)
+          ? { ...result.value, avatarUrl: current.avatarUrl, avatarRevision: current.avatarRevision } : result.value;
+      });
       void write.client.invalidateQueries({ queryKey: ["public-profile"] });
       void write.client.invalidateQueries({ queryKey: ["connections"] });
       void write.client.invalidateQueries({ queryKey: ["comments"] });

@@ -3,7 +3,7 @@ using RateFreak.Domain.PersonalMedia;
 
 namespace RateFreak.Application.Identity;
 
-public sealed record PublicProfile(Guid Id, string Handle, string DisplayName, string? Bio, DateTimeOffset CreatedAt, bool ProfileTextHidden = false);
+public sealed record PublicProfile(Guid Id, string Handle, string DisplayName, string? Bio, DateTimeOffset CreatedAt, bool ProfileTextHidden = false, string? AvatarUrl = null);
 
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
 public sealed class UpdateProfileRequest

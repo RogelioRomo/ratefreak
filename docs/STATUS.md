@@ -1,6 +1,18 @@
 # Current project status and roadmap
 
-Updated: 2026-11-18. Home-page Following/Community feeds, explicit per-rating
+Updated: 2026-11-19. Custom uploaded profile avatars with a person-icon fallback
+are implemented and verified on `feat/profile-avatars`; integration into `main`
+remains separate. Avatar images/stages/leases use the dedicated `avatars/` folder
+inside the configured artwork root. The additive migration
+`20261119165037_AddProfileAvatars` is prepared and verified on disposable databases;
+it has **not** been applied to the persistent local database. Full backend and
+frontend checks, production builds, real HTTPS ordinary/staff Chromium acceptance,
+and real mixed-folder backup/isolated restore/Release erasure replay passed;
+see [avatar evidence](profile-avatars-verification.md). Disposable acceptance
+services/database are stopped after verification. Existing local API/frontend
+servers remain stopped.
+
+Home-page Following/Community feeds, explicit per-rating
 sharing and notification bell/count are implemented, verified locally and merged
 into `main`; see [feed evidence](home-feeds-verification.md). The additive sharing
 migration `20261119013555_AddRatingSharingAndFeedIndexes` is applied to the
@@ -77,6 +89,15 @@ are evidence references, not durable deployment artifacts or guaranteed running 
 
 ## Implemented
 
+- Custom uploaded profile avatars with a person-icon fallback, independent
+  upload/replace/remove controls, public identity display and a separate `avatars/`
+  filesystem folder. Writes bind to expected account/revision with CSRF; checked
+  URLs respect current visibility, replacement/removal and retained staff inspection
+  scope. Profile hiding covers avatar/name/bio together. Account export, deletion,
+  bounded cleanup and mixed-folder backup/restore/replay are verified. Implemented
+  on `feat/profile-avatars`; persistent migration and main integration remain
+  separate. [Evidence](profile-avatars-verification.md), [ADR 0021](adr/0021-profile-avatars.md).
+
 - Signed-in Home Following/Community feeds with public reviews and explicitly
   shared ratings, media filters, bounded cursor pages, spoilers and existing
   review/report links. Ratings are private by default, including existing rows;
@@ -145,8 +166,8 @@ Current decisions:
   Saved codes and already-linked providers handle recovery ([ADR 0014](adr/0014-account-recovery.md)).
 - Dynamic collection fields and free-standing collection entries are retired.
   Custom subjects are catalog items that lists reference ([ADR 0016](adr/0016-custom-catalog-and-list-collections.md)).
-- Profile moderation reversibly hides both display name and bio, keeps the account
-  usable, uses the existing lifetime report-deduplication rule, and stores no text
+- Profile moderation reversibly hides avatar, display name and bio together
+  ([ADR 0021](adr/0021-profile-avatars.md)), keeps the account usable, uses the existing lifetime report-deduplication rule, and stores no text
   snapshots ([ADR 0018](adr/0018-profile-text-moderation.md)).
 - Staff permissions follow current database roles and existing report-scoped
   inspection. Operator identity requires protected named host/deployment records;
@@ -162,6 +183,7 @@ Current decisions:
 
 | Check | Latest recorded result |
 | --- | --- |
+| Profile avatars, 2026-11-19 | 32 unit, 460 PostgreSQL/API integration and 196 provider contracts passed; zero backend skips. 841 frontend and 36 operator tests passed; lint/typecheck, final production build/API Release publish and model consistency passed. Chromium ordinary/staff upload/replace/remove, visibility, current-version restore, export/deletion, keyboard, both themes and responsive widths passed; final confirmation used local Production HTTPS. Real mixed-folder PostgreSQL/artwork backup, isolated restore and Release erasure replay preserved public catalog bytes and erased the account avatar. Independent review findings addressed with regression proof. Persistent database unchanged; [scope and limits](profile-avatars-verification.md) |
 | Home feeds/rating sharing, 2026-11-18 | 830 frontend, 27 unit, 456 PostgreSQL/API integration and 196 provider contracts passed; zero backend skips. Integration proof used complementary partitions plus the final budget/OpenAPI case. Lint/typecheck, final production build, API Release publish and model consistency passed. Real Chromium ordinary-account sharing/unsharing, 24-entry paging/Back, both tabs, media filtering, failed-refresh concealment, logout and notification bell/count passed. Both themes at 1440/768/390/320px had no overflow/runtime errors. All independent review findings addressed with regression proof. Query plans with 10,000 additional reviews were inspected; no production-scale load claim. Disposable services/database removed; persistent local database unchanged. [Evidence and limits](home-feeds-verification.md) |
 | In-app notifications, 2026-11-18 | 27 unit, 446 PostgreSQL/API integration, 196 provider contracts and 808 frontend tests passed; zero backend skips. Lint/typecheck and production build passed. Two-account real Chromium/API/Next/disposable database acceptance passed, including deletion/clear, later-arrival preservation in PostgreSQL, delayed navigation mark-read and cross-tab concealment. Both themes at 1440/768/390/320px had no overflow/runtime errors. Temporary services/database removed; the persistent database migration was subsequently applied with backup/restore validation and unchanged fingerprints for all 27 original application tables. [evidence and limits](notifications-verification.md) |
 | Books and shared provider caches, 2026-11-17 | 27 unit, 431 PostgreSQL/API integration and 196 provider contracts passed; 775 frontend tests, lint/typecheck, patched Next.js 16.4.6 production build/API Release publish, 32 operator and 18 compliance tests passed. The final non-root/read-only web candidate demonstrated MISS/HIT, six-request coalescing, cache retention across recreation and warm/stale outage behavior. Reference Caddy denied direct source paths while optimized covers worked. Independent-review resource-bound findings were reproduced and corrected. Real Open Library work/search/cover shapes and Chromium API-fixture desktop/mobile journeys in both themes were checked; see [scope and limits](books-and-provider-cache-verification.md) |
@@ -241,10 +263,19 @@ Further features remain separate scope decisions:
   applied; local API/frontend startup remains separate.
 - [ ] Optional collection discussions.
 - [ ] Account suspensions and appeals.
-- [ ] Optional avatars/social links and other profile expansion.
+- [x] Custom uploaded profile avatars with a fallback and dedicated `avatars/`
+  folder, implemented and verified on `feat/profile-avatars` (2026-11-19).
+  [Design](superpowers/specs/2026-11-19-profile-avatars-design.md),
+  [implementation plan](superpowers/plans/2026-11-19-profile-avatars.md) and
+  [verification](profile-avatars-verification.md). Main integration and persistent
+  migration remain separate. Social links and other profile expansion are outside
+  this feature's scope.
 - [ ] Persistent metadata-provider activation and any additional live import
   acceptance desired for the target environment. Automated import tests and earlier
   provider-specific local evidence already exist; do not treat all live imports as untested.
+
+First-use/onboarding work was explicitly declined on 2026-11-19 and is not a
+planned product priority.
 
 ## Self-hosted release readiness
 

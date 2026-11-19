@@ -1418,3 +1418,30 @@ on disposable databases. It was applied to the persistent local database on
 isolated upgrade rehearsal. All original application data was preserved and
 existing ratings remain private. Other installations require their own reviewed
 upgrade. See [feed verification and limitations](docs/home-feeds-verification.md).
+
+## Profile avatars
+
+Account → Profile supports custom static JPEG/PNG/WebP images up to 5 MiB,
+replacement/removal and a default person icon. The server corrects orientation,
+center-crops to a square and stores a WebP no larger than 512 pixels per side.
+Avatars appear with public identities and follow profile moderation. No social
+links or external image-hosting service are added.
+
+Configure the existing `Artwork__Enabled` and `Artwork__RootPath` settings. Avatar
+files live in a dedicated `avatars/` subdirectory of that root, separate from
+existing catalog files, with checked API access rather than static serving. Apply
+`20261119165037_AddProfileAvatars` through the reviewed migration process first.
+See [storage/recovery](docs/self-hosting.md#profile-avatar-storage) and
+[verification](docs/profile-avatars-verification.md).
+
+PUT `/api/v1/users/me/avatar` accepts multipart `expectedRevision` (initially 0)
+and one `file`; DELETE accepts JSON `{ "expectedRevision": 0 }`. Both require
+CSRF and `X-RateFreak-Account-Id` matching the signed-in account, preventing a stale
+editor from writing through a different account's cookie. Responses are
+`{ avatarUrl, revision }`; stale revision/account mismatches return 409. The
+current account DTO also supplies `avatarUrl` and `avatarRevision`. Public identity
+DTOs expose nullable `avatarUrl`, omitted in effect as null for hidden profiles.
+Owner images use `/api/v1/users/me/avatar/{assetId}`; public images use
+`/api/v1/users/{userId}/avatar/{assetId}`. Staff inspection uses checked profile
+report or direct-hide scope. Old asset URLs stop serving after replacement/removal;
+application caching is disabled, but downloaded copies cannot be revoked.

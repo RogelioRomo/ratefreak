@@ -48,7 +48,7 @@ public sealed partial class UserProfileTests(AccountDatabase database) : IClassF
         {
             var response = await anonymous.GetAsync(route, Ct); var profile = await Json(response);
             Assert.True(response.Headers.CacheControl?.NoStore);
-            Assert.Equal(new[] { "bio", "createdAt", "displayName", "handle", "id", "profileTextHidden" }, profile.EnumerateObject().Select(x => x.Name).Order().ToArray());
+            Assert.Equal(new[] { "avatarUrl", "bio", "createdAt", "displayName", "handle", "id", "profileTextHidden" }, profile.EnumerateObject().Select(x => x.Name).Order().ToArray());
             Assert.False(profile.GetProperty("profileTextHidden").GetBoolean());
             Assert.Equal(id, profile.GetProperty("id").GetGuid()); Assert.Equal(handle, profile.GetProperty("handle").GetString());
             Assert.Equal("Reader", profile.GetProperty("displayName").GetString()); Assert.Equal(JsonValueKind.Null, profile.GetProperty("bio").ValueKind);

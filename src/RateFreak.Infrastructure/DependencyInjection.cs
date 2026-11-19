@@ -72,6 +72,10 @@ public static class DependencyInjection
         services.AddSingleton<IArtworkStorage, RateFreak.Infrastructure.Artwork.FileArtworkStorage>();
         services.AddSingleton<IArtworkDecoder, RateFreak.Infrastructure.Artwork.ArtworkDecoder>();
         services.AddScoped<IArtworkService, RateFreak.Infrastructure.Artwork.ArtworkService>();
+        services.AddSingleton<RateFreak.Infrastructure.Artwork.FileAvatarStorage>();
+        services.AddSingleton<RateFreak.Infrastructure.Artwork.AvatarCleanupService>();
+        services.AddHostedService(sp => sp.GetRequiredService<RateFreak.Infrastructure.Artwork.AvatarCleanupService>());
+        services.AddScoped<IAvatarService, RateFreak.Infrastructure.Artwork.AvatarService>();
         services.AddScoped<ICatalogQueries, CatalogQueries>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<ICatalogItemCommands, CatalogItemCommands>();

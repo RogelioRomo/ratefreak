@@ -1190,6 +1190,18 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("access_failed_count");
 
+                    b.Property<Guid?>("AvatarId")
+                        .IsConcurrencyToken()
+                        .HasColumnType("uuid")
+                        .HasColumnName("avatar_id");
+
+                    b.Property<long>("AvatarRevision")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasDefaultValue(0L)
+                        .HasColumnName("avatar_revision");
+
                     b.Property<string>("Bio")
                         .IsConcurrencyToken()
                         .HasMaxLength(500)
@@ -1301,6 +1313,48 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         {
                             t.HasCheckConstraint("ck_users_bio", "bio IS NULL OR (length(btrim(bio, ' ' || chr(9) || chr(10) || chr(13))) > 0 AND length(bio) <= 500)");
                         });
+                });
+
+            modelBuilder.Entity("RateFreak.Infrastructure.Authentication.AvatarAsset", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.Property<Guid>("AssetId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("asset_id");
+
+                    b.Property<long>("ByteLength")
+                        .HasColumnType("bigint")
+                        .HasColumnName("byte_length");
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("character varying(32)")
+                        .HasColumnName("content_type");
+
+                    b.Property<int>("Height")
+                        .HasColumnType("integer")
+                        .HasColumnName("height");
+
+                    b.Property<string>("StorageKey")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)")
+                        .HasColumnName("storage_key");
+
+                    b.Property<int>("Width")
+                        .HasColumnType("integer")
+                        .HasColumnName("width");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("AssetId")
+                        .IsUnique();
+
+                    b.ToTable("avatar_assets", (string)null);
                 });
 
             modelBuilder.Entity("RateFreak.Infrastructure.Authentication.ExternalAuthenticationChallenge", b =>
@@ -1640,6 +1694,15 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                     b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
                         .WithOne()
                         .HasForeignKey("RateFreak.Infrastructure.Authentication.AccountRecoveryState", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RateFreak.Infrastructure.Authentication.AvatarAsset", b =>
+                {
+                    b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
+                        .WithOne()
+                        .HasForeignKey("RateFreak.Infrastructure.Authentication.AvatarAsset", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

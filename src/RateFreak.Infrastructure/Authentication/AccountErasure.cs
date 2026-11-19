@@ -28,6 +28,7 @@ internal sealed partial class AccountDataService
     {
         var privateIds = db.MediaItems.Where(m => m.CreatorUserId == id && m.Visibility == "private").Select(m => m.Id);
         var keys = await db.Set<ArtworkAsset>().Where(a => privateIds.Contains(a.ItemId)).Select(a => a.StorageKey).ToListAsync(ct);
+        keys.AddRange(await db.Set<AvatarAsset>().Where(a => a.UserId == id).Select(a => "avatars/" + a.StorageKey).ToListAsync(ct));
         // Remove dependent references, including those created by others while the item was public.
         await db.CollectionItems.Where(x => privateIds.Contains(x.MediaItemId)).ExecuteDeleteAsync(ct);
         await db.LibraryEntries.Where(x => privateIds.Contains(x.MediaItemId)).ExecuteDeleteAsync(ct);
@@ -59,7 +60,15 @@ internal sealed partial class AccountDataService
     {
         foreach (var key in keys)
         {
-            try { if (!await db.Set<ArtworkAsset>().AnyAsync(a => a.StorageKey == key)) await artwork.DeleteAsync(key, CancellationToken.None); }
+            try
+            {
+                if (key.StartsWith("avatars/", StringComparison.Ordinal))
+                {
+                    var leaf = key[8..];
+                    if (!await db.Set<AvatarAsset>().AnyAsync(a => a.StorageKey == leaf)) await avatarStorage.DeleteAsync(leaf, CancellationToken.None);
+                }
+                else if (!await db.Set<ArtworkAsset>().AnyAsync(a => a.StorageKey == key)) await artwork.DeleteAsync(key, CancellationToken.None);
+            }
             catch (Exception) { logger.LogWarning("Private artwork cleanup will be retried by the orphan sweeper."); }
         }
     }

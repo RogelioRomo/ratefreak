@@ -22,11 +22,21 @@ def digest(path):
         for block in iter(lambda:stream.read(1024*1024),b''):value.update(block)
     return value.hexdigest()
 
-def validate_archive(path):
+def avatar_leaf(name):
+    stem,extension=os.path.splitext(name)
+    return extension in ('.webp','.stage','.lease') and len(stem)==32 and all(c in '0123456789abcdef' for c in stem)
+
+def allowed_member(name,allow_avatars):
+    if name in ('','.','..') or '\\' in name or (allow_avatars and name=='avatars'):return False
+    if Path(name).name==name:return True
+    parts=name.split('/')
+    return allow_avatars and len(parts)==2 and parts[0]=='avatars' and avatar_leaf(parts[1])
+
+def validate_archive(path,allow_avatars=False):
     with tarfile.open(path,'r') as archive:
         seen=set()
         for member in archive:
-            if not member.isfile() or member.name in seen or member.name in ('','.','..') or Path(member.name).name!=member.name or '\\' in member.name:
+            if not member.isfile() or member.name in seen or not allowed_member(member.name,allow_avatars):
                 raise MaintenanceError('Backup archive contains unsafe or duplicate entries.')
             seen.add(member.name)
 
@@ -39,7 +49,7 @@ def validate_backup(root,images):
     for name,expected in data['files'].items():
         path=root/name
         if path.is_symlink() or not path.is_file() or digest(path)!=expected:raise MaintenanceError('Backup payload hash mismatch.')
-    for name in ['artwork.tar','keys.tar']:validate_archive(root/name)
+    for name in ['artwork.tar','keys.tar']:validate_archive(root/name,allow_avatars=name=='artwork.tar')
     return data
 
 def pg_environment(migrating=False):
@@ -57,18 +67,30 @@ def pg_run(command,migrating=False,**kwargs):
 def query(sql,migrating=False):
     return pg_run(['psql','-X','-A','-t','-v','ON_ERROR_STOP=1'],migrating,input=sql.encode(),stdout=subprocess.PIPE).stdout.decode().strip()
 
-def archive_directory(source,target):
-    with tarfile.open(target,'x') as archive:
+def archive_directory(source,target,allow_avatars=False):
+    with tarfile.open(target,'x',dereference=True) as archive:
         for path in sorted(source.iterdir()):
-            if path.is_symlink() or not path.is_file():raise MaintenanceError('Unexpected entry in private storage; backup refused.')
-            archive.add(path,arcname=path.name,recursive=False)
+            if allow_avatars and path.name=='avatars' and not path.is_symlink() and path.is_dir():
+                for image in sorted(path.iterdir()):
+                    if image.is_symlink() or not image.is_file() or not avatar_leaf(image.name):raise MaintenanceError('Unexpected avatar storage entry; backup refused.')
+                    archive.add(image,arcname='avatars/'+image.name,recursive=False)
+            else:
+                if path.is_symlink() or not path.is_file():raise MaintenanceError('Unexpected entry in private storage; backup refused.')
+                archive.add(path,arcname=path.name,recursive=False)
+    validate_archive(target,allow_avatars=allow_avatars)
     target.chmod(0o600)
     with target.open('rb') as durable:os.fsync(durable.fileno())
 
 def verify_artwork(root):
-    for key in query('SELECT storage_key FROM artwork_assets;').splitlines():
-        path=root/key
-        if Path(key).name!=key or path.is_symlink() or not path.is_file():raise MaintenanceError('Referenced artwork is missing or unsafe.')
+    def verify(key,avatar):
+        if Path(key).name!=key or key in ('','.','..') or '\\' in key or (avatar and not (avatar_leaf(key) and key.endswith('.webp'))):
+            raise MaintenanceError('Referenced artwork key is unsafe.')
+        path=(root/'avatars'/key) if avatar else (root/key)
+        if root.is_symlink() or path.parent.is_symlink() or path.is_symlink() or not path.is_file():raise MaintenanceError('Referenced artwork is missing or unsafe.')
+    for key in query('SELECT storage_key FROM artwork_assets;').splitlines():verify(key,False)
+    # A backup before the additive upgrade still has no avatar table.
+    if query("SELECT to_regclass('public.avatar_assets') IS NOT NULL;")=='t':
+        for key in query('SELECT storage_key FROM avatar_assets;').splitlines():verify(key,True)
 
 def backup():
     root=Path('/backup')
@@ -79,7 +101,7 @@ def backup():
         pg_run(['pg_dump','--format=custom','--no-owner','--no-privileges'],stdout=output)
         output.flush();os.fsync(output.fileno())
     pg_run(['pg_restore','--list',str(root/'database.dump')],stdout=subprocess.DEVNULL)
-    archive_directory(Path('/data/artwork'),root/'artwork.tar')
+    archive_directory(Path('/data/artwork'),root/'artwork.tar',allow_avatars=True)
     archive_directory(Path('/data/keys'),root/'keys.tar')
     manifest={'format':2,'images':json.loads(os.environ['RATEFREAK_RELEASE_IMAGES']),'createdAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),
               'schema':query('SELECT "MigrationId" FROM "__EFMigrationsHistory" ORDER BY "MigrationId";').splitlines(),
@@ -90,12 +112,17 @@ def backup():
     fsync_directory(root)
     print('Coordinated database/artwork/key-recovery backup complete; journal excluded. Enforce private encrypted storage and 30-day expiration.')
 
-def extract_flat(source,destination):
+def extract_flat(source,destination,allow_avatars=False):
     if any(destination.iterdir()):raise MaintenanceError('Restore storage must be empty.')
-    validate_archive(source)
+    validate_archive(source,allow_avatars=allow_avatars)
     with tarfile.open(source,'r') as archive:
         for member in archive:
             target=destination/member.name
+            if '/' in member.name:
+                folder=destination/'avatars'
+                if not folder.exists():
+                    folder.mkdir(mode=0o700);os.chown(folder,UID,GID)
+                if folder.is_symlink() or not folder.is_dir():raise MaintenanceError('Unsafe avatar restore directory.')
             fd=os.open(target,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
             with os.fdopen(fd,'wb') as out,archive.extractfile(member) as incoming:
                 os.fchown(out.fileno(),UID,GID)
@@ -103,6 +130,7 @@ def extract_flat(source,destination):
                 out.flush();os.fsync(out.fileno())
             # Preserve age for bounded orphan cleanup without using unsafe archive metadata.
             os.utime(target,(member.mtime,member.mtime))
+    if (destination/'avatars').is_dir():fsync_directory(destination/'avatars')
     fsync_directory(destination)
 
 def restore():
@@ -124,7 +152,7 @@ def restore():
         out.flush();os.fsync(out.fileno())
     os.replace(staged,target);fsync_directory(target.parent)
     pg_run(['pg_restore','--exit-on-error','--no-owner','--no-privileges','--dbname',os.environ.get('RATEFREAK_DB_NAME','ratefreak'),str(root/'database.dump')],True,stdout=subprocess.DEVNULL)
-    extract_flat(root/'artwork.tar',Path('/data/artwork'));extract_flat(root/'keys.tar',Path('/data/keys'))
+    extract_flat(root/'artwork.tar',Path('/data/artwork'),allow_avatars=True);extract_flat(root/'keys.tar',Path('/data/keys'))
     print('Isolated snapshot restored. Traffic remains stopped until current-journal replay and verification succeed.')
 
 def verify_replay():

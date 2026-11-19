@@ -16,7 +16,7 @@ internal sealed class FollowService(RateFreakDbContext db) : IFollowService
         var query = from edge in edges
                     join user in db.Users.AsNoTracking() on (followers ? edge.FollowerId : edge.FolloweeId) equals user.Id
                     orderby edge.CreatedAt, user.Id
-                    select new FollowUser(user.Id, user.UserName!, user.IsProfileHidden ? user.UserName! : user.DisplayName, edge.CreatedAt);
+                    select new FollowUser(user.Id, user.UserName!, user.IsProfileHidden ? user.UserName! : user.DisplayName, edge.CreatedAt, user.IsProfileHidden || user.AvatarId == null ? null : "/api/v1/users/" + user.Id + "/avatar/" + user.AvatarId);
         return new(await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync(ct), count, page, pageSize);
     }
 

@@ -17,7 +17,9 @@ public sealed class RatingSharingMigrationTests
         await using var db=new RateFreakDbContext(new DbContextOptionsBuilder<RateFreakDbContext>().UseNpgsql(postgres.GetConnectionString()).Options);
         await db.GetService<IMigrator>().MigrateAsync("20261118195946_AddNotifications",ct);
         var user=new AccountUser{Id=Guid.NewGuid(),UserName="old_reader",NormalizedUserName="OLD_READER",Email="old@example.test",NormalizedEmail="OLD@EXAMPLE.TEST",DisplayName="Old Reader"};
-        var media=new MediaItem("book","Preserved opinion");db.Add(user);db.Add(media);await db.SaveChangesAsync(ct);
+        var media=new MediaItem("book","Preserved opinion");db.Add(media);await db.SaveChangesAsync(ct);
+        // Insert the historical shape explicitly: current EF user columns do not exist yet.
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO users (id,user_name,normalized_user_name,email,normalized_email,display_name,created_at,updated_at,email_confirmed,phone_number_confirmed,two_factor_enabled,lockout_enabled,access_failed_count) VALUES ({user.Id},{user.UserName},{user.NormalizedUserName},{user.Email},{user.NormalizedEmail},{user.DisplayName},{user.CreatedAt},{user.UpdatedAt},FALSE,FALSE,FALSE,FALSE,0)",ct);
         var id=Guid.NewGuid();var time=new DateTimeOffset(2026,1,1,0,0,0,TimeSpan.Zero);
         await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO ratings (id,user_id,media_item_id,score,created_at,updated_at) VALUES ({id},{user.Id},{media.Id},4.5,{time},{time})",ct);
         await db.Database.MigrateAsync(ct);Assert.False(db.Database.HasPendingModelChanges());

@@ -1,4 +1,5 @@
 import "server-only";
+import { isAvatarUpload, avatarRoute } from "./avatar-policy";
 import { feedRoute, feedQuery } from "./feed-policy";
 import { notificationList, validateNotificationBody } from "./notification-policy";
 import { exportStream, maxExportBytes } from "./export-stream";
@@ -33,7 +34,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   if (!["GET", "POST", "PUT", "PATCH", "DELETE"].includes(request.method)) return proxyProblem(405, "Method not allowed.");
   const incoming = new URL(request.url);
   const isExport = request.method === "POST" && path.join("/") === "users/me/data/export";
-  const artworkUpload = isArtworkUpload(request.method, path);
+  const artworkUpload = isArtworkUpload(request.method, path) || isAvatarUpload(request.method, path);
   let categoryParams: URLSearchParams | null = null;
   try { categoryParams = categoryQuery(request.method, path, incoming.searchParams); }
   catch { return proxyProblem(400, "Invalid category filters."); }
@@ -122,6 +123,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
       catch { return proxyProblem(400, "Notification commands require an empty object."); }
     }
     if (mutation) {
+      if (avatarRoute(request.method, path)) headers.set("X-RateFreak-Account-Id", request.headers.get("X-RateFreak-Account-Id") ?? "");
       headers.set("Content-Type", artworkUpload ? request.headers.get("Content-Type")! : "application/json");
       headers.set("X-CSRF-TOKEN", request.headers.get("X-CSRF-TOKEN")!);
     }

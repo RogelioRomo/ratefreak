@@ -52,7 +52,7 @@ public sealed class FollowTests(AccountDatabase database) : IClassFixture<Accoun
         Assert.Equal(1, list.GetProperty("totalCount").GetInt32());
         var row = list.GetProperty("items")[0];
         Assert.Equal(actorId, row.GetProperty("id").GetGuid());
-        Assert.Equal(new[] { "displayName", "followedAt", "handle", "id" }, row.EnumerateObject().Select(p => p.Name).Order().ToArray());
+        Assert.Equal(new[] { "avatarUrl", "displayName", "followedAt", "handle", "id" }, row.EnumerateObject().Select(p => p.Name).Order().ToArray());
         var time = row.GetProperty("followedAt").GetDateTimeOffset();
         Assert.Equal(0, (await target.GetFromJsonAsync<JsonElement>($"/api/v1/users/{targetId}/following", Ct)).GetProperty("totalCount").GetInt32());
         Assert.Equal(targetId, (await outsider.GetFromJsonAsync<JsonElement>($"/api/v1/users/{actorId}/following", Ct)).GetProperty("items")[0].GetProperty("id").GetGuid());

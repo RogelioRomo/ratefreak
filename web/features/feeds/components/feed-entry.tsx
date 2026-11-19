@@ -1,4 +1,5 @@
 'use client';
+import { Avatar } from "@/features/profiles/components/avatar";
 import Link from 'next/link';
 import { useState } from 'react';
 import { IconStar } from '@tabler/icons-react';
@@ -13,7 +14,7 @@ export function FeedEntryCard({entry}:{entry:FeedEntry}) {
   return <article className={styles.entry}>
     <Link className={styles.cover} href={`/catalog/${entry.media.id}`} tabIndex={-1} aria-hidden="true"><MediaArtwork reference={entry.media.imageReference} title={entry.media.title} type={entry.media.type} sizes="96px"/></Link>
     <div className={styles.content}>
-      <p className={styles.byline}><Link href={`/users/${entry.author.handle}`}>{entry.author.displayName}</Link><span>{review?'reviewed':'rated'}</span></p>
+      <p className={styles.byline}><Avatar reference={entry.author.avatarUrl} /><Link href={`/users/${entry.author.handle}`}>{entry.author.displayName}</Link><span>{review?'reviewed':'rated'}</span></p>
       <h2><Link href={`/catalog/${entry.media.id}`}>{entry.media.title}</Link></h2>
       <div className={styles.metadata}>{entry.score!==null && <span className={styles.score} aria-label={`${entry.score} out of 5 stars`}><IconStar size={16} aria-hidden="true"/>{entry.score.toFixed(1)}<span className={styles.outOf}> / 5</span></span>}<time dateTime={entry.publishedAt}>{new Date(entry.publishedAt).toLocaleDateString('en',{month:'short',day:'numeric',year:'numeric'})}</time></div>
       {review && <ReviewExcerpt key={`${review.id}:${review.excerpt}:${review.isSpoiler}`} excerpt={review.excerpt} spoiler={review.isSpoiler}/>}

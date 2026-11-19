@@ -37,14 +37,14 @@ internal sealed partial class AccountDataService
             await using var snapshot = await db.Database.BeginTransactionAsync(IsolationLevel.RepeatableRead, ct);
             // Database reads start only after catalog coordination; local artwork remains stable until archive is finished.
             var account = await db.Users.AsNoTracking().Where(u => u.Id == userId && u.SecurityStamp == stamp)
-                .Select(u => new { u.Id, Handle = u.UserName, u.DisplayName, u.Email, u.Bio, ProfileTextHidden = u.IsProfileHidden, u.CreatedAt, u.UpdatedAt }).SingleOrDefaultAsync(ct);
+                .Select(u => new { u.Id, Handle = u.UserName, u.DisplayName, u.Email, u.Bio, ProfileTextHidden = u.IsProfileHidden, u.CreatedAt, u.UpdatedAt, u.AvatarId, u.AvatarRevision }).SingleOrDefaultAsync(ct);
             if (account == null) throw new AccountDataException(401, "Your session has expired.");
             var readable = db.MediaItems.Where(CatalogAccess.Readable(userId));
             using (var zip = new ZipArchive(new ArchiveWriteStream(file, ArchiveLimit), ZipArchiveMode.Create, true))
             {
                 async Task Json(string name, object value) { await using var output = zip.CreateEntry(name, CompressionLevel.NoCompression).Open(); await JsonSerializer.SerializeAsync(output, value, value.GetType(), new JsonSerializerOptions(JsonSerializerDefaults.Web), ct); }
                 async Task Query<T>(string name, IQueryable<T> query) where T : class { await using var output = zip.CreateEntry(name, CompressionLevel.NoCompression).Open(); await JsonSerializer.SerializeAsync(output, query.AsNoTracking().AsAsyncEnumerable(), new JsonSerializerOptions(JsonSerializerDefaults.Web), ct); }
-                await Json("manifest.json", new { formatVersion = 1, exportedAt = DateTimeOffset.UtcNow, accountId = userId, artworkMapping = "artwork.json" }); await Json("account.json", account);
+                await Json("manifest.json", new { formatVersion = 1, exportedAt = DateTimeOffset.UtcNow, accountId = userId, artworkMapping = "artwork.json", avatarMapping = "avatar.json" }); await Json("account.json", account);
                 await Query("providers.json", db.UserLogins.Where(l => l.UserId == userId).Select(l => new { provider = l.LoginProvider }));
                 await Query("library.json", db.LibraryEntries.Where(x => x.UserId == userId).Select(x => new { x.Id, x.MediaItemId, Title = readable.Where(m => m.Id == x.MediaItemId).Select(m => m.Title).FirstOrDefault(), x.Status, x.StartedAt, x.CompletedAt, x.CreatedAt, x.UpdatedAt }));
                 await Query("ratings.json", db.Ratings.Where(x => x.UserId == userId).Select(x => new { x.Id, x.MediaItemId, Title = readable.Where(m => m.Id == x.MediaItemId).Select(m => m.Title).FirstOrDefault(), x.Score, x.CreatedAt, x.UpdatedAt, x.IsShared, x.SharedAt }));
@@ -65,6 +65,14 @@ internal sealed partial class AccountDataService
                 await Query("category-aliases.json", db.CategoryAliases.Where(a => db.Categories.Any(c => c.OwnerUserId == userId && (c.Id == a.SourceCategoryId || c.Id == a.TargetCategoryId))));
                 await Query("recovery-events.json", db.Set<AccountRecoveryEvent>().Where(e => e.UserId == userId).Select(e => new { e.Action, e.CreatedAt }));
                 await Query("reports.json", db.ContentReports.Where(r => r.ReporterId == userId).Select(r => new { r.Id, r.TargetId, r.TargetType, r.Reason, r.Details, r.Status, r.CreatedAt, r.ResolvedAt }));
+                var avatar = await db.Set<AvatarAsset>().AsNoTracking().SingleOrDefaultAsync(a => a.UserId == userId, ct);
+                await Json("avatar.json", avatar is null ? new object[] {} : new object[] { new { avatar.AssetId, path = "avatar/" + avatar.AssetId + ".webp", avatar.ContentType, avatar.Width, avatar.Height, avatar.ByteLength } });
+                if (avatar is not null)
+                {
+                    await using var source = await avatarStorage.OpenReadAsync(avatar.StorageKey, ct) ?? throw new AccountDataException(409, "A referenced avatar file is missing. Contact the operator before retrying export.");
+                    await using var target = zip.CreateEntry("avatar/" + avatar.AssetId + ".webp", CompressionLevel.NoCompression).Open();
+                    await source.CopyToAsync(target, ct);
+                }
                 var assets = db.Set<ArtworkAsset>().Where(a => db.MediaItems.Any(m => m.Id == a.ItemId && m.CreatorUserId == userId));
                 await Query("artwork.json", assets.Select(a => new { a.ItemId, a.AssetId, path = "artwork/" + a.AssetId.ToString() + ".webp", a.ContentType, a.Width, a.Height, a.ByteLength }));
                 await foreach (var asset in assets.AsNoTracking().AsAsyncEnumerable().WithCancellation(ct))

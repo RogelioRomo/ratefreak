@@ -1,4 +1,5 @@
 import "server-only";
+import { avatarRoute } from "./avatar-policy";
 import { feedRoute } from "./feed-policy";
 import { notificationRoute } from "./notification-policy";
 import { customCatalogRoute } from "./artwork-policy";
@@ -17,6 +18,7 @@ export function isAllowedRoute(method: string, path: readonly string[]): boolean
   if (path[0] === "setup") return (path.length === 1 && method === "POST") || (path.length === 2 && path[1] === "status" && method === "GET");
   if (path[0] === "users" && path.length === 2 && path[1] === "me" && method === "PATCH") return true;
   if (method === "GET" && path.length === 3 && path[0] === "users" && path[1] === "by-handle" && /^[a-z0-9_]{3,30}$/i.test(path[2])) return true;
+  if (avatarRoute(method,path)) return true;
   if (feedRoute(method,path)) return true;
   if (notificationRoute(method, path)) return true;
   if (customCatalogRoute(method, path)) return true;

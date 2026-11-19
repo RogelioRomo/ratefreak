@@ -42,6 +42,8 @@ public static class AccountErasureReplay
                 scope.ServiceProvider.GetRequiredService<IAccountErasureMaintenance>(), args[2], CancellationToken.None);
             await scope.ServiceProvider.GetRequiredService<RateFreak.Infrastructure.Artwork.ArtworkCleanupService>()
                 .RunOnceAsync(CancellationToken.None);
+            await scope.ServiceProvider.GetRequiredService<RateFreak.Infrastructure.Artwork.AvatarCleanupService>()
+                .RunOnceAsync(CancellationToken.None);
             Console.WriteLine("Account erasure replay complete. Verify database/artwork cleanup before reopening traffic.");
             return 0;
         }

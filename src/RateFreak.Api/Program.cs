@@ -114,6 +114,7 @@ app.MapCatalogEndpoints();
 app.MapCategoryEndpoints();
 app.MapCustomItemEndpoints();
 app.MapArtworkEndpoints();
+app.MapAvatarEndpoints();
 app.MapMediaProviderEndpoints();
 app.MapPersonalMediaEndpoints();
 app.MapCollectionEndpoints();

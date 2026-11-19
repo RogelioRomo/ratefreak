@@ -3,6 +3,7 @@
 import { useRef, useState, type KeyboardEvent } from "react";
 import { LoadingState } from "@/components/ui/loading-state";
 import { ErrorState } from "@/components/ui/error-state";
+import { AvatarEditor } from "@/features/profiles/components/avatar-editor";
 import { ProfileEditor } from "@/features/profiles/components/profile-editor";
 import { useSession } from "../hooks/use-session";
 import { AccountDataSettings } from "./account-data-settings";
@@ -53,7 +54,7 @@ export function AccountSections({ onDeletionPendingChange }: { onDeletionPending
       {tabs.map((tab, index) => <div key={tab.id} role="tabpanel" id={`account-panel-${tab.id}`} aria-labelledby={`account-tab-${tab.id}`}
         hidden={selected !== index || (index !== 0 && unavailable)} inert={selected !== index || (index !== 0 && unavailable)} tabIndex={0} className={styles.panel}>
         {tab.id === "overview" && <><h2 className={styles.sectionHeading}>Account details</h2><AccountDetails /></>}
-        {tab.id === "profile" && <ProfileEditor />}
+        {tab.id === "profile" && <><AvatarEditor /><ProfileEditor /></>}
         {tab.id === "sign-in" && <LinkedProviderSettings />}
         {tab.id === "recovery" && <RecoverySettings />}
         {tab.id === "data" && <AccountDataSettings active={selected === index} onDeletionPendingChange={onDeletionPendingChange} />}

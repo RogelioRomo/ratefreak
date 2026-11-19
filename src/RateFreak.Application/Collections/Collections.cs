@@ -3,7 +3,7 @@ using RateFreak.Application.Catalog;
 namespace RateFreak.Application.Collections;
 
 public sealed record CollectionPage<T>(IReadOnlyList<T> Items, int Page, int PageSize, int TotalCount);
-public sealed record CollectionAuthor(Guid Id, string Handle, string DisplayName);
+public sealed record CollectionAuthor(Guid Id, string Handle, string DisplayName, string? AvatarUrl = null);
 public sealed record CollectionSummary(Guid Id, CollectionAuthor Owner, string Name, string? Description, string Visibility,
     long Revision, DateTimeOffset CreatedAt, DateTimeOffset UpdatedAt);
 public sealed record CollectionDetails(CollectionSummary Collection);

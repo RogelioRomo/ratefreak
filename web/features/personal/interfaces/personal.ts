@@ -7,5 +7,5 @@ export interface LibraryFilters { status: TrackingStatus | ""; type: string; pag
 export interface RatingDetails { id: string; mediaId: string; score: number; createdAt: string; updatedAt: string; isShared: boolean; sharedAt: string | null; }
 export interface RatingAggregate { count: number; average: number | null; }
 export interface ReviewInput { body: string; isSpoiler: boolean; }
-export interface ReviewAuthor { id: string; handle: string; displayName: string; }
+export interface ReviewAuthor { id: string; handle: string; displayName: string; avatarUrl?: string | null; }
 export interface ReviewDetails extends ReviewInput { id: string; mediaId: string; author: ReviewAuthor; createdAt: string; updatedAt: string; }

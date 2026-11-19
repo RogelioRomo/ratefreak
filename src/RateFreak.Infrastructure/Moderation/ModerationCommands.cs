@@ -28,6 +28,7 @@ internal sealed partial class ModerationService
         await LockTarget(type,id,ct);var target=await TargetAsync(type,id,ct);if(target is null)return new(ModerationStatus.NotFound);
         if(target.Author != null && target.Author.Id==actor)return new(ModerationStatus.Forbidden);
         if(target.UpdatedAt!=request.ExpectedTargetUpdatedAt)return new(ModerationStatus.Conflict);
+        if(type=="profile" && request.Hidden==false && target.AvatarUnavailable)return new(ModerationStatus.Conflict);
         if(target.Hidden!=request.Hidden.Value)
         {
             await ChangeVisibility(type,id,request.Hidden.Value,target.UpdatedAt,ct);

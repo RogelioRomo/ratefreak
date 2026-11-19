@@ -27,3 +27,10 @@ it("blocks another write after an unknown outcome while retaining the draft", as
  setup(); vi.mocked(fetch).mockImplementation(async url => { if (String(url).endsWith("auth/csrf")) return Response.json({ requestToken: "csrf" }); throw new TypeError("offline"); });
  fireEvent.change(screen.getByLabelText("Display name"), { target: { value: "Uncertain draft" } }); fireEvent.submit(screen.getByRole("form")); await screen.findByText("Check your account by reloading before saving again."); expect(screen.getByRole("button", { name: "Save profile" })).toBeDisabled(); expect(screen.getByLabelText("Display name")).toHaveValue("Uncertain draft");
 });
+it("does not revert a newer avatar when an older independent profile response arrives", async () => {
+ const view=setup();view.client.setQueryData(sessionQueryKey,{...state.account,avatarUrl:"/new-avatar",avatarRevision:2});
+ view.rerender(<QueryClientProvider client={view.client}><ProfileEditor/></QueryClientProvider>);
+ vi.mocked(fetch).mockImplementation(async url => String(url).endsWith("auth/csrf") ? Response.json({requestToken:"token"}) : Response.json({...state.account,displayName:"Saved text",avatarUrl:"/old-avatar",avatarRevision:1}));
+ fireEvent.submit(screen.getByRole("form"));await screen.findByText("Profile saved.");
+ expect(view.client.getQueryData(sessionQueryKey)).toMatchObject({displayName:"Saved text",avatarUrl:"/new-avatar",avatarRevision:2});
+});

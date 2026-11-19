@@ -71,7 +71,7 @@ public sealed partial class ReviewCommentTests(AccountDatabase database) : IClas
         var comment=await Json(response,HttpStatusCode.Created);var id=comment.GetProperty("id").GetGuid();
         Assert.Equal(Detail(id),response.Headers.Location!.OriginalString);Assert.True(response.Headers.CacheControl?.NoStore);
         Assert.Equal(reviewId,comment.GetProperty("reviewId").GetGuid());Assert.Equal(authorId,comment.GetProperty("author").GetProperty("id").GetGuid());
-        Assert.Equal(new[] {"displayName","handle","id"},comment.GetProperty("author").EnumerateObject().Select(p=>p.Name).Order().ToArray());
+        Assert.Equal(new[] {"avatarUrl","displayName","handle","id"},comment.GetProperty("author").EnumerateObject().Select(p=>p.Name).Order().ToArray());
         Assert.Equal("<b>Literal</b>\nText",comment.GetProperty("body").GetString());Assert.True(comment.GetProperty("isSpoiler").GetBoolean());
         var created=comment.GetProperty("createdAt").GetDateTimeOffset();
         await Json(await anonymous.GetAsync(Detail(id),Ct));

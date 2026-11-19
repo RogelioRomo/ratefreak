@@ -10,7 +10,7 @@ public interface IArtworkStorage
     Task<Stream?> OpenReadAsync(string key, CancellationToken ct);
     Task DeleteAsync(string key, CancellationToken ct);
 }
-public interface IArtworkDecoder { Task<DecodedArtwork> DecodeAsync(Stream input, CancellationToken ct); }
+public interface IArtworkDecoder { Task<DecodedArtwork> DecodeAsync(Stream input, CancellationToken ct); Task<DecodedArtwork> DecodeAvatarAsync(Stream input, CancellationToken ct); }
 public interface IArtworkService
 {
     Task<CatalogResult<MediaDetails>> PutAsync(Guid actorId, Guid itemId, long expectedRevision, Stream input, CancellationToken ct);

@@ -10,7 +10,7 @@ database or deploying a release.
 | --- | --- |
 | Live account/profile, credentials/recovery codes, library, ratings, reviews, authored comments, follows, notifications, owned lists and private catalog content | Removed when deletion commits |
 | Recovery security events | Up to 90 days while an account exists; removed immediately with the account |
-| Private artwork | Immediate removal attempted after commit; hourly orphan cleanup retries unreferenced files older than 24 hours |
+| Private artwork and account avatars | Immediate removal attempted after commit; hourly orphan cleanup retries unreferenced files older than 24 hours |
 | Resolved moderation reports and their related events | 365 days after report resolution; pseudonymized at account deletion |
 | Open moderation reports | Until resolution, then the 365-day schedule; no fixed complete-erasure date while open |
 | Standalone moderation events | 365 days from creation; account references pseudonymized on deletion |
@@ -169,3 +169,25 @@ write failures. Background retention runs must catch up after downtime. An hourl
 cleanup schedule means retention expiration occurs on the next successful sweep;
 the process must be running and monitored. Do not put credentials, confirmation
 grants, export bodies or authored text in logs.
+
+## Profile avatar export and erasure
+
+Account ZIP exports include `avatar.json` and the current re-encoded image at
+`avatar/<asset-id>.webp`, including when profile moderation hides it. The mapping
+contains image type, size and dimensions, without filesystem keys or originals.
+A missing referenced file fails export explicitly instead of silently omitting it.
+The same artwork coordination lock protects image replacement, export and cleanup.
+
+Avatar files are account data, including when public. Account deletion and
+erasure replay remove their metadata/access and attempt physical deletion after
+commit; they never detach avatars as preserved public catalog contributions. The
+hourly avatar sweeper retries orphan removal after 24 hours, and the offline replay
+command sweeps both artwork namespaces. Replaced/removed images follow this same
+cleanup policy. Backups can retain earlier images until the existing 30-day
+expiration deadline; individual image replacement/removal does not append an
+account erasure journal entry.
+
+Profile hiding covers the avatar, display name and bio together. Staff image
+inspection requires a retained profile report or direct-hide moderation record.
+If that scope expires, staff cannot restore an image they cannot inspect: the
+owner must remove it first. Existing report/event retention is unchanged.

@@ -85,7 +85,8 @@ also rejects it permanently. Keep secrets out of screenshots, support tickets an
 | `instance.json` | Validated public origin/local TLS choice |
 | `secrets/` | Operator-owned source credentials; never image build input |
 | `runtime/` | Per-service private secret copies prepared for container identities |
-| `storage/artwork/` | API-only image files; never a static web directory |
+| `storage/artwork/` | API-only catalog artwork; never a static web directory |
+| `storage/artwork/avatars/` | Account-owned avatar images and their staging/lease files, separate from catalog content |
 | `storage/keys/` | Durable ASP.NET Data Protection keys |
 | `storage/image-cache/` | Disposable public provider image cache, mounted into the web container; excluded from account/recovery backups |
 | `independent/account-erasures.jsonl` | Private durable erasure journal, excluded from ordinary backups |
@@ -359,3 +360,35 @@ to make a check pass.
 Verification commands and recorded reference results are linked from
 [STATUS](STATUS.md). Provider licensing, actual backup expiration, external records,
 load capacity and your own infrastructure still require operator acceptance.
+
+## Profile avatar storage
+
+With `Artwork__Enabled=true`, avatar uploads use `<Artwork__RootPath>/avatars/`
+inside the existing API artwork volume. Generated `.webp` files, temporary `.stage`
+files and `.lease` files all stay in that folder. Existing catalog images keep
+their current paths. Do not expose either directory as static files or put them
+in the web image optimizer/cache; the API checks current ownership, moderation
+and asset identity and sends `no-store`/`nosniff`. Protect the root and avatar
+folder from untrusted filesystem writers. Symlinked paths and linked leases are
+refused. Replacing a directory concurrently is an operator integrity concern,
+not a supported way to move live storage.
+
+Apply `20261119165037_AddProfileAvatars` through the normal backup/migration
+procedure before starting this version. It adds avatar metadata and nullable
+identity/revision fields; existing accounts use the person-icon fallback. Its
+downgrade refuses while avatar data exists. No persistent installation is migrated
+by tests or by application startup.
+
+Back up the entire artwork root. The maintenance tools allow canonical files in
+the `avatars/` subdirectory while retaining flat catalog archive support; key
+archives remain flat. The writer validates its own produced archive before a
+success manifest, and catalog/avatar references are checked in their separate
+namespaces. Use matching tools/images for restore as described above. A backup
+taken before the avatar migration remains supported by the pre-upgrade inventory
+check. Do not enable arbitrary recursive archive extraction.
+
+Avatar replacement/removal and account deletion attempt file cleanup after commit.
+The hourly avatar sweeper retries unreferenced files older than 24 hours in batches
+of at most 1,000; database failures defer deletion. Restore/replay checks and the
+30-day backup expiration policy also apply to avatars. See
+[avatar verification](profile-avatars-verification.md).

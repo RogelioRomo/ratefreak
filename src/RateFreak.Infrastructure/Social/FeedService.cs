@@ -29,6 +29,7 @@ internal sealed class FeedService(RateFreakDbContext db) : IFeedService
             )
             SELECT u.id AS "AuthorId", u.user_name AS "Handle",
                    CASE WHEN u.is_profile_hidden THEN u.user_name ELSE u.display_name END AS "DisplayName",
+                   CASE WHEN u.is_profile_hidden OR u.avatar_id IS NULL THEN NULL ELSE '/api/v1/users/' || u.id || '/avatar/' || u.avatar_id END AS "AvatarUrl",
                    m.id AS "MediaId", m.media_type AS "Type", m.title AS "Title", m.release_date AS "ReleaseDate",
                    m.image_reference AS "ImageReference", o.score AS "Score", o.review_id AS "ReviewId",
                    o.excerpt AS "Excerpt", o.is_spoiler AS "IsSpoiler", o.published_at AS "PublishedAt"
@@ -45,7 +46,7 @@ internal sealed class FeedService(RateFreakDbContext db) : IFeedService
             ORDER BY o.published_at DESC, o.author_id, o.media_id
             LIMIT 21
             """).ToListAsync(ct);
-        var items = rows.Take(20).Select(x => new FeedEntry(new(x.AuthorId, x.Handle, x.DisplayName),
+        var items = rows.Take(20).Select(x => new FeedEntry(new(x.AuthorId, x.Handle, x.DisplayName, x.AvatarUrl),
             new(x.MediaId, x.Type, x.Title, x.ReleaseDate, x.ImageReference), x.Score,
             x.ReviewId is {} id ? new(id, x.Excerpt!, x.IsSpoiler == true) : null, x.PublishedAt)).ToList();
         var next = rows.Count > 20 && items.LastOrDefault() is {} last
@@ -60,6 +61,7 @@ internal sealed class FeedRow
     public Guid AuthorId { get; set; }
     public string Handle { get; set; } = null!;
     public string DisplayName { get; set; } = null!;
+    public string? AvatarUrl { get; set; }
     public Guid MediaId { get; set; }
     public string Type { get; set; } = null!;
     public string Title { get; set; } = null!;

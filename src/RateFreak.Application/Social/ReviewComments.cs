@@ -4,7 +4,7 @@ namespace RateFreak.Application.Social;
 
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
 public sealed record ReviewCommentRequest(string? Body, bool IsSpoiler = false);
-public sealed record CommentAuthor(Guid Id, string Handle, string DisplayName);
+public sealed record CommentAuthor(Guid Id, string Handle, string DisplayName, string? AvatarUrl = null);
 public sealed record ReviewCommentDetails(Guid Id, Guid ReviewId, CommentAuthor Author, string Body, bool IsSpoiler,
     DateTimeOffset CreatedAt, DateTimeOffset UpdatedAt);
 public sealed record ReviewCommentPage(IReadOnlyList<ReviewCommentDetails> Items, int Page, int PageSize, int TotalCount);

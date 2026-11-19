@@ -6,7 +6,9 @@ namespace RateFreak.Infrastructure.Artwork;
 public sealed class ArtworkDecoder : IArtworkDecoder
 {
     private static readonly SemaphoreSlim Gate = new(2, 2);
-    public async Task<DecodedArtwork> DecodeAsync(Stream input, CancellationToken ct)
+    public Task<DecodedArtwork> DecodeAsync(Stream input, CancellationToken ct) => DecodeAsync(input, false, ct);
+    public Task<DecodedArtwork> DecodeAvatarAsync(Stream input, CancellationToken ct) => DecodeAsync(input, true, ct);
+    private async Task<DecodedArtwork> DecodeAsync(Stream input, bool avatar, CancellationToken ct)
     {
         await Gate.WaitAsync(ct);
         try
@@ -27,12 +29,15 @@ public sealed class ArtworkDecoder : IArtworkDecoder
             if (codec.GetPixels(bitmap.Info, bitmap.GetPixels()) != SKCodecResult.Success) throw new ArgumentException("Invalid image content.");
             var orientedWidth = (int)codec.EncodedOrigin >= 5 ? info.Height : info.Width;
             var orientedHeight = (int)codec.EncodedOrigin >= 5 ? info.Width : info.Height;
-            var scale = Math.Min(1d, 2048d / Math.Max(orientedWidth, orientedHeight));
-            var width = Math.Max(1, (int)Math.Round(orientedWidth * scale)); var height = Math.Max(1, (int)Math.Round(orientedHeight * scale));
+            var side = Math.Min(orientedWidth, orientedHeight);
+            var scale = avatar ? Math.Min(1d, 512d / side) : Math.Min(1d, 2048d / Math.Max(orientedWidth, orientedHeight));
+            var width = Math.Max(1, (int)Math.Round((avatar ? side : orientedWidth) * scale));
+            var height = Math.Max(1, (int)Math.Round((avatar ? side : orientedHeight) * scale));
             using var resized = new SKBitmap(new SKImageInfo(width, height, SKColorType.Rgba8888, SKAlphaType.Premul));
             using (var canvas = new SKCanvas(resized))
             {
-                canvas.Scale((float)width / orientedWidth, (float)height / orientedHeight);
+                canvas.Scale(avatar ? (float)scale : (float)width / orientedWidth, avatar ? (float)scale : (float)height / orientedHeight);
+                if (avatar) canvas.Translate(-(orientedWidth - side) / 2f, -(orientedHeight - side) / 2f);
                 switch ((int)codec.EncodedOrigin)
                 {
                     case 2: canvas.Translate(info.Width, 0); canvas.Scale(-1, 1); break;

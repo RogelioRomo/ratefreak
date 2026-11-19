@@ -82,12 +82,22 @@ public sealed class RateFreakDbContext(DbContextOptions<RateFreakDbContext> opti
             entry.HasIndex(e => new { e.UserId, e.CreatedAt });
             entry.HasOne<AccountUser>().WithMany().HasForeignKey(e => e.UserId).OnDelete(DeleteBehavior.Cascade);
         });
+        modelBuilder.Entity<AvatarAsset>(asset =>
+        {
+            asset.ToTable("avatar_assets"); asset.HasKey(a => a.UserId);
+            asset.HasIndex(a => a.AssetId).IsUnique();
+            asset.Property(a => a.StorageKey).HasMaxLength(64).IsRequired();
+            asset.Property(a => a.ContentType).HasMaxLength(32).IsRequired();
+            asset.HasOne<AccountUser>().WithOne().HasForeignKey<AvatarAsset>(a => a.UserId).OnDelete(DeleteBehavior.Cascade);
+        });
         modelBuilder.Entity<AccountUser>(user =>
         {
             user.ToTable("users", table => table.HasCheckConstraint("ck_users_bio",
                 "bio IS NULL OR (length(btrim(bio, ' ' || chr(9) || chr(10) || chr(13))) > 0 AND length(bio) <= 500)"));
             // Prevent stale full-row Identity updates from reverting separately committed profile edits.
             user.Property(u => u.Bio).HasMaxLength(500).IsConcurrencyToken();
+            user.Property(u => u.AvatarId).IsConcurrencyToken();
+            user.Property(u => u.AvatarRevision).HasDefaultValue(0L).IsConcurrencyToken();
             user.Property(u => u.IsProfileHidden).HasDefaultValue(false).IsConcurrencyToken();
             user.Property(u => u.ProfileUpdatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP").IsConcurrencyToken();
             user.Property(u => u.UpdatedAt).IsConcurrencyToken();

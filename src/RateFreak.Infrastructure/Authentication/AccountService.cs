@@ -53,5 +53,5 @@ internal sealed class AccountService(UserManager<AccountUser> users, SignInManag
     }
 
     private static AccountProfile Profile(AccountUser user) =>
-        new(user.Id, user.UserName!, user.DisplayName, user.Email!, user.CreatedAt, user.Bio, user.IsProfileHidden);
+        new(user.Id, user.UserName!, user.DisplayName, user.Email!, user.CreatedAt, user.Bio, user.IsProfileHidden, user.AvatarId == null ? null : $"/api/v1/users/me/avatar/{user.AvatarId}", user.AvatarRevision);
 }

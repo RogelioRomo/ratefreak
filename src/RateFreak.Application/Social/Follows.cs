@@ -1,6 +1,6 @@
 namespace RateFreak.Application.Social;
 
-public sealed record FollowUser(Guid Id, string Handle, string DisplayName, DateTimeOffset FollowedAt);
+public sealed record FollowUser(Guid Id, string Handle, string DisplayName, DateTimeOffset FollowedAt, string? AvatarUrl = null);
 public sealed record FollowPage(IReadOnlyList<FollowUser> Items, int TotalCount, int Page, int PageSize);
 public enum FollowStatus { Success, Missing, Self }
 

@@ -1,4 +1,5 @@
 "use client";
+import { Avatar } from "@/features/profiles/components/avatar";
 import Link from "next/link";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -42,7 +43,7 @@ export function CollectionWorkspace({ id, viewer, accountId, active }: Collectio
   if (page === null) return <ErrorState title="Invalid entry page." />;
   if (!query.data) return query.isError ? <ErrorState title="Collection unavailable." onRetry={() => void query.refetch()} /> : <LoadingState label="Loading collection…" />;
   const detail = query.data, collection = detail.collection, owner = accountId === collection.owner.id, locked = !active || !!editor || actions.pending || actions.needsRefresh || reader.pending;
-  return <><header className={styles.heading}><div><h1>{collection.name}</h1><p>{collection.owner.displayName} (@{collection.owner.handle}) · {collection.visibility === "private" ? "Private" : "Public"}</p></div></header>{collection.description && <p className={styles.description}>{collection.description}</p>}
+  return <><header className={styles.heading}><div><h1>{collection.name}</h1><p><Avatar reference={collection.owner.avatarUrl} />{collection.owner.displayName} (@{collection.owner.handle}) · {collection.visibility === "private" ? "Private" : "Public"}</p></div></header>{collection.description && <p className={styles.description}>{collection.description}</p>}
     {owner && <div className={`${styles.actions} ${styles.workspaceActions}`}><Button variant="secondary" disabled={locked} onClick={() => void open("metadata")}>Edit metadata</Button><Button disabled={locked} onClick={() => void open("add")}>Add item</Button></div>}
     {saved && <p role="status">{saved}</p>}<ContentsError error={reader.error} />
     {actions.needsRefresh && <section role="status"><p>Saved. Refresh needed before another change.</p><Button disabled={!active || actions.pending} variant="secondary" onClick={() => void actions.retryRefresh()}>Refresh collection</Button></section>}

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 export type TargetSegment = 'reviews' | 'comments' | 'media' | 'categories' | 'profiles';
 export interface StaffIdentity { id:string; handle:string; displayName:string }
-export interface ModerationTarget { id:string; targetType:'review'|'comment'|'item'|'category'|'profile'; author:StaffIdentity|null; body:string; isSpoiler:boolean; hidden:boolean; updatedAt:string; description?:string|null; imageReference?:string|null }
+export interface ModerationTarget { id:string; targetType:'review'|'comment'|'item'|'category'|'profile'; author:StaffIdentity|null; body:string; isSpoiler:boolean; hidden:boolean; updatedAt:string; description?:string|null; imageReference?:string|null; avatarUnavailable?:boolean }
 export interface ReportSummary { id:string; targetType:'review'|'comment'|'item'|'category'|'profile'; targetId:string; reporter:StaffIdentity|null; reason:string; status:'open'|'resolved'; createdAt:string }
 export interface ReportDetail { report:ReportSummary; details:string|null; target:ModerationTarget|null; decision:string|null; resolutionReason:string|null; resolvedAt:string|null }
 export interface AuditEntry { id:string; createdAt:string; actorId:string|null; actorKind:string; action:string; targetType:string; targetId:string; reportId:string|null; reason:string; before:boolean|null; after:boolean|null; reviewedUpdatedAt:string|null }

@@ -126,6 +126,47 @@ class ArchiveTests(unittest.TestCase):
                 item=tarfile.TarInfo(name);item.type=kind;item.linkname='outside';tar.addfile(item,io.BytesIO())
             with self.assertRaises(self.maintenance.MaintenanceError):self.maintenance.validate_archive(archive)
             self.assertFalse((self.root/'escape').exists())
+    def test_artwork_archive_roundtrip_keeps_catalog_and_avatars_separate(self):
+        source=self.root/'source';source.mkdir();(source/'avatars').mkdir()
+        (source/'catalog.webp').write_bytes(b'catalog')
+        leaf='a'*32+'.webp';(source/'avatars'/leaf).write_bytes(b'avatar')
+        archive=self.root/'artwork.tar'
+        self.maintenance.archive_directory(source,archive,allow_avatars=True)
+        target=self.root/'target';target.mkdir()
+        from unittest.mock import patch
+        with patch.object(self.maintenance,'UID',os.getuid()),patch.object(self.maintenance,'GID',os.getgid()):
+            self.maintenance.extract_flat(archive,target,allow_avatars=True)
+        self.assertEqual((target/'catalog.webp').read_bytes(),b'catalog')
+        self.assertEqual((target/'avatars'/leaf).read_bytes(),b'avatar')
+        with self.assertRaises(self.maintenance.MaintenanceError):self.maintenance.validate_archive(archive)
+
+    def test_avatar_archive_refuses_nested_traversal_links_and_unexpected_folders(self):
+        import io,tarfile
+        for name,kind in [('avatars/../escape',tarfile.REGTYPE),('other/a.webp',tarfile.REGTYPE),('avatars/nested/a.webp',tarfile.REGTYPE),('avatars/'+'a'*32+'.webp',tarfile.SYMTYPE)]:
+            archive=self.root/'bad-avatar.tar'
+            with tarfile.open(archive,'w') as tar:
+                item=tarfile.TarInfo(name);item.type=kind;item.linkname='/outside';tar.addfile(item,io.BytesIO())
+            with self.assertRaises(self.maintenance.MaintenanceError):self.maintenance.validate_archive(archive,allow_avatars=True)
+
+    def test_backup_rejects_reserved_avatar_file_and_roundtrips_hardlinked_avatar_bytes(self):
+        source=self.root/'source';source.mkdir();(source/'avatars').write_bytes(b'not-a-directory')
+        with self.assertRaises(self.maintenance.MaintenanceError):self.maintenance.archive_directory(source,self.root/'reserved.tar',allow_avatars=True)
+        (source/'avatars').unlink();(source/'avatars').mkdir()
+        first=source/'avatars'/('a'*32+'.webp');first.write_bytes(b'content')
+        os.link(first,source/'avatars'/('b'*32+'.webp'))
+        archive=self.root/'links.tar';self.maintenance.archive_directory(source,archive,allow_avatars=True)
+        self.maintenance.validate_archive(archive,allow_avatars=True)
+
+    def test_reference_verification_keeps_catalog_and_avatar_namespaces_separate(self):
+        from unittest.mock import patch
+        (self.root/'avatars').mkdir();leaf='a'*32+'.webp';(self.root/'avatars'/leaf).write_bytes(b'image')
+        def query(sql):
+            if 'to_regclass' in sql:return 't'
+            if 'FROM artwork_assets' in sql:return 'avatars/'+leaf
+            return ''
+        with patch.object(self.maintenance,'query',side_effect=query):
+            with self.assertRaises(self.maintenance.MaintenanceError):self.maintenance.verify_artwork(self.root)
+
     def test_manifest_detects_changed_payload(self):
         import hashlib
         import tarfile

@@ -9,6 +9,7 @@ namespace RateFreak.Infrastructure.Authentication;
 
 internal sealed partial class AccountDataService(RateFreakDbContext db, UserManager<AccountUser> users,
     AccountErasureJournal journal, RateFreak.Application.Catalog.IArtworkStorage artwork,
+    RateFreak.Infrastructure.Artwork.FileAvatarStorage avatarStorage,
     Microsoft.Extensions.Logging.ILogger<AccountDataService> logger) : IAccountDataService
 {
     private static bool Operation(string operation) => operation is "export" or "delete";

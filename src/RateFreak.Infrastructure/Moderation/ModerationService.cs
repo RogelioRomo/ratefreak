@@ -24,6 +24,22 @@ internal sealed partial class ModerationService(RateFreakDbContext db) : IModera
             var asset = await db.Set<RateFreak.Domain.Catalog.ArtworkAsset>().Where(a => a.ItemId == id).Select(a => (Guid?)a.AssetId).SingleOrDefaultAsync(ct);
             if (asset is not null) target = target with { ImageReference = $"/api/v1/moderation/media/{id}/artwork/{asset}" };
         }
+        if (target is not null && type == "profile")
+        {
+            var avatarId = await db.Users.Where(u => u.Id == id).Select(u => u.AvatarId).SingleOrDefaultAsync(ct);
+            if (avatarId is not null)
+            {
+                if (!target.Hidden) target = target with { ImageReference = $"/api/v1/users/{id}/avatar/{avatarId}" };
+                else
+                {
+                    var report = await db.ContentReports.Where(r => r.TargetType == "profile" && r.ProfileId == id).OrderByDescending(r => r.CreatedAt).Select(r => (Guid?)r.Id).FirstOrDefaultAsync(ct);
+                    if (report is not null) target = target with { ImageReference = $"/api/v1/moderation/reports/{report}/avatar/{avatarId}" };
+                    else if (await db.ModerationEvents.AnyAsync(e => e.TargetType == "profile" && e.TargetId == id && e.Action == "hide", ct))
+                        target = target with { ImageReference = $"/api/v1/moderation/profiles/{id}/avatar/{avatarId}" };
+                    else target = target with { AvatarUnavailable = true };
+                }
+            }
+        }
         return target;
     }
     private async Task<ModerationTarget?> TargetCoreAsync(string type, Guid id, bool retainedReport, CancellationToken ct)
@@ -80,6 +96,11 @@ internal sealed partial class ModerationService(RateFreakDbContext db) : IModera
         {
             var asset = await db.Set<RateFreak.Domain.Catalog.ArtworkAsset>().Where(a => a.ItemId == r.ItemId).Select(a => (Guid?)a.AssetId).SingleOrDefaultAsync(ct);
             if (asset is not null) target = target with { ImageReference = $"/api/v1/moderation/reports/{id}/artwork/{asset}" };
+        }
+        if (target is not null && r.TargetType == "profile")
+        {
+            var asset = await db.Set<RateFreak.Infrastructure.Authentication.AvatarAsset>().Where(a => a.UserId == r.ProfileId).Select(a => (Guid?)a.AssetId).SingleOrDefaultAsync(ct);
+            if (asset is not null) target = target with { ImageReference = $"/api/v1/moderation/reports/{id}/avatar/{asset}" };
         }
         var result=new ReportDetail(summary,r.Details,target,r.Decision,r.ResolutionReason,r.ResolvedAt);
         await tx.CommitAsync(ct);return result;

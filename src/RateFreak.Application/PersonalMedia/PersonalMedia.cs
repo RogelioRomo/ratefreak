@@ -15,7 +15,7 @@ public sealed record LibraryItem(MediaSummary Media, string Status, DateOnly? St
     DateTimeOffset CreatedAt, DateTimeOffset UpdatedAt);
 public sealed record RatingDetails(Guid Id, Guid MediaId, decimal Score, DateTimeOffset CreatedAt, DateTimeOffset UpdatedAt, bool IsShared = false, DateTimeOffset? SharedAt = null);
 public sealed record RatingAggregate(int Count, decimal? Average);
-public sealed record ReviewAuthor(Guid Id, string Handle, string DisplayName);
+public sealed record ReviewAuthor(Guid Id, string Handle, string DisplayName, string? AvatarUrl = null);
 public sealed record ReviewDetails(Guid Id, Guid MediaId, ReviewAuthor Author, string Body, bool IsSpoiler,
     DateTimeOffset CreatedAt, DateTimeOffset UpdatedAt);
 public enum ReviewWriteStatus { Success, NotFound, Conflict }

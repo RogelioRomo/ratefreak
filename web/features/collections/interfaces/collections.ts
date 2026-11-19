@@ -1,6 +1,6 @@
 export type CollectionVisibility = "private" | "public";
 export type CollectionViewer = "anonymous" | string;
-export interface CollectionAuthor { id: string; handle: string; displayName: string; }
+export interface CollectionAuthor { id: string; handle: string; displayName: string; avatarUrl?: string | null; }
 export interface CollectionSummary {
   id: string; owner: CollectionAuthor; name: string; description: string | null;
   visibility: CollectionVisibility; revision: number;

@@ -18,7 +18,7 @@ internal sealed class NotificationService(RateFreakDbContext db) : INotification
     internal static IQueryable<NotificationDetails> Project(RateFreakDbContext db, Guid recipient, IQueryable<Notification>? source = null) =>
         from n in (source ?? Eligible(db, recipient)).AsNoTracking()
         join u in db.Users.AsNoTracking() on n.ActorId equals u.Id
-        select new NotificationDetails(n.Id, n.Kind, new NotificationActor(u.Id, u.UserName!, u.IsProfileHidden ? u.UserName! : u.DisplayName),
+        select new NotificationDetails(n.Id, n.Kind, new NotificationActor(u.Id, u.UserName!, u.IsProfileHidden ? u.UserName! : u.DisplayName, u.IsProfileHidden || u.AvatarId == null ? null : "/api/v1/users/" + u.Id + "/avatar/" + u.AvatarId),
             n.CommentId, db.ReviewComments.Where(c => c.Id == n.CommentId).Select(c => (Guid?)c.ReviewId).FirstOrDefault(),
             (from c in db.ReviewComments join r in db.Reviews on c.ReviewId equals r.Id where c.Id == n.CommentId select (Guid?)r.MediaItemId).FirstOrDefault(),
             n.CreatedAt, n.ReadAt);

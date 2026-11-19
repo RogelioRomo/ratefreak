@@ -31,13 +31,13 @@ public sealed class FileArtworkStorage(IOptions<ArtworkOptions> options) : IArtw
         {
             await using var output = new FileStream(Resolve(key), FileMode.CreateNew, FileAccess.Write, FileShare.None, 65536, FileOptions.Asynchronous);
             await content.CopyToAsync(output, ct); await output.FlushAsync(ct);
-            return new(key, new StageLease(lease, Resolve(id + ".lease")));
+            return new(key, new StageLease(lease, () => File.Delete(Resolve(id + ".lease"))));
         }
         catch { lease.Dispose(); File.Delete(Resolve(id + ".lease")); File.Delete(Resolve(key)); throw; }
     }
-    private sealed class StageLease(FileStream stream, string path) : IDisposable
+    private sealed class StageLease(FileStream stream, Action deleteCheckedLease) : IDisposable
     {
-        public void Dispose() { stream.Dispose(); try { File.Delete(path); } catch (IOException) { } }
+        public void Dispose() { stream.Dispose(); try { deleteCheckedLease(); } catch (IOException) { } catch (UnauthorizedAccessException) { } }
     }
     public Task<string> PromoteAsync(StagedArtwork staged, Guid assetId, CancellationToken ct)
     {

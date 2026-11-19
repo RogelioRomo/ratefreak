@@ -18,7 +18,7 @@ export function AccountDetails() {
       <div><dt>Handle</dt><dd>@{account.handle}</dd></div>
       <div><dt>Email</dt><dd>{account.email}</dd></div>
     </dl>
-    <p>Your email is private. Your display name and bio are public. Logging out signs you out on all devices.</p>
+    <p>Your email is private. Your avatar, display name and bio are public. Logging out signs you out on all devices.</p>
     <Link href={`/users/${account.handle}`}>View public profile</Link>
     <p><Link href="/moderation">Moderation tools</Link></p>
   </div>;

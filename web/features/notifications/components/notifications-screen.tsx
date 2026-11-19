@@ -1,4 +1,5 @@
 "use client";
+import { Avatar } from "@/features/profiles/components/avatar";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSession } from "@/features/auth/hooks/use-session";
@@ -45,7 +46,7 @@ function Inbox({ accountId }: { accountId: string }) {
     {query.isError && <ErrorState title="Notifications unavailable." description="Please wait if requests are limited, then try again." onRetry={() => void query.refetch()} />}
     {query.isPending ? <LoadingState label="Loading notifications…" /> : query.data && <>
       {!query.data.items.length ? <section className={styles.empty}><h2>You’re all caught up.</h2><p>New followers and comments on your reviews will appear here.</p></section> : <ul className={styles.list}>{query.data.items.map(item => <li key={item.id} className={item.readAt ? undefined : styles.unread}>
-        <div className={styles.event}><span className={styles.state}>{item.readAt ? "Read" : "Unread"}</span>
+        <div className={styles.event}><Avatar reference={item.actor.avatarUrl} /><span className={styles.state}>{item.readAt ? "Read" : "Unread"}</span>
           <Link href={item.kind === "follow" ? `/users/${encodeURIComponent(item.actor.handle)}` : `/reviews/${item.reviewId}`}
             onClick={() => { if (!item.readAt) void openNotification(item.id).then(saved => { if (!saved) setMessage("We couldn’t mark that notification as read. Try the read control in your inbox."); }); }}>
             {item.actor.displayName} {item.kind === "follow" ? "started following you." : "commented on your review."}</Link>

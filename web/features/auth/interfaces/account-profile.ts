@@ -6,4 +6,6 @@ export interface AccountProfile {
   createdAt: string;
   bio?: string | null;
   profileTextHidden?: boolean;
+  avatarUrl?: string | null;
+  avatarRevision?: number;
 }

@@ -8,7 +8,7 @@ internal sealed class UserProfileService(RateFreakDbContext db) : IUserProfileSe
 {
     private IQueryable<PublicProfile> PublicProfiles(IQueryable<AccountUser> users) => users.AsNoTracking()
         .Select(user => new PublicProfile(user.Id, user.UserName!, user.IsProfileHidden ? user.UserName! : user.DisplayName,
-            user.IsProfileHidden ? null : user.Bio, user.CreatedAt, user.IsProfileHidden));
+            user.IsProfileHidden ? null : user.Bio, user.CreatedAt, user.IsProfileHidden, user.IsProfileHidden || user.AvatarId == null ? null : "/api/v1/users/" + user.Id + "/avatar/" + user.AvatarId));
 
     public Task<PublicProfile?> FindAsync(Guid id, CancellationToken ct) =>
         PublicProfiles(db.Users.Where(user => user.Id == id)).SingleOrDefaultAsync(ct);
@@ -43,7 +43,7 @@ internal sealed class UserProfileService(RateFreakDbContext db) : IUserProfileSe
 
         // Project while the update holds the row lock; unrelated Identity/security fields are untouched.
         var profile = await db.Users.AsNoTracking().Where(user => user.Id == actorId)
-            .Select(user => new AccountProfile(user.Id, user.UserName!, user.DisplayName, user.Email!, user.CreatedAt, user.Bio, user.IsProfileHidden))
+            .Select(user => new AccountProfile(user.Id, user.UserName!, user.DisplayName, user.Email!, user.CreatedAt, user.Bio, user.IsProfileHidden, user.AvatarId == null ? null : "/api/v1/users/me/avatar/" + user.AvatarId, user.AvatarRevision))
             .SingleAsync(ct);
         await transaction.CommitAsync(ct);
         return new(profile);
