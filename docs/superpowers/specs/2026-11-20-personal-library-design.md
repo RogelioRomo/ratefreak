@@ -1,6 +1,6 @@
 # Personal library: search, sorting and quick status updates
 
-Status: approved by the user on 2026-11-20; implemented and verified on `feat/personal-library`, pending integration.
+Status: approved by the user on 2026-11-20; implemented, verified and merged into local `main` through `42ed721` following explicit user authorization.
 
 ## Intent and agreed scope
 

@@ -1,8 +1,9 @@
 # Personal library verification — 2026-11-20
 
 The approved scope is title search, sorting, own-rating display and inline status
-updates. Implemented on `feat/personal-library`; local integration remains a user
-decision. See the [design](superpowers/specs/2026-11-20-personal-library-design.md)
+updates. Implemented on `feat/personal-library` and merged into local `main` through
+`42ed721` on 2026-11-20 after explicit user authorization. See the
+[design](superpowers/specs/2026-11-20-personal-library-design.md)
 and [plan](superpowers/plans/2026-11-20-personal-library.md).
 
 ## Behavior
@@ -102,3 +103,18 @@ build passed. Chromium measured the actual control/detail positions at
 smaller widths, with no horizontal overflow or browser page errors. Desktop and
 mobile screenshots were inspected. Evidence: ignored
 `.local/library-acceptance/layout-verification.json` and `library-layout-*.png`.
+
+## Local main integration
+
+The user requested commit and local merge on 2026-11-20. Local `main` advanced
+from `145de29` to `42ed721` by fast-forward. The merged checkout passed the full
+backend suite (32 unit, 473 integration and 196 provider contracts; zero skipped),
+all 870 frontend tests, lint, typecheck and `git diff --check`.
+
+The existing API was restarted on the merged code using its existing local
+database, provider configuration, artwork and key paths. API readiness, Home,
+Library and browser setup proxy returned HTTP 200. OpenAPI includes the new
+status-only PATCH. No schema migration or authenticated persistent-data write was
+performed. Merge-check logs and runtime evidence are in the main checkout's ignored
+`.local/localhost/library-merge/` directory. The managed feature worktree and its
+separate synthetic preview remain available; no remote push was performed.

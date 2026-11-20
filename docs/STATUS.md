@@ -1,16 +1,21 @@
 # Current project status and roadmap
 
 Updated: 2026-11-20. Personal-library search, sorting, own-rating display and inline
-status updates are implemented and verified on `feat/personal-library`, pending
-integration into `main`. Verification includes 701 backend tests with no skips,
-870 frontend tests, lint/typecheck, production web build, API Release publish and
+status updates are implemented, verified and merged locally into `main` through
+`42ed721` following user authorization. Verification includes 701 backend tests
+with no skips, 870 frontend tests, lint/typecheck, production web build, API Release publish and
 ordinary-account Chromium acceptance; see [library evidence](personal-library-verification.md).
 The subsequent requested layout refinement places tracking controls to the right
 at 1024px and wider and below on smaller screens; 15 focused interaction tests,
 lint/typecheck, a fresh web production build and both-theme browser position checks
-at six widths passed. No schema migration or persistent local data change was needed. The isolated
-preview at localhost:3100 uses synthetic data and an API at localhost:5180;
-the existing localhost:3000/5080 inspection services are separate.
+at six widths passed. No schema migration or persistent local data change was needed.
+After the local merge, the API was restarted on the merged code and localhost:3000
+Home/Library, localhost:5080 readiness and the browser setup proxy returned HTTP 200;
+the new status PATCH is present in the running API's OpenAPI document. Evidence:
+`.local/localhost/library-merge/runtime.json`. The separate preview at localhost:3100
+uses synthetic data and an API at localhost:5180.
+The merged main checkout subsequently passed all 701 backend and 870 frontend
+tests, lint/typecheck and diff checks; logs are under `.local/localhost/library-merge/`.
 
 Previous update, 2026-11-19. Custom uploaded profile avatars with a person-icon fallback
 are implemented, verified and merged locally into `main` at `019cd10`. Avatar
@@ -115,8 +120,8 @@ are evidence references, not durable deployment artifacts or guaranteed running 
   updates preserve current dates and use expected-account/status checks; conflicts
   require session reconciliation and explicit refresh. Dirty row drafts survive
   date-only refetches, filtered removals repair pagination/focus, and rating edits
-  refresh library scores/order. Implemented on `feat/personal-library`, pending
-  local integration. [Evidence and limits](personal-library-verification.md).
+  refresh library scores/order. Merged locally into `main` through `42ed721` after
+  user authorization. [Evidence and limits](personal-library-verification.md).
 
 - Custom uploaded profile avatars with a person-icon fallback, independent
   upload/replace/remove controls, public identity display and a separate `avatars/`
