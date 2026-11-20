@@ -15,7 +15,8 @@ internal sealed class LibraryService(RateFreakDbContext context) : ILibraryServi
         from entry in entries
         join media in context.MediaItems.AsNoTracking() on entry.MediaItemId equals media.Id
         select new LibraryItem(new MediaSummary(media.Id, media.MediaType, media.Title, media.ReleaseDate, media.ImageReference),
-            entry.Status, entry.StartedAt, entry.CompletedAt, entry.CreatedAt, entry.UpdatedAt);
+            entry.Status, entry.StartedAt, entry.CompletedAt, entry.CreatedAt, entry.UpdatedAt,
+            context.Ratings.Where(r => r.UserId == entry.UserId && r.MediaItemId == entry.MediaItemId).Select(r => (decimal?)r.Score).FirstOrDefault());
 
     public Task<LibraryItem?> FindAsync(Guid userId, Guid mediaId, CancellationToken ct) =>
         Items(context.LibraryEntries.AsNoTracking().Where(x => x.UserId == userId && x.MediaItemId == mediaId && context.MediaItems.Where(CatalogAccess.Readable(userId)).Any(m => m.Id == x.MediaItemId))).SingleOrDefaultAsync(ct);
@@ -26,9 +27,27 @@ internal sealed class LibraryService(RateFreakDbContext context) : ILibraryServi
         var items = context.LibraryEntries.AsNoTracking().Where(x => x.UserId == userId && context.MediaItems.Where(CatalogAccess.Readable(userId)).Any(m => m.Id == x.MediaItemId));
         if (query.Status is not null) items = items.Where(x => x.Status == query.Status);
         if (query.Type is not null) items = items.Where(x => context.MediaItems.Any(m => m.Id == x.MediaItemId && m.MediaType == query.Type));
+        if (!string.IsNullOrWhiteSpace(query.Search))
+        {
+            var literal = query.Search.Trim().Replace("\\", "\\\\").Replace("%", "\\%").Replace("_", "\\_");
+            items = items.Where(x => context.MediaItems.Any(m => m.Id == x.MediaItemId && EF.Functions.ILike(m.Title, "%" + literal + "%", "\\")));
+        }
         var total = await items.CountAsync(ct);
-        var page = await Items(items.OrderByDescending(x => x.CreatedAt).ThenBy(x => x.MediaItemId)
-            .Skip((query.Page - 1) * query.PageSize).Take(query.PageSize)).ToListAsync(ct);
+        var rows = from entry in items
+                   join media in context.MediaItems.AsNoTracking() on entry.MediaItemId equals media.Id
+                   select new { Entry = entry, Media = media,
+                       OwnRating = context.Ratings.Where(r => r.UserId == userId && r.MediaItemId == entry.MediaItemId).Select(r => (decimal?)r.Score).FirstOrDefault() };
+        var ordered = query.Sort switch
+        {
+            "recently_completed" => rows.OrderBy(x => x.Entry.CompletedAt == null).ThenByDescending(x => x.Entry.CompletedAt).ThenByDescending(x => x.Entry.CreatedAt).ThenBy(x => x.Media.Id),
+            "title" => rows.OrderBy(x => x.Media.Title.ToLower()).ThenByDescending(x => x.Entry.CreatedAt).ThenBy(x => x.Media.Id),
+            "highest_rated" => rows.OrderBy(x => x.OwnRating == null).ThenByDescending(x => x.OwnRating).ThenByDescending(x => x.Entry.CreatedAt).ThenBy(x => x.Media.Id),
+            "lowest_rated" => rows.OrderBy(x => x.OwnRating == null).ThenBy(x => x.OwnRating).ThenByDescending(x => x.Entry.CreatedAt).ThenBy(x => x.Media.Id),
+            _ => rows.OrderByDescending(x => x.Entry.CreatedAt).ThenBy(x => x.Media.Id)
+        };
+        var page = await ordered.Skip((query.Page - 1) * query.PageSize).Take(query.PageSize)
+            .Select(x => new LibraryItem(new MediaSummary(x.Media.Id, x.Media.MediaType, x.Media.Title, x.Media.ReleaseDate, x.Media.ImageReference),
+                x.Entry.Status, x.Entry.StartedAt, x.Entry.CompletedAt, x.Entry.CreatedAt, x.Entry.UpdatedAt, x.OwnRating)).ToListAsync(ct);
         await tx.CommitAsync(ct);
         return new(page, query.Page, query.PageSize, total);
     }
@@ -50,6 +69,20 @@ internal sealed class LibraryService(RateFreakDbContext context) : ILibraryServi
         var result = await Items(context.LibraryEntries.AsNoTracking().Where(x => x.UserId == userId && x.MediaItemId == mediaId && context.MediaItems.Where(CatalogAccess.Readable(userId)).Any(m => m.Id == x.MediaItemId))).SingleAsync(ct);
         await tx.CommitAsync(ct);
         return result;
+    }
+
+    public async Task<LibraryStatusWriteResult> UpdateStatusAsync(Guid userId, Guid mediaId, LibraryStatusRequest request, CancellationToken ct)
+    {
+        await using var tx = await context.Database.BeginTransactionAsync(ct);
+        await ModerationLock.AcquireAsync(context, ct);
+        var entry = await FindAsync(userId, mediaId, ct);
+        if (entry is null) return new(LibraryStatusWriteStatus.NotFound);
+        if (entry.Status != request.ExpectedStatus) return new(LibraryStatusWriteStatus.Conflict);
+        await context.LibraryEntries.Where(x => x.UserId == userId && x.MediaItemId == mediaId)
+            .ExecuteUpdateAsync(s => s.SetProperty(x => x.Status, request.Status!).SetProperty(x => x.UpdatedAt, DateTimeOffset.UtcNow), ct);
+        var result = await FindAsync(userId, mediaId, ct);
+        await tx.CommitAsync(ct);
+        return new(LibraryStatusWriteStatus.Success, result);
     }
 
     public async Task<bool> DeleteAsync(Guid userId, Guid mediaId, CancellationToken ct)

@@ -10,9 +10,13 @@ public sealed record RatingRequest(decimal? Score, bool? IsShared = null);
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
 public sealed record ReviewRequest(string? Body, bool IsSpoiler = false);
 public sealed record PersonalPage<T>(IReadOnlyList<T> Items, int Page, int PageSize, int TotalCount);
-public sealed record LibraryQuery(string? Status, string? Type, int Page, int PageSize);
+public sealed record LibraryQuery(string? Status, string? Type, int Page, int PageSize, string? Search = null, string? Sort = null);
+[JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
+public sealed record LibraryStatusRequest(string? Status, string? ExpectedStatus);
+public enum LibraryStatusWriteStatus { Success, NotFound, Conflict }
+public sealed record LibraryStatusWriteResult(LibraryStatusWriteStatus Status, LibraryItem? Item = null);
 public sealed record LibraryItem(MediaSummary Media, string Status, DateOnly? StartedAt, DateOnly? CompletedAt,
-    DateTimeOffset CreatedAt, DateTimeOffset UpdatedAt);
+    DateTimeOffset CreatedAt, DateTimeOffset UpdatedAt, decimal? OwnRating = null);
 public sealed record RatingDetails(Guid Id, Guid MediaId, decimal Score, DateTimeOffset CreatedAt, DateTimeOffset UpdatedAt, bool IsShared = false, DateTimeOffset? SharedAt = null);
 public sealed record RatingAggregate(int Count, decimal? Average);
 public sealed record ReviewAuthor(Guid Id, string Handle, string DisplayName, string? AvatarUrl = null);
@@ -26,6 +30,7 @@ public interface ILibraryService
     Task<LibraryItem?> FindAsync(Guid userId, Guid mediaId, CancellationToken ct);
     Task<PersonalPage<LibraryItem>> ListAsync(Guid userId, LibraryQuery query, CancellationToken ct);
     Task<LibraryItem?> PutAsync(Guid userId, Guid mediaId, LibraryRequest request, CancellationToken ct);
+    Task<LibraryStatusWriteResult> UpdateStatusAsync(Guid userId, Guid mediaId, LibraryStatusRequest request, CancellationToken ct);
     Task<bool> DeleteAsync(Guid userId, Guid mediaId, CancellationToken ct);
 }
 public interface IRatingService

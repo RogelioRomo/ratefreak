@@ -18,14 +18,20 @@ internal static class PersonalMediaEndpoints
     private static void MapLibrary(WebApplication app)
     {
         var library = app.MapGroup("/api/v1/users/me/library").WithTags("Personal library").RequireAuthorization();
-        library.MapGet("", async (ClaimsPrincipal user, ILibraryService service, CancellationToken ct,
-            string? status = null, string? type = null, int page = 1, int pageSize = 20) =>
+        library.MapGet("", async (ClaimsPrincipal user, ILibraryService service, HttpContext context, CancellationToken ct,
+            string? status = null, string? type = null, int page = 1, int pageSize = 20, string? q = null, string? sort = null) =>
         {
             var errors = PageErrors(page, pageSize);
+            foreach (var parameter in context.Request.Query)
+                if (parameter.Key is not ("status" or "type" or "page" or "pageSize" or "q" or "sort") || parameter.Value.Count != 1)
+                    errors[parameter.Key] = ["Unknown or duplicate library parameter."];
+            if (q is { Length: > 200 }) errors["q"] = ["Search must be at most 200 characters."];
+            if (sort is not (null or "recently_added" or "recently_completed" or "title" or "highest_rated" or "lowest_rated"))
+                errors["sort"] = ["Unsupported library ordering."];
             if (status is not null && !PersonalMediaRules.ValidStatus(status)) errors["status"] = ["Unsupported tracking status."];
             if (type is not null && !MediaTypes.IsCatalogType(type)) errors["type"] = ["Type must be movie, tv_show, album, video_game, book or custom."];
             if (errors.Count != 0) return Results.ValidationProblem(errors);
-            return Results.Ok(await service.ListAsync(UserId(user), new(status, type, page, pageSize), ct));
+            return Results.Ok(await service.ListAsync(UserId(user), new(status, type, page, pageSize, q?.Trim(), sort), ct));
         }).RequireRateLimiting("personal-read").Produces<PersonalPage<LibraryItem>>().ProducesValidationProblem()
             .ProducesProblem(401).ProducesProblem(429).WithSummary("List your private tracking library");
         library.MapGet("/{mediaId:guid}", async (Guid mediaId, ClaimsPrincipal user, ILibraryService service, CancellationToken ct) =>
@@ -45,6 +51,23 @@ internal static class PersonalMediaEndpoints
             return result is null ? Results.NotFound() : Results.Ok(result);
         })).Produces<LibraryItem>().ProducesValidationProblem().ProducesProblem(404)
             .WithSummary("Replace your tracking status and optional dates");
+        Write(library.MapPatch("/{mediaId:guid}/status", async (Guid mediaId, LibraryStatusRequest request,
+            ClaimsPrincipal user, ILibraryService service, HttpContext context, CancellationToken ct) =>
+        {
+            var accounts = context.Request.Headers["X-RateFreak-Account-Id"];
+            if (accounts.Count != 1 || !Guid.TryParseExact(accounts[0], "D", out var expectedAccount) || expectedAccount != UserId(user))
+                return Results.Conflict();
+            if (!PersonalMediaRules.ValidStatus(request.Status) || !PersonalMediaRules.ValidStatus(request.ExpectedStatus))
+                return Results.ValidationProblem(new Dictionary<string, string[]> { ["status"] = ["New and expected tracking statuses must be valid."] });
+            var result = await service.UpdateStatusAsync(UserId(user), mediaId, request, ct);
+            return result.Status switch
+            {
+                LibraryStatusWriteStatus.NotFound => Results.NotFound(),
+                LibraryStatusWriteStatus.Conflict => Results.Conflict(),
+                _ => Results.Ok(result.Item)
+            };
+        })).Produces<LibraryItem>().ProducesValidationProblem().ProducesProblem(404).ProducesProblem(409)
+            .WithSummary("Update tracking status while preserving dates, using the expected account and status");
         Write(library.MapDelete("/{mediaId:guid}", async (Guid mediaId, ClaimsPrincipal user, ILibraryService service, CancellationToken ct) =>
         {
             return await service.DeleteAsync(UserId(user), mediaId, ct) ? Results.NoContent() : Results.NotFound();
