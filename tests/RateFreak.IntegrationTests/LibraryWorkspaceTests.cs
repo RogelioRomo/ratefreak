@@ -92,6 +92,7 @@ public sealed class LibraryWorkspaceTests(AccountDatabase database) : IClassFixt
 
     [Theory]
     [InlineData("q=x&q=y")]
+    [InlineData("q=a%00b")]
     [InlineData("sort=unknown")]
     [InlineData("sort=title&sort=title")]
     [InlineData("type=movie&type=book")]
@@ -147,5 +148,55 @@ public sealed class LibraryWorkspaceTests(AccountDatabase database) : IClassFixt
         client.DefaultRequestHeaders.Add("X-RateFreak-Account-Id",user.ToString());
         client.DefaultRequestHeaders.Remove("X-CSRF-TOKEN");
         Assert.Equal(HttpStatusCode.BadRequest,(await client.PatchAsJsonAsync(path,new {status="planned",expectedStatus="planned"},Ct)).StatusCode);
+    }
+
+    [Fact]
+    public async Task Equal_sort_keys_have_stable_pages_and_hidden_items_are_excluded()
+    {
+        await using var factory=Factory();using var owner=Client(factory);var user=await SignIn(owner);
+        var ids=new[]{await Media("movie","Same"),await Media("movie","same"),await Media("movie","SAME")};
+        foreach(var id in ids) {
+            await Json(await owner.PutAsJsonAsync($"/api/v1/users/me/library/{id}",new {status="completed",completedAt="2026-02-01"},Ct));
+            await Json(await owner.PutAsJsonAsync($"/api/v1/media/{id}/rating",new {score=0},Ct));
+        }
+        await using var db=Context();
+        await db.LibraryEntries.Where(x=>x.UserId==user).ExecuteUpdateAsync(x=>x.SetProperty(e=>e.CreatedAt,new DateTimeOffset(2026,1,1,0,0,0,TimeSpan.Zero)),Ct);
+        var expected=ids.OrderBy(x=>x.ToString(),StringComparer.Ordinal).ToArray();
+        foreach(var sort in new[]{"recently_added","recently_completed","title","highest_rated","lowest_rated"})
+            for(var page=1;page<=3;page++) {
+                var result=await Json(await owner.GetAsync($"/api/v1/users/me/library?sort={sort}&pageSize=1&page={page}",Ct));
+                Assert.Equal(expected[page-1],result.GetProperty("items")[0].GetProperty("media").GetProperty("id").GetGuid());
+            }
+        await db.MediaItems.Where(x=>x.Id==ids[0]).ExecuteUpdateAsync(x=>x.SetProperty(m=>m.IsHidden,true),Ct);
+        var filtered=await Json(await owner.GetAsync("/api/v1/users/me/library?q=same&sort=highest_rated",Ct));
+        Assert.Equal(2,filtered.GetProperty("totalCount").GetInt32());
+        using var request=new HttpRequestMessage(HttpMethod.Patch,$"/api/v1/users/me/library/{ids[0]}/status") {Content=JsonContent.Create(new {status="paused",expectedStatus="completed"})};
+        request.Headers.Add("X-RateFreak-Account-Id",user.ToString());
+        Assert.Equal(HttpStatusCode.NotFound,(await owner.SendAsync(request,Ct)).StatusCode);
+    }
+
+    [Fact]
+    public async Task Concurrent_status_writes_allow_only_one_stale_editor_to_win()
+    {
+        await using var factory=Factory();using var owner=Client(factory);var user=await SignIn(owner);var id=await Media();
+        await Json(await owner.PutAsJsonAsync($"/api/v1/users/me/library/{id}",new {status="planned"},Ct));
+        async Task<HttpResponseMessage> Save(string status) {
+            using var request=new HttpRequestMessage(HttpMethod.Patch,$"/api/v1/users/me/library/{id}/status") {Content=JsonContent.Create(new {status,expectedStatus="planned"})};
+            request.Headers.Add("X-RateFreak-Account-Id",user.ToString());return await owner.SendAsync(request,Ct);
+        }
+        var responses=await Task.WhenAll(Save("completed"),Save("paused"));
+        Assert.Single(responses,r=>r.StatusCode==HttpStatusCode.OK);
+        Assert.Single(responses,r=>r.StatusCode==HttpStatusCode.Conflict);
+    }
+
+    [Fact]
+    public async Task Status_body_and_duplicate_account_header_are_rejected()
+    {
+        await using var factory=Factory();using var owner=Client(factory);var user=await SignIn(owner);var id=await Media();
+        await Json(await owner.PutAsJsonAsync($"/api/v1/users/me/library/{id}",new {status="planned"},Ct));
+        owner.DefaultRequestHeaders.Add("X-RateFreak-Account-Id",user.ToString());
+        Assert.Equal(HttpStatusCode.BadRequest,(await owner.PatchAsJsonAsync($"/api/v1/users/me/library/{id}/status",new {status="completed",expectedStatus="planned",startedAt="2026-01-01"},Ct)).StatusCode);
+        owner.DefaultRequestHeaders.Add("X-RateFreak-Account-Id",user.ToString());
+        Assert.Equal(HttpStatusCode.Conflict,(await owner.PatchAsJsonAsync($"/api/v1/users/me/library/{id}/status",new {status="completed",expectedStatus="planned"},Ct)).StatusCode);
     }
 }

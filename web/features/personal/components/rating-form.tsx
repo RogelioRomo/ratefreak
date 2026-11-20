@@ -20,7 +20,7 @@ export function RatingForm({ accountId, mediaId, saved, canShareRating = false }
   const shared = sharing.value;
   const [score, setScore] = useState(saved ? String(saved.score) : "");
   const [present, setPresent] = useState(!!saved), [message, setMessage] = useState("");
-  const write = usePersonalWrite(); const keys = [personalKeys.rating(accountId, mediaId), personalKeys.aggregate(mediaId)];
+  const write = usePersonalWrite(); const keys = [personalKeys.rating(accountId, mediaId), personalKeys.aggregate(mediaId), personalKeys.library(accountId)];
   return <form aria-label="Rating" className={styles.form} onSubmit={event => {
     event.preventDefault(); if (score === "") return; setMessage("");
     void write.run(signal => saveRating(mediaId, +score, signal, sharing.dirty ? shared : undefined), keys).then(outcome => { if (outcome) { setPresent(true); setSharing({ value: outcome.value.isShared ?? shared, saved: outcome.value.isShared ?? shared, id: outcome.value.id ?? savedId, dirty: false }); setMessage("Rating saved."); } });

@@ -110,3 +110,7 @@ it('does not offer rating sharing when catalog visibility flags are unknown',asy
  const original=mock.getMockImplementation()!;mock.mockImplementation((url,options)=>String(url).endsWith('/ratings')?Promise.resolve(Response.json({count:0,average:null})):String(url)==='/api/v1/media/'+id?Promise.resolve(Response.json({...media,description:null,metadata:{},externalIds:[],createdAt:'2026-01-01',updatedAt:'2026-01-01',visibility:'public',category:{id:'category',name:'Movies',scope:'public',isHidden:false,revision:1}})):original(url,options));
  setup(<MediaDetailScreen id={id}/>);expect(await screen.findByRole('checkbox',{name:'Share this rating'})).toBeDisabled();
 });
+
+it('invalidates cached library ratings and ordering on rating save and removal',async()=>{
+ const view=setup(<PersonalControls mediaId={id}/>);const key=['personal','owner','library',{sort:'highest_rated'}];view.client.setQueryDefaults(['personal','owner','library'],{gcTime:Infinity,staleTime:60000});view.client.setQueryData(key,{items:[{...entry,ownRating:0}]});expect(view.client.getQueryState(key)?.isInvalidated).toBe(false);fireEvent.click(await screen.findByRole('button',{name:'Save rating'}));await screen.findByText('Rating saved.');expect(view.client.getQueryState(key)?.isInvalidated).toBe(true);view.client.setQueryData(key,{items:[{...entry,ownRating:0}]});fireEvent.click(screen.getByRole('button',{name:'Remove rating'}));await screen.findByText('Rating removed.');expect(view.client.getQueryState(key)?.isInvalidated).toBe(true);
+});

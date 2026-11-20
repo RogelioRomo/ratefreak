@@ -29,7 +29,7 @@ export function validatePersonalQuery(params: URLSearchParams, kind: "library" |
   }
   if (kind === "library") {
     const q = params.get("q"), sort = params.get("sort");
-    if ((q !== null && q.length > 200) || (sort !== null && !Object.hasOwn(librarySorts, sort))) throw new Error("Invalid library filters.");
+    if ((q !== null && (q.length > 200 || q.includes("\0"))) || (sort !== null && !Object.hasOwn(librarySorts, sort))) throw new Error("Invalid library filters.");
     if (q?.trim()) result.set("q", q.trim());
     if (sort) result.set("sort", sort);
   }

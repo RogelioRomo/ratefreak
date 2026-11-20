@@ -599,9 +599,10 @@ from the session; request bodies cannot specify a user ID and reject extra field
 
 | Method | Route | Behavior |
 | --- | --- | --- |
-| GET | `/api/v1/users/me/library` | Your private paginated library; optional `status` and `type` |
+| GET | `/api/v1/users/me/library` | Your private paginated library; optional `status`, `type`, `q` and `sort` |
 | GET | `/api/v1/users/me/library/{mediaId}` | Your own tracking entry;404 when absent |
 | PUT | `/api/v1/users/me/library/{mediaId}` | Replace tracking status and optional dates |
+| PATCH | `/api/v1/users/me/library/{mediaId}/status` | Change status only; expected account/status required, dates preserved |
 | DELETE | `/api/v1/users/me/library/{mediaId}` | Remove your entry; 204 even if absent |
 | GET | `/api/v1/media/{mediaId}/review` | Your own visible review;404 when absent/hidden |
 | GET | `/api/v1/media/{mediaId}/rating` | Your rating; 404 when unrated |
@@ -613,6 +614,26 @@ from the session; request bodies cannot specify a user ID and reject extra field
 | GET | `/api/v1/reviews/{id}` | Public review details |
 | PATCH | `/api/v1/reviews/{id}` | Replace your review body and spoiler flag |
 | DELETE | `/api/v1/reviews/{id}` | Delete your review |
+
+Library search `q` matches a case-insensitive literal title substring within your
+readable library. Outer whitespace is trimmed; blank means no search. Input is
+limited to 200 UTF-16 units and must not contain NUL. `%`, `_` and backslashes are
+literal characters. Unknown/duplicate library query parameters are rejected.
+`sort` accepts `recently_added` (default), `recently_completed`, `title`,
+`highest_rated` and `lowest_rated`. Completion sorting uses the optional completion
+date, with undated entries last; rating sorts put unrated entries last in either
+direction. Title sorting is case-insensitive using database conventions. Equal
+values use creation time descending then media UUID. Filtering and sorting happen
+before pagination. Each library entry includes nullable `ownRating`; zero is a
+valid rating. This value belongs only to the authenticated account.
+
+Status-only PATCH accepts `{ "status": "completed", "expectedStatus": "planned" }`
+and one `X-RateFreak-Account-Id` UUID header matching the signed-in account. It
+requires CSRF, never recreates a missing entry, and changes only status/update time.
+Stored start/completion dates survive concurrent date edits. A changed status or
+account mismatch returns 409; missing/unreadable entries return 404. Refresh the
+session and entry before retrying a conflict. Full tracking PUT retains its
+replacement semantics below.
 
 Library PUT example:
 
@@ -646,8 +667,7 @@ a library entry. Concurrent library/rating PUTs upsert one record; duplicate rev
 creation yields 201/409. Account deletion cascades these records at the database
 level; no account-deletion endpoint is introduced here. Catalog deletion is restricted.
 
-Both lists use `page` 1–10000, `pageSize` 1–100 (default 1/20). Stable creation-time
-ordering with UUID tie-breakers; total count and page use one consistent DB snapshot.
+Both lists use `page` 1–10000, `pageSize` 1–100 (default 1/20). Reviews retain creation-time ordering; library ordering is described above. Total count and page use one consistent DB snapshot.
 Private reads send no-store and allow 60/account/minute; writes share 30/account/minute.
 Public reviews/aggregates share the existing 60/IP/minute catalog budget. A 429
 includes Retry-After. Limits remain per instance. Authenticated mutations require CSRF.

@@ -200,10 +200,21 @@ settings for frontend writes. Those local secret values are not tracked.
 ## Personal library, ratings and reviews
 
 Open `/library` after signing in, or open a catalog title to track it, rate it or
-write a public review. Library Status/Media type filters and pagination live in
-the URL. Saved dates load before editing; tracking PUT replaces all fields, so
-status changes preserve the dates shown. Dates do not infer status. Removing a
-library entry leaves its rating and review intact.
+write a public review. Library title search, Status/Media type filters, sorting
+and pagination live in the URL. Apply filters submits them together and resets
+paging. Sorting supports recently added/completed, title and highest/lowest own
+rating; unrated/undated entries sort last. Each row displays your rating, including
+zero, or Not rated. Editing/removing a rating invalidates cached library scores
+and ordering.
+
+Inline Save status uses a dedicated status-only PATCH, preserving stored dates
+rather than resubmitting a potentially stale copy. Conflicts require an explicit
+Refresh library that reconciles the account before loading private data. Each row
+keeps its draft through date-only refetches; saves announce the outcome and restore
+focus when needed. When the last filtered row on a later page disappears, paging
+returns to the last valid page. Dates remain editable on title details through the
+existing replacement PUT and never infer status. Removing a library entry leaves
+its rating and review intact.
 
 Ratings accept0–5 in0.5 steps, including zero. Each title shows the local community
 count/average separately. Reviews are public plain text, one per user/title,
@@ -219,10 +230,14 @@ account resumes its drafts. Confirmed logout/account change discards them. Faile
 writes preserve input; mutations never retry automatically. Login continuations
 add only canonical `/library` and `/catalog/{guid}` to the existing provider paths.
 
-The proxy adds exact library GET/PUT/DELETE, own rating/review GET, rating
+The proxy adds exact library GET/PUT/DELETE and PATCH status, own rating/review GET, rating
 PUT/DELETE, public aggregate/review-list GET, review POST and review-ID PATCH/DELETE
 routes. Only library and review lists accept their bounded validated query keys.
 Every write retains existing exact Origin, attribution, JSON/body and CSRF guards.
+Library lists additionally accept `q` (at most 200 UTF-16 units; no NUL) and `sort`
+(`recently_added`, `recently_completed`, `title`, `highest_rated`, `lowest_rated`).
+The status-only PATCH forwards the expected account header only on its explicitly
+allowed route; ordinary tracking writes do not forward this header.
 The two new .NET reads are `GET users/me/library/{mediaId}` and
 `GET media/{mediaId}/review`; they derive the owner from session, return 404 when
 absent, and never reveal hidden review content. No schema migration is needed.

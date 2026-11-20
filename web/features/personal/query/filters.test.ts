@@ -10,3 +10,5 @@ it('round trips trimmed search and ordering with fixed paging',()=>{
  expect(libraryHref(filters)).toBe('/library?status=planned&q=film&sort=highest_rated&page=2');
  expect(libraryFilters(new URLSearchParams('q=%20%20'))?.q).toBeUndefined();
 });
+
+it('rejects embedded NUL in library search',()=>{expect(libraryFilters(new URLSearchParams("q=a%00b"))).toBeNull();});

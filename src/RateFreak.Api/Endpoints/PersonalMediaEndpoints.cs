@@ -25,7 +25,7 @@ internal static class PersonalMediaEndpoints
             foreach (var parameter in context.Request.Query)
                 if (parameter.Key is not ("status" or "type" or "page" or "pageSize" or "q" or "sort") || parameter.Value.Count != 1)
                     errors[parameter.Key] = ["Unknown or duplicate library parameter."];
-            if (q is { Length: > 200 }) errors["q"] = ["Search must be at most 200 characters."];
+            if (q is { Length: > 200 } || q?.Contains('\0') == true) errors["q"] = ["Search must be at most 200 characters and contain no null characters."];
             if (sort is not (null or "recently_added" or "recently_completed" or "title" or "highest_rated" or "lowest_rated"))
                 errors["sort"] = ["Unsupported library ordering."];
             if (status is not null && !PersonalMediaRules.ValidStatus(status)) errors["status"] = ["Unsupported tracking status."];

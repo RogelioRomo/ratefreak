@@ -50,11 +50,12 @@ function LibraryContent({ accountId }: LibraryContentProps) {
     }
     if (focusAfterSave.current) {
       if (!library.data.items.some(item => item.media.id === focusAfterSave.current)) results.current?.focus();
+      else document.getElementById(`status-${focusAfterSave.current}`)?.focus();
       focusAfterSave.current = null;
     }
   }, [library.data, library.isFetching, library.isError, currentPage, lastPage, currentHref, router]);
   function saved(item: LibraryItem, restoreFocus: boolean) {
-    setMessage(`Status saved for ${item.media.title}.`);
+    setMessage(`Status saved for ${item.media.title}. ${trackingStatuses[item.status]}.`);
     focusAfterSave.current = restoreFocus ? item.media.id : null;
     void Promise.all([
       client.invalidateQueries({ queryKey: personalKeys.tracking(accountId, item.media.id) }),
@@ -79,7 +80,7 @@ function LibraryContent({ accountId }: LibraryContentProps) {
     <p role="status" aria-live="polite" className={styles.libraryMessage}>{message}</p>
     <p ref={results} tabIndex={-1} aria-label="Library results" className={styles.summary}>{!library.isError && library.data ? `${library.data.totalCount} ${library.data.totalCount === 1 ? "title" : "titles"} · Page ${filters.page}` : "Your saved titles"}{narrowed && <Link className={styles.link} href={libraryHref({ status: "", type: "", sort: filters.sort, page: 1, pageSize: 20 })}>Clear filters</Link>}</p>
     {library.isPending ? <LoadingState label="Loading your library…" /> : library.isError ? <ErrorState title="Library unavailable." description="Please wait if requests are limited, then try again." onRetry={() => void library.refetch()} /> : !library.data.items.length ? <LibraryEmpty filters={filters} /> : <>
-      <ul className={styles.libraryList}>{library.data.items.map(item => <LibraryRow key={`${item.media.id}:${item.updatedAt}`} item={item} accountId={accountId} onSaved={saved} />)}</ul>
+      <ul className={styles.libraryList}>{library.data.items.map(item => <LibraryRow key={item.media.id} item={item} accountId={accountId} onSaved={saved} onSaving={() => setMessage("")} />)}</ul>
       <nav className={styles.pagination} aria-label="Library pages">{filters.page > 1 ? <Link href={href(filters.page - 1)}>Previous</Link> : <span>Previous</span>}<span>Page {filters.page}</span>{filters.page < Math.ceil(library.data.totalCount / 20) && filters.page < 10000 ? <Link href={href(filters.page + 1)}>Next</Link> : <span>Next</span>}</nav>
     </>}
   </>;

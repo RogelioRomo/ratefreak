@@ -20,3 +20,5 @@ it('accepts library search, custom types, ordering and status PATCH only',()=>{
  expect(isAllowedRoute('PUT',['users','me','library',id,'status'])).toBe(false);
 });
 it.each(['q='+ 'a'.repeat(201),'q=a&q=b','sort=x','sort=title&sort=title'])('rejects new invalid query %s',q=>expect(()=>validatePersonalQuery(new URLSearchParams(q),'library')).toThrow());
+
+it('rejects embedded NUL in library search',()=>{expect(()=>validatePersonalQuery(new URLSearchParams("q=a%00b"),"library")).toThrow();});

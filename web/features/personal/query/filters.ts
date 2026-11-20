@@ -7,7 +7,7 @@ export function libraryFilters(params: URLSearchParams): LibraryFilters | null {
   const status = params.get("status") ?? "", type = params.get("type") ?? "", page = params.get("page") ?? "1";
   if ((status && !Object.hasOwn(trackingStatuses, status)) || (type && !Object.hasOwn(mediaTypes, type)) || !/^\d+$/.test(page) || +page < 1 || +page > 10000 || (params.has("pageSize") && params.get("pageSize") !== "20")) return null;
   const q = params.get("q"), sort = params.get("sort");
-  if ((q !== null && q.length > 200) || (sort !== null && !Object.hasOwn(librarySorts, sort))) return null;
+  if ((q !== null && (q.length > 200 || q.includes("\0"))) || (sort !== null && !Object.hasOwn(librarySorts, sort))) return null;
   return { status, type, page: +page, pageSize: 20, ...(q?.trim() ? { q: q.trim() } : {}), ...(sort && sort !== "recently_added" ? { sort: sort as LibrarySort } : {}) } as LibraryFilters;
 }
 export function libraryParams(filters: LibraryFilters, api = false): URLSearchParams {

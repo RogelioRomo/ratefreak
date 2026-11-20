@@ -1,6 +1,6 @@
 # Personal library: search, sorting and quick status updates
 
-Status: proposed design, awaiting user approval.
+Status: approved by the user on 2026-11-20; implemented and verified on `feat/personal-library`, pending integration.
 
 ## Intent and agreed scope
 

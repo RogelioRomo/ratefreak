@@ -1,6 +1,15 @@
 # Current project status and roadmap
 
-Updated: 2026-11-19. Custom uploaded profile avatars with a person-icon fallback
+Updated: 2026-11-20. Personal-library search, sorting, own-rating display and inline
+status updates are implemented and verified on `feat/personal-library`, pending
+integration into `main`. Verification includes 701 backend tests with no skips,
+870 frontend tests, lint/typecheck, production web build, API Release publish and
+ordinary-account Chromium acceptance; see [library evidence](personal-library-verification.md).
+No schema migration or persistent local data change was needed. The isolated
+preview at localhost:3100 uses synthetic data and an API at localhost:5180;
+the existing localhost:3000/5080 inspection services are separate.
+
+Previous update, 2026-11-19. Custom uploaded profile avatars with a person-icon fallback
 are implemented, verified and merged locally into `main` at `019cd10`. Avatar
 images/stages/leases use the dedicated `avatars/` folder
 inside the configured artwork root. The additive migration
@@ -98,6 +107,14 @@ are evidence references, not durable deployment artifacts or guaranteed running 
 
 ## Implemented
 
+- Personal-library title search, all existing status/media filters, five sort
+  choices and nullable own-rating display (including zero). Inline status-only
+  updates preserve current dates and use expected-account/status checks; conflicts
+  require session reconciliation and explicit refresh. Dirty row drafts survive
+  date-only refetches, filtered removals repair pagination/focus, and rating edits
+  refresh library scores/order. Implemented on `feat/personal-library`, pending
+  local integration. [Evidence and limits](personal-library-verification.md).
+
 - Custom uploaded profile avatars with a person-icon fallback, independent
   upload/replace/remove controls, public identity display and a separate `avatars/`
   filesystem folder. Writes bind to expected account/revision with CSRF; checked
@@ -193,6 +210,7 @@ Current decisions:
 ## Latest local evidence
 
 | Check | Latest recorded result |
+| Personal library, 2026-11-20 | 32 unit, 473 PostgreSQL/API integration and 196 provider contracts passed; zero backend skips. 870 frontend tests, lint/typecheck, production build and API Release publish passed. Ordinary-account Chromium checks cover literal search, all sorts, browser Back, date preservation, conflicts, filtered later-page and surviving-row focus, logout and both themes at 1440/768/390/320px. Independent review findings were addressed with regression proof. Disposable preview data is separate from the persistent local database. [Evidence](personal-library-verification.md) |
 | --- | --- |
 | Notification-bell placement, 2026-11-19 | Shared signed-in navigation now orders Account → notification bell → Log out. Eleven focused layout/navigation/notification component tests passed; `git diff --check` passed. The development frontend picked up the change. |
 | Profile avatars, 2026-11-19 | 32 unit, 460 PostgreSQL/API integration and 196 provider contracts passed; zero backend skips. 841 frontend and 36 operator tests passed; lint/typecheck, final production build/API Release publish and model consistency passed. Chromium ordinary/staff upload/replace/remove, visibility, current-version restore, export/deletion, keyboard, both themes and responsive widths passed; final confirmation used local Production HTTPS. Real mixed-folder PostgreSQL/artwork backup, isolated restore and Release erasure replay preserved public catalog bytes and erased the account avatar. Independent review findings addressed with regression proof. Persistent local migration subsequently applied after private backup/restore and original-data preservation checks; [scope and limits](profile-avatars-verification.md) |
