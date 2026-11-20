@@ -1,6 +1,7 @@
 # Private library history verification — 2026-11-20
 
-Implemented and verified on `feat/library-history`, pending local integration.
+Implemented and verified on `feat/library-history`, then merged into local `main`
+through `7559fc4` on 2026-11-20 after explicit user authorization.
 The [approved design](superpowers/specs/2026-11-20-library-history-design.md) defines
 a private recap of current Completed entries with dates, not a permanent diary.
 The [implementation plan](superpowers/plans/2026-11-20-library-history.md) records scope.
@@ -86,8 +87,13 @@ signed-out status. This complements the React Activity lifecycle regression.
 
 ## Local runtime and limitations
 
-The isolated preview is localhost:3200 with API localhost:5280 and disposable
-synthetic data. Existing main and earlier preview services remain separate.
+Acceptance used an isolated preview at localhost:3200 with API localhost:5280
+and disposable synthetic data. After local integration, the user requested
+shutdown: main (3000/5080), library preview (3100/5180) and history preview
+(3200/5280) process trees were stopped and all six ports verified closed on
+IPv4/IPv6 loopback.
+PostgreSQL containers were left running. Main-checkout shutdown evidence is in
+`.local/localhost/history-merge/shutdown.json`.
 Ignored evidence lives in this feature worktree's `.local/history-checks/` and
 `.local/history-acceptance/`: check logs, execution ledger, fixture metadata,
 `browser-verification.json`, `privacy-verification.json` and eight screenshots.
@@ -102,3 +108,18 @@ Implementation rulings: continued the previously chosen native workflow after
 approval; added a canonical history login continuation to preserve the chosen
 period; handled existing Npgsql extrema locally in the query; used the installed
 Next Activity guidance to gate re-entry. These preserve the approved product scope.
+
+## Local main integration and shutdown
+
+On 2026-11-20, the user selected local merge and then requested the running API
+and frontend be closed. Local `main` advanced from `f9253cf` to `7559fc4` by
+fast-forward. The merged checkout passed 32 unit, 494 PostgreSQL/API integration
+and 196 provider-contract tests (722 total, zero skipped), all 928 frontend tests,
+lint, typecheck and diff checks. No migration or persistent-data mutation occurred.
+
+All six tracked main/library-preview/history-preview API and frontend process
+trees were stopped. Their six ports were confirmed closed on both IPv4 and IPv6
+loopback. The main PostgreSQL container remained running and healthy; database
+containers were not stopped. Post-merge logs and shutdown evidence are in the
+main checkout's ignored `.local/localhost/history-merge/` directory. No server was
+restarted after the shutdown request, and no remote push was performed.

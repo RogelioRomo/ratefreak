@@ -1,6 +1,6 @@
 # Private library completion history
 
-Status: approved by the user on 2026-11-20; implemented and verified on `feat/library-history`, pending local integration. The user selected the library-recap approach.
+Status: approved by the user on 2026-11-20; implemented, verified and merged into local `main` through `7559fc4` following explicit user authorization. The user selected the library-recap approach.
 
 ## Intent and agreed approach
 

@@ -1,7 +1,7 @@
 # Current project status and roadmap
 
-Updated: 2026-11-20. Private Library → History is implemented and verified on
-`feat/library-history`, pending local integration. The recap includes currently
+Updated: 2026-11-20. Private Library → History is implemented, verified and merged
+locally into `main` through `7559fc4` after user authorization. The recap includes currently
 Completed, readable titles with completion dates; year/month filters, twelve
 monthly totals, grouped pagination, own ratings and missing-date guidance reuse
 existing data without a migration. Verification: 722 backend tests (32 unit,
@@ -10,8 +10,12 @@ tests, lint/typecheck, final production web build/API Release publish and model
 consistency. Real ordinary-account Chromium checks passed in both themes at
 1440/768/390/320px, including keyboard navigation focus, tracking edits refreshing
 cached totals, and preserved-route concealment during a delayed session check after
-silently cleared cookies. The isolated preview at localhost:3200 uses synthetic
-data and an API at localhost:5280; main remains at localhost:3000/5080.
+silently cleared cookies. After the merge, the user requested shutdown. The main
+API/frontend and both synthetic preview API/frontend pairs are stopped; ports
+5080/3000, 5180/3100 and 5280/3200 are confirmed closed on IPv4/IPv6 loopback. PostgreSQL containers
+were left running. Evidence: `.local/localhost/history-merge/shutdown.json`.
+The merged main checkout passed all 722 backend tests (zero skipped), 928 frontend
+tests, lint/typecheck and diff checks; logs are in `.local/localhost/history-merge/`.
 See [history evidence and limits](library-history-verification.md).
 
 Previous update, 2026-11-20. Personal-library search, sorting, own-rating display and inline
@@ -137,7 +141,7 @@ are evidence references, not durable deployment artifacts or guaranteed running 
   bounds include leap days and years 1–9999; snapshot tests cover concurrent removal.
   Activity re-entry verifies the session before revealing preserved private results;
   keyboard filter/month/page navigation restores focus. Implemented and verified on
-  `feat/library-history`, pending integration. [Evidence](library-history-verification.md).
+  local `main` through `7559fc4` after user authorization. [Evidence](library-history-verification.md).
 
 - Personal-library title search, all existing status/media filters, five sort
   choices and nullable own-rating display (including zero). Inline status-only
