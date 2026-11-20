@@ -646,6 +646,24 @@ TV, albums and games alike. Dates are optional date-only values; completion cann
 PUT replaces all fields, so omitted dates become null. Dates do not automatically
 change status and status changes do not infer dates. No episode/progress counters.
 
+Completion history: `GET /api/v1/users/me/library/history` accepts optional `year`
+(1–9999), `month` (1–12, requires an explicit year), `page` and `pageSize` with the
+same API paging limits. Unknown/duplicate/non-numeric parameters are rejected.
+Only your currently readable Completed entries with a completion date count;
+custom items use the same visibility policy. The default year is your latest
+eligible completion year, falling back to the current UTC year for empty history.
+
+The response supplies `year`, nullable `month`, `availableYears`, twelve `months`
+(`month`/`count` pairs including zeros), `annualTotal`, selected-period `totalCount`,
+account-wide `missingDateCount`, paginated `items`, `page` and `pageSize`. Month
+filtering affects the list/count while the twelve month totals still describe the
+whole selected year. Entries use the existing library shape with current own
+rating. Date-only ordering is completion date descending, then media UUID; one
+repeatable-read snapshot covers eligibility, aggregates and rows. Counts reflect
+subsequent tracking/date/status edits and removals. This is a private recap of
+current records, not a permanent diary or repeated-completion log. No new schema
+or lifecycle/export format is introduced. See [verification](docs/library-history-verification.md).
+
 Rating PUT: `{ "score": 4.5 }`. Scores run **0–5 inclusive, in 0.5 steps**.
 Omitted/null scores are invalid; zero is a real rating. One current rating per
 user/media. Public aggregate: `{ "count": 2, "average": 4.25 }`; averages need not

@@ -242,6 +242,26 @@ The two new .NET reads are `GET users/me/library/{mediaId}` and
 `GET media/{mediaId}/review`; they derive the owner from session, return 404 when
 absent, and never reveal hidden review content. No schema migration is needed.
 
+### Completion history
+
+Library/History section links expose `/library/history`; global Library navigation
+stays selected on that nested page. The read-only private recap has year/month URL
+filters, a compact twelve-month annual count summary, a paginated timeline grouped
+by completion month, current own scores and account-wide missing-date guidance.
+The initial year comes from the latest eligible completion; empty explicit years
+remain selectable. Monthly links reset paging. Date-only labels do not pass through
+timezone conversions, and years 1–9999 are supported.
+
+The proxy permits only GET `users/me/library/history` and validates its bounded
+`year`, `month`, `page` and `pageSize` query. Month requires year. Browser pages have
+20 entries. History queries live below the account's existing library-key prefix,
+so tracking and rating writes invalidate the recap. Valid history URLs can be used
+as canonical login continuations. Session errors and read failures conceal private
+rows and totals. Preserved Next Activity routes require a new session check before
+revealing cached history; keyboard filter/month/page navigation focuses the results
+(or error) after completion. Out-of-range pages show repair progress and preserve
+the selected period. See [history evidence](../docs/library-history-verification.md).
+
 ## Custom catalog and collections
 
 `/catalog/new` creates private-default custom items using title, description and an

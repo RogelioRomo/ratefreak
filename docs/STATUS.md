@@ -1,6 +1,20 @@
 # Current project status and roadmap
 
-Updated: 2026-11-20. Personal-library search, sorting, own-rating display and inline
+Updated: 2026-11-20. Private Library → History is implemented and verified on
+`feat/library-history`, pending local integration. The recap includes currently
+Completed, readable titles with completion dates; year/month filters, twelve
+monthly totals, grouped pagination, own ratings and missing-date guidance reuse
+existing data without a migration. Verification: 722 backend tests (32 unit,
+494 PostgreSQL/API integration, 196 provider contracts; zero skipped), 928 frontend
+tests, lint/typecheck, final production web build/API Release publish and model
+consistency. Real ordinary-account Chromium checks passed in both themes at
+1440/768/390/320px, including keyboard navigation focus, tracking edits refreshing
+cached totals, and preserved-route concealment during a delayed session check after
+silently cleared cookies. The isolated preview at localhost:3200 uses synthetic
+data and an API at localhost:5280; main remains at localhost:3000/5080.
+See [history evidence and limits](library-history-verification.md).
+
+Previous update, 2026-11-20. Personal-library search, sorting, own-rating display and inline
 status updates are implemented, verified and merged locally into `main` through
 `42ed721` following user authorization. Verification includes 701 backend tests
 with no skips, 870 frontend tests, lint/typecheck, production web build, API Release publish and
@@ -87,6 +101,7 @@ older plans and resume notes. It records work and decisions, not deployment auth
 | [Implementation history](implementation-checklist.md) | Dated backend verification and implementation history |
 | [Release verification](frontend-release-verification.md) | Verification evidence and the authoritative production release gates |
 | [Catalog operations](custom-catalog-operations.md) | Artwork storage, backups and guarded collection migration |
+| [Library history](library-history-verification.md) | Private completion recap, monthly totals and verification limits |
 | [Home feeds](home-feeds-verification.md) | Rating sharing, Following/Community, notification bell and verification limits |
 | [Notifications](notifications-verification.md) | Inbox behavior, API, retention and local acceptance evidence |
 | [Account operations](account-data-operations.md) | Retention, durable erasure journal and restore replay |
@@ -114,6 +129,15 @@ Use this page and Git for current scope and commit state. Temporary local paths
 are evidence references, not durable deployment artifacts or guaranteed running services.
 
 ## Implemented
+
+- Private Library → History with year/month filters, twelve annual monthly totals
+  and a newest-first completion timeline. Only currently Completed/readable entries
+  with dates count; undated completions have separate guidance. Edits/status changes
+  update the recap through existing account library-cache invalidation. Date-only
+  bounds include leap days and years 1–9999; snapshot tests cover concurrent removal.
+  Activity re-entry verifies the session before revealing preserved private results;
+  keyboard filter/month/page navigation restores focus. Implemented and verified on
+  `feat/library-history`, pending integration. [Evidence](library-history-verification.md).
 
 - Personal-library title search, all existing status/media filters, five sort
   choices and nullable own-rating display (including zero). Inline status-only
@@ -218,6 +242,7 @@ Current decisions:
 ## Latest local evidence
 
 | Check | Latest recorded result |
+| Library history, 2026-11-20 | 722 backend tests (32 unit, 494 integration, 196 provider contracts; zero skipped), 928 frontend tests, lint/typecheck, production web build, API Release publish and unchanged model passed. Real ordinary-account multi-year/month/date-edit/paging/keyboard/logout acceptance, both themes at four widths and delayed-session Back-navigation privacy passed. Independent review findings addressed with regressions. [Evidence and limits](library-history-verification.md) |
 | Personal library, 2026-11-20 | 32 unit, 473 PostgreSQL/API integration and 196 provider contracts passed; zero backend skips. 870 frontend tests, lint/typecheck, production build and API Release publish passed. Ordinary-account Chromium checks cover literal search, all sorts, browser Back, date preservation, conflicts, filtered later-page and surviving-row focus, logout and both themes at 1440/768/390/320px. Independent review findings were addressed with regression proof. Disposable preview data is separate from the persistent local database. [Evidence](personal-library-verification.md) |
 | --- | --- |
 | Notification-bell placement, 2026-11-19 | Shared signed-in navigation now orders Account → notification bell → Log out. Eleven focused layout/navigation/notification component tests passed; `git diff --check` passed. The development frontend picked up the change. |
