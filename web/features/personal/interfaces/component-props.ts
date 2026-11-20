@@ -13,3 +13,5 @@ export interface LibraryContentProps { accountId: string; }
 export interface LibraryEmptyProps { filters: LibraryFilters; }
 
 export interface RetainedActivityProps extends PrivateActivityProps { active: boolean; }
+
+export interface LibraryRowProps { item: LibraryItem; accountId: string; onSaved: (item: LibraryItem, restoreFocus: boolean) => void; }

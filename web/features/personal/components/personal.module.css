@@ -53,3 +53,18 @@
 @media (min-width: 40.0625rem) { .activityGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .sharing { display: flex; align-items: center; gap: .75rem; min-height: 2.75rem; margin-top: 1rem; }
 .sharing input { width: 1.125rem; height: 1.125rem; accent-color: var(--accent); }
+
+.libraryFilters { grid-template-columns: minmax(12rem, 2fr) repeat(3, minmax(0, 1fr)) auto; }
+.filters input { width: 100%; min-width: 0; min-height: 3rem; padding: .75rem; font: inherit; color: var(--foreground); background: var(--input-surface); border: 1px solid var(--input-border); border-radius: var(--radius-small); }
+.libraryMessage { color: var(--accent); line-height: 1.6; overflow-wrap: anywhere; }
+.libraryMessage:empty { display: none; }
+.summary .link { margin-left: 1rem; }
+.libraryInfo .ownRating { color: var(--foreground); font-weight: 600; }
+.statusForm { margin-top: 1rem; max-width: 28rem; }
+.statusForm fieldset { display: flex; flex-wrap: wrap; align-items: end; gap: .75rem; border: 0; min-width: 0; }
+.statusForm fieldset > div { display: grid; gap: .5rem; flex: 1 1 10rem; min-width: 0; }
+.statusForm label { font-size: .875rem; font-weight: 600; }
+.statusForm button { min-height: 3rem; }
+.statusForm [role="alert"] { color: var(--error); margin-block: .75rem; }
+@media (max-width: 64rem) { .libraryFilters { grid-template-columns: repeat(3, minmax(0, 1fr)); } .librarySearch { grid-column: 1 / -1; } }
+@media (max-width: 40rem) { .libraryFilters { grid-template-columns: minmax(0, 1fr); } .statusForm fieldset { display: grid; grid-template-columns: minmax(0, 1fr); } }
