@@ -1,16 +1,21 @@
 import { mediaTypes } from "@/features/catalog/query/filters";
-import type { LibraryFilters } from "../interfaces/personal";
+import type { LibraryFilters, LibrarySort } from "../interfaces/personal";
 export const trackingStatuses = { planned: "Planned", in_progress: "In progress", completed: "Completed", paused: "Paused", dropped: "Dropped" } as const;
+export const librarySorts = { recently_added: "Recently added", recently_completed: "Recently completed", title: "Title A–Z", highest_rated: "Highest rated", lowest_rated: "Lowest rated" } as const;
 export function libraryFilters(params: URLSearchParams): LibraryFilters | null {
-  for (const key of params.keys()) if (!["status", "type", "page", "pageSize"].includes(key) || params.getAll(key).length !== 1) return null;
+  for (const key of params.keys()) if (!["status", "type", "page", "pageSize", "q", "sort"].includes(key) || params.getAll(key).length !== 1) return null;
   const status = params.get("status") ?? "", type = params.get("type") ?? "", page = params.get("page") ?? "1";
   if ((status && !Object.hasOwn(trackingStatuses, status)) || (type && !Object.hasOwn(mediaTypes, type)) || !/^\d+$/.test(page) || +page < 1 || +page > 10000 || (params.has("pageSize") && params.get("pageSize") !== "20")) return null;
-  return { status, type, page: +page, pageSize: 20 } as LibraryFilters;
+  const q = params.get("q"), sort = params.get("sort");
+  if ((q !== null && q.length > 200) || (sort !== null && !Object.hasOwn(librarySorts, sort))) return null;
+  return { status, type, page: +page, pageSize: 20, ...(q?.trim() ? { q: q.trim() } : {}), ...(sort && sort !== "recently_added" ? { sort: sort as LibrarySort } : {}) } as LibraryFilters;
 }
 export function libraryParams(filters: LibraryFilters, api = false): URLSearchParams {
   const params = new URLSearchParams();
   if (filters.status) params.set("status", filters.status);
   if (filters.type) params.set("type", filters.type);
+  if (filters.q?.trim()) params.set("q", filters.q.trim());
+  if (filters.sort && filters.sort !== "recently_added") params.set("sort", filters.sort);
   if (api || filters.page > 1) params.set("page", String(filters.page));
   if (api) params.set("pageSize", String(filters.pageSize));
   return params;

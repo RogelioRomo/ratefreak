@@ -1,6 +1,6 @@
 import { apiRequest } from "@/shared/api/request";
 import { ApiError } from "@/shared/api/api-error";
-import type { LibraryFilters, LibraryItem, TrackingInput, RatingDetails, RatingAggregate, ReviewInput, ReviewDetails, PersonalPage } from "../interfaces/personal";
+import type { LibraryFilters, LibraryItem, TrackingInput, TrackingStatus, RatingDetails, RatingAggregate, ReviewInput, ReviewDetails, PersonalPage } from "../interfaces/personal";
 import { libraryParams } from "../query/filters";
 export async function ownRecord<T>(path: string, signal?: AbortSignal): Promise<T | null> {
   try { return await apiRequest<T>(path, { signal }); }
@@ -13,6 +13,8 @@ export const getOwnReview = (id: string, signal?: AbortSignal) => ownRecord<Revi
 export const getAggregate = (id: string, signal?: AbortSignal) => apiRequest<RatingAggregate>(`media/${id}/ratings`, { signal });
 export const getReviews = (id: string, page: number, signal?: AbortSignal) => apiRequest<PersonalPage<ReviewDetails>>(`media/${id}/reviews?page=${page}&pageSize=20`, { signal });
 export const saveTracking = (id: string, body: TrackingInput, signal?: AbortSignal) => apiRequest<LibraryItem>(`users/me/library/${id}`, { method: "PUT", body, signal });
+export const saveLibraryStatus = (id: string, status: TrackingStatus, expectedStatus: TrackingStatus, accountId: string, signal?: AbortSignal) =>
+  apiRequest<LibraryItem>(`users/me/library/${id}/status`, { method: "PATCH", body: { status, expectedStatus }, expectedAccountId: accountId, signal });
 export const saveRating = (id: string, score: number, signal?: AbortSignal, isShared?: boolean) => apiRequest<RatingDetails>(`media/${id}/rating`, { method: "PUT", body: { score, ...(isShared === undefined ? {} : {isShared}) }, signal });
 export const saveReview = (id: string, body: ReviewInput, reviewId?: string, signal?: AbortSignal) => apiRequest<ReviewDetails>(reviewId ? `reviews/${reviewId}` : `media/${id}/reviews`, { method: reviewId ? "PATCH" : "POST", body, signal });
 export const deletePersonal = (path: string, signal?: AbortSignal) => apiRequest<void>(path, { method: "DELETE", signal });

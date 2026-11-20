@@ -1,5 +1,5 @@
 import { beforeEach, expect, it, vi } from "vitest";
-import { ownRecord, saveTracking, saveRating, saveReview } from "./personal";
+import { ownRecord, saveTracking, saveLibraryStatus, saveRating, saveReview } from "./personal";
 import { resetCsrfState } from "@/shared/api/csrf";
 const mock=vi.fn<typeof fetch>();const id='a1111111-1111-1111-1111-111111111111';
 beforeEach(()=>{resetCsrfState();mock.mockReset();vi.stubGlobal('fetch',mock);});
@@ -9,4 +9,12 @@ it('preserves zero, dates and complete review body through CSRF writes',async()=
  await saveTracking(id,{status:'completed',startedAt:'2026-01-01',completedAt:'2026-01-02'});await saveRating(id,0);await saveReview(id,{body:'<b>Literal</b>',isSpoiler:true},'review-id');
  const writes=mock.mock.calls.filter(([url])=>!String(url).endsWith('csrf'));
  expect(writes.map(x=>x[1]?.method)).toEqual(['PUT','PUT','PATCH']);expect(JSON.parse(String(writes[0][1]?.body))).toMatchObject({startedAt:'2026-01-01',completedAt:'2026-01-02'});expect(writes[1][1]?.body).toBe('{"score":0}');expect(writes[2][0]).toBe('/api/v1/reviews/review-id');
+});
+
+it('sends status-only changes with the expected account and prior status',async()=>{
+ mock.mockImplementation(async url=>String(url).endsWith('csrf')?Response.json({requestToken:'token'}):Response.json({}));
+ await saveLibraryStatus(id,'completed','planned',id);
+ const call=mock.mock.calls.find(([url])=>String(url).endsWith('/status'))!;
+ expect(call[1]?.method).toBe('PATCH');expect(new Headers(call[1]?.headers).get('X-RateFreak-Account-Id')).toBe(id);
+ expect(JSON.parse(String(call[1]?.body))).toEqual({status:'completed',expectedStatus:'planned'});
 });

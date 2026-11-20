@@ -11,7 +11,7 @@ import { moderationQuery } from "./moderation-policy";
 import { commentList } from "./comment-policy";
 import { followList, followQuery } from "./follow-policy";
 import { collectionQuery } from "./collection-policy";
-import { personalList, validatePersonalQuery } from "./personal-policy";
+import { libraryStatusRoute, personalList, validatePersonalQuery } from "./personal-policy";
 import { providerIdentity, validateProviderSearch } from "./provider-policy";
 import { validateCatalogQuery } from "./catalog-query";
 import { readApiProxyConfig } from "./config";
@@ -123,7 +123,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
       catch { return proxyProblem(400, "Notification commands require an empty object."); }
     }
     if (mutation) {
-      if (avatarRoute(request.method, path)) headers.set("X-RateFreak-Account-Id", request.headers.get("X-RateFreak-Account-Id") ?? "");
+      if (avatarRoute(request.method, path) || libraryStatusRoute(request.method, path)) headers.set("X-RateFreak-Account-Id", request.headers.get("X-RateFreak-Account-Id") ?? "");
       headers.set("Content-Type", artworkUpload ? request.headers.get("Content-Type")! : "application/json");
       headers.set("X-CSRF-TOKEN", request.headers.get("X-CSRF-TOKEN")!);
     }
