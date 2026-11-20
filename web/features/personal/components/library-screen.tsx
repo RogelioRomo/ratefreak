@@ -15,6 +15,7 @@ import { personalKeys, useLibrary } from "../hooks/use-personal";
 import { libraryFilters, libraryHref, librarySorts, trackingStatuses } from "../query/filters";
 import type { LibraryItem, LibrarySort, TrackingStatus } from "../interfaces/personal";
 import type { LibraryContentProps, LibraryEmptyProps } from "../interfaces/component-props";
+import { LibraryNavigation } from "./library-navigation";
 import { LibraryRow } from "./library-row";
 import styles from "./personal.module.css";
 
@@ -24,6 +25,7 @@ export function LibraryScreen() {
   useEffect(() => { let active = true; void refresh().catch(() => {}).finally(() => { if (active) setChecked(true); }); return () => { active = false; }; }, [refresh]);
   return <div className={styles.screen}>
     <header className={styles.heading}><h1>Your library.</h1><p>A place for what’s next,<br />what’s underway, and what stays with you.</p></header>
+    <LibraryNavigation current="library" />
     {session.error ? <ErrorState title="Session unavailable." onRetry={() => void refresh()} /> : !checked || session.account === undefined || session.isTransitioning ? <LoadingState label="Checking your session…" /> : !session.account ? <section className={styles.empty}><p>Your library is private.</p><Link className={styles.link} href="/login?returnTo=%2Flibrary">Log in to view your library</Link></section> : <LibraryContent key={session.account.id} accountId={session.account.id} />}
   </div>;
 }

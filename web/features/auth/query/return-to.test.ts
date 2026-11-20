@@ -14,3 +14,6 @@ it('allows profile continuation without accepting redirects or queries',()=>{
 it('allows only canonical review-discussion continuations',()=>{const id='a1111111-1111-1111-1111-111111111111';expect(safePreviewReturnTo('/reviews/'+id)).toBe('/reviews/'+id);for(const path of ['/reviews/'+id+'#comment','/reviews/'+id.toUpperCase(),'/reviews/not-guid','//reviews/'+id])expect(safePreviewReturnTo(path)).toBeNull();});
 
 it('accepts only canonical public report pagination continuations',()=>{const id='a1111111-1111-1111-1111-111111111111';for(const [segment,key] of [['reviews','page'],['catalog','reviewsPage']]){const base=`/${segment}/${id}`;expect(safePreviewReturnTo(`${base}?${key}=2`)).toBe(`${base}?${key}=2`);for(const suffix of [`?${key}=0`,`?${key}=01`,`?${key}=10001`,`?${key}=2&x=y`,`?${key}=2#x`,`?${key}=2&${key}=3`])expect(safePreviewReturnTo(base+suffix)).toBeNull();}});
+
+it.each(['/library/history','/library/history?year=2025&month=2&page=2'])('accepts canonical private history continuation %s',value=>expect(safePreviewReturnTo(value)).toBe(value));
+it.each(['/library/history?month=2','/library/history?year=0','/library/history?year=2025&year=2024','/library/history?year=2025#x','/library/history/extra','//library/history'])('rejects invalid history continuation %s',value=>expect(safePreviewReturnTo(value)).toBeNull());
