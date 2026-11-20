@@ -28,8 +28,9 @@
 .summary { color: var(--muted); font-size: 0.875rem; margin-block: 1.5rem; }
 .libraryList, .reviewList { list-style: none; }
 .libraryList li { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 1.5rem; padding-block: 1.5rem; border-bottom: 1px solid var(--border); }
-.libraryInfo { min-width: 0; }
-.libraryInfo > a { display: inline-block; font: 500 1.5rem/1.25 var(--font-editorial); overflow-wrap: anywhere; padding-block: 0.25rem; }
+.libraryInfo { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; align-items: start; }
+.libraryDetails, .libraryTracking { min-width: 0; }
+.libraryDetails > a { display: inline-block; font: 500 1.5rem/1.25 var(--font-editorial); overflow-wrap: anywhere; padding-block: 0.25rem; }
 .libraryInfo p { color: var(--muted); font-size: 0.875rem; line-height: 1.6; margin-top: 0.5rem; }
 .pagination { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1rem; margin-top: 1rem; font-size: 0.875rem; }
 .pagination a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--accent); }
@@ -42,7 +43,7 @@
 .review button { justify-self: start; }
 .body { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.75; max-width: 75ch; }
 @media (max-width: 48rem) { .heading { display: block; } .heading p { margin-top: 1rem; } .fields { grid-template-columns: minmax(0, 1fr); } }
-@media (max-width: 32rem) { .filters { grid-template-columns: minmax(0, 1fr); } .libraryList li { grid-template-columns: 6rem minmax(0, 1fr); gap: 1rem; } .libraryInfo > a { font-size: 1.25rem; } .pagination { font-size: 0.8125rem; gap: 0.5rem; } }
+@media (max-width: 32rem) { .filters { grid-template-columns: minmax(0, 1fr); } .libraryList li { grid-template-columns: 6rem minmax(0, 1fr); gap: 1rem; } .libraryDetails > a { font-size: 1.25rem; } .pagination { font-size: 0.8125rem; gap: 0.5rem; } }
 
 .retained { border: 0; min-width: 0; }
 
@@ -60,7 +61,7 @@
 
 .summary .link { margin-left: 1rem; }
 .libraryInfo .ownRating { color: var(--foreground); font-weight: 600; }
-.statusForm { margin-top: 1rem; max-width: 28rem; }
+.statusForm { max-width: 28rem; }
 .statusForm fieldset { display: flex; flex-wrap: wrap; align-items: end; gap: .75rem; border: 0; min-width: 0; }
 .statusForm fieldset > div { display: grid; gap: .5rem; flex: 1 1 10rem; min-width: 0; }
 .statusForm label { font-size: .875rem; font-weight: 600; }
@@ -68,3 +69,5 @@
 .statusForm [role="alert"] { color: var(--error); margin-block: .75rem; }
 @media (max-width: 64rem) { .libraryFilters { grid-template-columns: repeat(3, minmax(0, 1fr)); } .librarySearch { grid-column: 1 / -1; } }
 @media (max-width: 40rem) { .libraryFilters { grid-template-columns: minmax(0, 1fr); } .statusForm fieldset { display: grid; grid-template-columns: minmax(0, 1fr); } }
+
+@media (min-width: 64rem) { .libraryInfo { grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem); gap: 2rem; } }

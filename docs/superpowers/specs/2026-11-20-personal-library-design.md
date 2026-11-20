@@ -34,6 +34,8 @@ details identified below as proposals are implementation recommendations.
 ## Proposed experience
 
 Retain the current list with artwork, title, media type and optional tracking dates.
+User refinement: tracking controls sit to the right of title details at viewport
+widths of 64rem (1024px) and above, then stack below the details on smaller screens.
 Add a labelled title-search field and sort selector to the existing filter form.
 An explicit Apply button submits search, status, media type and sorting together,
 resetting pagination to page 1. URL parameters preserve selections across reload,

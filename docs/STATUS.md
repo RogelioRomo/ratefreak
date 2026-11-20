@@ -5,7 +5,10 @@ status updates are implemented and verified on `feat/personal-library`, pending
 integration into `main`. Verification includes 701 backend tests with no skips,
 870 frontend tests, lint/typecheck, production web build, API Release publish and
 ordinary-account Chromium acceptance; see [library evidence](personal-library-verification.md).
-No schema migration or persistent local data change was needed. The isolated
+The subsequent requested layout refinement places tracking controls to the right
+at 1024px and wider and below on smaller screens; 15 focused interaction tests,
+lint/typecheck, a fresh web production build and both-theme browser position checks
+at six widths passed. No schema migration or persistent local data change was needed. The isolated
 preview at localhost:3100 uses synthetic data and an API at localhost:5180;
 the existing localhost:3000/5080 inspection services are separate.
 

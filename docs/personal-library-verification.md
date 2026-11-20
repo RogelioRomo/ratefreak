@@ -90,3 +90,15 @@ local evidence, not release artifacts or promises of future running services.
 These affect workflow/test setup, not the agreed product scope. Test fixtures
 carry a persistent mocked session cache to match the real provider's active query.
 No production-scale performance claim is made from the fixture results.
+
+## Responsive control placement follow-up
+
+The user requested tracking controls to the right on wide screens and below title
+details on smaller screens. Each row now groups metadata and tracking separately;
+at 64rem (1024px) the content uses two columns, and below that it stacks in reading
+order. All 15 library interaction tests, lint, typecheck and a fresh production web
+build passed. Chromium measured the actual control/detail positions at
+1440/1024/1023/768/390/320px in both themes: right at 1024px and wider, below at
+smaller widths, with no horizontal overflow or browser page errors. Desktop and
+mobile screenshots were inspected. Evidence: ignored
+`.local/library-acceptance/layout-verification.json` and `library-layout-*.png`.
