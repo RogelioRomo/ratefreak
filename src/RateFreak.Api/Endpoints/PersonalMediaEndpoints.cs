@@ -11,6 +11,7 @@ internal static class PersonalMediaEndpoints
     public static void MapPersonalMediaEndpoints(this WebApplication app)
     {
         MapLibrary(app);
+        MapLibraryHistory(app);
         MapRatings(app);
         MapReviews(app);
     }
@@ -72,6 +73,25 @@ internal static class PersonalMediaEndpoints
         {
             return await service.DeleteAsync(UserId(user), mediaId, ct) ? Results.NoContent() : Results.NotFound();
         })).Produces(204).WithSummary("Remove a library entry without deleting ratings or reviews");
+    }
+
+    private static void MapLibraryHistory(WebApplication app)
+    {
+        app.MapGet("/api/v1/users/me/library/history", async (ClaimsPrincipal user, ILibraryHistoryService service,
+            HttpContext context, CancellationToken ct, int? year = null, int? month = null, int page = 1, int pageSize = 20) =>
+        {
+            var errors = PageErrors(page, pageSize);
+            foreach (var parameter in context.Request.Query)
+                if (parameter.Key is not ("year" or "month" or "page" or "pageSize") || parameter.Value.Count != 1 ||
+                    string.IsNullOrEmpty(parameter.Value[0]) || parameter.Value[0]!.Any(character => !char.IsAsciiDigit(character)))
+                    errors[parameter.Key] = ["Unknown, duplicate or invalid history parameter."];
+            if (year is < 1 or > 9999) errors["year"] = ["Year must be between 1 and 9999."];
+            if (month is < 1 or > 12 || month is not null && year is null) errors["month"] = ["Select a year and a month between 1 and 12."];
+            if (errors.Count != 0) return Results.ValidationProblem(errors);
+            return Results.Ok(await service.GetAsync(UserId(user), new(year, month, page, pageSize), ct));
+        }).WithTags("Personal library").RequireAuthorization().RequireRateLimiting("personal-read")
+            .Produces<LibraryHistoryPage>().ProducesValidationProblem().ProducesProblem(401).ProducesProblem(429)
+            .WithSummary("Get your private completion history and monthly totals");
     }
 
     private static void MapRatings(WebApplication app)

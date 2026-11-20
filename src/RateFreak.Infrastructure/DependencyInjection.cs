@@ -80,6 +80,7 @@ public static class DependencyInjection
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<ICatalogItemCommands, CatalogItemCommands>();
         services.AddScoped<ILibraryService, LibraryService>();
+        services.AddScoped<ILibraryHistoryService, LibraryHistoryService>();
         services.AddScoped<IRatingService, RatingService>();
         services.AddScoped<IReviewService, ReviewService>();
         services.AddScoped<IReviewCommentService, ReviewCommentService>();
