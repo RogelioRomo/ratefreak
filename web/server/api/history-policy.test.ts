@@ -1,0 +1,8 @@
+import {beforeEach,expect,it,vi} from "vitest";
+import {isAllowedRoute} from "./route-policy";
+import {proxyRequest} from "./proxy";
+const path=['users','me','library','history'];const upstream=vi.fn<typeof fetch>();
+beforeEach(()=>{vi.stubEnv('NODE_ENV','development');vi.stubEnv('RATEFREAK_API_URL','http://localhost:5280');vi.stubEnv('RATEFREAK_WEB_ORIGIN','http://web.test');vi.stubEnv('RATEFREAK_PROXY_SECRET','b'.repeat(64));vi.stubEnv('RATEFREAK_CLIENT_IP_MODE','loopback');upstream.mockReset();upstream.mockImplementation(async()=>Response.json({}));vi.stubGlobal('fetch',upstream);});
+it('allows only the exact history GET route',()=>{expect(isAllowedRoute('GET',path)).toBe(true);for(const method of ['POST','PATCH','PUT','DELETE'])expect(isAllowedRoute(method,path)).toBe(false);expect(isAllowedRoute('GET',[...path,'extra'])).toBe(false);});
+it('forwards normalized bounded history filters without caching',async()=>{const r=await proxyRequest(new Request('http://web.test/api/v1/users/me/library/history?year=02025&month=2&pageSize=100'),path);expect(r.status).toBe(200);expect(String(upstream.mock.calls[0][0])).toBe('http://localhost:5280/api/v1/users/me/library/history?year=2025&month=2&page=1&pageSize=100');expect(r.headers.get('Cache-Control')).toBe('no-store');});
+it.each(['month=2','year=0','year=10000','year=2025&month=13','year=2025&year=2024','q=x','pageSize=101'])('rejects invalid history query before upstream %s',async q=>{const r=await proxyRequest(new Request('http://web.test/api/v1/users/me/library/history?'+q),path);expect(r.status).toBe(400);expect(upstream).not.toHaveBeenCalled();});

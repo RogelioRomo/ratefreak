@@ -1,4 +1,5 @@
 import "server-only";
+import { historyRoute, historyQuery } from "./history-policy";
 import { isAvatarUpload, avatarRoute } from "./avatar-policy";
 import { feedRoute, feedQuery } from "./feed-policy";
 import { notificationList, validateNotificationBody } from "./notification-policy";
@@ -41,6 +42,9 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   let feedParams: URLSearchParams | null = null;
   try { if (feedRoute(request.method,path)) feedParams=feedQuery(incoming.searchParams); }
   catch { return proxyProblem(400,"Invalid feed filters."); }
+  let historyParams: URLSearchParams | null = null;
+  try { if (historyRoute(request.method, path)) historyParams = historyQuery(incoming.searchParams); }
+  catch { return proxyProblem(400, "Invalid history filters."); }
   const listKind = personalList(path);
   const socialList = request.method === "GET" && (followList(path) || commentList(path) || notificationList(request.method, path));
   let collectionParams: URLSearchParams | null = null;
@@ -50,7 +54,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
   try { moderationParams = moderationQuery(request.method,path,incoming.searchParams); }
   catch { return proxyProblem(400,"Invalid moderation filters."); }
   const externalSearch = path.length === 3 && path[0] === "media" && path[1] === "external" && path[2] === "search";
-  if ((incoming.search && !((feedParams !== null || categoryParams !== null || moderationParams !== null || collectionParams !== null || (request.method === "GET" && ((path.length === 1 && path[0] === "media") || externalSearch || listKind || socialList))))) || incoming.pathname !== `/api/v1/${path.join("/")}`) {
+  if ((incoming.search && !((historyParams !== null || feedParams !== null || categoryParams !== null || moderationParams !== null || collectionParams !== null || (request.method === "GET" && ((path.length === 1 && path[0] === "media") || externalSearch || listKind || socialList))))) || incoming.pathname !== `/api/v1/${path.join("/")}`) {
     return proxyProblem(404, "API route not found.");
   }
   if (!isAllowedRoute(request.method, path)) {
@@ -58,7 +62,7 @@ export async function proxyRequest(request: Request, path: readonly string[]): P
       ? proxyProblem(405, "Method not allowed.") : proxyProblem(404, "API route not found.");
   }
 
-  let query = feedParams?.size ? `?${feedParams}` : "";
+  let query = historyParams !== null ? `?${historyParams}` : feedParams?.size ? `?${feedParams}` : "";
   if (socialList) {
     try { const value = followQuery(incoming.searchParams).toString(); query = value ? `?${value}` : ""; }
     catch { return proxyProblem(400, "Invalid connection paging."); }

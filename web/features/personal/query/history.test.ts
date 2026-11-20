@@ -1,0 +1,6 @@
+import {expect,it} from "vitest";
+import {parseHistoryFilters,historyHref,historyParams} from "./history";
+it('defaults to an unresolved year and fixed browser page size',()=>{expect(parseHistoryFilters(new URLSearchParams())).toEqual({page:1,pageSize:20});expect(historyHref({page:1,pageSize:20})).toBe('/library/history');});
+it('round trips a selected period and normalizes numbers',()=>{const f=parseHistoryFilters(new URLSearchParams('year=02025&month=02&page=2'))!;expect(f).toEqual({year:2025,month:2,page:2,pageSize:20});expect(historyHref(f)).toBe('/library/history?year=2025&month=2&page=2');expect(historyParams(f,true).toString()).toBe('year=2025&month=2&page=2&pageSize=20');});
+it.each(['year=0','year=10000','year=word','year=2025&year=2024','month=1','year=2025&month=13','year=2025&month=0','year=2025&month=1&month=2','page=0','page=10001','pageSize=100','q=film','year=','year=2.5','year=%2B2025'])('rejects invalid browser query %s',q=>expect(parseHistoryFilters(new URLSearchParams(q))).toBeNull());
+it('allows the full supported date range and bounded API page sizes',()=>{expect(parseHistoryFilters(new URLSearchParams('year=9999&month=12'))?.year).toBe(9999);expect(parseHistoryFilters(new URLSearchParams('year=1&month=1'))?.year).toBe(1);expect(parseHistoryFilters(new URLSearchParams('year=2025&pageSize=100'),true)?.pageSize).toBe(100);});
