@@ -115,6 +115,11 @@ def compose(root, config, ingress=None):
     if override.exists() or override.is_symlink():
         read_private(override)
         command+=['-f',str(override)]
+    if (root/'release-selection.json').exists() and all(value.startswith('sha256:') for value in selection.values()):
+        resolved=json.loads(execute(command+['config','--format','json'],env,capture=True))
+        for service,kind in {'api':'api','web':'web','tools':'tools','migrate':'tools','storage-init':'tools'}.items():
+            if resolved.get('services',{}).get(service,{}).get('image')!=selection[kind]:
+                raise OperatorError('Instance overrides must not replace individual images in a selected release.')
     return command,env
 
 def execute(command,env=None,capture=False):

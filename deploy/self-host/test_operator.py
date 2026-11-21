@@ -327,3 +327,9 @@ class ReleaseSelectionTests(unittest.TestCase):
         images={name:{'tag':'ratefreak-'+name+':0.1.0','id':'sha256:'+str(i)*64} for i,name in enumerate(['api','web','tools'])}
         cli.write_state(self.root/'release-selection.json',{'images':images})
         self.assertEqual(cli.selected_images(self.root),{name:entry['id'] for name,entry in images.items()})
+    def test_bundle_compose_refuses_independent_service_image_overrides(self):
+        from unittest.mock import patch
+        config=cli.initialize(self.root,'https://reader.example',False)
+        images={name:{'tag':'ratefreak-'+name+':0.1.0','id':'sha256:'+str(i)*64} for i,name in enumerate(['api','web','tools'])}
+        cli.write_state(self.root/'release-selection.json',{'images':images})
+        with patch.object(cli,'execute',return_value=json.dumps({'services':{'api':{'image':'ratefreak-api:wrong'}}})),self.assertRaises(cli.OperatorError):cli.compose(self.root,config)

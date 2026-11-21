@@ -10,6 +10,7 @@ import {useUpdates} from '../hooks/use-updates';
 import {checkUpdates} from '../api/updates';
 import type {UpdateStatus} from '../interfaces/update-status';
 import styles from '@/features/moderation/components/moderation.module.css';
+import updateStyles from './updates.module.css';
 const messages:Record<UpdateStatus['state'],string>={
   disabled:'Update checks are disabled. Your operator can enable them in the instance configuration.',
   unchecked:'Updates have not been checked yet.',checking:'Checking for updates…',
@@ -52,7 +53,7 @@ function UpdatesContent(){
         <dt>Last successful check</dt><dd>{timestamp(data.lastSuccessAt)}</dd><dt>Last attempt</dt><dd>{timestamp(data.lastAttemptAt)}</dd>
       </dl>
       {data.stale&&<p>Last known release information may be outdated.</p>}
-      <Button disabled={busy||!canCheck} onClick={()=>void check()}>Check for updates</Button>
+      <Button className={updateStyles.check} disabled={!data.enabled} aria-disabled={busy||!canCheck} onClick={()=>void check()}>Check for updates</Button>
       {data.enabled&&!canCheck&&data.nextCheckAt&&<p className={styles.meta}>Next manual check available: {timestamp(data.nextCheckAt)}</p>}
       {feedback&&<p role="alert">{feedback}</p>}
       <p>Your operator installs updates using the documented backup and migration procedure.</p>

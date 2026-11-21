@@ -25,8 +25,9 @@ it('enables manual checks when the cached cooldown expires without navigation',a
  try{
   const now=Date.now();api.getUpdates.mockResolvedValue({...status,canCheck:false,nextCheckAt:new Date(now+1000).toISOString()});
   setup();await act(async()=>{await vi.advanceTimersByTimeAsync(1);});
-  expect(screen.getByRole('button',{name:'Check for updates'})).toBeDisabled();
+  expect(screen.getByRole('button',{name:'Check for updates'})).toHaveAttribute('aria-disabled','true');
+  fireEvent.click(screen.getByRole('button',{name:'Check for updates'}));expect(api.checkUpdates).not.toHaveBeenCalled();
   await act(async()=>{await vi.advanceTimersByTimeAsync(1001);});
-  expect(screen.getByRole('button',{name:'Check for updates'})).toBeEnabled();
+  expect(screen.getByRole('button',{name:'Check for updates'})).toHaveAttribute('aria-disabled','false');
  }finally{vi.useRealTimers();}
 });
