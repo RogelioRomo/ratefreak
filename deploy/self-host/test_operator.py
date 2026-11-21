@@ -302,3 +302,28 @@ class MaintenanceIntentTests(unittest.TestCase):
                 self.assertEqual(command,['dotnet','/app/RateFreak.Api.dll',action])
 
 if __name__ == "__main__":unittest.main()
+
+class ReleaseSelectionTests(unittest.TestCase):
+    setUp=InstanceTests.setUp
+    tearDown=InstanceTests.tearDown
+    def test_source_selection_switches_all_images_and_invalidates_old_acceptance(self):
+        from unittest.mock import patch
+        cli.initialize(self.root,'https://reader.example',False)
+        cli.write_state(self.root/'release-selection.json',{'images':{n:{'tag':'ratefreak-'+n+':0.1.0'} for n in ['api','web','tools']}})
+        cli.write_state(self.root/'migrated.json',{'old':'receipt'})
+        images={n:'sha256:'+str(i)*64 for i,n in enumerate(['api','web','tools'])}
+        with patch.object(cli,'release_images',return_value=images):cli.select_source(self.root)
+        self.assertTrue(all(tag.endswith(':local') for tag in cli.selected_images(self.root).values()))
+        self.assertFalse((self.root/'migrated.json').exists())
+    def test_failed_selection_write_preserves_old_receipt_and_selection(self):
+        from unittest.mock import patch
+        cli.initialize(self.root,'https://reader.example',False)
+        cli.write_state(self.root/'release-selection.json',{'images':{n:{'tag':'ratefreak-'+n+':0.1.0'} for n in ['api','web','tools']}})
+        cli.write_state(self.root/'migrated.json',{'old':'receipt'});before=(self.root/'release-selection.json').read_bytes()
+        with patch.object(cli,'write_state',side_effect=OSError('disk full')),self.assertRaises(OSError):cli.activate_selection(self.root,{'images':{}})
+        self.assertEqual((self.root/'release-selection.json').read_bytes(),before);self.assertTrue((self.root/'migrated.json').exists())
+    def test_bundle_selection_resolves_immutable_ids_instead_of_mutable_tags(self):
+        cli.initialize(self.root,'https://reader.example',False)
+        images={name:{'tag':'ratefreak-'+name+':0.1.0','id':'sha256:'+str(i)*64} for i,name in enumerate(['api','web','tools'])}
+        cli.write_state(self.root/'release-selection.json',{'images':images})
+        self.assertEqual(cli.selected_images(self.root),{name:entry['id'] for name,entry in images.items()})

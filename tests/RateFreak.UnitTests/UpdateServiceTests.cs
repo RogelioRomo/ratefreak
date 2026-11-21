@@ -72,4 +72,29 @@ public sealed class UpdateServiceTests
         var h=new Handler{Respond=request=>{Assert.Equal("https://api.github.com/repos/RogelioRomo/ratefreak/releases/latest",request.RequestUri!.AbsoluteUri);Assert.Null(request.Headers.Authorization);Assert.NotEmpty(request.Headers.UserAgent);return Task.FromResult(Json("1.9.0"));}};
         Assert.Equal("current",(await Service(h,new()).GetAsync(false,TestContext.Current.CancellationToken)).State);
     }
+    [Fact] public async Task NotModifiedAfterMissingReleaseIsUnavailableInsteadOfThrowing()
+    {
+        var h=new Handler{Respond=_=>Task.FromResult(new HttpResponseMessage(HttpStatusCode.NotFound))};
+        var clock=new Clock();var service=Service(h,clock);await service.GetAsync(false,TestContext.Current.CancellationToken);
+        clock.Now=clock.Now.AddMinutes(6);h.Respond=_=>Task.FromResult(new HttpResponseMessage(HttpStatusCode.NotModified));
+        Assert.Equal("unavailable",(await service.GetAsync(true,TestContext.Current.CancellationToken)).State);
+    }
+    [Fact] public async Task NotModifiedWithoutConditionalRequestCannotClaimCurrent()
+    {
+        var h=new Handler{Respond=_=>Task.FromResult(Json("1.9.0"))};var clock=new Clock();var service=Service(h,clock);
+        await service.GetAsync(false,TestContext.Current.CancellationToken);clock.Now=clock.Now.AddMinutes(6);
+        h.Respond=_=>Task.FromResult(new HttpResponseMessage(HttpStatusCode.NotModified));
+        Assert.Equal("unavailable",(await service.GetAsync(true,TestContext.Current.CancellationToken)).State);
+    }
+    private sealed class InterruptedStream:MemoryStream
+    {
+        public override ValueTask<int> ReadAsync(Memory<byte> buffer,CancellationToken ct=default)=>ValueTask.FromException<int>(new IOException("Interrupted upstream body"));
+    }
+    [Fact] public async Task InterruptedResponseBodyPreservesStaleResultAndCooldown()
+    {
+        var h=new Handler();var clock=new Clock();var service=Service(h,clock);await service.GetAsync(false,TestContext.Current.CancellationToken);
+        clock.Now=clock.Now.AddDays(1);h.Respond=_=>Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK){Content=new StreamContent(new InterruptedStream())});
+        var result=await service.GetAsync(false,TestContext.Current.CancellationToken);
+        Assert.Equal("unavailable",result.State);Assert.True(result.Stale);Assert.False(result.CanCheck);
+    }
 }

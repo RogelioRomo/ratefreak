@@ -15,7 +15,7 @@ class PreparationTests(unittest.TestCase):
             git('init','-q');(root/'LICENSE').write_text('license');(root/'untracked').write_text('private')
             git('add','LICENSE');git('-c','user.name=Test','-c','user.email=test@example.test','commit','-qm','fixture')
             prepare.source_archive(root,out)
-            with tarfile.open(out) as archive:self.assertEqual(archive.getnames(),['LICENSE'])
+            with tarfile.open(out) as archive:self.assertEqual(archive.getnames(),['LICENSE','SOURCE_REVISION'])
             (root/'credentials.env').write_text('secret');git('add','credentials.env');git('-c','user.name=Test','-c','user.email=test@example.test','commit','-qm','bad')
             with self.assertRaises(ValueError):prepare.source_archive(root,Path(temp)/'bad.tar.gz')
     def test_incomplete_image_source_evidence_is_blocking(self):
@@ -51,3 +51,12 @@ class PreparationTests(unittest.TestCase):
             root=Path(temp)
             (root/'candidate-manifest.json').write_text(json.dumps({'version':'0.1.0','revision':'b'*40}))
             with self.assertRaises(ValueError):prepare.resume_candidate(root,{'version':'0.1.0','revision':'a'*40},root/'sources')
+    def test_official_context_exports_only_committed_tagged_bytes(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp)/'repo';root.mkdir()
+            def git(*args):return subprocess.check_output(['git','-C',str(root),*args],text=True).strip()
+            git('init','-q');(root/'safe').write_text('committed');(root/'.gitignore').write_text('*.pem\n')
+            git('add','.');git('-c','user.name=Test','-c','user.email=test@example.test','commit','-qm','fixture')
+            (root/'secret.pem').write_text('local private data')
+            context=Path(temp)/'context';prepare.export_context(root,git('rev-parse','HEAD'),context)
+            self.assertEqual((context/'safe').read_text(),'committed');self.assertFalse((context/'secret.pem').exists())

@@ -22,11 +22,19 @@ export function UpdatesScreen(){const staff=useStaff();return <UpdatesContent ke
 function UpdatesContent(){
   const {staff,client,store,denied,query}=useUpdates();
   const [busy,setBusy]=useState(false),[feedback,setFeedback]=useState('');
+  const [now,setNow]=useState(()=>Date.now());
+  const deadline=query.data?.nextCheckAt?Date.parse(query.data.nextCheckAt):null;
+  const canCheck=!!query.data?.enabled&&(query.data.canCheck||deadline!==null&&now>=deadline);
+  useEffect(()=>{
+    if(deadline===null||deadline<=Date.now())return;
+    const timer=setTimeout(()=>setNow(Date.now()),Math.min(deadline-Date.now()+1,2147483647));
+    return ()=>clearTimeout(timer);
+  },[deadline,now]);
   const request=useRef<AbortController|null>(null),active=useRef(staff.active);
   useLayoutEffect(()=>{active.current=staff.active;if(!staff.active)request.current?.abort();},[staff.active]);
   useEffect(()=>()=>request.current?.abort(),[]);
   async function check(){
-    if(request.current||!staff.active||!query.data?.canCheck)return;
+    if(request.current||!staff.active||!canCheck)return;
     const controller=new AbortController();request.current=controller;setBusy(true);setFeedback('');
     try{
       const result=await staffRequest(client,staff.accountId,checkUpdates,controller.signal,'admin');
@@ -44,8 +52,8 @@ function UpdatesContent(){
         <dt>Last successful check</dt><dd>{timestamp(data.lastSuccessAt)}</dd><dt>Last attempt</dt><dd>{timestamp(data.lastAttemptAt)}</dd>
       </dl>
       {data.stale&&<p>Last known release information may be outdated.</p>}
-      <Button disabled={busy||!data.canCheck} onClick={()=>void check()}>Check for updates</Button>
-      {data.enabled&&!data.canCheck&&data.nextCheckAt&&<p className={styles.meta}>Next manual check available: {timestamp(data.nextCheckAt)}</p>}
+      <Button disabled={busy||!canCheck} onClick={()=>void check()}>Check for updates</Button>
+      {data.enabled&&!canCheck&&data.nextCheckAt&&<p className={styles.meta}>Next manual check available: {timestamp(data.nextCheckAt)}</p>}
       {feedback&&<p role="alert">{feedback}</p>}
       <p>Your operator installs updates using the documented backup and migration procedure.</p>
       {data.releaseUrl&&<p><a href={data.releaseUrl}>Release notes</a></p>}

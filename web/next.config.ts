@@ -5,7 +5,7 @@ import {buildIdentity} from "./shared/build/identity";
 
 const nextConfig: NextConfig = {
   output: "standalone",
-  env: {RATEFREAK_BUILD_VERSION: buildIdentity.version, RATEFREAK_BUILD_REVISION: buildIdentity.revision},
+  env: {RATEFREAK_BUILD_VERSION: buildIdentity.version, RATEFREAK_BUILD_REVISION: buildIdentity.revision, RATEFREAK_BUILD_OFFICIAL: String(buildIdentity.official)},
   images: providerImageConfig,
   cacheComponents: true,
   partialPrefetching: true,

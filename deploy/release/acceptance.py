@@ -56,7 +56,7 @@ def run(identities,reports,baseline=None,keep=False):
     command,env=operator.compose(root,config)
     def cli(action):
         operator.dispatch(argparse.Namespace(command=action),root,config,command,env)
-    result={'candidateImages':identities,'baselineImages':baseline,'https':False,'upgrade':False}
+    result={'candidateImages':identities,'baselineImages':baseline,'https':False,'freshInstall':baseline is None,'upgrade':False}
     try:
         cli('prepare');cli('migrate');operator.require_release(root,operator.release_images(root))
         operator.execute(command+['up','-d','--wait','api','web','caddy'],env)
@@ -93,7 +93,7 @@ def run(identities,reports,baseline=None,keep=False):
         owner=Client(origin,ca);owner.login('selfhost_owner',password);owner.call('admin/updates',expected=403)
         assert json.loads(owner.call('users/me/library/'+state['public']['id'])[0])['status']=='completed'
         owner.call(state['public']['imageReference'].removeprefix('/api/v1/'))
-        admin.call('auth/logout','POST',{});admin.call('admin/updates',expected=401)
+        admin.call('auth/logout','POST',{},204);admin.call('admin/updates',expected=401)
         result.update(https=True,disabledUpdateChecks=True,ordinaryDenied=True,logoutDenied=True,dataPreserved=True)
         reports.mkdir(parents=True,exist_ok=True);(reports/'acceptance.json').write_text(json.dumps(result,indent=2)+'\n')
         if keep:

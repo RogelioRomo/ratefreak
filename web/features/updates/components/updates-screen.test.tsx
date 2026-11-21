@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import {fireEvent,render,screen,waitFor} from '@testing-library/react';
+import {act,fireEvent,render,screen,waitFor} from '@testing-library/react';
 import {QueryClient,QueryClientProvider} from '@tanstack/react-query';
 import {beforeEach,expect,it,vi} from 'vitest';
 import {StaffContext} from '@/features/moderation/query/context';
@@ -19,3 +19,14 @@ it('conceals cached results after administrator revocation',async()=>{const {cli
 it('conceals results during inactive sessions and account changes',async()=>{const {ui,rerender}=setup();await screen.findByText('0.2.0');rerender(ui(false));expect(screen.queryByText('0.2.0')).toBeNull();api.getUpdates.mockImplementation(()=>new Promise(()=>{}));rerender(ui(true,'other'));expect(screen.queryByText('0.2.0')).toBeNull();});
 it('aborts a manual check when the session becomes inactive',async()=>{let signal:AbortSignal|undefined;api.checkUpdates.mockImplementation((s)=>{signal=s;return new Promise(()=>{});});const {ui,rerender}=setup();fireEvent.click(await screen.findByRole('button',{name:'Check for updates'}));await waitFor(()=>expect(signal).toBeDefined());rerender(ui(false));expect(signal?.aborted).toBe(true);expect(screen.queryByText('0.2.0')).toBeNull();});
 it('shows a recoverable error after an uncertain check without exposing exception details',async()=>{api.checkUpdates.mockRejectedValue(new Error('private detail'));setup();fireEvent.click(await screen.findByRole('button',{name:'Check for updates'}));expect(await screen.findByRole('alert')).toHaveTextContent('The check could not be completed.');expect(screen.queryByText(/private detail/)).toBeNull();});
+
+it('enables manual checks when the cached cooldown expires without navigation',async()=>{
+ vi.useFakeTimers();
+ try{
+  const now=Date.now();api.getUpdates.mockResolvedValue({...status,canCheck:false,nextCheckAt:new Date(now+1000).toISOString()});
+  setup();await act(async()=>{await vi.advanceTimersByTimeAsync(1);});
+  expect(screen.getByRole('button',{name:'Check for updates'})).toBeDisabled();
+  await act(async()=>{await vi.advanceTimersByTimeAsync(1001);});
+  expect(screen.getByRole('button',{name:'Check for updates'})).toBeEnabled();
+ }finally{vi.useRealTimers();}
+});

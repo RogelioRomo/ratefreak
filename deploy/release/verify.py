@@ -16,7 +16,22 @@ def assert_executed(path):
     if counters is None or int(counters.get('total','0'))<1 or counters.get('total')!=counters.get('executed') or int(counters.get('failed','0')) or int(counters.get('notExecuted','0')):
         raise ValueError('Missing, failed or skipped backend tests: '+path.name)
 
-def verify(root,reports,tag=None):
+def export_summary(reports,destination):
+    raw=json.loads((reports/'verification.json').read_text())
+    identity=raw.get('identity',{})
+    summary={'schema':1,'identity':{key:identity.get(key) for key in ['version','revision','official','dirty']},
+             'complete':raw.get('complete') is True,'checks':[],'tests':[]}
+    for check in raw.get('checks',[]):
+        summary['checks'].append({'check':check['check'],'exitCode':check['exitCode']})
+    for path in sorted(reports.glob('*.trx')):
+        counters=ET.parse(path).find('.//{*}Counters')
+        if counters is None:summary['complete']=False;continue
+        summary['tests'].append({'suite':path.stem,**{key:int(counters.get(value,'0')) for key,value in [('total','total'),('executed','executed'),('passed','passed'),('failed','failed'),('skipped','notExecuted')]}})
+    destination.mkdir(parents=True,exist_ok=True)
+    (destination/'verification.json').write_text(json.dumps(summary,sort_keys=True,indent=2)+'\n')
+    return summary
+
+def verify(root,reports,tag=None,public_reports=None):
     reports.mkdir(parents=True,exist_ok=False);results=[];identity=read_identity(root,tag)
     scratch=tempfile.TemporaryDirectory(prefix="ratefreak-release-verify-");temporary=Path(scratch.name)
     complete=False
@@ -41,10 +56,11 @@ def verify(root,reports,tag=None):
         complete=True
     finally:
         (reports/'verification.json').write_text(json.dumps({'identity':identity,'checks':results,'complete':complete},indent=2)+'\n')
+        if public_reports is not None:export_summary(reports,public_reports)
         scratch.cleanup()
     return results
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--report-directory',required=True,type=Path);parser.add_argument('--tag');args=parser.parse_args()
-    try:verify(Path(__file__).resolve().parents[2],args.report_directory.resolve(),args.tag)
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--report-directory',required=True,type=Path);parser.add_argument('--tag');parser.add_argument('--public-report-directory',type=Path);args=parser.parse_args()
+    try:verify(Path(__file__).resolve().parents[2],args.report_directory.resolve(),args.tag,args.public_report_directory)
     except (OSError,ValueError,subprocess.CalledProcessError) as error:parser.exit(1,str(error)+'\n')

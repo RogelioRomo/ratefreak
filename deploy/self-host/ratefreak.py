@@ -181,6 +181,16 @@ def instance_lock(root):
         yield
     finally:os.close(fd)
 
+def activate_selection(root,selection):
+    write_state(root/'release-selection.json',selection)
+    if (root/'migrated.json').exists():(root/'migrated.json').unlink()
+    sync_directory(root)
+
+def select_source(root):
+    images=release_images()
+    activate_selection(root,{'format':1,'mode':'source','images':{name:{'id':image,'tag':'ratefreak-'+name+':local'} for name,image in images.items()}})
+
+
 def selected_images(root):
     path=root/'release-selection.json'
     if not path.exists():return {name:'ratefreak-'+name+':local' for name in ['api','web','tools']}
@@ -192,7 +202,10 @@ def selected_images(root):
     for name,image in selection['images'].items():
         tag=image.get('tag','')
         if not re.fullmatch('ratefreak-'+name+r':[0-9A-Za-z._-]+',tag):raise OperatorError('Invalid selected image tag.')
-        result[name]=tag
+        image_id=image.get('id','')
+        if selection.get('mode')=='source':result[name]=tag
+        elif re.fullmatch('sha256:[a-f0-9]{64}',image_id):result[name]=image_id
+        else:raise OperatorError('Selected release lacks an immutable image identity.')
     return result
 
 def release_images(root=None):
@@ -228,22 +241,25 @@ def stopped_writers(command,env):
 def dispatch(args,root,config,command,env):
     operation=args.command
     if operation=='build':
+        stopped_writers(command,env)
         sys.path.insert(0,str(PACKAGE.parent/'release'))
         from versioning import read_identity
         identity=read_identity(PACKAGE.parents[1])
         (PACKAGE.parents[1]/'.build-identity.json').write_text(json.dumps(identity)+'\n')
         for name in ['api','web','tools']:
             execute(['docker','build','--build-arg','RATEFREAK_VERSION='+identity['version'],'--build-arg','RATEFREAK_REVISION='+identity['revision'],'--build-arg','RATEFREAK_OFFICIAL=false','-f',str(PACKAGE/(name+'.Dockerfile')),'-t','ratefreak-'+name+':local',str(PACKAGE.parents[1])])
+        select_source(root)
     elif operation=='load-release':
         stopped_writers(command,env)
         from release_bundle import load_bundle
-        def inspect(tag):return json.loads(execute(['docker','image','inspect',tag],capture=True))[0]
+        def inspect(tag):
+            result=subprocess.run(['docker','image','inspect',tag],text=True,capture_output=True)
+            return json.loads(result.stdout)[0] if result.returncode==0 else None
         def load(path):execute(['docker','image','load','--input',str(path)])
         try:selection=load_bundle(args.bundle,inspect,load)
         except (ValueError,KeyError,TypeError) as error:raise OperatorError('Release validation failed; previous selection is preserved.') from error
         # A new selection never carries migration acceptance from another candidate.
-        if (root/'migrated.json').exists():(root/'migrated.json').unlink()
-        write_state(root/'release-selection.json',selection)
+        activate_selection(root,selection)
         print('Release loaded. Explicitly prepare and migrate before starting writers.')
     elif operation=='prepare':
         stopped_writers(command,env)

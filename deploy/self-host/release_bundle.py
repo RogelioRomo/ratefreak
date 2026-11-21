@@ -71,10 +71,17 @@ def validate_bundle(directory: Path, manifest_name="release-manifest.json") -> d
         if not isinstance(image,dict) or image.get('file') not in files or image['file'] in archives or image.get('tag')!='ratefreak-'+name+':'+version.replace('+','_') or not re.fullmatch('sha256:[a-f0-9]{64}',image.get('id','')):
             raise ValueError('Mixed or invalid release images.')
         archives.add(image['file']);archive_members(regular_file(root,image['file']),image['tag'])
+    from release_manifest import validate
+    try:validate(manifest,root,manifest_name,read_manifest)
+    except (KeyError,TypeError,tarfile.TarError,AttributeError) as error:raise ValueError('Malformed or incomplete release evidence.') from error
     return manifest
 
 def load_bundle(directory: Path,inspect_image,load_image,manifest_name="release-manifest.json") -> dict:
     manifest=validate_bundle(directory,manifest_name)
+    for image in manifest['images'].values():
+        existing=inspect_image(image['tag'])
+        if existing is not None and existing.get('Id')!=image['id']:
+            raise ValueError('Refusing to replace an existing immutable release tag.')
     for name,image in manifest['images'].items():
         load_image(regular_file(directory,image['file']))
         metadata=inspect_image(image['tag']);labels=metadata.get('Config',{}).get('Labels',{}) or {}

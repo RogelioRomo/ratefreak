@@ -19,6 +19,10 @@ def read_identity(repository: Path, tag: str | None = None) -> dict:
     version=validate_version((repository/'VERSION').read_text().strip())
     if json.loads((repository/'web/package.json').read_text())['version']!=version.split('-')[0].split('+')[0]:
         raise ValueError('Package base version differs from VERSION.')
+    if not (repository/'.git').exists() and (repository/'SOURCE_REVISION').is_file():
+        revision=(repository/'SOURCE_REVISION').read_text().strip()
+        if tag is not None or not re.fullmatch('[a-f0-9]{40}',revision):raise ValueError('Source archives cannot claim official tagged builds.')
+        return dict(version=version,revision=revision,official=False,dirty=True)
     revision=git(repository,'rev-parse','HEAD')
     dirty=bool(git(repository,'status','--porcelain','--untracked-files=normal'))
     if tag is not None:

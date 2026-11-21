@@ -24,7 +24,7 @@ jobs:
       - name: Install pinned pnpm
         run: npm install --global pnpm@10.28.2
       - name: Verify source
-        run: python3 deploy/release/verify.py --report-directory "$RUNNER_TEMP/verification"
+        run: python3 deploy/release/verify.py --report-directory "$RUNNER_TEMP/verification-raw" --public-report-directory "$RUNNER_TEMP/verification"
       - name: Retain verification reports
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7

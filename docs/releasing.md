@@ -10,7 +10,9 @@ The workflows never publish releases, push tags or upload registry images.
 Root `VERSION` is authoritative. Keep the base version in `web/package.json`
 aligned. API/web/tools embed one version and full source revision; official
 candidate preparation requires a matching clean existing `v<VERSION>` tag.
-Developer builds are visibly nonofficial. Runtime environment settings cannot
+Developer builds are visibly nonofficial. Extracted source installation archives
+include generated `SOURCE_REVISION` provenance and remain nonofficial when rebuilt
+without Git metadata. Runtime environment settings cannot
 change compiled installed identity. Read the pre-1.0 compatibility rules in
 [release notes](releases/README.md).
 
@@ -24,8 +26,10 @@ prove byte agreement with a manifest, not the identity of its publisher.
 Run `python3 deploy/release/verify.py --report-directory /new/path/verification`.
 It runs restored backend/real PostgreSQL suites, frontend tests/lint/typecheck/build,
 operator/release/compliance suites, Release publish and model consistency. Backend
-TRX files must show executed tests without skips. Reports contain synthetic test
-results; instance secrets, storage, keys and backups do not belong in reports.
+TRX files must show executed tests without skips. Raw logs/TRX stay local and may contain machine paths. Export only the allowlisted
+public summary with `--public-report-directory /new/path/public-reports`; Actions
+uploads and candidate report archives contain summaries, not raw logs or TRX.
+Instance secrets, storage, keys and backups do not belong in reports.
 
 For a clean existing tag with matching notes under `docs/releases/`:
 
@@ -39,23 +43,31 @@ retains its exact image archives and `candidate-manifest.json`; it has no
 installable `release-manifest.json`. Supply the matching reviewed source materials
 and rerun the same tag/output with `--resume`. Finalization verifies and loads the
 retained archives without rebuilding, then writes a new `release/` directory.
-An existing final `release/` is never replaced. In Actions, `candidate_run_id`
-selects the original run for this second phase; `source_materials_run_id` selects
-the reviewed source-material artifact. Missing evidence leaves the original
+An existing final `release/` is never replaced. In Actions, `candidate_artifact_id`
+selects one immutable artifact from the original run for this second phase; `source_materials_artifact_id` selects
+one immutable reviewed source-material artifact. Missing evidence leaves the original
 candidate incomplete.
 
 The manually dispatched **Prepare release candidate** workflow resolves its tag to
-one commit. It accepts an optional same-repository run ID containing an artifact
-named `release-source-materials`; the download needs only Actions read access.
-All third-party actions are pinned. The normal Verify workflow has only contents
+one commit. It accepts an optional same-repository artifact ID named
+`release-source-materials`; the download needs only Actions read access.
+Artifact provenance must match a completed manual main-branch workflow in this
+repository; retry attempts are never merged by pattern. Source-material uploads
+are expected from the separately reviewed `release-source-materials.yml` workflow
+when that outstanding source-delivery work is ready. All third-party actions are pinned. The normal Verify workflow has only contents
 read access, including for fork pull requests. Artifact access follows repository
 rules: never put private instance data in Actions uploads.
 
 Preparation verifies source, builds API/web/tools, checks reviewed image-bound
 source materials, runs disposable HTTPS acceptance and collects compressed image
 archives, a tracked-source installation archive, release notes, notices, source
-materials, verification reports and a SHA-256/size manifest. Output paths are new;
-existing candidates are never overwritten. Retain the exact accepted bytes.
+materials, verification reports and a SHA-256/size manifest. The official build context is exported from the one selected Git commit; ignored
+local files are never Docker build inputs. Output paths are new;
+existing candidates are never overwritten. Retain the exact accepted bytes. Finalization requires separate fresh-install
+and upgrade acceptance. For 0.1.0 the upgrade baseline is pinned source revision
+`9cc808a`; later versions require the preceding published stable bundle supplied
+with `--baseline-bundle` (or the exact `baseline_artifact_id` in Actions). The
+maintainer verifies that this retained bundle matches the published release.
 
 Missing source material or failed acceptance returns nonzero and must remain an
 incomplete candidate. `built-images.json`, `candidate-manifest.json` and diagnostic archives are not an
@@ -79,7 +91,12 @@ exceptions and delivery instructions. List that review record itself in `files`.
 Source manifests must bind to these image IDs; an old image's sidecar cannot be
 reused merely because a package version looks unchanged. Native source sidecars
 are named by the web entry’s `native_sidecar` field, listed in `files`, and undergo
-internal inventory and exact web-image-ID verification.
+internal inventory, expected shipped package/component/native-binary fingerprint
+and exact web-image-ID verification. Each image also supplies `components`, one
+entry per scope/name/version from the generated `source-inventory.json`. Every
+component needs inventoried `source_files` or an `exception` containing a reason
+and an inventoried review `record`. A review markdown file alone is not source
+coverage. Decisions about license obligations remain maintainer-reviewed inputs.
 
 These checks enforce packaging identity and required review inputs; they do not
 make a legal determination or prove that arbitrary supplied archives satisfy a

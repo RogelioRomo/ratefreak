@@ -6,12 +6,16 @@ on:
         description: Existing version tag, for example v0.1.0
         required: true
         type: string
-      source_materials_run_id:
-        description: Optional same-repository run containing reviewed release-source-materials artifact; missing coverage blocks completion
+      source_materials_artifact_id:
+        description: Exact same-repository artifact ID containing reviewed release-source-materials artifact; missing coverage blocks completion
         required: false
         type: string
-      candidate_run_id:
-        description: Optional same-repository run containing the exact incomplete candidate to finalize without rebuilding
+      candidate_artifact_id:
+        description: Exact same-repository artifact ID containing the incomplete candidate to finalize without rebuilding
+        required: false
+        type: string
+      baseline_artifact_id:
+        description: Exact completed candidate artifact matching the preceding published stable release (required after 0.1.0)
         required: false
         type: string
 permissions:
@@ -44,32 +48,68 @@ jobs:
           node-version: '24'
           package-manager-cache: false
       - run: npm install --global pnpm@10.28.2
-      - name: Obtain the exact candidate under review
-        if: inputs.candidate_run_id != ''
+      - name: Validate exact candidate artifact provenance
+        if: inputs.candidate_artifact_id != ''
+        id: candidate_source
+        env:
+          REVIEW_ARTIFACT_ID: ${{ inputs.candidate_artifact_id }}
+          REVIEW_ARTIFACT_KIND: candidate
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 deploy/release/workflow_checks.py validate-artifact
+      - name: Obtain exact candidate under review
+        if: inputs.candidate_artifact_id != ''
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
-          pattern: candidate-review-*
           merge-multiple: true
-          run-id: ${{ inputs.candidate_run_id }}
+          artifact-ids: ${{ steps.candidate_source.outputs.artifact_id }}
+          run-id: ${{ steps.candidate_source.outputs.run_id }}
           github-token: ${{ github.token }}
           path: ${{ runner.temp }}/candidate
+      - name: Validate exact source-material artifact provenance
+        if: inputs.source_materials_artifact_id != ''
+        id: source_materials
+        env:
+          REVIEW_ARTIFACT_ID: ${{ inputs.source_materials_artifact_id }}
+          REVIEW_ARTIFACT_KIND: sources
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 deploy/release/workflow_checks.py validate-artifact
       - name: Obtain reviewed image-bound source materials
-        if: inputs.source_materials_run_id != ''
+        if: inputs.source_materials_artifact_id != ''
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
-          name: release-source-materials
-          run-id: ${{ inputs.source_materials_run_id }}
+          merge-multiple: true
+          artifact-ids: ${{ steps.source_materials.outputs.artifact_id }}
+          run-id: ${{ steps.source_materials.outputs.run_id }}
           github-token: ${{ github.token }}
           path: ${{ runner.temp }}/release-source-materials
+      - name: Validate exact preceding-release artifact provenance
+        if: inputs.baseline_artifact_id != ''
+        id: baseline_source
+        env:
+          REVIEW_ARTIFACT_ID: ${{ inputs.baseline_artifact_id }}
+          REVIEW_ARTIFACT_KIND: candidate
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 deploy/release/workflow_checks.py validate-artifact
+      - name: Obtain preceding published release bundle
+        if: inputs.baseline_artifact_id != ''
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          artifact-ids: ${{ steps.baseline_source.outputs.artifact_id }}
+          merge-multiple: true
+          run-id: ${{ steps.baseline_source.outputs.run_id }}
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/previous-release
       - name: Prepare exact candidate without publication
-        if: inputs.candidate_run_id == ''
+        if: inputs.candidate_artifact_id == ''
         env:
           CANDIDATE_TAG: ${{ inputs.tag }}
+          RATEFREAK_BASELINE_BUNDLE: ${{ inputs.baseline_artifact_id != '' && format('{0}/previous-release/release', runner.temp) || '' }}
         run: python3 deploy/release/prepare.py --tag "$CANDIDATE_TAG" --output "$RUNNER_TEMP/candidate" --compliance "$RUNNER_TEMP/release-source-materials"
       - name: Finalize reviewed candidate without rebuilding
-        if: inputs.candidate_run_id != ''
+        if: inputs.candidate_artifact_id != ''
         env:
           CANDIDATE_TAG: ${{ inputs.tag }}
+          RATEFREAK_BASELINE_BUNDLE: ${{ inputs.baseline_artifact_id != '' && format('{0}/previous-release/release', runner.temp) || '' }}
         run: python3 deploy/release/prepare.py --resume --tag "$CANDIDATE_TAG" --output "$RUNNER_TEMP/candidate" --compliance "$RUNNER_TEMP/release-source-materials"
       - name: Retain candidate or incomplete diagnostics
         if: always()

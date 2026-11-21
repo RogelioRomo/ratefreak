@@ -216,7 +216,10 @@ python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_INSTANCE" start
 Loading validates all artifact hashes and image/archive identities before selecting
 one complete versioned image set. A failed/partial load preserves the previous
 selection; successful selection invalidates prior migration acceptance. Old images
-are retained. Start never implicitly pulls or upgrades. Do not set independent
+are retained. Bundle-selected services resolve immutable image IDs, so another
+instance cannot change their selection by moving a Docker tag. A subsequent
+source `build` explicitly selects the complete local image set only after all
+three builds succeed, and requires fresh migration acceptance. Start never implicitly pulls or upgrades. Do not set independent
 API/web/tools versions or substitute images in the instance override.
 
 See [release preparation and announcements](releasing.md) for versioning, required

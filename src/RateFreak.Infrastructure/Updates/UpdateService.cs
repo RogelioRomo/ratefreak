@@ -29,12 +29,12 @@ public sealed class UpdateService(GitHubReleaseClient client,IOptions<UpdateOpti
     {
         ReleaseResult result;
         try{result=await client.FetchAsync(etag);}
-        catch(Exception e) when(e is HttpRequestException or OperationCanceledException or System.Text.Json.JsonException or InvalidDataException or InvalidOperationException or KeyNotFoundException or FormatException or ArgumentException)
+        catch(Exception e) when(e is HttpRequestException or OperationCanceledException or System.Text.Json.JsonException or IOException or InvalidDataException or InvalidOperationException or KeyNotFoundException or FormatException or ArgumentException)
         {result=new("unavailable");}
         lock(gate)
         {
             var now=clock.GetUtcNow();
-            if(result.Kind=="not-modified"&&succeeded is null)result=new("unavailable");
+            if(result.Kind=="not-modified"&&(succeeded is null||latest is null||etag is null))result=new("unavailable");
             if(result.Kind=="unavailable")
             {
                 state="unavailable";manualAt=now+TimeSpan.FromMinutes(5);

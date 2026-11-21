@@ -1,5 +1,6 @@
 <Project>
   <PropertyGroup>
+    <RateFreakRevision Condition="'$(RateFreakRevision)' == '' and !Exists('$(MSBuildThisFileDirectory).git') and Exists('$(MSBuildThisFileDirectory)SOURCE_REVISION')">$([System.IO.File]::ReadAllText('$(MSBuildThisFileDirectory)SOURCE_REVISION').Trim())</RateFreakRevision>
     <Version>$([System.IO.File]::ReadAllText('$(MSBuildThisFileDirectory)VERSION').Trim())</Version>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>

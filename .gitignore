@@ -24,3 +24,4 @@ web/public/notices/
 # Generated immutable build identity.
 .build-identity.json
 web/generated/
+SOURCE_REVISION
