@@ -40,7 +40,7 @@ class BundleTests(unittest.TestCase):
             for name,data in members.items():
                 item=tarfile.TarInfo(name);item.size=len(data);tar.addfile(item,io.BytesIO(data))
         materials={'review.md':b'Review','sources.tar.gz':b'corresponding source','native.tar.gz':native_stream.getvalue()}
-        inventory['images']['web']['native_profile']=native_profile
+        inventory['images']['web']['native_profile']={key:value for key,value in native_manifest.items() if key!='image_id'}
         coverage={'images':{name:{'image_id':image,'review_record':'review.md','native_sidecar':'native.tar.gz','files':{leaf:hashlib.sha256(data).hexdigest() for leaf,data in materials.items()},'components':[{'scope':'os','name':'libc','version':'1','source_files':['sources.tar.gz']}]} for name,image in images.items()}}
         artifact('built-images.json',json.dumps(images).encode());artifact('baseline-images.json',json.dumps(baseline).encode());artifact('source-inventory.json',json.dumps(inventory).encode());artifact('RELEASE-NOTES.md',b'Notes')
         report={'identity':{'version':'0.1.0','revision':'a'*40},'complete':True,'checks':[{'check':name,'exitCode':0} for name in ['restore','tools','web-install','UnitTests','ProviderContractTests','IntegrationTests','operator','release','compliance','web-lint','web-typecheck','web-test','web-build','api-publish','model']],'tests':[{'suite':suite,'total':1,'executed':1,'passed':1,'failed':0,'skipped':0} for suite in ['UnitTests','IntegrationTests','ProviderContractTests']]}

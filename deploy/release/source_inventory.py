@@ -41,7 +41,7 @@ def collect(output,images,profile):
                 version=subprocess.check_output(['docker','run','--rm','--network','none','--entrypoint','psql',image_id,'--version'],text=True).strip()
                 components.append({'scope':'postgres','name':'postgresql-client','version':version})
         entry={'image_id':image_id,'components':sorted(components,key=lambda p:(p['scope'],p['name'],p['version']))}
-        if name=='web':entry['native_profile']={key:profile[key] for key in ['package','components','native_sha256']}
+        if name=='web':entry['native_profile']=profile
         result['images'][name]=entry
     return result
 
@@ -68,3 +68,8 @@ def validate_native(manifest,expected):
     web=expected['images']['web'];profile=web['native_profile']
     if manifest.get('image_id')!=web['image_id'] or profile['package'].get('name')!='@img/sharp-libvips-linux-x64' or any(manifest.get(key)!=profile[key] for key in ['package','components','native_sha256']):
         raise ValueError('Native source archive does not match the actual shipped binary/profile.')
+    for key in ['required_files','coverage','librsvg_archive']:
+        if key not in profile or manifest.get(key)!=profile[key]:raise ValueError('Native source coverage differs from the locked shipped profile.')
+    expected_files={entry['file']:entry['sha256'] for entry in profile.get('files',[])}
+    actual_files={entry['file']:entry['sha256'] for entry in manifest.get('files',[])}
+    if not expected_files or expected_files!=actual_files:raise ValueError('Native source material differs from the locked shipped profile.')

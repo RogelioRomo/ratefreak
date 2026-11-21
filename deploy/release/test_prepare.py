@@ -60,3 +60,41 @@ class PreparationTests(unittest.TestCase):
             (root/'secret.pem').write_text('local private data')
             context=Path(temp)/'context';prepare.export_context(root,git('rev-parse','HEAD'),context)
             self.assertEqual((context/'safe').read_text(),'committed');self.assertFalse((context/'secret.pem').exists())
+    def test_public_evidence_archives_omit_local_owner_metadata(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);(root/'reports').mkdir();(root/'reports/verification.json').write_text('{}')
+            prepare.freeze_directory(root,'reports')
+            with tarfile.open(root/'reports.tar.gz') as archive:
+                self.assertTrue(all(m.uid==0 and m.gid==0 and not m.uname and not m.gname for m in archive))
+    def test_resume_produces_a_separate_verified_release_from_exact_review_bytes(self):
+        import importlib.util,hashlib
+        from unittest.mock import patch
+        spec=importlib.util.spec_from_file_location('release_bundle_fixture',Path(__file__).resolve().parents[1]/'self-host/test_release_bundle.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        fixture=module.BundleTests();fixture.setUp()
+        try:
+            root=fixture.root;manifest=fixture.manifest;manifest['stage']='review'
+            for name in ['sources.tar.gz','acceptance.tar.gz','fresh-acceptance.tar.gz','baseline-images.json']:manifest['files'].pop(name)
+            (root/'release-manifest.json').unlink();(root/'candidate-manifest.json').write_text(json.dumps(manifest))
+            before={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in manifest['files']}
+            images={name:entry['id'] for name,entry in manifest['images'].items()};baseline={name:'sha256:'+'f'*64 for name in images}
+            def inspected(command,**kwargs):
+                name=command[-1].split(':')[0].removeprefix('ratefreak-')
+                value={'Id':images[name],'Os':'linux','Architecture':'amd64','Config':{'Labels':{'org.opencontainers.image.version':'0.1.0','org.opencontainers.image.revision':'a'*40}}}
+                return subprocess.CompletedProcess(command,0,stdout=json.dumps([value]))
+            def source_materials(directory,actual,output,inventory):
+                self.assertEqual(actual,images)
+                with tarfile.open(root/'sources.tar.gz') as tar:tar.extractall(output.parent,filter='data')
+            def execute(command,cwd=None,output=None):
+                if '--report-directory' in command:
+                    target=Path(command[command.index('--report-directory')+1]);target.mkdir()
+                    upgrade='--baseline-images-json' in command
+                    receipt={'candidateImages':images,'baselineImages':baseline if upgrade else None,'freshInstall':not upgrade,'upgrade':upgrade,**{key:True for key in ['https','dataPreserved','disabledUpdateChecks','ordinaryDenied','logoutDenied']}}
+                    (target/'acceptance.json').write_text(json.dumps(receipt))
+                return ''
+            with patch.object(prepare.subprocess,'run',side_effect=inspected),patch.object(prepare,'run',side_effect=execute),patch.object(prepare,'baseline_images',return_value=baseline),patch.object(prepare,'source_evidence',side_effect=source_materials):
+                result=prepare.resume_candidate(root,{'version':'0.1.0','revision':'a'*40},root/'reviewed-inputs')
+            self.assertEqual(result['stage'],'verified');self.assertTrue((root/'release/release-manifest.json').exists())
+            self.assertFalse((root/'release-manifest.json').exists())
+            self.assertEqual(before,{name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in manifest['files']})
+        finally:fixture.tearDown()

@@ -1,6 +1,6 @@
 # Release versioning and administrator update awareness
 
-Date: 2026-11-20. Status: approved by the owner on 2026-11-20; implementation pending.
+Date: 2026-11-20. Status: approved and implemented locally on 2026-11-20; integration/publication pending.
 
 ## Intent and agreed scope
 

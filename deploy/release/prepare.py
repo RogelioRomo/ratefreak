@@ -124,7 +124,12 @@ def save_image(image,path):
 
 def freeze_directory(output,name):
     directory=output/name
-    with tarfile.open(output/(name+'.tar.gz'),'w:gz') as archive:archive.add(directory,arcname=name)
+    def portable(member):
+        if not(member.isfile() or member.isdir()):raise ValueError('Evidence archives cannot contain links or special files.')
+        member.uid=member.gid=0;member.uname=member.gname='';member.mtime=0;member.pax_headers={}
+        member.mode=0o755 if member.isdir() else 0o644
+        return member
+    with tarfile.open(output/(name+'.tar.gz'),'w:gz') as archive:archive.add(directory,arcname=name,filter=portable)
     shutil.rmtree(directory)
 
 def inventory(output):
