@@ -1,6 +1,7 @@
 # Self-hosted open-source release plan
 
-Draft updated 2026-11-13 with dependency/provider review findings. Product direction is
+Draft updated 2026-11-20 with agreed release announcements and administrator update
+awareness scope and a proposed implementation design. Product direction is
 defined in [ADR 0020](adr/0020-self-hosted-open-source-distribution.md). This is a
 proposed work sequence, not an approved implementation specification.
 
@@ -101,8 +102,43 @@ other topologies and each operator's external obligations retain their own check
   No test report was submitted; maintainer notification delivery is unverified.
 - [ ] Define the release/versioning process and automate verification for the
   supported installation/artifacts.
+- [ ] Implement release announcements and administrator update awareness as part
+  of the first-release versioning work; see the agreed scope below.
 - [ ] Review tracked files and release artifacts for secrets, local user data and
   machine-specific configuration before publishing.
+
+### Release announcements and update awareness
+
+The owner agreed on 2026-11-20 to include GitHub release announcements and an
+administrator update notice in the release/versioning work. This records scope;
+the implementation design was approved by the owner on 2026-11-20.
+
+The approved [implementation design](superpowers/specs/2026-11-20-release-versioning-design.md)
+now records version identity, candidate preparation/distribution, manual upgrades,
+administrator access and bounded update checks. The
+[implementation plan](superpowers/plans/2026-11-20-release-versioning.md) records
+the concrete delivery and verification steps; implementation has not started.
+
+- [ ] Embed the installed application version in builds and keep API/web/tools
+  artifacts tied to the same release version.
+- [ ] Publish versioned GitHub releases with matching artifacts, a readable change
+  summary, upgrade instructions and explicit migration requirements. Document how
+  operators can subscribe through GitHub's Watch → Custom → Releases controls.
+- [ ] Add an administrator-only installed/latest stable version display and an
+  update-available notice linking to release notes and upgrade instructions.
+- [ ] Provide an administrator-controlled update check, cached server-side, plus
+  a manual “Check for updates” action. Specify the enablement default, check
+  interval, external request behavior and failure handling in the implementation
+  design. Compare release versions correctly and exclude drafts/prereleases from
+  stable update notices; unavailable checks must not block normal application use.
+- [ ] Verify administrator access, version comparison, cached/manual checks,
+  disabled/offline behavior and links to the matching release instructions.
+
+An available upstream release does not mean an instance has installed it. Updates
+remain manual through the documented backup/migration/upgrade procedure; this
+scope does not include automatic installation. A user-facing “What's new” notice
+after an instance upgrades is deferred until after the first release, alongside
+the additional product features discussed on 2026-11-20.
 
 Publishing releases, images or repository changes remains a separate authorized
 action. Operators choose where to run their instances and must verify their own
