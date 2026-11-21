@@ -5,6 +5,8 @@ RUN corepack enable && corepack prepare pnpm@10.28.2 --activate
 COPY web/package.json web/pnpm-lock.yaml web/pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 COPY web ./
+COPY VERSION /src/VERSION
+COPY .build-identity.json /src/.build-identity.json
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY LICENSE /src/LICENSE
 COPY deploy/compliance /src/deploy/compliance
@@ -20,6 +22,9 @@ COPY deploy/self-host/entrypoint.py ./entrypoint.py
 ENV NODE_ENV=production HOSTNAME=0.0.0.0 PORT=3000 NEXT_TELEMETRY_DISABLED=1
 COPY deploy/compliance/runtime_evidence.py /app/runtime_evidence.py
 RUN python3 /app/runtime_evidence.py /app/public/notices/runtime
+ARG RATEFREAK_VERSION
+ARG RATEFREAK_REVISION=unknown
+LABEL org.opencontainers.image.version=$RATEFREAK_VERSION org.opencontainers.image.revision=$RATEFREAK_REVISION org.opencontainers.image.source="https://github.com/RogelioRomo/ratefreak"
 USER 10001:10001
 EXPOSE 3000
 ENTRYPOINT ["python3", "/app/entrypoint.py", "web"]

@@ -123,6 +123,7 @@ app.MapFeedEndpoints();
 app.MapNotificationEndpoints();
 app.MapReviewCommentEndpoints();
 app.MapModerationEndpoints();
+app.MapUpdateEndpoints();
 app.Run();
 
 public partial class Program;

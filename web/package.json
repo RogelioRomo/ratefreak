@@ -4,14 +4,17 @@
   "private": true,
   "scripts": {
     "notices": "python3 ../deploy/compliance/notices.py web . public/notices --supplements ../deploy/compliance/supplements --project-license ../LICENSE --evidence ../deploy/compliance/native --check",
-    "predev": "pnpm notices",
-    "prebuild": "pnpm notices",
+    "predev": "pnpm identity && pnpm notices",
+    "prebuild": "pnpm identity && pnpm notices",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "identity": "node scripts/build-identity.mjs",
+    "pretest": "pnpm identity",
+    "pretypecheck": "pnpm identity"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.4.1",

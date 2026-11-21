@@ -18,7 +18,7 @@ services:
       retries: 30
 
   api:
-    image: ratefreak-api:local
+    image: ${RATEFREAK_API_IMAGE:-ratefreak-api:local}
     restart: unless-stopped
     read_only: true
     security_opt: [no-new-privileges:true]
@@ -27,6 +27,7 @@ services:
     environment: &api-environment
       ASPNETCORE_ENVIRONMENT: Production
       DOTNET_ENVIRONMENT: Production
+      Updates__Enabled: ${RATEFREAK_UPDATES_ENABLED:-false}
       DOTNET_BUNDLE_EXTRACT_BASE_DIR: /tmp/ratefreak-bundle
       AllowedHosts: api
       BrowserProxy__AllowPrivateHttp: 'true'
@@ -51,7 +52,7 @@ services:
       retries: 30
 
   web:
-    image: ratefreak-web:local
+    image: ${RATEFREAK_WEB_IMAGE:-ratefreak-web:local}
     restart: unless-stopped
     read_only: true
     security_opt: [no-new-privileges:true]
@@ -78,7 +79,7 @@ services:
       retries: 30
 
   storage-init:
-    image: ratefreak-tools:local
+    image: ${RATEFREAK_TOOLS_IMAGE:-ratefreak-tools:local}
     user: '0:0'
     command: [prepare]
     profiles: [maintenance]
@@ -87,7 +88,7 @@ services:
     network_mode: none
 
   migrate:
-    image: ratefreak-tools:local
+    image: ${RATEFREAK_TOOLS_IMAGE:-ratefreak-tools:local}
     command: [migrate]
     profiles: [maintenance]
     environment: *api-environment
@@ -99,7 +100,7 @@ services:
       postgres: {condition: service_healthy}
 
   tools:
-    image: ratefreak-tools:local
+    image: ${RATEFREAK_TOOLS_IMAGE:-ratefreak-tools:local}
     profiles: [maintenance]
     environment:
       <<: *api-environment

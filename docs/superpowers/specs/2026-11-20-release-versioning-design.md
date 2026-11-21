@@ -1,6 +1,6 @@
 # Release versioning and administrator update awareness
 
-Date: 2026-11-20. Status: approved by the owner on 2026-11-20; implementation pending.
+Date: 2026-11-20. Status: approved and implemented locally on 2026-11-20; merged locally into main after user authorization; publication pending.
 
 ## Intent and agreed scope
 
@@ -220,6 +220,15 @@ existing migration fixtures separately cover schema upgrades. Record exact
 baseline/candidate image identities and data-preservation evidence. For later
 releases, use the preceding published stable bundle as the upgrade baseline.
 Never use the persistent developer instance as an acceptance fixture.
+
+Implementation clarification, 2026-11-20: source review binds to built image IDs.
+Preparation therefore retains exact incomplete candidate archives for review;
+explicit finalization resumes those bytes without rebuilding and writes the final
+release separately. This avoids invalidating source evidence with a fresh build. Review hardening
+uses immutable image IDs for selected bundle services, exports official build
+contexts from tagged source only, validates separate review/final schemas and
+component-bound source evidence, and publishes only allowlisted verification
+summaries. Raw diagnostic logs and test results remain local.
 
 ## Remaining builder choices and delivery boundary
 

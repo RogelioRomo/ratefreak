@@ -100,9 +100,9 @@ other topologies and each operator's external obligations retain their own check
 - [x] Enable and verify GitHub private vulnerability reporting. The owner enabled
   it on 2026-11-18, and the subsequent public API check confirmed `enabled=true`.
   No test report was submitted; maintainer notification delivery is unverified.
-- [ ] Define the release/versioning process and automate verification for the
+- [x] Define the release/versioning process and automate verification for the
   supported installation/artifacts.
-- [ ] Implement release announcements and administrator update awareness as part
+- [x] Implement release announcement preparation and administrator update awareness as part
   of the first-release versioning work; see the agreed scope below.
 - [ ] Review tracked files and release artifacts for secrets, local user data and
   machine-specific configuration before publishing.
@@ -117,21 +117,23 @@ The approved [implementation design](superpowers/specs/2026-11-20-release-versio
 now records version identity, candidate preparation/distribution, manual upgrades,
 administrator access and bounded update checks. The
 [implementation plan](superpowers/plans/2026-11-20-release-versioning.md) records
-the concrete delivery and verification steps; implementation has not started.
+the concrete delivery and verification steps. Implementation and local acceptance
+are complete and merged locally into `main` after user authorization; see the
+[verification record](release-versioning-verification.md).
 
-- [ ] Embed the installed application version in builds and keep API/web/tools
+- [x] Embed the installed application version in builds and keep API/web/tools
   artifacts tied to the same release version.
 - [ ] Publish versioned GitHub releases with matching artifacts, a readable change
   summary, upgrade instructions and explicit migration requirements. Document how
   operators can subscribe through GitHub's Watch → Custom → Releases controls.
-- [ ] Add an administrator-only installed/latest stable version display and an
+- [x] Add an administrator-only installed/latest stable version display and an
   update-available notice linking to release notes and upgrade instructions.
-- [ ] Provide an administrator-controlled update check, cached server-side, plus
+- [x] Provide an administrator-controlled update check, cached server-side, plus
   a manual “Check for updates” action. Specify the enablement default, check
   interval, external request behavior and failure handling in the implementation
   design. Compare release versions correctly and exclude drafts/prereleases from
   stable update notices; unavailable checks must not block normal application use.
-- [ ] Verify administrator access, version comparison, cached/manual checks,
+- [x] Verify administrator access, version comparison, cached/manual checks,
   disabled/offline behavior and links to the matching release instructions.
 
 An available upstream release does not mean an instance has installed it. Updates

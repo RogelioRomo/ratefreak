@@ -1,6 +1,15 @@
 # Current project status and roadmap
 
-Updated: 2026-11-20. Private Library → History is implemented, verified and merged
+Updated: 2026-11-20. Release/versioning and administrator update awareness are
+implemented, independently reviewed, verified locally and merged into `main`
+after user authorization. Evidence: 756 backend tests (zero
+skipped), 942 frontend tests, 90 Python tests, production builds, model consistency
+and real HTTPS/Chromium fresh-install/upgrade checks. The candidate dry run
+correctly remains incomplete without reviewed corresponding-source materials.
+No release was published and the persistent developer instance was unchanged.
+See [release/versioning evidence and limits](release-versioning-verification.md).
+
+Previous update, 2026-11-20. Private Library → History is implemented, verified and merged
 locally into `main` through `7559fc4` after user authorization. The recap includes currently
 Completed, readable titles with completion dates; year/month filters, twelve
 monthly totals, grouped pagination, own ratings and missing-date guidance reuse
@@ -351,6 +360,13 @@ work instead; see the [release plan](self-hosted-release-plan.md#release-announc
 First-use/onboarding work was explicitly declined on 2026-11-19 and is not a
 planned product priority.
 
+Release/versioning implementation is complete and merged locally into `main`
+after user authorization. Shared identity, candidate
+preparation/finalization, manual bundle selection and administrator update checks
+are locally verified;
+no public release or persistent-instance upgrade has occurred. See
+[the verification record](release-versioning-verification.md).
+
 ## Self-hosted release readiness
 
 The frontend delivery milestone still open is Phase 7 production verification,
@@ -379,10 +395,14 @@ as the detailed acceptance checklist. Remaining categories are:
 - [ ] End-to-end acceptance using ordinary/staff accounts on the deployed candidate.
 - [ ] Fresh production/Release builds and browser checks for the final source revision.
 - [x] Open-source license selection: [MIT](../LICENSE), selected 2026-11-11.
-- [ ] Remaining redistribution/provider notices, release/versioning automation and
-  versioned artifacts, including GitHub release announcements and an
-  administrator-only update notice with controlled cached/manual checks. Upgrades
-  remain manual; user-facing “What's new” notices are deferred until after release.
+- [x] Implement release/versioning automation and administrator update awareness,
+  verified locally and merged into `main` after user authorization. GitHub
+  announcement instructions, controlled cached/manual checks, exact candidate
+  finalization and manual bundle upgrades are implemented;
+  [evidence and remaining limits](release-versioning-verification.md).
+- [ ] Remaining redistribution/provider notices and authorized versioned artifact
+  publication. Upgrades remain manual; user-facing “What's new” notices are
+  deferred until after release.
   Contributor/security guidance and private-reporting
   activation are complete; maintainer notification delivery remains untested.
   Self-hosting/upgrade instructions exist.
@@ -419,3 +439,8 @@ Maintainer notification verification and versioned release automation remain und
 Each operator still verifies their own journal protection, backup expiration,
 staff records and infrastructure acceptance. No public deployment or publication
 is recorded.
+
+Integration note, 2026-11-20: the user authorized committing and merging the
+verified feature into `main` and explicitly requested no further tests. No tests
+or build hooks were rerun during integration; the verification evidence above
+retains its recorded source scope. No release was published or service started.

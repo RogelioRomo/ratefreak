@@ -112,6 +112,7 @@ internal static class ApiSecurity
             AddAccountLimit(options, "moderation-read", 60);
             AddAccountLimit(options, "moderation-write", 30);
             AddAccountLimit(options, "role-write", 10);
+            AddAccountLimit(options, "update-check", 10);
             options.AddPolicy("reporting", context => RateLimitPartition.GetFixedWindowLimiter(
                 context.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "anonymous", _ => new FixedWindowRateLimiterOptions
                 { PermitLimit = 5, Window = TimeSpan.FromHours(1), QueueLimit = 0, AutoReplenishment = true }));

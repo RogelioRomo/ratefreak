@@ -1,0 +1,33 @@
+// @vitest-environment jsdom
+import {act,fireEvent,render,screen,waitFor} from '@testing-library/react';
+import {QueryClient,QueryClientProvider} from '@tanstack/react-query';
+import {beforeEach,expect,it,vi} from 'vitest';
+import {StaffContext} from '@/features/moderation/query/context';
+import {ApiError} from '@/shared/api/api-error';
+import {UpdatesScreen} from './updates-screen';
+const api=vi.hoisted(()=>({getUpdates:vi.fn(),checkUpdates:vi.fn()}));
+vi.mock('../api/updates',()=>api);
+const status={installed:{version:'0.1.0',revision:'a'.repeat(40),official:true},enabled:true,state:'available',latestVersion:'0.2.0',releaseUrl:'https://github.com/RogelioRomo/ratefreak/releases/tag/v0.2.0',lastAttemptAt:'2026-11-20T00:00:00Z',lastSuccessAt:'2026-11-20T00:00:00Z',nextCheckAt:null,stale:false,canCheck:true};
+beforeEach(()=>{api.getUpdates.mockReset().mockResolvedValue(status);api.checkUpdates.mockReset().mockResolvedValue({...status,state:'current',latestVersion:'0.1.0'});});
+function setup(){const client=new QueryClient({defaultOptions:{queries:{retry:false}}});const ui=(active=true,id='admin')=><QueryClientProvider client={client}><StaffContext.Provider value={{accountId:id,active}}><UpdatesScreen/></StaffContext.Provider></QueryClientProvider>;return {client,ui,...render(ui())};}
+it('shows installed and available versions with manual upgrade guidance',async()=>{setup();expect(await screen.findByText('0.2.0')).toBeVisible();expect(screen.getByText('0.1.0')).toBeVisible();expect(screen.getByRole('link',{name:'Release notes'})).toHaveAttribute('href',status.releaseUrl);expect(screen.getByText(/Your operator installs updates/)).toBeVisible();});
+it('checks explicitly, updates shared status and retains keyboard focus',async()=>{setup();const button=await screen.findByRole('button',{name:'Check for updates'});button.focus();fireEvent.click(button);await screen.findByText('This instance is up to date.');expect(button).toHaveFocus();expect(api.checkUpdates).toHaveBeenCalledTimes(1);});
+it('explains disabled checks without making a manual request',async()=>{api.getUpdates.mockResolvedValue({...status,enabled:false,state:'disabled',latestVersion:null,releaseUrl:null,canCheck:false});setup();expect(await screen.findByText(/Update checks are disabled/)).toBeVisible();expect(screen.getByRole('button',{name:'Check for updates'})).toBeDisabled();expect(api.checkUpdates).not.toHaveBeenCalled();});
+it.each([['no-release','No stable release has been published yet.'],['development','This is a development or custom build.'],['unavailable','Update availability could not be checked.'],['unchecked','Updates have not been checked yet.']])('explains %s without claiming current',async(state,text)=>{api.getUpdates.mockResolvedValue({...status,state});setup();expect(await screen.findByText(text)).toBeVisible();expect(screen.queryByText('This instance is up to date.')).toBeNull();});
+it('retains stale version with a clear failure message',async()=>{api.getUpdates.mockResolvedValue({...status,state:'unavailable',stale:true});setup();expect(await screen.findByText(/Last known release information may be outdated/)).toBeVisible();});
+it('conceals cached results after administrator revocation',async()=>{const {client}=setup();await screen.findByText('0.2.0');api.getUpdates.mockRejectedValue(new ApiError(403));await client.invalidateQueries({queryKey:['staff','admin','admin','updates']});expect(await screen.findByText('Administrator access required.')).toBeVisible();expect(screen.queryByText('0.2.0')).toBeNull();});
+it('conceals results during inactive sessions and account changes',async()=>{const {ui,rerender}=setup();await screen.findByText('0.2.0');rerender(ui(false));expect(screen.queryByText('0.2.0')).toBeNull();api.getUpdates.mockImplementation(()=>new Promise(()=>{}));rerender(ui(true,'other'));expect(screen.queryByText('0.2.0')).toBeNull();});
+it('aborts a manual check when the session becomes inactive',async()=>{let signal:AbortSignal|undefined;api.checkUpdates.mockImplementation((s)=>{signal=s;return new Promise(()=>{});});const {ui,rerender}=setup();fireEvent.click(await screen.findByRole('button',{name:'Check for updates'}));await waitFor(()=>expect(signal).toBeDefined());rerender(ui(false));expect(signal?.aborted).toBe(true);expect(screen.queryByText('0.2.0')).toBeNull();});
+it('shows a recoverable error after an uncertain check without exposing exception details',async()=>{api.checkUpdates.mockRejectedValue(new Error('private detail'));setup();fireEvent.click(await screen.findByRole('button',{name:'Check for updates'}));expect(await screen.findByRole('alert')).toHaveTextContent('The check could not be completed.');expect(screen.queryByText(/private detail/)).toBeNull();});
+
+it('enables manual checks when the cached cooldown expires without navigation',async()=>{
+ vi.useFakeTimers();
+ try{
+  const now=Date.now();api.getUpdates.mockResolvedValue({...status,canCheck:false,nextCheckAt:new Date(now+1000).toISOString()});
+  setup();await act(async()=>{await vi.advanceTimersByTimeAsync(1);});
+  expect(screen.getByRole('button',{name:'Check for updates'})).toHaveAttribute('aria-disabled','true');
+  fireEvent.click(screen.getByRole('button',{name:'Check for updates'}));expect(api.checkUpdates).not.toHaveBeenCalled();
+  await act(async()=>{await vi.advanceTimersByTimeAsync(1001);});
+  expect(screen.getByRole('button',{name:'Check for updates'})).toHaveAttribute('aria-disabled','false');
+ }finally{vi.useRealTimers();}
+});
