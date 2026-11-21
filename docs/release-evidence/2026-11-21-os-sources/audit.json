@@ -1,0 +1,155 @@
+{
+  "candidate_artifacts": [
+    {
+      "bytes": 771801,
+      "file": "api-notices.tar.gz",
+      "sha256": "65951ba49687b6fcfbc78175b19334964f5131828b6552435c0999dd0bed291f"
+    },
+    {
+      "bytes": 273738596,
+      "file": "api.tar.gz",
+      "sha256": "8ec24e0ca9c4cb4d8076c58ecc8b68ffb0c5bb047b980bee2438d84ce8a167d4"
+    },
+    {
+      "bytes": 865425,
+      "file": "tools-notices.tar.gz",
+      "sha256": "5e7413e1684a26c81740ca9c4a7fb0dfff382e419a0167cbfa158a942cbde024"
+    },
+    {
+      "bytes": 394970291,
+      "file": "tools.tar.gz",
+      "sha256": "be21a1999fce2fa3a95b94ade8e16c3db94d015ad7b92f064de84d560cd6ff87"
+    },
+    {
+      "bytes": 863188,
+      "file": "web-notices.tar.gz",
+      "sha256": "aee388345bd8c938a470c703f21a19093a5a94c285181e44a06e1f3249e740b9"
+    },
+    {
+      "bytes": 110943302,
+      "file": "web.tar.gz",
+      "sha256": "13740780202a562013d8d05cf873f78bd9c2492b48c72d981826a8bd0b20c080"
+    }
+  ],
+  "candidate_revision": "11f404984dd4bec1eb985aad472a0471742e57cf",
+  "date": "2026-11-21",
+  "format": 1,
+  "images": {
+    "api": {
+      "component_scopes": {
+        "dotnet": 2,
+        "nuget": 35,
+        "os": 125
+      },
+      "distributed_layers_inspected": 13,
+      "image_id": "sha256:e1d9d9b5eac51e9cb3fdc34f27ae290cb479d69cb32ec9767f2a04879c7a7789",
+      "lower_layer_only_package_versions": [],
+      "package_notice_count": 35,
+      "verified_runtime_license_files": 144
+    },
+    "tools": {
+      "component_scopes": {
+        "dotnet": 2,
+        "nuget": 36,
+        "os": 156,
+        "postgres": 1
+      },
+      "distributed_layers_inspected": 23,
+      "image_id": "sha256:f9925eb2fc0b3ffad633d0f364b3b4c6c927b82521cacbc22153762e7b69cb94",
+      "lower_layer_only_package_versions": [],
+      "package_notice_count": 36,
+      "verified_runtime_license_files": 175
+    },
+    "web": {
+      "component_scopes": {
+        "native": 28,
+        "node": 1,
+        "npm": 63,
+        "os": 112
+      },
+      "distributed_layers_inspected": 13,
+      "image_id": "sha256:0b93c0f1d6bbcc17ad43d86593801a3bac8bedbf1ce260d44e737271d61508e3",
+      "lower_layer_only_package_versions": [],
+      "package_notice_count": 63,
+      "verified_runtime_license_files": 275,
+      "yarn_license_missing_from_runtime_notice_archive": true
+    }
+  },
+  "native_source_artifact": {
+    "bytes": 201183072,
+    "file": "web.native-sources.tar.gz",
+    "image_id": "sha256:0b93c0f1d6bbcc17ad43d86593801a3bac8bedbf1ce260d44e737271d61508e3",
+    "input_files": 406,
+    "sha256": "355fadebf2aa96e78b82e6bc26299d76a6afd78b847c1a30866bd8105b9c6e3c"
+  },
+  "open_findings": [
+    {
+      "finding": "Node image global npm 11.19.1, Corepack 0.36.0 and Yarn 1.22.22 are outside application source inventory; global dependency/bundled closure review required.",
+      "id": "runtime-inventory"
+    },
+    {
+      "finding": "/opt/yarn-v1.22.22/LICENSE exists in image but is absent from collected runtime notice archive; collector scans /usr/local and /usr/share/dotnet, not /opt.",
+      "id": "yarn-notice"
+    },
+    {
+      "finding": "gosu 1.19 (Go 1.24.6 linux/amd64) and upstream postgres entrypoint scripts require explicit provenance/notice/source decisions.",
+      "id": "tools-runtime"
+    },
+    {
+      "finding": "SkiaSharp embedded native components and EF bundle need source/exception review. API image includes 20 Skia runtime files, including Windows and macOS. Web SWC package is in conservative package inventory but no SWC native payload was observed in /app.",
+      "id": "native-closures"
+    },
+    {
+      "finding": "Audited retained candidate is 11f4049, not current main. Retained original inventory predates full native coverage-profile validation; fresh inventory recollected without altering the candidate. Final published source and image evidence must be reconciled; no whole-image coverage.json clearance generated.",
+      "id": "final-revision"
+    }
+  ],
+  "os_source_artifact": {
+    "bytes": 1044961280,
+    "descriptor_checks": "Every .dsc source/version and complete SHA-256 input set matched authenticated source index metadata; archived payload hashes rechecked.",
+    "file": "ratefreak-candidate-os-sources.tar",
+    "files": 562,
+    "format": 1,
+    "image_ids": {
+      "api": "sha256:e1d9d9b5eac51e9cb3fdc34f27ae290cb479d69cb32ec9767f2a04879c7a7789",
+      "tools": "sha256:f9925eb2fc0b3ffad633d0f364b3b4c6c927b82521cacbc22153762e7b69cb94",
+      "web": "sha256:0b93c0f1d6bbcc17ad43d86593801a3bac8bedbf1ce260d44e737271d61508e3"
+    },
+    "metadata_archives": [
+      {
+        "bytes": 33447261,
+        "file": "api-indexes.tar.gz",
+        "sha256": "841d07b1b97fab5cbb418858002490fb9afa7c404759abe106dc3249888dc421"
+      },
+      {
+        "bytes": 15815953,
+        "file": "web-indexes.tar.gz",
+        "sha256": "f71da7e07b2d27e7e56bdb6d43a148d866ad169def71163b956b8ed0c4a9c0b8"
+      },
+      {
+        "bytes": 16094595,
+        "file": "tools-indexes.tar.gz",
+        "sha256": "23a7a38c18fbc0cce801cd393845eb96a810a15f94e321a933168156fc4588df"
+      },
+      {
+        "bytes": 33365003,
+        "file": "api-snapshot-indexes.tar.gz",
+        "sha256": "92b8bca0bc6bf2b990a0f86e5500da2a07b2824a5870fe026c1c5b48ab6cd67e"
+      },
+      {
+        "bytes": 17101139,
+        "file": "tools-pgdg-history-indexes.tar.gz",
+        "sha256": "408a64bd51699fd2eb54ec0291ca5363572394fc41e0a9705ebef262bee13e29"
+      }
+    ],
+    "scope": "Exact OS sources for retained 11f4049 development candidate; whole-image release gate remains open",
+    "sha256": "6e78705e84204511caac65a9c1778461b3d78f210380e475d01d5fd9d4c07736",
+    "source_packages_by_image": {
+      "api": 86,
+      "tools": 98,
+      "web": 75
+    },
+    "unique_source_packages": 184
+  },
+  "whole_image_source_gate_complete": false
+}

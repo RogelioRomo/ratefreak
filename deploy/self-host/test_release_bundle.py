@@ -30,7 +30,7 @@ class BundleTests(unittest.TestCase):
             data=(self.root/name).read_bytes();self.manifest['files'][name]={'sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data)}
         images={name:entry['id'] for name,entry in self.manifest['images'].items()}
         baseline={name:'sha256:'+'f'*64 for name in images}
-        inventory={'images':{name:{'image_id':image,'components':[{'scope':'os','name':'libc','version':'1'}]} for name,image in images.items()}}
+        inventory={'format':2,'images':{name:{'image_id':image,'runtime_evidence_schema':2,'components':[{'scope':'os','name':'libc','version':'1'}]} for name,image in images.items()}}
         required=['packaging/sharp-libvips-packaging.tar.gz','meson/gvdb.tar.gz','README.md','LICENSE.txt','instructions/rust_sources.py','instructions/offline_curl.py','instructions/rebuild_native.py','instructions/source_bundle.py','evidence/librsvg-edited.Cargo.lock','evidence/rust-coverage.json','native-sources/source.tar.gz','rust/crates/example.crate','librsvg.tar.gz']
         native_profile={'package':{'name':'@img/sharp-libvips-linux-x64','version':'1.0'},'components':{'vips':'1.0'},'native_sha256':'a'*64}
         native_manifest={**native_profile,'image_id':images['web'],'required_files':required,'librsvg_archive':'librsvg.tar.gz','coverage':{'native_archive_patch_files':1,'rust_registry_crates':1},'files':[{'file':name,'sha256':hashlib.sha256(b'source').hexdigest()} for name in required]}
@@ -48,12 +48,33 @@ class BundleTests(unittest.TestCase):
         archive('fresh-acceptance.tar.gz',{'fresh-acceptance/acceptance.json':{'candidateImages':images,'freshInstall':True,'https':True}})
         archive('acceptance.tar.gz',{'acceptance/acceptance.json':{'candidateImages':images,'baselineImages':baseline,**{key:True for key in ['https','upgrade','dataPreserved','disabledUpdateChecks','ordinaryDenied','logoutDenied']}}})
         archive('sources.tar.gz',{'sources/coverage.json':coverage,**{'sources/'+name:data for name,data in materials.items()}})
-        for name in images:archive(name+'-notices.tar.gz',{name+'-notices/manifest.json':{'notice_texts_complete':True}})
+        for name in images:archive(name+'-notices.tar.gz',{name+'-notices/manifest.json':{'notice_texts_complete':True},name+'-notices/runtime/evidence.json':{'schema':2,'runtime_packages':[],'copied_files':[]}})
         self.save()
     def tearDown(self):self.temp.cleanup()
     def save(self): (self.root/'release-manifest.json').write_text(json.dumps(self.manifest))
     def test_validates_complete_release_before_selecting(self):
         result=bundle.validate_bundle(self.root);self.assertEqual(result['version'],'0.1.0')
+    def test_old_inventory_is_rejected_even_with_matching_artifact_checksums(self):
+        path=self.root/'source-inventory.json';inventory=json.loads(path.read_text())
+        inventory['format']=1
+        for entry in inventory['images'].values():entry.pop('runtime_evidence_schema')
+        data=json.dumps(inventory).encode();path.write_bytes(data)
+        self.manifest['files'][path.name]={'sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data)};self.save()
+        with self.assertRaisesRegex(ValueError,'predates copied-runtime coverage'):
+            bundle.validate_bundle(self.root)
+    def test_runtime_archive_must_match_saved_inventory_even_with_valid_checksums(self):
+        for evidence in [{'schema':1}, {'schema':2,'runtime_packages':[],
+                         'copied_files':[{'path':'/usr/local/bin/gosu','sha256':'b'*64}]}]:
+            with self.subTest(evidence=evidence):
+                path=self.root/'tools-notices.tar.gz'
+                with tarfile.open(path,'w:gz') as archive:
+                    for leaf,value in {'tools-notices/manifest.json':{'notice_texts_complete':True},
+                                       'tools-notices/runtime/evidence.json':evidence}.items():
+                        data=json.dumps(value).encode();member=tarfile.TarInfo(leaf);member.size=len(data)
+                        archive.addfile(member,io.BytesIO(data))
+                data=path.read_bytes();self.manifest['files'][path.name]={'sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data)};self.save()
+                with self.assertRaises(ValueError):
+                    bundle.validate_bundle(self.root)
     def test_rejects_tampering_missing_mixed_platform_and_paths(self):
         original=copy.deepcopy(self.manifest)
         for change in [lambda m:m.update(platform='linux/arm64'),lambda m:m.update(revision='bad'),lambda m:m['images'].pop('web'),lambda m:m['images']['web'].update(tag='ratefreak-web:0.2.0'),lambda m:m['images']['web'].update(file='../outside')]:

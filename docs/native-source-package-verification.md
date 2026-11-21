@@ -4,6 +4,17 @@ Verified: 2026-11-17. This completes the selected application-native source
 packaging work for the Linux amd64 web candidate. It does not close the separate
 OS-source, provider agreement or whole-release acceptance gates.
 
+Follow-up, 2026-11-21: the [OS source audit](os-source-delivery-verification.md)
+collected complete source-package inputs for all installed OS packages in the
+retained development candidate and prepared a native sidecar bound to its exact
+web image. Copied runtimes/tools, native component decisions and final-candidate
+review remain open; neither audit closes whole-image redistribution clearance.
+
+The subsequent [runtime component review](runtime-redistribution-verification.md)
+records the copied-tool/framework/Skia decisions and supplemental notice delivery.
+The original libvips rebuild/replacement scope below is unchanged; final
+image/source reconciliation and publication remain outstanding.
+
 ## Result
 
 - Retained `react-remove-scroll-bar` 2.3.8 and its authentic upstream MIT notice.

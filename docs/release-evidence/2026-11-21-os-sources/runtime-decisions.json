@@ -1,0 +1,1484 @@
+{
+  "format": 1,
+  "images": {
+    "tools": {
+      "components": [
+        {
+          "exception": {
+            "reason": "Exact copied tool/script hash reviewed in copied-tools-license-review.md: MIT scripts or gosu Apache/BSD runtime and copied-code grants permit distribution without mandatory source delivery. Preserve complete runtime-COPIED-TOOLS-LICENSE-NOTICES.txt, including runc NOTICE and Go Lucent/Vita Nuova attribution.",
+            "record": "runtime-review.md"
+          },
+          "name": "file:/usr/local/bin/docker-enforce-initdb.sh",
+          "scope": "runtime",
+          "version": "sha256:922ade6b23a312e65023349b36e873752b15ff38ae4c0ae461d74451e104f312"
+        },
+        {
+          "exception": {
+            "reason": "Exact copied tool/script hash reviewed in copied-tools-license-review.md: MIT scripts or gosu Apache/BSD runtime and copied-code grants permit distribution without mandatory source delivery. Preserve complete runtime-COPIED-TOOLS-LICENSE-NOTICES.txt, including runc NOTICE and Go Lucent/Vita Nuova attribution.",
+            "record": "runtime-review.md"
+          },
+          "name": "file:/usr/local/bin/docker-ensure-initdb.sh",
+          "scope": "runtime",
+          "version": "sha256:922ade6b23a312e65023349b36e873752b15ff38ae4c0ae461d74451e104f312"
+        },
+        {
+          "exception": {
+            "reason": "Exact copied tool/script hash reviewed in copied-tools-license-review.md: MIT scripts or gosu Apache/BSD runtime and copied-code grants permit distribution without mandatory source delivery. Preserve complete runtime-COPIED-TOOLS-LICENSE-NOTICES.txt, including runc NOTICE and Go Lucent/Vita Nuova attribution.",
+            "record": "runtime-review.md"
+          },
+          "name": "file:/usr/local/bin/docker-entrypoint.sh",
+          "scope": "runtime",
+          "version": "sha256:9c440299ae04a0a79d55b8bf03307036d890a40979d2fb698073c9050d4b20a5"
+        },
+        {
+          "exception": {
+            "reason": "Exact copied tool/script hash reviewed in copied-tools-license-review.md: MIT scripts or gosu Apache/BSD runtime and copied-code grants permit distribution without mandatory source delivery. Preserve complete runtime-COPIED-TOOLS-LICENSE-NOTICES.txt, including runc NOTICE and Go Lucent/Vita Nuova attribution.",
+            "record": "runtime-review.md"
+          },
+          "name": "file:/usr/local/bin/gosu",
+          "scope": "runtime",
+          "version": "sha256:52c8749d0142edd234e9d6bd5237dff2d81e71f43537e2f4f66f75dd4b243dd0"
+        }
+      ],
+      "files": {
+        "README.md": "05515ef74058e9dafd762012ee5fa31e5be5c8d1b327314f0c9225936c22b7af",
+        "additional-reviewed-decisions.json": "632ee09eca3c71b159f942743e712a4d1e698b980bfe41595d52b18c62895e54",
+        "dotnet-redistribution-notices.tar.gz": "d12315b23cf44f820a24fd4be0f82b6732e884d1d65299439aeb5e65f20426bb",
+        "npm-11.19.1.tgz": "9f58bff01604cb1b14008fef14dceb14d836a49225e45c6c2e37de3be3e707f0",
+        "npm-byte-comparison.json": "7b99e277da576489a03935d4feb4b5eb026ffd162ffab59a418b83d08017c4ca",
+        "npm-registry.json": "39e9448fcd217517d7f65b20b53effac2f9ae99581e433ae278216bcc4c24d8e",
+        "npm-reviewed-packages.json": "d05dfbc1a6ffb89b88f994d5f4af7a1e4a2b5c9774f528d55963fb24876dd238",
+        "npm-upstream-packaging-differences.patch": "dabcd1da8f606717f2c91bd38b3324e119e35f2bf7be7647ed6ec0f0ec294d78",
+        "runtime-COPIED-TOOLS-LICENSE-NOTICES.txt": "9d820b8d6984f320ed4191b55de2847e76dd7e6b505a2bc069574a6936ad9278",
+        "runtime-DOTNET-REDISTRIBUTION-NOTICES.txt": "1783987c3a073036004b543f9eb7c330664f3af9ce3b31a82fcb3d74bd2af4b5",
+        "runtime-JS-BUNDLED-TOOLS-NOTICES.txt": "eee1835f5e6b99c95431ceffeeae9affab299380e93bb1df72801d14c340ff29",
+        "runtime-NPM-RUNTIME-NOTICES.txt": "8b47c6047c58132895e7237138fa6c97e1c7e0fa73cec623d281a8f60edfe53b",
+        "runtime-SKIA-REDISTRIBUTION-NOTICES.txt": "041b207c126bacf4660237421eb5ce98ea5e06a80006b1bb0fe9c8af194f3e5f",
+        "runtime-review.md": "f61ec8913c6fe1cf2bf52ff7e19f141386df76e1e358242291aeeddbba724fa5",
+        "runtime-sources.json": "b9d887392c07cee614d27de5d2cd0144437e871ee916f4541f761f81987efa0f",
+        "shipped-runtime-sources.tar.gz": "4f755059b82d6d2daabec6a8a6886ede12797e65479c3bb292b05ff977eb3c0b",
+        "skia-redistribution-notices.tar.gz": "0d37f37d576bd3ecd2f7763a4a4ca9ccc6513465e4366159b4ddd2cb0ece0e12"
+      },
+      "image_id": "sha256:7d91b7ccb68a91c1b8055bb85f22dc13b3fe5f4f23ae15366e38bbffddc72d2e",
+      "review_record": "runtime-review.md",
+      "scopes": [
+        "runtime"
+      ]
+    },
+    "web": {
+      "components": [
+        {
+          "exception": {
+            "reason": "Exact executable/shim source is retained in shipped-runtime-sources.tar.gz with original package grant; follow the named npm/Corepack/Yarn component review and preserve complete runtime notices. npm source instructions and precise upstream packaging differences are included.",
+            "record": "runtime-review.md"
+          },
+          "name": "file:/usr/local/bin/corepack",
+          "scope": "runtime",
+          "version": "sha256:3655bc798f300951f2070fee411b337d626b0c3ae80c2d24c46ccac4595d4bf9"
+        },
+        {
+          "exception": {
+            "reason": "Exact Node Docker entrypoint script hash matches pinned upstream source with MIT grant. Preserve its complete Docker Node copyright/license in runtime-COPIED-TOOLS-LICENSE-NOTICES.txt; no source offer is required by that specific grant.",
+            "record": "runtime-review.md"
+          },
+          "name": "file:/usr/local/bin/docker-entrypoint.sh",
+          "scope": "runtime",
+          "version": "sha256:a15ac9589c04baf9da95b08e0e79b5cf1d75ab8dc64e06a5e68e4ceb0ad7c8ea"
+        },
+        {
+          "exception": {
+            "reason": "Exact Node 24.22.2 binary aggregate reviewed against complete byte-identical upstream LICENSE, retained at /usr/local/LICENSE and in the runtime archive. No mandatory aggregate source delivery identified under the reviewed bundled grants; preserve the entire license and embedded notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "file:/usr/local/bin/node",
+          "scope": "runtime",
+          "version": "sha256:904a6d3484241d466989f9df9ba3aab822b1496191bdb28230eb491a55c32a52"
+        },
+        {
+          "exception": {
+            "reason": "Exact Node 24.22.2 binary aggregate reviewed against complete byte-identical upstream LICENSE, retained at /usr/local/LICENSE and in the runtime archive. No mandatory aggregate source delivery identified under the reviewed bundled grants; preserve the entire license and embedded notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "file:/usr/local/bin/nodejs",
+          "scope": "runtime",
+          "version": "sha256:904a6d3484241d466989f9df9ba3aab822b1496191bdb28230eb491a55c32a52"
+        },
+        {
+          "exception": {
+            "reason": "Exact executable/shim source is retained in shipped-runtime-sources.tar.gz with original package grant; follow the named npm/Corepack/Yarn component review and preserve complete runtime notices. npm source instructions and precise upstream packaging differences are included.",
+            "record": "runtime-review.md"
+          },
+          "name": "file:/usr/local/bin/npm",
+          "scope": "runtime",
+          "version": "sha256:8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7"
+        },
+        {
+          "exception": {
+            "reason": "Exact executable/shim source is retained in shipped-runtime-sources.tar.gz with original package grant; follow the named npm/Corepack/Yarn component review and preserve complete runtime notices. npm source instructions and precise upstream packaging differences are included.",
+            "record": "runtime-review.md"
+          },
+          "name": "file:/usr/local/bin/npx",
+          "scope": "runtime",
+          "version": "sha256:237adf8f3747cad8b9b62fcfd0d9c8d509a64e550337707f55100afcb79e8900"
+        },
+        {
+          "exception": {
+            "reason": "Exact executable/shim source is retained in shipped-runtime-sources.tar.gz with original package grant; follow the named npm/Corepack/Yarn component review and preserve complete runtime notices. npm source instructions and precise upstream packaging differences are included.",
+            "record": "runtime-review.md"
+          },
+          "name": "file:/usr/local/bin/yarn",
+          "scope": "runtime",
+          "version": "sha256:9207642def40f4e6a8ebf027d89a2fbc4e874db2c1bd1b85f097bf49ab40fae6"
+        },
+        {
+          "exception": {
+            "reason": "Exact executable/shim source is retained in shipped-runtime-sources.tar.gz with original package grant; follow the named npm/Corepack/Yarn component review and preserve complete runtime notices. npm source instructions and precise upstream packaging differences are included.",
+            "record": "runtime-review.md"
+          },
+          "name": "file:/usr/local/bin/yarnpkg",
+          "scope": "runtime",
+          "version": "sha256:b0761f6de0fe5517f021f9ca1aeabd7db8c5bac9fdfdbf91affa8be0729f4fcb"
+        },
+        {
+          "exception": {
+            "reason": "Exact @gar/promise-retry 1.0.3 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@gar/promise-retry",
+          "scope": "runtime",
+          "version": "1.0.3"
+        },
+        {
+          "exception": {
+            "reason": "Exact @isaacs/fs-minipass 4.0.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@isaacs/fs-minipass",
+          "scope": "runtime",
+          "version": "4.0.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact @isaacs/string-locale-compare 1.1.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@isaacs/string-locale-compare",
+          "scope": "runtime",
+          "version": "1.1.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/agent 4.0.2 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/agent",
+          "scope": "runtime",
+          "version": "4.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/arborist 9.9.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/arborist",
+          "scope": "runtime",
+          "version": "9.9.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/config 10.12.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/config",
+          "scope": "runtime",
+          "version": "10.12.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/fs 5.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/fs",
+          "scope": "runtime",
+          "version": "5.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/git 7.0.2 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/git",
+          "scope": "runtime",
+          "version": "7.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/installed-package-contents 4.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/installed-package-contents",
+          "scope": "runtime",
+          "version": "4.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/map-workspaces 5.0.3 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/map-workspaces",
+          "scope": "runtime",
+          "version": "5.0.3"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/metavuln-calculator 9.0.3 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/metavuln-calculator",
+          "scope": "runtime",
+          "version": "9.0.3"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/name-from-folder 4.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/name-from-folder",
+          "scope": "runtime",
+          "version": "4.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/node-gyp 5.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/node-gyp",
+          "scope": "runtime",
+          "version": "5.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/package-json 7.0.5 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/package-json",
+          "scope": "runtime",
+          "version": "7.0.5"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/promise-spawn 9.0.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/promise-spawn",
+          "scope": "runtime",
+          "version": "9.0.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/query 5.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/query",
+          "scope": "runtime",
+          "version": "5.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/redact 4.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/redact",
+          "scope": "runtime",
+          "version": "4.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact @npmcli/run-script 10.0.4 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@npmcli/run-script",
+          "scope": "runtime",
+          "version": "10.0.4"
+        },
+        {
+          "exception": {
+            "reason": "Exact @sigstore/bundle 4.0.0 grant Apache-2.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@sigstore/bundle",
+          "scope": "runtime",
+          "version": "4.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact @sigstore/core 3.2.1 grant Apache-2.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@sigstore/core",
+          "scope": "runtime",
+          "version": "3.2.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact @sigstore/protobuf-specs 0.5.1 grant Apache-2.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@sigstore/protobuf-specs",
+          "scope": "runtime",
+          "version": "0.5.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact @sigstore/sign 4.1.1 grant Apache-2.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@sigstore/sign",
+          "scope": "runtime",
+          "version": "4.1.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact @sigstore/tuf 4.0.2 grant Apache-2.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@sigstore/tuf",
+          "scope": "runtime",
+          "version": "4.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact @sigstore/verify 3.1.1 grant Apache-2.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@sigstore/verify",
+          "scope": "runtime",
+          "version": "3.1.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact @tufjs/canonical-json 2.0.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@tufjs/canonical-json",
+          "scope": "runtime",
+          "version": "2.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact @tufjs/models 4.1.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:@tufjs/models",
+          "scope": "runtime",
+          "version": "4.1.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact abbrev 4.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:abbrev",
+          "scope": "runtime",
+          "version": "4.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact agent-base 7.1.4 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:agent-base",
+          "scope": "runtime",
+          "version": "7.1.4"
+        },
+        {
+          "exception": {
+            "reason": "Exact aproba 2.1.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:aproba",
+          "scope": "runtime",
+          "version": "2.1.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact archy 1.0.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:archy",
+          "scope": "runtime",
+          "version": "1.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact balanced-match 4.0.4 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:balanced-match",
+          "scope": "runtime",
+          "version": "4.0.4"
+        },
+        {
+          "exception": {
+            "reason": "Exact bin-links 6.0.2 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:bin-links",
+          "scope": "runtime",
+          "version": "6.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact binary-extensions 3.1.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:binary-extensions",
+          "scope": "runtime",
+          "version": "3.1.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact brace-expansion 5.0.9 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:brace-expansion",
+          "scope": "runtime",
+          "version": "5.0.9"
+        },
+        {
+          "exception": {
+            "reason": "Exact cacache 20.0.4 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:cacache",
+          "scope": "runtime",
+          "version": "20.0.4"
+        },
+        {
+          "exception": {
+            "reason": "Exact chalk 5.6.2 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:chalk",
+          "scope": "runtime",
+          "version": "5.6.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact chownr 3.0.0 grant BlueOak-1.0.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:chownr",
+          "scope": "runtime",
+          "version": "3.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact ci-info 4.4.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:ci-info",
+          "scope": "runtime",
+          "version": "4.4.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact cidr-regex 5.0.5 grant BSD-2-Clause reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:cidr-regex",
+          "scope": "runtime",
+          "version": "5.0.5"
+        },
+        {
+          "exception": {
+            "reason": "Exact cmd-shim 8.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:cmd-shim",
+          "scope": "runtime",
+          "version": "8.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact common-ancestor-path 2.0.0 grant BlueOak-1.0.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:common-ancestor-path",
+          "scope": "runtime",
+          "version": "2.0.0"
+        },
+        {
+          "exception": {
+            "reason": "corepack 0.36.0 and its reviewed conservative bundled JavaScript closure permit runtime distribution with the complete prepared notices. Preserve original attribution, explicit MIT/ISC declaration-based decisions and source patches; no optional upstream specification-source archive is distributed by this decision.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:corepack",
+          "scope": "runtime",
+          "version": "0.36.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact cssesc 3.0.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:cssesc",
+          "scope": "runtime",
+          "version": "3.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact debug 4.4.3 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:debug",
+          "scope": "runtime",
+          "version": "4.4.3"
+        },
+        {
+          "exception": {
+            "reason": "Exact diff 8.0.4 grant BSD-3-Clause reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:diff",
+          "scope": "runtime",
+          "version": "8.0.4"
+        },
+        {
+          "exception": {
+            "reason": "Exact env-paths 2.2.1 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:env-paths",
+          "scope": "runtime",
+          "version": "2.2.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact exponential-backoff 3.1.3 grant Apache-2.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:exponential-backoff",
+          "scope": "runtime",
+          "version": "3.1.3"
+        },
+        {
+          "exception": {
+            "reason": "Exact fastest-levenshtein 1.0.16 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:fastest-levenshtein",
+          "scope": "runtime",
+          "version": "1.0.16"
+        },
+        {
+          "exception": {
+            "reason": "Exact fdir 6.5.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:fdir",
+          "scope": "runtime",
+          "version": "6.5.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact fs-minipass 3.0.3 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:fs-minipass",
+          "scope": "runtime",
+          "version": "3.0.3"
+        },
+        {
+          "exception": {
+            "reason": "Exact glob 13.0.6 grant BlueOak-1.0.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:glob",
+          "scope": "runtime",
+          "version": "13.0.6"
+        },
+        {
+          "exception": {
+            "reason": "Exact graceful-fs 4.2.11 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:graceful-fs",
+          "scope": "runtime",
+          "version": "4.2.11"
+        },
+        {
+          "exception": {
+            "reason": "Exact hosted-git-info 9.0.3 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:hosted-git-info",
+          "scope": "runtime",
+          "version": "9.0.3"
+        },
+        {
+          "exception": {
+            "reason": "Exact http-cache-semantics 4.2.0 grant BSD-2-Clause reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:http-cache-semantics",
+          "scope": "runtime",
+          "version": "4.2.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact http-proxy-agent 7.0.2 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:http-proxy-agent",
+          "scope": "runtime",
+          "version": "7.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact https-proxy-agent 7.0.6 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:https-proxy-agent",
+          "scope": "runtime",
+          "version": "7.0.6"
+        },
+        {
+          "exception": {
+            "reason": "Exact iconv-lite 0.7.2 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:iconv-lite",
+          "scope": "runtime",
+          "version": "0.7.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact ignore-walk 8.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:ignore-walk",
+          "scope": "runtime",
+          "version": "8.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact ini 6.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:ini",
+          "scope": "runtime",
+          "version": "6.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact init-package-json 8.2.5 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:init-package-json",
+          "scope": "runtime",
+          "version": "8.2.5"
+        },
+        {
+          "exception": {
+            "reason": "Exact ip-address 10.5.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:ip-address",
+          "scope": "runtime",
+          "version": "10.5.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact is-cidr 6.0.4 grant BSD-2-Clause reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:is-cidr",
+          "scope": "runtime",
+          "version": "6.0.4"
+        },
+        {
+          "exception": {
+            "reason": "Exact isexe 4.0.0 grant BlueOak-1.0.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:isexe",
+          "scope": "runtime",
+          "version": "4.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact json-parse-even-better-errors 5.0.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:json-parse-even-better-errors",
+          "scope": "runtime",
+          "version": "5.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact json-stringify-nice 1.1.4 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:json-stringify-nice",
+          "scope": "runtime",
+          "version": "1.1.4"
+        },
+        {
+          "exception": {
+            "reason": "Exact jsonparse 1.3.1 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:jsonparse",
+          "scope": "runtime",
+          "version": "1.3.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact just-diff 6.0.2 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:just-diff",
+          "scope": "runtime",
+          "version": "6.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact just-diff-apply 5.5.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:just-diff-apply",
+          "scope": "runtime",
+          "version": "5.5.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact libnpmaccess 10.0.3 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:libnpmaccess",
+          "scope": "runtime",
+          "version": "10.0.3"
+        },
+        {
+          "exception": {
+            "reason": "Exact libnpmdiff 8.1.12 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:libnpmdiff",
+          "scope": "runtime",
+          "version": "8.1.12"
+        },
+        {
+          "exception": {
+            "reason": "Exact libnpmexec 10.3.2 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:libnpmexec",
+          "scope": "runtime",
+          "version": "10.3.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact libnpmfund 7.0.26 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:libnpmfund",
+          "scope": "runtime",
+          "version": "7.0.26"
+        },
+        {
+          "exception": {
+            "reason": "Exact libnpmorg 8.0.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:libnpmorg",
+          "scope": "runtime",
+          "version": "8.0.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact libnpmpack 9.1.13 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:libnpmpack",
+          "scope": "runtime",
+          "version": "9.1.13"
+        },
+        {
+          "exception": {
+            "reason": "Exact libnpmpublish 11.2.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:libnpmpublish",
+          "scope": "runtime",
+          "version": "11.2.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact libnpmsearch 9.0.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:libnpmsearch",
+          "scope": "runtime",
+          "version": "9.0.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact libnpmteam 8.0.2 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:libnpmteam",
+          "scope": "runtime",
+          "version": "8.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact libnpmversion 8.0.4 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:libnpmversion",
+          "scope": "runtime",
+          "version": "8.0.4"
+        },
+        {
+          "exception": {
+            "reason": "Exact lru-cache 11.5.1 grant BlueOak-1.0.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:lru-cache",
+          "scope": "runtime",
+          "version": "11.5.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact make-fetch-happen 15.0.6 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:make-fetch-happen",
+          "scope": "runtime",
+          "version": "15.0.6"
+        },
+        {
+          "exception": {
+            "reason": "Exact minimatch 10.2.5 grant BlueOak-1.0.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:minimatch",
+          "scope": "runtime",
+          "version": "10.2.5"
+        },
+        {
+          "exception": {
+            "reason": "Exact minipass 3.3.6 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:minipass",
+          "scope": "runtime",
+          "version": "3.3.6"
+        },
+        {
+          "exception": {
+            "reason": "Exact minipass 7.1.3 grant BlueOak-1.0.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:minipass",
+          "scope": "runtime",
+          "version": "7.1.3"
+        },
+        {
+          "exception": {
+            "reason": "Exact minipass-collect 2.0.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:minipass-collect",
+          "scope": "runtime",
+          "version": "2.0.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact minipass-fetch 5.0.2 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:minipass-fetch",
+          "scope": "runtime",
+          "version": "5.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact minipass-flush 1.0.6 grant BlueOak-1.0.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:minipass-flush",
+          "scope": "runtime",
+          "version": "1.0.6"
+        },
+        {
+          "exception": {
+            "reason": "Exact minipass-pipeline 1.2.4 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:minipass-pipeline",
+          "scope": "runtime",
+          "version": "1.2.4"
+        },
+        {
+          "exception": {
+            "reason": "Exact minipass-sized 2.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:minipass-sized",
+          "scope": "runtime",
+          "version": "2.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact minizlib 3.1.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:minizlib",
+          "scope": "runtime",
+          "version": "3.1.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact ms 2.1.3 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:ms",
+          "scope": "runtime",
+          "version": "2.1.3"
+        },
+        {
+          "exception": {
+            "reason": "Exact mute-stream 3.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:mute-stream",
+          "scope": "runtime",
+          "version": "3.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact negotiator 1.0.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:negotiator",
+          "scope": "runtime",
+          "version": "1.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact node-gyp 12.4.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:node-gyp",
+          "scope": "runtime",
+          "version": "12.4.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact nopt 9.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:nopt",
+          "scope": "runtime",
+          "version": "9.0.0"
+        },
+        {
+          "name": "npm:npm",
+          "scope": "runtime",
+          "source_files": [
+            "shipped-runtime-sources.tar.gz",
+            "npm-11.19.1.tgz"
+          ],
+          "version": "11.19.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact npm-audit-report 7.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:npm-audit-report",
+          "scope": "runtime",
+          "version": "7.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact npm-bundled 5.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:npm-bundled",
+          "scope": "runtime",
+          "version": "5.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact npm-install-checks 8.0.0 grant BSD-2-Clause reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:npm-install-checks",
+          "scope": "runtime",
+          "version": "8.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact npm-normalize-package-bin 5.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:npm-normalize-package-bin",
+          "scope": "runtime",
+          "version": "5.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact npm-package-arg 13.0.2 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:npm-package-arg",
+          "scope": "runtime",
+          "version": "13.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact npm-packlist 10.0.4 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:npm-packlist",
+          "scope": "runtime",
+          "version": "10.0.4"
+        },
+        {
+          "exception": {
+            "reason": "Exact npm-pick-manifest 11.0.3 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:npm-pick-manifest",
+          "scope": "runtime",
+          "version": "11.0.3"
+        },
+        {
+          "exception": {
+            "reason": "Exact npm-profile 12.0.2 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:npm-profile",
+          "scope": "runtime",
+          "version": "12.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact npm-registry-fetch 19.1.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:npm-registry-fetch",
+          "scope": "runtime",
+          "version": "19.1.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact npm-user-validate 4.0.0 grant BSD-2-Clause reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:npm-user-validate",
+          "scope": "runtime",
+          "version": "4.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact p-map 7.0.4 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:p-map",
+          "scope": "runtime",
+          "version": "7.0.4"
+        },
+        {
+          "exception": {
+            "reason": "Exact pacote 21.5.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:pacote",
+          "scope": "runtime",
+          "version": "21.5.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact parse-conflict-json 5.0.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:parse-conflict-json",
+          "scope": "runtime",
+          "version": "5.0.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact path-scurry 2.0.2 grant BlueOak-1.0.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:path-scurry",
+          "scope": "runtime",
+          "version": "2.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact picomatch 4.0.4 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:picomatch",
+          "scope": "runtime",
+          "version": "4.0.4"
+        },
+        {
+          "exception": {
+            "reason": "Exact postcss-selector-parser 7.1.4 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:postcss-selector-parser",
+          "scope": "runtime",
+          "version": "7.1.4"
+        },
+        {
+          "exception": {
+            "reason": "Exact proc-log 6.1.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:proc-log",
+          "scope": "runtime",
+          "version": "6.1.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact proggy 4.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:proggy",
+          "scope": "runtime",
+          "version": "4.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact promise-all-reject-late 1.0.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:promise-all-reject-late",
+          "scope": "runtime",
+          "version": "1.0.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact promise-call-limit 3.0.2 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:promise-call-limit",
+          "scope": "runtime",
+          "version": "3.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact promzard 3.0.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:promzard",
+          "scope": "runtime",
+          "version": "3.0.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact qrcode-terminal 0.12.0 grant [{'type': 'Apache 2.0'}] reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:qrcode-terminal",
+          "scope": "runtime",
+          "version": "0.12.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact read 5.0.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:read",
+          "scope": "runtime",
+          "version": "5.0.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact read-cmd-shim 6.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:read-cmd-shim",
+          "scope": "runtime",
+          "version": "6.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact safer-buffer 2.1.2 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:safer-buffer",
+          "scope": "runtime",
+          "version": "2.1.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact semver 7.8.5 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:semver",
+          "scope": "runtime",
+          "version": "7.8.5"
+        },
+        {
+          "exception": {
+            "reason": "Exact signal-exit 4.1.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:signal-exit",
+          "scope": "runtime",
+          "version": "4.1.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact sigstore 4.1.1 grant Apache-2.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:sigstore",
+          "scope": "runtime",
+          "version": "4.1.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact smart-buffer 4.2.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:smart-buffer",
+          "scope": "runtime",
+          "version": "4.2.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact socks 2.8.9 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:socks",
+          "scope": "runtime",
+          "version": "2.8.9"
+        },
+        {
+          "exception": {
+            "reason": "Exact socks-proxy-agent 8.0.5 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:socks-proxy-agent",
+          "scope": "runtime",
+          "version": "8.0.5"
+        },
+        {
+          "exception": {
+            "reason": "Exact spdx-exceptions 2.5.0 grant CC-BY-3.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:spdx-exceptions",
+          "scope": "runtime",
+          "version": "2.5.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact spdx-expression-parse 4.0.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:spdx-expression-parse",
+          "scope": "runtime",
+          "version": "4.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact spdx-license-ids 3.0.23 grant CC0-1.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:spdx-license-ids",
+          "scope": "runtime",
+          "version": "3.0.23"
+        },
+        {
+          "exception": {
+            "reason": "Exact ssri 13.0.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:ssri",
+          "scope": "runtime",
+          "version": "13.0.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact supports-color 10.2.2 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:supports-color",
+          "scope": "runtime",
+          "version": "10.2.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact tar 7.5.22 grant BlueOak-1.0.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:tar",
+          "scope": "runtime",
+          "version": "7.5.22"
+        },
+        {
+          "exception": {
+            "reason": "Exact text-table 0.2.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:text-table",
+          "scope": "runtime",
+          "version": "0.2.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact tiny-relative-date 2.0.2 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:tiny-relative-date",
+          "scope": "runtime",
+          "version": "2.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact tinyglobby 0.2.17 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:tinyglobby",
+          "scope": "runtime",
+          "version": "0.2.17"
+        },
+        {
+          "exception": {
+            "reason": "Exact treeverse 3.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:treeverse",
+          "scope": "runtime",
+          "version": "3.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact tuf-js 4.1.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:tuf-js",
+          "scope": "runtime",
+          "version": "4.1.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact undici 6.28.0 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:undici",
+          "scope": "runtime",
+          "version": "6.28.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact util-deprecate 1.0.2 grant MIT reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:util-deprecate",
+          "scope": "runtime",
+          "version": "1.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact validate-npm-package-name 7.0.2 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:validate-npm-package-name",
+          "scope": "runtime",
+          "version": "7.0.2"
+        },
+        {
+          "exception": {
+            "reason": "Exact walk-up-path 4.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:walk-up-path",
+          "scope": "runtime",
+          "version": "4.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact which 6.0.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:which",
+          "scope": "runtime",
+          "version": "6.0.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact write-file-atomic 7.0.1 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:write-file-atomic",
+          "scope": "runtime",
+          "version": "7.0.1"
+        },
+        {
+          "exception": {
+            "reason": "Exact yallist 4.0.0 grant ISC reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:yallist",
+          "scope": "runtime",
+          "version": "4.0.0"
+        },
+        {
+          "exception": {
+            "reason": "Exact yallist 5.0.0 grant BlueOak-1.0.0 reviewed with original manifest attribution and preserved/supplemented complete license texts. No mandatory source delivery identified for this package grant; retain runtime-NPM-RUNTIME-NOTICES.txt and exact supplied source/header notices.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:yallist",
+          "scope": "runtime",
+          "version": "5.0.0"
+        },
+        {
+          "exception": {
+            "reason": "yarn 1.22.22 and its reviewed conservative bundled JavaScript closure permit runtime distribution with the complete prepared notices. Preserve original attribution, explicit MIT/ISC declaration-based decisions and source patches; no optional upstream specification-source archive is distributed by this decision.",
+            "record": "runtime-review.md"
+          },
+          "name": "npm:yarn",
+          "scope": "runtime",
+          "version": "1.22.22"
+        }
+      ],
+      "files": {
+        "README.md": "05515ef74058e9dafd762012ee5fa31e5be5c8d1b327314f0c9225936c22b7af",
+        "additional-reviewed-decisions.json": "632ee09eca3c71b159f942743e712a4d1e698b980bfe41595d52b18c62895e54",
+        "dotnet-redistribution-notices.tar.gz": "d12315b23cf44f820a24fd4be0f82b6732e884d1d65299439aeb5e65f20426bb",
+        "npm-11.19.1.tgz": "9f58bff01604cb1b14008fef14dceb14d836a49225e45c6c2e37de3be3e707f0",
+        "npm-byte-comparison.json": "7b99e277da576489a03935d4feb4b5eb026ffd162ffab59a418b83d08017c4ca",
+        "npm-registry.json": "39e9448fcd217517d7f65b20b53effac2f9ae99581e433ae278216bcc4c24d8e",
+        "npm-reviewed-packages.json": "d05dfbc1a6ffb89b88f994d5f4af7a1e4a2b5c9774f528d55963fb24876dd238",
+        "npm-upstream-packaging-differences.patch": "dabcd1da8f606717f2c91bd38b3324e119e35f2bf7be7647ed6ec0f0ec294d78",
+        "runtime-COPIED-TOOLS-LICENSE-NOTICES.txt": "9d820b8d6984f320ed4191b55de2847e76dd7e6b505a2bc069574a6936ad9278",
+        "runtime-DOTNET-REDISTRIBUTION-NOTICES.txt": "1783987c3a073036004b543f9eb7c330664f3af9ce3b31a82fcb3d74bd2af4b5",
+        "runtime-JS-BUNDLED-TOOLS-NOTICES.txt": "eee1835f5e6b99c95431ceffeeae9affab299380e93bb1df72801d14c340ff29",
+        "runtime-NPM-RUNTIME-NOTICES.txt": "8b47c6047c58132895e7237138fa6c97e1c7e0fa73cec623d281a8f60edfe53b",
+        "runtime-SKIA-REDISTRIBUTION-NOTICES.txt": "041b207c126bacf4660237421eb5ce98ea5e06a80006b1bb0fe9c8af194f3e5f",
+        "runtime-review.md": "f61ec8913c6fe1cf2bf52ff7e19f141386df76e1e358242291aeeddbba724fa5",
+        "runtime-sources.json": "b9d887392c07cee614d27de5d2cd0144437e871ee916f4541f761f81987efa0f",
+        "shipped-runtime-sources.tar.gz": "4f755059b82d6d2daabec6a8a6886ede12797e65479c3bb292b05ff977eb3c0b",
+        "skia-redistribution-notices.tar.gz": "0d37f37d576bd3ecd2f7763a4a4ca9ccc6513465e4366159b4ddd2cb0ece0e12"
+      },
+      "image_id": "sha256:cdeaf927f704af71954516adec85643616a89a51ed907d91d759ed3d5f778489",
+      "review_record": "runtime-review.md",
+      "scopes": [
+        "runtime"
+      ]
+    }
+  },
+  "scope": "runtime components only; not final release coverage"
+}

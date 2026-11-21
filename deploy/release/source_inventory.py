@@ -15,8 +15,39 @@ def archived_json(path,name,limit=4*1024*1024):
         return json.load(archive.extractfile(member))
 
 
+def runtime_components(runtime):
+    """Older inventories cannot establish coverage of copied runtime tools."""
+    if runtime.get('schema')!=2 or not all(isinstance(runtime.get(key),list) for key in ('runtime_packages','copied_files')):
+        raise ValueError('Fresh runtime package/file evidence is required; rebuild image notices.')
+    components={}
+    for package in runtime['runtime_packages']:
+        if not isinstance(package,dict) or not all(isinstance(package.get(key),str) and package[key].strip() for key in ('name','version','path')):
+            raise ValueError('Invalid copied runtime package evidence.')
+        key=('npm:'+package['name'],package['version'])
+        components.setdefault(key,{'scope':'runtime','name':key[0],'version':key[1],'paths':[]})['paths'].append(package['path'])
+    for file in runtime['copied_files']:
+        if not isinstance(file,dict) or not isinstance(file.get('path'),str) or not file['path'].startswith('/') or not re.fullmatch('[a-f0-9]{64}',str(file.get('sha256',''))):
+            raise ValueError('Invalid copied runtime file evidence.')
+        key=('file:'+file['path'],'sha256:'+file['sha256'])
+        components[key]={'scope':'runtime','name':key[0],'version':key[1]}
+    return sorted(components.values(),key=lambda item:(item['name'],item['version']))
+
+
+def validate_runtime_inventory(inventory,evidence):
+    if inventory.get('format')!=2 or any(entry.get('runtime_evidence_schema')!=2 for entry in inventory.get('images',{}).values()):
+        raise ValueError('Source inventory predates copied-runtime coverage; prepare a fresh candidate.')
+    if set(evidence)!=set(inventory.get('images',{})):
+        raise ValueError('Runtime evidence image inventory differs.')
+    for name,runtime in evidence.items():
+        actual={(p['name'],p['version']) for p in runtime_components(runtime)}
+        saved=[p for p in inventory['images'][name]['components'] if p['scope']=='runtime']
+        recorded={(p['name'],p['version']) for p in saved}
+        if actual!=recorded or len(recorded)!=len(saved):
+            raise ValueError('Saved runtime inventory does not match archived image evidence.')
+
+
 def collect(output,images,profile):
-    result={'format':1,'images':{}}
+    result={'format':2,'images':{}}
     for name,image_id in images.items():
         archive=output/(name+'-notices.tar.gz');prefix=name+'-notices/'
         components=[]
@@ -27,6 +58,7 @@ def collect(output,images,profile):
         packages=archived_json(archive,prefix+'manifest.json')['packages']
         for package in packages:components.append({'scope':'npm' if name=='web' else 'nuget','name':package['name'],'version':package['version']})
         runtime=archived_json(archive,prefix+'runtime/evidence.json')
+        components.extend(runtime_components(runtime))
         if name=='web':
             version=subprocess.check_output(['docker','run','--rm','--network','none','--entrypoint','node',image_id,'--version'],text=True).strip()
             components.append({'scope':'node','name':'node','version':version})
@@ -40,13 +72,15 @@ def collect(output,images,profile):
             if name=='tools':
                 version=subprocess.check_output(['docker','run','--rm','--network','none','--entrypoint','psql',image_id,'--version'],text=True).strip()
                 components.append({'scope':'postgres','name':'postgresql-client','version':version})
-        entry={'image_id':image_id,'components':sorted(components,key=lambda p:(p['scope'],p['name'],p['version']))}
+        entry={'image_id':image_id,'runtime_evidence_schema':2,'components':sorted(components,key=lambda p:(p['scope'],p['name'],p['version']))}
         if name=='web':entry['native_profile']=profile
         result['images'][name]=entry
     return result
 
 
 def validate_coverage(coverage,expected):
+    if expected.get('format')!=2 or any(entry.get('runtime_evidence_schema')!=2 for entry in expected.get('images',{}).values()):
+        raise ValueError('Source inventory predates copied-runtime coverage; prepare a fresh candidate.')
     if set(coverage.get('images',{}))!=set(expected.get('images',{})):raise ValueError('Source coverage image inventory differs.')
     for name,inventory in expected['images'].items():
         entry=coverage['images'][name]

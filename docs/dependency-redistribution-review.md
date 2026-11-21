@@ -22,6 +22,21 @@ source-modified replacement in the web image. The scroll-bar supplement now has
 These resolve the scoped application-native packaging/provenance tasks; OS source
 delivery, remaining image audit and actual publication are not claimed complete.
 
+**OS-source follow-up, 2026-11-21:** the [candidate OS source audit](os-source-delivery-verification.md)
+acquired and verified 562 files covering 184 unique source package/version pairs
+for all installed API/web/tools OS packages in the retained development candidate.
+It also identified missing inventory coverage for global package managers and
+tools-image additions, and missing Yarn notice collection. Copied-runtime/native
+source decisions, final-revision reconciliation and publication remain open.
+
+**Runtime review follow-up, 2026-11-21:** the
+[runtime redistribution verification](runtime-redistribution-verification.md)
+records the selected copied-runtime, Node/.NET/Skia and bundled JavaScript review,
+prepared source/material decisions and notice delivery in exact disposable derived
+images. These resolve the selected notice/inventory/component-review tasks;
+full final-revision coverage, whole-artifact acceptance, provider clearance and
+actual source/binary publication remain separate.
+
 ## Result and scope
 
 RateFreak's MIT license applies to project code. It does not relicense dependencies,

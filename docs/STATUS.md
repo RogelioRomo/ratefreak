@@ -1,6 +1,45 @@
 # Current project status and roadmap
 
-Updated: 2026-11-20. Release/versioning and administrator update awareness are
+Updated: 2026-11-21. The selected copied-runtime and bundled-component review is
+complete for the inspected payloads: 158 runtime source/material decisions and
+ten additional .NET/Skia native decisions are recorded. Five complete notice
+supplements are integrated into the production Dockerfiles with explicit image
+selection and pinned file hashes. Three disposable derived images passed delivery
+checks for all 606 runtime notice-file hashes with unchanged OS/native payloads;
+98 compliance/release/operator tests passed. Exact source and notice material is
+prepared locally. See [runtime review and delivery evidence](runtime-redistribution-verification.md).
+The final source revision still needs full image/source coverage assembly,
+artifact/privacy review and exact-candidate production acceptance. TMDB forum
+clarification remains pending. No public release or persistent-instance change
+occurred. The user authorized committing and integrating these changes locally
+into `main`; the integration checks passed all 98 compliance/release/operator
+tests. See Git history for the integration commit. Proof-image/source evidence
+retains its recorded scope; no final production candidate was published.
+
+Earlier update, 2026-11-21. Runtime notice/inventory gaps are fixed and verified locally
+in the working tree: Yarn's license is collected from `/opt`; global package
+manifests and copied `/usr/local/bin` files now require explicit source decisions.
+Legacy runtime evidence and saved source inventories are rejected by the updated
+release gates, which also compare archived runtime components with saved
+inventories. All 97 compliance/release/operator tests passed, and three
+disposable derived image checks verified the new evidence with unchanged OS and
+application-native payloads. These are scoped collector checks, not final
+production builds or complete source clearance. See the
+[runtime follow-up](os-source-delivery-verification.md#runtime-coverage-fix).
+No release was published or persistent instance changed.
+
+Earlier update, 2026-11-21. The retained development candidate's OS-source acquisition
+is prepared: 562 verified files cover all 184 unique installed OS source
+package/version pairs across API/web/tools. A 406-input native sidecar is bound
+to that exact web image. Notice integrity and saved image layers were checked;
+whole-image clearance remains open for copied runtime tools, missing Yarn notice
+collection, native/bundled component decisions and final-revision acceptance.
+See [OS source audit evidence and remaining work](os-source-delivery-verification.md).
+The user reports posting the TMDB question on a forum and is awaiting a response;
+provider clearance remains pending. No release was published or persistent
+instance changed.
+
+Previous update, 2026-11-20. Release/versioning and administrator update awareness are
 implemented, independently reviewed, verified locally and merged into `main`
 after user authorization. Evidence: 756 backend tests (zero
 skipped), 942 frontend tests, 90 Python tests, production builds, model consistency
@@ -124,6 +163,8 @@ older plans and resume notes. It records work and decisions, not deployment auth
 | [Provider terms review](provider-terms-review.md) | Provider attribution, service eligibility and unresolved content-rights checks |
 | [Credits/compliance evidence](release-compliance-verification.md) | Implemented provider credits, packaged notices, native-source evidence and remaining obligations |
 | [Native source package verification](native-source-package-verification.md) | Image-bound source sidecar, offline rebuild/replacement proof and remaining OS/publication scope |
+| [OS source audit](os-source-delivery-verification.md) | Exact candidate OS archives, source/notice integrity evidence and dated follow-up work |
+| [Runtime redistribution verification](runtime-redistribution-verification.md) | Reviewed component decisions, pinned notice delivery, source materials and final-candidate limits |
 | [Provider agreement evidence](provider-agreement-evidence.md) | Retrieved official agreements, access limits and operator acceptance requirements |
 | [Provider clarification drafts](provider-agreement-questions.md) | Unsent provider-specific questions about retention, image optimization, termination and operator eligibility |
 | [Open Library/MusicBrainz guidance](provider-public-guidance-2026-11-18.md) | Current registration, cover display, Archive terms scope, core-data and hosted-service findings |
@@ -427,15 +468,22 @@ Provider-dependent release work remains: resolve refresh/removal requirements an
 [provider agreement questions](provider-agreement-questions.md) (including IGDB
 scope and Open Library cover optimization), and record each operator's eligibility.
 TMDB contract retrieval is complete; provider-enabled release clearance is not.
-Complete the base-OS/remaining image source-delivery and final artifact audit,
-then deliver the matching source sidecar alongside any authorized binary publication.
+The [2026-11-21 OS source audit](os-source-delivery-verification.md) prepared all
+installed OS source package/versions for the retained development candidate and
+an image-bound native sidecar. Copied-runtime inventory and Yarn notice collection
+are now corrected and verified in disposable derived images. The selected
+[runtime/framework/native source and notice decisions](runtime-redistribution-verification.md)
+are recorded with their material and hash conditions. Complete full source
+coverage assembly and the final-revision artifact audit; then deliver the matching
+source materials alongside any authorized binary publication.
 The Books/cache candidate changes source and Next.js package versions; final
 release artifacts and image-bound source/evidence must match that candidate.
 See the [native source evidence](native-source-package-verification.md),
 [credits/compliance evidence](release-compliance-verification.md),
 [dependency review](dependency-redistribution-review.md) and [provider review](provider-terms-review.md).
-Maintainer notification verification and versioned release automation remain under the
-[release plan](self-hosted-release-plan.md).
+Versioned release automation is implemented and locally verified. Maintainer
+notification delivery verification, final candidate acceptance and authorized
+versioned artifact publication remain under the [release plan](self-hosted-release-plan.md).
 Each operator still verifies their own journal protection, backup expiration,
 staff records and infrastructure acceptance. No public deployment or publication
 is recorded.

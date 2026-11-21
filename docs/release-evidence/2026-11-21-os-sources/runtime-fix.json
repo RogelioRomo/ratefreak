@@ -1,0 +1,106 @@
+{
+  "archived_runtime_inventory_cross_check_passed": true,
+  "bundle_validator_sha256": "6715fffa3ae70db101bfecce1585091a73edbc0296cd45a86c69e00e99725a9c",
+  "collector_sha256": "3325e57ba952e71fd69ea90df36a422d5ea5b68794bf9dd4cb17612bf247adce",
+  "format": 1,
+  "images": {
+    "api": {
+      "copied_files": [],
+      "image_id": "sha256:c9ba5af3c81cbff763a83e83abd801412aa326b1f32bf093e75e95352b257db0",
+      "license_files": 144,
+      "os_and_native_payloads_unchanged": true,
+      "runtime_components": 0,
+      "runtime_package_manifests": 0,
+      "runtime_schema": 2
+    },
+    "tools": {
+      "copied_files": [
+        {
+          "path": "/usr/local/bin/docker-enforce-initdb.sh",
+          "sha256": "922ade6b23a312e65023349b36e873752b15ff38ae4c0ae461d74451e104f312",
+          "size": 2317
+        },
+        {
+          "path": "/usr/local/bin/docker-ensure-initdb.sh",
+          "sha256": "922ade6b23a312e65023349b36e873752b15ff38ae4c0ae461d74451e104f312",
+          "size": 2317
+        },
+        {
+          "path": "/usr/local/bin/docker-entrypoint.sh",
+          "sha256": "9c440299ae04a0a79d55b8bf03307036d890a40979d2fb698073c9050d4b20a5",
+          "size": 14577
+        },
+        {
+          "path": "/usr/local/bin/gosu",
+          "sha256": "52c8749d0142edd234e9d6bd5237dff2d81e71f43537e2f4f66f75dd4b243dd0",
+          "size": 1769900
+        }
+      ],
+      "image_id": "sha256:70a3ee6071002397684ca19fd42df41a91400f654e2535dfcf27df6ee4130c2b",
+      "license_files": 175,
+      "os_and_native_payloads_unchanged": true,
+      "runtime_components": 4,
+      "runtime_package_manifests": 0,
+      "runtime_schema": 2
+    },
+    "web": {
+      "copied_files": [
+        {
+          "path": "/usr/local/bin/corepack",
+          "sha256": "3655bc798f300951f2070fee411b337d626b0c3ae80c2d24c46ccac4595d4bf9",
+          "size": 174
+        },
+        {
+          "path": "/usr/local/bin/docker-entrypoint.sh",
+          "sha256": "a15ac9589c04baf9da95b08e0e79b5cf1d75ab8dc64e06a5e68e4ceb0ad7c8ea",
+          "size": 388
+        },
+        {
+          "path": "/usr/local/bin/node",
+          "sha256": "904a6d3484241d466989f9df9ba3aab822b1496191bdb28230eb491a55c32a52",
+          "size": 126881248
+        },
+        {
+          "path": "/usr/local/bin/nodejs",
+          "sha256": "904a6d3484241d466989f9df9ba3aab822b1496191bdb28230eb491a55c32a52",
+          "size": 126881248
+        },
+        {
+          "path": "/usr/local/bin/npm",
+          "sha256": "8e5f6f3429f8cdbe693cdc29904e9d5a7b127a494bd15c804bd54c7403bfcbe7",
+          "size": 54
+        },
+        {
+          "path": "/usr/local/bin/npx",
+          "sha256": "237adf8f3747cad8b9b62fcfd0d9c8d509a64e550337707f55100afcb79e8900",
+          "size": 2921
+        },
+        {
+          "path": "/usr/local/bin/yarn",
+          "sha256": "9207642def40f4e6a8ebf027d89a2fbc4e874db2c1bd1b85f097bf49ab40fae6",
+          "size": 1025
+        },
+        {
+          "path": "/usr/local/bin/yarnpkg",
+          "sha256": "b0761f6de0fe5517f021f9ca1aeabd7db8c5bac9fdfdbf91affa8be0729f4fcb",
+          "size": 42
+        }
+      ],
+      "image_id": "sha256:6363a343b140910a396a6cc5378c8a65ee66c2dc747d57c0db0d5ba55746c776",
+      "license_files": 276,
+      "os_and_native_payloads_unchanged": true,
+      "runtime_components": 154,
+      "runtime_package_manifests": 146,
+      "runtime_schema": 2
+    }
+  },
+  "missing_runtime_source_decisions_rejected": true,
+  "review": "Independent focused review completed; archived-evidence mismatch finding regression-tested and fixed.",
+  "scope": "Disposable derived images exercise notice and source-inventory changes only; not a final production build or whole-image legal clearance.",
+  "source_inventory_sha256": "a866834ffb198ad3b30ea1e279b56ac28ceaf5c48eb1091cbbc5a59f0e809f1c",
+  "test_suites": {
+    "compliance": 19,
+    "operator": 52,
+    "release": 26
+  }
+}

@@ -20,7 +20,8 @@ COPY --from=build /notices/ /app/notices/
 COPY deploy/self-host/entrypoint.py /app/entrypoint.py
 ENV ASPNETCORE_URLS=http://+:8080 ASPNETCORE_ENVIRONMENT=Production DOTNET_ENVIRONMENT=Production
 COPY deploy/compliance/runtime_evidence.py /app/runtime_evidence.py
-RUN python3 /app/runtime_evidence.py /app/notices/runtime
+COPY deploy/compliance/runtime-supplements /app/runtime-supplements
+RUN python3 /app/runtime_evidence.py /app/notices/runtime --image-family api
 ARG RATEFREAK_VERSION
 ARG RATEFREAK_REVISION=unknown
 LABEL org.opencontainers.image.version=$RATEFREAK_VERSION org.opencontainers.image.revision=$RATEFREAK_REVISION org.opencontainers.image.source="https://github.com/RogelioRomo/ratefreak"

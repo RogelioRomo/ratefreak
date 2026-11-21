@@ -92,6 +92,11 @@ other topologies and each operator's external obligations retain their own check
   application-native source sidecar passed offline rebuild/modified replacement
   verification. [Source-package evidence](native-source-package-verification.md)
   retains remaining OS/other-image source, final audit and publication scope.
+  Follow-up 2026-11-21: [OS sources](os-source-delivery-verification.md) are
+  prepared for the retained candidate; the [runtime component review and notice
+  delivery](runtime-redistribution-verification.md) records 158 runtime decisions,
+  ten framework/native decisions and verified supplemental notices. Full final
+  image/source coverage, artifact acceptance and provider clearance remain open.
 - [x] Add a self-hosting quickstart, configuration reference, upgrade/recovery
   instructions, supported versions/limitations and troubleshooting.
 - [x] Add [contributor guidance](../CONTRIBUTING.md) and a

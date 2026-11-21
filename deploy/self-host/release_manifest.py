@@ -2,6 +2,7 @@
 import json
 import hashlib
 import shutil
+import sys
 import tempfile
 from pathlib import Path
 from pathlib import PurePosixPath
@@ -41,9 +42,14 @@ def validate(manifest,root,manifest_name,read_json):
         for member in archive:
             path=PurePosixPath(member.name.rstrip('/'))
             if path.is_absolute() or '..' in path.parts or not(member.isfile() or member.isdir()):raise ValueError('Unsafe installation archive.')
+    sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'release'))
+    from source_inventory import validate_runtime_inventory
+    runtime_evidence={}
     for name in images:
         notices=archived_json(root/(name+'-notices.tar.gz'),name+'-notices/manifest.json')
         if notices.get('notice_texts_complete') is not True:raise ValueError('Incomplete image notices.')
+        runtime_evidence[name]=archived_json(root/(name+'-notices.tar.gz'),name+'-notices/runtime/evidence.json')
+    validate_runtime_inventory(inventory,runtime_evidence)
     if expected=='verified':
         fresh=archived_json(root/'fresh-acceptance.tar.gz','fresh-acceptance/acceptance.json')
         if fresh.get('candidateImages')!=images or fresh.get('freshInstall') is not True or fresh.get('https') is not True:raise ValueError('Exact-candidate fresh installation acceptance is missing.')
@@ -54,9 +60,6 @@ def validate(manifest,root,manifest_name,read_json):
         for name,image in images.items():
             if coverage.get('images',{}).get(name,{}).get('image_id')!=image:raise ValueError('Source evidence differs from release images.')
         # Material decisions must cover the generated shipped component inventory.
-        import sys
-        from pathlib import Path
-        sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'release'))
         from source_inventory import validate_coverage
         validate_coverage(coverage,inventory)
         from source_inventory import validate_native

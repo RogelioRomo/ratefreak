@@ -19,7 +19,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'self-host'))
 from release_bundle import validate_bundle, load_bundle, regular_file, read_manifest
 
 SERVICES=('api','web','tools')
-SOURCE_SCOPES={'api':{'os','dotnet','nuget'},'web':{'os','node','npm','native'},'tools':{'os','dotnet','nuget','postgres'}}
+SOURCE_SCOPES={'api':{'os','dotnet','nuget','runtime'},'web':{'os','node','npm','native','runtime'},'tools':{'os','dotnet','nuget','postgres','runtime'}}
 
 def new_output(path):path.mkdir(parents=True,exist_ok=False)
 

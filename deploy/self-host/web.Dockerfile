@@ -21,7 +21,8 @@ COPY --from=build --chown=10001:10001 /src/web/public ./public
 COPY deploy/self-host/entrypoint.py ./entrypoint.py
 ENV NODE_ENV=production HOSTNAME=0.0.0.0 PORT=3000 NEXT_TELEMETRY_DISABLED=1
 COPY deploy/compliance/runtime_evidence.py /app/runtime_evidence.py
-RUN python3 /app/runtime_evidence.py /app/public/notices/runtime
+COPY deploy/compliance/runtime-supplements /app/runtime-supplements
+RUN python3 /app/runtime_evidence.py /app/public/notices/runtime --image-family web
 ARG RATEFREAK_VERSION
 ARG RATEFREAK_REVISION=unknown
 LABEL org.opencontainers.image.version=$RATEFREAK_VERSION org.opencontainers.image.revision=$RATEFREAK_REVISION org.opencontainers.image.source="https://github.com/RogelioRomo/ratefreak"

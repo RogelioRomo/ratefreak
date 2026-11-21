@@ -1,0 +1,205 @@
+[
+  {
+    "file": "COPIED-TOOLS-LICENSE-NOTICES.txt",
+    "images": [
+      "tools"
+    ],
+    "review": "docs/copied-tools-license-review.md",
+    "sha256": "9d820b8d6984f320ed4191b55de2847e76dd7e6b505a2bc069574a6936ad9278",
+    "targets": [
+      {
+        "path": "/usr/local/bin/docker-enforce-initdb.sh",
+        "sha256": "922ade6b23a312e65023349b36e873752b15ff38ae4c0ae461d74451e104f312"
+      },
+      {
+        "path": "/usr/local/bin/docker-ensure-initdb.sh",
+        "sha256": "922ade6b23a312e65023349b36e873752b15ff38ae4c0ae461d74451e104f312"
+      },
+      {
+        "path": "/usr/local/bin/docker-entrypoint.sh",
+        "sha256": "9c440299ae04a0a79d55b8bf03307036d890a40979d2fb698073c9050d4b20a5"
+      },
+      {
+        "path": "/usr/local/bin/gosu",
+        "sha256": "52c8749d0142edd234e9d6bd5237dff2d81e71f43537e2f4f66f75dd4b243dd0"
+      }
+    ],
+    "url": "https://github.com/tianon/gosu/tree/6456aaa0f3c854d199d0f037f068eb97515b7513"
+  },
+  {
+    "file": "COPIED-TOOLS-LICENSE-NOTICES.txt",
+    "images": [
+      "web"
+    ],
+    "review": "docs/copied-tools-license-review.md",
+    "sha256": "9d820b8d6984f320ed4191b55de2847e76dd7e6b505a2bc069574a6936ad9278",
+    "targets": [
+      {
+        "path": "/usr/local/bin/docker-entrypoint.sh",
+        "sha256": "a15ac9589c04baf9da95b08e0e79b5cf1d75ab8dc64e06a5e68e4ceb0ad7c8ea"
+      },
+      {
+        "path": "/usr/local/bin/node",
+        "sha256": "904a6d3484241d466989f9df9ba3aab822b1496191bdb28230eb491a55c32a52"
+      }
+    ],
+    "url": "https://github.com/tianon/gosu/tree/6456aaa0f3c854d199d0f037f068eb97515b7513"
+  },
+  {
+    "file": "DOTNET-REDISTRIBUTION-NOTICES.txt",
+    "images": [
+      "api",
+      "tools"
+    ],
+    "review": "docs/bundled-runtime-license-review.md",
+    "sha256": "1783987c3a073036004b543f9eb7c330664f3af9ce3b31a82fcb3d74bd2af4b5",
+    "targets": [
+      {
+        "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.14/.version",
+        "sha256": "b9754dc907d29a69007a652af41cd6658aa5c9a3afd511ce548785d8450cb78c"
+      },
+      {
+        "path": "/usr/share/dotnet/shared/Microsoft.AspNetCore.App/10.0.14/.version",
+        "sha256": "b9754dc907d29a69007a652af41cd6658aa5c9a3afd511ce548785d8450cb78c"
+      }
+    ],
+    "url": "https://github.com/dotnet/dotnet/tree/0427b9abbead3fa64c6655eb4290c537397131fa"
+  },
+  {
+    "file": "SKIA-REDISTRIBUTION-NOTICES.txt",
+    "images": [
+      "api",
+      "tools"
+    ],
+    "review": "docs/bundled-runtime-license-review.md",
+    "sha256": "041b207c126bacf4660237421eb5ce98ea5e06a80006b1bb0fe9c8af194f3e5f",
+    "targets": [
+      {
+        "path": "/app/runtimes/linux-arm/native/libSkiaSharp.so",
+        "sha256": "d439f9976e0ec0315dd8087c31780e80d070492a444ec9880668c2ae8fee1efd"
+      },
+      {
+        "path": "/app/runtimes/linux-musl-arm64/native/libSkiaSharp.so",
+        "sha256": "483a1104b08bc97c8ebd5611fc2bc8f5d02948e9ef31cffae136b63b9a3796ef"
+      },
+      {
+        "path": "/app/runtimes/linux-arm64/native/libSkiaSharp.so",
+        "sha256": "fb2f5d9374aef307ed4f92272cb57c1a11c975ab98291389a61b444b2fc473e1"
+      },
+      {
+        "path": "/app/runtimes/linux-bionic-arm64/native/libSkiaSharp.so",
+        "sha256": "5fdf0d9f1ba48768c2f9cbedf1bbea05913ad889d8b930c5c1d4cd4b26e4f1a2"
+      },
+      {
+        "path": "/app/runtimes/linux-x64/native/libSkiaSharp.so",
+        "sha256": "26a5cf2cfb4529cf00caabc7e9f381ff59641c36690a6e658f8e3e4fa9ac850e"
+      },
+      {
+        "path": "/app/runtimes/linux-musl-x64/native/libSkiaSharp.so",
+        "sha256": "bc1d9134cf3e573615fec26f7ad411e1380718e202b6adf8667b0bbccb45ec6c"
+      },
+      {
+        "path": "/app/runtimes/linux-musl-riscv64/native/libSkiaSharp.so",
+        "sha256": "2477c0558fae1e451ee26dfdd93bf1d6be16e2a69633ab078daa849950a06d6d"
+      },
+      {
+        "path": "/app/runtimes/win-x86/native/libSkiaSharp.pdb",
+        "sha256": "d6007406766319ac58f36de36bd2be785360cad8e9560131fd0a957640a1079d"
+      },
+      {
+        "path": "/app/runtimes/win-x86/native/libSkiaSharp.dll",
+        "sha256": "af680debfa90df405b7624df8bdb1e71e2a59d9c468c13cf7cde52f76c2498d2"
+      },
+      {
+        "path": "/app/runtimes/linux-musl-arm/native/libSkiaSharp.so",
+        "sha256": "d165aeace187b37f01fff019bf049ec3864e4f598904b886cca4e415931580c1"
+      },
+      {
+        "path": "/app/runtimes/linux-riscv64/native/libSkiaSharp.so",
+        "sha256": "a280f84169f9024bc1a0bd0115e2220ab7a0da1468df48ccb728a93824cb64f9"
+      },
+      {
+        "path": "/app/runtimes/linux-musl-loongarch64/native/libSkiaSharp.so",
+        "sha256": "9ed7a5629b52487c2e0b5fa87dd299ad4fd82d148e119ef06fe8cf2d0141af18"
+      },
+      {
+        "path": "/app/runtimes/linux-bionic-x64/native/libSkiaSharp.so",
+        "sha256": "a9203e712c241d576a098722176ee7b835bcc6d5501b742851bd8769cad7a7fc"
+      },
+      {
+        "path": "/app/runtimes/linux-x86/native/libSkiaSharp.so",
+        "sha256": "72e2d38cbc41e47544d06e04469ffba6f1f36a6bb0524e56fd14ad5facbc2c8e"
+      },
+      {
+        "path": "/app/runtimes/osx/native/libSkiaSharp.dylib",
+        "sha256": "588d04be630b26e832f621e9ed2b03235324dbe7ba452de50c2c0fdfd77d197e"
+      },
+      {
+        "path": "/app/runtimes/win-x64/native/libSkiaSharp.pdb",
+        "sha256": "d14b3fd77e54785d21c49f286a804b404d07a36c667fe65863ebb10029a370fc"
+      },
+      {
+        "path": "/app/runtimes/win-x64/native/libSkiaSharp.dll",
+        "sha256": "635d8189af815bc57f39282724e461925d17ea88877279c207e6a80ee6d8d135"
+      },
+      {
+        "path": "/app/runtimes/win-arm64/native/libSkiaSharp.pdb",
+        "sha256": "9d4c39ea07db8065c3dfbe91374add4f02cd12a578c2e0de516d6de626465b44"
+      },
+      {
+        "path": "/app/runtimes/win-arm64/native/libSkiaSharp.dll",
+        "sha256": "800abc5ae146ac93d03a916005739ddc59e478ec3d69fde04c415de1cc466f43"
+      },
+      {
+        "path": "/app/runtimes/linux-loongarch64/native/libSkiaSharp.so",
+        "sha256": "8b6f2872c41fda2eb650bad2dcca3a2a03c8cd10dc739b68555f156605018461"
+      }
+    ],
+    "url": "https://github.com/mono/SkiaSharp/tree/d25e7fa628a2576e50ecc42004cc4fd03c6657f5"
+  },
+  {
+    "file": "NPM-RUNTIME-NOTICES.txt",
+    "images": [
+      "web"
+    ],
+    "review": "docs/npm-runtime-license-review.md",
+    "sha256": "8b47c6047c58132895e7237138fa6c97e1c7e0fa73cec623d281a8f60edfe53b",
+    "targets": [
+      {
+        "path": "/usr/local/lib/node_modules/npm/package.json",
+        "sha256": "f6478d5600180a23f73e4217610c7709a71cedb4ae13f6c3e15ecb457f5d4fd6"
+      }
+    ],
+    "url": "https://github.com/npm/cli/tree/d63a975ce3c1219752519b7fb68bdc03faa767c0"
+  },
+  {
+    "file": "JS-BUNDLED-TOOLS-NOTICES.txt",
+    "images": [
+      "web"
+    ],
+    "review": "docs/js-bundled-tools-license-review.md",
+    "sha256": "eee1835f5e6b99c95431ceffeeae9affab299380e93bb1df72801d14c340ff29",
+    "targets": [
+      {
+        "path": "/usr/local/lib/node_modules/corepack/dist/lib/corepack.cjs",
+        "sha256": "abd6f0e7b4e2af310243e202fd908ea64cda545786222f0a3d3f62426e8ad66e"
+      }
+    ],
+    "url": "https://github.com/yarnpkg/yarn/tree/740c38c3a962c30ddb344a919bbfb7065620714b"
+  },
+  {
+    "file": "JS-BUNDLED-TOOLS-NOTICES.txt",
+    "images": [
+      "web"
+    ],
+    "review": "docs/js-bundled-tools-license-review.md",
+    "sha256": "eee1835f5e6b99c95431ceffeeae9affab299380e93bb1df72801d14c340ff29",
+    "targets": [
+      {
+        "path": "/opt/yarn-v1.22.22/lib/cli.js",
+        "sha256": "443ed69e76443b89afddccfc9faec1ff16eb5e500979cc079c696dec4c3d94ee"
+      }
+    ],
+    "url": "https://github.com/yarnpkg/yarn/tree/740c38c3a962c30ddb344a919bbfb7065620714b"
+  }
+]

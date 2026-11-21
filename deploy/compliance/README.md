@@ -44,6 +44,32 @@ and existing runtime/OS copyright files in `runtime-license-texts.tar.gz`.
 This archive supplements package notices; preserve both. It does not download OS
 corresponding sources or prove a binary can be rebuilt/relinked.
 
+Runtime evidence schema 2 also records versioned package manifests under
+`/usr/local`, `/opt` and `/usr/share/dotnet`, including bundled global package
+dependencies, and hashes every copied file in `/usr/local/bin`. Notice scanning
+includes `/opt`, so the Node image's Yarn license is retained. The release
+inventory adds these packages and files to the `runtime` scope: package rows use
+`npm:<name>` and their declared version; file rows use `file:<absolute-path>` and
+their SHA-256. Duplicate package/version rows retain their manifest paths in one
+component. These records identify review scope, not licensing clearance.
+
+Source inventory format 2 requires schema-2 runtime evidence for every image.
+Both finalization and bundle validation reject saved inventories predating this
+coverage, and cross-check the archived runtime evidence against the saved runtime
+component inventory. Prepare a fresh candidate from the corrected source; do not add a
+schema marker to old evidence. Each newly inventoried runtime component still
+needs matching source material or an individually reviewed source exception.
+
+`runtime-supplements/sources.json` records reviewed additional notices for copied
+tools, global package managers, frameworks and native aggregates. The production
+Dockerfiles copy those files and pass `--image-family api`, `web` or `tools`.
+Applicable rules require every pinned target to exist and match its SHA-256,
+then verify the supplement hash before packaging it with provenance. Missing or
+changed files require re-review; unrelated image families do not select the rule.
+The [runtime delivery evidence](../../docs/runtime-redistribution-verification.md)
+records decisions, source materials and exact proof-image scope. Full source
+coverage, final builds, provider clearance and publication retain separate gates.
+
 `supplements/sources.json` pins retrieved license evidence by hash and source URL.
 `native/sources.json` pins the selected libvips packaging recipe/version file;
 `native/source-acquisition.json` records source archive/patch hashes. Acquired
