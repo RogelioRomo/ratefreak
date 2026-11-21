@@ -1,0 +1,81 @@
+name: Prepare release candidate
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag, for example v0.1.0
+        required: true
+        type: string
+      source_materials_run_id:
+        description: Optional same-repository run containing reviewed release-source-materials artifact; missing coverage blocks completion
+        required: false
+        type: string
+      candidate_run_id:
+        description: Optional same-repository run containing the exact incomplete candidate to finalize without rebuilding
+        required: false
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Resolve one immutable source revision
+        id: resolve
+        env:
+          CANDIDATE_TAG: ${{ inputs.tag }}
+        run: python3 deploy/release/workflow_checks.py resolve
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ steps.resolve.outputs.revision }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - run: npm install --global pnpm@10.28.2
+      - name: Obtain the exact candidate under review
+        if: inputs.candidate_run_id != ''
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          pattern: candidate-review-*
+          merge-multiple: true
+          run-id: ${{ inputs.candidate_run_id }}
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/candidate
+      - name: Obtain reviewed image-bound source materials
+        if: inputs.source_materials_run_id != ''
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          name: release-source-materials
+          run-id: ${{ inputs.source_materials_run_id }}
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/release-source-materials
+      - name: Prepare exact candidate without publication
+        if: inputs.candidate_run_id == ''
+        env:
+          CANDIDATE_TAG: ${{ inputs.tag }}
+        run: python3 deploy/release/prepare.py --tag "$CANDIDATE_TAG" --output "$RUNNER_TEMP/candidate" --compliance "$RUNNER_TEMP/release-source-materials"
+      - name: Finalize reviewed candidate without rebuilding
+        if: inputs.candidate_run_id != ''
+        env:
+          CANDIDATE_TAG: ${{ inputs.tag }}
+        run: python3 deploy/release/prepare.py --resume --tag "$CANDIDATE_TAG" --output "$RUNNER_TEMP/candidate" --compliance "$RUNNER_TEMP/release-source-materials"
+      - name: Retain candidate or incomplete diagnostics
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: candidate-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/candidate
+          retention-days: 14
+          if-no-files-found: warn

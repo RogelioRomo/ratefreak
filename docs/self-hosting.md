@@ -195,6 +195,34 @@ downgrade can reconstruct discarded data. Prefer forward fixes or an isolated
 matching-version restore. Rebuilding replaces local image tags; retain the previous
 release artifacts/images before doing so if they are needed for recovery.
 
+### Downloaded release bundles
+
+Download every file from the verified project release and retain its
+`release-manifest.json`. Check provenance before running supplied code. The
+manifest binds filenames, sizes, SHA-256 hashes, platform and all three image IDs;
+checksums alone do not authenticate a publisher.
+
+With writers stopped and a coordinated backup retained, use the matching source
+installation bundle's operator tool:
+
+```bash
+python3 deploy/release/bundle.py verify /path/to/downloaded-release
+python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_INSTANCE" load-release --bundle /path/to/downloaded-release
+python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_INSTANCE" prepare
+python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_INSTANCE" migrate
+python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_INSTANCE" start
+```
+
+Loading validates all artifact hashes and image/archive identities before selecting
+one complete versioned image set. A failed/partial load preserves the previous
+selection; successful selection invalidates prior migration acceptance. Old images
+are retained. Start never implicitly pulls or upgrades. Do not set independent
+API/web/tools versions or substitute images in the instance override.
+
+See [release preparation and announcements](releasing.md) for versioning, required
+matching source materials and optional administrator update checks. Update checks
+are disabled by default; an available upstream release does not install itself.
+
 ## Provider configuration and image cache
 
 Optional provider settings belong in the protected instance

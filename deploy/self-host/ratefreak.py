@@ -106,6 +106,8 @@ def compose(root, config, ingress=None):
     policy=root/'journal-policy.json'
     enabled=policy.exists() and json.loads(read_private(policy)).get('independentReplicationConfirmed') is True
     env['RATEFREAK_API_ERASURE_JOURNAL_PATH']='/independent/account-erasures.jsonl' if enabled else ''
+    selection=selected_images(root)
+    for name,tag in selection.items():env['RATEFREAK_'+name.upper()+'_IMAGE']=tag
     project='ratefreak-'+hashlib.sha256(str(root).encode()).hexdigest()[:12]
     command=['docker','compose','--project-name',project,'-f',str(PACKAGE/'compose.yaml')]
     if ingress:command+=['-f',str(PACKAGE/('compose.caddy.yaml' if ingress=='caddy' else 'compose.host-proxy.yaml'))]
@@ -129,6 +131,7 @@ def main():
     for name in ['build','prepare','migrate','start','stop','status']:
         action=sub.add_parser(name)
         if name=='start':action.add_argument('--ingress',choices=['caddy','external'],default='caddy')
+    release=sub.add_parser('load-release');release.add_argument('--bundle',required=True,type=Path)
     deletion=sub.add_parser('enable-deletion');deletion.add_argument('--confirm-independent-journal',required=True,action='store_true')
     backup=sub.add_parser('backup');backup.add_argument('--output',required=True,type=Path)
     restore=sub.add_parser('restore');restore.add_argument('--backup',required=True,type=Path);restore.add_argument('--journal',required=True,type=Path);restore.add_argument('--confirm-restore',action='store_true',required=True)
@@ -178,9 +181,24 @@ def instance_lock(root):
         yield
     finally:os.close(fd)
 
-def release_images():
+def selected_images(root):
+    path=root/'release-selection.json'
+    if not path.exists():return {name:'ratefreak-'+name+':local' for name in ['api','web','tools']}
+    from release_bundle import read_manifest
+    read_private(path)
+    selection=read_manifest(path)
+    if set(selection.get('images',{}))!={'api','web','tools'}:raise OperatorError('Invalid selected release.')
+    result={}
+    for name,image in selection['images'].items():
+        tag=image.get('tag','')
+        if not re.fullmatch('ratefreak-'+name+r':[0-9A-Za-z._-]+',tag):raise OperatorError('Invalid selected image tag.')
+        result[name]=tag
+    return result
+
+def release_images(root=None):
     names=['api','web','tools']
-    values=execute(['docker','image','inspect','--format','{{.Id}}',*['ratefreak-'+name+':local' for name in names]],capture=True).splitlines()
+    selected=selected_images(root) if root is not None else {name:'ratefreak-'+name+':local' for name in names}
+    values=execute(['docker','image','inspect','--format','{{.Id}}',*[selected[name] for name in names]],capture=True).splitlines()
     if len(values)!=3 or not all(re.fullmatch(r'sha256:[a-f0-9]{64}',value) for value in values):raise OperatorError('Missing or invalid release image identities.')
     return dict(zip(names,values))
 
@@ -210,8 +228,23 @@ def stopped_writers(command,env):
 def dispatch(args,root,config,command,env):
     operation=args.command
     if operation=='build':
+        sys.path.insert(0,str(PACKAGE.parent/'release'))
+        from versioning import read_identity
+        identity=read_identity(PACKAGE.parents[1])
+        (PACKAGE.parents[1]/'.build-identity.json').write_text(json.dumps(identity)+'\n')
         for name in ['api','web','tools']:
-            execute(['docker','build','-f',str(PACKAGE/(name+'.Dockerfile')),'-t','ratefreak-'+name+':local',str(PACKAGE.parents[1])])
+            execute(['docker','build','--build-arg','RATEFREAK_VERSION='+identity['version'],'--build-arg','RATEFREAK_REVISION='+identity['revision'],'--build-arg','RATEFREAK_OFFICIAL=false','-f',str(PACKAGE/(name+'.Dockerfile')),'-t','ratefreak-'+name+':local',str(PACKAGE.parents[1])])
+    elif operation=='load-release':
+        stopped_writers(command,env)
+        from release_bundle import load_bundle
+        def inspect(tag):return json.loads(execute(['docker','image','inspect',tag],capture=True))[0]
+        def load(path):execute(['docker','image','load','--input',str(path)])
+        try:selection=load_bundle(args.bundle,inspect,load)
+        except (ValueError,KeyError,TypeError) as error:raise OperatorError('Release validation failed; previous selection is preserved.') from error
+        # A new selection never carries migration acceptance from another candidate.
+        if (root/'migrated.json').exists():(root/'migrated.json').unlink()
+        write_state(root/'release-selection.json',selection)
+        print('Release loaded. Explicitly prepare and migrate before starting writers.')
     elif operation=='prepare':
         stopped_writers(command,env)
         execute(command+['run','--rm','--no-deps','storage-init'],env)
@@ -223,19 +256,19 @@ def dispatch(args,root,config,command,env):
         if (root/'migrated.json').exists():(root/'migrated.json').unlink()
         execute(command+['up','-d','--wait','postgres'],env)
         execute(command+['run','--rm','migrate'],env)
-        write_state(root/'migrated.json',{'images':release_images(),'overrideSha':override_signature(root)})
+        write_state(root/'migrated.json',{'images':release_images(root),'overrideSha':override_signature(root)})
     elif operation=='enable-deletion':
         stopped_writers(command,env)
         write_state(root/'journal-policy.json',{'independentReplicationConfirmed':True})
         print('Operator journal replication acknowledgment recorded. Start applies the deletion configuration; continue monitoring replication.')
     elif operation=='backup':
         stopped_writers(command,env)
-        images=release_images()
+        images=release_images(root)
         require_release(root,images)
         destination=safe_path(args.output)
         if destination.exists():raise OperatorError('Use a new backup destination; existing paths are never overwritten.')
         private_directory(destination)
-        extra=['-e','RATEFREAK_RELEASE_IMAGES='+json.dumps(release_images(),separators=(',',':')),'-e','RATEFREAK_OPERATOR_UID='+str(os.getuid()),'-e','RATEFREAK_OPERATOR_GID='+str(os.getgid())]
+        extra=['-e','RATEFREAK_RELEASE_IMAGES='+json.dumps(release_images(root),separators=(',',':')),'-e','RATEFREAK_OPERATOR_UID='+str(os.getuid()),'-e','RATEFREAK_OPERATOR_GID='+str(os.getgid())]
         execute(command+['run','--rm','--user','0:0','-v',str(destination)+':/backup',*extra,'tools','backup'],env)
     elif operation=='restore':
         stopped_writers(command,env)
@@ -246,15 +279,15 @@ def dispatch(args,root,config,command,env):
         # Preflight integrity before creating/restoring any target database data.
         sys.path.insert(0,str(PACKAGE))
         from maintenance import validate_backup, MaintenanceError
-        try:validate_backup(source,release_images())
+        try:validate_backup(source,release_images(root))
         except (MaintenanceError,ValueError,OSError):raise OperatorError('Backup integrity/release validation failed; target untouched.') from None
         exclusive_file(root/'restore-pending',b'Keep traffic stopped until replay succeeds.\n')
         execute(command+['up','-d','--wait','postgres'],env)
-        execute(command+['run','--rm','--user','0:0','-e','RATEFREAK_RELEASE_IMAGES='+json.dumps(release_images(),separators=(',',':')),'-v',str(source)+':/backup:ro','-v',str(journal)+':/current-journal:ro','tools','restore'],env)
-        write_state(root/'restore-complete.json',{'images':release_images(),'overrideSha':override_signature(root)})
+        execute(command+['run','--rm','--user','0:0','-e','RATEFREAK_RELEASE_IMAGES='+json.dumps(release_images(root),separators=(',',':')),'-v',str(source)+':/backup:ro','-v',str(journal)+':/current-journal:ro','tools','restore'],env)
+        write_state(root/'restore-complete.json',{'images':release_images(root),'overrideSha':override_signature(root)})
     elif operation=='replay':
         stopped_writers(command,env)
-        images=release_images()
+        images=release_images(root)
         state=replay_state(root,images)
         execute(command+['run','--rm','tools','replay','--replay-account-erasures','--database-name',args.database_name,'--confirm-erasure-replay'],env)
         execute(command+['run','--rm','tools','verify-replay'],env)
@@ -262,7 +295,7 @@ def dispatch(args,root,config,command,env):
             write_state(root/'migrated.json',{'images':images,'overrideSha':override_signature(root)})
             (root/'restore-pending').unlink();sync_directory(root)
     elif operation=='start':
-        require_release(root,release_images())
+        require_release(root,release_images(root))
         # Require the local TLS choice to be explicit in the edge configuration.
         if args.ingress=='caddy' and urlsplit(config['origin']).port not in (None,443):raise OperatorError('Custom public ports require an operator-managed ingress configuration.')
         if args.ingress=='caddy' and config['localTls']:

@@ -1,0 +1,16 @@
+<Project>
+  <Target Name="RateFreakBuildIdentity" BeforeTargets="GetAssemblyAttributes">
+    <Exec Command="git rev-parse HEAD" WorkingDirectory="$(MSBuildThisFileDirectory)" ConsoleToMSBuild="true" IgnoreExitCode="true" StandardOutputImportance="Low" StandardErrorImportance="Low" Condition="'$(RateFreakRevision)' == ''">
+      <Output TaskParameter="ConsoleOutput" PropertyName="RateFreakRevision" />
+    </Exec>
+    <PropertyGroup>
+      <RateFreakRevision Condition="'$(RateFreakRevision)' == ''">unknown</RateFreakRevision>
+      <RateFreakOfficial Condition="'$(RateFreakOfficial)' == ''">false</RateFreakOfficial>
+    </PropertyGroup>
+    <ItemGroup>
+      <AssemblyMetadata Include="RateFreakVersion" Value="$(Version)" />
+      <AssemblyMetadata Include="RateFreakRevision" Value="$(RateFreakRevision)" />
+      <AssemblyMetadata Include="RateFreakOfficial" Value="$(RateFreakOfficial)" />
+    </ItemGroup>
+  </Target>
+</Project>

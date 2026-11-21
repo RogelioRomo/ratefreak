@@ -20,3 +20,7 @@ TestResults/
 **/obj\\*/
 # Generated from exact installed packages by pnpm notices / Docker builds.
 web/public/notices/
+
+# Generated immutable build identity.
+.build-identity.json
+web/generated/

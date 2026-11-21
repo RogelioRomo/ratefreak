@@ -14,3 +14,8 @@ it('validates list queries and rejects unknown/duplicate filters',()=>{
  expect(()=>moderationQuery('GET',['moderation','audit'],new URLSearchParams('targetId=bad'))).toThrow();
  expect(moderationQuery('GET',['moderation','reports',id],new URLSearchParams())).toBeNull();
 });
+it('allows only exact administrator update read and check routes',()=>{
+ expect(isAllowedRoute('GET',['admin','updates'])).toBe(true);
+ expect(isAllowedRoute('POST',['admin','updates','check'])).toBe(true);
+ for(const [method,path] of [['POST',['admin','updates']],['GET',['admin','updates','check']],['PUT',['admin','updates']],['POST',['admin','updates','install']],['GET',['admin','updates','extra']]] as const)expect(isAllowedRoute(method,path)).toBe(false);
+});

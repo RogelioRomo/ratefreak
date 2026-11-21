@@ -317,6 +317,13 @@ implementation specification.
 
 Further features remain separate scope decisions:
 
+On 2026-11-20, the user deferred additional product features until after the first
+release, including collection discussions, catalog correction/refresh features,
+account suspensions/appeals and the proposed richer private statistics. Provider
+policy clarification required for release remains open independently. Release
+announcements and administrator update awareness are included in release/versioning
+work instead; see the [release plan](self-hosted-release-plan.md#release-announcements-and-update-awareness).
+
 - [x] Provider-backed books through Open Library, using shared work identities;
   [design](superpowers/specs/2026-11-17-books-and-artwork-cache-design.md),
   [verification/activation limits](books-and-provider-cache-verification.md).
@@ -343,6 +350,12 @@ Further features remain separate scope decisions:
 
 First-use/onboarding work was explicitly declined on 2026-11-19 and is not a
 planned product priority.
+
+Release/versioning implementation is in progress on `feat/release-versioning` in
+an isolated worktree. Shared identity, candidate preparation/finalization, manual
+bundle selection and administrator update checks are under local verification;
+no public release or persistent-instance upgrade has occurred. See
+[the verification record](release-versioning-verification.md).
 
 ## Self-hosted release readiness
 
@@ -373,7 +386,10 @@ as the detailed acceptance checklist. Remaining categories are:
 - [ ] Fresh production/Release builds and browser checks for the final source revision.
 - [x] Open-source license selection: [MIT](../LICENSE), selected 2026-11-11.
 - [ ] Remaining redistribution/provider notices, release/versioning automation and
-  versioned artifacts. Contributor/security guidance and private-reporting
+  versioned artifacts, including GitHub release announcements and an
+  administrator-only update notice with controlled cached/manual checks. Upgrades
+  remain manual; user-facing “What's new” notices are deferred until after release.
+  Contributor/security guidance and private-reporting
   activation are complete; maintainer notification delivery remains untested.
   Self-hosting/upgrade instructions exist.
 

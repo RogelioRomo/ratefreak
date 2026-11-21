@@ -157,3 +157,8 @@ State remaining limitations without presenting unrun checks as passing.
 
 The maintainer reviews integration and release decisions. Opening a pull request
 does not publish images, deploy an instance or authorize a production migration.
+
+For shared build identity, candidate preparation, release notes and update-check
+behavior, see [the release guide](docs/releasing.md). The read-only Verify workflow
+runs the repository checks; candidate preparation requires an existing matching
+version tag and never authorizes public publication.

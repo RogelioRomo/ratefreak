@@ -97,6 +97,11 @@ public static class DependencyInjection
             { AllowAutoRedirect = false, PooledConnectionLifetime = TimeSpan.FromMinutes(5), MaxConnectionsPerServer = 4 })
             .RedactLoggedHeaders(["Authorization"]);
         services.TryAddSingleton(TimeProvider.System);
+        services.AddOptions<RateFreak.Infrastructure.Updates.UpdateOptions>().Bind(configuration.GetSection("Updates"));
+        services.AddSingleton(RateFreak.Infrastructure.Updates.BuildIdentity.Embedded());
+        services.AddHttpClient<RateFreak.Infrastructure.Updates.GitHubReleaseClient>(client => client.Timeout = TimeSpan.FromSeconds(10))
+            .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler { AllowAutoRedirect = false, MaxConnectionsPerServer = 1 });
+        services.AddSingleton<RateFreak.Application.Updates.IUpdateService, RateFreak.Infrastructure.Updates.UpdateService>();
         services.AddOptions<MusicBrainzOptions>().Bind(configuration.GetSection("Providers:MusicBrainz"))
             .Validate(options => options.IsValid(), "MusicBrainz configuration is invalid: check timeout and enabled-provider maintainer contact.").ValidateOnStart();
         services.AddSingleton<MusicBrainzRequestGate>();
