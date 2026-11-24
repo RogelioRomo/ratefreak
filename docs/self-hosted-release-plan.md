@@ -97,6 +97,27 @@ other topologies and each operator's external obligations retain their own check
   delivery](runtime-redistribution-verification.md) records 158 runtime decisions,
   ten framework/native decisions and verified supplemental notices. Full final
   image/source coverage, artifact acceptance and provider clearance remain open.
+  Follow-up 2026-11-23: the [current development candidate](release-candidate-verification-2026-11-23.md)
+  is locally finalized with 719 image/component source mappings, all-layer and
+  privacy inspection, and exact-image fresh/upgrade/browser acceptance. The
+  matching delivery bundle includes sharp's additional header notice and
+  normalized .NET/Skia notice archives. Final stable identity, documented
+  provenance limits, provider clearance and publication remain separate.
+  Subsequent [security updates](runtime-security-update-2026-11-23.md) qualify
+  a nonofficial local proof with 533 remaining component mappings, refreshed OS
+  sources, patched runtimes and fresh/upgrade/browser/maintenance checks.
+  The [remaining OS review](release-os-review-2026-11-23.md) reconciles all 1,014
+  retained matches, with 60 scoped exclusions and 954 open matches. An isolated
+  Debian 13 web/tools runtime trial was then [completed in isolation](debian-runtime-trial-2026-11-23.md):
+  fresh/upgrade/browser/maintenance acceptance passed; scan matches fell to 764,
+  with no critical matches and 20 newly reported advisory IDs. Those 20 IDs have
+  since received [conditional supported-flow exclusions](debian-advisory-assessment-2026-11-23.md),
+  covering 167 raw matches without scanner suppression. Other residual security
+  work remains open. Current source
+  coverage validates 502 entries with separate inherited-layer source/notice
+  delivery. Trial integration and final residual OS remediation,
+  bundled/native security review and final stable/public release gates remain
+  open; older candidate source/image identities are not relabeled.
 - [x] Add a self-hosting quickstart, configuration reference, upgrade/recovery
   instructions, supported versions/limitations and troubleshooting.
 - [x] Add [contributor guidance](../CONTRIBUTING.md) and a
@@ -111,6 +132,13 @@ other topologies and each operator's external obligations retain their own check
   of the first-release versioning work; see the agreed scope below.
 - [ ] Review tracked files and release artifacts for secrets, local user data and
   machine-specific configuration before publishing.
+  The 2026-11-23 development candidate passed scoped tracked-source, configured
+  private-value and all-layer checks; retain the documented dispositions and
+  repeat relevant checks for the final stable source/artifacts. Current
+  [vulnerability scans](release-security-review-2026-11-23.md) identify runtime,
+  copied-tool and OS findings requiring remediation/residual review; security
+  clearance and maintainer security-notification delivery remain open.
+  See [candidate evidence](release-candidate-verification-2026-11-23.md).
 
 ### Release announcements and update awareness
 

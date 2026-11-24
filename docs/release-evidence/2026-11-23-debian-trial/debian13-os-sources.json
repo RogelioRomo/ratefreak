@@ -1,0 +1,25 @@
+{
+  "format": 1,
+  "source_pairs": 74,
+  "files": 233,
+  "descriptor_sets_complete": true,
+  "archived_hashes_verified": true,
+  "file": "debian13-os-sources.tar",
+  "sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f",
+  "bytes": 478720000,
+  "image_ids": {
+    "api": "sha256:1ca2ebd62204c0582ca7cf4010e98791359319e90bee5c31c681436f29480209",
+    "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0",
+    "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050"
+  },
+  "metadata_archives": [
+    {
+      "file": "web-source-indexes.tar.gz",
+      "sha256": "6bd7e18b046ccaeb51d68edefb481c543a6bb73db1277b9e3d4cc9436cb226fe"
+    },
+    {
+      "file": "tools-source-indexes.tar.gz",
+      "sha256": "14a3a3f1a88e65795e5e5edb37f1af4fd4da0cd3923d60979d5f091eede8a206"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "bytes": 128,
+    "file": ".local/debian-trial-2026-11-23/images/identity.json",
+    "sha256": "fb6131b8f762ed3c5b9556039935803d7bddc872ccfca2ed5542d8fd5e8b2c02"
+  },
+  {
+    "bytes": 790575,
+    "file": ".local/debian-trial-2026-11-23/all-layer-audit.json",
+    "sha256": "843df5f963f1c35ca8167be62125cd798a5156ab4c2c085b2fb9f93bb5f374c2"
+  },
+  {
+    "bytes": 339,
+    "file": ".local/debian-trial-2026-11-23/source-validation.json",
+    "sha256": "d8279097718c34a16571fe001a56856c491ac95cbebb739657e9ae35a515296c"
+  },
+  {
+    "bytes": 711,
+    "file": ".local/debian-trial-2026-11-23/source-extraction.json",
+    "sha256": "67edd98c46679fa627aba0c364addcbf0b7844d0a21313f27c93a26227ae02bb"
+  },
+  {
+    "bytes": 4839,
+    "file": ".local/debian-trial-2026-11-23/browser/browser-results.json",
+    "sha256": "1a67b693414e249fd31b3394e373e188ba547ab7ef8779c1b57a87003930b376"
+  },
+  {
+    "bytes": 1496,
+    "file": ".local/debian-trial-2026-11-23/lower-source-signatures.json",
+    "sha256": "fe706d75278e19f3d01aefec2a1c38f6a5f747fe4f25dd18fc1af234082184dd"
+  },
+  {
+    "bytes": 687206,
+    "file": ".local/debian-trial-2026-11-23/api-trivy.json",
+    "sha256": "344c12b75ea3fd349d028de722fd45dfaf17c865f43f9177f066777625dc11f0"
+  },
+  {
+    "bytes": 1599300,
+    "file": ".local/debian-trial-2026-11-23/web-trivy.json",
+    "sha256": "9e750dcdcca722ff3ae6c49a12572ebaaa157012388470c990b1e58679c9b7ce"
+  },
+  {
+    "bytes": 1907110,
+    "file": ".local/debian-trial-2026-11-23/tools-trivy.json",
+    "sha256": "4617fdc1a9aab5ebfec7a7b5e9a0d607c0e4020bc9002adfd965b18793e39221"
+  },
+  {
+    "bytes": 875,
+    "file": ".local/debian-trial-2026-11-23/api-trivy-execution.json",
+    "sha256": "86df3063ce8c0f630d176d16709c60bce27d81e84025d5d713052096f36f7bf6"
+  },
+  {
+    "bytes": 875,
+    "file": ".local/debian-trial-2026-11-23/web-trivy-execution.json",
+    "sha256": "587b19db952d3ad02d6c04647c3d77d1679b4ecfbe255f9020bf5e75278bd8f4"
+  },
+  {
+    "bytes": 879,
+    "file": ".local/debian-trial-2026-11-23/tools-trivy-execution.json",
+    "sha256": "a5500f5bad7529a32dfeaf08fd8cb3a0a31d35c8cd169cab5cff647b7c4ba758"
+  }
+]

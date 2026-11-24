@@ -1,0 +1,237 @@
+[
+  {
+    "bytes": 67252269,
+    "path": ".local/os-review-2026-11-23/debian-cve-list.txt",
+    "sha256": "bf54221d17412893b76eb0de316abee0a44d4759224b6d1bf39578861a4b35d5"
+  },
+  {
+    "bytes": 100980,
+    "path": ".local/os-review-2026-11-23/debian-matched-notes.json",
+    "sha256": "c4ff427a7408155cecdf57e660f7645b025cb1d33c67eedeebca7f0e843e5eae"
+  },
+  {
+    "bytes": 92463626,
+    "path": ".local/os-review-2026-11-23/debian-tracker.json",
+    "sha256": "36731d354fd2fa5a9354c7b1f236fd443795be1254a34076c5a00a56e1ce72da"
+  },
+  {
+    "bytes": 789731,
+    "path": ".local/os-review-2026-11-23/openssl-vulnerabilities.html",
+    "sha256": "8a5099d2bb218ef8f2e0d83837123c6cbb864b429489a21d1b6e55d6e38469c0"
+  },
+  {
+    "bytes": 991,
+    "path": ".local/os-review-2026-11-23/runtime-probe.py",
+    "sha256": "b73d988d07d49ff7601074dcf6c13ea072e619d88c71b1341041401f04f493f2"
+  },
+  {
+    "bytes": 8791,
+    "path": ".local/os-review-2026-11-23/runtime-probes.json",
+    "sha256": "108321749c76be7b9c64e95d628d262426235e294c4178d043773e0fc3b023f8"
+  },
+  {
+    "bytes": 2106,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2024-56433.txt",
+    "sha256": "dfddd29f0a283f12826ac166981949fd124bfe2a20abac56ae4c90762cf31d3d"
+  },
+  {
+    "bytes": 1646,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2025-5222.txt",
+    "sha256": "f025c2084aaa0fbcfdedc3f00898248a5aa4adf7cf73426cfb17fec580ad8644"
+  },
+  {
+    "bytes": 14414,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2025-66382.txt",
+    "sha256": "e67335afc55c5aadd7d6aa3c15c03440f304ff6cb7ccac255b619406c8e22fb6"
+  },
+  {
+    "bytes": 1283,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-102473.txt",
+    "sha256": "48f87377bf37cae7992bb45cb62ad78ab4665eff2bc0f2bbdc0cae208ad55d72"
+  },
+  {
+    "bytes": 1255,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-102474.txt",
+    "sha256": "1c9a093cbdb9b3e5072721f9b1db5636f51b72776b4b9e36a16dea4b54f4482b"
+  },
+  {
+    "bytes": 12289,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-102633.txt",
+    "sha256": "84b39fa471b1147a9240c88af9c2b04abffdaa2245654fe13bb7541d07115ce4"
+  },
+  {
+    "bytes": 1337,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-105712.txt",
+    "sha256": "b0634daf4377005df1523ca4f51bd7b79998ae07f09381420a28ca1c4b026553"
+  },
+  {
+    "bytes": 1815,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-107161.txt",
+    "sha256": "647886d588a950baa5bae09e46ce1eb1a9f9836d10ff3d3d57bf2fca68221dfa"
+  },
+  {
+    "bytes": 1518,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-107708.txt",
+    "sha256": "e2515f27360d753ecb280738b6db2858c0dc6f8a32273443987392c17822a394"
+  },
+  {
+    "bytes": 1502,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-107778.txt",
+    "sha256": "0381cd45bffd7e32e024b84ad977e8cd0b12cb255e965b2ca96ca1c6690101fc"
+  },
+  {
+    "bytes": 1126,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-112061.txt",
+    "sha256": "482885858c405b355e762a3509daca7f55e705dc2588353019f1d459fd8158ec"
+  },
+  {
+    "bytes": 11734,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-113351.txt",
+    "sha256": "71fb1ff5d253434117cf76cb47d072a180671b6ca55910492789b89607458cf5"
+  },
+  {
+    "bytes": 11821,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-117610.txt",
+    "sha256": "b67fa20d06d6ea54f03d3dd088d1ab43d71f808062fa1a944fb248ae3441dca0"
+  },
+  {
+    "bytes": 2020,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-119373.txt",
+    "sha256": "2b68d18eec966258eba2076273966eb9fe31a706937a140daf3ddebed912bb04"
+  },
+  {
+    "bytes": 2245,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-121876.txt",
+    "sha256": "bd67855db2b92115c9dc11dcfcdeff9214487881f1659b98c8607dae00f89d83"
+  },
+  {
+    "bytes": 1768,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-18477.txt",
+    "sha256": "065a876a6718a674e9b851bac79246f584c36b2193784d31580d5b995e5bc32e"
+  },
+  {
+    "bytes": 1481,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-18508.txt",
+    "sha256": "4cc1b8b7f60f55d32e8426846fc81b7ea454ade1acf4011ea7dbc027a354e66f"
+  },
+  {
+    "bytes": 1827,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-40228.txt",
+    "sha256": "9118f2492309ee3c436f6be5815c588e78f5cb87a563a654421556c2cbe85f34"
+  },
+  {
+    "bytes": 1900,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-67693.txt",
+    "sha256": "360c5e0f0dda469daf25f9b53d1ad85c4b98e70c082f66a416ab6a8ad928b10a"
+  },
+  {
+    "bytes": 4341,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-7210.txt",
+    "sha256": "0fc223581490eeb2c5588870661f293e658198d4055c26473c1d6298db0d4d79"
+  },
+  {
+    "bytes": 1297,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-76642.txt",
+    "sha256": "5efbbb1ce521d8e962d834cf6635e0375e834306efa74063e482b8b29e8ea20e"
+  },
+  {
+    "bytes": 11649,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-77214.txt",
+    "sha256": "a4d59cd4de37ef86aacf1b33e1053d1b1fb7e6f5ed1e358330aaf562b8dce447"
+  },
+  {
+    "bytes": 1915,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-88647.txt",
+    "sha256": "1bfa8c7b735c41f2b50fc6db7151c4237a7726f53a1b9775ee4378878b781329"
+  },
+  {
+    "bytes": 1969,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-88648.txt",
+    "sha256": "e7b1bc4e7686483668cea1dc2e456e18f7e553197f07b89bdbeb26bbd9b31fa4"
+  },
+  {
+    "bytes": 11389,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-93990.txt",
+    "sha256": "8ed536b08877c9ed3184d7ce80136d89911d937c7cde31e0d9552cc64427d471"
+  },
+  {
+    "bytes": 1881,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-95184.txt",
+    "sha256": "6f9ac14569988f27308e8fb0a9d01e5c492fb92ab548c424577666c491bcd30e"
+  },
+  {
+    "bytes": 1917,
+    "path": ".local/os-review-2026-11-23/ubuntu/CVE-2026-95210.txt",
+    "sha256": "35280eebb2ba1af4ef7a66b8fb6e24aee3ce0f6052b324866619b202511adeb2"
+  },
+  {
+    "bytes": 687194,
+    "path": ".local/release-security-update-2026-11-23/api-trivy.json",
+    "sha256": "5f3dfd08e2d2d05fafbca1a6cfa4515d4365a0e667965de2b7da29896396c985"
+  },
+  {
+    "bytes": 2538820,
+    "path": ".local/release-security-update-2026-11-23/tools-trivy.json",
+    "sha256": "e772f360fc8d59b91a54db46ec12c9f9d3b83c6cfca3dc0ed2501f5673b9144a"
+  },
+  {
+    "bytes": 2331416,
+    "path": ".local/release-security-update-2026-11-23/web-trivy.json",
+    "sha256": "f7753223c1ae54981f325b90825dcda46aa42839093801c2a990a468a9669197"
+  },
+  {
+    "bytes": 2279,
+    "path": "deploy/self-host/api.Dockerfile",
+    "sha256": "80cd194ab3af078805db8f2943f9c823d17af4595221332192564317c673fd29"
+  },
+  {
+    "bytes": 4262,
+    "path": "deploy/self-host/compose.yaml",
+    "sha256": "e62802354f13de79a733121d602122225266b0dfb6b122ad3d874e3f54fa054f"
+  },
+  {
+    "bytes": 6602,
+    "path": "deploy/self-host/entrypoint.py",
+    "sha256": "d637ceaf361008b9a4bf66528d96ece02eaebabe9b7952b3e94da5d0861a6253"
+  },
+  {
+    "bytes": 10829,
+    "path": "deploy/self-host/maintenance.py",
+    "sha256": "9efc5a3612cb3da095342ad825794d99fd9773b5e2cb0796fd749e698573ddb5"
+  },
+  {
+    "bytes": 19798,
+    "path": "deploy/self-host/ratefreak.py",
+    "sha256": "5f19a7f1fec5b3eb8358848d1474353812fdb3b9e09f9691d60c06535a664abc"
+  },
+  {
+    "bytes": 3334,
+    "path": "deploy/self-host/tools.Dockerfile",
+    "sha256": "cd90e47864d0fffe43b4407d1fc664fd0b4ddb5735796a3939564920c3b4d50c"
+  },
+  {
+    "bytes": 2091,
+    "path": "deploy/self-host/web.Dockerfile",
+    "sha256": "252af3aacc431183c1788594648cf59db5cae9f684d0f2a586383b0a3b2162e2"
+  },
+  {
+    "bytes": 16805,
+    "path": "docs/release-evidence/2026-11-23-os-review/build_review.py",
+    "sha256": "fabe820e138c8d807e20b54551ca98fb753c449fd5f31ab3648044554e2c9e7e"
+  },
+  {
+    "bytes": 3378,
+    "path": "docs/release-evidence/2026-11-23-security-update/layer-audit-summary.json",
+    "sha256": "f87d6d02a28f6cd2104bdad2acf679f769cf40d9592834b855c6f1a12f5bbbc4"
+  },
+  {
+    "bytes": 3962,
+    "path": "docs/release-evidence/2026-11-23-security-update/summary.json",
+    "sha256": "f84cf416aaa98a8d9a93f6a08f3fb552ea48beafc0e21aa6c0e1bee97991b5bc"
+  },
+  {
+    "bytes": 10643,
+    "path": "src/RateFreak.Infrastructure/DependencyInjection.cs",
+    "sha256": "44265a1ba9ecae0135a3b8d73bf8be9cf823dafbcfc7a705ef45aa5dcbb598cf"
+  }
+]

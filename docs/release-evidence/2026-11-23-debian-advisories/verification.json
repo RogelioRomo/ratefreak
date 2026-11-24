@@ -1,0 +1,23 @@
+{
+  "format": 1,
+  "complete": true,
+  "advisory_ids_exactly_match_authorized_set": 20,
+  "raw_matches_reconciled": 167,
+  "other_raw_matches_outside_scope": 597,
+  "input_hashes_verified": 40,
+  "official_vendor_records_verified": 22,
+  "upstream_source_files_verified": 5,
+  "image_bound_probes_passed": 2,
+  "hostile_archives_rejected_before_writes": 8,
+  "safe_restore_without_affected_filters_passed": true,
+  "selected_root_elf_files_examined": {
+    "web": 389,
+    "tools": 507
+  },
+  "shipped_js_files_checked": 1412,
+  "native_addon_source_files_checked": 9352,
+  "all_evidence_and_report_links_resolve": true,
+  "main_product_files_unchanged": true,
+  "scanner_findings_or_ignores_modified": false,
+  "full_security_release_gate": "held"
+}

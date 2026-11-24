@@ -1,69 +1,23 @@
 [
   {
-    "file": "COPIED-TOOLS-LICENSE-NOTICES.txt",
-    "images": [
-      "tools"
-    ],
-    "review": "docs/copied-tools-license-review.md",
-    "sha256": "9d820b8d6984f320ed4191b55de2847e76dd7e6b505a2bc069574a6936ad9278",
-    "targets": [
-      {
-        "path": "/usr/local/bin/docker-enforce-initdb.sh",
-        "sha256": "922ade6b23a312e65023349b36e873752b15ff38ae4c0ae461d74451e104f312"
-      },
-      {
-        "path": "/usr/local/bin/docker-ensure-initdb.sh",
-        "sha256": "922ade6b23a312e65023349b36e873752b15ff38ae4c0ae461d74451e104f312"
-      },
-      {
-        "path": "/usr/local/bin/docker-entrypoint.sh",
-        "sha256": "9c440299ae04a0a79d55b8bf03307036d890a40979d2fb698073c9050d4b20a5"
-      },
-      {
-        "path": "/usr/local/bin/gosu",
-        "sha256": "52c8749d0142edd234e9d6bd5237dff2d81e71f43537e2f4f66f75dd4b243dd0"
-      }
-    ],
-    "url": "https://github.com/tianon/gosu/tree/6456aaa0f3c854d199d0f037f068eb97515b7513"
-  },
-  {
-    "file": "COPIED-TOOLS-LICENSE-NOTICES.txt",
-    "images": [
-      "web"
-    ],
-    "review": "docs/copied-tools-license-review.md",
-    "sha256": "9d820b8d6984f320ed4191b55de2847e76dd7e6b505a2bc069574a6936ad9278",
-    "targets": [
-      {
-        "path": "/usr/local/bin/docker-entrypoint.sh",
-        "sha256": "a15ac9589c04baf9da95b08e0e79b5cf1d75ab8dc64e06a5e68e4ceb0ad7c8ea"
-      },
-      {
-        "path": "/usr/local/bin/node",
-        "sha256": "904a6d3484241d466989f9df9ba3aab822b1496191bdb28230eb491a55c32a52"
-      }
-    ],
-    "url": "https://github.com/tianon/gosu/tree/6456aaa0f3c854d199d0f037f068eb97515b7513"
-  },
-  {
     "file": "DOTNET-REDISTRIBUTION-NOTICES.txt",
     "images": [
       "api",
       "tools"
     ],
-    "review": "docs/bundled-runtime-license-review.md",
-    "sha256": "1783987c3a073036004b543f9eb7c330664f3af9ce3b31a82fcb3d74bd2af4b5",
+    "review": "docs/runtime-security-update-2026-11-23.md",
+    "sha256": "23c626fe846ae657133314560324857ca01fb753002e95e67514974072fcae0f",
     "targets": [
       {
-        "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.14/.version",
-        "sha256": "b9754dc907d29a69007a652af41cd6658aa5c9a3afd511ce548785d8450cb78c"
+        "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/.version",
+        "sha256": "c46367f32817df0e4d3a953e7f836d256db8f569d78763b39f67e5c3eb5f94e9"
       },
       {
-        "path": "/usr/share/dotnet/shared/Microsoft.AspNetCore.App/10.0.14/.version",
-        "sha256": "b9754dc907d29a69007a652af41cd6658aa5c9a3afd511ce548785d8450cb78c"
+        "path": "/usr/share/dotnet/shared/Microsoft.AspNetCore.App/10.0.15/.version",
+        "sha256": "c46367f32817df0e4d3a953e7f836d256db8f569d78763b39f67e5c3eb5f94e9"
       }
     ],
-    "url": "https://github.com/dotnet/dotnet/tree/0427b9abbead3fa64c6655eb4290c537397131fa"
+    "url": "https://github.com/dotnet/dotnet/tree/8e0f8ed2312954727f8919d7d1c2f78b483b4ee7"
   },
   {
     "file": "SKIA-REDISTRIBUTION-NOTICES.txt",
@@ -158,48 +112,22 @@
     "url": "https://github.com/mono/SkiaSharp/tree/d25e7fa628a2576e50ecc42004cc4fd03c6657f5"
   },
   {
-    "file": "NPM-RUNTIME-NOTICES.txt",
+    "file": "NODE-REDISTRIBUTION-NOTICES.txt",
     "images": [
       "web"
     ],
-    "review": "docs/npm-runtime-license-review.md",
-    "sha256": "8b47c6047c58132895e7237138fa6c97e1c7e0fa73cec623d281a8f60edfe53b",
+    "review": "docs/runtime-security-update-2026-11-23.md",
+    "sha256": "5888dbb9a1d2b18f2c3e6c5f6af1b39de658372b402a0577b002777f14c62ace",
     "targets": [
       {
-        "path": "/usr/local/lib/node_modules/npm/package.json",
-        "sha256": "f6478d5600180a23f73e4217610c7709a71cedb4ae13f6c3e15ecb457f5d4fd6"
-      }
-    ],
-    "url": "https://github.com/npm/cli/tree/d63a975ce3c1219752519b7fb68bdc03faa767c0"
-  },
-  {
-    "file": "JS-BUNDLED-TOOLS-NOTICES.txt",
-    "images": [
-      "web"
-    ],
-    "review": "docs/js-bundled-tools-license-review.md",
-    "sha256": "eee1835f5e6b99c95431ceffeeae9affab299380e93bb1df72801d14c340ff29",
-    "targets": [
+        "path": "/usr/local/bin/node",
+        "sha256": "a7ec1b37e6ff9d187e4198c5b6df9a4eb1c74dd31804fb3bac55cc4ceca1ac01"
+      },
       {
-        "path": "/usr/local/lib/node_modules/corepack/dist/lib/corepack.cjs",
-        "sha256": "abd6f0e7b4e2af310243e202fd908ea64cda545786222f0a3d3f62426e8ad66e"
+        "path": "/usr/local/LICENSE",
+        "sha256": "5888dbb9a1d2b18f2c3e6c5f6af1b39de658372b402a0577b002777f14c62ace"
       }
     ],
-    "url": "https://github.com/yarnpkg/yarn/tree/740c38c3a962c30ddb344a919bbfb7065620714b"
-  },
-  {
-    "file": "JS-BUNDLED-TOOLS-NOTICES.txt",
-    "images": [
-      "web"
-    ],
-    "review": "docs/js-bundled-tools-license-review.md",
-    "sha256": "eee1835f5e6b99c95431ceffeeae9affab299380e93bb1df72801d14c340ff29",
-    "targets": [
-      {
-        "path": "/opt/yarn-v1.22.22/lib/cli.js",
-        "sha256": "443ed69e76443b89afddccfc9faec1ff16eb5e500979cc079c696dec4c3d94ee"
-      }
-    ],
-    "url": "https://github.com/yarnpkg/yarn/tree/740c38c3a962c30ddb344a919bbfb7065620714b"
+    "url": "https://github.com/nodejs/node/blob/v24.22.3/LICENSE"
   }
 ]

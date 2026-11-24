@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "gaps": [],
+  "images": {
+    "api": {
+      "added_components": [],
+      "changed_components": [],
+      "changed_package_notices": [],
+      "component_counts": {
+        "dotnet": 2,
+        "nuget": 35,
+        "os": 125
+      },
+      "image_id": "sha256:2a659c2ed51f7628fe9bb00fa2d07423b79c2938d1b9c611af7d4aef983705c9",
+      "native_payload_evidence_unchanged": true,
+      "package_notice_bundle_hash_valid": true,
+      "package_notices_complete": true,
+      "project_license_matches": true,
+      "removed_components": [],
+      "runtime_decision_count": 0,
+      "uncovered_os_sources": []
+    },
+    "tools": {
+      "added_components": [],
+      "changed_components": [],
+      "changed_package_notices": [],
+      "component_counts": {
+        "dotnet": 2,
+        "nuget": 36,
+        "os": 156,
+        "postgres": 1,
+        "runtime": 4
+      },
+      "image_id": "sha256:8adae4896233a65b6bc365520e5dfa654802d34e5a566363eeaab777cde09033",
+      "native_payload_evidence_unchanged": true,
+      "package_notice_bundle_hash_valid": true,
+      "package_notices_complete": true,
+      "project_license_matches": true,
+      "removed_components": [],
+      "runtime_decision_count": 4,
+      "uncovered_os_sources": []
+    },
+    "web": {
+      "added_components": [],
+      "changed_components": [],
+      "changed_package_notices": [],
+      "component_counts": {
+        "native": 28,
+        "node": 1,
+        "npm": 63,
+        "os": 112,
+        "runtime": 154
+      },
+      "image_id": "sha256:ea72bb7d383d29b66b6bd5d1632b88e0bbe0db182d7afc31d81f5eee94ab5a76",
+      "native_payload_evidence_unchanged": true,
+      "package_notice_bundle_hash_valid": true,
+      "package_notices_complete": true,
+      "project_license_matches": true,
+      "removed_components": [],
+      "runtime_decision_count": 154,
+      "uncovered_os_sources": []
+    }
+  },
+  "prepared_archives": {
+    "ratefreak-candidate-os-sources.tar": {
+      "bytes": 1044961280,
+      "matches_record": true,
+      "sha256": "6e78705e84204511caac65a9c1778461b3d78f210380e475d01d5fd9d4c07736"
+    },
+    "runtime-review-materials.tar.gz": {
+      "bytes": 8686299,
+      "matches_record": true,
+      "sha256": "c6a7f9a6ffc1550ee2313fd529d504bc4379ae5c6fdc74186aa9df9d2dd9b619"
+    },
+    "web.native-sources.tar.gz": {
+      "bytes": 201183072,
+      "matches_record": true,
+      "sha256": "355fadebf2aa96e78b82e6bc26299d76a6afd78b847c1a30866bd8105b9c6e3c"
+    }
+  },
+  "revision": "f19a90784abff9ea5b0d787d7fc3a4cb85ac2a4b",
+  "runtime_inventory_reconciled": true,
+  "scope": "Exact evidence reconciliation; unresolved findings prevent complete source coverage."
+}

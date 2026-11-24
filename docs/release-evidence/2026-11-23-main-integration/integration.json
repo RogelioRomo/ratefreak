@@ -1,0 +1,32 @@
+{
+  "files_inspected": 122,
+  "product_files_equal_to_tested_security_snapshot": 10,
+  "configured_private_values_checked": 7,
+  "configured_private_value_matches": 0,
+  "private_key_blocks": 0,
+  "runtime_trial_remains_unintegrated": true,
+  "public_release_published": false,
+  "scope": "Current main working tree before local commit. Verification identity records the precommit HEAD and dirty state, not a final release/candidate revision.",
+  "checks_passed": 15,
+  "backend_tests_passed": 756,
+  "backend_tests_skipped": 0,
+  "frontend_tests_passed": 942,
+  "python_tests_passed": 98,
+  "debian_trial_integrated": false,
+  "main_runtime_distribution": "Bookworm for web/tools; Ubuntu Noble for API",
+  "release_gate": "held",
+  "remote_push": false,
+  "verbatim_whitespace_exceptions": [
+    {
+      "file": "deploy/compliance/runtime-supplements/NODE-REDISTRIBUTION-NOTICES.txt",
+      "sha256": "5888dbb9a1d2b18f2c3e6c5f6af1b39de658372b402a0577b002777f14c62ace",
+      "reason": "Upstream full Node license retains its original space/tab indentation; bytes equal the tested security-update source."
+    },
+    {
+      "file": "docs/release-evidence/2026-11-23-debian-trial/trial.patch",
+      "sha256": "88ebecb2da41f6b5e38d02e618328fee64fece1ea4cea35cd1958f67e213d89f",
+      "reason": "Blank context lines in the exact unified diff contain the required context-marker space; bytes equal the isolated trial Git diff."
+    }
+  ],
+  "other_staged_whitespace_checked": true
+}

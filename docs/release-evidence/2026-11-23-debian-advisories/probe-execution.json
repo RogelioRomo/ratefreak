@@ -1,0 +1,16 @@
+{
+  "web": {
+    "image_id": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0",
+    "exit_code": 0,
+    "elf_files": 389,
+    "archive_checks": 0,
+    "probe_report_sha256": "ff8513f58596978e7d623232fa94ab7d3797222647974608a6706c343810cbae"
+  },
+  "tools": {
+    "image_id": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+    "exit_code": 0,
+    "elf_files": 507,
+    "archive_checks": 8,
+    "probe_report_sha256": "e29cee63b8e323b753b28a989e540306556a96dfc0dfec1ea370ffae27d1984d"
+  }
+}

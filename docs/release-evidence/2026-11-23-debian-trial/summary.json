@@ -1,0 +1,139 @@
+{
+  "baseline_revision": "a1276b1fb70ad4e371decdad53dcab2ef6068f3d",
+  "browser_first_attempt": {
+    "complete": false,
+    "correction": "Pass full images/identity.json revision to unchanged browser assertions; no application or TLS change.",
+    "failure": "Harness expected truncated revision 36b06ca, while UI displays the full source revision.",
+    "tls_bypass_used": false
+  },
+  "date": "2026-11-23",
+  "format": 1,
+  "fresh_install_no_seed_data": true,
+  "identity": {
+    "dirty": false,
+    "official": false,
+    "revision": "36b06ca6c6bfd79f3b86c2eefc2c2eac6bae6f8f",
+    "version": "0.1.0-dev.1"
+  },
+  "images": {
+    "api": {
+      "after": 46,
+      "archive_bytes": 274151357,
+      "archive_sha256": "ad799d7c94a0b3a553f9f1b0cc4644db276d851fb3d80c1b80e98f67b383eb6d",
+      "before": 46,
+      "fix_available_findings": 0,
+      "image_config_id": "sha256:564d144ed30c066c9c4579b666293b64c603762c05f20baefe8e70ff310de791",
+      "image_id": "sha256:1ca2ebd62204c0582ca7cf4010e98791359319e90bee5c31c681436f29480209",
+      "introduced_package_advisory_associations": 0,
+      "non_os_findings": 0,
+      "removed_package_advisory_associations": 0,
+      "scan_report_sha256": "344c12b75ea3fd349d028de722fd45dfaf17c865f43f9177f066777625dc11f0",
+      "severities": {
+        "LOW": 6,
+        "MEDIUM": 40
+      }
+    },
+    "tools": {
+      "after": 377,
+      "archive_bytes": 312060780,
+      "archive_sha256": "0e155d34e85a081b8d50f918a6293a8416907303bc76a7640b3d7d4becef3600",
+      "before": 493,
+      "fix_available_findings": 0,
+      "image_config_id": "sha256:0fb85195e29965c2ca368e33e664d93ea43bb8c75c91538dfd6db1ec9112f6dc",
+      "image_id": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "introduced_package_advisory_associations": 198,
+      "non_os_findings": 0,
+      "removed_package_advisory_associations": 314,
+      "scan_report_sha256": "4617fdc1a9aab5ebfec7a7b5e9a0d607c0e4020bc9002adfd965b18793e39221",
+      "severities": {
+        "HIGH": 80,
+        "LOW": 121,
+        "MEDIUM": 149,
+        "UNKNOWN": 27
+      }
+    },
+    "web": {
+      "after": 341,
+      "archive_bytes": 111475811,
+      "archive_sha256": "1b74bfbb03d90ff31be27ca0908512b0f022d3c08fed7ecb9202a0bf609720f1",
+      "before": 475,
+      "fix_available_findings": 0,
+      "image_config_id": "sha256:d00be43313b9f92a1875ac37096fc76ab2009da6fba36efb3cebbfd03afa9820",
+      "image_id": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0",
+      "introduced_package_advisory_associations": 184,
+      "non_os_findings": 0,
+      "removed_package_advisory_associations": 318,
+      "scan_report_sha256": "9e750dcdcca722ff3ae6c49a12572ebaaa157012388470c990b1e58679c9b7ce",
+      "severities": {
+        "HIGH": 77,
+        "LOW": 100,
+        "MEDIUM": 137,
+        "UNKNOWN": 27
+      }
+    }
+  },
+  "lower_layer_sources": {
+    "archived_hashes_verified": true,
+    "bytes": 75704320,
+    "file": "lower-layer-os-sources.tar",
+    "inherited_copyright_files": 6,
+    "input_files": 12,
+    "sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7",
+    "signature_verification": true,
+    "source_versions": 4
+  },
+  "main_product_files_changed": false,
+  "published": false,
+  "python_tests": {
+    "compliance": 20,
+    "initial_release_sandbox_failure": "Node nested Git spawn blocked with EPERM; unmodified test passed outside sandbox.",
+    "operator": 52,
+    "release": 26,
+    "total": 98
+  },
+  "scanner": {
+    "database_metadata": {
+      "DownloadedAt": "2026-11-23T17:32:37.013090182Z",
+      "NextUpdate": "2026-11-24T13:07:53.152454631Z",
+      "UpdatedAt": "2026-11-23T13:07:53.152455237Z",
+      "Version": 2
+    },
+    "database_sha256": "7e73d90f8296d71ae83922dcb4a19e7469af346ef80d02fcb3790070c274b217",
+    "ignores_used": false,
+    "image": "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+    "same_cached_database_as_baseline": true,
+    "scan_scope": "Saved exact images, merged filesystem; lower-layer retained versions inventoried separately, not included in these counts.",
+    "skip_db_update": true,
+    "version": "0.76.2"
+  },
+  "scope": "Isolated Debian 13 web/tools final-stage trial; API runtime inputs unchanged, all image labels bind to the new source revision. No public release, main integration or persistent-instance change.",
+  "security_release_gate": "held",
+  "source_validation": {
+    "components": 502,
+    "format": 1,
+    "image_counts": {
+      "api": 162,
+      "tools": 152,
+      "web": 188
+    },
+    "inherited_source_versions": 4,
+    "installed_new_source_versions": 74,
+    "material_files": 40,
+    "native_inputs_verified": 406,
+    "official": false,
+    "revision": "36b06ca6c6bfd79f3b86c2eefc2c2eac6bae6f8f",
+    "valid": true
+  },
+  "totals": {
+    "after": 764,
+    "before": 1014,
+    "critical_after": 0,
+    "critical_before": 4,
+    "distinct_ids_after": 158,
+    "distinct_ids_before": 217,
+    "high_after": 157,
+    "high_before": 222,
+    "introduced_ids": 20,
+    "removed_ids": 79
+  }
+}

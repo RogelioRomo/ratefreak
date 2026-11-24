@@ -1,0 +1,589 @@
+{
+  "configured_private_values_checked": 7,
+  "format": 1,
+  "images": {
+    "api": {
+      "bytes_scanned": 778986304,
+      "credential_pattern_matches": [
+        {
+          "disposition": "Inherited pinned base-image content, not local credentials. PostgreSQL snakeoil key is a public default fixture and is not selected by the tools entrypoint; cryptographic library matches are embedded upstream content.",
+          "layer": 0,
+          "path": "usr/lib/x86_64-linux-gnu/libgnutls.so.30.37.1",
+          "rule": "private-key-block",
+          "same_layer_as_retained_upstream_based_candidate": true
+        }
+      ],
+      "file_inventory_sha256": "f89fc8d0b585c801cc87d4a30f59f3e697c416e8137eafa2cfbd78925a827f94",
+      "files_scanned": 5567,
+      "font_payloads": [],
+      "image_id": "sha256:2a659c2ed51f7628fe9bb00fa2d07423b79c2938d1b9c611af7d4aef983705c9",
+      "layers": 14,
+      "lower_layer_only_packages": [],
+      "native_payloads_in_app": [
+        {
+          "bytes": 29448,
+          "layer": 8,
+          "path": "app/Microsoft.AspNetCore.Authentication.Google.dll",
+          "sha256": "3e183f8f0d1402099286f440795aec50e2102312ea8d97a605ac55c082c10fd3"
+        },
+        {
+          "bytes": 138040,
+          "layer": 8,
+          "path": "app/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll",
+          "sha256": "41bd2c53c93d0c011311a5cefb20eb9cf6b7269cb146ab24486c0050b89275a7"
+        },
+        {
+          "bytes": 193848,
+          "layer": 8,
+          "path": "app/Microsoft.AspNetCore.OpenApi.dll",
+          "sha256": "32c46bd3ffe5a58635131c1846aa568df55c5664d3aa5aba1a9f50c1f899cdf0"
+        },
+        {
+          "bytes": 34888,
+          "layer": 8,
+          "path": "app/Microsoft.EntityFrameworkCore.Abstractions.dll",
+          "sha256": "52db99e23651582f518f64408511710b15cbdbd0ef4ba3b3489d03629b9cdf19"
+        },
+        {
+          "bytes": 2193440,
+          "layer": 8,
+          "path": "app/Microsoft.EntityFrameworkCore.Relational.dll",
+          "sha256": "34dc06980825195b4bd8d596995f2895caf0dd46793fe913a202b2740dea8cbf"
+        },
+        {
+          "bytes": 2824736,
+          "layer": 8,
+          "path": "app/Microsoft.EntityFrameworkCore.dll",
+          "sha256": "674bc6d68545b9a56388c048742258a4b266f19f14d2495496541f39f788fa7f"
+        },
+        {
+          "bytes": 486752,
+          "layer": 8,
+          "path": "app/Microsoft.OpenApi.dll",
+          "sha256": "64497b0a954493014d15494bb89f09dbed059b13efe64cdf008d5f0f6bf197e5"
+        },
+        {
+          "bytes": 676864,
+          "layer": 8,
+          "path": "app/Npgsql.EntityFrameworkCore.PostgreSQL.dll",
+          "sha256": "0b8ca4484e12f1cd119fc6b4711015ba6ce2364f9890504f6f4f13036c2075bf"
+        },
+        {
+          "bytes": 1477632,
+          "layer": 8,
+          "path": "app/Npgsql.dll",
+          "sha256": "9d8db086e9eda5ff20c4a7f83fa3eae7689198f57277ff9ceea1ee3526f5fcf8"
+        },
+        {
+          "bytes": 275456,
+          "layer": 8,
+          "path": "app/RateFreak.Api.dll",
+          "sha256": "d8f0b8b617655455b7a77933401968be5ab5e7df15c888dc83441b015e15f488"
+        },
+        {
+          "bytes": 68872,
+          "layer": 8,
+          "path": "app/RateFreak.Api.pdb",
+          "sha256": "250ed6fe20acec75883ff55c23211ac9bbf9748a0cb379a0ff7c7d31c81b5aa5"
+        },
+        {
+          "bytes": 218624,
+          "layer": 8,
+          "path": "app/RateFreak.Application.dll",
+          "sha256": "f2ae0f7437af43c06fdacb21513fbc07fee2825b2887a3ba8e895edf7cf6e70d"
+        },
+        {
+          "bytes": 46884,
+          "layer": 8,
+          "path": "app/RateFreak.Application.pdb",
+          "sha256": "6e28d10c9135ac663ee8aa0be3d577010cb21438bfda870e86458a78050bbc52"
+        },
+        {
+          "bytes": 32768,
+          "layer": 8,
+          "path": "app/RateFreak.Domain.dll",
+          "sha256": "93629ffdef80fbfc515a24be4b9ce662b3f61b4b684b43b000e2f1ecf607afc9"
+        },
+        {
+          "bytes": 21228,
+          "layer": 8,
+          "path": "app/RateFreak.Domain.pdb",
+          "sha256": "372763ebbb862d6dacfb75a5978dc32170fa7898696231c4426c83b72bbc1ce8"
+        },
+        {
+          "bytes": 1202688,
+          "layer": 8,
+          "path": "app/RateFreak.Infrastructure.dll",
+          "sha256": "49a3ebac1d4dc1839693f23b0aa1be8af05391b8d1112591414ae4221c532de9"
+        },
+        {
+          "bytes": 187352,
+          "layer": 8,
+          "path": "app/RateFreak.Infrastructure.pdb",
+          "sha256": "ddafa54289b89c094d609c0c65a4ff9a6e612df07d5d7e162da66b03823b09d4"
+        },
+        {
+          "bytes": 560480,
+          "layer": 8,
+          "path": "app/SkiaSharp.dll",
+          "sha256": "b462877e4dd46fc6487a7830a72955bdefd8e8c276cb95da96a484d655f4e95a"
+        },
+        {
+          "bytes": 754688,
+          "layer": 8,
+          "path": "app/Swashbuckle.AspNetCore.SwaggerUI.dll",
+          "sha256": "049dd9177dc6789b95b566b4c7f5b896af9ee7fbf8ba2507a44d7339a22316ef"
+        },
+        {
+          "bytes": 8751936,
+          "layer": 8,
+          "path": "app/runtimes/linux-arm/native/libSkiaSharp.so",
+          "sha256": "d439f9976e0ec0315dd8087c31780e80d070492a444ec9880668c2ae8fee1efd"
+        },
+        {
+          "bytes": 12168296,
+          "layer": 8,
+          "path": "app/runtimes/linux-arm64/native/libSkiaSharp.so",
+          "sha256": "fb2f5d9374aef307ed4f92272cb57c1a11c975ab98291389a61b444b2fc473e1"
+        },
+        {
+          "bytes": 12451856,
+          "layer": 8,
+          "path": "app/runtimes/linux-bionic-arm64/native/libSkiaSharp.so",
+          "sha256": "5fdf0d9f1ba48768c2f9cbedf1bbea05913ad889d8b930c5c1d4cd4b26e4f1a2"
+        },
+        {
+          "bytes": 12364824,
+          "layer": 8,
+          "path": "app/runtimes/linux-bionic-x64/native/libSkiaSharp.so",
+          "sha256": "a9203e712c241d576a098722176ee7b835bcc6d5501b742851bd8769cad7a7fc"
+        },
+        {
+          "bytes": 11627824,
+          "layer": 8,
+          "path": "app/runtimes/linux-loongarch64/native/libSkiaSharp.so",
+          "sha256": "8b6f2872c41fda2eb650bad2dcca3a2a03c8cd10dc739b68555f156605018461"
+        },
+        {
+          "bytes": 8781388,
+          "layer": 8,
+          "path": "app/runtimes/linux-musl-arm/native/libSkiaSharp.so",
+          "sha256": "d165aeace187b37f01fff019bf049ec3864e4f598904b886cca4e415931580c1"
+        },
+        {
+          "bytes": 12283224,
+          "layer": 8,
+          "path": "app/runtimes/linux-musl-arm64/native/libSkiaSharp.so",
+          "sha256": "483a1104b08bc97c8ebd5611fc2bc8f5d02948e9ef31cffae136b63b9a3796ef"
+        },
+        {
+          "bytes": 11996248,
+          "layer": 8,
+          "path": "app/runtimes/linux-musl-loongarch64/native/libSkiaSharp.so",
+          "sha256": "9ed7a5629b52487c2e0b5fa87dd299ad4fd82d148e119ef06fe8cf2d0141af18"
+        },
+        {
+          "bytes": 11146176,
+          "layer": 8,
+          "path": "app/runtimes/linux-musl-riscv64/native/libSkiaSharp.so",
+          "sha256": "2477c0558fae1e451ee26dfdd93bf1d6be16e2a69633ab078daa849950a06d6d"
+        },
+        {
+          "bytes": 12414560,
+          "layer": 8,
+          "path": "app/runtimes/linux-musl-x64/native/libSkiaSharp.so",
+          "sha256": "bc1d9134cf3e573615fec26f7ad411e1380718e202b6adf8667b0bbccb45ec6c"
+        },
+        {
+          "bytes": 10975608,
+          "layer": 8,
+          "path": "app/runtimes/linux-riscv64/native/libSkiaSharp.so",
+          "sha256": "a280f84169f9024bc1a0bd0115e2220ab7a0da1468df48ccb728a93824cb64f9"
+        },
+        {
+          "bytes": 12287632,
+          "layer": 8,
+          "path": "app/runtimes/linux-x64/native/libSkiaSharp.so",
+          "sha256": "26a5cf2cfb4529cf00caabc7e9f381ff59641c36690a6e658f8e3e4fa9ac850e"
+        },
+        {
+          "bytes": 13236624,
+          "layer": 8,
+          "path": "app/runtimes/linux-x86/native/libSkiaSharp.so",
+          "sha256": "72e2d38cbc41e47544d06e04469ffba6f1f36a6bb0524e56fd14ad5facbc2c8e"
+        },
+        {
+          "bytes": 15979040,
+          "layer": 8,
+          "path": "app/runtimes/osx/native/libSkiaSharp.dylib",
+          "sha256": "588d04be630b26e832f621e9ed2b03235324dbe7ba452de50c2c0fdfd77d197e"
+        },
+        {
+          "bytes": 11105120,
+          "layer": 8,
+          "path": "app/runtimes/win-arm64/native/libSkiaSharp.dll",
+          "sha256": "800abc5ae146ac93d03a916005739ddc59e478ec3d69fde04c415de1cc466f43"
+        },
+        {
+          "bytes": 93282304,
+          "layer": 8,
+          "path": "app/runtimes/win-arm64/native/libSkiaSharp.pdb",
+          "sha256": "9d4c39ea07db8065c3dfbe91374add4f02cd12a578c2e0de516d6de626465b44"
+        },
+        {
+          "bytes": 12950840,
+          "layer": 8,
+          "path": "app/runtimes/win-x64/native/libSkiaSharp.dll",
+          "sha256": "635d8189af815bc57f39282724e461925d17ea88877279c207e6a80ee6d8d135"
+        },
+        {
+          "bytes": 96624640,
+          "layer": 8,
+          "path": "app/runtimes/win-x64/native/libSkiaSharp.pdb",
+          "sha256": "d14b3fd77e54785d21c49f286a804b404d07a36c667fe65863ebb10029a370fc"
+        },
+        {
+          "bytes": 11218784,
+          "layer": 8,
+          "path": "app/runtimes/win-x86/native/libSkiaSharp.dll",
+          "sha256": "af680debfa90df405b7624df8bdb1e71e2a59d9c468c13cf7cde52f76c2498d2"
+        },
+        {
+          "bytes": 99344384,
+          "layer": 8,
+          "path": "app/runtimes/win-x86/native/libSkiaSharp.pdb",
+          "sha256": "d6007406766319ac58f36de36bd2be785360cad8e9560131fd0a957640a1079d"
+        }
+      ],
+      "oci_identity_chain_valid": true,
+      "og_wasm_payloads": [],
+      "privacy_review_complete": true,
+      "private_value_matches": [],
+      "revision_label_matches": true,
+      "suspicious_paths": [],
+      "version_label_matches": true
+    },
+    "tools": {
+      "bytes_scanned": 1137825656,
+      "credential_pattern_matches": [
+        {
+          "disposition": "Inherited pinned base-image content, not local credentials. PostgreSQL snakeoil key is a public default fixture and is not selected by the tools entrypoint; cryptographic library matches are embedded upstream content.",
+          "layer": 0,
+          "path": "usr/lib/x86_64-linux-gnu/libgnutls.so.30.34.3",
+          "rule": "private-key-block",
+          "same_layer_as_retained_upstream_based_candidate": true
+        },
+        {
+          "disposition": "Inherited pinned base-image content, not local credentials. PostgreSQL snakeoil key is a public default fixture and is not selected by the tools entrypoint; cryptographic library matches are embedded upstream content.",
+          "layer": 8,
+          "path": "etc/ssl/private/ssl-cert-snakeoil.key",
+          "rule": "private-key-block",
+          "same_layer_as_retained_upstream_based_candidate": true
+        }
+      ],
+      "file_inventory_sha256": "a1d8721967d7089780b3a50cda132a781bdaaef439799dced69eba92394a5c6e",
+      "files_scanned": 9799,
+      "font_payloads": [],
+      "image_id": "sha256:8adae4896233a65b6bc365520e5dfa654802d34e5a566363eeaab777cde09033",
+      "layers": 24,
+      "lower_layer_only_packages": [],
+      "native_payloads_in_app": [
+        {
+          "bytes": 29448,
+          "layer": 17,
+          "path": "app/Microsoft.AspNetCore.Authentication.Google.dll",
+          "sha256": "3e183f8f0d1402099286f440795aec50e2102312ea8d97a605ac55c082c10fd3"
+        },
+        {
+          "bytes": 138040,
+          "layer": 17,
+          "path": "app/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll",
+          "sha256": "41bd2c53c93d0c011311a5cefb20eb9cf6b7269cb146ab24486c0050b89275a7"
+        },
+        {
+          "bytes": 193848,
+          "layer": 17,
+          "path": "app/Microsoft.AspNetCore.OpenApi.dll",
+          "sha256": "32c46bd3ffe5a58635131c1846aa568df55c5664d3aa5aba1a9f50c1f899cdf0"
+        },
+        {
+          "bytes": 34888,
+          "layer": 17,
+          "path": "app/Microsoft.EntityFrameworkCore.Abstractions.dll",
+          "sha256": "52db99e23651582f518f64408511710b15cbdbd0ef4ba3b3489d03629b9cdf19"
+        },
+        {
+          "bytes": 2193440,
+          "layer": 17,
+          "path": "app/Microsoft.EntityFrameworkCore.Relational.dll",
+          "sha256": "34dc06980825195b4bd8d596995f2895caf0dd46793fe913a202b2740dea8cbf"
+        },
+        {
+          "bytes": 2824736,
+          "layer": 17,
+          "path": "app/Microsoft.EntityFrameworkCore.dll",
+          "sha256": "674bc6d68545b9a56388c048742258a4b266f19f14d2495496541f39f788fa7f"
+        },
+        {
+          "bytes": 486752,
+          "layer": 17,
+          "path": "app/Microsoft.OpenApi.dll",
+          "sha256": "64497b0a954493014d15494bb89f09dbed059b13efe64cdf008d5f0f6bf197e5"
+        },
+        {
+          "bytes": 676864,
+          "layer": 17,
+          "path": "app/Npgsql.EntityFrameworkCore.PostgreSQL.dll",
+          "sha256": "0b8ca4484e12f1cd119fc6b4711015ba6ce2364f9890504f6f4f13036c2075bf"
+        },
+        {
+          "bytes": 1477632,
+          "layer": 17,
+          "path": "app/Npgsql.dll",
+          "sha256": "9d8db086e9eda5ff20c4a7f83fa3eae7689198f57277ff9ceea1ee3526f5fcf8"
+        },
+        {
+          "bytes": 275456,
+          "layer": 17,
+          "path": "app/RateFreak.Api.dll",
+          "sha256": "d8f0b8b617655455b7a77933401968be5ab5e7df15c888dc83441b015e15f488"
+        },
+        {
+          "bytes": 68872,
+          "layer": 17,
+          "path": "app/RateFreak.Api.pdb",
+          "sha256": "250ed6fe20acec75883ff55c23211ac9bbf9748a0cb379a0ff7c7d31c81b5aa5"
+        },
+        {
+          "bytes": 218624,
+          "layer": 17,
+          "path": "app/RateFreak.Application.dll",
+          "sha256": "f2ae0f7437af43c06fdacb21513fbc07fee2825b2887a3ba8e895edf7cf6e70d"
+        },
+        {
+          "bytes": 46884,
+          "layer": 17,
+          "path": "app/RateFreak.Application.pdb",
+          "sha256": "6e28d10c9135ac663ee8aa0be3d577010cb21438bfda870e86458a78050bbc52"
+        },
+        {
+          "bytes": 32768,
+          "layer": 17,
+          "path": "app/RateFreak.Domain.dll",
+          "sha256": "93629ffdef80fbfc515a24be4b9ce662b3f61b4b684b43b000e2f1ecf607afc9"
+        },
+        {
+          "bytes": 21228,
+          "layer": 17,
+          "path": "app/RateFreak.Domain.pdb",
+          "sha256": "372763ebbb862d6dacfb75a5978dc32170fa7898696231c4426c83b72bbc1ce8"
+        },
+        {
+          "bytes": 1202688,
+          "layer": 17,
+          "path": "app/RateFreak.Infrastructure.dll",
+          "sha256": "49a3ebac1d4dc1839693f23b0aa1be8af05391b8d1112591414ae4221c532de9"
+        },
+        {
+          "bytes": 187352,
+          "layer": 17,
+          "path": "app/RateFreak.Infrastructure.pdb",
+          "sha256": "ddafa54289b89c094d609c0c65a4ff9a6e612df07d5d7e162da66b03823b09d4"
+        },
+        {
+          "bytes": 560480,
+          "layer": 17,
+          "path": "app/SkiaSharp.dll",
+          "sha256": "b462877e4dd46fc6487a7830a72955bdefd8e8c276cb95da96a484d655f4e95a"
+        },
+        {
+          "bytes": 754688,
+          "layer": 17,
+          "path": "app/Swashbuckle.AspNetCore.SwaggerUI.dll",
+          "sha256": "049dd9177dc6789b95b566b4c7f5b896af9ee7fbf8ba2507a44d7339a22316ef"
+        },
+        {
+          "bytes": 8751936,
+          "layer": 17,
+          "path": "app/runtimes/linux-arm/native/libSkiaSharp.so",
+          "sha256": "d439f9976e0ec0315dd8087c31780e80d070492a444ec9880668c2ae8fee1efd"
+        },
+        {
+          "bytes": 12168296,
+          "layer": 17,
+          "path": "app/runtimes/linux-arm64/native/libSkiaSharp.so",
+          "sha256": "fb2f5d9374aef307ed4f92272cb57c1a11c975ab98291389a61b444b2fc473e1"
+        },
+        {
+          "bytes": 12451856,
+          "layer": 17,
+          "path": "app/runtimes/linux-bionic-arm64/native/libSkiaSharp.so",
+          "sha256": "5fdf0d9f1ba48768c2f9cbedf1bbea05913ad889d8b930c5c1d4cd4b26e4f1a2"
+        },
+        {
+          "bytes": 12364824,
+          "layer": 17,
+          "path": "app/runtimes/linux-bionic-x64/native/libSkiaSharp.so",
+          "sha256": "a9203e712c241d576a098722176ee7b835bcc6d5501b742851bd8769cad7a7fc"
+        },
+        {
+          "bytes": 11627824,
+          "layer": 17,
+          "path": "app/runtimes/linux-loongarch64/native/libSkiaSharp.so",
+          "sha256": "8b6f2872c41fda2eb650bad2dcca3a2a03c8cd10dc739b68555f156605018461"
+        },
+        {
+          "bytes": 8781388,
+          "layer": 17,
+          "path": "app/runtimes/linux-musl-arm/native/libSkiaSharp.so",
+          "sha256": "d165aeace187b37f01fff019bf049ec3864e4f598904b886cca4e415931580c1"
+        },
+        {
+          "bytes": 12283224,
+          "layer": 17,
+          "path": "app/runtimes/linux-musl-arm64/native/libSkiaSharp.so",
+          "sha256": "483a1104b08bc97c8ebd5611fc2bc8f5d02948e9ef31cffae136b63b9a3796ef"
+        },
+        {
+          "bytes": 11996248,
+          "layer": 17,
+          "path": "app/runtimes/linux-musl-loongarch64/native/libSkiaSharp.so",
+          "sha256": "9ed7a5629b52487c2e0b5fa87dd299ad4fd82d148e119ef06fe8cf2d0141af18"
+        },
+        {
+          "bytes": 11146176,
+          "layer": 17,
+          "path": "app/runtimes/linux-musl-riscv64/native/libSkiaSharp.so",
+          "sha256": "2477c0558fae1e451ee26dfdd93bf1d6be16e2a69633ab078daa849950a06d6d"
+        },
+        {
+          "bytes": 12414560,
+          "layer": 17,
+          "path": "app/runtimes/linux-musl-x64/native/libSkiaSharp.so",
+          "sha256": "bc1d9134cf3e573615fec26f7ad411e1380718e202b6adf8667b0bbccb45ec6c"
+        },
+        {
+          "bytes": 10975608,
+          "layer": 17,
+          "path": "app/runtimes/linux-riscv64/native/libSkiaSharp.so",
+          "sha256": "a280f84169f9024bc1a0bd0115e2220ab7a0da1468df48ccb728a93824cb64f9"
+        },
+        {
+          "bytes": 12287632,
+          "layer": 17,
+          "path": "app/runtimes/linux-x64/native/libSkiaSharp.so",
+          "sha256": "26a5cf2cfb4529cf00caabc7e9f381ff59641c36690a6e658f8e3e4fa9ac850e"
+        },
+        {
+          "bytes": 13236624,
+          "layer": 17,
+          "path": "app/runtimes/linux-x86/native/libSkiaSharp.so",
+          "sha256": "72e2d38cbc41e47544d06e04469ffba6f1f36a6bb0524e56fd14ad5facbc2c8e"
+        },
+        {
+          "bytes": 15979040,
+          "layer": 17,
+          "path": "app/runtimes/osx/native/libSkiaSharp.dylib",
+          "sha256": "588d04be630b26e832f621e9ed2b03235324dbe7ba452de50c2c0fdfd77d197e"
+        },
+        {
+          "bytes": 11105120,
+          "layer": 17,
+          "path": "app/runtimes/win-arm64/native/libSkiaSharp.dll",
+          "sha256": "800abc5ae146ac93d03a916005739ddc59e478ec3d69fde04c415de1cc466f43"
+        },
+        {
+          "bytes": 93282304,
+          "layer": 17,
+          "path": "app/runtimes/win-arm64/native/libSkiaSharp.pdb",
+          "sha256": "9d4c39ea07db8065c3dfbe91374add4f02cd12a578c2e0de516d6de626465b44"
+        },
+        {
+          "bytes": 12950840,
+          "layer": 17,
+          "path": "app/runtimes/win-x64/native/libSkiaSharp.dll",
+          "sha256": "635d8189af815bc57f39282724e461925d17ea88877279c207e6a80ee6d8d135"
+        },
+        {
+          "bytes": 96624640,
+          "layer": 17,
+          "path": "app/runtimes/win-x64/native/libSkiaSharp.pdb",
+          "sha256": "d14b3fd77e54785d21c49f286a804b404d07a36c667fe65863ebb10029a370fc"
+        },
+        {
+          "bytes": 11218784,
+          "layer": 17,
+          "path": "app/runtimes/win-x86/native/libSkiaSharp.dll",
+          "sha256": "af680debfa90df405b7624df8bdb1e71e2a59d9c468c13cf7cde52f76c2498d2"
+        },
+        {
+          "bytes": 99344384,
+          "layer": 17,
+          "path": "app/runtimes/win-x86/native/libSkiaSharp.pdb",
+          "sha256": "d6007406766319ac58f36de36bd2be785360cad8e9560131fd0a957640a1079d"
+        }
+      ],
+      "oci_identity_chain_valid": true,
+      "og_wasm_payloads": [],
+      "privacy_review_complete": true,
+      "private_value_matches": [],
+      "revision_label_matches": true,
+      "suspicious_paths": [],
+      "version_label_matches": true
+    },
+    "web": {
+      "bytes_scanned": 325956226,
+      "credential_pattern_matches": [
+        {
+          "disposition": "Inherited pinned base-image content, not local credentials. PostgreSQL snakeoil key is a public default fixture and is not selected by the tools entrypoint; cryptographic library matches are embedded upstream content.",
+          "layer": 0,
+          "path": "usr/lib/x86_64-linux-gnu/libgnutls.so.30.34.3",
+          "rule": "private-key-block",
+          "same_layer_as_retained_upstream_based_candidate": true
+        }
+      ],
+      "file_inventory_sha256": "9955c397a3a7ca65146171e26f67283ad069e63ec1cc13744f9aa0b7a64105d7",
+      "files_scanned": 9342,
+      "font_payloads": [
+        {
+          "bytes": 21436,
+          "layer": 9,
+          "path": "app/public/fonts/dm-sans-latin.woff2",
+          "sha256": "4ca911fd891a37d3ffa9573ba49f9163c28cca78de41bf8610d6db9831cffeb8"
+        },
+        {
+          "bytes": 29496,
+          "layer": 9,
+          "path": "app/public/fonts/fraunces-latin.woff2",
+          "sha256": "7e489d7d33957ab84bd86a39abd059c4f1af17de63070a0e18dc3621bf1d2323"
+        }
+      ],
+      "image_id": "sha256:ea72bb7d383d29b66b6bd5d1632b88e0bbe0db182d7afc31d81f5eee94ab5a76",
+      "layers": 14,
+      "lower_layer_only_packages": [],
+      "native_payloads_in_app": [
+        {
+          "bytes": 18699288,
+          "layer": 7,
+          "path": "app/node_modules/.pnpm/@img+sharp-libvips-linux-x64@1.3.4/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.18.7",
+          "sha256": "4aa73553408c3964071728f4a231a8e86918e39bc49f1fbae75355f7ea933ea9"
+        },
+        {
+          "bytes": 415112,
+          "layer": 7,
+          "path": "app/node_modules/.pnpm/@img+sharp-linux-x64@0.35.5/node_modules/@img/sharp-linux-x64/lib/sharp-linux-x64-0.35.5.node",
+          "sha256": "cf896cc1b7f3ae9c3e8eb3d7b2b198b8de2824ff7d0681d684bab5a825def335"
+        }
+      ],
+      "oci_identity_chain_valid": true,
+      "og_wasm_payloads": [],
+      "privacy_review_complete": true,
+      "private_value_matches": [],
+      "revision_label_matches": true,
+      "suspicious_paths": [],
+      "version_label_matches": true
+    }
+  },
+  "revision": "f19a90784abff9ea5b0d787d7fc3a4cb85ac2a4b",
+  "scope": "All distributed image layers and image configuration; content heuristics are not proof of secret absence."
+}

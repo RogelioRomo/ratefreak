@@ -1,0 +1,19 @@
+{
+  "advisory_ids_assessed": 20,
+  "covered_raw_matches": 167,
+  "date": "2026-11-23",
+  "format": 1,
+  "full_release_security_gate": "held",
+  "images": {
+    "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+    "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+  },
+  "product_files_changed": false,
+  "product_fixes_required_by_supported_flow_assessment": 0,
+  "raw_trial_matches_outside_this_review": 597,
+  "raw_trial_scan_matches_unchanged": 764,
+  "scanner_ignores_added": false,
+  "scope_limit": "Technical applicability decisions for the 20 new IDs only, conditional on exact artifacts and supported workflows; upstream statuses remain open; prior residual/native/service-image work is not cleared.",
+  "scoped_exclusions": 20,
+  "source_revision": "36b06ca6c6bfd79f3b86c2eefc2c2eac6bae6f8f"
+}

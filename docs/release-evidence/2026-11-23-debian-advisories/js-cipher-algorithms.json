@@ -1,0 +1,45 @@
+[
+  {
+    "file": "/app/node_modules/.pnpm/next@16.4.6_@babel+core@7.29.7_@types+node@24.19.2_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/next/dist/server/crypto-utils.js",
+    "aes_algorithm_tokens_including_comments": [
+      "aes-256-cbc-if-aes-256-gcm-is-more-secure",
+      "aes-256-gcm"
+    ]
+  },
+  {
+    "file": "/app/node_modules/.pnpm/next@16.4.6_@babel+core@7.29.7_@types+node@24.19.2_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/next/dist/compiled/conf/index.js",
+    "aes_algorithm_tokens_including_comments": [
+      "aes-256-cbc"
+    ]
+  },
+  {
+    "file": "/app/node_modules/.pnpm/next@16.4.6_@babel+core@7.29.7_@types+node@24.19.2_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js",
+    "aes_algorithm_tokens_including_comments": [
+      "aes-256-gcm"
+    ]
+  },
+  {
+    "file": "/app/node_modules/.pnpm/next@16.4.6_@babel+core@7.29.7_@types+node@24.19.2_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/next/dist/compiled/next-server/app-page-turbo-experimental.runtime.prod.js",
+    "aes_algorithm_tokens_including_comments": [
+      "aes-256-gcm"
+    ]
+  },
+  {
+    "file": "/app/node_modules/.pnpm/next@16.4.6_@babel+core@7.29.7_@types+node@24.19.2_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/next/dist/compiled/next-server/app-page-turbo.runtime.prod.js",
+    "aes_algorithm_tokens_including_comments": [
+      "aes-256-gcm"
+    ]
+  },
+  {
+    "file": "/app/node_modules/.pnpm/next@16.4.6_@babel+core@7.29.7_@types+node@24.19.2_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/next/dist/compiled/next-server/pages-turbo.runtime.prod.js",
+    "aes_algorithm_tokens_including_comments": [
+      "aes-256-gcm"
+    ]
+  },
+  {
+    "file": "/app/node_modules/.pnpm/@next+env@16.4.6/node_modules/@next/env/dist/index.js",
+    "aes_algorithm_tokens_including_comments": [
+      "aes-256-gcm"
+    ]
+  }
+]

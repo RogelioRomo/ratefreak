@@ -1,0 +1,306 @@
+{
+  "tlsVerified": true,
+  "ordinaryDenied": true,
+  "sourceRevision": "36b06ca6c6bfd79f3b86c2eefc2c2eac6bae6f8f",
+  "version": "0.1.0-dev.1",
+  "journeys": [
+    {
+      "account": "admin",
+      "theme": "light",
+      "route": "/",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "light",
+      "route": "/catalog",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "light",
+      "route": "/library",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "light",
+      "route": "/library/history",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "light",
+      "route": "/notifications",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "light",
+      "route": "/account",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "light",
+      "route": "/moderation",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "light",
+      "route": "/moderation/staff",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "light",
+      "route": "/credits",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "dark",
+      "route": "/",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "dark",
+      "route": "/catalog",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "dark",
+      "route": "/library",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "dark",
+      "route": "/library/history",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "dark",
+      "route": "/notifications",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "dark",
+      "route": "/account",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "dark",
+      "route": "/moderation",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "dark",
+      "route": "/moderation/staff",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "admin",
+      "theme": "dark",
+      "route": "/credits",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "ordinary",
+      "route": "/",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "ordinary",
+      "route": "/catalog",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "ordinary",
+      "route": "/library",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "ordinary",
+      "route": "/library/history",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "ordinary",
+      "route": "/notifications",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "ordinary",
+      "route": "/account",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "account": "ordinary",
+      "route": "/credits",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    }
+  ],
+  "results": [
+    {
+      "theme": "light",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ],
+      "realDisabledState": true,
+      "simulatedNewerRelease": true,
+      "keyboardCheck": true,
+      "logoutConcealed": true,
+      "noBrowserGitHubRequests": true
+    },
+    {
+      "theme": "dark",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ],
+      "realDisabledState": true,
+      "simulatedNewerRelease": true,
+      "keyboardCheck": true,
+      "logoutConcealed": true,
+      "noBrowserGitHubRequests": true
+    }
+  ]
+}

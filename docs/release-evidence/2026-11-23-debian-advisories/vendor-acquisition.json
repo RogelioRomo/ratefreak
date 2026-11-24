@@ -1,0 +1,134 @@
+[
+  {
+    "file": "CVE-2026-78408.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-78408",
+    "bytes": 4779,
+    "sha256": "c2ce37b05cca7f05768d22c20645c174592a837fb20423fa7f106dc4e6e0d104"
+  },
+  {
+    "file": "CVE-2026-78409.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-78409",
+    "bytes": 4417,
+    "sha256": "7762ce7d10558ca03e3fcc3995b97e7a24d13ab4b1d6cdd3e4bf9ff7d357ba48"
+  },
+  {
+    "file": "CVE-2026-115455.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-115455",
+    "bytes": 7223,
+    "sha256": "9da98619b1ec84f51e28071c2f0b5ef1a9697456b36cf7301c1cf5e0702301ef"
+  },
+  {
+    "file": "CVE-2026-15308.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-15308",
+    "bytes": 6564,
+    "sha256": "f6d604b1c118865e6e699ad9b141f94512dec37fd480489a1f48ac2015ce0e11"
+  },
+  {
+    "file": "CVE-2026-19445.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-19445",
+    "bytes": 7265,
+    "sha256": "8f6de638e6fcdce171bf105b8d3eb39232ff6a871f8d84d9b31f9f06226e3127"
+  },
+  {
+    "file": "CVE-2026-19553.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-19553",
+    "bytes": 7904,
+    "sha256": "423767bedda557fbaf7c7d710dfc55222586b062699645c83ce1e628cb66cbe3"
+  },
+  {
+    "file": "CVE-2026-82049.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-82049",
+    "bytes": 6342,
+    "sha256": "66082d4a5abebfae1b5dfa5ba76bdf1e4e650629e7ac35dce97ec1e78cf320db"
+  },
+  {
+    "file": "CVE-2026-114583.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-114583",
+    "bytes": 7981,
+    "sha256": "704cd2568ef57f825f913bfe2e5164c03be16e293f02386045dfc0f5f0645958"
+  },
+  {
+    "file": "CVE-2026-15310.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-15310",
+    "bytes": 6433,
+    "sha256": "cd3afe671b1cf0d57e427b67cd83253db6e93ef5b336b946fe9c6d0c005cfea6"
+  },
+  {
+    "file": "CVE-2026-15806.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-15806",
+    "bytes": 8842,
+    "sha256": "d818dd2f37ca6ab71b774fff9975d82ccaa0f696892b4e45c3ea16a833c2ee69"
+  },
+  {
+    "file": "CVE-2026-17084.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-17084",
+    "bytes": 8204,
+    "sha256": "ba8a940b0b07fe33c3c3364538062d4e5b7d857996b6b0b18af8ab73297373b2"
+  },
+  {
+    "file": "CVE-2026-19672.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-19672",
+    "bytes": 7471,
+    "sha256": "bbcb080521166309ee978aa0ac1339285a77a5bce3cb9865b4351921f1a062c5"
+  },
+  {
+    "file": "CVE-2026-87910.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-87910",
+    "bytes": 7078,
+    "sha256": "f483e79d64fa76e6dc1ba944f668d2746b3eb3e3afef9bddfcfe2e4d6862c2f3"
+  },
+  {
+    "file": "CVE-2026-18503.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-18503",
+    "bytes": 8280,
+    "sha256": "f6033b259ec9380f80defa8b728b5b46f22ac270b954960741ac4e2be6a1b88b"
+  },
+  {
+    "file": "CVE-2026-124709.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-124709",
+    "bytes": 5915,
+    "sha256": "a0a17b8fc37206409f084e69440196f8be35c83b3a3c84d99a607a6f36f2ec12"
+  },
+  {
+    "file": "CVE-2026-35190.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-35190",
+    "bytes": 6013,
+    "sha256": "00ea7818f853f2c69c5371fa39c7e13c0b7ee0e99e01413f922045549f530380"
+  },
+  {
+    "file": "CVE-2026-95691.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-95691",
+    "bytes": 5265,
+    "sha256": "38834566419ac509d06655867409f41301445487fbdb83df9b9cc484109a5f7e"
+  },
+  {
+    "file": "CVE-2026-95692.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-95692",
+    "bytes": 5954,
+    "sha256": "50f9edb6c8b63aa1b35938c7f2c2cfa430a4920db8428399fb8b148e5a1e7bec"
+  },
+  {
+    "file": "CVE-2026-88822.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-88822",
+    "bytes": 5504,
+    "sha256": "b27248ae33af0e534bab1ced9ab1c0895018e07230285a450d85ea1647312dc8"
+  },
+  {
+    "file": "CVE-2026-88823.html",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-88823",
+    "bytes": 5382,
+    "sha256": "eb623dc9d8b0a95cba5c7dcb1031aa8f423c53109d88d08772c030ecc21d2425"
+  },
+  {
+    "file": "openssl-20261110.txt",
+    "url": "https://openssl-library.org/news/secadv/20261110.txt",
+    "bytes": 11780,
+    "sha256": "31f4c88950cd9cd310794a218361b787d293a940d2568f9f82334915ac54a402"
+  },
+  {
+    "file": "openssl-20261117.txt",
+    "url": "https://openssl-library.org/news/secadv/20261117.txt",
+    "bytes": 8844,
+    "sha256": "6f4219cd823c3472863cc592182ef571d7485ac2f8735845244dbc13e3e09f27"
+  }
+]

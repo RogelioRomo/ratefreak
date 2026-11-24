@@ -1,0 +1,27 @@
+{
+  "format": 1,
+  "implementation_base": "f19a90784abff9ea5b0d787d7fc3a4cb85ac2a4b",
+  "implementation_head": "a1276b1fb70ad4e371decdad53dcab2ef6068f3d",
+  "critical_findings": 0,
+  "important_findings": 0,
+  "minor_findings": [
+    {
+      "issue": "Distinguish upstream minimatch minimum ^11.0.1 from locked11.0.9",
+      "resolution": "Corrected in the main checkout documentation; immutable proof source snapshot retained."
+    }
+  ],
+  "source_review": {
+    "mapped_components": 533,
+    "current_os_pair_coverage": true,
+    "application_notice_manifests_unchanged": true,
+    "installation_and_native_bindings_verified": true,
+    "new_os_source_archive_verified": true
+  },
+  "evidence_caveat": "Generic key regex matches are confined to unchanged upstream libgnutls bytes; no configured private values matched. Explicit disposition added.",
+  "limits": [
+    "Read-only review; no repeated tests/scans",
+    "Nonofficial local amd64 proof candidate, not a stable public release",
+    "Empty-journal replay proof only; no new nonempty erasure replay exercise",
+    "No repeated native rebuild/OS binary reproduction/provider permission/security clearance"
+  ]
+}

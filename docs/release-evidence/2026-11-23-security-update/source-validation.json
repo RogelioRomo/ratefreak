@@ -1,0 +1,13 @@
+{
+  "components": 533,
+  "format": 1,
+  "image_counts": {
+    "api": 162,
+    "tools": 165,
+    "web": 206
+  },
+  "material_files": 33,
+  "official": false,
+  "revision": "a1276b1fb70ad4e371decdad53dcab2ef6068f3d",
+  "valid": true
+}

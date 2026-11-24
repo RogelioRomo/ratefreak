@@ -1,6 +1,99 @@
 # Current project status and roadmap
 
-Updated: 2026-11-21. The selected copied-runtime and bundled-component review is
+Updated: 2026-11-23. The main checkout contains the reviewed runtime security
+updates and release-review evidence. Local integration verification passed all
+15 release checks: 756 backend tests with zero skips, 942 frontend tests and 98
+operator/release/compliance tests, plus lint, typecheck, production builds and
+model consistency. The ten product files match tested snapshot `a1276b1`.
+Web/tools still use Bookworm; the Debian 13 trial and its proposed patch remain
+isolated. Historical proof images retain their recorded source identities;
+this verification does not qualify a new stable candidate or clear publication.
+See [precommit verification and integration scope](release-evidence/2026-11-23-main-integration/integration.json).
+
+Earlier update, 2026-11-23. The 20 newly reported Debian trial advisory IDs now have
+application-specific assessments covering 167 raw matches. Evidence supports
+conditional exclusions for the exact images and supported flows: affected
+Python extraction/server/parser APIs, QUIC/Suite B/GCM-SIV consumers, namespace/
+mount workflows and wide-bitset input were not found in use. No product fix or
+scanner suppression was needed for this set. Raw scans remain unchanged at 764;
+597 other matches and broader bundled/service-image security work are outside
+this focused pass. The release security gate remains held. See
+[advisory decisions, evidence and reassessment conditions](debian-advisory-assessment-2026-11-23.md).
+
+Earlier update, 2026-11-23. The isolated Debian 13 web/tools runtime trial passed image
+builds, 98 operator/release/compliance tests, fresh HTTPS install, Bookworm upgrade,
+Chromium and real backup/isolated restore acceptance. Exact-image scans decrease
+from 1,014 to 764 matches, critical 4 to 0 and high 222 to 157; 20 new advisory
+IDs require assessment and security clearance remains held. Source coverage
+validates 502 current entries and 406 native inputs, plus separate source/notice
+delivery for four inherited-layer source versions. The three-file patch is
+prepared in isolated revision `36b06ca`; main product files and the persistent
+instance are unchanged. See [trial results and proposed integration](debian-runtime-trial-2026-11-23.md).
+
+Earlier update, 2026-11-23. The remaining exact-image OS findings are reconciled with
+Debian/Ubuntu vendor records: 1,014 matches, 217 advisory IDs, 236 records across
+distribution/source contexts. Scoped binary/command exclusions explain 60
+matches; 954 remain open and the security release gate stays held. The next
+recommended change is an isolated Debian 13 web/tools runtime trial with source
+reconciliation, rescans and install/upgrade/backup acceptance. Node's embedded
+OpenSSL also needs a separate advisory review despite the earlier scanner's
+zero non-OS matches. See the [OS review and evidence](release-os-review-2026-11-23.md).
+No product images, installation data, scanner suppressions or release changed.
+
+Earlier update, 2026-11-23. Security runtime/dependency updates are implemented and
+verified in an isolated nonofficial proof at `a1276b1`, with the reviewed changes
+copied into this checkout uncommitted. .NET 10.0.15/SDK 10.0.404 and Node 24.22.3
+are pinned; final web/tools layers omit package managers, PostgreSQL server and
+gosu. Next's compatible parser resolution removes the development minimatch
+finding. All 15 verifier checks passed (756 backend, zero skipped; 942 frontend;
+98 Python), with production builds, exact-image scans, fresh/upgrade/Chromium and
+updated-client backup/isolated restore acceptance. Scans report no non-OS matches
+or remaining listed fixes; residual OS/native findings are not cleared. Matching
+source coverage validates all 533 current entries, including nine refreshed OS
+source versions and the rebound 406-input native sidecar. Fresh installation has
+no accounts/items/artwork; category definitions remain unchanged. See
+[update evidence and limits](runtime-security-update-2026-11-23.md).
+All disposable services/volumes are removed; the persistent developer instance
+and database are unchanged. Final integration/stable identity, residual security
+review, provider/operational clearance and authorized publication remain open.
+
+Earlier update, 2026-11-23. The current candidate's vulnerability scans are complete,
+and the security release gate is not cleared. Production pnpm and transitive
+NuGet audits reported no known advisories, but the complete frontend graph has
+one moderate development-tool finding and exact-image scans identify outdated
+.NET/ASP.NET 10.0.14, copied npm dependencies, OS and inherited Go components.
+The immediate priority is patched runtime/build inputs, followed by changed
+component source/notice reconciliation and new candidate acceptance. Raw scanner
+severities are not treated as proven application exploitability; representative
+vendor triage and remaining scope are in the
+[security review](release-security-review-2026-11-23.md).
+An additional fresh-install check, without fixture seeding, verified zero
+accounts, catalog items and artwork. Migrations create five built-in category
+definitions, pending setup state and migration history; whether the category
+definitions should remain was raised with the owner. No category behavior was
+changed. All disposable services/volumes were removed. No application dependency,
+candidate image, persistent-instance data or remote release changed in this review.
+
+Earlier update, 2026-11-23. An isolated local `0.1.0-dev.1` candidate from current
+application revision `f19a907` is finalized with matching source delivery and
+exact-image fresh-install, upgrade and trusted-TLS Chromium acceptance. All 15
+release-verifier checks passed, including 756 backend tests with zero skips.
+Source coverage maps 719 image/component entries; all 562 OS and 406 native
+inputs were verified. All 52 distributed image layers were inspected, and
+source/artifact privacy checks found no configured private values. Independent
+artifact review found no blocker to local candidate finalization. Sharp's addon
+header notice is supplied separately with the matching source materials;
+portable .NET/Skia notice delivery copies remove local tar ownership metadata.
+See [candidate evidence and limits](release-candidate-verification-2026-11-23.md).
+This is a development candidate, not stable/public release clearance. Provider
+clarification, current vulnerability review, stable version/final source freeze,
+remaining operational acceptance, security-notification delivery and authorized
+publication remain open. Font download/subsetting and exact upstream sharp
+header-resolution provenance retain their documented limits. Disposable
+acceptance services/volumes are removed; the persistent developer instance was
+not modified. No release or remote tag was published.
+
+Earlier update, 2026-11-21. The selected copied-runtime and bundled-component review is
 complete for the inspected payloads: 158 runtime source/material decisions and
 ten additional .NET/Skia native decisions are recorded. Five complete notice
 supplements are integrated into the production Dockerfiles with explicit image
@@ -165,6 +258,9 @@ older plans and resume notes. It records work and decisions, not deployment auth
 | [Native source package verification](native-source-package-verification.md) | Image-bound source sidecar, offline rebuild/replacement proof and remaining OS/publication scope |
 | [OS source audit](os-source-delivery-verification.md) | Exact candidate OS archives, source/notice integrity evidence and dated follow-up work |
 | [Runtime redistribution verification](runtime-redistribution-verification.md) | Reviewed component decisions, pinned notice delivery, source materials and final-candidate limits |
+| [2026-11-23 candidate verification](release-candidate-verification-2026-11-23.md) | Exact current-image source coverage, artifact/privacy audit, local candidate finalization and fresh/upgrade/browser acceptance |
+| [2026-11-23 security review](release-security-review-2026-11-23.md) | Exact-image vulnerability findings, vendor triage, remediation priorities and a fresh-install check without fixtures |
+| [2026-11-23 security update](runtime-security-update-2026-11-23.md) | Patched/minimal runtime images, parser update, before/after scans, refreshed sources and acceptance limits |
 | [Provider agreement evidence](provider-agreement-evidence.md) | Retrieved official agreements, access limits and operator acceptance requirements |
 | [Provider clarification drafts](provider-agreement-questions.md) | Unsent provider-specific questions about retention, image optimization, termination and operator eligibility |
 | [Open Library/MusicBrainz guidance](provider-public-guidance-2026-11-18.md) | Current registration, cover display, Archive terms scope, core-data and hosted-service findings |
@@ -416,6 +512,12 @@ operational checks remain the responsibility of each operator.
 Use the [release-gate table](frontend-release-verification.md#outstanding-release-gates)
 as the detailed acceptance checklist. Remaining categories are:
 
+The [2026-11-23 development candidate](release-candidate-verification-2026-11-23.md)
+now has matching source coverage and fresh/upgrade/browser acceptance for its
+exact images. The unchecked categories below retain final stable-release and
+operator-specific scope; they do not imply those local candidate checks are
+still unperformed.
+
 - [x] Portable production API/web/tools images, private reference Compose and
   optional Caddy; [installation/upgrade/recovery guide](self-hosting.md) and local
   [acceptance evidence](self-hosted-reference-verification.md). The original
@@ -473,17 +575,23 @@ installed OS source package/versions for the retained development candidate and
 an image-bound native sidecar. Copied-runtime inventory and Yarn notice collection
 are now corrected and verified in disposable derived images. The selected
 [runtime/framework/native source and notice decisions](runtime-redistribution-verification.md)
-are recorded with their material and hash conditions. Complete full source
-coverage assembly and the final-revision artifact audit; then deliver the matching
-source materials alongside any authorized binary publication.
+are recorded with their material and hash conditions. The
+[2026-11-23 development candidate](release-candidate-verification-2026-11-23.md)
+now has complete inventoried source mappings, an all-layer artifact/privacy
+audit and exact-image fresh/upgrade/browser acceptance. Retain its documented
+provenance limits, select/freeze the stable identity and revalidate changed
+artifacts; deliver matching source materials alongside any authorized binary
+publication.
 The Books/cache candidate changes source and Next.js package versions; final
 release artifacts and image-bound source/evidence must match that candidate.
 See the [native source evidence](native-source-package-verification.md),
 [credits/compliance evidence](release-compliance-verification.md),
 [dependency review](dependency-redistribution-review.md) and [provider review](provider-terms-review.md).
-Versioned release automation is implemented and locally verified. Maintainer
-notification delivery verification, final candidate acceptance and authorized
-versioned artifact publication remain under the [release plan](self-hosted-release-plan.md).
+Versioned release automation is implemented and locally verified, including
+finalization of the current development candidate without rebuilding its reviewed
+images. Vulnerability remediation and residual finding review, maintainer notification delivery, final
+stable-candidate qualification and authorized versioned artifact publication
+remain under the [release plan](self-hosted-release-plan.md).
 Each operator still verifies their own journal protection, backup expiration,
 staff records and infrastructure acceptance. No public deployment or publication
 is recorded.

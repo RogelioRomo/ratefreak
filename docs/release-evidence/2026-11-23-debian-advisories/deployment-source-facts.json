@@ -1,0 +1,58 @@
+{
+  "source_revision": "36b06ca6c6bfd79f3b86c2eefc2c2eac6bae6f8f",
+  "deployment_files": [
+    {
+      "file": "deploy/self-host/entrypoint.py",
+      "sha256": "d637ceaf361008b9a4bf66528d96ece02eaebabe9b7952b3e94da5d0861a6253",
+      "bytes": 6602
+    },
+    {
+      "file": "deploy/self-host/maintenance.py",
+      "sha256": "9efc5a3612cb3da095342ad825794d99fd9773b5e2cb0796fd749e698573ddb5",
+      "bytes": 10829
+    },
+    {
+      "file": "deploy/self-host/ratefreak.py",
+      "sha256": "5f19a7f1fec5b3eb8358848d1474353812fdb3b9e09f9691d60c06535a664abc",
+      "bytes": 19798
+    },
+    {
+      "file": "deploy/self-host/release_bundle.py",
+      "sha256": "3a91df627edb8ebe4bc2517af3a2c11ffd3204e475895b74d5df94e0cdc3b862",
+      "bytes": 6182
+    },
+    {
+      "file": "deploy/self-host/compose.yaml",
+      "sha256": "e62802354f13de79a733121d602122225266b0dfb6b122ad3d874e3f54fa054f",
+      "bytes": 4262
+    },
+    {
+      "file": "deploy/self-host/api.Dockerfile",
+      "sha256": "80cd194ab3af078805db8f2943f9c823d17af4595221332192564317c673fd29",
+      "bytes": 2279
+    },
+    {
+      "file": "deploy/self-host/web.Dockerfile",
+      "sha256": "f44b843ae996c953e0b381a8e5c3ea4ad2e7f50bc9d91c560e39c56a6f21de7f",
+      "bytes": 2089
+    },
+    {
+      "file": "deploy/self-host/tools.Dockerfile",
+      "sha256": "c9731a6e92320171c252affd823c4384ba2ddca4aaa543eafc81f683f5c2b74e",
+      "bytes": 3332
+    },
+    {
+      "file": "deploy/compliance/runtime_evidence.py",
+      "sha256": "65a4ec5e2af725670eec78fcba810a5a097e333e5688b3f453303d140a6d29eb",
+      "bytes": 6988
+    }
+  ],
+  "production_application_files_searched": 289,
+  "feature_pattern_hits": [],
+  "launcher_exec_replaces_python": true,
+  "web_python_healthcheck_host_literal": "127.0.0.1",
+  "api_listener": "http://+:8080",
+  "standard_app_tls_termination": "Separate edge service; no Python TLS server",
+  "source_search_is_complete_dynamic_callgraph": false,
+  "custom_runtime_or_compose_overrides_require_reassessment": true
+}

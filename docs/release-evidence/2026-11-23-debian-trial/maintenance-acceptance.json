@@ -1,0 +1,34 @@
+{
+  "artwork_and_key_archives_verified": true,
+  "backup_images": {
+    "api": "sha256:1ca2ebd62204c0582ca7cf4010e98791359319e90bee5c31c681436f29480209",
+    "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+    "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+  },
+  "candidate_images": {
+    "api": "sha256:1ca2ebd62204c0582ca7cf4010e98791359319e90bee5c31c681436f29480209",
+    "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+    "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+  },
+  "cleanup": [
+    {
+      "containers_remaining": false,
+      "project": "ratefreak-228209285ac2",
+      "volumes_remaining": false
+    },
+    {
+      "containers_remaining": false,
+      "project": "ratefreak-ca15bf8dd211",
+      "volumes_remaining": false
+    }
+  ],
+  "complete": true,
+  "current_journal_entries": 0,
+  "format": 1,
+  "journal_excluded_from_backup": true,
+  "repeated_replay_preserved_data": true,
+  "restore_startup_guard": true,
+  "scope": "Updated PostgreSQL client backup/isolated restore, protected key/artwork integrity and replay with an empty current fixture journal; no production data.",
+  "table_count": 30,
+  "table_fingerprints_preserved": true
+}

@@ -1,0 +1,202 @@
+[
+  {
+    "bytes": 6703,
+    "file": ".local/debian-advisory-assessment-2026-11-23/probe.py",
+    "sha256": "592cbeac88dd46a5ee6c9d7a595d4d303069b882d412df8a9815a51a1f759434"
+  },
+  {
+    "bytes": 194782,
+    "file": ".local/debian-advisory-assessment-2026-11-23/web-probe.json",
+    "sha256": "ff8513f58596978e7d623232fa94ab7d3797222647974608a6706c343810cbae"
+  },
+  {
+    "bytes": 239386,
+    "file": ".local/debian-advisory-assessment-2026-11-23/tools-probe.json",
+    "sha256": "e29cee63b8e323b753b28a989e540306556a96dfc0dfec1ea370ffae27d1984d"
+  },
+  {
+    "bytes": 9095,
+    "file": ".local/debian-advisory-assessment-2026-11-23/native-source-search.json",
+    "sha256": "7d951b813d3714c1202fb9670ab508f1cfbf8ffdb561bf5f3bd42c681b063832"
+  },
+  {
+    "bytes": 3687,
+    "file": ".local/debian-advisory-assessment-2026-11-23/native-source-observations.json",
+    "sha256": "f5749827266bc25948a533ff0e58bffff8846d3d31cf3c96c2f0ca300909ff3b"
+  },
+  {
+    "bytes": 363064,
+    "file": ".local/debian-advisory-assessment-2026-11-23/shipped-js-search.json",
+    "sha256": "ae3eb5594662f7cd0da19426ab4eed6f4d8fd3908bc9eaf6974d237aa48e5240"
+  },
+  {
+    "bytes": 5811,
+    "file": ".local/debian-advisory-assessment-2026-11-23/js-cipher-calls.json",
+    "sha256": "01d24f66f60b7612c3ee46bc286f25f6427cb6f383f31d8628d0f62987664e0d"
+  },
+  {
+    "bytes": 1942,
+    "file": ".local/debian-advisory-assessment-2026-11-23/js-cipher-algorithms.json",
+    "sha256": "160370c558a24168458e01ca9a302b3fdf32fd0a684a08f9312bf603379d2e45"
+  },
+  {
+    "bytes": 54833,
+    "file": ".local/debian-advisory-assessment-2026-11-23/libpq19-fe-secure-openssl.c",
+    "sha256": "1c80f0204bc5e66a5d86b5f9cd76b1230fcd9f60f6453ac8553003c66428d489"
+  },
+  {
+    "bytes": 2011,
+    "file": ".local/debian-advisory-assessment-2026-11-23/deployment-source-facts.json",
+    "sha256": "540c90bb3c4cb825d237cb0d89b1ed1ef77b97858f62c55eb7936288ebe1d0c2"
+  },
+  {
+    "bytes": 5124,
+    "file": "docs/release-evidence/2026-11-23-debian-trial/new-advisory-ids.json",
+    "sha256": "b2a5298105df31b31dec0d049fb9dbf742417343370a051fffc3daae18c83b04"
+  },
+  {
+    "bytes": 247475,
+    "file": "docs/release-evidence/2026-11-23-debian-trial/residual-findings.json",
+    "sha256": "41fb3f3843fa0bd66e989dfe6ec7324ddbd7bf1528997d11cd96993f96a6a4f0"
+  },
+  {
+    "bytes": 133589,
+    "file": ".local/debian-trial-2026-11-23/source/deploy/compliance/native/source-bundle.lock.json",
+    "sha256": "4be80e52d2d792e8087618ad746ff6abae74c8ebe734c030084e5c69665ab185"
+  },
+  {
+    "bytes": 4255,
+    "file": ".local/debian-advisory-assessment-2026-11-23/gcc-fix.patch",
+    "sha256": "5f44316ab2ece1eff087ed00f30065eae8cbb8af060cf22c3ac070fc7a22de63"
+  },
+  {
+    "bytes": 35900,
+    "file": ".local/debian-advisory-assessment-2026-11-23/dotnet-pal_ssl.c",
+    "sha256": "7f2d7854489134fefb974511e2d5c817e248d4e685daf45fb0a007701a37c2c8"
+  },
+  {
+    "bytes": 9561,
+    "file": ".local/debian-advisory-assessment-2026-11-23/dotnet-pal_evp_cipher.c",
+    "sha256": "6a15f61cf3cacfb5602f82921ab565520409959366b634036ff6cd03a75d5b5d"
+  },
+  {
+    "bytes": 68701,
+    "file": ".local/debian-advisory-assessment-2026-11-23/dotnet-opensslshim.h",
+    "sha256": "bf33ca9f37e5d20ede0b764e6fecfc7588920437c85a95e4f7a53a79e2b8d9a3"
+  },
+  {
+    "bytes": 104154,
+    "file": ".local/debian-advisory-assessment-2026-11-23/node-crypto_context.cc",
+    "sha256": "70f97e403bf6ff6854fa8c060c23455158c8431ff4e95b521b26d0c51182fb5d"
+  },
+  {
+    "bytes": 4779,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-78408.html",
+    "sha256": "c2ce37b05cca7f05768d22c20645c174592a837fb20423fa7f106dc4e6e0d104"
+  },
+  {
+    "bytes": 4417,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-78409.html",
+    "sha256": "7762ce7d10558ca03e3fcc3995b97e7a24d13ab4b1d6cdd3e4bf9ff7d357ba48"
+  },
+  {
+    "bytes": 7223,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-115455.html",
+    "sha256": "9da98619b1ec84f51e28071c2f0b5ef1a9697456b36cf7301c1cf5e0702301ef"
+  },
+  {
+    "bytes": 6564,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-15308.html",
+    "sha256": "f6d604b1c118865e6e699ad9b141f94512dec37fd480489a1f48ac2015ce0e11"
+  },
+  {
+    "bytes": 7265,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-19445.html",
+    "sha256": "8f6de638e6fcdce171bf105b8d3eb39232ff6a871f8d84d9b31f9f06226e3127"
+  },
+  {
+    "bytes": 7904,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-19553.html",
+    "sha256": "423767bedda557fbaf7c7d710dfc55222586b062699645c83ce1e628cb66cbe3"
+  },
+  {
+    "bytes": 6342,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-82049.html",
+    "sha256": "66082d4a5abebfae1b5dfa5ba76bdf1e4e650629e7ac35dce97ec1e78cf320db"
+  },
+  {
+    "bytes": 7981,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-114583.html",
+    "sha256": "704cd2568ef57f825f913bfe2e5164c03be16e293f02386045dfc0f5f0645958"
+  },
+  {
+    "bytes": 6433,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-15310.html",
+    "sha256": "cd3afe671b1cf0d57e427b67cd83253db6e93ef5b336b946fe9c6d0c005cfea6"
+  },
+  {
+    "bytes": 8842,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-15806.html",
+    "sha256": "d818dd2f37ca6ab71b774fff9975d82ccaa0f696892b4e45c3ea16a833c2ee69"
+  },
+  {
+    "bytes": 8204,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-17084.html",
+    "sha256": "ba8a940b0b07fe33c3c3364538062d4e5b7d857996b6b0b18af8ab73297373b2"
+  },
+  {
+    "bytes": 7471,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-19672.html",
+    "sha256": "bbcb080521166309ee978aa0ac1339285a77a5bce3cb9865b4351921f1a062c5"
+  },
+  {
+    "bytes": 7078,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-87910.html",
+    "sha256": "f483e79d64fa76e6dc1ba944f668d2746b3eb3e3afef9bddfcfe2e4d6862c2f3"
+  },
+  {
+    "bytes": 8280,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-18503.html",
+    "sha256": "f6033b259ec9380f80defa8b728b5b46f22ac270b954960741ac4e2be6a1b88b"
+  },
+  {
+    "bytes": 5915,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-124709.html",
+    "sha256": "a0a17b8fc37206409f084e69440196f8be35c83b3a3c84d99a607a6f36f2ec12"
+  },
+  {
+    "bytes": 6013,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-35190.html",
+    "sha256": "00ea7818f853f2c69c5371fa39c7e13c0b7ee0e99e01413f922045549f530380"
+  },
+  {
+    "bytes": 5265,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-95691.html",
+    "sha256": "38834566419ac509d06655867409f41301445487fbdb83df9b9cc484109a5f7e"
+  },
+  {
+    "bytes": 5954,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-95692.html",
+    "sha256": "50f9edb6c8b63aa1b35938c7f2c2cfa430a4920db8428399fb8b148e5a1e7bec"
+  },
+  {
+    "bytes": 5504,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-88822.html",
+    "sha256": "b27248ae33af0e534bab1ced9ab1c0895018e07230285a450d85ea1647312dc8"
+  },
+  {
+    "bytes": 5382,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/CVE-2026-88823.html",
+    "sha256": "eb623dc9d8b0a95cba5c7dcb1031aa8f423c53109d88d08772c030ecc21d2425"
+  },
+  {
+    "bytes": 11780,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/openssl-20261110.txt",
+    "sha256": "31f4c88950cd9cd310794a218361b787d293a940d2568f9f82334915ac54a402"
+  },
+  {
+    "bytes": 8844,
+    "file": ".local/debian-advisory-assessment-2026-11-23/vendor-pages/openssl-20261117.txt",
+    "sha256": "6f4219cd823c3472863cc592182ef571d7485ac2f8735845244dbc13e3e09f27"
+  }
+]

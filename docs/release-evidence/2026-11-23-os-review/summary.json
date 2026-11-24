@@ -1,0 +1,43 @@
+{
+  "debian_bookworm_statuses": {
+    "open": 209
+  },
+  "distinct_advisory_ids": 217,
+  "distinct_cve_ids": 205,
+  "distribution_source_advisory_records": 236,
+  "match_dispositions": {
+    "affected-command-absent": 4,
+    "open": 926,
+    "open-vendor-detail-needed": 28,
+    "vendor-binary-exclusion": 56
+  },
+  "product_files_changed": false,
+  "raw_matches": {
+    "api": 46,
+    "tools": 493,
+    "web": 475
+  },
+  "record_dispositions": {
+    "affected-command-absent": 3,
+    "open": 213,
+    "open-vendor-detail-needed": 12,
+    "vendor-binary-exclusion": 8
+  },
+  "release_gate": "held",
+  "review_date": "2026-11-23",
+  "scope": "Existing exact-image OS matches only; not whole-installation or native/bundled security clearance.",
+  "source_revision": "a1276b1fb70ad4e371decdad53dcab2ef6068f3d",
+  "suppression_files_changed": false,
+  "total_matches": 1014,
+  "trixie_comparison": {
+    "missing": 19,
+    "open": 130,
+    "resolved": 60
+  },
+  "trixie_comparison_limit": "Vendor source-package comparison only; missing is not unaffected. Not a build, target-image scan, projected total or migration acceptance.",
+  "ubuntu_noble_statuses": {
+    "deferred": 13,
+    "needed": 14
+  },
+  "vendor_records_missing": 0
+}

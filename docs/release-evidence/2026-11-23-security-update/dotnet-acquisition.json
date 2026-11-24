@@ -1,0 +1,27 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/dotnet/dotnet/8e0f8ed2312954727f8919d7d1c2f78b483b4ee7/src/runtime/LICENSE.TXT",
+    "file": "dotnet-runtime-LICENSE.TXT",
+    "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/dotnet/dotnet/8e0f8ed2312954727f8919d7d1c2f78b483b4ee7/src/runtime/THIRD-PARTY-NOTICES.TXT",
+    "file": "dotnet-runtime-THIRD-PARTY-NOTICES.TXT",
+    "sha256": "66f1d4e44973185519bb4aa8a9718eb22fc7af2cc532e3ae9cfc4c127ee7fc54"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/dotnet/dotnet/8e0f8ed2312954727f8919d7d1c2f78b483b4ee7/src/aspnetcore/LICENSE.txt",
+    "file": "dotnet-aspnetcore-LICENSE.txt",
+    "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/dotnet/dotnet/8e0f8ed2312954727f8919d7d1c2f78b483b4ee7/src/aspnetcore/THIRD-PARTY-NOTICES.txt",
+    "file": "dotnet-aspnetcore-THIRD-PARTY-NOTICES.txt",
+    "sha256": "52af3d603b6d069e635f8afd08ec44ec01559255b5f3afd161ae9e6fe7e7aa54"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/dotnet/dotnet/8e0f8ed2312954727f8919d7d1c2f78b483b4ee7/src/source-manifest.json",
+    "file": "dotnet-src-source-manifest.json",
+    "sha256": "e3c08d51a557c99b53539f6db5714ab49ea8a67528ab9ac2ad010a869b10e450"
+  }
+]

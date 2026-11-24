@@ -69,6 +69,11 @@ Application restart does not migrate, reset the database, replay erasures or
 regenerate credentials. `deploy/compose.yaml` remains the separate development
 PostgreSQL configuration; it is not this reference package.
 
+A fresh installation contains no user accounts, catalog items, ratings, reviews
+or uploaded artwork. Migrations create the five built-in media category
+definitions and pending setup state; test acceptance fixtures are not populated
+by installation/startup. See the [fresh-install verification](release-security-review-2026-11-23.md#fresh-install-data-verification).
+
 Visit `/setup` over HTTPS. Read `secrets/setup` privately on the operator host and
 enter it in first-run setup to create the initial Admin. Save the recovery code
 privately. Setup never reopens on upgrade or staff removal; ordinary registration

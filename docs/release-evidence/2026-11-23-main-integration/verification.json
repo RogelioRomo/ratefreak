@@ -1,0 +1,98 @@
+{
+  "checks": [
+    {
+      "check": "restore",
+      "exitCode": 0
+    },
+    {
+      "check": "tools",
+      "exitCode": 0
+    },
+    {
+      "check": "web-install",
+      "exitCode": 0
+    },
+    {
+      "check": "UnitTests",
+      "exitCode": 0
+    },
+    {
+      "check": "ProviderContractTests",
+      "exitCode": 0
+    },
+    {
+      "check": "IntegrationTests",
+      "exitCode": 0
+    },
+    {
+      "check": "operator",
+      "exitCode": 0
+    },
+    {
+      "check": "release",
+      "exitCode": 0
+    },
+    {
+      "check": "compliance",
+      "exitCode": 0
+    },
+    {
+      "check": "web-lint",
+      "exitCode": 0
+    },
+    {
+      "check": "web-typecheck",
+      "exitCode": 0
+    },
+    {
+      "check": "web-test",
+      "exitCode": 0
+    },
+    {
+      "check": "web-build",
+      "exitCode": 0
+    },
+    {
+      "check": "api-publish",
+      "exitCode": 0
+    },
+    {
+      "check": "model",
+      "exitCode": 0
+    }
+  ],
+  "complete": true,
+  "identity": {
+    "dirty": true,
+    "official": false,
+    "revision": "f19a90784abff9ea5b0d787d7fc3a4cb85ac2a4b",
+    "version": "0.1.0-dev.1"
+  },
+  "schema": 1,
+  "tests": [
+    {
+      "executed": 498,
+      "failed": 0,
+      "passed": 498,
+      "skipped": 0,
+      "suite": "IntegrationTests",
+      "total": 498
+    },
+    {
+      "executed": 196,
+      "failed": 0,
+      "passed": 196,
+      "skipped": 0,
+      "suite": "ProviderContractTests",
+      "total": 196
+    },
+    {
+      "executed": 62,
+      "failed": 0,
+      "passed": 62,
+      "skipped": 0,
+      "suite": "UnitTests",
+      "total": 62
+    }
+  ]
+}

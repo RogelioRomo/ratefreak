@@ -1,0 +1,232 @@
+{
+  "application_changed": false,
+  "date": "2026-11-23",
+  "format": 1,
+  "images": {
+    "api": {
+      "archive_sha256": "968a524a581134fda3a40216e0d0a92944eff80de659d59b2aca3109e1cd055d",
+      "findings": 73,
+      "fix_available_entries": 27,
+      "image_config_id": "sha256:a2024c266db68040529b9532338acc85746f4bfc443c96ae76ff7dd6c7ce6601",
+      "image_id": "sha256:2a659c2ed51f7628fe9bb00fa2d07423b79c2938d1b9c611af7d4aef983705c9",
+      "scan_report_sha256": "4861ad835205f6369a97ed05b40e18a342d67586032c20d7a0de09a9d29203c4",
+      "scanner_exit_code": 0,
+      "severity_counts": {
+        "HIGH": 5,
+        "LOW": 6,
+        "MEDIUM": 62
+      },
+      "targets": [
+        {
+          "findings": 68,
+          "packages_detected": 125,
+          "target": "api.tar.gz (ubuntu 24.04)",
+          "type": "ubuntu"
+        },
+        {
+          "findings": 0,
+          "packages_detected": 18,
+          "target": "app/RateFreak.Api.deps.json",
+          "type": "dotnet-core"
+        },
+        {
+          "findings": 4,
+          "packages_detected": 1,
+          "target": "usr/share/dotnet/shared/Microsoft.AspNetCore.App/10.0.14/Microsoft.AspNetCore.App.deps.json",
+          "type": "dotnet-core"
+        },
+        {
+          "findings": 1,
+          "packages_detected": 1,
+          "target": "usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.14/Microsoft.NETCore.App.deps.json",
+          "type": "dotnet-core"
+        }
+      ],
+      "unique_advisories": 47
+    },
+    "tools": {
+      "archive_sha256": "3eb41c64a00a2c5a6320b815404228caebf3220d2766f8e72fe4762433118ede",
+      "findings": 685,
+      "fix_available_entries": 67,
+      "image_config_id": "sha256:0f9204356d4ee0fb7db052db95b77113f9b737d0bccb2b51915a934626eee57d",
+      "image_id": "sha256:8adae4896233a65b6bc365520e5dfa654802d34e5a566363eeaab777cde09033",
+      "scan_report_sha256": "963f55025a41acf80bf3ee458d8162dfff21ccbea69917d5dfb469db09f635c0",
+      "scanner_exit_code": 0,
+      "severity_counts": {
+        "CRITICAL": 4,
+        "HIGH": 147,
+        "LOW": 210,
+        "MEDIUM": 287,
+        "UNKNOWN": 37
+      },
+      "targets": [
+        {
+          "findings": 618,
+          "packages_detected": 156,
+          "target": "tools.tar.gz (debian 12.15)",
+          "type": "debian"
+        },
+        {
+          "findings": 0,
+          "packages_detected": 18,
+          "target": "app/RateFreak.Api.deps.json",
+          "type": "dotnet-core"
+        },
+        {
+          "findings": 62,
+          "packages_detected": 4,
+          "target": "usr/local/bin/gosu",
+          "type": "gobinary"
+        },
+        {
+          "findings": 4,
+          "packages_detected": 1,
+          "target": "usr/share/dotnet/shared/Microsoft.AspNetCore.App/10.0.14/Microsoft.AspNetCore.App.deps.json",
+          "type": "dotnet-core"
+        },
+        {
+          "findings": 1,
+          "packages_detected": 1,
+          "target": "usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.14/Microsoft.NETCore.App.deps.json",
+          "type": "dotnet-core"
+        }
+      ],
+      "unique_advisories": 291
+    },
+    "web": {
+      "archive_sha256": "341a84b05f8353924abf8ff51d93b33931b5138967d86108642f318eeb4e4793",
+      "findings": 487,
+      "fix_available_entries": 19,
+      "image_config_id": "sha256:a824d4f3a544eb6ef89f20a10f5e3caba36ea7d65b41af5f6289650e581530d0",
+      "image_id": "sha256:ea72bb7d383d29b66b6bd5d1632b88e0bbe0db182d7afc31d81f5eee94ab5a76",
+      "scan_report_sha256": "7f9b0a3affd35d472998780727f180207cded501a65e8fc1e797bfa937bae8aa",
+      "scanner_exit_code": 0,
+      "severity_counts": {
+        "CRITICAL": 2,
+        "HIGH": 115,
+        "LOW": 139,
+        "MEDIUM": 201,
+        "UNKNOWN": 30
+      },
+      "targets": [
+        {
+          "findings": 468,
+          "packages_detected": 112,
+          "target": "web.tar.gz (debian 12.15)",
+          "type": "debian"
+        },
+        {
+          "findings": 19,
+          "packages_detected": 166,
+          "target": "Node.js",
+          "type": "node-pkg"
+        }
+      ],
+      "unique_advisories": 220
+    }
+  },
+  "package_audits": {
+    "nuget": {
+      "command": [
+        "dotnet",
+        "package",
+        "list",
+        "--project",
+        "RateFreak.sln",
+        "--no-restore",
+        "--vulnerable",
+        "--include-transitive",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "projects": [
+        "src/RateFreak.Api/RateFreak.Api.csproj",
+        "src/RateFreak.Application/RateFreak.Application.csproj",
+        "src/RateFreak.Domain/RateFreak.Domain.csproj",
+        "src/RateFreak.Infrastructure/RateFreak.Infrastructure.csproj",
+        "tests/RateFreak.UnitTests/RateFreak.UnitTests.csproj",
+        "tests/RateFreak.IntegrationTests/RateFreak.IntegrationTests.csproj",
+        "tests/RateFreak.ProviderContractTests/RateFreak.ProviderContractTests.csproj"
+      ],
+      "projects_reporting_vulnerable_packages": [],
+      "report_sha256": "68806f1dc4a2b69d15143108ec8a5f74de35f9b4d2e2e5b824997381f12a5b68",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    "pnpm-all": {
+      "advisories": [
+        {
+          "affected_versions": ">=7.0.0 <11.0.1",
+          "findings": [
+            {
+              "paths": [
+                ".>eslint-config-next>eslint-plugin-import>@typescript-eslint/parser>@typescript-eslint/typescript-estree>minimatch"
+              ],
+              "version": "10.2.6"
+            }
+          ],
+          "id": "GHSA-g3hv-75wg-m249",
+          "package": "minimatch",
+          "patched_versions": ">=11.0.1",
+          "severity": "moderate",
+          "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249"
+        }
+      ],
+      "command": [
+        "pnpm",
+        "audit",
+        "--json"
+      ],
+      "exit_code": 1,
+      "report_sha256": "55317d54c7ef2a46b7c6b63eacc248fe648da0f8683e124a1c37295edc2e08c5",
+      "vulnerabilities": {
+        "critical": 0,
+        "high": 0,
+        "info": 0,
+        "low": 0,
+        "moderate": 1
+      }
+    },
+    "pnpm-production": {
+      "advisories": [],
+      "command": [
+        "pnpm",
+        "audit",
+        "--prod",
+        "--json"
+      ],
+      "exit_code": 0,
+      "report_sha256": "6374e7447a4ec7397f7eecf8540c980c0ffa5c79367976fdec7f975657b8e431",
+      "vulnerabilities": {
+        "critical": 0,
+        "high": 0,
+        "info": 0,
+        "low": 0,
+        "moderate": 0
+      }
+    }
+  },
+  "published": false,
+  "revision": "f19a90784abff9ea5b0d787d7fc3a4cb85ac2a4b",
+  "scanner": {
+    "database": {
+      "DownloadedAt": "2026-11-23T17:32:37.013090182Z",
+      "NextUpdate": "2026-11-24T13:07:53.152454631Z",
+      "UpdatedAt": "2026-11-23T13:07:53.152455237Z",
+      "Version": 2
+    },
+    "image": "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+    "name": "Trivy",
+    "scanners": [
+      "vuln"
+    ],
+    "scope": "Saved exact candidate archives, merged filesystem package inventory. Severity and version matches do not prove application exploitability. Native embedded libraries are not comprehensively cataloged.",
+    "version": "0.76.2"
+  },
+  "security_gate": "not-cleared",
+  "total_package_advisory_matches": 1245,
+  "unique_advisory_ids": 326,
+  "version": "0.1.0-dev.1"
+}

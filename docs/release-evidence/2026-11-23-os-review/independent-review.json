@@ -1,0 +1,14 @@
+{
+  "review_date": "2026-11-23",
+  "scope": "OS review report, source assessments, exact-image advisory ledger and vendor input provenance; read-only review",
+  "reviewer": "review_os_evidence",
+  "raw_scan_matches_reconciled": 1014,
+  "review_records_reconciled": 236,
+  "distinct_advisory_ids": 217,
+  "input_hashes_verified": 47,
+  "critical_findings": [],
+  "important_findings": [],
+  "minor_findings_remaining": [],
+  "minor_resolved": "Added the saved upstream OpenSSL advisory page to hashed inputs and regenerated evidence; reviewer confirmed all 47 hashes and the OCI index/config identity explanation.",
+  "verdict": "No outstanding findings in the review artifacts. The security release gate remains held; no product migration or publication approved."
+}

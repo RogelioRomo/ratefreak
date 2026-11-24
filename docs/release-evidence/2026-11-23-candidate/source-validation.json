@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "valid": true,
+  "images": {
+    "api": {
+      "image_id": "sha256:2a659c2ed51f7628fe9bb00fa2d07423b79c2938d1b9c611af7d4aef983705c9",
+      "components": 162,
+      "source_files": 35
+    },
+    "tools": {
+      "image_id": "sha256:8adae4896233a65b6bc365520e5dfa654802d34e5a566363eeaab777cde09033",
+      "components": 199,
+      "source_files": 35
+    },
+    "web": {
+      "image_id": "sha256:ea72bb7d383d29b66b6bd5d1632b88e0bbe0db182d7afc31d81f5eee94ab5a76",
+      "components": 358,
+      "source_files": 36
+    }
+  }
+}

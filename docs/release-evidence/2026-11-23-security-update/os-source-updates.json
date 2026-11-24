@@ -1,0 +1,25 @@
+{
+  "format": 1,
+  "source_pairs": 9,
+  "files": 28,
+  "descriptor_sets_complete": true,
+  "archived_hashes_verified": true,
+  "file": "os-source-updates.tar",
+  "sha256": "3b402491211fc5ddecc78fe782e7a703151f2676d75ae0e4caba5a1f967c12cd",
+  "bytes": 150179840,
+  "image_ids": {
+    "api": "sha256:8c7b6a49bb4cb1f3f76a8eab4e30d1607d2a7d7fd3213a41ef3156d4a715a3bd",
+    "web": "sha256:21d9a27a3eb29c7f657f97d66a34a59f6da928d787d8d0ce49092c42e4afcc03",
+    "tools": "sha256:c04ff6ae9989ad32d31e17a6ab9bbbd14cc1353dfc6f348469cc4e2fa50fa74b"
+  },
+  "metadata_archives": [
+    {
+      "file": "api-source-indexes.tar.gz",
+      "sha256": "7dc70e413326cb4a367f608c3f6d3ba0f473b4c576dea54e1e6d98cafd961ceb"
+    },
+    {
+      "file": "tools-source-indexes.tar.gz",
+      "sha256": "d04ee5696beacfa8771e55087353b5c05d11e569a78166606674532bceef4a87"
+    }
+  ]
+}

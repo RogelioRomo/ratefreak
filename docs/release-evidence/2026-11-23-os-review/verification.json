@@ -1,0 +1,16 @@
+{
+  "inventory_equal_to_prior_residual_matches": true,
+  "raw_matches": 1014,
+  "review_records": 236,
+  "input_hashes_verified": 47,
+  "scan_report_and_oci_config_id_bindings_verified": 3,
+  "product_Dockerfiles_equal_to_prior_tested_snapshot": true,
+  "python_scripts_parse": true,
+  "json_files_parse": true,
+  "report_relative_links_exist": true,
+  "whitespace_checks_pass": true,
+  "product_tests_repeated": false,
+  "new_images_built": false,
+  "new_vulnerability_scan": false,
+  "only_running_container_at_cleanup": "ratefreak-postgres-1"
+}

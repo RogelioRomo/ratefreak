@@ -1,0 +1,20 @@
+{
+  "format": 1,
+  "complete": true,
+  "exact_source_revision": "36b06ca6c6bfd79f3b86c2eefc2c2eac6bae6f8f",
+  "product_diff_files": [
+    "deploy/self-host/pgdg.sources",
+    "deploy/self-host/tools.Dockerfile",
+    "deploy/self-host/web.Dockerfile"
+  ],
+  "main_product_unchanged_from_previous_tested_source": true,
+  "source_components_checked": 502,
+  "material_files_checked": 40,
+  "image_archive_scan_config_label_bindings_checked": 3,
+  "fresh_upgrade_empty_browser_maintenance_reports_checked": true,
+  "all_6_disposable_projects_cleaned": true,
+  "script_json_and_link_checks_passed": true,
+  "git_diff_check_passed": true,
+  "full_application_verifier_repeated": false,
+  "security_release_gate": "held"
+}

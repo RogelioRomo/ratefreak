@@ -1,0 +1,10 @@
+{
+  "file": "lower-layer-os-sources.tar",
+  "sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7",
+  "bytes": 75704320,
+  "source_versions": 4,
+  "input_files": 12,
+  "inherited_copyright_files": 6,
+  "signature_verification": true,
+  "archived_hashes_verified": true
+}

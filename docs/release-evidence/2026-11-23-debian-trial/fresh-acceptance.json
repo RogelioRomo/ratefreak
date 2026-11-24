@@ -1,0 +1,15 @@
+{
+  "candidateImages": {
+    "api": "sha256:1ca2ebd62204c0582ca7cf4010e98791359319e90bee5c31c681436f29480209",
+    "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0",
+    "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050"
+  },
+  "baselineImages": null,
+  "https": true,
+  "freshInstall": true,
+  "upgrade": false,
+  "disabledUpdateChecks": true,
+  "ordinaryDenied": true,
+  "logoutDenied": true,
+  "dataPreserved": true
+}

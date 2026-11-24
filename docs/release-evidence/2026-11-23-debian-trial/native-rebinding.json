@@ -1,0 +1,10 @@
+{
+  "image_id": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0",
+  "file": "web.native-sources.tar.gz",
+  "sha256": "08bd3c3d362357f7260e8669fa14387c88a36c57920a754b8fd67b6cd63bc22a",
+  "bytes": 201183065,
+  "input_files": 406,
+  "native_sha256": "4aa73553408c3964071728f4a231a8e86918e39bc49f1fbae75355f7ea933ea9",
+  "profile_unchanged": true,
+  "native_rebuild_repeated": false
+}

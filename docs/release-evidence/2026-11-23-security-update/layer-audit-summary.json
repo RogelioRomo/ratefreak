@@ -1,0 +1,76 @@
+{
+  "configured_private_values_checked": 7,
+  "format": 1,
+  "images": {
+    "api": {
+      "bytes_scanned": 777760687,
+      "credential_pattern_matches": [
+        {
+          "disposition": "Pattern occurs in byte-identical upstream libgnutls binary already present in the reviewed baseline, not a newly copied local key file. No configured private value matched.",
+          "layer": 0,
+          "path": "usr/lib/x86_64-linux-gnu/libgnutls.so.30.37.1",
+          "rule": "private-key-block",
+          "unchanged_packaged_binary_sha256": "ddbae2995750875c07bc218d12a062d73f8250678f54dedda7e9be5068781c98"
+        }
+      ],
+      "file_inventory_sha256": "14f621dbdf05f40dee117e5cf5fed8c6b83d64e7bd93797caf95472bb49dbcc7",
+      "files_scanned": 5565,
+      "image_id": "sha256:8c7b6a49bb4cb1f3f76a8eab4e30d1607d2a7d7fd3213a41ef3156d4a715a3bd",
+      "layer_count": 15,
+      "lower_layer_only_packages": [],
+      "oci_identity_chain_valid": true,
+      "private_value_matches": [],
+      "removed_tools_absent_from_every_layer": true,
+      "revision_label_matches": true,
+      "suspicious_paths": [],
+      "version_label_matches": true
+    },
+    "tools": {
+      "bytes_scanned": 876497031,
+      "credential_pattern_matches": [
+        {
+          "disposition": "Pattern occurs in byte-identical upstream libgnutls binary already present in the reviewed baseline, not a newly copied local key file. No configured private value matched.",
+          "layer": 0,
+          "path": "usr/lib/x86_64-linux-gnu/libgnutls.so.30.34.3",
+          "rule": "private-key-block",
+          "unchanged_packaged_binary_sha256": "779b25d20249988bea2c1aa6bbeb218f5ae7ea8a9d30ce4f54ea37372965cc4b"
+        }
+      ],
+      "file_inventory_sha256": "87d5cb681c1c57004b75fec0f81845aa8078b65e102b11cf21d64481bbf235f8",
+      "files_scanned": 7145,
+      "image_id": "sha256:c04ff6ae9989ad32d31e17a6ab9bbbd14cc1353dfc6f348469cc4e2fa50fa74b",
+      "layer_count": 15,
+      "lower_layer_only_packages": [],
+      "oci_identity_chain_valid": true,
+      "private_value_matches": [],
+      "removed_tools_absent_from_every_layer": true,
+      "revision_label_matches": true,
+      "suspicious_paths": [],
+      "version_label_matches": true
+    },
+    "web": {
+      "bytes_scanned": 294441182,
+      "credential_pattern_matches": [
+        {
+          "disposition": "Pattern occurs in byte-identical upstream libgnutls binary already present in the reviewed baseline, not a newly copied local key file. No configured private value matched.",
+          "layer": 0,
+          "path": "usr/lib/x86_64-linux-gnu/libgnutls.so.30.34.3",
+          "rule": "private-key-block",
+          "unchanged_packaged_binary_sha256": "779b25d20249988bea2c1aa6bbeb218f5ae7ea8a9d30ce4f54ea37372965cc4b"
+        }
+      ],
+      "file_inventory_sha256": "165082a74e81ec46df40c3e8b13eb3d049d5be602746f3475e7b5fd50b8266ff",
+      "files_scanned": 6837,
+      "image_id": "sha256:21d9a27a3eb29c7f657f97d66a34a59f6da928d787d8d0ce49092c42e4afcc03",
+      "layer_count": 13,
+      "lower_layer_only_packages": [],
+      "oci_identity_chain_valid": true,
+      "private_value_matches": [],
+      "removed_tools_absent_from_every_layer": true,
+      "revision_label_matches": true,
+      "suspicious_paths": [],
+      "version_label_matches": true
+    }
+  },
+  "revision": "a1276b1fb70ad4e371decdad53dcab2ef6068f3d"
+}

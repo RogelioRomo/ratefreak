@@ -1,0 +1,24 @@
+{
+  "format": 1,
+  "scope": "Independent read-only candidate source/artifact review before finalization. No source code changes.",
+  "critical_findings": 0,
+  "important_findings": 0,
+  "minor_findings": 0,
+  "assessment": "Suitable for local candidate finalization, subject to exact candidate acceptance.",
+  "checks": [
+    "719 coverage mappings and referenced file hashes",
+    "Every installation archive tracked file matches HEAD Git blob",
+    "562 OS source inputs",
+    "406 native source inputs and image binding",
+    "Current OS source package/version coverage",
+    "Three layer file inventory hashes",
+    "Migration bundle hash matches image inventory",
+    "Portable .NET/Skia archive member contents and ownership normalization"
+  ],
+  "outside_review": [
+    "Fresh-install/upgrade/browser behavior (subsequently executed separately)",
+    "Provider permission, vulnerability status and publication authorization",
+    "Exhaustive legal sufficiency or proof of secret absence",
+    "Full repeat image payload rescan; implementation and integrity-bound audit results reviewed"
+  ]
+}

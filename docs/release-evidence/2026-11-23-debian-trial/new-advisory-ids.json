@@ -1,0 +1,262 @@
+[
+  {
+    "id": "CVE-2026-78408",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "HIGH"
+    ],
+    "source": "util-linux",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-78408",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-78409",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "HIGH"
+    ],
+    "source": "util-linux",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-78409",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-115455",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "MEDIUM"
+    ],
+    "source": "gcc-14",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-115455",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-15308",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "HIGH"
+    ],
+    "source": "python3.13",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-15308",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-19445",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "HIGH"
+    ],
+    "source": "python3.13",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-19445",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-19553",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "HIGH"
+    ],
+    "source": "python3.13",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-19553",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-82049",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "HIGH"
+    ],
+    "source": "python3.13",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-82049",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-114583",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "MEDIUM"
+    ],
+    "source": "python3.13",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-114583",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-15310",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "MEDIUM"
+    ],
+    "source": "python3.13",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-15310",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-15806",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "MEDIUM"
+    ],
+    "source": "python3.13",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-15806",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-17084",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "MEDIUM"
+    ],
+    "source": "python3.13",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-17084",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-19672",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "MEDIUM"
+    ],
+    "source": "python3.13",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-19672",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-87910",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "MEDIUM"
+    ],
+    "source": "python3.13",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-87910",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-18503",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "LOW"
+    ],
+    "source": "python3.13",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-18503",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-124709",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "HIGH"
+    ],
+    "source": "openssl",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-124709",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-35190",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "MEDIUM"
+    ],
+    "source": "openssl",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-35190",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-95691",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "MEDIUM"
+    ],
+    "source": "openssl",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-95691",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-95692",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "MEDIUM"
+    ],
+    "source": "openssl",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-95692",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-88822",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "LOW"
+    ],
+    "source": "openssl",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-88822",
+    "vendor_status": "open"
+  },
+  {
+    "id": "CVE-2026-88823",
+    "images": [
+      "tools",
+      "web"
+    ],
+    "severities": [
+      "LOW"
+    ],
+    "source": "openssl",
+    "url": "https://security-tracker.debian.org/tracker/CVE-2026-88823",
+    "vendor_status": "open"
+  }
+]

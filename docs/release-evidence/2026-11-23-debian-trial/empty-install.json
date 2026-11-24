@@ -1,0 +1,61 @@
+{
+  "artwork_files": 0,
+  "catalog_items": 0,
+  "category_definitions": [
+    "Albums",
+    "Books",
+    "Movies",
+    "TV shows",
+    "Video games"
+  ],
+  "complete": true,
+  "containers_remaining": false,
+  "demo_accounts": 0,
+  "format": 1,
+  "images": {
+    "api": "sha256:1ca2ebd62204c0582ca7cf4010e98791359319e90bee5c31c681436f29480209",
+    "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+    "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+  },
+  "nonempty_tables": {
+    "__EFMigrationsHistory": 24,
+    "catalog_categories": 5,
+    "installation_state": 1
+  },
+  "project": "ratefreak-e9b54039d5af",
+  "setup_required": true,
+  "table_counts": {
+    "__EFMigrationsHistory": 24,
+    "account_data_grants": 0,
+    "account_export_budgets": 0,
+    "account_recovery_events": 0,
+    "account_recovery_states": 0,
+    "artwork_assets": 0,
+    "avatar_assets": 0,
+    "catalog_categories": 5,
+    "catalog_category_aliases": 0,
+    "collection_items": 0,
+    "collections": 0,
+    "content_reports": 0,
+    "external_authentication_challenges": 0,
+    "installation_state": 1,
+    "media_external_ids": 0,
+    "media_items": 0,
+    "moderation_events": 0,
+    "notifications": 0,
+    "ratings": 0,
+    "review_comments": 0,
+    "reviews": 0,
+    "role_claims": 0,
+    "roles": 0,
+    "user_claims": 0,
+    "user_follows": 0,
+    "user_logins": 0,
+    "user_media": 0,
+    "user_roles": 0,
+    "user_tokens": 0,
+    "users": 0
+  },
+  "test_fixture_seed_called": false,
+  "volumes_remaining": false
+}

@@ -1,0 +1,6 @@
+{
+  "complete": false,
+  "failure": "Harness expected truncated revision 36b06ca, while UI displays the full source revision.",
+  "correction": "Pass full images/identity.json revision to unchanged browser assertions; no application or TLS change.",
+  "tls_bypass_used": false
+}

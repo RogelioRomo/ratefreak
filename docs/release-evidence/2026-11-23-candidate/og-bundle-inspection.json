@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "scope": "Local production standalone and browser JS generated from exact candidate source; image layer paths and hashes checked separately.",
+  "matches": [
+    {
+      "file": "standalone/node_modules/.pnpm/next@16.4.6_@babel+core@7.29.7_@types+node@24.19.2_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/next/dist/server/og/image-response.js",
+      "tokens": [
+        "compiled/@vercel/og"
+      ],
+      "disposition": "Next MIT wrapper dynamically imports the absent optional OG implementation; no bundled satori/resvg/yoga implementation was found."
+    },
+    {
+      "file": "standalone/node_modules/.pnpm/next@16.4.6_@babel+core@7.29.7_@types+node@24.19.2_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/next/dist/server/og/cache-image-response.js",
+      "tokens": [
+        "satori",
+        "compiled/@vercel/og"
+      ],
+      "disposition": "Next MIT wrapper dynamically imports the absent optional OG implementation; no bundled satori/resvg/yoga implementation was found."
+    }
+  ]
+}

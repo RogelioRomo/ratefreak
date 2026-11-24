@@ -1,0 +1,45 @@
+{
+  "format": 1,
+  "descriptors": [
+    {
+      "descriptor": "base-files_13.8+deb13u7.dsc",
+      "sha256": "6240b5a02fc32bd6d925bb7776e00c467e80d930f8cf3c4a20c299ce692dc7e4",
+      "gpgv_exit_code": 0,
+      "valid_signer_fingerprints": [
+        "D54C3BFAFFB042DE382DA5D741CE7F0B9F1B8B32"
+      ]
+    },
+    {
+      "descriptor": "glibc_2.41-12+deb13u4.dsc",
+      "sha256": "0915324aa646bb99abfaa9aa6ecb734b30babd28454a3e51f3152912370fbd3e",
+      "gpgv_exit_code": 0,
+      "valid_signer_fingerprints": [
+        "52BC8695BE34F90AD7D40CB81388C0F899E8336B"
+      ]
+    },
+    {
+      "descriptor": "openssl_3.5.7-1~deb13u3.dsc",
+      "sha256": "9cdb0d9daf0773ca5c0f3f5ea1fc59b1106a99e005a5c048948b826e8d3b47e1",
+      "gpgv_exit_code": 0,
+      "valid_signer_fingerprints": [
+        "57892E705233051337F6FDD105641F175712FA5B"
+      ]
+    },
+    {
+      "descriptor": "zlib_1.3.dfsg+really1.3.1-1.dsc",
+      "sha256": "ede2791e29c1d3b422f9208bdd7edf040c20445ea1e7453a72037576e64fa197",
+      "gpgv_exit_code": 0,
+      "valid_signer_fingerprints": [
+        "ADE668AA675718B59FE29FEA24D68B725D5487D0"
+      ]
+    }
+  ],
+  "all_signatures_valid": true,
+  "keyrings": {
+    "debian-keyring.gpg": "052303f4083e56def3c82a94b16954e41bbd96b81624fc5a275791d2540bef2d",
+    "debian-maintainers.gpg": "33f0a9bea481d7b83bcd861073542a55dc1351bf7fbf13059645e0ebab0afb12"
+  },
+  "keyring_package": "2025.07.26",
+  "gpgv": "gpgv (GnuPG) 2.4.7",
+  "current_signed_sources_index_coverage_claimed": false
+}

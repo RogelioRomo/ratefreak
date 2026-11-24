@@ -1,0 +1,28 @@
+{
+  "format": 1,
+  "verified_inputs": 562,
+  "representative_extractions": [
+    {
+      "image": "api",
+      "source_package": "acl",
+      "source_version": "2.3.2-1build1.1",
+      "exit_code": 0,
+      "distribution_build_rules_present": true
+    },
+    {
+      "image": "web",
+      "source_package": "acl",
+      "source_version": "2.3.1-3",
+      "exit_code": 0,
+      "distribution_build_rules_present": true
+    },
+    {
+      "image": "tools",
+      "source_package": "postgresql-common",
+      "source_version": "293.pgdg12+1",
+      "exit_code": 0,
+      "distribution_build_rules_present": true
+    }
+  ],
+  "signature_scope": "Existing authenticated APT acquisition evidence and exact input hashes retained. --no-check avoids requiring maintainer signing keys during this extraction-only test; signatures not reverified here."
+}

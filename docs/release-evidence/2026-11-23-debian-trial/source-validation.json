@@ -1,0 +1,16 @@
+{
+  "format": 1,
+  "valid": true,
+  "components": 502,
+  "image_counts": {
+    "api": 162,
+    "tools": 152,
+    "web": 188
+  },
+  "material_files": 40,
+  "inherited_source_versions": 4,
+  "installed_new_source_versions": 74,
+  "native_inputs_verified": 406,
+  "revision": "36b06ca6c6bfd79f3b86c2eefc2c2eac6bae6f8f",
+  "official": false
+}

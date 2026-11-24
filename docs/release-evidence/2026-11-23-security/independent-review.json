@@ -1,0 +1,22 @@
+{
+  "format": 1,
+  "scope": "Read-only review of security findings, evidence binding and release documentation.",
+  "substantive_findings": 0,
+  "assessment": "Counts and claims match preserved reports; security release gate correctly remains uncleared.",
+  "verified": [
+    "Six raw audit/report hashes match the summary",
+    "Trivy image configuration identities match",
+    "Per-image totals and severity distributions match",
+    "1245 compact findings match raw reports",
+    "326 distinct advisory IDs",
+    "19 web JavaScript findings confined to copied npm closure",
+    "Fresh-install script checks all public tables, pending setup and empty artwork with cleanup",
+    "No detected home-directory paths or common credential patterns in checked-in JSON"
+  ],
+  "limits": [
+    "Did not rerun scans, installation or tests",
+    "Did not independently establish exploitability or exhaustively assess native aggregates",
+    "Did not independently revalidate vendor advisories",
+    "Privacy checks remain heuristic"
+  ]
+}

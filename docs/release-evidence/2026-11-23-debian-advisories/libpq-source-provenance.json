@@ -1,0 +1,8 @@
+{
+  "source_package": "postgresql-19",
+  "source_version": "19.0-2.pgdg13+1",
+  "input_archive": ".local/debian-trial-2026-11-23/source-files/a89fd70efbad6a08c7dbed8d4872e3af30170d9e5ca9dc7906523be95b4e692d-postgresql-19_19.0.orig.tar.bz2",
+  "source_file": "postgresql-19.0/src/interfaces/libpq/fe-secure-openssl.c",
+  "sha256": "1c80f0204bc5e66a5d86b5f9cd76b1230fcd9f60f6453ac8553003c66428d489",
+  "authenticated_source_manifest": ".local/debian-trial-2026-11-23/debian13-os-sources-manifest.json"
+}

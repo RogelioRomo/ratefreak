@@ -1,0 +1,115 @@
+{
+  "backend_tests": 756,
+  "browser_first_attempt": {
+    "context": "Concurrent Docker tests were creating/removing network interfaces.",
+    "error": "net::ERR_NETWORK_CHANGED",
+    "exit_code": 1,
+    "resolution": "Serialized rerun after those tests finished; passed without application or TLS changes."
+  },
+  "complete_frontend_audit": {
+    "critical": 0,
+    "high": 0,
+    "info": 0,
+    "low": 0,
+    "moderate": 0
+  },
+  "date": "2026-11-23",
+  "format": 1,
+  "frontend_tests": 942,
+  "identity": {
+    "dirty": false,
+    "official": false,
+    "revision": "a1276b1fb70ad4e371decdad53dcab2ef6068f3d",
+    "version": "0.1.0-dev.1"
+  },
+  "images": {
+    "api": {
+      "after": 46,
+      "archive_bytes": 274164155,
+      "archive_sha256": "a2c0eec5c11e1a6cede45b6284b04b86c1a5455ebd62e79c5a3fe473fe860224",
+      "before": 73,
+      "fix_available_findings": 0,
+      "image_config_id": "sha256:13b4f3c56f088508227b36fd43460f7e681af2a175baa84e504e773e1245b5f9",
+      "image_id": "sha256:8c7b6a49bb4cb1f3f76a8eab4e30d1607d2a7d7fd3213a41ef3156d4a715a3bd",
+      "non_os_findings": 0,
+      "scan_report_sha256": "5f3dfd08e2d2d05fafbca1a6cfa4515d4365a0e667965de2b7da29896396c985",
+      "scanner_exit_code": 0,
+      "severities": {
+        "LOW": 6,
+        "MEDIUM": 40
+      }
+    },
+    "tools": {
+      "after": 493,
+      "archive_bytes": 303104192,
+      "archive_sha256": "3274fa9685591aa9fcc6218229975273b73f521484c448f97057e893d1592735",
+      "before": 685,
+      "fix_available_findings": 0,
+      "image_config_id": "sha256:fb2f696104d4e6fe4c90a350b554f140fe162d9338f6a32ac1c00b3f1ba6f50d",
+      "image_id": "sha256:c04ff6ae9989ad32d31e17a6ab9bbbd14cc1353dfc6f348469cc4e2fa50fa74b",
+      "non_os_findings": 0,
+      "scan_report_sha256": "e772f360fc8d59b91a54db46ec12c9f9d3b83c6cfca3dc0ed2501f5673b9144a",
+      "scanner_exit_code": 0,
+      "severities": {
+        "CRITICAL": 2,
+        "HIGH": 113,
+        "LOW": 151,
+        "MEDIUM": 197,
+        "UNKNOWN": 30
+      }
+    },
+    "web": {
+      "after": 475,
+      "archive_bytes": 104138275,
+      "archive_sha256": "82ae917f731fde7dda77ab0f63b08aa1bdb0d30f03b3ec6e8ea1b4ea3a67f256",
+      "before": 487,
+      "fix_available_findings": 0,
+      "image_config_id": "sha256:dd6f6621a87ed4dd552f7767ecbaa41e0021132b8133df0ca9cd1b421448dc77",
+      "image_id": "sha256:21d9a27a3eb29c7f657f97d66a34a59f6da928d787d8d0ce49092c42e4afcc03",
+      "non_os_findings": 0,
+      "scan_report_sha256": "f7753223c1ae54981f325b90825dcda46aa42839093801c2a990a468a9669197",
+      "scanner_exit_code": 0,
+      "severities": {
+        "CRITICAL": 2,
+        "HIGH": 109,
+        "LOW": 140,
+        "MEDIUM": 194,
+        "UNKNOWN": 30
+      }
+    }
+  },
+  "local_proof_directory": ".local/release-security-update-2026-11-23",
+  "main_checkout_note": "Implementation inputs copied to main without committing; only the minimatch version wording differs from the immutable isolated build snapshot.",
+  "persistent_instance_changed": false,
+  "published": false,
+  "python_tests": 98,
+  "remaining_security_scope": "No non-OS matches and no remaining fixed-version matches in these scans; residual Debian/Ubuntu findings and embedded native review are not cleared.",
+  "scanner": {
+    "database": {
+      "DownloadedAt": "2026-11-23T17:32:37.013090182Z",
+      "NextUpdate": "2026-11-24T13:07:53.152454631Z",
+      "UpdatedAt": "2026-11-23T13:07:53.152455237Z",
+      "Version": 2
+    },
+    "image": "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+    "version": "0.76.2"
+  },
+  "source_validation": {
+    "components": 533,
+    "format": 1,
+    "image_counts": {
+      "api": 162,
+      "tools": 165,
+      "web": 206
+    },
+    "material_files": 33,
+    "official": false,
+    "revision": "a1276b1fb70ad4e371decdad53dcab2ef6068f3d",
+    "valid": true
+  },
+  "totals": {
+    "after": 1014,
+    "before": 1245,
+    "unique_residual_advisory_ids": 217
+  }
+}

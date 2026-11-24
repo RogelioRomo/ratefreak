@@ -1,0 +1,38 @@
+{
+  "projects": [
+    {
+      "project": "ratefreak-228209285ac2",
+      "containers_remaining": false,
+      "volumes_remaining": false
+    },
+    {
+      "project": "ratefreak-504f6ee27a5e",
+      "containers_remaining": false,
+      "volumes_remaining": false
+    },
+    {
+      "project": "ratefreak-86cdbc7c7563",
+      "containers_remaining": false,
+      "volumes_remaining": false
+    },
+    {
+      "project": "ratefreak-b4b590fc26ac",
+      "containers_remaining": false,
+      "volumes_remaining": false
+    },
+    {
+      "project": "ratefreak-ca15bf8dd211",
+      "containers_remaining": false,
+      "volumes_remaining": false
+    },
+    {
+      "project": "ratefreak-e9b54039d5af",
+      "containers_remaining": false,
+      "volumes_remaining": false
+    }
+  ],
+  "running_containers": [
+    "ratefreak-postgres-1"
+  ],
+  "developer_instance_changed": false
+}

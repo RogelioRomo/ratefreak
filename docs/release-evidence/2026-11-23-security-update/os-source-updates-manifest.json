@@ -1,0 +1,313 @@
+{
+  "files": [
+    {
+      "file": "tzdata_2026f.orig.tar.gz",
+      "local_file": "source-files/01b4a91cec5167ed48c11e8ab78f2048cead78ce94b0cafcad0ae8c5a3044d3d-tzdata_2026f.orig.tar.gz",
+      "sha256": "01b4a91cec5167ed48c11e8ab78f2048cead78ce94b0cafcad0ae8c5a3044d3d",
+      "size": 483310,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tzdata/tzdata_2026f.orig.tar.gz"
+    },
+    {
+      "file": "postgresql-common_297.pgdg12+1.tar.xz",
+      "local_file": "source-files/08e837283513f19973f250aebc0a488e10e5377d4a0ddeb96cdd0d69b15cda08-postgresql-common_297.pgdg12+1.tar.xz",
+      "sha256": "08e837283513f19973f250aebc0a488e10e5377d4a0ddeb96cdd0d69b15cda08",
+      "size": 220540,
+      "url": "https://apt.postgresql.org/pub/repos/apt/pool/main/p/postgresql-common/postgresql-common_297.pgdg12+1.tar.xz"
+    },
+    {
+      "file": "postgresql-17_17.12-1.pgdg12+1.dsc",
+      "local_file": "source-files/0cc2beed96cc5223cb0c3b40c599e608af78e5981b61af7da51f617cbb4d260b-postgresql-17_17.12-1.pgdg12+1.dsc",
+      "sha256": "0cc2beed96cc5223cb0c3b40c599e608af78e5981b61af7da51f617cbb4d260b",
+      "size": 3290,
+      "url": "https://apt.postgresql.org/pub/repos/apt/pool/main/p/postgresql-17/postgresql-17_17.12-1.pgdg12+1.dsc"
+    },
+    {
+      "file": "postgresql-19_19.0-2.pgdg12+1.dsc",
+      "local_file": "source-files/208711eabb09777777e6929c352ef4054a48489b11cb3102297ade3e762e328f-postgresql-19_19.0-2.pgdg12+1.dsc",
+      "sha256": "208711eabb09777777e6929c352ef4054a48489b11cb3102297ade3e762e328f",
+      "size": 3637,
+      "url": "https://apt.postgresql.org/pub/repos/apt/pool/main/p/postgresql-19/postgresql-19_19.0-2.pgdg12+1.dsc"
+    },
+    {
+      "file": "tzdata_2026f.orig.tar.gz.asc",
+      "local_file": "source-files/21d673c017910cf47e392e2e8e23a855ed22456da16a9a26ae714bd1e723255d-tzdata_2026f.orig.tar.gz.asc",
+      "sha256": "21d673c017910cf47e392e2e8e23a855ed22456da16a9a26ae714bd1e723255d",
+      "size": 833,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tzdata/tzdata_2026f.orig.tar.gz.asc"
+    },
+    {
+      "file": "glibc_2.39.orig.tar.xz.asc",
+      "local_file": "source-files/2cce427ef7933c17379f5514e4f0ccf8dffae5bf8c72f0f7e0bf8b8401f34be5-glibc_2.39.orig.tar.xz.asc",
+      "sha256": "2cce427ef7933c17379f5514e4f0ccf8dffae5bf8c72f0f7e0bf8b8401f34be5",
+      "size": 833,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/glibc/glibc_2.39.orig.tar.xz.asc"
+    },
+    {
+      "file": "glibc_2.39-0ubuntu8.12.dsc",
+      "local_file": "source-files/2dd63e1aef4623627bd67c1b8479baa585a68e98f27d2d4fe60d7cde57bcf7fc-glibc_2.39-0ubuntu8.12.dsc",
+      "sha256": "2dd63e1aef4623627bd67c1b8479baa585a68e98f27d2d4fe60d7cde57bcf7fc",
+      "size": 9391,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/glibc/glibc_2.39-0ubuntu8.12.dsc"
+    },
+    {
+      "file": "apt_2.8.4ubuntu0.1.dsc",
+      "local_file": "source-files/3e3bdf99a2cd5fb0ab519beb8eaddc825a855107b3a8c23c0a2899594dfbbb8a-apt_2.8.4ubuntu0.1.dsc",
+      "sha256": "3e3bdf99a2cd5fb0ab519beb8eaddc825a855107b3a8c23c0a2899594dfbbb8a",
+      "size": 3017,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/apt/apt_2.8.4ubuntu0.1.dsc"
+    },
+    {
+      "file": "pcre2_10.42-4ubuntu2.2.diff.gz",
+      "local_file": "source-files/45fcc50b0a7ad9e479d572ca02e3b7847718f9c4f79d6f89e115cc37cbf6fea5-pcre2_10.42-4ubuntu2.2.diff.gz",
+      "sha256": "45fcc50b0a7ad9e479d572ca02e3b7847718f9c4f79d6f89e115cc37cbf6fea5",
+      "size": 16312,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pcre2/pcre2_10.42-4ubuntu2.2.diff.gz"
+    },
+    {
+      "file": "systemd_255.4-1ubuntu8.19.dsc",
+      "local_file": "source-files/4a6620bfc005468d25887e815a9a4396ba9c43c0af0857d47304d2e73f779d3f-systemd_255.4-1ubuntu8.19.dsc",
+      "sha256": "4a6620bfc005468d25887e815a9a4396ba9c43c0af0857d47304d2e73f779d3f",
+      "size": 7536,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/systemd/systemd_255.4-1ubuntu8.19.dsc"
+    },
+    {
+      "file": "systemd_255.4-1ubuntu8.19.debian.tar.xz",
+      "local_file": "source-files/4bfea4f297fa948369cba99a371fc104062be1f9145c822a9bc7bcc36b997e96-systemd_255.4-1ubuntu8.19.debian.tar.xz",
+      "sha256": "4bfea4f297fa948369cba99a371fc104062be1f9145c822a9bc7bcc36b997e96",
+      "size": 285192,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/systemd/systemd_255.4-1ubuntu8.19.debian.tar.xz"
+    },
+    {
+      "file": "perl_5.38.2.orig-regen-configure.tar.xz",
+      "local_file": "source-files/4d1b34cc058f9963cb89785ecc040d57f6d7725cd83329cfa4ef8b27566454d2-perl_5.38.2.orig-regen-configure.tar.xz",
+      "sha256": "4d1b34cc058f9963cb89785ecc040d57f6d7725cd83329cfa4ef8b27566454d2",
+      "size": 418808,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/perl/perl_5.38.2.orig-regen-configure.tar.xz"
+    },
+    {
+      "file": "postgresql-common_297.pgdg12+1.dsc",
+      "local_file": "source-files/4e2fa2f7c809fecf4bca36f2da2030dbb3943e40d05fb35aa822c2a50bc2b7a2-postgresql-common_297.pgdg12+1.dsc",
+      "sha256": "4e2fa2f7c809fecf4bca36f2da2030dbb3943e40d05fb35aa822c2a50bc2b7a2",
+      "size": 1538,
+      "url": "https://apt.postgresql.org/pub/repos/apt/pool/main/p/postgresql-common/postgresql-common_297.pgdg12+1.dsc"
+    },
+    {
+      "file": "postgresql-19_19.0-2.pgdg12+1.debian.tar.xz",
+      "local_file": "source-files/70932e1641de91259d8689800cad9ce41c2d154175a62ad04d5d8d852e7f6e1a-postgresql-19_19.0-2.pgdg12+1.debian.tar.xz",
+      "sha256": "70932e1641de91259d8689800cad9ce41c2d154175a62ad04d5d8d852e7f6e1a",
+      "size": 24956,
+      "url": "https://apt.postgresql.org/pub/repos/apt/pool/main/p/postgresql-19/postgresql-19_19.0-2.pgdg12+1.debian.tar.xz"
+    },
+    {
+      "file": "apt_2.8.4ubuntu0.1.tar.xz",
+      "local_file": "source-files/727dc3beaf35623cb49120843b2c0255bd23eeaa00d0481864b2e6e4f50c01e3-apt_2.8.4ubuntu0.1.tar.xz",
+      "sha256": "727dc3beaf35623cb49120843b2c0255bd23eeaa00d0481864b2e6e4f50c01e3",
+      "size": 2355692,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/apt/apt_2.8.4ubuntu0.1.tar.xz"
+    },
+    {
+      "file": "perl_5.38.2-3.2ubuntu0.7.dsc",
+      "local_file": "source-files/7fe16376f43a9db1a86c706b84c19bb044c96a4e4d45d5152ffd520246929fb8-perl_5.38.2-3.2ubuntu0.7.dsc",
+      "sha256": "7fe16376f43a9db1a86c706b84c19bb044c96a4e4d45d5152ffd520246929fb8",
+      "size": 3065,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/perl/perl_5.38.2-3.2ubuntu0.7.dsc"
+    },
+    {
+      "file": "perl_5.38.2-3.2ubuntu0.7.debian.tar.xz",
+      "local_file": "source-files/81ee53b7045a3143f16edfcaf5a76ba207b9e6d794304fdb48254b9f4df9c224-perl_5.38.2-3.2ubuntu0.7.debian.tar.xz",
+      "sha256": "81ee53b7045a3143f16edfcaf5a76ba207b9e6d794304fdb48254b9f4df9c224",
+      "size": 185768,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/perl/perl_5.38.2-3.2ubuntu0.7.debian.tar.xz"
+    },
+    {
+      "file": "postgresql-17_17.12-1.pgdg12+1.debian.tar.xz",
+      "local_file": "source-files/827c3676ac1f4b36afbe898d1dfb964542a1bcee7ee753052cfb9057fdc4b7a3-postgresql-17_17.12-1.pgdg12+1.debian.tar.xz",
+      "sha256": "827c3676ac1f4b36afbe898d1dfb964542a1bcee7ee753052cfb9057fdc4b7a3",
+      "size": 34424,
+      "url": "https://apt.postgresql.org/pub/repos/apt/pool/main/p/postgresql-17/postgresql-17_17.12-1.pgdg12+1.debian.tar.xz"
+    },
+    {
+      "file": "systemd_255.4.orig.tar.gz",
+      "local_file": "source-files/96e75bd08c57ad401677456fb88ef54a9f05bb1695693013bc6ecce839640fd5-systemd_255.4.orig.tar.gz",
+      "sha256": "96e75bd08c57ad401677456fb88ef54a9f05bb1695693013bc6ecce839640fd5",
+      "size": 14952427,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/systemd/systemd_255.4.orig.tar.gz"
+    },
+    {
+      "file": "postgresql-17_17.12.orig.tar.bz2",
+      "local_file": "source-files/9cf136a703d8ee2f83465c43be4e9e8e7930c82b0bfba13be7e2537be769ac55-postgresql-17_17.12.orig.tar.bz2",
+      "sha256": "9cf136a703d8ee2f83465c43be4e9e8e7930c82b0bfba13be7e2537be769ac55",
+      "size": 22292547,
+      "url": "https://apt.postgresql.org/pub/repos/apt/pool/main/p/postgresql-17/postgresql-17_17.12.orig.tar.bz2"
+    },
+    {
+      "file": "postgresql-19_19.0.orig.tar.bz2",
+      "local_file": "source-files/a89fd70efbad6a08c7dbed8d4872e3af30170d9e5ca9dc7906523be95b4e692d-postgresql-19_19.0.orig.tar.bz2",
+      "sha256": "a89fd70efbad6a08c7dbed8d4872e3af30170d9e5ca9dc7906523be95b4e692d",
+      "size": 23982241,
+      "url": "https://apt.postgresql.org/pub/repos/apt/pool/main/p/postgresql-19/postgresql-19_19.0.orig.tar.bz2"
+    },
+    {
+      "file": "pcre2_10.42.orig.tar.gz",
+      "local_file": "source-files/c33b418e3b936ee3153de2c61cc638e7e4fe3156022a5c77d0711bcbb9d64f1f-pcre2_10.42.orig.tar.gz",
+      "sha256": "c33b418e3b936ee3153de2c61cc638e7e4fe3156022a5c77d0711bcbb9d64f1f",
+      "size": 2397194,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pcre2/pcre2_10.42.orig.tar.gz"
+    },
+    {
+      "file": "tzdata_2026f-0ubuntu0.24.04.1.dsc",
+      "local_file": "source-files/c35cb877198b7f9af1e225ff158dfda2af1e3b52b188c468126ebc73008d40da-tzdata_2026f-0ubuntu0.24.04.1.dsc",
+      "sha256": "c35cb877198b7f9af1e225ff158dfda2af1e3b52b188c468126ebc73008d40da",
+      "size": 2728,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tzdata/tzdata_2026f-0ubuntu0.24.04.1.dsc"
+    },
+    {
+      "file": "glibc_2.39-0ubuntu8.12.debian.tar.xz",
+      "local_file": "source-files/cc7cf38a3060a282011e83c946b6cec1aebe9b04e21e133449abe28340a710f6-glibc_2.39-0ubuntu8.12.debian.tar.xz",
+      "sha256": "cc7cf38a3060a282011e83c946b6cec1aebe9b04e21e133449abe28340a710f6",
+      "size": 506308,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/glibc/glibc_2.39-0ubuntu8.12.debian.tar.xz"
+    },
+    {
+      "file": "tzdata_2026f-0ubuntu0.24.04.1.debian.tar.xz",
+      "local_file": "source-files/cca812a777bfd36a2c3e89e1acdab34540ed177e5a74f45ff31c90fa592a61eb-tzdata_2026f-0ubuntu0.24.04.1.debian.tar.xz",
+      "sha256": "cca812a777bfd36a2c3e89e1acdab34540ed177e5a74f45ff31c90fa592a61eb",
+      "size": 189216,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tzdata/tzdata_2026f-0ubuntu0.24.04.1.debian.tar.xz"
+    },
+    {
+      "file": "pcre2_10.42-4ubuntu2.2.dsc",
+      "local_file": "source-files/cea847918ed4fed0230215255f3aaf97676b9751f6da0ea78515731f8589ea60-pcre2_10.42-4ubuntu2.2.dsc",
+      "sha256": "cea847918ed4fed0230215255f3aaf97676b9751f6da0ea78515731f8589ea60",
+      "size": 2317,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pcre2/pcre2_10.42-4ubuntu2.2.dsc"
+    },
+    {
+      "file": "perl_5.38.2.orig.tar.xz",
+      "local_file": "source-files/d91115e90b896520e83d4de6b52f8254ef2b70a8d545ffab33200ea9f1cf29e8-perl_5.38.2.orig.tar.xz",
+      "sha256": "d91115e90b896520e83d4de6b52f8254ef2b70a8d545ffab33200ea9f1cf29e8",
+      "size": 13679524,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/perl/perl_5.38.2.orig.tar.xz"
+    },
+    {
+      "file": "glibc_2.39.orig.tar.xz",
+      "local_file": "source-files/f77bd47cf8170c57365ae7bf86696c118adb3b120d3259c64c502d3dc1e2d926-glibc_2.39.orig.tar.xz",
+      "sha256": "f77bd47cf8170c57365ae7bf86696c118adb3b120d3259c64c502d3dc1e2d926",
+      "size": 18520988,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/glibc/glibc_2.39.orig.tar.xz"
+    }
+  ],
+  "format": 1,
+  "image_ids": {
+    "api": "sha256:8c7b6a49bb4cb1f3f76a8eab4e30d1607d2a7d7fd3213a41ef3156d4a715a3bd",
+    "tools": "sha256:c04ff6ae9989ad32d31e17a6ab9bbbd14cc1353dfc6f348469cc4e2fa50fa74b",
+    "web": "sha256:21d9a27a3eb29c7f657f97d66a34a59f6da928d787d8d0ce49092c42e4afcc03"
+  },
+  "images": {
+    "api": [
+      {
+        "files": [
+          "source-files/727dc3beaf35623cb49120843b2c0255bd23eeaa00d0481864b2e6e4f50c01e3-apt_2.8.4ubuntu0.1.tar.xz",
+          "source-files/3e3bdf99a2cd5fb0ab519beb8eaddc825a855107b3a8c23c0a2899594dfbbb8a-apt_2.8.4ubuntu0.1.dsc"
+        ],
+        "metadata_archive": "api-source-indexes.tar.gz",
+        "source_package": "apt",
+        "source_version": "2.8.4ubuntu0.1"
+      },
+      {
+        "files": [
+          "source-files/f77bd47cf8170c57365ae7bf86696c118adb3b120d3259c64c502d3dc1e2d926-glibc_2.39.orig.tar.xz",
+          "source-files/2cce427ef7933c17379f5514e4f0ccf8dffae5bf8c72f0f7e0bf8b8401f34be5-glibc_2.39.orig.tar.xz.asc",
+          "source-files/cc7cf38a3060a282011e83c946b6cec1aebe9b04e21e133449abe28340a710f6-glibc_2.39-0ubuntu8.12.debian.tar.xz",
+          "source-files/2dd63e1aef4623627bd67c1b8479baa585a68e98f27d2d4fe60d7cde57bcf7fc-glibc_2.39-0ubuntu8.12.dsc"
+        ],
+        "metadata_archive": "api-source-indexes.tar.gz",
+        "source_package": "glibc",
+        "source_version": "2.39-0ubuntu8.12"
+      },
+      {
+        "files": [
+          "source-files/c33b418e3b936ee3153de2c61cc638e7e4fe3156022a5c77d0711bcbb9d64f1f-pcre2_10.42.orig.tar.gz",
+          "source-files/45fcc50b0a7ad9e479d572ca02e3b7847718f9c4f79d6f89e115cc37cbf6fea5-pcre2_10.42-4ubuntu2.2.diff.gz",
+          "source-files/cea847918ed4fed0230215255f3aaf97676b9751f6da0ea78515731f8589ea60-pcre2_10.42-4ubuntu2.2.dsc"
+        ],
+        "metadata_archive": "api-source-indexes.tar.gz",
+        "source_package": "pcre2",
+        "source_version": "10.42-4ubuntu2.2"
+      },
+      {
+        "files": [
+          "source-files/4d1b34cc058f9963cb89785ecc040d57f6d7725cd83329cfa4ef8b27566454d2-perl_5.38.2.orig-regen-configure.tar.xz",
+          "source-files/d91115e90b896520e83d4de6b52f8254ef2b70a8d545ffab33200ea9f1cf29e8-perl_5.38.2.orig.tar.xz",
+          "source-files/81ee53b7045a3143f16edfcaf5a76ba207b9e6d794304fdb48254b9f4df9c224-perl_5.38.2-3.2ubuntu0.7.debian.tar.xz",
+          "source-files/7fe16376f43a9db1a86c706b84c19bb044c96a4e4d45d5152ffd520246929fb8-perl_5.38.2-3.2ubuntu0.7.dsc"
+        ],
+        "metadata_archive": "api-source-indexes.tar.gz",
+        "source_package": "perl",
+        "source_version": "5.38.2-3.2ubuntu0.7"
+      },
+      {
+        "files": [
+          "source-files/96e75bd08c57ad401677456fb88ef54a9f05bb1695693013bc6ecce839640fd5-systemd_255.4.orig.tar.gz",
+          "source-files/4bfea4f297fa948369cba99a371fc104062be1f9145c822a9bc7bcc36b997e96-systemd_255.4-1ubuntu8.19.debian.tar.xz",
+          "source-files/4a6620bfc005468d25887e815a9a4396ba9c43c0af0857d47304d2e73f779d3f-systemd_255.4-1ubuntu8.19.dsc"
+        ],
+        "metadata_archive": "api-source-indexes.tar.gz",
+        "source_package": "systemd",
+        "source_version": "255.4-1ubuntu8.19"
+      },
+      {
+        "files": [
+          "source-files/01b4a91cec5167ed48c11e8ab78f2048cead78ce94b0cafcad0ae8c5a3044d3d-tzdata_2026f.orig.tar.gz",
+          "source-files/21d673c017910cf47e392e2e8e23a855ed22456da16a9a26ae714bd1e723255d-tzdata_2026f.orig.tar.gz.asc",
+          "source-files/cca812a777bfd36a2c3e89e1acdab34540ed177e5a74f45ff31c90fa592a61eb-tzdata_2026f-0ubuntu0.24.04.1.debian.tar.xz",
+          "source-files/c35cb877198b7f9af1e225ff158dfda2af1e3b52b188c468126ebc73008d40da-tzdata_2026f-0ubuntu0.24.04.1.dsc"
+        ],
+        "metadata_archive": "api-source-indexes.tar.gz",
+        "source_package": "tzdata",
+        "source_version": "2026f-0ubuntu0.24.04.1"
+      }
+    ],
+    "tools": [
+      {
+        "files": [
+          "source-files/0cc2beed96cc5223cb0c3b40c599e608af78e5981b61af7da51f617cbb4d260b-postgresql-17_17.12-1.pgdg12+1.dsc",
+          "source-files/9cf136a703d8ee2f83465c43be4e9e8e7930c82b0bfba13be7e2537be769ac55-postgresql-17_17.12.orig.tar.bz2",
+          "source-files/827c3676ac1f4b36afbe898d1dfb964542a1bcee7ee753052cfb9057fdc4b7a3-postgresql-17_17.12-1.pgdg12+1.debian.tar.xz"
+        ],
+        "metadata_archive": "tools-source-indexes.tar.gz",
+        "source_package": "postgresql-17",
+        "source_version": "17.12-1.pgdg12+1"
+      },
+      {
+        "files": [
+          "source-files/208711eabb09777777e6929c352ef4054a48489b11cb3102297ade3e762e328f-postgresql-19_19.0-2.pgdg12+1.dsc",
+          "source-files/a89fd70efbad6a08c7dbed8d4872e3af30170d9e5ca9dc7906523be95b4e692d-postgresql-19_19.0.orig.tar.bz2",
+          "source-files/70932e1641de91259d8689800cad9ce41c2d154175a62ad04d5d8d852e7f6e1a-postgresql-19_19.0-2.pgdg12+1.debian.tar.xz"
+        ],
+        "metadata_archive": "tools-source-indexes.tar.gz",
+        "source_package": "postgresql-19",
+        "source_version": "19.0-2.pgdg12+1"
+      },
+      {
+        "files": [
+          "source-files/4e2fa2f7c809fecf4bca36f2da2030dbb3943e40d05fb35aa822c2a50bc2b7a2-postgresql-common_297.pgdg12+1.dsc",
+          "source-files/08e837283513f19973f250aebc0a488e10e5377d4a0ddeb96cdd0d69b15cda08-postgresql-common_297.pgdg12+1.tar.xz"
+        ],
+        "metadata_archive": "tools-source-indexes.tar.gz",
+        "source_package": "postgresql-common",
+        "source_version": "297.pgdg12+1"
+      }
+    ]
+  },
+  "metadata_archives": [
+    {
+      "file": "api-source-indexes.tar.gz",
+      "sha256": "7dc70e413326cb4a367f608c3f6d3ba0f473b4c576dea54e1e6d98cafd961ceb"
+    },
+    {
+      "file": "tools-source-indexes.tar.gz",
+      "sha256": "d04ee5696beacfa8771e55087353b5c05d11e569a78166606674532bceef4a87"
+    }
+  ]
+}

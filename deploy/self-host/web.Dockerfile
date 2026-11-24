@@ -1,4 +1,4 @@
-FROM node:24-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9 AS build
+FROM node:24-bookworm-slim@sha256:dc26ae92c9fb15cf6b1d63e20f0944b2efe0f115b20e00be48fb23fceb061c54 AS build
 WORKDIR /src/web
 RUN apt-get update && apt-get install -y --no-install-recommends python3 && rm -rf /var/lib/apt/lists/*
 RUN corepack enable && corepack prepare pnpm@10.28.2 --activate
@@ -12,8 +12,11 @@ COPY LICENSE /src/LICENSE
 COPY deploy/compliance /src/deploy/compliance
 RUN pnpm build
 
-FROM node:24-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9 AS runtime
-RUN apt-get update && apt-get install -y --no-install-recommends python3 ca-certificates && rm -rf /var/lib/apt/lists/*
+FROM debian:bookworm-slim@sha256:734a72b3d6142a71993b4bc580ca01d8ca687f77a2c422d96a961d3376b179bc AS runtime
+RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends python3 ca-certificates libstdc++6 libatomic1 && rm -rf /var/lib/apt/lists/*
+# Copy only Node and its complete composite license; package managers stay in build.
+COPY --from=build /usr/local/bin/node /usr/local/bin/node
+COPY --from=build /usr/local/LICENSE /usr/local/LICENSE
 WORKDIR /app
 COPY --from=build --chown=10001:10001 /src/web/.next/standalone ./
 COPY --from=build --chown=10001:10001 /src/web/.next/static ./.next/static
@@ -21,7 +24,8 @@ COPY --from=build --chown=10001:10001 /src/web/public ./public
 COPY deploy/self-host/entrypoint.py ./entrypoint.py
 ENV NODE_ENV=production HOSTNAME=0.0.0.0 PORT=3000 NEXT_TELEMETRY_DISABLED=1
 COPY deploy/compliance/runtime_evidence.py /app/runtime_evidence.py
-COPY deploy/compliance/runtime-supplements /app/runtime-supplements
+COPY deploy/compliance/runtime-supplements/sources.json /app/runtime-supplements/sources.json
+COPY deploy/compliance/runtime-supplements/NODE-REDISTRIBUTION-NOTICES.txt /app/runtime-supplements/
 RUN python3 /app/runtime_evidence.py /app/public/notices/runtime --image-family web
 ARG RATEFREAK_VERSION
 ARG RATEFREAK_REVISION=unknown

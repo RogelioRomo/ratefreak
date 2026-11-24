@@ -1,0 +1,198 @@
+{
+  "acceptance": {
+    "acceptance": {
+      "baselineImages": {
+        "api": "sha256:f9b3809cc6d89b1eaa1f6be40826714fe8879f4969461832dc30289d4a4287c4",
+        "tools": "sha256:6640cc748af8a0902b7651da73a9bf8d711edf4617c14daca74dde9cd675861c",
+        "web": "sha256:88ed6cff74224eea88a6876e9c2ec14e1dc090759460f834459b29da5249bb81"
+      },
+      "candidateImages": {
+        "api": "sha256:2a659c2ed51f7628fe9bb00fa2d07423b79c2938d1b9c611af7d4aef983705c9",
+        "tools": "sha256:8adae4896233a65b6bc365520e5dfa654802d34e5a566363eeaab777cde09033",
+        "web": "sha256:ea72bb7d383d29b66b6bd5d1632b88e0bbe0db182d7afc31d81f5eee94ab5a76"
+      },
+      "dataPreserved": true,
+      "disabledUpdateChecks": true,
+      "freshInstall": false,
+      "https": true,
+      "logoutDenied": true,
+      "ordinaryDenied": true,
+      "upgrade": true
+    },
+    "fresh-acceptance": {
+      "baselineImages": null,
+      "candidateImages": {
+        "api": "sha256:2a659c2ed51f7628fe9bb00fa2d07423b79c2938d1b9c611af7d4aef983705c9",
+        "tools": "sha256:8adae4896233a65b6bc365520e5dfa654802d34e5a566363eeaab777cde09033",
+        "web": "sha256:ea72bb7d383d29b66b6bd5d1632b88e0bbe0db182d7afc31d81f5eee94ab5a76"
+      },
+      "dataPreserved": true,
+      "disabledUpdateChecks": true,
+      "freshInstall": true,
+      "https": true,
+      "logoutDenied": true,
+      "ordinaryDenied": true,
+      "upgrade": false
+    }
+  },
+  "browser": {
+    "limitations": "Both-theme admin routes and update controls; ordinary journey uses the browser default theme. Simulated newer-release availability is intercepted, not a real upstream release.",
+    "ordinary_denied": true,
+    "page_journeys": 25,
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "tls_verified": true,
+    "widths": [
+      1440,
+      768,
+      390,
+      320
+    ]
+  },
+  "date": "2026-11-23",
+  "format": 1,
+  "images": {
+    "api": {
+      "file": "api.tar.gz",
+      "id": "sha256:2a659c2ed51f7628fe9bb00fa2d07423b79c2938d1b9c611af7d4aef983705c9",
+      "tag": "ratefreak-api:0.1.0-dev.1"
+    },
+    "tools": {
+      "file": "tools.tar.gz",
+      "id": "sha256:8adae4896233a65b6bc365520e5dfa654802d34e5a566363eeaab777cde09033",
+      "tag": "ratefreak-tools:0.1.0-dev.1"
+    },
+    "web": {
+      "file": "web.tar.gz",
+      "id": "sha256:ea72bb7d383d29b66b6bd5d1632b88e0bbe0db182d7afc31d81f5eee94ab5a76",
+      "tag": "ratefreak-web:0.1.0-dev.1"
+    }
+  },
+  "local_release_directory": ".local/release-candidate-2026-11-23/candidate/release",
+  "mapped_components": 719,
+  "platform": "linux/amd64",
+  "published": false,
+  "release_manifest_sha256": "ce50ac321253d08de241ca02966aff829af45ea3507f47d5f17313197e45fb03",
+  "remaining_release_gates": [
+    "Provider rights and operator eligibility",
+    "Current vulnerability review",
+    "Stable version/final source freeze and corresponding artifact revalidation",
+    "Remaining operational acceptance, including optional live OAuth callbacks and operator-specific durability/backup/abuse/monitoring duties",
+    "Maintainer security-notification delivery",
+    "Publication authorization and actual matching binary/source release"
+  ],
+  "revision": "f19a90784abff9ea5b0d787d7fc3a4cb85ac2a4b",
+  "source_and_privacy_limits": [
+    "Font original download/subsetting history not independently reconstructed",
+    "Exact upstream sharp header build resolution not asserted; original declared-minimum header grant/source supplied conservatively",
+    "Privacy heuristics and configured-value comparison are scoped checks, not proof of secret absence"
+  ],
+  "source_coverage_counts": {
+    "api": 162,
+    "tools": 199,
+    "web": 358
+  },
+  "source_material_files": 36,
+  "stage": "verified",
+  "verification": {
+    "checks": [
+      {
+        "check": "restore",
+        "exitCode": 0
+      },
+      {
+        "check": "tools",
+        "exitCode": 0
+      },
+      {
+        "check": "web-install",
+        "exitCode": 0
+      },
+      {
+        "check": "UnitTests",
+        "exitCode": 0
+      },
+      {
+        "check": "ProviderContractTests",
+        "exitCode": 0
+      },
+      {
+        "check": "IntegrationTests",
+        "exitCode": 0
+      },
+      {
+        "check": "operator",
+        "exitCode": 0
+      },
+      {
+        "check": "release",
+        "exitCode": 0
+      },
+      {
+        "check": "compliance",
+        "exitCode": 0
+      },
+      {
+        "check": "web-lint",
+        "exitCode": 0
+      },
+      {
+        "check": "web-typecheck",
+        "exitCode": 0
+      },
+      {
+        "check": "web-test",
+        "exitCode": 0
+      },
+      {
+        "check": "web-build",
+        "exitCode": 0
+      },
+      {
+        "check": "api-publish",
+        "exitCode": 0
+      },
+      {
+        "check": "model",
+        "exitCode": 0
+      }
+    ],
+    "complete": true,
+    "identity": {
+      "dirty": false,
+      "official": true,
+      "revision": "f19a90784abff9ea5b0d787d7fc3a4cb85ac2a4b",
+      "version": "0.1.0-dev.1"
+    },
+    "schema": 1,
+    "tests": [
+      {
+        "executed": 498,
+        "failed": 0,
+        "passed": 498,
+        "skipped": 0,
+        "suite": "IntegrationTests",
+        "total": 498
+      },
+      {
+        "executed": 196,
+        "failed": 0,
+        "passed": 196,
+        "skipped": 0,
+        "suite": "ProviderContractTests",
+        "total": 196
+      },
+      {
+        "executed": 62,
+        "failed": 0,
+        "passed": 62,
+        "skipped": 0,
+        "suite": "UnitTests",
+        "total": 62
+      }
+    ]
+  },
+  "version": "0.1.0-dev.1"
+}

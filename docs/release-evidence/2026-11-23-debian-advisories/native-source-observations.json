@@ -1,0 +1,106 @@
+{
+  "locked_native_archive_hashes_verified": 28,
+  "supplemental_sharp_addon_archives": 2,
+  "source_files_checked": 9352,
+  "files_with_precondition_tokens": [
+    {
+      "archive": ".local/release-compliance/source-set/native-sources/0a02487f4e44-libheif-1.23.5.tar.gz",
+      "file": "libheif-1.23.5/libheif/box.h",
+      "direct_references": [
+        {
+          "line": 40,
+          "text": "#include <bitset>"
+        }
+      ]
+    },
+    {
+      "archive": ".local/release-compliance/source-set/native-sources/0a02487f4e44-libheif-1.23.5.tar.gz",
+      "file": "libheif-1.23.5/libheif/codecs/hevc_boxes.h",
+      "direct_references": [
+        {
+          "line": 44,
+          "text": "std::bitset<NUM_CONSTRAINT_INDICATOR_FLAGS> general_constraint_indicator_flags;"
+        }
+      ]
+    },
+    {
+      "archive": ".local/release-compliance/source-set/native-sources/2717443c7bc7-libtiff-v4.7.2.tar.gz",
+      "file": "libtiff-v4.7.2/libtiff/tif_stream.cxx",
+      "direct_references": [
+        {
+          "line": 51,
+          "text": "ios::pos_type basic_istream::tellg()"
+        },
+        {
+          "line": 54,
+          "text": "basic_istream& basic_istream::seekg(ios::pos_type)"
+        },
+        {
+          "line": 55,
+          "text": "basic_istream& basic_istream::seekg(ios::off_type, ios_base::seekdir)"
+        },
+        {
+          "line": 58,
+          "text": "basic_istream& istream::read(char *str, streamsize count)"
+        }
+      ]
+    },
+    {
+      "archive": ".local/release-compliance/source-set/native-sources/39b2dedd66b3-1.4.0.tar.gz",
+      "file": "highway-1.4.0/hwy/bit_set.h",
+      "direct_references": [
+        {
+          "line": 29,
+          "text": "// 64-bit specialization of `std::bitset`, which lacks `Foreach`."
+        },
+        {
+          "line": 304,
+          "text": "// Two-level bitset for up to `kMaxSize` <= 4096 values. The iterators"
+        }
+      ]
+    },
+    {
+      "archive": ".local/release-compliance/source-set/native-sources/39b2dedd66b3-1.4.0.tar.gz",
+      "file": "highway-1.4.0/hwy/highway_test.cc",
+      "direct_references": [
+        {
+          "line": 19,
+          "text": "#include <bitset>"
+        },
+        {
+          "line": 90,
+          "text": "using NumLanesSet = std::bitset<HWY_MAX_BYTES + 1>;"
+        }
+      ]
+    },
+    {
+      "archive": ".local/release-compliance/source-set/native-sources/da7971bb1d61-libaom-3.15.1.tar.gz",
+      "file": "libaom-3.15.1/third_party/highway/hwy/bit_set.h",
+      "direct_references": [
+        {
+          "line": 29,
+          "text": "// 64-bit specialization of `std::bitset`, which lacks `Foreach`."
+        },
+        {
+          "line": 304,
+          "text": "// Two-level bitset for up to `kMaxSize` <= 4096 values. The iterators"
+        }
+      ]
+    },
+    {
+      "archive": ".local/release-compliance/source-set/native-sources/e4358859871e-v2.0.2.tar.gz",
+      "file": "libultrahdr-2.0.2/third_party/image_io/includes/image_io/jpeg/jpeg_marker.h",
+      "direct_references": [
+        {
+          "line": 4,
+          "text": "#include <bitset>"
+        },
+        {
+          "line": 45,
+          "text": "using Flags = std::bitset<kJpegMarkerArraySize>;"
+        }
+      ]
+    }
+  ],
+  "review": "The generic basic_istream matches in tif_stream.cxx are inside its opening documentation comment about tellg/seekg/read. Actual TIFF stream interfaces use narrow std::istream byte reads. Direct bitset uses in the other listed files are bit masks/constructors/output or tests; no wide-character bitset extraction found. Lexical/source and symbol review are supporting evidence, not a complete inlining/callgraph proof."
+}

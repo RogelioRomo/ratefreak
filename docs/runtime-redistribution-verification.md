@@ -94,3 +94,19 @@ fresh-install/upgrade/browser acceptance for those exact production images.
 The reviewed decisions transfer only when the payload hashes and versions still
 match and all applicable notices accompany them. Provider clarification,
 operator-specific acceptance and authorized publication remain separate gates.
+
+## Current candidate follow-up — 2026-11-23
+
+The [current development candidate](release-candidate-verification-2026-11-23.md)
+now has full inventoried source coverage assembly, all-layer artifact/privacy
+inspection and exact-image fresh-install/upgrade/browser acceptance. Its
+719 image/component mappings preserve the reviewed material/notice conditions;
+the native sidecar is newly bound to the current web image. Delivery copies of
+the .NET/Skia notice archives normalize local ownership metadata while preserving
+member bytes. The separately reviewed sharp addon now has its header collaborator
+notice and supporting materials alongside the binaries.
+
+This supersedes the immediate next-task instruction above for that exact local
+development candidate. It does not qualify an unselected final stable identity,
+resolve the documented font/header provenance limits, establish current
+vulnerability/provider clearance, or authorize publication.

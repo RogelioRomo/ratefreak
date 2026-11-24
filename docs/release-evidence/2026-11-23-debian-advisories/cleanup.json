@@ -1,0 +1,11 @@
+{
+  "assessment_containers_remaining": {
+    "tools": false,
+    "web": false
+  },
+  "running_containers": [
+    "ratefreak-postgres-1"
+  ],
+  "application_services_started": false,
+  "persistent_instance_changed": false
+}

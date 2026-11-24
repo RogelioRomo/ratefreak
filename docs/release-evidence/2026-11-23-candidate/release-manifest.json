@@ -1,0 +1,89 @@
+{
+  "dirty": false,
+  "files": {
+    "RELEASE-NOTES.md": {
+      "bytes": 1644,
+      "sha256": "1464626f10fd6a3b0faf78335088316372a01378dd84b1abcd9fd84a36a92d70"
+    },
+    "acceptance.tar.gz": {
+      "bytes": 554,
+      "sha256": "b40f20daa7919ade3105613982913bfe35d4a17804b1cb4ae26be0ef00091a37"
+    },
+    "api-notices.tar.gz": {
+      "bytes": 941738,
+      "sha256": "ab0d2a7a07e53e414e4fca750b2d68b3e7bc85c2f49c1655175c2a898632276c"
+    },
+    "api.tar.gz": {
+      "bytes": 274281267,
+      "sha256": "968a524a581134fda3a40216e0d0a92944eff80de659d59b2aca3109e1cd055d"
+    },
+    "baseline-images.json": {
+      "bytes": 249,
+      "sha256": "60038cc75a1e53e38b66832abedc0f34975abae23c5cd1e0ba71d01c0c8417aa"
+    },
+    "built-images.json": {
+      "bytes": 257,
+      "sha256": "b5857d0addf71bafaf1e5334a207999697ae90a0fe22be0c301227fd726937dd"
+    },
+    "fresh-acceptance.tar.gz": {
+      "bytes": 443,
+      "sha256": "b76f2cdf547f35c8d4554031b8e8d6f82689f71598596d5cdeba8f8429b49f73"
+    },
+    "installation.tar.gz": {
+      "bytes": 2207245,
+      "sha256": "d6595ccf9045220238b6476bf2080f5e09298570231a868bbb341de6336b31f1"
+    },
+    "reports.tar.gz": {
+      "bytes": 529,
+      "sha256": "8c8fbde8a1130aba60ca4b8ad5666369980abe544cc0da87a686966740e22ec4"
+    },
+    "source-inventory.json": {
+      "bytes": 257802,
+      "sha256": "3d48562c621515b767cb0775ad3fb74c0e3e25f92706ff61bc618481b7bfbf21"
+    },
+    "sources.tar.gz": {
+      "bytes": 1255738039,
+      "sha256": "a17e690ac4b3b44aa2da8d19ac407e72e2570c24639ede8e311b037bc0e1bf37"
+    },
+    "tools-notices.tar.gz": {
+      "bytes": 1096220,
+      "sha256": "5e24b4b2788e9e50578b09051b27c332ac0f9026491de6a1d82af77453179fbd"
+    },
+    "tools.tar.gz": {
+      "bytes": 395567848,
+      "sha256": "3eb41c64a00a2c5a6320b815404228caebf3220d2766f8e72fe4762433118ede"
+    },
+    "web-notices.tar.gz": {
+      "bytes": 1072774,
+      "sha256": "a8e1d1bd671096fda11999c0ac5a37d2e52a2eda245025d2cb48bae03dbdfc69"
+    },
+    "web.tar.gz": {
+      "bytes": 111526991,
+      "sha256": "341a84b05f8353924abf8ff51d93b33931b5138967d86108642f318eeb4e4793"
+    }
+  },
+  "format": 1,
+  "images": {
+    "api": {
+      "file": "api.tar.gz",
+      "id": "sha256:2a659c2ed51f7628fe9bb00fa2d07423b79c2938d1b9c611af7d4aef983705c9",
+      "tag": "ratefreak-api:0.1.0-dev.1"
+    },
+    "tools": {
+      "file": "tools.tar.gz",
+      "id": "sha256:8adae4896233a65b6bc365520e5dfa654802d34e5a566363eeaab777cde09033",
+      "tag": "ratefreak-tools:0.1.0-dev.1"
+    },
+    "web": {
+      "file": "web.tar.gz",
+      "id": "sha256:ea72bb7d383d29b66b6bd5d1632b88e0bbe0db182d7afc31d81f5eee94ab5a76",
+      "tag": "ratefreak-web:0.1.0-dev.1"
+    }
+  },
+  "migration": "20261119165037_AddProfileAvatars",
+  "official": true,
+  "platform": "linux/amd64",
+  "revision": "f19a90784abff9ea5b0d787d7fc3a4cb85ac2a4b",
+  "stage": "verified",
+  "version": "0.1.0-dev.1"
+}

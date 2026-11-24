@@ -1,0 +1,24 @@
+{
+  "complete": true,
+  "samples": [
+    {
+      "source": "icu",
+      "version": "76.1-4",
+      "descriptor": "icu_76.1-4.dsc",
+      "exit_code": 0,
+      "debian_control_and_rules_present": true,
+      "descriptor_signature_checked_by_this_command": false,
+      "source_inputs_authenticated_by_signed_apt_indexes": true
+    },
+    {
+      "source": "postgresql-17",
+      "version": "17.12-1.pgdg13+1",
+      "descriptor": "postgresql-17_17.12-1.pgdg13+1.dsc",
+      "exit_code": 0,
+      "debian_control_and_rules_present": true,
+      "descriptor_signature_checked_by_this_command": false,
+      "source_inputs_authenticated_by_signed_apt_indexes": true
+    }
+  ],
+  "binary_rebuild_performed": false
+}

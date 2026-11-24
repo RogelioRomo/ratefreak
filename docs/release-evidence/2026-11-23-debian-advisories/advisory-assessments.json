@@ -1,0 +1,2604 @@
+[
+  {
+    "assessment": "Maintenance prevalidates the entire archive as allowed regular-file names, then uses extractfile and guarded explicit file writes; it never invokes extract/extractall or the affected filters. Eight hostile cases were rejected before any destination write while those APIs/filters were replaced with failing sentinels; safe flat/avatar restoration passed. Web startup/health do not extract archives.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "tools-probe.json",
+      "probe.py",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-114583",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-114583",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114583"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-114583",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114583"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-114583",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114583"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-114583",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114583"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-114583",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114583"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-114583",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114583"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-114583",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114583"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-114583",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114583"
+      }
+    ],
+    "reassess_if": [
+      "Change backup format, allowed member types/paths, extraction API or restore trust boundary",
+      "Invoke other Python archive extractors or CLI operations as a supported product flow"
+    ],
+    "required_condition": "tarfile.extractall/extract using the tar filter on crafted links",
+    "scanner_severities": [
+      "MEDIUM"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "python3.13",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-114583"
+  },
+  {
+    "assessment": "Upstream fix changes include/std/bitset, not shared-library runtime behavior. GCC headers/compilers are absent; replacing libstdc++ alone would not repair an already compiled vulnerable instantiation. Node compiler metadata predates affected GCC13+ handling; observed Node bitset stream symbols are narrow output, not wide input. Reviewed locked native/addon source search found no wide/bitset input path: 28 locked source archives plus sharp/addon header materials were searched, and the sole generic-istream hit is a libtiff comment documenting narrow byte I/O. Skia observed bitset symbols use libc++ ABI. This is a supported-flow/source assessment, not proof against all inlined code or a native binary rebuild.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "upstream-inputs.json",
+      "web-probe.json",
+      "tools-probe.json",
+      "native-source-search.json",
+      "native-source-observations.json"
+    ],
+    "id": "CVE-2026-115455",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-115455",
+        "image": "web",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "severity": "MEDIUM",
+        "source": "gcc-14",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-115455"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-115455",
+        "image": "web",
+        "installed": "14.2.0-19",
+        "package": "libatomic1",
+        "severity": "MEDIUM",
+        "source": "gcc-14",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-115455"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-115455",
+        "image": "web",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "severity": "MEDIUM",
+        "source": "gcc-14",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-115455"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-115455",
+        "image": "web",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "severity": "MEDIUM",
+        "source": "gcc-14",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-115455"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-115455",
+        "image": "tools",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "severity": "MEDIUM",
+        "source": "gcc-14",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-115455"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-115455",
+        "image": "tools",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "severity": "MEDIUM",
+        "source": "gcc-14",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-115455"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-115455",
+        "image": "tools",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "severity": "MEDIUM",
+        "source": "gcc-14",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-115455"
+      }
+    ],
+    "reassess_if": [
+      "Change compiler/headers, native source/build profile, addons or stream parsers",
+      "Introduce wide-stream/std::bitset extraction; compile application/native code using affected GCC headers"
+    ],
+    "required_condition": "C++ code compiled from affected libstdc++ headers instantiates wide-character stream extraction into std::bitset",
+    "scanner_severities": [
+      "MEDIUM"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "gcc-14",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-115455"
+  },
+  {
+    "assessment": "Node reports features.quic=false, although its embedded OpenSSL still contains QUIC symbols. The shipped JS has no node:quic use. The supported Node/.NET application servers use internal HTTP, libpq19 uses PostgreSQL TCP/TLS, and neither libpq imports nor the exact .NET crypto shim expose the named QUIC APIs. libmsquic is absent. This excludes supported consumers, not the underlying OpenSSL QUIC implementation or the separate edge service.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "tools-probe.json",
+      "shipped-js-search.json",
+      "upstream-inputs.json",
+      "libpq-source-provenance.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-124709",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-124709",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "HIGH",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-124709"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-124709",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "HIGH",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-124709"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-124709",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "HIGH",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-124709"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-124709",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "HIGH",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-124709"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-124709",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "HIGH",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-124709"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-124709",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "HIGH",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-124709"
+      }
+    ],
+    "reassess_if": [
+      "Enable HTTP3/QUIC or Node experimental QUIC",
+      "Add native/plugin callers or change edge/runtime/network architecture"
+    ],
+    "required_condition": "OpenSSL QUIC server rejects/resets peer streams",
+    "scanner_severities": [
+      "HIGH"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "openssl",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-124709"
+  },
+  {
+    "assessment": "Startup/health and maintenance do not import or call HTMLParser; Python is replaced by Node/.NET before serving application requests.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "tools-probe.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-15308",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-15308",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15308"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15308",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15308"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15308",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15308"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15308",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15308"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15308",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15308"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15308",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15308"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15308",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15308"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15308",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15308"
+      }
+    ],
+    "reassess_if": [
+      "Add Python parsing/network services or introduce these APIs",
+      "Allow attacker-supplied Unicode healthcheck hosts, credentials, CSV/HTML/ZIP inputs or custom startup scripts"
+    ],
+    "required_condition": "Uncontrolled HTML fed to incremental html.parser.HTMLParser",
+    "scanner_severities": [
+      "HIGH"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "python3.13",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-15308"
+  },
+  {
+    "assessment": "Production startup/health and maintenance do not consume ZIP files. Backups are tar plus PostgreSQL custom dumps; account ZIP exports are produced by .NET. The repository acceptance driver is verification-only, not a production entrypoint.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "tools-probe.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-15310",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-15310",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15310"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15310",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15310"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15310",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15310"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15310",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15310"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15310",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15310"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15310",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15310"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15310",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15310"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15310",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15310"
+      }
+    ],
+    "reassess_if": [
+      "Add Python parsing/network services or introduce these APIs",
+      "Allow attacker-supplied Unicode healthcheck hosts, credentials, CSV/HTML/ZIP inputs or custom startup scripts"
+    ],
+    "required_condition": "ZIP decompression with attacker-controlled sizes using bzip/LZMA/Zstandard",
+    "scanner_severities": [
+      "MEDIUM"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "python3.13",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-15310"
+  },
+  {
+    "assessment": "Runtime Python does not create urllib password managers or make HTTP requests; host operator uses urlsplit for validation, not HTTPPasswordMgr credential transport.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "tools-probe.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-15806",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-15806",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15806"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15806",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15806"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15806",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15806"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15806",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15806"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15806",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15806"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15806",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15806"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15806",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15806"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-15806",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-15806"
+      }
+    ],
+    "reassess_if": [
+      "Add Python parsing/network services or introduce these APIs",
+      "Allow attacker-supplied Unicode healthcheck hosts, credentials, CSV/HTML/ZIP inputs or custom startup scripts"
+    ],
+    "required_condition": "urllib HTTPPasswordMgr credential matching across URL schemes",
+    "scanner_severities": [
+      "MEDIUM"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "python3.13",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-15806"
+  },
+  {
+    "assessment": "Runtime entrypoint/maintenance do not use Python IDNA. The Python web health check connects to literal 127.0.0.1. Database hostnames go to libpq/.NET rather than a Python IDNA client.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "tools-probe.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-17084",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-17084",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-17084"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-17084",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-17084"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-17084",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-17084"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-17084",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-17084"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-17084",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-17084"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-17084",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-17084"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-17084",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-17084"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-17084",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-17084"
+      }
+    ],
+    "reassess_if": [
+      "Add Python parsing/network services or introduce these APIs",
+      "Allow attacker-supplied Unicode healthcheck hosts, credentials, CSV/HTML/ZIP inputs or custom startup scripts"
+    ],
+    "required_condition": "Python stringprep/IDNA2003 handling of affected Unicode domain characters",
+    "scanner_severities": [
+      "MEDIUM"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "python3.13",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-17084"
+  },
+  {
+    "assessment": "No csv.Sniffer use in supported entrypoints, health or maintenance; image evidence collection is a build/audit script and does not sniff CSV.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "tools-probe.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-18503",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-18503",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "LOW",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-18503"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-18503",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "LOW",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-18503"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-18503",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "LOW",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-18503"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-18503",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "LOW",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-18503"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-18503",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "LOW",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-18503"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-18503",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "LOW",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-18503"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-18503",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "LOW",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-18503"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-18503",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "LOW",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-18503"
+      }
+    ],
+    "reassess_if": [
+      "Add Python parsing/network services or introduce these APIs",
+      "Allow attacker-supplied Unicode healthcheck hosts, credentials, CSV/HTML/ZIP inputs or custom startup scripts"
+    ],
+    "required_condition": "Attacker-controlled unbounded sample passed to csv.Sniffer.sniff",
+    "scanner_severities": [
+      "LOW"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "python3.13",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-18503"
+  },
+  {
+    "assessment": "No Python TLS server/SNI callback is configured or started. Production Python is a launcher or offline maintenance process; TLS termination is in the separate edge service.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "tools-probe.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-19445",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-19445",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19445"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19445",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19445"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19445",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19445"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19445",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19445"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19445",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19445"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19445",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19445"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19445",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19445"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19445",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19445"
+      }
+    ],
+    "reassess_if": [
+      "Add Python parsing/network services or introduce these APIs",
+      "Allow attacker-supplied Unicode healthcheck hosts, credentials, CSV/HTML/ZIP inputs or custom startup scripts"
+    ],
+    "required_condition": "Python TLS server switches SSLContext in SNI callback while releasing the original context",
+    "scanner_severities": [
+      "HIGH"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "python3.13",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-19445"
+  },
+  {
+    "assessment": "No Python wrap_bio/start_tls/asyncio TLS client in supported flows; the fixed literal TCP health check is not TLS.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "tools-probe.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-19553",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-19553",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19553"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19553",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19553"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19553",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19553"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19553",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19553"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19553",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19553"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19553",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19553"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19553",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19553"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19553",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19553"
+      }
+    ],
+    "reassess_if": [
+      "Add Python parsing/network services or introduce these APIs",
+      "Allow attacker-supplied Unicode healthcheck hosts, credentials, CSV/HTML/ZIP inputs or custom startup scripts"
+    ],
+    "required_condition": "Python SSLContext.wrap_bio or related TLS APIs omit hostname while relying on check_hostname",
+    "scanner_severities": [
+      "HIGH"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "python3.13",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-19553"
+  },
+  {
+    "assessment": "Maintenance prevalidates the entire archive as allowed regular-file names, then uses extractfile and guarded explicit file writes; it never invokes extract/extractall or the affected filters. Eight hostile cases were rejected before any destination write while those APIs/filters were replaced with failing sentinels; safe flat/avatar restoration passed. Web startup/health do not extract archives.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "tools-probe.json",
+      "probe.py",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-19672",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-19672",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19672"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19672",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19672"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19672",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19672"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19672",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19672"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19672",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19672"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19672",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19672"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19672",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19672"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-19672",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19672"
+      }
+    ],
+    "reassess_if": [
+      "Change backup format, allowed member types/paths, extraction API or restore trust boundary",
+      "Invoke other Python archive extractors or CLI operations as a supported product flow"
+    ],
+    "required_condition": "tar/data filter extraction that creates intermediate directories from a traversal-and-return member path",
+    "scanner_severities": [
+      "MEDIUM"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "python3.13",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-19672"
+  },
+  {
+    "assessment": "Neither the pinned Node TLS context implementation, exact .NET SSL shim nor exact libpq19 TLS implementation calls SSL_CTX_set_cert_flags. Shipped JS does not refer to Suite B. Standard application endpoints are internal HTTP and external database TLS is client-side. No such server flag is configured.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "upstream-inputs.json",
+      "libpq-source-provenance.json",
+      "shipped-js-search.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-35190",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-35190",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-35190"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-35190",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-35190"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-35190",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-35190"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-35190",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-35190"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-35190",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-35190"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-35190",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-35190"
+      }
+    ],
+    "reassess_if": [
+      "Add Suite B/native TLS configuration or a TLS server context that sets certificate flags"
+    ],
+    "required_condition": "TLS1.3 server enables SSL_CERT_FLAG_SUITEB_128_LOS through SSL_CTX_set_cert_flags",
+    "scanner_severities": [
+      "MEDIUM"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "openssl",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-35190"
+  },
+  {
+    "assessment": "nsenter is present and is not treated as removed. Startup, storage-init, backup/restore and operator commands never invoke it or join another process namespace. This does not assume root maintenance has API/web hardening or that default caps alone resolve the finding.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "tools-probe.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-78408",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "web",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "web",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "tools",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "tools",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78408",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      }
+    ],
+    "reassess_if": [
+      "Add namespace/debug/privileged helpers or expose nsenter as an operator workflow",
+      "Run manual nsenter --join-cgroup against untrusted targets"
+    ],
+    "required_condition": "Privileged operator runs nsenter --join-cgroup against an attacker-controlled target",
+    "scanner_severities": [
+      "HIGH"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "util-linux",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-78408"
+  },
+  {
+    "assessment": "mount remains setuid in the image; no binary-removal claim is made. Both exact images have an unconfigured fstab and no supported script performs mount/X-mount.subdir. API/web hardening is additional context and is not generalized to root maintenance.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "tools-probe.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-78409",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "web",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "web",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "web",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "tools",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "tools",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-78409",
+        "image": "tools",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "HIGH",
+        "source": "util-linux",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78409"
+      }
+    ],
+    "reassess_if": [
+      "Mount host fstab, add X-mount.subdir entries, privileged mounts or SYS_ADMIN/host namespace workflows"
+    ],
+    "required_condition": "Restricted X-mount.subdir operation on an authorized fstab entry reaches the affected detached-tree path",
+    "scanner_severities": [
+      "HIGH"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "util-linux",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-78409"
+  },
+  {
+    "assessment": "Maintenance prevalidates the entire archive as allowed regular-file names, then uses extractfile and guarded explicit file writes; it never invokes extract/extractall or the affected filters. Eight hostile cases were rejected before any destination write while those APIs/filters were replaced with failing sentinels; safe flat/avatar restoration passed. Web startup/health do not extract archives.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "tools-probe.json",
+      "probe.py",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-82049",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-82049",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-82049"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-82049",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-82049"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-82049",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-82049"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-82049",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-82049"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-82049",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-82049"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-82049",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-82049"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-82049",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-82049"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-82049",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "HIGH",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-82049"
+      }
+    ],
+    "reassess_if": [
+      "Change backup format, allowed member types/paths, extraction API or restore trust boundary",
+      "Invoke other Python archive extractors or CLI operations as a supported product flow"
+    ],
+    "required_condition": "tar/data filter extraction of hard-link-to-symbolic-link entries",
+    "scanner_severities": [
+      "HIGH"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "python3.13",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-82049"
+  },
+  {
+    "assessment": "Maintenance prevalidates the entire archive as allowed regular-file names, then uses extractfile and guarded explicit file writes; it never invokes extract/extractall or the affected filters. Eight hostile cases were rejected before any destination write while those APIs/filters were replaced with failing sentinels; safe flat/avatar restoration passed. Web startup/health do not extract archives.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "tools-probe.json",
+      "probe.py",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-87910",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-87910",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-87910"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-87910",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-87910"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-87910",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-87910"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-87910",
+        "image": "web",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-87910"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-87910",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-87910"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-87910",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-87910"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-87910",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-87910"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-87910",
+        "image": "tools",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "severity": "MEDIUM",
+        "source": "python3.13",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-87910"
+      }
+    ],
+    "reassess_if": [
+      "Change backup format, allowed member types/paths, extraction API or restore trust boundary",
+      "Invoke other Python archive extractors or CLI operations as a supported product flow"
+    ],
+    "required_condition": "tarfile link fallback extraction and inconsistent filter decisions",
+    "scanner_severities": [
+      "MEDIUM"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "python3.13",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-87910"
+  },
+  {
+    "assessment": "Node reports features.quic=false, although its embedded OpenSSL still contains QUIC symbols. The shipped JS has no node:quic use. The supported Node/.NET application servers use internal HTTP, libpq19 uses PostgreSQL TCP/TLS, and neither libpq imports nor the exact .NET crypto shim expose the named QUIC APIs. libmsquic is absent. This excludes supported consumers, not the underlying OpenSSL QUIC implementation or the separate edge service.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "tools-probe.json",
+      "shipped-js-search.json",
+      "upstream-inputs.json",
+      "libpq-source-provenance.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-88822",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-88822",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "LOW",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88822"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-88822",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "LOW",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88822"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-88822",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "LOW",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88822"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-88822",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "LOW",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88822"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-88822",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "LOW",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88822"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-88822",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "LOW",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88822"
+      }
+    ],
+    "reassess_if": [
+      "Enable HTTP3/QUIC or Node experimental QUIC",
+      "Add native/plugin callers or change edge/runtime/network architecture"
+    ],
+    "required_condition": "OpenSSL QUIC automatic peer-address detection",
+    "scanner_severities": [
+      "LOW"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "openssl",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-88822"
+  },
+  {
+    "assessment": "AES-GCM-SIV IS available in the pinned Node cipher list, so this is not a missing-algorithm exclusion. The shipped JS feature search has no GCM-SIV use; inspected Next cipher call sites use ordinary AES-GCM/AES-CBC, .NET cipher source uses ordinary EVP_aes_*_gcm functions, and libpq uses TLS rather than a GCM-SIV application cipher. No supported endpoint allows callers to select an arbitrary crypto algorithm.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "shipped-js-search.json",
+      "js-cipher-calls.json",
+      "js-cipher-algorithms.json",
+      "upstream-inputs.json",
+      "libpq-source-provenance.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-88823",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-88823",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "LOW",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88823"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-88823",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "LOW",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88823"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-88823",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "LOW",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88823"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-88823",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "LOW",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88823"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-88823",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "LOW",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88823"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-88823",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "LOW",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88823"
+      }
+    ],
+    "reassess_if": [
+      "Introduce GCM-SIV, generic algorithm selection, native crypto/plugin code or changed encryption dependencies",
+      "Change AAD/IV/context handling for a newly enabled GCM-SIV caller"
+    ],
+    "required_condition": "AES-GCM-SIV receives fragmented AAD including a zero-length update or context reuse",
+    "scanner_severities": [
+      "LOW"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "openssl",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-88823"
+  },
+  {
+    "assessment": "Node reports features.quic=false, although its embedded OpenSSL still contains QUIC symbols. The shipped JS has no node:quic use. The supported Node/.NET application servers use internal HTTP, libpq19 uses PostgreSQL TCP/TLS, and neither libpq imports nor the exact .NET crypto shim expose the named QUIC APIs. libmsquic is absent. This excludes supported consumers, not the underlying OpenSSL QUIC implementation or the separate edge service.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "tools-probe.json",
+      "shipped-js-search.json",
+      "upstream-inputs.json",
+      "libpq-source-provenance.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-95691",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-95691",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95691"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-95691",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95691"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-95691",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95691"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-95691",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95691"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-95691",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95691"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-95691",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95691"
+      }
+    ],
+    "reassess_if": [
+      "Enable HTTP3/QUIC or Node experimental QUIC",
+      "Add native/plugin callers or change edge/runtime/network architecture"
+    ],
+    "required_condition": "OpenSSL QUIC client processes crafted overlapping retransmitted CRYPTO frames",
+    "scanner_severities": [
+      "MEDIUM"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "openssl",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-95691"
+  },
+  {
+    "assessment": "AES-GCM-SIV IS available in the pinned Node cipher list, so this is not a missing-algorithm exclusion. The shipped JS feature search has no GCM-SIV use; inspected Next cipher call sites use ordinary AES-GCM/AES-CBC, .NET cipher source uses ordinary EVP_aes_*_gcm functions, and libpq uses TLS rather than a GCM-SIV application cipher. No supported endpoint allows callers to select an arbitrary crypto algorithm.",
+    "disposition": "scoped-exclusion-supported-flows",
+    "evidence": [
+      "web-probe.json",
+      "shipped-js-search.json",
+      "js-cipher-calls.json",
+      "js-cipher-algorithms.json",
+      "upstream-inputs.json",
+      "libpq-source-provenance.json",
+      "deployment-source-facts.json"
+    ],
+    "id": "CVE-2026-95692",
+    "images": {
+      "tools": "sha256:9adcc76c8211b5b7b31c1b3c3b75cc311b8a151c3e1fd6ba9e940dacd63cf050",
+      "web": "sha256:a56952300faac34885ea061879bf15b3adebb211f92e3537e0bfbcbfbabdede0"
+    },
+    "matches": [
+      {
+        "fixed": null,
+        "id": "CVE-2026-95692",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95692"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-95692",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95692"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-95692",
+        "image": "web",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95692"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-95692",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95692"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-95692",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95692"
+      },
+      {
+        "fixed": null,
+        "id": "CVE-2026-95692",
+        "image": "tools",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "MEDIUM",
+        "source": "openssl",
+        "status": "affected",
+        "type": "debian",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95692"
+      }
+    ],
+    "reassess_if": [
+      "Introduce GCM-SIV, generic algorithm selection, native crypto/plugin code or changed encryption dependencies",
+      "Change AAD/IV/context handling for a newly enabled GCM-SIV caller"
+    ],
+    "required_condition": "AES-GCM-SIV EVP initialization uses a nonstandard IV length",
+    "scanner_severities": [
+      "MEDIUM"
+    ],
+    "scope": "Exact trial images and unmodified supported startup, health, application and maintenance flows; does not cover arbitrary operator execution, custom server/plugin/native code or host/service-image vulnerabilities.",
+    "source": "openssl",
+    "upstream_fixed_claim": false,
+    "vendor_status": "open",
+    "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-95692"
+  }
+]

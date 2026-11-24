@@ -1,0 +1,907 @@
+{
+  "format": 1,
+  "revision": "f19a90784abff9ea5b0d787d7fc3a4cb85ac2a4b",
+  "tracked_files": 1158,
+  "unsafe_paths": [],
+  "findings": [
+    {
+      "rule": "email-address",
+      "file": ".env.example",
+      "lines": [
+        22,
+        29
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/compliance/native/rust-notices-manifest.json",
+      "lines": [
+        8,
+        9,
+        34,
+        59,
+        76,
+        118,
+        200,
+        221,
+        222,
+        243,
+        264,
+        285,
+        286,
+        364,
+        381,
+        398,
+        415,
+        436,
+        453,
+        470,
+        491,
+        512,
+        548,
+        577,
+        619,
+        620,
+        641,
+        1148,
+        1169,
+        1170,
+        1187,
+        1244,
+        1261,
+        1346,
+        1372,
+        1373,
+        1374,
+        1403,
+        1404,
+        1405,
+        1455,
+        1476,
+        1497,
+        1552,
+        1570,
+        1587,
+        1588,
+        1765,
+        1786,
+        1828,
+        1845,
+        1862,
+        1879,
+        1896,
+        1913,
+        1949,
+        2008,
+        2025,
+        2026,
+        2068,
+        2148,
+        2149,
+        2167,
+        2189,
+        2211,
+        2236,
+        2237,
+        2275,
+        2296,
+        2374,
+        2375,
+        2396,
+        2397,
+        2458,
+        2475,
+        2492,
+        2513,
+        2530,
+        2568,
+        2652,
+        2673,
+        2694,
+        2711,
+        2712,
+        2733,
+        2734,
+        2755,
+        2772,
+        2773,
+        2774,
+        2812,
+        2917,
+        2963,
+        2988,
+        3026,
+        3104,
+        3121,
+        3155,
+        3206,
+        3246
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/compliance/runtime-supplements/COPIED-TOOLS-LICENSE-NOTICES.txt",
+      "lines": [
+        34,
+        36,
+        37
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/compliance/runtime-supplements/DOTNET-REDISTRIBUTION-NOTICES.txt",
+      "lines": [
+        266,
+        512,
+        728,
+        1272,
+        1298,
+        1405,
+        1593,
+        1859,
+        1865,
+        2021,
+        2401,
+        2885,
+        3137,
+        3433,
+        3439,
+        3603,
+        4008,
+        4103
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/compliance/runtime-supplements/JS-BUNDLED-TOOLS-NOTICES.txt",
+      "lines": [
+        160,
+        174,
+        200,
+        214,
+        330,
+        430,
+        431,
+        432,
+        433,
+        434,
+        435,
+        526,
+        552,
+        579,
+        606,
+        609,
+        637,
+        656,
+        722,
+        2386,
+        2441,
+        2488,
+        2521,
+        2535,
+        2536,
+        2563,
+        2621,
+        2773,
+        2799,
+        2823,
+        2972,
+        2999,
+        3023,
+        3067,
+        3091,
+        3117,
+        3215,
+        3270,
+        3290,
+        3314,
+        3338,
+        3363,
+        3410,
+        3436,
+        3582,
+        3629,
+        3913,
+        4100,
+        4373,
+        4391,
+        4411,
+        4449,
+        4469,
+        4555,
+        4749,
+        4800,
+        4859,
+        5029,
+        5055,
+        5208,
+        5330,
+        5424,
+        5661,
+        6046,
+        6080,
+        6235,
+        6470,
+        6496,
+        6590,
+        6605,
+        6639,
+        6665,
+        6666,
+        6693,
+        6839,
+        6865,
+        6958,
+        7035,
+        7070,
+        7155,
+        7252,
+        7278,
+        7356,
+        7485,
+        7528,
+        7617,
+        7775,
+        8884,
+        8909,
+        8910,
+        9851,
+        9958,
+        10251,
+        10252,
+        10253,
+        10254,
+        10442,
+        10468,
+        10494,
+        10561,
+        10587,
+        10601,
+        10627,
+        10641,
+        10766,
+        10793,
+        11599,
+        11626,
+        11627,
+        11628,
+        11629,
+        11630,
+        11693,
+        11713,
+        12149
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/compliance/runtime-supplements/NPM-RUNTIME-NOTICES.txt",
+      "lines": [
+        27,
+        88,
+        656,
+        876,
+        1096,
+        1316,
+        1536,
+        1756,
+        1976,
+        2015,
+        2118,
+        2131,
+        2158,
+        2168,
+        2192,
+        2241,
+        2243,
+        2305,
+        2316,
+        2343,
+        2345,
+        2414,
+        2429,
+        2510,
+        2552,
+        2554,
+        2625,
+        2629,
+        2741,
+        2742,
+        2743,
+        2756,
+        2793,
+        2830,
+        2841,
+        3147,
+        3151,
+        3291,
+        3318,
+        3331,
+        3359,
+        3372,
+        3399,
+        3540,
+        3577,
+        3579,
+        3617,
+        3730,
+        3760,
+        4063,
+        4098,
+        4099,
+        4230,
+        4234,
+        4337,
+        4341,
+        4410,
+        4486,
+        4559,
+        4592,
+        4625,
+        4654,
+        4687,
+        4757,
+        4870,
+        4871,
+        4872,
+        4912,
+        4924,
+        5391,
+        5402,
+        5488,
+        5564,
+        5569,
+        5582,
+        5678,
+        5707,
+        5776,
+        5781,
+        6038,
+        6095,
+        6109,
+        6169,
+        6203,
+        6465,
+        6472,
+        6476,
+        6480,
+        6484,
+        6488,
+        6492,
+        6496,
+        6500,
+        6504,
+        6508,
+        6512,
+        6516,
+        6520,
+        6524,
+        6528,
+        6532,
+        6536,
+        6540,
+        6544,
+        6559,
+        6629,
+        7003,
+        7266,
+        7277,
+        7367,
+        7405,
+        7444,
+        7577,
+        7715,
+        7727,
+        7781,
+        7870
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/compliance/runtime-supplements/SKIA-REDISTRIBUTION-NOTICES.txt",
+      "lines": [
+        7001,
+        7008,
+        7044,
+        7495,
+        8432,
+        8707,
+        8881,
+        8893,
+        9735,
+        10226,
+        10233,
+        10464,
+        11605
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/compliance/rust-supplements/r-efi-5.3.0-AUTHORS.txt",
+      "lines": [
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/compliance/rust-supplements/r-efi-6.0.0-AUTHORS.txt",
+      "lines": [
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/compliance/supplements/librsvg-rust-LICENSE-NOTICES.txt",
+      "lines": [
+        13,
+        11135,
+        11136,
+        11137,
+        11138,
+        11139
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/compliance/supplements/libvips-embedded-LICENSE-NOTICES.txt",
+      "lines": [
+        3774,
+        3775,
+        3776,
+        3777,
+        6641,
+        6723,
+        8158,
+        10426
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/compliance/supplements/remove-scroll-bar-LICENSE.txt",
+      "lines": [
+        3
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/compliance/test_runtime_evidence.py",
+      "lines": [
+        17,
+        49
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/release/browser_acceptance.cjs",
+      "lines": [
+        15,
+        40
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/release/test_prepare.py",
+      "lines": [
+        16,
+        19,
+        59
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/release/test_versioning.py",
+      "lines": [
+        19,
+        42
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/self-host/acceptance.py",
+      "lines": [
+        41,
+        52
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "deploy/self-host/test_operator.py",
+      "lines": [
+        59
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "docs/scroll-bar-license-provenance.md",
+      "lines": [
+        36
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "docs/self-hosting.md",
+      "lines": [
+        239
+      ]
+    },
+    {
+      "rule": "machine-home",
+      "file": "docs/superpowers/plans/2026-11-08-custom-catalog-and-list-collections.md",
+      "lines": [
+        201,
+        253
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "ratefreak-plan.md",
+      "lines": [
+        343
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/AvatarMigrationTests.cs",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/BookImportTests.cs",
+      "lines": [
+        28
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/CollectionListResetTests.cs",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/CustomCatalogMigrationTests.cs",
+      "lines": [
+        40,
+        41
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/ExternalOAuthFlowTests.cs",
+      "lines": [
+        133
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/ExternalProviderFailureTests.cs",
+      "lines": [
+        58
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/ExternalSecurityTests.cs",
+      "lines": [
+        73
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/ExternalSignInMigrationTests.cs",
+      "lines": [
+        26
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/InstallationTests.cs",
+      "lines": [
+        69,
+        145
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/ModerationMigrationTests.cs",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/ProfileModerationMigrationTests.cs",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/RatingSharingMigrationTests.cs",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/ReviewCommentsMigrationTests.cs",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/UserProfileTests.cs",
+      "lines": [
+        90
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.IntegrationTests/UserProfilesMigrationTests.cs",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.ProviderContractTests/MusicBrainzTests.cs",
+      "lines": [
+        102
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "tests/RateFreak.ProviderContractTests/OpenLibraryTests.cs",
+      "lines": [
+        21,
+        29,
+        67,
+        68
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/components/layout/theme-control.test.tsx",
+      "lines": [
+        14,
+        27
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/auth/api/accounts.test.ts",
+      "lines": [
+        6
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/auth/components/account-data-settings.test.tsx",
+      "lines": [
+        12
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/auth/components/account-tabs.test.tsx",
+      "lines": [
+        11
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/auth/components/external-registration.test.tsx",
+      "lines": [
+        12
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/auth/components/external.test.tsx",
+      "lines": [
+        17
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/auth/components/recovery.test.tsx",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/auth/components/screens.test.tsx",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/auth/components/session-provider.test.tsx",
+      "lines": [
+        17
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/auth/components/silent-session.test.tsx",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/auth/session/transition.test.ts",
+      "lines": [
+        5
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/collections/components/test-support.tsx",
+      "lines": [
+        9
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/comments/components/discussion-screen.test.tsx",
+      "lines": [
+        11
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/custom-catalog/components/create-item-screen.test.tsx",
+      "lines": [
+        27,
+        52,
+        66
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/custom-catalog/hooks/private-queries.test.tsx",
+      "lines": [
+        11
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/home/components/home-screen.test.tsx",
+      "lines": [
+        10
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/notifications/components/notifications-screen.test.tsx",
+      "lines": [
+        12
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/notifications/hooks/use-notifications.test.tsx",
+      "lines": [
+        12
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/personal/components/history-screen.test.tsx",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/personal/components/library-screen.test.tsx",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/personal/components/personal.test.tsx",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/providers/components/import-control.test.tsx",
+      "lines": [
+        9
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/features/setup/components/installation-boundary.test.tsx",
+      "lines": [
+        20,
+        32
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/server/api/config.test.ts",
+      "lines": [
+        5
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/server/api/mutations.test.ts",
+      "lines": [
+        9,
+        28
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/server/api/oauth-proxy.test.ts",
+      "lines": [
+        28,
+        52
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/server/api/proxy.test.ts",
+      "lines": [
+        83
+      ]
+    },
+    {
+      "rule": "email-address",
+      "file": "web/server/artwork/open-library-cover.test.ts",
+      "lines": [
+        46
+      ]
+    }
+  ],
+  "scope": "Tracked source bytes and path policy only; heuristic findings need review and are not proof of secret absence.",
+  "configured_private_values_checked": 7,
+  "configured_private_value_matches": [],
+  "review_dispositions": {
+    "email-address": "Upstream license author attributions, documented example addresses and synthetic test fixtures; retained.",
+    "machine-home": "Two historical plan commands reference the author workspace; not active configuration or credentials.",
+    "credential_patterns": "No private-key block, GitHub token or AWS access-key pattern found."
+  }
+}
