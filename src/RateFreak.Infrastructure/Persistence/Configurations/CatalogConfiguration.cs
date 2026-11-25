@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RateFreak.Domain.Catalog;
+using RateFreak.Infrastructure.Providers.Tmdb;
 
 namespace RateFreak.Infrastructure.Persistence.Configurations;
 
@@ -32,6 +33,28 @@ internal static class CatalogConfiguration
             item.Property(x => x.Metadata).HasColumnType("jsonb").IsRequired();
             item.HasIndex(x => new { x.Title, x.Id }).HasDatabaseName("ix_media_items_title_id");
             item.HasIndex(x => new { x.MediaType, x.Title, x.Id }).HasDatabaseName("ix_media_items_type_title_id");
+        });
+        modelBuilder.Entity<TmdbLifecycleState>(state =>
+        {
+            state.ToTable("tmdb_lifecycle_states");
+            state.HasKey(x => x.MappingId);
+            state.HasOne<MediaExternalId>().WithOne().HasForeignKey<TmdbLifecycleState>(x => x.MappingId);
+            state.HasIndex(x => new { x.NextAttemptAt, x.MappingId });
+            state.Property(x => x.LastOutcome).HasMaxLength(24);
+        });
+        modelBuilder.Entity<TmdbPosterIdentity>(poster =>
+        {
+            poster.ToTable("tmdb_poster_identities");
+            poster.HasKey(x => new { x.MappingId, x.Filename });
+            poster.HasOne<MediaExternalId>().WithMany().HasForeignKey(x => x.MappingId);
+            poster.Property(x => x.Filename).HasMaxLength(200);
+        });
+        modelBuilder.Entity<TmdbRefreshSchedule>(schedule =>
+        {
+            schedule.ToTable("tmdb_refresh_schedule");
+            schedule.HasKey(x => x.Id);
+            schedule.Property(x => x.Id).ValueGeneratedNever();
+            schedule.HasData(new TmdbRefreshSchedule { Id = 1 });
         });
         modelBuilder.Entity<MediaExternalId>(mapping =>
         {

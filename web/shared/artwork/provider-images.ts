@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
+import { tmdbPosterFilename } from "./tmdb-poster-paths";
 
 // This policy is shared by the optimizer endpoint and the artwork renderer.
 export const providerImageConfig: NonNullable<NextConfig["images"]> = {
   remotePatterns: [
-    { protocol: "https", hostname: "image.tmdb.org", port: "", pathname: "/t/p/w500/*", search: "" },
     { protocol: "https", hostname: "images.igdb.com", port: "", pathname: "/igdb/image/upload/t_cover_big/*.jpg", search: "" },
   ],
   localPatterns: [{ pathname: "/provider-artwork/openlibrary/*", search: "" }],
@@ -20,7 +20,7 @@ export const providerImageConfig: NonNullable<NextConfig["images"]> = {
 };
 
 export function isProviderArtwork(reference: string): boolean {
-  return /^https:\/\/image\.tmdb\.org\/t\/p\/w500\/[A-Za-z0-9_-]+\.(?:jpg|jpeg|png|webp|avif)$/.test(reference)
+  return tmdbPosterFilename(reference) !== null
     || /^https:\/\/images\.igdb\.com\/igdb\/image\/upload\/t_cover_big\/[A-Za-z0-9_-]+\.jpg$/.test(reference)
     || /^https:\/\/covers\.openlibrary\.org\/b\/id\/[1-9][0-9]{0,9}-L\.jpg\?default=false$/.test(reference);
 }

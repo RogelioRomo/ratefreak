@@ -10,11 +10,14 @@ import subprocess
 import sys
 import tarfile
 import uuid
-from entrypoint import read_secret, connection, fsync_directory, ensure_journal, UID, GID
+from entrypoint import (EMPTY_TMDB_POLICY, GID, StorageError, TMDB_POLICY_PATH, UID,
+                        ensure_journal, fsync_directory, owned_directory, read_secret,
+                        read_tmdb_policy, write_tmdb_policy)
 
 class MaintenanceError(Exception):pass
 
 FILES={'database.dump','artwork.tar','keys.tar'}
+JOURNAL_PATH = Path('/journal/account-erasures.jsonl')
 
 def digest(path):
     value=hashlib.sha256()
@@ -110,7 +113,7 @@ def backup():
     for path in root.iterdir():
         path.chmod(0o600);os.chown(path,int(os.environ['RATEFREAK_OPERATOR_UID']),int(os.environ['RATEFREAK_OPERATOR_GID']))
     fsync_directory(root)
-    print('Coordinated database/artwork/key-recovery backup complete; journal excluded. Enforce private encrypted storage and 30-day expiration.')
+    print('Coordinated database/artwork/key-recovery backup complete. Back up the independent journal and TMDB policy separately. The poster cache is disposable. Enforce private encrypted storage and 30-day expiration.')
 
 def extract_flat(source,destination,allow_avatars=False):
     if any(destination.iterdir()):raise MaintenanceError('Restore storage must be empty.')
@@ -133,6 +136,15 @@ def extract_flat(source,destination,allow_avatars=False):
     if (destination/'avatars').is_dir():fsync_directory(destination/'avatars')
     fsync_directory(destination)
 
+def restore_tmdb_policy(source, target, uid=UID, gid=GID):
+    current = read_tmdb_policy(source, uid, gid)
+    owned_directory(target.parent, uid, gid, create=False)
+    if source.samefile(target):
+        raise MaintenanceError('Restore requires an independent current TMDB policy, not the target file.')
+    if read_tmdb_policy(target, uid, gid) != EMPTY_TMDB_POLICY:
+        raise MaintenanceError('Restore requires a fresh isolated target TMDB policy.')
+    write_tmdb_policy(target, current, uid, gid)
+
 def restore():
     root=Path('/backup');validate_backup(root,json.loads(os.environ['RATEFREAK_RELEASE_IMAGES']))
     # Validate all refusal conditions before restoring any database/files.
@@ -141,8 +153,9 @@ def restore():
         if any(path.iterdir()):raise MaintenanceError('Restore requires empty isolated artwork/key storage.')
     source=Path('/current-journal')
     if source.is_symlink() or not source.is_file() or stat.S_IMODE(source.stat().st_mode)!=0o600:raise MaintenanceError('Supply the protected current independent journal.')
-    target=Path('/independent/account-erasures.jsonl');ensure_journal(target)
+    target=JOURNAL_PATH;ensure_journal(target)
     if target.stat().st_size:raise MaintenanceError('Refusing to replace an existing journal with records.')
+    restore_tmdb_policy(Path('/current-tmdb-policy'), TMDB_POLICY_PATH)
     # Destination is only the verified empty journal provisioned for this fresh restore.
     staged=target.with_name('restore-current-journal.tmp')
     fd=os.open(staged,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
@@ -153,25 +166,55 @@ def restore():
     os.replace(staged,target);fsync_directory(target.parent)
     pg_run(['pg_restore','--exit-on-error','--no-owner','--no-privileges','--dbname',os.environ.get('RATEFREAK_DB_NAME','ratefreak'),str(root/'database.dump')],True,stdout=subprocess.DEVNULL)
     extract_flat(root/'artwork.tar',Path('/data/artwork'),allow_avatars=True);extract_flat(root/'keys.tar',Path('/data/keys'))
-    print('Isolated snapshot restored. Traffic remains stopped until current-journal replay and verification succeed.')
+    print('Isolated snapshot restored with current TMDB policy. Traffic remains stopped until replay and verification succeed.')
+
+def verify_tmdb_replay(path=TMDB_POLICY_PATH, uid=UID, gid=GID):
+    policy = read_tmdb_policy(path, uid, gid)
+    # Policy validation restricts these literals to the canonical namespace and decimal digits.
+    identity_filter = 'TRUE' if policy['terminated'] else 'FALSE'
+    if not policy['terminated'] and policy['blockedIdentities']:
+        identities = ', '.join(f"'{identity}'" for identity in policy['blockedIdentities'])
+        identity_filter = f"concat(external.namespace, ':', external.external_id) IN ({identities})"
+    image_filter = 'FALSE'
+    if policy['blockedPosters']:
+        posters = ", ".join(f"'https://image.tmdb.org/t/p/w500/{filename}'" for filename in policy['blockedPosters'])
+        image_filter = f"image_reference IN ({posters})"
+    remaining = query(f"""
+        WITH tmdb AS (
+            SELECT item.title, item.description, item.release_date, item.image_reference, item.metadata,
+                   coalesce(external.last_synced_at, item.created_at) AS synced,
+                   ({identity_filter}) AS blocked
+            FROM media_external_ids AS external
+            JOIN media_items AS item ON item.id = external.media_item_id
+            WHERE external.provider = 'tmdb'
+        )
+        SELECT count(*) FROM tmdb
+        WHERE ((blocked OR NOT isfinite(synced) OR synced > statement_timestamp()
+            OR (synced AT TIME ZONE 'UTC') + interval '6 months' <= statement_timestamp() AT TIME ZONE 'UTC')
+          AND (title IS DISTINCT FROM 'Unavailable title' OR description IS NOT NULL
+            OR release_date IS NOT NULL OR image_reference IS NOT NULL OR metadata IS DISTINCT FROM '{{}}'::jsonb))
+          OR ({image_filter});
+    """)
+    if remaining != '0':
+        raise MaintenanceError('Blocked or expired TMDB provider fields remain after replay.')
 
 def verify_replay():
-    journal=Path('/independent/account-erasures.jsonl')
     ids=set()
-    for line in journal.read_bytes().splitlines(keepends=True):
+    for line in JOURNAL_PATH.read_bytes().splitlines(keepends=True):
         if not line.endswith(b'\n'):continue
         record=json.loads(line);ids.add(str(uuid.UUID(record['AccountId'])))
     for account in ids:
         # UUID parsing above prevents arbitrary SQL; SQL travels on stdin, not process arguments/logs.
         if query(f"SELECT count(*) FROM users WHERE id='{account}';")!='0':raise MaintenanceError('A journaled account remains after replay.')
     verify_artwork(Path('/data/artwork'))
-    print('Journaled accounts absent and referenced artwork present. Verify instance-specific data/moderation and independent journal replication before traffic.')
+    verify_tmdb_replay()
+    print('Journaled accounts absent, referenced artwork present, and blocked or expired TMDB provider fields cleared. Verify instance-specific data/moderation and independent journal replication before traffic.')
 
 def main():
     try:
         {'backup':backup,'restore':restore,'verify-replay':verify_replay}[sys.argv[1]]()
-    except (MaintenanceError,OSError,ValueError,KeyError,tarfile.TarError):
-        print('Protected maintenance failed; keep writers stopped. Check target freshness, current journal, matching release and archive integrity.',file=sys.stderr);return 1
+    except (MaintenanceError,StorageError,OSError,ValueError,KeyError,tarfile.TarError):
+        print('Protected maintenance failed; keep writers stopped. Check target freshness, current independent journal and TMDB policy, matching release and archive integrity.',file=sys.stderr);return 1
     return 0
 
 if __name__=='__main__':sys.exit(main())

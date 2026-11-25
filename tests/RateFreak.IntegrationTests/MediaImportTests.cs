@@ -1,3 +1,4 @@
+using System.Data.Common;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -5,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using RateFreak.Application.MetadataImport;
 using RateFreak.Infrastructure.Persistence;
@@ -40,13 +42,14 @@ public sealed class MediaImportTests(AccountDatabase database) : IClassFixture<A
         }
     }
 
-    private ApiFactory Factory(Transport transport) => new(connectionString: database.ConnectionString, configureServices: services =>
+    private ApiFactory Factory(Transport transport, DbTransactionInterceptor? interceptor = null) => new(connectionString: database.ConnectionString, configureServices: services =>
     {
         services.PostConfigure<TmdbOptions>(options => { options.Enabled = true; options.AccessToken = "fake-transport-secret"; });
         services.AddHttpClient<IMediaProvider, TmdbMediaProvider>().ConfigurePrimaryHttpMessageHandler(() => transport);
         // This fixture deliberately synchronizes two upstream calls to force the
         // database uniqueness race. Production coalescing is covered separately.
         if (transport.SynchronizePair) services.AddScoped<IMediaProviderRegistry, MediaProviderRegistry>();
+        if (interceptor != null) services.AddDbContext<RateFreakDbContext>(options => options.AddInterceptors(interceptor));
     });
     private static HttpClient Client(ApiFactory factory) => factory.CreateClient(new WebApplicationFactoryClientOptions
         { BaseAddress = new Uri("https://localhost"), AllowAutoRedirect = false });
@@ -128,6 +131,42 @@ public sealed class MediaImportTests(AccountDatabase database) : IClassFixture<A
             Assert.Equal(first!.MediaId, second!.MediaId);
             Assert.Equal(before + 1, await context.MediaItems.CountAsync(Cancellation));
             Assert.Equal(1, await context.MediaExternalIds.CountAsync(x => x.Provider == "tmdb" && x.Namespace == "movie" && x.ExternalId == "987", Cancellation));
+        }
+        finally { foreach (var response in responses) response.Dispose(); }
+    }
+
+    private sealed class BlockAfterRollback : DbTransactionInterceptor
+    {
+        public Func<CancellationToken, Task>? Block { get; set; }
+
+        public override async Task TransactionRolledBackAsync(DbTransaction transaction, TransactionEndEventData eventData, CancellationToken cancellationToken = default)
+        {
+            if (Block != null) await Block(cancellationToken);
+        }
+    }
+
+    [Fact]
+    public async Task Losing_concurrent_import_rechecks_policy_after_releasing_its_transaction()
+    {
+        const string id = "988";
+        var interceptor = new BlockAfterRollback();
+        using var transport = new Transport { SynchronizePair = true };
+        await using var factory = Factory(transport, interceptor);
+        using var client = Client(factory);
+        await SignIn(client);
+        var policy = factory.Services.GetRequiredService<TmdbContentPolicy>();
+        interceptor.Block = async ct =>
+        {
+            await using var context = new RateFreakDbContext(new DbContextOptionsBuilder<RateFreakDbContext>()
+                .UseNpgsql(database.ConnectionString).Options);
+            var maintenance = new TmdbLifecycle(context, policy, [], TimeProvider.System);
+            await maintenance.MaintainAsync(context.Database.GetDbConnection().Database, "movie:" + id, false, [], ct);
+        };
+
+        var responses = await Task.WhenAll(Import(client, id), Import(client, id));
+        try
+        {
+            Assert.Equal([HttpStatusCode.Created, HttpStatusCode.NotFound], responses.Select(response => response.StatusCode).Order());
         }
         finally { foreach (var response in responses) response.Dispose(); }
     }

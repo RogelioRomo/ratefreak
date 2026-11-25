@@ -34,7 +34,11 @@ public sealed class PostgresTests
         Assert.Contains("20261028000100_InitialFoundation", applied);
         Assert.Contains("20261029163157_AddIdentityAccounts", applied);
         Assert.Empty(await context.Users.ToListAsync(TestContext.Current.CancellationToken));
-        Assert.Equal(HttpStatusCode.OK, (await client.GetAsync("/health/ready", TestContext.Current.CancellationToken)).StatusCode);
+        // The reference upgrade starts a fresh API after the external migration
+        // so readiness includes startup TMDB reconciliation against the new schema.
+        await using var migratedFactory = new ApiFactory(connectionString: postgres.GetConnectionString());
+        using var migratedClient = migratedFactory.CreateClient();
+        Assert.Equal(HttpStatusCode.OK, (await migratedClient.GetAsync("/health/ready", TestContext.Current.CancellationToken)).StatusCode);
     }
     [Fact]
     [Trait("Category", "Database")]

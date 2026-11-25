@@ -2,7 +2,6 @@ using System.Globalization;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RateFreak.Application.MetadataImport;
@@ -40,7 +39,7 @@ public sealed class TmdbMediaProvider(HttpClient client, IOptions<TmdbOptions> o
             throw new ArgumentException("Invalid provider identity.");
         using var json = await GetJsonAsync($"{Namespace(type)}/{id}?language={settings.Language}", cancellationToken);
         if (json is null) return null;
-        var result = Map(json.RootElement, type);
+        var result = Map(json.RootElement, type, id);
         if (result is not null && result.ExternalId != id) throw new MediaProviderException(ProviderFailure.InvalidResponse);
         return result;
     }
@@ -73,16 +72,16 @@ public sealed class TmdbMediaProvider(HttpClient client, IOptions<TmdbOptions> o
                         HttpStatusCode.ServiceUnavailable or HttpStatusCode.GatewayTimeout or HttpStatusCode.InternalServerError;
                     var retryAfter = RetrySeconds(response.Headers.RetryAfter);
                     var limited = response.StatusCode == HttpStatusCode.TooManyRequests;
-                    if (attempt == 0 && (transient || (limited && retryAfter is >= 0 and <= 1)))
+                    if (attempt == 0 && (transient && (retryAfter is null or <= 1) || (limited && retryAfter is >= 0 and <= 1)))
                     {
-                        await Task.Delay(limited ? retryAfter!.Value * 1000 : 200, deadline.Token);
+                        await Task.Delay(retryAfter is int seconds ? seconds * 1000 : 200, deadline.Token);
                         continue;
                     }
                     if (!response.IsSuccessStatusCode)
                     {
                         logger.LogWarning("TMDB request failed with status {StatusCode}", (int)response.StatusCode);
                         throw new MediaProviderException(limited ? ProviderFailure.RateLimited : ProviderFailure.Unavailable,
-                            limited ? Math.Max(1, retryAfter ?? 1) : null);
+                            limited ? Math.Max(1, retryAfter ?? 1) : retryAfter);
                     }
                     if (response.Content.Headers.ContentLength > MaxResponseBytes)
                         throw new MediaProviderException(ProviderFailure.InvalidResponse);
@@ -115,26 +114,28 @@ public sealed class TmdbMediaProvider(HttpClient client, IOptions<TmdbOptions> o
 
     internal static string Namespace(string type) => type == MediaTypes.Movie ? "movie" : "tv";
 
-    private static ExternalMediaResult? Map(JsonElement item, string type)
+    private static ExternalMediaResult? Map(JsonElement item, string type, string? expectedId = null)
     {
         if (item.ValueKind != JsonValueKind.Object) throw new MediaProviderException(ProviderFailure.InvalidResponse);
+        if (!item.TryGetProperty("id", out var identity) || identity.ValueKind != JsonValueKind.Number || !identity.TryGetInt32(out var id) || id <= 0)
+            throw new MediaProviderException(ProviderFailure.InvalidResponse);
+        if (expectedId != null && id.ToString(CultureInfo.InvariantCulture) != expectedId) throw new MediaProviderException(ProviderFailure.InvalidResponse);
         if (item.TryGetProperty("adult", out var adult))
         {
             if (adult.ValueKind is not (JsonValueKind.True or JsonValueKind.False)) throw new MediaProviderException(ProviderFailure.InvalidResponse);
             if (adult.GetBoolean()) return null;
         }
-        if (!item.TryGetProperty("id", out var identity) || identity.ValueKind != JsonValueKind.Number || !identity.TryGetInt32(out var id) || id <= 0)
-            throw new MediaProviderException(ProviderFailure.InvalidResponse);
         var title = Text(item, type == MediaTypes.Movie ? "title" : "name", 300)?.Trim();
         if (string.IsNullOrWhiteSpace(title) || title.Any(char.IsControl)) throw new MediaProviderException(ProviderFailure.InvalidResponse);
         var description = Text(item, "overview", 20000);
         var dateText = Text(item, type == MediaTypes.Movie ? "release_date" : "first_air_date", 30);
         DateOnly? date = DateOnly.TryParseExact(dateText, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsed) ? parsed : null;
-        var poster = Text(item, "poster_path", 200);
+        if (!string.IsNullOrEmpty(dateText) && date is null) throw new MediaProviderException(ProviderFailure.InvalidResponse);
+        var poster = Text(item, "poster_path", 201);
         string? image = null;
         if (!string.IsNullOrEmpty(poster))
         {
-            if (!Regex.IsMatch(poster, "^/[A-Za-z0-9_-]+\\.[A-Za-z0-9]+$", RegexOptions.CultureInvariant))
+            if (!poster.StartsWith('/') || !TmdbContentPolicy.ValidPoster(poster[1..]))
                 throw new MediaProviderException(ProviderFailure.InvalidResponse);
             image = "https://image.tmdb.org/t/p/w500" + poster;
         }

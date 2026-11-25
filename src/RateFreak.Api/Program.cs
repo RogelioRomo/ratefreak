@@ -6,6 +6,11 @@ using RateFreak.Api.Middleware;
 using RateFreak.Api.Security;
 using RateFreak.Infrastructure;
 
+if (args.Contains("--tmdb-maintenance", StringComparer.Ordinal))
+{
+    Environment.ExitCode = await RateFreak.Api.Maintenance.TmdbMaintenance.ExecuteAsync(args);
+    return;
+}
 if (args.Contains("--replay-account-erasures", StringComparer.Ordinal))
 {
     Environment.ExitCode = await RateFreak.Api.Maintenance.AccountErasureReplay.ExecuteAsync(args);

@@ -1,6 +1,36 @@
 # Current project status and roadmap
 
-Updated: 2026-11-23. The main checkout contains the reviewed runtime security
+Updated: 2026-11-24. The approved TMDB content lifecycle is implemented and verified
+in the isolated `feat/tmdb-content-lifecycle` worktree at
+`.local/worktrees/tmdb-content-lifecycle`; integration into `main` is pending.
+Metadata and posters refresh from five UTC calendar months and expire at six,
+retaining user content/identities with an unavailable placeholder. Independent
+removal/termination policy protects restored snapshots. Verification passed 778
+backend tests (zero skips), 1,013 frontend tests and 118 operator/release/compliance
+tests, lint/typecheck/model checks, API/web/tools production images, trusted-HTTPS
+fresh/Bookworm upgrade, real backup/current-policy restore and ordinary-account
+Chromium before/after removal in both themes. All review findings were addressed;
+all successful disposable project containers/volumes were removed. See
+[verification and exact evidence](tmdb-lifecycle-verification.md).
+No persistent instance was migrated or release published. TMDB storage/image
+clarification is no longer a waiting item; final integration/source/artifact
+qualification, operator eligibility, other provider questions and residual
+security/publication gates remain open. Historical candidate identities are
+unchanged.
+
+Earlier update, 2026-11-24. TMDB staff clarification supports refreshing stored metadata
+within six months and keeping TMDB IDs after metadata/image purge. The owner
+confirmed poster refresh and image-processing permission, and approved automatic
+refresh from five months with six-month expiry to an unavailable placeholder,
+preserving user content and identities. Lifecycle implementation/acceptance remain
+pending; see the [current provider disposition](provider-agreement-evidence.md#current-disposition-2026-11-24)
+and [approved design](superpowers/specs/2026-11-24-tmdb-content-lifecycle-design.md).
+The TMDB blocker is implementing and verifying that lifecycle, rather than awaiting
+the earlier storage/image-processing clarification. Other provider, operator,
+security and final publication gates remain open. No product code, persistent
+instance data or release artifact changed in this documentation follow-up.
+
+Earlier update, 2026-11-23. The main checkout contains the reviewed runtime security
 updates and release-review evidence. Local integration verification passed all
 15 release checks: 756 backend tests with zero skips, 942 frontend tests and 98
 operator/release/compliance tests, plus lint, typecheck, production builds and
@@ -473,8 +503,9 @@ work instead; see the [release plan](self-hosted-release-plan.md#release-announc
 - [x] Provider-backed books through Open Library, using shared work identities;
   [design](superpowers/specs/2026-11-17-books-and-artwork-cache-design.md),
   [verification/activation limits](books-and-provider-cache-verification.md).
-- [ ] Provider catalog correction, metadata refresh and provenance policy; custom
-  item owners already have editing controls.
+- [ ] Broader provider catalog correction, metadata refresh and provenance policy;
+  the TMDB release lifecycle is separately implemented/verified, while correction
+  UI and other providers remain deferred. Custom item owners already have editing controls.
 - [x] In-app notifications for new followers and comments on your reviews, including
   read controls, individual deletion and clear-inbox; [evidence](notifications-verification.md).
 - [x] Home-page Following and Community feeds of public reviews and individually
@@ -556,17 +587,19 @@ application-native source sidecar and modified-library replacement are verified.
 The scroll-bar notice now has documented artifact/source equivalence without a
 dependency change. The redistribution/provider release gate remains open.
 On 2026-11-18, the user chose to keep TMDB and contact its support team about
-whether the caching terms cover permanent database imports. That clarification
-is pending; no support message was sent by the agent. The
+whether the caching terms cover permanent database imports. The 2026-11-24 staff
+reply review now answers that question; implementation of the approved refresh
+and expiry lifecycle is now locally verified on its feature branch. No support message was sent by the agent. The
 [Wikidata trial](wikidata-evaluation-2026-11-18.md) remains feasibility evidence,
 not a replacement decision. No provider migration, automatic expiry or
 fetching-only implementation is authorized by that decision. Do not treat the
-scope question as a confirmed violation or the pending clarification as clearance.
+earlier scope question as a confirmed violation or the clarification as proof that
+the current implementation already satisfies the lifecycle requirements.
 Independent release work can continue: final artifact/source-delivery review,
 release automation and verification of the supported
 installation. [Contributor](../CONTRIBUTING.md) and [security](../SECURITY.md)
 guidance are added; GitHub private reporting is enabled and API-verified.
-Provider-dependent release work remains: resolve refresh/removal requirements and the remaining
+Provider-dependent release work remains: qualify/integrate the verified TMDB lifecycle for final artifacts, and resolve the remaining
 [provider agreement questions](provider-agreement-questions.md) (including IGDB
 scope and Open Library cover optimization), and record each operator's eligibility.
 TMDB contract retrieval is complete; provider-enabled release clearance is not.

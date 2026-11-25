@@ -4,6 +4,7 @@ namespace RateFreak.Infrastructure.Providers.Tmdb;
 
 public sealed class TmdbOptions
 {
+    public string? PolicyPath { get; set; }
     public bool Enabled { get; set; }
     public string? AccessToken { get; set; }
     public string Language { get; set; } = "en-US";

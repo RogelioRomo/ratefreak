@@ -540,6 +540,7 @@ in history. Configure these .NET keys:
 | `Providers:Tmdb:AccessToken` | Required when enabled; secret |
 | `Providers:Tmdb:Language` | `en-US`; two lowercase language letters, hyphen, two uppercase region letters |
 | `Providers:Tmdb:TimeoutMilliseconds` | `4000`; allowed 500–15000 |
+| `Providers:Tmdb:PolicyPath` | Absolute path to the current private TMDB policy, required for lifecycle reconciliation even with upstream access disabled |
 
 For agent-assisted local activation without shell commands, save only your token
 in the ignored `.local/tmdb-token.txt` file (prepared with owner-only permissions)
@@ -551,7 +552,34 @@ Environment variables use `__` instead of `:`. .NET does not automatically load
 `.env`. Invalid enabled-provider configuration fails startup with a sanitized
 message. The adapter's API origin is fixed HTTPS and redirects are disabled. No
 client-supplied URL is fetched and the token appears only in a redacted bearer
-header. Provider availability does not affect local catalog health/readiness.
+header. Upstream availability does not affect catalog readiness while local expiry
+reconciliation is healthy and the current protected policy is valid. Missing or
+changed/unreconciled policy withholds dependent catalog traffic until cleanup succeeds.
+
+For a Linux local development checkout, explicitly provision disposable provider
+storage before starting the API/web. This creates no provider credentials and
+never replaces an existing policy:
+
+```bash
+python3 - <<'PYCODE'
+from pathlib import Path
+import os, sys
+sys.path.insert(0, 'deploy/self-host')
+from entrypoint import prepare_tmdb_storage
+root = Path('.local/provider-runtime').resolve()
+for name in ('runtime', 'storage', 'independent'):
+    (root / name).mkdir(mode=0o700, parents=True, exist_ok=True)
+prepare_tmdb_storage(root, os.getuid(), os.getgid())
+PYCODE
+export Providers__Tmdb__PolicyPath="$PWD/.local/provider-runtime/independent/tmdb/tmdb-policy.json"
+export RATEFREAK_TMDB_POLICY_PATH="$Providers__Tmdb__PolicyPath"
+export RATEFREAK_TMDB_CACHE_PATH="$PWD/.local/provider-runtime/storage/tmdb-posters"
+```
+
+Keep that policy current and private; do not clear it to recover from an error.
+The Compose reference package provisions and mounts these paths through `prepare`.
+The managed TMDB poster route and policy enforcement target the supported Linux
+runtime. No persistent project instance is upgraded by these documentation steps.
 
 In [Development Swagger](http://localhost:5080/swagger):
 
@@ -567,10 +595,14 @@ In [Development Swagger](http://localhost:5080/swagger):
 
 Imports re-fetch details from TMDB rather than trusting preview/client fields.
 New imports return 201 and a canonical detail Location; repeats return 200 and the
-same `mediaId` without re-fetching or overwriting local corrections. Creating the
+same `mediaId` without re-fetching. Scheduled TMDB synchronization now replaces
+provider-owned fields from five months, and expires them at six months, while
+preserving independent user content and moderation flags. Creating the
 item and provider mapping is transactional, including concurrent imports. Movie
 and TV IDs use separate namespaces. No title-based merging or personal-library
-write occurs. No schema migration was needed beyond Phase 2's catalog tables.
+write occurs. The additive `20261124233146_AddTmdbContentLifecycle` migration
+adds lifecycle scheduling and imported-poster history; other installations require
+their own reviewed upgrade. See the [TMDB lifecycle runbook](docs/self-hosting.md#tmdb-refresh-expiry-and-removal).
 
 Missing provider details return 404. Disabled/busy/unavailable providers return 503,
 upstream rate limits return 503 plus Retry-After, malformed upstream data returns
@@ -1365,8 +1397,10 @@ has a 20-second ceiling. The metadata cache resets with the API process; persist
 catalog items remain in PostgreSQL. React Query also keeps its existing browser
 JSON cache/session isolation.
 
-Public provider images use the shared Next.js optimizer/disk cache, with a
-24-hour minimum TTL and 1 GiB capacity. Protected uploads remain locally stored,
+IGDB/Open Library images use the shared Next.js optimizer/disk cache, with a
+24-hour minimum TTL and 1 GiB capacity. TMDB posters use a separate managed cache
+with five-month refresh, six-month hard expiry and `no-store` delivery through
+`/tmdb-posters/<filename>`. Protected uploads remain locally stored,
 access-checked and `no-store`. See [cache/storage operations](docs/self-hosting.md#provider-configuration-and-image-cache),
 [verification and limits](docs/books-and-provider-cache-verification.md), and
 [Open Library rights guidance](docs/provider-terms-review.md#open-library-follow-up-2026-11-17).

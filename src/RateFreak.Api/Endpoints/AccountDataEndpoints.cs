@@ -40,7 +40,7 @@ internal static class AccountDataEndpoints
                 return Results.Stream(stream, "application/zip", "ratefreak-account-export.zip", enableRangeProcessing: false);
             }
             catch (AccountDataException ex) { return Results.Problem(statusCode: ex.StatusCode, title: ex.Message); }
-        }).AddEndpointFilter<AntiforgeryFilter>().RequireRateLimiting("personal-write");
+        }).WithMetadata(new StoredCatalogContent()).AddEndpointFilter<AntiforgeryFilter>().RequireRateLimiting("personal-write");
         group.MapPost("/delete", async (AccountDataDeletion request, HttpContext context, IAccountDataService service, SignInManager<AccountUser> signIn, CancellationToken ct) =>
         {
             try

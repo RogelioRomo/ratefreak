@@ -140,6 +140,14 @@ other topologies and each operator's external obligations retain their own check
   clearance and maintainer security-notification delivery remain open.
   See [candidate evidence](release-candidate-verification-2026-11-23.md).
 
+Follow-up, 2026-11-24: the owner-approved TMDB lifecycle is implemented and
+[verified locally](tmdb-lifecycle-verification.md) on its isolated feature branch:
+five-month metadata/poster refresh, six-month expiry, user-data preservation,
+independent removal/termination policy and current-policy restore protection.
+The earlier storage/image-processing clarification is no longer pending.
+Integration and final stable artifact/source qualification, operator eligibility,
+other provider questions and residual security clearance remain separate gates.
+
 ### Release announcements and update awareness
 
 The owner agreed on 2026-11-20 to include GitHub release announcements and an

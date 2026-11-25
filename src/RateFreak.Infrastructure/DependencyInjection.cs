@@ -91,6 +91,12 @@ public static class DependencyInjection
         services.AddOptions<TmdbOptions>().Bind(configuration.GetSection("Providers:Tmdb"))
             .Validate(options => options.IsValid(), "TMDB configuration is invalid: check timeout, language and enabled-provider access token.")
             .ValidateOnStart();
+        services.AddSingleton<TmdbContentPolicy>();
+        services.AddScoped<TmdbLifecycle>();
+        services.AddSingleton<TmdbLifecycleWorker>();
+        services.AddSingleton<ITmdbCatalogReadiness>(sp => sp.GetRequiredService<TmdbLifecycleWorker>());
+        services.AddHostedService(sp => sp.GetRequiredService<TmdbLifecycleWorker>());
+        services.AddHealthChecks().AddCheck<TmdbLifecycleWorker>("tmdb-lifecycle", tags: ["ready"]);
         services.AddSingleton<TmdbRequestGate>();
         services.AddHttpClient<IMediaProvider, TmdbMediaProvider>("tmdb", client => client.Timeout = Timeout.InfiniteTimeSpan)
             .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler

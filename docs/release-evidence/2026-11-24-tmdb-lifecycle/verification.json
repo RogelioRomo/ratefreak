@@ -1,0 +1,187 @@
+{
+  "scope": "nonofficial local feature proof; uncommitted runtime source based on ecff792",
+  "buildIdentity": {
+    "version": "0.1.0-dev.1",
+    "revision": "ecff792343ca5727591f12a7bf960bd21b9ab91b",
+    "official": false,
+    "dirty": true
+  },
+  "images": {
+    "api": "sha256:5d65a8e907048acb51c401b1cf3f8caf8f1f4f4dfb7d2755a29371d127945ffc",
+    "web": "sha256:c85941ecb545d5040cf84a6e18e82d4e2697e3fd12a4043d2079a206c2fab6a7",
+    "tools": "sha256:6beaf7026a5117479614b21ec879686f3523cda0ca29f743b1c6fe28faadaa64"
+  },
+  "sourceInputsSha256": "27dafa8423ddb9aa802dcd29fbbbbafa1eebdca2e2127c9802418d8a0f070f87",
+  "backend": [
+    {
+      "suite": "IntegrationTests",
+      "file": "tmdb-lifecycle-transport-final_net10.0_20261124155120.trx",
+      "total": 508,
+      "executed": 508,
+      "passed": 508,
+      "failed": 0,
+      "notExecuted": 0
+    },
+    {
+      "suite": "ProviderContractTests",
+      "file": "tmdb-lifecycle-transport-final_net10.0_20261124154545.trx",
+      "total": 208,
+      "executed": 208,
+      "passed": 208,
+      "failed": 0,
+      "notExecuted": 0
+    },
+    {
+      "suite": "UnitTests",
+      "file": "tmdb-lifecycle-transport-final_net10.0_20261124154543.trx",
+      "total": 62,
+      "executed": 62,
+      "passed": 62,
+      "failed": 0,
+      "notExecuted": 0
+    }
+  ],
+  "frontend": {
+    "passed": 1013,
+    "files": 121,
+    "lint": true,
+    "typecheck": true,
+    "productionBuild": true,
+    "standaloneCrashAndMinuteSweep": true
+  },
+  "python": {
+    "operatorPassed": 72,
+    "releasePassed": 26,
+    "compliancePassed": 20
+  },
+  "freshInstall": {
+    "candidateImages": {
+      "api": "sha256:5d65a8e907048acb51c401b1cf3f8caf8f1f4f4dfb7d2755a29371d127945ffc",
+      "web": "sha256:c85941ecb545d5040cf84a6e18e82d4e2697e3fd12a4043d2079a206c2fab6a7",
+      "tools": "sha256:6beaf7026a5117479614b21ec879686f3523cda0ca29f743b1c6fe28faadaa64"
+    },
+    "baselineImages": null,
+    "https": true,
+    "freshInstall": true,
+    "upgrade": false,
+    "disabledUpdateChecks": true,
+    "ordinaryDenied": true,
+    "logoutDenied": true,
+    "dataPreserved": true,
+    "currentComposeBaselinePreparation": false
+  },
+  "upgrade": {
+    "candidateImages": {
+      "api": "sha256:5d65a8e907048acb51c401b1cf3f8caf8f1f4f4dfb7d2755a29371d127945ffc",
+      "web": "sha256:c85941ecb545d5040cf84a6e18e82d4e2697e3fd12a4043d2079a206c2fab6a7",
+      "tools": "sha256:6beaf7026a5117479614b21ec879686f3523cda0ca29f743b1c6fe28faadaa64"
+    },
+    "baselineImages": {
+      "api": "sha256:8c7b6a49bb4cb1f3f76a8eab4e30d1607d2a7d7fd3213a41ef3156d4a715a3bd",
+      "web": "sha256:21d9a27a3eb29c7f657f97d66a34a59f6da928d787d8d0ce49092c42e4afcc03",
+      "tools": "sha256:c04ff6ae9989ad32d31e17a6ab9bbbd14cc1353dfc6f348469cc4e2fa50fa74b"
+    },
+    "https": true,
+    "freshInstall": false,
+    "upgrade": true,
+    "disabledUpdateChecks": true,
+    "ordinaryDenied": true,
+    "logoutDenied": true,
+    "dataPreserved": true,
+    "currentComposeBaselinePreparation": true,
+    "newControlTablesExcludedFromOldTableFingerprintComparison": [
+      "tmdb_lifecycle_states",
+      "tmdb_poster_identities",
+      "tmdb_refresh_schedule"
+    ],
+    "onlyNewMigrationRowExcludedFromOldHistoryComparison": "20261124233146_AddTmdbContentLifecycle"
+  },
+  "lifecycle": {
+    "backupExcludesPolicyJournalAndCaches": true,
+    "removalPreservesUserFingerprintsAndIds": true,
+    "restoreInitiallyContainsOldProviderFields": true,
+    "restoreStartupBlockedUntilReplay": true,
+    "currentPolicyReplayPurgesRestoredFields": true,
+    "restoredUserFingerprintsMatch": true,
+    "blockedPosterReplayVerification": true,
+    "globalTerminationPurgesAllProviderFields": true,
+    "reopenedOrdinaryAccountPlaceholderRatingReview": true,
+    "blockedPoster404NoStore": true
+  },
+  "browserRetained": {
+    "tlsVerified": true,
+    "phase": "retained",
+    "results": [
+      {
+        "theme": "light",
+        "widths": [
+          1440,
+          390
+        ],
+        "ordinaryLogin": true,
+        "catalogAndLibrary": true,
+        "posterOrFallback": true,
+        "noDirectTmdbRequest": true,
+        "noRuntimeErrors": true
+      },
+      {
+        "theme": "dark",
+        "widths": [
+          1440,
+          390
+        ],
+        "ordinaryLogin": true,
+        "catalogAndLibrary": true,
+        "posterOrFallback": true,
+        "noDirectTmdbRequest": true,
+        "noRuntimeErrors": true
+      }
+    ]
+  },
+  "browserRemoved": {
+    "tlsVerified": true,
+    "phase": "removed",
+    "results": [
+      {
+        "theme": "light",
+        "widths": [
+          1440,
+          390
+        ],
+        "ordinaryLogin": true,
+        "catalogAndLibrary": true,
+        "posterOrFallback": true,
+        "noDirectTmdbRequest": true,
+        "noRuntimeErrors": true
+      },
+      {
+        "theme": "dark",
+        "widths": [
+          1440,
+          390
+        ],
+        "ordinaryLogin": true,
+        "catalogAndLibrary": true,
+        "posterOrFallback": true,
+        "noDirectTmdbRequest": true,
+        "noRuntimeErrors": true
+      }
+    ]
+  },
+  "operatorCopiedInputs": {
+    "entrypoint.py": "6ff6b8176b3234164a8c6a058dec24f4a2ea5688a3d179e482d00f7111c8694a",
+    "maintenance.py": "1f8d9dd7fc007d3ca06574905bfe52c3620d9ab448214e6e517a97cf12f16ea9"
+  },
+  "policyAlias": {
+    "sameFilesystemBindAliasRejected": true,
+    "originalPolicyPreserved": true
+  },
+  "disposableCleanup": {
+    "projects": 3,
+    "containersAbsent": true,
+    "volumesAbsent": true
+  },
+  "persistentInstance": "not accessed or migrated",
+  "publication": "none",
+  "stableReleaseClearance": false
+}

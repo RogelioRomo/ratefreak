@@ -15,13 +15,14 @@ not publish container images. Project code is MIT licensed; dependencies and
 provider content retain separate terms. Read the [provider agreement checklist](provider-agreement-evidence.md)
 before enabling providers and the [release notice/source evidence](release-compliance-verification.md)
 before redistributing images. Application credits are available at `/credits`.
-The 2026-11-18 agreement review left a provider-enabled release question open:
-how TMDB's six-month cache restriction applies to permanent database imports.
-Imports currently have no expiry or provider-content purge workflow; the user
-will seek support clarification before deciding retention changes. This is not
-a confirmed violation. IGDB agreement scope and Open Library cover
+The 2026-11-24 follow-up records TMDB staff guidance permitting database metadata
+refresh and retention of TMDB IDs after termination. The owner approved automatic
+metadata/poster refresh beginning at five months and removal of expired provider
+content at six months while keeping independent user records. This lifecycle is
+implemented and [locally verified](tmdb-lifecycle-verification.md), including
+current-policy restore protection. IGDB agreement scope and Open Library cover
 optimization also need clarification. Short request-cache TTLs do not resolve
-database retention. Follow the [current disposition](provider-agreement-evidence.md#current-disposition-2026-11-18)
+database retention. Follow the [current disposition](provider-agreement-evidence.md#current-disposition-2026-11-24)
 before claiming an enabled instance meets provider terms; no runtime settings
 were changed by the review.
 The verified [application-native source sidecar](native-source-package-verification.md)
@@ -93,7 +94,9 @@ also rejects it permanently. Keep secrets out of screenshots, support tickets an
 | `storage/artwork/` | API-only catalog artwork; never a static web directory |
 | `storage/artwork/avatars/` | Account-owned avatar images and their staging/lease files, separate from catalog content |
 | `storage/keys/` | Durable ASP.NET Data Protection keys |
-| `storage/image-cache/` | Disposable public provider image cache, mounted into the web container; excluded from account/recovery backups |
+| `storage/image-cache/` | Disposable Next.js optimizer cache for IGDB/Open Library; excluded from account/recovery backups |
+| `storage/tmdb-posters/` | Disposable managed TMDB poster cache with independent fetch timestamps; excluded from backups |
+| `independent/tmdb/tmdb-policy.json` | Current protected TMDB termination/identity/poster blocks, independently replicated and excluded from database backups |
 | `independent/account-erasures.jsonl` | Private durable erasure journal, excluded from ordinary backups |
 | `prepared.json`, `migrated.json`, `deployment.json` | Lifecycle acceptance/configuration records; not substitutes for database health |
 
@@ -252,7 +255,8 @@ symlinks. This cache is mounted at `/app/.next/cache/images`; it survives web
 container recreation while the rest of the cache parent remains temporary.
 Do not skip preparation and rely on Docker creating a root-owned bind source.
 
-Public TMDB, IGDB and Open Library images use that common bounded cache. MusicBrainz
+IGDB and Open Library images use that common bounded cache. TMDB uses the
+separate managed cache described below. MusicBrainz
 currently supplies no artwork. The minimum image TTL is 24 hours; upstream cache
 headers can make it longer. Capacity is 1 GiB with framework eviction. Different
 width/quality/format variants can each need an initial fetch. Cold/evicted images
@@ -279,11 +283,11 @@ variants) before forwarding. Browsers use `/_next/image`, which remains availabl
 Keep the web service's direct port private. Otherwise callers could bypass the
 image cache by requesting the source route directly.
 
-For takedowns or immediate refresh, stop the web service and remove only the
-contents of `storage/image-cache`, preserving its directory ownership/mode;
+For IGDB/Open Library takedowns or immediate refresh, stop the web service and
+remove only the contents of `storage/image-cache`, preserving its directory ownership/mode;
 restart through the normal accepted lifecycle. There is no general per-image
 invalidation API. Browser copies may last until their HTTP TTL expires. Database
-metadata/import removal and permission revocation remain separate operator work;
+metadata/import removal and permission revocation for those providers remain separate operator work;
 disabling an adapter does not erase prior imports or cached images.
 Purging alone does not prevent refetching a still-allowed source URL. When a
 removal must prevent future serving, also remove/block the affected source and
@@ -304,6 +308,115 @@ operator/application, intended use and deployment egress before making the form'
 acknowledgments. Metadata caching guidance does not by itself approve the
 same-origin cover optimizer. See the
 [registration and cover-scope review](provider-public-guidance-2026-11-18.md).
+
+## TMDB refresh, expiry and removal
+
+TMDB metadata refresh begins five UTC calendar months after its last successful
+synchronization. Temporary failures retry without renewing that timestamp. At six
+months, expired title/overview/date/metadata/poster references are cleared and an
+"Unavailable title" placeholder preserves the internal item, TMDB ID, ratings,
+reviews, library history and list memberships. Authoritative not-found responses
+remove provider fields immediately. A later valid refresh can restore fields for
+the same item unless the operator has blocked it. Hidden/archived state is retained.
+
+Poster bytes have a separate clock based on an actual successful image fetch;
+refreshing metadata alone does not make a cached poster fresh. TMDB posters use
+`/tmdb-posters/<filename>` with `no-store`, a fixed HTTPS w500 upstream and a
+bounded private cache. They bypass Next.js's shared optimizer; upstream cache
+headers cannot extend their six-month maximum. A scheduled sweep covers unvisited
+posters. Before expiry a temporary source outage may use the existing bytes; once
+expired the handler must fetch fresh bytes or return the normal artwork fallback.
+The endpoint rejects query strings, arbitrary source URLs and redirects. Direct
+TMDB URLs through `/_next/image` are denied.
+
+`prepare` provisions the dedicated poster directory as UID/GID 10001, mode 0700,
+and an initial empty provider policy as mode 0600. Policy provisioning is recorded
+outside ordinary backups. Repeated preparation validates it and does not replace
+a missing policy with an empty one. API and web mount the policy directory read
+only at `/independent`; the tools image mounts it writable. The existing account
+erasure journal remains at host `independent/account-erasures.jsonl` and is mounted
+separately at `/journal/account-erasures.jsonl` for its writers.
+
+On this upgrade, preparation clears the legacy shared Next.js image cache once,
+with web writers stopped, because old TMDB entries cannot be individually
+identified. IGDB/Open Library caches also become cold. The receipt prevents repeat
+preparation from clearing ordinary cached images again. Old browser copies cannot
+be recalled; do not claim retroactive erasure of previously delivered content.
+
+For a provider removal, stop writers and run the matching release's operator tool:
+
+```bash
+python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_INSTANCE" stop
+python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_INSTANCE" tmdb-remove --database-name ratefreak --identity movie:123 --confirm-tmdb-removal
+# Or, when the TMDB licence ends:
+python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_INSTANCE" tmdb-remove --database-name ratefreak --terminate --confirm-tmdb-removal
+```
+
+The operation durably blocks the identity/known poster filenames (or all TMDB
+operations for termination) before clearing stored provider fields and the poster
+cache. It refuses active writers and leaves startup blocked after partial failure;
+repeat the same command to complete cleanup. Database-name validation prevents
+accidentally applying it to a different configured database. It does not delete
+user content. Disabling the TMDB adapter alone stops network requests but does not
+mean licence termination and does not remove prior data immediately.
+
+Imported poster source history supplies known filenames. Offline maintenance
+cannot discover unknown poster filenames previously seen only in search/preview
+or outside this installation: supply each known affected filename with repeated
+`--poster filename.jpg` arguments alongside `--identity`. Review the actual removal
+request and available source records; do not describe an ID-only command as
+identifying every historical image. Filename blocks also prevent direct URL
+refetching. Global termination blocks every TMDB poster regardless of filename.
+
+Replicate the current policy independently of database backups and retain it for
+all restorable snapshots. Never replace it with a backup-era or freshly empty
+policy. Isolated restore requires `--tmdb-policy` as well as the current erasure
+journal; use protected copies with the service ownership expected by the matching
+tools image. Restore/replay applies the current blocks and expires old content
+before reopening traffic. The poster cache is never restored. Missing, malformed
+or unreadable policy denies TMDB operations; restore does not silently reconstruct
+permissions. No automatic unblock is provided: a reviewed operator policy change
+requires stopped writers and subsequent reconciliation/acceptance.
+
+Metadata expiry reconciles at startup and on a one-minute timer, draining
+100-row database batches independently of network refresh. Refresh selects at most
+100 identities per pass, with at most one new pass per minute across API replicas;
+slow requests can make a pass longer. A persisted provider cooldown stops the
+batch after a rate limit or Retry-After response while expiry continues.
+Poster startup/minute sweeps independently remove expired/blocked records; refresh
+batches cover up to 100 retained posters with eight concurrent operations. The
+poster cache allows 2,048 records / 1 GiB, with a 5 MiB source-body ceiling and
+8-active/64-queued source work per web process. Each source operation has a
+ten-second deadline including queue time. Multiple hosts and network-shared cache
+filesystems are outside the verified reference topology.
+
+Cache mutations use kernel advisory locks via the existing Python 3 runtime. A
+live writer retains the checked lock descriptor; process death releases exclusion.
+The regular `.tmdb-lock` file remains present, but its presence alone does not
+mean the cache is locked. Runtime does not unlink it. Stopped-writer cache cleanup
+can remove it together with discarded bytes and partial writes.
+
+Monitor the private readiness check and sanitized `TMDB reconciliation failed`,
+`TMDB refresh batch failed` and `TMDB poster cache reconciliation failed` messages,
+cache disk usage, and independent policy replication. To inspect metadata work,
+use a privileged read-only database session to query `tmdb_refresh_schedule` for
+`last_batch_at` / `next_allowed_at`, and group `tmdb_lifecycle_states` by
+`last_outcome` with counts and oldest `last_attempt_at` / `next_attempt_at`.
+For an enabled, nonterminated provider, investigate due identities that remain
+unchanged over successive passes, or `content_removed = false` identities whose
+successful sync time plus six UTC calendar months is already past. Account for
+explicit policy blocks and per-identity backoff; an intentionally terminated
+provider should not be expected to refresh. Retention checks must use forward
+calendar addition, not a fixed day count or inverse subtraction at month ends.
+The cache directory's record count/bytes and recurring reconciliation errors reveal
+poster cleanup problems; never delete or reset the independent policy as a remedy.
+
+A stopped/failing host or inaccessible storage cannot enforce on-disk deletion;
+the one-minute timer is a target cadence, not an instantaneous deletion guarantee
+for arbitrary backlogs. Keep alerting and capacity appropriate to the catalog.
+Calendar deadlines use UTC with month-end clamping, not a fixed 180-day
+approximation. This lifecycle does not clear operator eligibility, attribution,
+other providers' policy questions or the independent release security gate.
 
 ## Secret rotation
 
@@ -336,7 +449,8 @@ credential rotation follows its API-only configuration and provider registration
 The explicit `backup` command requires writers stopped, a ready instance and a
 new destination. It takes a custom-format PostgreSQL dump, artwork archive and
 private key-recovery archive, validates the dump inventory and records hashes,
-schema and matching API/web/tools image identities. It never includes the erasure journal.
+schema and matching API/web/tools image identities. It never includes the erasure
+journal, current TMDB removal policy or disposable provider image caches.
 Protect/encrypt the output and enforce expiration externally; files on the same
 host are not disaster recovery. The command does not configure a backup schedule.
 
@@ -349,17 +463,20 @@ with source writers stopped; never use an older journal bundled with a snapshot.
 export RATEFREAK_RESTORE="$HOME/.local/share/ratefreak-restore"
 python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_RESTORE" init --origin https://restore.example.com
 python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_RESTORE" prepare
-python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_RESTORE" restore --backup /protected/backups/ratefreak-before-upgrade --journal /protected/current-account-erasures.jsonl --confirm-restore
+python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_RESTORE" restore --backup /protected/backups/ratefreak-before-upgrade --journal /protected/current-account-erasures.jsonl --tmdb-policy /protected/current-tmdb-policy.json --confirm-restore
 python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_RESTORE" replay --database-name ratefreak --confirm-erasure-replay
 ```
 
 Restore validates matching artifacts/hashes and rejects a populated target. It
 imports the supplied current journal only into the verified empty journal prepared
-for that new instance; it refuses to replace journal records. A `restore-pending`
+for that new instance; it refuses to replace journal records. It also requires
+and installs the independently supplied current TMDB policy; a database snapshot
+cannot grant permission to serve blocked provider content. A `restore-pending`
 marker blocks startup. A separate matching completion receipt is written only
 after the full database/artwork/key restore succeeds. Replay refuses incomplete
 restores and cannot reaccept an invalidated migration or changed image set. Replay uses the existing explicit database-name maintenance
-command, checks journaled accounts are absent and referenced artwork exists, and
+command, reconciles TMDB expiry/current blocks, checks journaled accounts are
+absent and referenced artwork exists, and
 only then clears the startup block. A failed/interrupted restore stays stopped;
 inspect and recover into another fresh isolated target rather than retry blindly.
 

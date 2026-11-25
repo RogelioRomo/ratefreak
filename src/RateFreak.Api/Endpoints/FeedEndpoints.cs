@@ -20,7 +20,7 @@ internal static class FeedEndpoints
                 return Results.ValidationProblem(new Dictionary<string, string[]> { ["query"] = ["Invalid feed tab or media type."] });
             var result = await service.ListAsync(Guid.Parse(user.FindFirstValue(ClaimTypes.NameIdentifier)!), new(tab, type, cursor), ct);
             return result.Errors is {} errors ? Results.ValidationProblem(errors) : Results.Ok(result.Page);
-        }).WithTags("Feeds").WithMetadata(new FeedNoStore()).RequireAuthorization().RequireRateLimiting("social-read")
+        }).WithTags("Feeds").WithMetadata(new FeedNoStore(), new StoredCatalogContent()).RequireAuthorization().RequireRateLimiting("social-read")
         .Produces<FeedPage>().ProducesValidationProblem().ProducesProblem(401).ProducesProblem(429)
         .WithSummary("Read current public reviews and explicitly shared ratings, newest first");
 }

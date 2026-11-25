@@ -50,6 +50,21 @@ public sealed class MediaItem
         DateOnly? releaseDate = null, string? imageReference = null, string metadata = "{}")
     {
         if (!MediaTypes.IsSupported(mediaType)) throw new ArgumentException("Unsupported media type.", nameof(mediaType));
+        CategoryId = Category.ForMediaType(mediaType);
+        MediaType = mediaType;
+        SetProviderFields(title, description, releaseDate, imageReference, metadata);
+    }
+
+    public void RefreshProviderFields(string title, string? description, DateOnly? releaseDate, string? imageReference,
+        string metadata, DateTimeOffset now)
+    {
+        SetProviderFields(title, description, releaseDate, imageReference, metadata);
+        Revision++;
+        UpdatedAt = now;
+    }
+
+    private void SetProviderFields(string title, string? description, DateOnly? releaseDate, string? imageReference, string metadata)
+    {
         title = title.Trim();
         if (title.Length is < 1 or > 300 || title.Any(char.IsControl))
             throw new ArgumentException("Title must contain 1–300 printable characters.", nameof(title));
@@ -58,8 +73,6 @@ public sealed class MediaItem
         using var document = System.Text.Json.JsonDocument.Parse(metadata);
         if (document.RootElement.ValueKind != System.Text.Json.JsonValueKind.Object || metadata.Length > 32768)
             throw new ArgumentException("Metadata must be a JSON object of at most 32768 characters.", nameof(metadata));
-        CategoryId = Category.ForMediaType(mediaType);
-        MediaType = mediaType;
         Title = title;
         Description = description;
         ReleaseDate = releaseDate;

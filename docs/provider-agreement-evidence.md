@@ -1,23 +1,57 @@
 # Provider agreement access and remaining decisions
 
-Reviewed 2026-11-13; current disposition updated 2026-11-18. This supplements the [provider review](provider-terms-review.md).
+Reviewed 2026-11-13; current disposition updated 2026-11-24. This supplements the [provider review](provider-terms-review.md).
 It distinguishes retrieved public guidance from agreements that were not obtained.
 No agreement was accepted, no account was authenticated and no provider credentials
 were used. Public documentation is not a substitute for an operator's applicable
 contract or permission to redistribute underlying copyrighted artwork.
 
-## Current disposition, 2026-11-18
+## Current disposition, 2026-11-24
+
+TMDB staff clarification is available in the public
+["Clarification about TMDB API use" discussion](https://www.themoviedb.org/talk/6ac663597ca2844b5f25e72b).
+In the 2026-10-15 reply, Travis Bell (marked STAFF) accepts refreshing database
+metadata before six months and deleting data no longer refreshed, explaining that
+the clause concerns staying synchronized. He also says TMDB IDs can remain in
+user-owned saved/watched records after termination while metadata/images are
+purged. This answers the earlier storage-scope question; it does not permit
+indefinitely retaining unrefreshed metadata. The noncommercial-use answer applies
+to the described free, unmonetized website, not automatically every operator.
+
+The owner confirmed on 2026-11-24 that poster refresh follows the same six-month
+guideline and resizing/re-encoding is allowed. These are owner-supplied decisions;
+the retrieved thread does not expressly approve image transformation. Its later
+image reply describes CDN infrastructure and logging rather than answering the
+unchanged-byte proxy permission question.
+
+The owner approved automatic refresh starting at five months, retries until six
+months and replacement of expired provider metadata/posters with an unavailable
+placeholder while preserving user content, internal UUIDs and TMDB IDs. See the
+[approved lifecycle design](superpowers/specs/2026-11-24-tmdb-content-lifecycle-design.md).
+Implementation and local acceptance are complete in the isolated feature
+worktree: five-month refresh, six-month expiry, independent poster cache, removal
+and current-policy restore passed the [verification record](tmdb-lifecycle-verification.md).
+Local integration, final stable artifact/source qualification, required attribution
+and operator eligibility remain release work. Other provider questions remain independent. No additional TMDB
+image-processing permission request is pending under the owner's decision.
+
+This follow-up used the public thread without authentication or provider API
+credentials; no provider correspondence or agreement acceptance occurred.
+
+<a id="current-disposition-2026-11-18"></a>
+
+## Previous disposition, 2026-11-18
 
 **The missing TMDB agreement was obtained. Its retention and termination clauses
-raise a scope question for permanent database imports; provider-enabled release
-clearance remains open. The user will seek TMDB support clarification.**
+raised a scope question for permanent database imports. That question is now
+addressed by the 2026-11-24 disposition and implementation evidence above.**
 Earlier retrieval failures and findings below are historical where superseded by
 this section. This follow-up used public pages without account authentication,
 provider API calls, agreement acceptance or outbound correspondence.
 
 | Provider | Resolved by this review | Still required |
 | --- | --- | --- |
-| TMDB | Full API and incorporated site terms retrieved; storage, termination and commercial clauses identified | Clarify how the cache clause applies to database imports before deciding lifecycle changes; optimizer/derivative and attribution wording clarification |
+| TMDB | Full API/site terms retrieved; staff refresh/ID-retention clarification and owner image-handling decision recorded above | Integrate/qualify the verified lifecycle for final artifacts; maintain required attribution and record operator eligibility |
 | IGDB | Current documentation expressly permits local storage; full Twitch agreement retrieved again | Written scope clarification for public catalog storage/display, updates, removal and termination; operator partnership when applicable |
 | MusicBrainz | Core-data and hosted-service rules rechecked | Instance eligibility/contact and aggregate pacing; maintain reviewed core-field scope |
 | Open Library | Metadata caching supported; direct cover-source guidance confirmed | Cover proxy/optimizer and Archive terms scope clarification; application registration and operator usage record |
@@ -37,14 +71,14 @@ use; section 3 specifies logo/notice attribution. These terms incorporate the
 noncommercial use and content rights. [FAQ attribution wording](https://developer.themoviedb.org/docs/faq)
 differs from section 3; the UI currently follows the FAQ.
 
-Implementation comparison: imported fields persist without expiry; repeat import
+Historical implementation comparison (before the lifecycle change): imported fields persist without expiry; repeat import
 returns the existing item without refreshing. The five-minute/one-hour request
 cache does not bound PostgreSQL retention. The image cache minimum TTL likewise
 does not guarantee eventual deletion during outages. No provider-content purge
-workflow exists. Treat this as an unresolved retention/lifecycle question, rather
-than assuming normalized records are exempt or that a violation is confirmed.
-Ask about resizing/re-encoding under the
-derivative restriction and reconcile the attribution wording before release.
+workflow exists. The 2026-11-24 follow-up resolves the earlier retention-scope
+question and records the owner's resizing/re-encoding decision; implementing the
+approved lifecycle is now locally verified; final integration/artifact qualification remains required. The recorded API/FAQ attribution wording
+difference remains part of the attribution review.
 
 Do not delete existing catalog rows as a research action. A separate design must
 cover provider fields, stable internal references, user-authored content, removal

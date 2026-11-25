@@ -4,11 +4,13 @@ using RateFreak.Domain.Catalog;
 
 namespace RateFreak.Api.Endpoints;
 
+internal sealed class StoredCatalogContent;
+
 internal static class CatalogEndpoints
 {
     public static void MapCatalogEndpoints(this WebApplication app)
     {
-        var catalog = app.MapGroup("/api/v1/media").WithTags("Catalog").RequireRateLimiting("catalog");
+        var catalog = app.MapGroup("/api/v1/media").WithTags("Catalog").WithMetadata(new StoredCatalogContent()).RequireRateLimiting("catalog");
         catalog.MapGet("", async (ClaimsPrincipal user, ICatalogQueries queries, CancellationToken cancellationToken,
             string? q = null, string? type = null, int page = 1, int pageSize = 20, Guid? categoryId = null, bool ownOnly = false) =>
         {

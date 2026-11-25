@@ -29,6 +29,8 @@ public sealed class MediaExternalId
         LastSyncedAt = lastSyncedAt;
     }
 
+    public void MarkSynchronized(DateTimeOffset timestamp) => LastSyncedAt = timestamp.ToUniversalTime();
+
     private static string Key(string value, int max)
     {
         value = value.Trim().ToLowerInvariant();

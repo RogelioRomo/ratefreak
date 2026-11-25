@@ -5,6 +5,14 @@ These are unsent questions, not permissions or accepted agreements. Before sendi
 the operator supplies their account/application identity and actual intended use,
 including monetization. Keep credentials and confidential replies outside Git.
 
+Follow-up, 2026-11-24: the TMDB refresh/ID-retention questions below are historical
+where answered by the public staff reply, and the owner confirmed permitted
+resizing/re-encoding and poster refresh. See the
+[current disposition](provider-agreement-evidence.md#current-disposition-2026-11-24).
+Do not send those questions again as unresolved permission requests. The approved
+lifecycle is now locally [implemented and verified](tmdb-lifecycle-verification.md);
+other provider/operator questions remain.
+
 ## Common implementation description
 
 RateFreak is MIT-licensed self-hosted catalog software. Each installation supplies

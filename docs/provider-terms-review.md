@@ -11,9 +11,13 @@ precisely scoped remaining contract checks. UI findings below describe the initi
 inspection. [Credits/catalog attribution and notice packaging](release-compliance-verification.md)
 are now implemented and verified. The full Twitch agreement was obtained by direct
 retrieval. On 2026-11-18, full TMDB API/site terms were also retrieved: a six-month
-cache limit and termination purge raise a scope question for indefinite imports.
-The user will seek TMDB clarification; no automatic-expiry change is approved.
-See the [current agreement disposition](provider-agreement-evidence.md#current-disposition-2026-11-18)
+cache limit and termination purge raised a scope question for indefinite imports.
+On 2026-11-24, a public TMDB staff reply resolved the refresh/ID-retention question;
+the owner confirmed image processing is allowed and approved five-month refresh
+with six-month expiry and preservation of independent user content. Lifecycle
+implementation and local acceptance are now complete in the isolated feature
+worktree; see [verification and release limits](tmdb-lifecycle-verification.md).
+See the [current agreement disposition](provider-agreement-evidence.md#current-disposition-2026-11-24)
 and [Open Library/MusicBrainz follow-up](provider-public-guidance-2026-11-18.md).
 These supersede initial access findings below; provider-enabled clearance remains open.
 

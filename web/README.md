@@ -133,12 +133,20 @@ pages provide recovery, and failures provide retry or rate-limit guidance.
 
 `/catalog/{guid}` shows the title, format, release date, description and artwork.
 Missing records have a distinct not-found state; missing fields and failed
-images have honest fallbacks. Public provider artwork uses Next.js `<Image>` with
-a shared server disk cache: canonical TMDB w500, IGDB covers and Open Library
-CoverID references only. The minimum image TTL is 24 hours and disk capacity is
-1 GiB. Responsive variants share cached files across viewers; different sizes can
-require separate initial fetches. Cold misses still need the provider.
-Open Library covers use a dedicated same-CoverID redirect adapter before optimization.
+images have honest fallbacks. TMDB w500 posters use the same-origin
+`/tmdb-posters/<filename>` handler with `no-store` responses and a separate bounded
+server cache. Successful fetch time drives refresh at five UTC calendar months
+and hard expiry at six months; upstream TTLs cannot extend that deadline.
+Startup/minute sweeps remove expired or blocked records and refresh retained due
+posters, including unvisited ones. Unknown/unreadable policy fails closed.
+Direct TMDB optimizer URLs are rejected; see the
+[TMDB lifecycle runbook](../docs/self-hosting.md#tmdb-refresh-expiry-and-removal).
+
+IGDB covers and Open Library CoverID references use Next.js `<Image>` with a
+shared server disk cache. Its minimum image TTL is 24 hours and capacity is 1 GiB.
+Responsive variants share cached files across viewers; different sizes can require
+separate initial fetches. Cold misses still need the provider. Open Library covers
+use a dedicated same-CoverID redirect adapter before optimization.
 Private/custom uploads and moderation artwork retain direct, access-checked,
 `no-store` rendering and never enter the public optimizer. Provider metadata remains
 plain text; there is no arbitrary-host image proxy or metadata HTML rendering.

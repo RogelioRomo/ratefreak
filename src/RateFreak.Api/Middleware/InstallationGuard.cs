@@ -22,6 +22,13 @@ internal static class InstallationGuard
             await Results.Problem(statusCode: 503, title: "Installation setup is required or unavailable.").ExecuteAsync(context);
             return;
         }
+        if (context.GetEndpoint()?.Metadata.GetMetadata<RateFreak.Api.Endpoints.StoredCatalogContent>() != null &&
+            !context.RequestServices.GetRequiredService<RateFreak.Infrastructure.Providers.Tmdb.ITmdbCatalogReadiness>().Ready)
+        {
+            context.Response.Headers.CacheControl = "no-store";
+            await Results.Problem(statusCode: 503, title: "Catalog maintenance is pending.").ExecuteAsync(context);
+            return;
+        }
         await next(context);
     });
 }

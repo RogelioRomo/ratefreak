@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
@@ -72,6 +73,9 @@ public sealed class TmdbTests
     }
 
     [Theory]
+    [InlineData("""{"id":11,"title":"Broken date","release_date":"2024-02-31"}""")]
+    [InlineData("""{"adult":true,"id":12}""")]
+    [InlineData("""{"id":11,"title":"Bad poster","poster_path":"/wrong.exe"}""")]
     [InlineData("{}")]
     [InlineData("[]")]
     [InlineData("not-json")]
@@ -133,23 +137,51 @@ public sealed class TmdbTests
         Assert.DoesNotContain("private-provider-detail", error.ToString());
     }
 
-    [Fact]
-    public async Task Long_retry_after_is_respected_without_immediate_retry()
+    [Theory]
+    [InlineData(HttpStatusCode.TooManyRequests, ProviderFailure.RateLimited, 60)]
+    [InlineData(HttpStatusCode.ServiceUnavailable, ProviderFailure.Unavailable, 14400)]
+    public async Task Long_retry_after_is_respected_without_immediate_retry(HttpStatusCode status, ProviderFailure failure, int seconds)
     {
         var calls = 0;
         using var handler = new Handler((_, _) =>
         {
             calls++;
-            var response = Json("{}", HttpStatusCode.TooManyRequests);
-            response.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(60));
+            var response = Json("{}", status);
+            response.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(seconds));
             return Task.FromResult(response);
         });
         using var client = new HttpClient(handler);
         using var gate = new TmdbRequestGate();
         var error = await Assert.ThrowsAsync<MediaProviderException>(() => Provider(client, gate).GetDetailsAsync("11", "movie", Cancellation));
-        Assert.Equal(ProviderFailure.RateLimited, error.Failure);
-        Assert.Equal(60, error.RetryAfterSeconds);
+        Assert.Equal(failure, error.Failure);
+        Assert.Equal(seconds, error.RetryAfterSeconds);
         Assert.Equal(1, calls);
+    }
+
+    [Fact]
+    public async Task Short_retry_after_delays_retry_of_service_unavailable()
+    {
+        var calls = 0;
+        var sinceFailure = new Stopwatch();
+        var retryDelay = TimeSpan.Zero;
+        using var handler = new Handler((_, _) =>
+        {
+            if (++calls == 1)
+            {
+                var unavailable = Json("{}", HttpStatusCode.ServiceUnavailable);
+                unavailable.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(1));
+                sinceFailure.Start();
+                return Task.FromResult(unavailable);
+            }
+            retryDelay = sinceFailure.Elapsed;
+            return Task.FromResult(Json(Movie));
+        });
+        using var client = new HttpClient(handler);
+        using var gate = new TmdbRequestGate();
+        var item = await Provider(client, gate, timeout: 8000).GetDetailsAsync("11", "movie", Cancellation);
+        Assert.NotNull(item);
+        Assert.Equal(2, calls);
+        Assert.True(retryDelay >= TimeSpan.FromMilliseconds(950), $"Retry began after {retryDelay.TotalMilliseconds:F0} ms.");
     }
 
     [Fact]

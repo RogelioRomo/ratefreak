@@ -40,20 +40,21 @@ internal static class CollectionEndpoints
             if (errors.Count != 0) return Results.ValidationProblem(errors);
             var value = await queries.ItemsAsync(Viewer(user), id, page, pageSize, ct);
             return value is null ? Results.NotFound() : Results.Ok(value);
-        })).Produces<CollectionPage<ItemDetails>>().ProducesValidationProblem().ProducesProblem(404).WithSummary("List accessible collection entries");
+        })).WithMetadata(new StoredCatalogContent()).Produces<CollectionPage<ItemDetails>>()
+            .ProducesValidationProblem().ProducesProblem(404).WithSummary("List accessible collection entries");
         Read(group.MapGet("/{id:guid}/items/{itemId:guid}", async (Guid id, Guid itemId, ClaimsPrincipal user, ICollectionQueries queries, CancellationToken ct) =>
         {
             var value = await queries.ItemAsync(Viewer(user), id, itemId, ct);
             return value is null ? Results.NotFound() : Results.Ok(value);
-        })).Produces<ItemDetails>().ProducesProblem(404).WithSummary("Get an accessible collection entry");
+        })).WithMetadata(new StoredCatalogContent()).Produces<ItemDetails>().ProducesProblem(404).WithSummary("Get an accessible collection entry");
         Write(group.MapPost("/{id:guid}/items", async (Guid id, ItemCreate request, ClaimsPrincipal user, ICollectionItemCommands commands, HttpContext context, CancellationToken ct) =>
         {
             var result = await commands.AddAsync(Owner(user), id, request, ct);
             return Response(result, context, result.Value is null ? null : $"/api/v1/collections/{id}/items/{result.Value.Id}");
-        })).Produces<ItemDetails>(201).WithSummary("Add an existing accessible catalog item");
+        })).WithMetadata(new StoredCatalogContent()).Produces<ItemDetails>(201).WithSummary("Add an existing accessible catalog item");
         Write(group.MapPatch("/{id:guid}/items/{itemId:guid}", async (Guid id, Guid itemId, ItemUpdate request, ClaimsPrincipal user, ICollectionItemCommands commands, HttpContext context, CancellationToken ct) =>
             Response(await commands.UpdateAsync(Owner(user), id, itemId, request, ct), context)))
-            .Produces<ItemDetails>().WithSummary("Change a list membership position");
+            .WithMetadata(new StoredCatalogContent()).Produces<ItemDetails>().WithSummary("Change a list membership position");
         Write(group.MapDelete("/{id:guid}/unavailable-items", async (Guid id, ClaimsPrincipal user, ICollectionItemCommands commands, HttpContext context, CancellationToken ct,
             long? expectedRevision = null) => Response(await commands.ClearUnavailableAsync(Owner(user), id, expectedRevision, ct), context, delete: true)))
             .Produces(204).WithSummary("Explicitly remove unavailable memberships from your list without exposing their identities");

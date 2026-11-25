@@ -18,7 +18,7 @@ internal static class PersonalMediaEndpoints
 
     private static void MapLibrary(WebApplication app)
     {
-        var library = app.MapGroup("/api/v1/users/me/library").WithTags("Personal library").RequireAuthorization();
+        var library = app.MapGroup("/api/v1/users/me/library").WithTags("Personal library").WithMetadata(new StoredCatalogContent()).RequireAuthorization();
         library.MapGet("", async (ClaimsPrincipal user, ILibraryService service, HttpContext context, CancellationToken ct,
             string? status = null, string? type = null, int page = 1, int pageSize = 20, string? q = null, string? sort = null) =>
         {
@@ -89,7 +89,7 @@ internal static class PersonalMediaEndpoints
             if (month is < 1 or > 12 || month is not null && year is null) errors["month"] = ["Select a year and a month between 1 and 12."];
             if (errors.Count != 0) return Results.ValidationProblem(errors);
             return Results.Ok(await service.GetAsync(UserId(user), new(year, month, page, pageSize), ct));
-        }).WithTags("Personal library").RequireAuthorization().RequireRateLimiting("personal-read")
+        }).WithTags("Personal library").WithMetadata(new StoredCatalogContent()).RequireAuthorization().RequireRateLimiting("personal-read")
             .Produces<LibraryHistoryPage>().ProducesValidationProblem().ProducesProblem(401).ProducesProblem(429)
             .WithSummary("Get your private completion history and monthly totals");
     }

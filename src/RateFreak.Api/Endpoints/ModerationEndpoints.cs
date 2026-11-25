@@ -24,13 +24,15 @@ internal static class ModerationEndpoints
             !Paging(page, pageSize) || status is not ("open" or "resolved") ? Invalid() : Results.Ok(await service.ReportsAsync(status, page, pageSize, ct)))
             .RequireRateLimiting("moderation-read").Produces<ModerationPage<ReportSummary>>();
         staff.MapGet("/reports/{id:guid}", async (Guid id, IModerationService service, CancellationToken ct) =>
-            await service.ReportAsync(id, ct) is { } result ? Results.Ok(result) : Results.NotFound()).RequireRateLimiting("moderation-read").Produces<ReportDetail>();
+            await service.ReportAsync(id, ct) is { } result ? Results.Ok(result) : Results.NotFound())
+            .WithMetadata(new StoredCatalogContent()).RequireRateLimiting("moderation-read").Produces<ReportDetail>();
         Write(staff.MapPost("/reports/{id:guid}/resolve", async (Guid id, ResolveRequest request, ClaimsPrincipal user, IModerationService service, CancellationToken ct) =>
             Result(await service.ResolveAsync(Actor(user), id, request, ct))));
         foreach (var (segment, type) in new[] { ("reviews", "review"), ("comments", "comment"), ("media", "item"), ("categories", "category"), ("profiles", "profile") })
         {
-            staff.MapGet($"/{segment}/{{id:guid}}", async (Guid id, IModerationService service, CancellationToken ct) =>
+            var target = staff.MapGet($"/{segment}/{{id:guid}}", async (Guid id, IModerationService service, CancellationToken ct) =>
                 await service.TargetAsync(type, id, ct) is { } result ? Results.Ok(result) : Results.NotFound()).RequireRateLimiting("moderation-read").Produces<ModerationTarget>();
+            if (type == "item") target.WithMetadata(new StoredCatalogContent());
             Write(staff.MapPost($"/{segment}/{{id:guid}}/visibility", async (Guid id, VisibilityRequest request, ClaimsPrincipal user, IModerationService service, CancellationToken ct) =>
                 Result(await service.VisibilityAsync(Actor(user), type, id, request, ct))));
         }

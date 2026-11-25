@@ -70,6 +70,27 @@ public sealed partial class ModerationTests(AccountDatabase database) : IClassFi
     }
 
     [Fact]
+    public async Task Missing_tmdb_policy_preserves_moderation_and_empty_list_writes()
+    {
+        await using var factory = Factory();
+        using var author = Client(factory);
+        using var moderator = Client(factory);
+        await Login(author);
+        await Role(await Login(moderator), "Moderator");
+        var (mediaId, review) = await Review(author);
+        File.Delete(factory.PolicyPath);
+
+        using var catalog = await author.GetAsync("/api/v1/media", Ct);
+        using var target = await moderator.GetAsync($"/api/v1/moderation/media/{mediaId}", Ct);
+        using var hide = await moderator.PostAsJsonAsync(Visibility(review.GetProperty("id").GetGuid()),
+            new { hidden = true, reason = "Spam", expectedTargetUpdatedAt = review.GetProperty("updatedAt").GetDateTimeOffset() }, Ct);
+        using var collection = await author.PostAsJsonAsync("/api/v1/collections", new { name = "My list" }, Ct);
+        Assert.Equal(
+            [HttpStatusCode.ServiceUnavailable, HttpStatusCode.ServiceUnavailable, HttpStatusCode.NoContent, HttpStatusCode.Created],
+            new[] { catalog.StatusCode, target.StatusCode, hide.StatusCode, collection.StatusCode });
+    }
+
+    [Fact]
     public async Task Hide_resolve_and_restore_are_audited_and_stale_decisions_are_rejected()
     {
         await using var f = Factory(); using var author = Client(f); using var reporter = Client(f); using var mod = Client(f);

@@ -10,7 +10,6 @@ function artwork(reference: string, type: "movie" | "video_game" | "book" | "cus
   return <ImageConfigContext.Provider value={{ ...imageConfigDefault, ...config.images }}><MediaArtwork reference={reference} title="A title" type={type} /></ImageConfigContext.Provider>;
 }
 it.each([
-  ["https://image.tmdb.org/t/p/w500/example.jpg", "movie"],
   ["https://images.igdb.com/igdb/image/upload/t_cover_big/co123.jpg", "video_game"],
   ["https://covers.openlibrary.org/b/id/12345-L.jpg?default=false", "book"],
 ] as const)("renders public %s through the image optimizer", (url, type) => {
@@ -19,6 +18,15 @@ it.each([
   expect(optimized.origin).toBe(window.location.origin); expect(optimized.pathname).toBe("/_next/image");
   expect(optimized.searchParams.get("url")).toBe(type === "book" ? "/provider-artwork/openlibrary/12345" : url); expect(image).toHaveAttribute("loading", "lazy");
   expect(image).toHaveAttribute("srcSet"); expect(image).toHaveAttribute("sizes");
+});
+it("renders TMDB artwork from the unoptimized same-origin poster route", () => {
+  render(artwork("https://image.tmdb.org/t/p/w500/example.jpg"));
+  const image = screen.getByRole("img", { name: "Artwork for A title" });
+  const url = new URL(image.getAttribute("src")!, window.location.origin);
+  expect(url.origin).toBe(window.location.origin);
+  expect(url.pathname + url.search).toBe("/tmdb-posters/example.jpg");
+  expect(image).toHaveAttribute("loading", "lazy");
+  expect(image).not.toHaveAttribute("srcset");
 });
 it("keeps uploaded artwork behind its original access-checked route", () => {
   const reference = "/api/v1/media/a1111111-1111-1111-1111-111111111111/artwork/b1111111-1111-1111-1111-111111111111";
