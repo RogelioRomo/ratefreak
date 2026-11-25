@@ -4,8 +4,9 @@ Verified locally on 2026-11-24 (America/Los_Angeles) in
 `feat/tmdb-content-lifecycle`, based on `ecff792`. This implements the
 [approved design](superpowers/specs/2026-11-24-tmdb-content-lifecycle-design.md)
 and [plan](superpowers/plans/2026-11-24-tmdb-content-lifecycle.md).
-The implementation is isolated from `main`; no persistent developer instance was
-migrated and no release, remote tag or image was published.
+The initial feature proof was isolated from `main`; no persistent instance was
+migrated or release published during that proof. The subsequent owner-authorized
+local integration and database migration are recorded below.
 
 ## Result
 
@@ -65,6 +66,37 @@ acceptance directories. They are not public release artifacts. Public sanitized
 results and exact image identities are in
 [verification.json](release-evidence/2026-11-24-tmdb-lifecycle/verification.json),
 with the [source-input manifest](release-evidence/2026-11-24-tmdb-lifecycle/source-inputs.json).
+
+## Owner-authorized local integration and migration
+
+The owner selected local merge and separately requested the database migration.
+`main` fast-forwarded to feature commit `8568481`. All 1,909 tests were rerun on
+merged `main`: 62 unit, 208 provider contracts, 508 PostgreSQL integration (zero
+skips), 1,013 frontend, and 72/26/20 operator/release/compliance. Model consistency
+passed, and runtime input hashes still match the exact-image feature proof.
+GitHub SSH authentication prevented the optional upstream pull; no remote changes
+were fetched or pushed.
+
+Migration `20261124233146_AddTmdbContentLifecycle` was applied to the original
+local `ratefreak` database using the recorded production tools image. The API and
+frontend were stopped on IPv4/IPv6 and no other target-database clients were
+connected. A private database dump and artwork archive were verified, then an
+isolated restore matched every original table fingerprint. Upgrade, rollback and
+reapplication succeeded on that copy before the original database was changed.
+
+The actual upgrade preserved all 29 original application tables' columns, row
+counts/fingerprints, original migration-history rows and artwork. The two new
+mapping/control tables remain empty; only the default scheduler row and new
+history entry were inserted. Reapplication was idempotent, the rehearsal database
+was removed and both application servers remain stopped. Provider settings,
+credentials and runtime policy configuration were not changed. Backups are mode
+0600 inside the private migration directory with a recorded 30-day expiry; no
+automatic backup-expiration service is implied.
+
+Sanitized results are in [main-integration.json](release-evidence/2026-11-24-tmdb-lifecycle/main-integration.json).
+Private backup/rehearsal/apply records are under
+`.local/localhost/tmdb-content-lifecycle-migration/`. Other installations require
+their own reviewed upgrade. No service was started and no release was published.
 
 ## Review and proof scope
 

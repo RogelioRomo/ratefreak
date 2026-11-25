@@ -28,10 +28,9 @@ The owner approved automatic refresh starting at five months, retries until six
 months and replacement of expired provider metadata/posters with an unavailable
 placeholder while preserving user content, internal UUIDs and TMDB IDs. See the
 [approved lifecycle design](superpowers/specs/2026-11-24-tmdb-content-lifecycle-design.md).
-Implementation and local acceptance are complete in the isolated feature
-worktree: five-month refresh, six-month expiry, independent poster cache, removal
+Implementation/local acceptance are complete and merged locally into `main`: five-month refresh, six-month expiry, independent poster cache, removal
 and current-policy restore passed the [verification record](tmdb-lifecycle-verification.md).
-Local integration, final stable artifact/source qualification, required attribution
+Final stable artifact/source qualification, required attribution
 and operator eligibility remain release work. Other provider questions remain independent. No additional TMDB
 image-processing permission request is pending under the owner's decision.
 
@@ -51,7 +50,7 @@ provider API calls, agreement acceptance or outbound correspondence.
 
 | Provider | Resolved by this review | Still required |
 | --- | --- | --- |
-| TMDB | Full API/site terms retrieved; staff refresh/ID-retention clarification and owner image-handling decision recorded above | Integrate/qualify the verified lifecycle for final artifacts; maintain required attribution and record operator eligibility |
+| TMDB | Full API/site terms retrieved; staff refresh/ID-retention clarification and owner image-handling decision recorded above | Qualify the verified lifecycle for final artifacts; maintain required attribution and record operator eligibility |
 | IGDB | Current documentation expressly permits local storage; full Twitch agreement retrieved again | Written scope clarification for public catalog storage/display, updates, removal and termination; operator partnership when applicable |
 | MusicBrainz | Core-data and hosted-service rules rechecked | Instance eligibility/contact and aggregate pacing; maintain reviewed core-field scope |
 | Open Library | Metadata caching supported; direct cover-source guidance confirmed | Cover proxy/optimizer and Archive terms scope clarification; application registration and operator usage record |

@@ -1,0 +1,58 @@
+{
+  "integrationCodeCommit": "856848135125620be07da498e6441dc0205d1a33",
+  "integration": "local fast-forward into main",
+  "upstreamCheck": "SSH authentication unavailable; no remote changes fetched or pushed",
+  "backend": [
+    {
+      "suite": "IntegrationTests",
+      "total": 508,
+      "executed": 508,
+      "passed": 508,
+      "failed": 0,
+      "notExecuted": 0
+    },
+    {
+      "suite": "UnitTests",
+      "total": 62,
+      "executed": 62,
+      "passed": 62,
+      "failed": 0,
+      "notExecuted": 0
+    },
+    {
+      "suite": "ProviderContractTests",
+      "total": 208,
+      "executed": 208,
+      "passed": 208,
+      "failed": 0,
+      "notExecuted": 0
+    }
+  ],
+  "frontendPassed": 1013,
+  "operatorPassed": 72,
+  "releasePassed": 26,
+  "compliancePassed": 20,
+  "runtimeInputsMatchFeatureProof": true,
+  "efModelConsistent": true,
+  "migration": {
+    "previous": "20261119165037_AddProfileAvatars",
+    "migration": "20261124233146_AddTmdbContentLifecycle",
+    "appliedAt": "2026-11-25T04:51:32.620010+00:00",
+    "backupMode": "0600",
+    "backupRestoreVerified": true,
+    "isolatedUpgradeRollbackReapplyVerified": true,
+    "restoreDatabaseRemoved": true,
+    "preservedApplicationTables": 29,
+    "existingApplicationRowsAndColumnsPreserved": true,
+    "originalMigrationRowsPreserved": true,
+    "newLifecycleAndPosterTablesEmpty": true,
+    "onlyDefaultScheduleRowAdded": true,
+    "artworkPreserved": true,
+    "idempotenceVerified": true,
+    "serversStarted": false,
+    "providerSettingsChanged": false
+  },
+  "migrationSqlScope": "Three new control tables, their FKs/index, default schedule row and one history entry; existing columns unchanged",
+  "privateEvidence": ".local/localhost/tmdb-content-lifecycle-migration/verification.json",
+  "publication": "none"
+}

@@ -1,22 +1,24 @@
 # Current project status and roadmap
 
-Updated: 2026-11-24. The approved TMDB content lifecycle is implemented and verified
-in the isolated `feat/tmdb-content-lifecycle` worktree at
-`.local/worktrees/tmdb-content-lifecycle`; integration into `main` is pending.
-Metadata and posters refresh from five UTC calendar months and expire at six,
-retaining user content/identities with an unavailable placeholder. Independent
-removal/termination policy protects restored snapshots. Verification passed 778
-backend tests (zero skips), 1,013 frontend tests and 118 operator/release/compliance
-tests, lint/typecheck/model checks, API/web/tools production images, trusted-HTTPS
-fresh/Bookworm upgrade, real backup/current-policy restore and ordinary-account
-Chromium before/after removal in both themes. All review findings were addressed;
-all successful disposable project containers/volumes were removed. See
-[verification and exact evidence](tmdb-lifecycle-verification.md).
-No persistent instance was migrated or release published. TMDB storage/image
-clarification is no longer a waiting item; final integration/source/artifact
-qualification, operator eligibility, other provider questions and residual
-security/publication gates remain open. Historical candidate identities are
-unchanged.
+Updated: 2026-11-24. The TMDB lifecycle feature is merged locally into `main`
+through `8568481`. The merged checkout passed all 1,909 tests: 778 backend with
+zero skips, 1,013 frontend and 118 operator/release/compliance, plus model consistency.
+Earlier exact-image HTTPS fresh/upgrade/restore and both-theme Chromium evidence
+retains its recorded scope; see [verification](tmdb-lifecycle-verification.md).
+After the owner's explicit request, migration
+`20261124233146_AddTmdbContentLifecycle` was applied to the persistent local
+`ratefreak` database following a private mode-0600 database/artwork backup,
+matching isolated restore and upgrade/rollback/reapply rehearsal. All original
+columns, rows/fingerprints and migration-history rows across 29 application tables
+and existing artwork are preserved. Only three lifecycle control tables, their
+FKs/index, a default schedule row and one migration-history entry were added;
+repeat application is idempotent. API/frontend remain stopped and provider/runtime
+settings are unchanged. See [integration/migration evidence](release-evidence/2026-11-24-tmdb-lifecycle/main-integration.json)
+and private `.local/localhost/tmdb-content-lifecycle-migration/verification.json`.
+No push or release publication occurred; upstream synchronization was unavailable
+because GitHub SSH authentication failed. TMDB storage/image clarification is no
+longer pending. Final stable artifact/source qualification, other provider/operator
+requirements and residual security/publication gates remain open.
 
 Earlier update, 2026-11-24. TMDB staff clarification supports refreshing stored metadata
 within six months and keeping TMDB IDs after metadata/image purge. The owner
