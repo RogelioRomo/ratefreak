@@ -1,5 +1,10 @@
 # Security follow-up — Skia, database transition and decoder guards
 
+**Historical policy:** the all-findings rule below was superseded on 2026-11-26
+by the owner's [risk-based CVE policy](security-risk-policy.md). These receipts
+retain their original technical and artifact scope; current decisions are in
+[STATUS](STATUS.md).
+
 **The release security gate remains held.** The owner requires a documented fix
 or caller-level exclusion for every finding, including medium/low findings.
 Vendor deferral, low severity and lack of a demonstrated exploit do not satisfy

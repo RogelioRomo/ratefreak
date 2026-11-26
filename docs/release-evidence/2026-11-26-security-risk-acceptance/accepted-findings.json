@@ -1,0 +1,28 @@
+[
+  {
+    "id": "CVE-2019-1010022",
+    "disposition": "accepted-low-risk",
+    "images": [
+      "postgres-trixie",
+      "tools",
+      "web"
+    ],
+    "records": 3,
+    "package_associations": 8,
+    "reason": "Accepted low practical risk: a stack-guard mitigation bypass requiring a separate native stack-buffer overflow. No independent RateFreak attack was demonstrated. Debian marks it unimportant and Ubuntu assigns low priority; the native protection weakness remains present.",
+    "patched": false
+  },
+  {
+    "id": "CVE-2019-1010024",
+    "disposition": "accepted-low-risk",
+    "images": [
+      "postgres-trixie",
+      "tools",
+      "web"
+    ],
+    "records": 3,
+    "package_associations": 8,
+    "reason": "Accepted low practical risk: predictable native stack addresses may assist exploitation of a separate memory-corruption flaw. No independent RateFreak attack was demonstrated. Debian marks it unimportant; tested address reuse remains present even with the stack cache disabled.",
+    "patched": false
+  }
+]

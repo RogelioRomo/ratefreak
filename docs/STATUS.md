@@ -1,10 +1,11 @@
 # Current project status and release work
 
-Updated: 2026-11-25.
+Updated: 2026-11-26.
 
 RateFreak's first-release product scope is implemented and merged locally into
-`main`. **Public release is not yet cleared.** The remaining work is security,
-provider requirements, final artifact qualification and publication.
+`main`. **Public release is not yet cleared.** The remaining work is provider
+requirements, final artifact/security qualification, operational acceptance and
+publication.
 
 The release target is open-source software that others self-host, using the
 Next.js → .NET → PostgreSQL reference installation. A project-owned production
@@ -70,13 +71,30 @@ A fresh verification before local main integration reran all **1,927 tests**
 and passed lint, TypeScript and model consistency; see the
 [main integration record](release-evidence/2026-11-25-security-followup/main-integration.json).
 
-**Security clearance remains blocked by eight medium/low IDs:** three glibc
-mitigation findings and five C++ compiled-caller/header findings. The owner's
-release standard requires a documented fix or caller-level exclusion for every
-finding; vendor deferral or lack of a demonstrated exploit is insufficient.
-The current ledger has 22 unresolved image/source records covering 67 package
-associations, with explicit proof gaps rather than unassessed rows. See the
-[remaining-ID inventory](release-evidence/2026-11-25-security-followup/remaining-findings.json).
+The [2026-11-26 security closure](security-closure-2026-11-26.md) applies a
+single-arena malloc policy to all six reference service roles and completes the
+missing OS C++ caller review, including 26 matching Build-ID debug companions.
+Six of the previous eight IDs now have conditional exclusions, including the
+additional Node stream-output candidates. All six real allocator probes,
+fresh HTTPS acceptance, a 40-request concurrency smoke, 33-table coordinated
+restore/replay and all 123 operator/release/compliance tests passed. This changes
+installation configuration on the previous exact images; the frozen installation
+archive must be regenerated at final qualification. Representative capacity
+evidence remains outstanding. No persistent installation was changed.
+
+**The current security review has no unaccepted findings.** The owner authorized
+a [risk-based CVE policy](security-risk-policy.md) for all future findings:
+apply available compatible fixes; otherwise findings assessed as low practical
+risk may be accepted with documented reasons and reassessment conditions.
+CVE-2019-1010022 (thread-stack guard) and CVE-2019-1010024 (stack-address reuse)
+are accepted low risks, covering the six prior open image/source records and
+16 package associations. Their native behavior is unchanged; they are not
+claimed patched or unreachable. See the
+[acceptance decision](release-evidence/2026-11-26-security-risk-acceptance/decision.json)
+and [current dispositions](release-evidence/2026-11-26-security-risk-acceptance/dispositions.json).
+Earlier blocked receipts retain their historical scope. This closes those two
+blockers on the reviewed images/configuration; final stable artifacts still need
+fresh security qualification and any available compatible fixes.
 
 ## Remaining release gates
 
@@ -84,37 +102,33 @@ The order below is a suggested sequence. Earlier candidate checks are completed
 evidence for their exact sources/images; changed final artifacts need matching
 qualification.
 
-1. **Clear the security gate.** Resolve the eight documented glibc/C++ proof
-   gaps through an applied fix or complete supported-caller exclusion. The
-   [current follow-up](security-followup-2026-11-25.md) records exact images,
-   native/OS decisions, the Skia update, resolved PostgreSQL shared-ASN.1 scope,
-   decoder mitigations and JIT-disabled configuration proof. No medium/low
-   residual-risk acceptance is authorized. A source search limited to application
-   dependencies does not establish the supported OS/native consumers' compiled
-   header inputs;
-   disputed native mitigation properties remain open. Preserve the conditional
-   exclusions and their configuration/caller limits when changing artifacts.
-   The earlier [integration](security-integration-2026-11-25.md),
-   [OS review](release-os-review-2026-11-23.md) and
-   [Debian trial](debian-runtime-trial-2026-11-23.md) retain historical scope.
-
-2. **Close remaining provider requirements.** Resolve IGDB's public catalog
-   storage/display, update/removal and termination scope, and Open Library cover
-   optimization/Internet Archive terms. Record applicable operator eligibility,
-   registration/contact, service pacing, commercial agreements where needed and
-   required attribution. TMDB lifecycle implementation is complete; its final
-   artifact qualification remains part of the candidate checks below. See
-   [agreement evidence](provider-agreement-evidence.md), [remaining question drafts](provider-agreement-questions.md)
-   and [Open Library/MusicBrainz guidance](provider-public-guidance-2026-11-18.md).
-3. **Freeze and qualify the stable candidate.** Select the stable version and
+1. **Implement and verify the agreed provider changes.** Decisions are recorded
+   in the [implementation handoff](provider-implementation-handoff.md): IGDB
+   refresh from five calendar months and expiry at six, preserving independent
+   user records; direct Open Library cover URLs bypassing the proxy/optimizer.
+   These choices no longer await provider correspondence before implementation.
+   Both implementations and their acceptance remain pending release work.
+   The described use is completely free/noncommercial; no commercial IGDB
+   partnership is pending. Six months is our chosen policy, not IGDB approval;
+   cover-processing and Archive terms interpretation limits remain documented
+   in the [agreement evidence](provider-agreement-evidence.md). Keep providers
+   optional/default-disabled and release artifacts free of imported content and
+   shared credentials. Record operator registration/contact, eligibility,
+   aggregate pacing and attribution. TMDB lifecycle implementation is complete;
+   its final artifact qualification remains part of the candidate checks below.
+2. **Freeze and qualify the stable candidate.** Select the stable version and
    source revision; build final API/web/tools images and assemble matching
    source materials, license/notice delivery and inventories. Repeat relevant
    source, all-layer artifact, secret/privacy and dependency/security checks.
+   Apply available compatible security fixes and reassess accepted findings under
+   the [current policy](security-risk-policy.md). Preserve the allocator, decoder,
+   JIT, architecture and caller conditions of existing exclusions, and bind any
+   retained risk acceptances to the final artifacts.
    Keep historical candidate identities unchanged and retain documented
    provenance limits. Earlier source-delivery and candidate proofs are in
    [runtime redistribution verification](runtime-redistribution-verification.md)
    and [candidate verification](release-candidate-verification-2026-11-23.md).
-4. **Complete final reference-installation acceptance.** On the exact candidate,
+3. **Complete final reference-installation acceptance.** On the exact candidate,
    verify fresh installation, supported upgrade/data preservation, real HTTPS
    sessions/CSRF/logout/recovery, persistence, ordinary/staff browser journeys
    and coordinated backup/isolated restore with current erasure and TMDB policy
@@ -123,7 +137,7 @@ qualification.
    load/capacity evidence and verify maintainer security-report notification
    delivery. See [reference verification](self-hosted-reference-verification.md)
    and the [detailed acceptance checklist](frontend-release-verification.md#outstanding-release-gates).
-5. **Publish the approved release.** Restore GitHub authentication, synchronize
+4. **Publish the approved release.** Restore GitHub authentication, synchronize
    the source, and obtain authorization for versioned artifact publication.
    Deliver the matching source/notices with binaries and publish the release
    announcement using the implemented release/versioning process. See

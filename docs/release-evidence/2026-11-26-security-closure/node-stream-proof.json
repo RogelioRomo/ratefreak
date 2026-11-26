@@ -1,0 +1,437 @@
+{
+  "image_id": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+  "node": "24.22.3",
+  "native_sha256": "a7ec1b37e6ff9d187e4198c5b6df9a4eb1c74dd31804fb3bac55cc4ceca1ac01",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "preprocessing": {
+    "gnu++14": {
+      "command": [
+        "g++",
+        "-std=gnu++14",
+        "-E",
+        "<repository>/.local/security-closure-2026-11-26/selected/node-v24.22.3/deps/simdjson/simdjson.cpp",
+        "-o",
+        "<repository>/.local/security-closure-2026-11-26/simdjson-gnu++14.ii"
+      ],
+      "sha256": "c37812b45f0563bc991341b8d7d6aa7b233c7527c28fab3f4f4ff5db201d3d01",
+      "write_padding_mentions": 3
+    },
+    "gnu++20": {
+      "command": [
+        "g++",
+        "-std=gnu++20",
+        "-E",
+        "<repository>/.local/security-closure-2026-11-26/selected/node-v24.22.3/deps/simdjson/simdjson.cpp",
+        "-o",
+        "<repository>/.local/security-closure-2026-11-26/simdjson-gnu++20.ii"
+      ],
+      "sha256": "0e5fe36e068044efd1176e4f7f0988d9daa01f972683883bfb5e4dfcfc79f9e4",
+      "write_padding_mentions": 0
+    }
+  },
+  "build_rules_sha256": "3c4090d3faf964998a89bad9e501cb4dac953ef9e03e9d03ede9812ae78161b2",
+  "source_files": [
+    {
+      "path": "node-v24.22.3/common.gypi",
+      "sha256": "3c4090d3faf964998a89bad9e501cb4dac953ef9e03e9d03ede9812ae78161b2",
+      "matches": [
+        {
+          "line": 380,
+          "text": "              # The following option enables c++20 on Windows. This is needed for V8 v12.4+"
+        },
+        {
+          "line": 381,
+          "text": "              '-std:c++20',"
+        },
+        {
+          "line": 589,
+          "text": "          '-std=gnu++20',"
+        },
+        {
+          "line": 770,
+          "text": "              'CLANG_CXX_LANGUAGE_STANDARD': 'gnu++20',  # -std=gnu++20"
+        }
+      ]
+    },
+    {
+      "path": "node-v24.22.3/deps/simdjson/simdjson.h",
+      "sha256": "a5c467c33c7871262eb4c82775490430758939c1c516fbdaeb662f8255860a60",
+      "matches": [
+        {
+          "line": 751,
+          "text": "#if !defined( nssv_CONFIG_SELECT_STRING_VIEW )"
+        },
+        {
+          "line": 752,
+          "text": "# define nssv_CONFIG_SELECT_STRING_VIEW  ( nssv_HAVE_STD_STRING_VIEW ? nssv_STRING_VIEW_STD : nssv_STRING_VIEW_NONSTD )"
+        },
+        {
+          "line": 776,
+          "text": "#ifndef  nssv_CONFIG_NO_STREAM_INSERTION"
+        },
+        {
+          "line": 777,
+          "text": "# define nssv_CONFIG_NO_STREAM_INSERTION  0"
+        },
+        {
+          "line": 828,
+          "text": "#define  nssv_USES_STD_STRING_VIEW  ( (nssv_CONFIG_SELECT_STRING_VIEW == nssv_STRING_VIEW_STD) || ((nssv_CONFIG_SELECT_STRING_VIEW == nssv_STRING_VIEW_DEFAULT) && nssv_HAVE_STD_STRING_VIEW) )"
+        },
+        {
+          "line": 1133,
+          "text": "#if ! nssv_CONFIG_NO_STREAM_INSERTION"
+        },
+        {
+          "line": 2147,
+          "text": "#if ! nssv_CONFIG_NO_STREAM_INSERTION"
+        },
+        {
+          "line": 2198,
+          "text": "#endif // nssv_CONFIG_NO_STREAM_INSERTION"
+        },
+        {
+          "line": 2348,
+          "text": "#if ! nssv_CONFIG_NO_STREAM_INSERTION"
+        }
+      ]
+    },
+    {
+      "path": "node-v24.22.3/deps/v8/src/compiler/turboshaft/turbolev-graph-builder.cc",
+      "sha256": "fedc4748f090d96b3ad153b9940a56f8288acbdd80e0031c513f3c002b0094e4",
+      "matches": [
+        {
+          "line": 6044,
+          "text": "void PrintMaglevGraph(PipelineData& data,"
+        },
+        {
+          "line": 6082,
+          "text": "    PrintMaglevGraph(*data, compilation_info, maglev_graph,"
+        },
+        {
+          "line": 6107,
+          "text": "    PrintMaglevGraph(*data, compilation_info, maglev_graph,"
+        },
+        {
+          "line": 6148,
+          "text": "    PrintMaglevGraph(*data, compilation_info.get(), maglev_graph,"
+        }
+      ]
+    },
+    {
+      "path": "node-v24.22.3/deps/v8/src/maglev/maglev-graph-printer.cc",
+      "sha256": "bfa17160dca4c590a318b62d60e5472b547227806b7cc0847dd6b1626007b97b",
+      "matches": [
+        {
+          "line": 218,
+          "text": "class MaglevPrintingVisitorOstream : public std::ostream,"
+        },
+        {
+          "line": 221,
+          "text": "  MaglevPrintingVisitorOstream(std::ostream& os,"
+        },
+        {
+          "line": 224,
+          "text": "  ~MaglevPrintingVisitorOstream() override = default;"
+        },
+        {
+          "line": 226,
+          "text": "  static MaglevPrintingVisitorOstream* cast("
+        },
+        {
+          "line": 228,
+          "text": "    return static_cast<MaglevPrintingVisitorOstream*>(os.get());"
+        },
+        {
+          "line": 243,
+          "text": "int MaglevPrintingVisitorOstream::overflow(int c) {"
+        },
+        {
+          "line": 257,
+          "text": "MaglevPrintingVisitor::MaglevPrintingVisitor("
+        },
+        {
+          "line": 262,
+          "text": "          new MaglevPrintingVisitorOstream(os_, &targets_)) {}"
+        },
+        {
+          "line": 264,
+          "text": "void MaglevPrintingVisitor::PreProcessGraph(Graph* graph) {"
+        },
+        {
+          "line": 319,
+          "text": "BlockProcessResult MaglevPrintingVisitor::PreProcessBasicBlock("
+        },
+        {
+          "line": 401,
+          "text": "  MaglevPrintingVisitorOstream::cast(os_for_additional_info_)->set_padding(1);"
+        },
+        {
+          "line": 793,
+          "text": "ProcessResult MaglevPrintingVisitor::Process(Phi* phi,"
+        },
+        {
+          "line": 855,
+          "text": "  MaglevPrintingVisitorOstream::cast(os_for_additional_info_)"
+        },
+        {
+          "line": 860,
+          "text": "ProcessResult MaglevPrintingVisitor::Process(Node* node,"
+        },
+        {
+          "line": 878,
+          "text": "  MaglevPrintingVisitorOstream::cast(os_for_additional_info_)"
+        },
+        {
+          "line": 886,
+          "text": "ProcessResult MaglevPrintingVisitor::Process(ControlNode* control_node,"
+        },
+        {
+          "line": 1040,
+          "text": "  // TODO(leszeks): Allow MaglevPrintingVisitorOstream to print the arrowhead"
+        },
+        {
+          "line": 1042,
+          "text": "  MaglevPrintingVisitorOstream::cast(os_for_additional_info_)"
+        },
+        {
+          "line": 1050,
+          "text": "  GraphProcessor<MaglevPrintingVisitor, /*visit_identity_nodes*/ true> printer("
+        }
+      ]
+    },
+    {
+      "path": "node-v24.22.3/deps/v8/src/maglev/maglev-graph-printer.h",
+      "sha256": "60b28c06a621b7a2c24b76afa9fea2e3232894c217653a319f5eda0105f2ef09",
+      "matches": [
+        {
+          "line": 34,
+          "text": "class MaglevPrintingVisitor {"
+        },
+        {
+          "line": 36,
+          "text": "  explicit MaglevPrintingVisitor(MaglevGraphLabeller* graph_labeller,"
+        },
+        {
+          "line": 97,
+          "text": "class MaglevPrintingVisitor {"
+        },
+        {
+          "line": 99,
+          "text": "  explicit MaglevPrintingVisitor(MaglevGraphLabeller* graph_labeller,"
+        }
+      ]
+    },
+    {
+      "path": "node-v24.22.3/deps/v8/src/maglev/maglev-regalloc.cc",
+      "sha256": "36e0df77453956031cb76816dbacdf56a79f0ad42204f3e7b3f292afd72b91c2",
+      "matches": [
+        {
+          "line": 366,
+          "text": "    printing_visitor_.reset(new MaglevPrintingVisitor("
+        }
+      ]
+    },
+    {
+      "path": "node-v24.22.3/deps/v8/src/maglev/maglev-regalloc.h",
+      "sha256": "6317c368143afda0854e83d927697b13e8ceb31e1480add986973b104a714cca",
+      "matches": [
+        {
+          "line": 21,
+          "text": "class MaglevPrintingVisitor;"
+        },
+        {
+          "line": 309,
+          "text": "  std::unique_ptr<MaglevPrintingVisitor> printing_visitor_;"
+        }
+      ]
+    },
+    {
+      "path": "node-v24.22.3/deps/simdjson/simdjson.gyp",
+      "sha256": "2dcdf50a5cdf3f3c24391cd9574bbaced5416732470459a0692de96d0a8e5826",
+      "matches": []
+    },
+    {
+      "path": "node-v24.22.3/deps/simdjson/simdjson.h",
+      "sha256": "a5c467c33c7871262eb4c82775490430758939c1c516fbdaeb662f8255860a60",
+      "matches": []
+    },
+    {
+      "path": "node-v24.22.3/deps/v8/src/diagnostics/code-tracer.h",
+      "sha256": "87296b5ec37e6fe61995d8803b1f1cb69c91c5d5504829d9b0fd8eeb419547e1",
+      "matches": [
+        {
+          "line": 54,
+          "text": "class V8_NODISCARD StreamScope : public Scope {"
+        },
+        {
+          "line": 56,
+          "text": "explicit StreamScope(CodeTracer* tracer) : Scope(tracer) {"
+        },
+        {
+          "line": 73,
+          "text": "std::optional<OFStream> file_stream_;"
+        }
+      ]
+    },
+    {
+      "path": "node-v24.22.3/deps/v8/src/maglev/maglev-compiler.cc",
+      "sha256": "3af5e8123f79fb97b6cac2654517263092ba41f16da92e4b00358b8a914d1a9b",
+      "matches": [
+        {
+          "line": 74,
+          "text": "v8_flags.trace_maglev_graph_building ||"
+        },
+        {
+          "line": 99,
+          "text": "v8_flags.print_maglev_graphs || v8_flags.trace_maglev_graph_building ||"
+        },
+        {
+          "line": 123,
+          "text": "PrintGraph(std::cout, compilation_info, graph);"
+        },
+        {
+          "line": 168,
+          "text": "PrintGraph(std::cout, compilation_info, graph);"
+        },
+        {
+          "line": 190,
+          "text": "PrintGraph(std::cout, compilation_info, graph);"
+        },
+        {
+          "line": 216,
+          "text": "PrintGraph(std::cout, compilation_info, graph);"
+        },
+        {
+          "line": 251,
+          "text": "PrintGraph(std::cout, compilation_info, graph);"
+        },
+        {
+          "line": 265,
+          "text": "PrintGraph(std::cout, compilation_info, graph);"
+        },
+        {
+          "line": 327,
+          "text": "CodeTracer::StreamScope tracing_scope(isolate->GetCodeTracer());"
+        }
+      ]
+    },
+    {
+      "path": "node-v24.22.3/deps/v8/src/maglev/maglev-graph-printer.cc",
+      "sha256": "bfa17160dca4c590a318b62d60e5472b547227806b7cc0847dd6b1626007b97b",
+      "matches": [
+        {
+          "line": 1048,
+          "text": "void PrintGraph(std::ostream& os, MaglevCompilationInfo* compilation_info,"
+        }
+      ]
+    },
+    {
+      "path": "node-v24.22.3/deps/v8/src/maglev/maglev-graph-printer.h",
+      "sha256": "60b28c06a621b7a2c24b76afa9fea2e3232894c217653a319f5eda0105f2ef09",
+      "matches": [
+        {
+          "line": 60,
+          "text": "void PrintGraph(std::ostream& os, MaglevCompilationInfo* compilation_info,"
+        },
+        {
+          "line": 125,
+          "text": "inline void PrintGraph(std::ostream& os,"
+        }
+      ]
+    },
+    {
+      "path": "node-v24.22.3/deps/v8/src/maglev/maglev-inlining.h",
+      "sha256": "a763bba283bb8a5ee3a52d1faad285a83d6a363d57f7ea26cbeb4d3ba901098a",
+      "matches": [
+        {
+          "line": 48,
+          "text": "PrintGraph(std::cout, compilation_info_, graph_);"
+        },
+        {
+          "line": 56,
+          "text": "PrintGraph(std::cout, compilation_info_, graph_);"
+        }
+      ]
+    },
+    {
+      "path": "node-v24.22.3/deps/v8/src/utils/ostreams.h",
+      "sha256": "c79d113a16a80e88ee1a6bb1e63642f9d6f7fb6a6f42df459a2b5924e3bb04c9",
+      "matches": [
+        {
+          "line": 21,
+          "text": "class V8_EXPORT_PRIVATE OFStreamBase : public std::streambuf {"
+        },
+        {
+          "line": 23,
+          "text": "explicit OFStreamBase(FILE* f);"
+        },
+        {
+          "line": 24,
+          "text": "~OFStreamBase() override = default;"
+        },
+        {
+          "line": 57,
+          "text": "class V8_EXPORT_PRIVATE OFStream : public std::ostream {"
+        },
+        {
+          "line": 59,
+          "text": "explicit OFStream(FILE* f);"
+        },
+        {
+          "line": 60,
+          "text": "~OFStream() override = default;"
+        },
+        {
+          "line": 63,
+          "text": "OFStreamBase buf_;"
+        },
+        {
+          "line": 91,
+          "text": "class StdoutStream : public OFStream {"
+        },
+        {
+          "line": 93,
+          "text": "StdoutStream() : OFStream(stdout) {}"
+        },
+        {
+          "line": 103,
+          "text": "class StderrStream : public OFStream {"
+        },
+        {
+          "line": 105,
+          "text": "StderrStream() : OFStream(stderr) {}"
+        }
+      ]
+    }
+  ],
+  "actual_default_flags": {
+    "print-maglev-graph": "  --print-maglev-graph (print the final maglev graph)\n        type: bool  default: --no-print-maglev-graph",
+    "print-maglev-graphs": "  --print-maglev-graphs (print maglev graph across all phases)\n        type: bool  default: --no-print-maglev-graphs",
+    "trace-maglev-regalloc": "  --trace-maglev-regalloc (trace maglev register allocation)\n        type: bool  default: --no-trace-maglev-regalloc"
+  },
+  "packaged_flag_setters": {
+    "setters": [
+      {
+        "path": "/app/node_modules/.pnpm/next@16.4.6_@babel+core@7.29.7_@types+node@24.19.2_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/next/dist/lib/memory/startup.js",
+        "sha256": "5e61bcad495e1db37a4ea5e9670d7c4a6c1757b7d1ef165ff41cd5ed8028b09a",
+        "calls": [
+          "'--detect-ineffective-gcs-near-heap-limit'"
+        ]
+      }
+    ],
+    "NODE_OPTIONS": null
+  },
+  "sink_review": {
+    "simdjson": "Node Linux build rules select C++20. The default string_view selection uses std::string_view, so nonstd fallback write_padding is not compiled. Full source review found no selection override outside the two amalgamated copies.",
+    "maglev": "std::cout graph-printer callers require print-maglev-graph(s) or trace-maglev-regalloc; actual defaults are off and fixed reference startup does not enable them.",
+    "turbolev": "CodeTracer::StreamScope uses V8 OFStream/StdoutStream. OFStreamBase derives from std::streambuf and calls fputc/fwrite rather than GCC basic_filebuf overflow.",
+    "dbg_stream": "The DbgStreamBuf sputc branch is Windows-only and its own streambuf implementation.",
+    "lief": "ostreambuf_iterator file output match is a commented example; other apparent hits are Windows DLL ordinal-name strings.",
+    "fmt": "spdlog bundled chrono match is a decltype of sputn, not a runtime single-character filebuf retry.",
+    "next": "The only packaged JavaScript flag-setting call enables detect-ineffective-gcs-near-heap-limit, not graph printing. Its file hash and literal argument are retained."
+  },
+  "limits": "Source/build-rule branch proof using a host preprocessor plus exact image/source bindings; no independent Node rebuild or exploit reproduction. The earlier ordinary Node/Sharp filebuf caller review remains required.",
+  "reassess_if": [
+    "Native/source/compiler inputs, Node startup environment/options, diagnostic flags or supported JavaScript/native callers change."
+  ]
+}

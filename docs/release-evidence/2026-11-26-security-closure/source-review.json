@@ -1,0 +1,91 @@
+{
+  "sources": {
+    "apt": {
+      "file_count": 320,
+      "match_counts": {
+        "pbds": 0,
+        "parallel": 0,
+        "vector_bool": 19,
+        "bitset": 0,
+        "filebuf": 18
+      }
+    },
+    "icu": {
+      "file_count": 1849,
+      "match_counts": {
+        "pbds": 0,
+        "parallel": 0,
+        "vector_bool": 10,
+        "bitset": 0,
+        "filebuf": 2
+      }
+    },
+    "z3": {
+      "file_count": 2173,
+      "match_counts": {
+        "pbds": 0,
+        "parallel": 0,
+        "vector_bool": 12,
+        "bitset": 0,
+        "filebuf": 0
+      }
+    },
+    "llvm": {
+      "file_count": 66300,
+      "match_counts": {
+        "pbds": 0,
+        "parallel": 3,
+        "vector_bool": 558,
+        "bitset": 577,
+        "filebuf": 796
+      }
+    },
+    "zstd": {
+      "file_count": 346,
+      "relevant_matches": 0
+    }
+  },
+  "total_source_build_patch_files": 70988,
+  "source_binding": "Exact Debian package source/version plus descriptor hashes; not an independently reproduced build.",
+  "compiled_binding": "150 reverified C++ payload paths, with aliases/foreign packaged assets distinguished; 26 unique APT/ICU/pzstd Build-ID debug companions.",
+  "debug_header_limit": "Preserve positive stl_bvector and APT bitset header observations. No GNU pbds/parallel header observations. Header tables supplement source/caller analysis; absence alone is not an exclusion.",
+  "glibc_binding": [
+    {
+      "file": "glibc_2.41-12+deb13u5.debian.tar.xz",
+      "local_file": "source-files/9f2cc9eaafec40954c7120e593376d6c964f531d596005529409dbaffdba16a6-glibc_2.41-12+deb13u5.debian.tar.xz",
+      "sha256": "9f2cc9eaafec40954c7120e593376d6c964f531d596005529409dbaffdba16a6",
+      "size": 522972,
+      "url": "https://deb.debian.org/debian/pool/main/g/glibc/glibc_2.41-12+deb13u5.debian.tar.xz"
+    },
+    {
+      "file": "glibc_2.41-12+deb13u5.dsc",
+      "local_file": "source-files/eba607a62d96947f8b7dbef8606d2e0c87f115393105bcf0f5bc1cee882a1e63-glibc_2.41-12+deb13u5.dsc",
+      "sha256": "eba607a62d96947f8b7dbef8606d2e0c87f115393105bcf0f5bc1cee882a1e63",
+      "size": 7576,
+      "url": "https://deb.debian.org/debian/pool/main/g/glibc/glibc_2.41-12+deb13u5.dsc"
+    },
+    {
+      "file": "glibc_2.41.orig.tar.xz",
+      "local_file": "source-files/f24aa441021121a79266f0d75242706cab8843a47901fefe74527491807f1998-glibc_2.41.orig.tar.xz",
+      "sha256": "f24aa441021121a79266f0d75242706cab8843a47901fefe74527491807f1998",
+      "size": 20323540,
+      "url": "https://deb.debian.org/debian/pool/main/g/glibc/glibc_2.41.orig.tar.xz"
+    }
+  ],
+  "glibc_debian_allocator_patch_matches": [],
+  "additional_application_archives": 36,
+  "raw_source_searches": {
+    "os-source-search.json": "ea5295fd946248bb39aac2db7b3b2ac1395e684ac708c018eca4602c033aebf8",
+    "source-search-zstd.json": "bd68855693c3be992d31786bb43fbd5564046c49df95b837ce536b12c1c0ad6a",
+    "additional-callers.json": "26afded09f331e184fca46b77fc5915b5a90ce0f03705088078036c9c60972de"
+  },
+  "manual_review": {
+    "apt": "map_id_t is uint32_t; other bool counts derive from existing DescFile pointer vectors. TimeRFC1123 ostreambuf_iterator writes to ostringstream. Raw tee sputc helper is test-only. File transfers use ordinary ofstream operations.",
+    "icu": "tz2icu bool constructor uses existing vector<int32_t> length; JSON bool vectors start empty and grow. JSON output adapter uses stream.put/write; raw rdbuf adapter reads input. No bitset/wide-stream instantiation.",
+    "llvm": "Three GNU parallel matches are Clang strings. Three production bool constructors use existing vector<Product/PartialMulCandidate> lengths. Core bitsets use numeric/bit operations, no wide extraction. Runtime JIT is separately excluded by the bound configuration.",
+    "z3": "Production vector<bool> is the project custom vector array; std::vector<bool> literal occurs in an example. LLVM/Z3 load paths retain JIT-off supported-caller restriction.",
+    "zstd": "Exact pzstd source/patch set has no affected GNU heap/parallel/bool-vector/wide-bitset/raw filebuf output match; debug companion matched. It is not invoked by reference backup/restore.",
+    "arena_overrides": "Application archives have no M_ARENA_MAX override. APT/ICU/Z3/Zstd source checks likewise found none. LLVM allocator interposition matches belong to compiler-rt sanitizers/tests rather than the supported loaded library.",
+    "node_stream_closure": "Compatibility formatter excluded by C++20 source/build rules with C++14 positive control. Maglev std::cout graph diagnostics default off; Turbolev uses custom FILE* streams. Exact artifact setter only enables a GC flag. Reassess changed startup flags/native code/compiler inputs."
+  }
+}

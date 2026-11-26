@@ -1,0 +1,23 @@
+{
+  "recorded_utc": "2026-11-26T19:06:32.364077+00:00",
+  "scope": "Policy/disposition consistency verification; earlier runtime evidence remains bound and unchanged.",
+  "prior_open_ids": 2,
+  "current_unaccepted_ids": 0,
+  "accepted_ids": 2,
+  "accepted_records": 6,
+  "accepted_associations": 16,
+  "conditional_exclusion_records": 16,
+  "total_records": 22,
+  "reviewed_snapshot_security_gate_clear": true,
+  "stable_release_qualified": false,
+  "public_release_authorized": false,
+  "runtime_changed_by_this_decision": false,
+  "new_application_tests_run": false,
+  "policy_sha256": "ce3367f43f2931499de18287a4a237bc329dda4860f204b1aee99164d1f6e138",
+  "files": {
+    "accepted-findings.json": "48136d88cd81b67e00a5edc58655ae199f5ee236abd0dd4be17248ea2192aea4",
+    "decision.json": "1dfb3b9d9c0765b391533f5d5e836fe8dc36dba610ef8026784be1d4a974a626",
+    "dispositions.json": "c4f9bb5f764e922347b2646690b1abb18953c8e33a6a1e5a751021d2e6cdcbb7",
+    "remaining-findings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  }
+}

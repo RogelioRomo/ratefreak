@@ -4,6 +4,8 @@ services:
     restart: unless-stopped
     command: [postgres, -c, jit=off]
     environment:
+      # Exclude aligned secondary malloc arenas (CVE-2019-1010025).
+      GLIBC_TUNABLES: glibc.malloc.arena_max=1
       POSTGRES_DB: ratefreak
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD_FILE: /run/ratefreak/postgres
@@ -26,6 +28,7 @@ services:
     cap_drop: [ALL]
     tmpfs: ['/tmp:uid=10001,gid=10001,mode=1777']
     environment: &api-environment
+      GLIBC_TUNABLES: glibc.malloc.arena_max=1
       ASPNETCORE_ENVIRONMENT: Production
       DOTNET_ENVIRONMENT: Production
       Updates__Enabled: ${RATEFREAK_UPDATES_ENABLED:-false}
@@ -71,6 +74,7 @@ services:
       - /tmp:uid=10001,gid=10001,mode=1777
       - /app/.next/cache:uid=10001,gid=10001,mode=0700
     environment:
+      GLIBC_TUNABLES: glibc.malloc.arena_max=1
       NODE_ENV: production
       RATEFREAK_API_URL: http://api:8080
       RATEFREAK_WEB_ORIGIN: ${RATEFREAK_PUBLIC_ORIGIN}
@@ -104,6 +108,8 @@ services:
     user: '0:0'
     command: [prepare]
     profiles: [maintenance]
+    environment:
+      GLIBC_TUNABLES: glibc.malloc.arena_max=1
     volumes:
       - ${RATEFREAK_INSTANCE_DIR}:/instance
     network_mode: none

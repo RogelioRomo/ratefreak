@@ -1,5 +1,11 @@
 # Open Library and MusicBrainz public guidance follow-up
 
+Open Library follow-up, 2026-11-26: see the
+[fresh review](open-library-provider-review-2026-11-26.md) for direct-cover delivery
+as an alternative to the current optimizer, registration's lack of individual-case
+approval, and freshly retrieved Archive terms. This document retains its dated
+evidence scope; its MusicBrainz review has not been repeated by that follow-up.
+
 Reviewed 2026-11-18 against official sources and the current provider mappings.
 This supplements [agreement evidence](provider-agreement-evidence.md); no form
 was submitted, agreement accepted, account authenticated or provider contacted.

@@ -1,0 +1,65 @@
+{
+  "recorded_utc": "2026-11-26T19:06:32.364077+00:00",
+  "decision": "Accept CVE-2019-1010022 and CVE-2019-1010024 as low practical risks for the reviewed reference installation.",
+  "authorization": {
+    "actor": "project owner",
+    "instructions": [
+      "If they are not really a thread and are listed as low risk issues then we can ignore them, this also apply for all CVEs we encounter.",
+      "Of course, if there are available listed fixes then we can apply fixes"
+    ]
+  },
+  "policy": "docs/security-risk-policy.md",
+  "policy_sha256": "ce3367f43f2931499de18287a4a237bc329dda4860f204b1aee99164d1f6e138",
+  "policy_scope": "Risk-based assessment applies to all CVEs; apply available compatible vendor fixes as the default. Findings assessed as low practical risk may be documented as accepted; scanner severity alone does not decide applicability or risk.",
+  "supersedes": "Earlier requirement for an applied fix or complete supported-caller exclusion for every finding, including all low-risk findings.",
+  "accepted_ids": [
+    "CVE-2019-1010022",
+    "CVE-2019-1010024"
+  ],
+  "reasons": {
+    "CVE-2019-1010022": "Accepted low practical risk: a stack-guard mitigation bypass requiring a separate native stack-buffer overflow. No independent RateFreak attack was demonstrated. Debian marks it unimportant and Ubuntu assigns low priority; the native protection weakness remains present.",
+    "CVE-2019-1010024": "Accepted low practical risk: predictable native stack addresses may assist exploitation of a separate memory-corruption flaw. No independent RateFreak attack was demonstrated. Debian marks it unimportant; tested address reuse remains present even with the stack cache disabled."
+  },
+  "fix_status": {
+    "as_of": "2026-11-26",
+    "vendor_package_fix": "No fixed Debian version listed for either ID in the reviewed primary sources.",
+    "upstream_candidate": "A TLS guard-page RFC exists for 1010022; it is not an applied or qualified vendor fix.",
+    "future_action": "Apply and validate available compatible vendor fixes; revisit these acceptances when fixes or risk evidence change."
+  },
+  "sources": {
+    "CVE-2019-1010022": [
+      "https://security-tracker.debian.org/tracker/CVE-2019-1010022",
+      "https://ubuntu.com/security/CVE-2019-1010022",
+      "https://sourceware.org/pipermail/libc-alpha/2026-May/177104.html"
+    ],
+    "CVE-2019-1010024": [
+      "https://security-tracker.debian.org/tracker/CVE-2019-1010024",
+      "https://sourceware.org/legacy-ml/libc-alpha/2019-11/msg00830.html"
+    ]
+  },
+  "images": {
+    "api": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "web": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "tools": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772"
+  },
+  "postgres_image": "sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+  "compose_sha256": "e9778267b20f85117720bda6b1361672f1f362955dfaa803b767c63f24fae3ef",
+  "technical_limits": [
+    "The stack-guard/address-reuse behavior remains present; no remediation or complete caller exclusion is claimed.",
+    "Separate native memory-corruption flaws could make these weaknesses relevant. This acceptance does not cover newly discovered exploits or changed exposure.",
+    "API Ubuntu libc behavior was also observed in the earlier probe; this decision covers the reviewed reference installation, though the previous six scanner records concern web/tools/PostgreSQL.",
+    "Previous native, decoder, JIT, allocator and supported-caller conditions remain in force.",
+    "This is a policy/disposition change. No runtime change, new application test run, refreshed scan, stable qualification or publication is claimed."
+  ],
+  "prior_verification": "../2026-11-26-security-closure/verification.json",
+  "prior_verification_sha256": "548d9950483662dbb02b1613d642296d1820551be3a0b6563e56668ea6a3b8d7",
+  "reviewed_snapshot_security_gate_clear": true,
+  "stable_release_qualified": false,
+  "public_release_authorized": false,
+  "remaining_release_work": [
+    "Provider requirements",
+    "Final stable source/image/security/source-delivery qualification",
+    "Final reference acceptance, representative capacity and security-report notification delivery",
+    "Authorized source/artifact publication"
+  ]
+}

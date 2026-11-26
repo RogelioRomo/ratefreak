@@ -1,12 +1,61 @@
 # Provider agreement access and remaining decisions
 
-Reviewed 2026-11-13; current disposition updated 2026-11-24. This supplements the [provider review](provider-terms-review.md).
+Reviewed 2026-11-13; current disposition updated 2026-11-26. This supplements the [provider review](provider-terms-review.md).
 It distinguishes retrieved public guidance from agreements that were not obtained.
 No agreement was accepted, no account was authenticated and no provider credentials
 were used. Public documentation is not a substitute for an operator's applicable
 contract or permission to redistribute underlying copyrighted artwork.
 
-## Current disposition, 2026-11-24
+## Current disposition, 2026-11-26
+
+The owner confirmed that RateFreak is completely free, self-hosted and
+noncommercial, with no monetization or financial gain. Commercial IGDB partnership
+eligibility is therefore not a pending requirement for the described use under
+the [published noncommercial access guidance](https://api-docs.igdb.com/#account-creation).
+No separate partnership is established by this record; partnership termination
+is not the current operating scenario. Other operators must assess their actual
+use if they monetize an installation. General provider terms still apply.
+
+Fresh [IGDB research](igdb-provider-review-2026-11-26.md) reconfirms that local
+storage and serving retrieved data to users are explicitly allowed; those are
+not unresolved permission questions. Retention after partnership termination is
+also explicit. The narrower remaining issues are applicable accuracy/update and
+removal duties under the Twitch agreement, developer-agreement termination, and
+conditions for our transformed/stale cover cache. No blanket 24-hour IGDB
+metadata expiry is established. Commercial partnerships remain per operator.
+
+The owner subsequently chose the TMDB-style lifecycle for IGDB: refresh from
+five calendar months, retry, and expire unrefreshed provider content at six months
+while retaining independent user content/internal identities. This resolves the
+project's lifecycle choice; implementation/verification are pending. It is not
+an IGDB-published interval or a resolution of cover-processing permission. See the
+[recorded decision](igdb-provider-review-2026-11-26.md#concrete-next-step).
+
+Fresh [Open Library research](open-library-provider-review-2026-11-26.md)
+confirms catalog reuse guidance and requested registration/identification/pacing.
+Its form expressly disclaims individual-case approval. Published cover guidance
+requests direct Covers image `src` URLs; the current optimizer arrangement remains
+unresolved. Direct cover delivery or omitting covers would avoid that particular
+mismatch, without deciding all underlying rights or Archive Collections scope.
+The official Archive metadata terms body was freshly retrieved and matches the
+previously reviewed agreement description. No new metadata expiry was established.
+
+The owner requested a later implementation handoff after selecting the IGDB
+lifecycle and the recommended direct Open Library cover approach. The
+[handoff](provider-implementation-handoff.md) records these settled choices and
+their required verification. Provider correspondence is not a prerequisite to
+starting those implementations; implementation/acceptance remain release tasks.
+The terms interpretation limits above remain recorded, without claiming new
+provider permission. Clean software distribution with optional, default-disabled
+adapters is distinct from populated distribution, which is not cleared here.
+The [unsent drafts](provider-agreement-questions.md) remain available for optional
+clarification. No provider was contacted, form submitted or runtime changed.
+Public direct-retrieval hashes are in the
+[receipt](release-evidence/2026-11-26-provider-review/retrieval.json).
+
+<a id="current-disposition-2026-11-24"></a>
+
+## TMDB disposition, 2026-11-24
 
 TMDB staff clarification is available in the public
 ["Clarification about TMDB API use" discussion](https://www.themoviedb.org/talk/6ac663597ca2844b5f25e72b).

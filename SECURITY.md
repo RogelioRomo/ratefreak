@@ -69,6 +69,17 @@ An installed third-party dependency's advisory is useful evidence, but also
 describe whether and how the affected component is shipped or reachable. A clean
 scanner result does not establish that an installation has no vulnerabilities.
 
+## Dependency findings and release decisions
+
+Apply available, compatible vendor security fixes and verify the changed artifacts.
+Assess CVEs against actual deployment exposure, attack prerequisites and impact,
+using vendor assessments and scanner results as evidence. Findings assessed as
+low practical risk may receive a documented risk acceptance; a low scanner label
+alone does not establish that risk. Accepted findings remain visible and are
+reassessed when fixes, exploitation evidence or deployment conditions change.
+See the [CVE assessment and release policy](docs/security-risk-policy.md) for the
+current rule and recorded exceptions.
+
 ## Self-hosted operator responsibilities
 
 The reference topology and operational steps are in the

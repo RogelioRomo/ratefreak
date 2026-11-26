@@ -1,0 +1,27 @@
+[
+  {
+    "name": "twitch",
+    "url": "https://legal.twitch.com/en/legal/developer-agreement/",
+    "status": 200,
+    "raw_bytes": 28639,
+    "raw_sha256": "aea37acf021c95ef3a276bde27a83054f99e4c5da2dd6455eb8b592cd8931b6f",
+    "decoded_bytes": 101415,
+    "decoded_sha256": "8fbde374e022e4e29d0e0abb6e49a7399c430a7fe43ed90d6340ffa57a13332d",
+    "encoding": "gzip response decoded after initial text decode failed"
+  },
+  {
+    "name": "igdb",
+    "url": "https://api-docs.igdb.com/",
+    "final_url": "https://api-docs.igdb.com/",
+    "status": 200,
+    "bytes": 1290053,
+    "sha256": "a22aacbe861e7ed4d538ec310979357738534ac65b541a6dee9b2be89ebdc8cc"
+  },
+  {
+    "name": "archive-terms-metadata",
+    "url": "https://archive.org/metadata/ia-page-terms",
+    "status": 200,
+    "bytes": 21345,
+    "sha256": "fd435e5e58ead8c25a70cb0f6c3717b042e642450a322baf2157edd8a7c9d114"
+  }
+]

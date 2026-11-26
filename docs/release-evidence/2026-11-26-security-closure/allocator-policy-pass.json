@@ -1,0 +1,246 @@
+{
+  "configuration_sha256": "e9778267b20f85117720bda6b1361672f1f362955dfaa803b767c63f24fae3ef",
+  "results": [
+    {
+      "service": "postgres",
+      "image": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+      "policy": {
+        "GLIBC_TUNABLES": "glibc.malloc.arena_max=1"
+      },
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "2",
+        "--mount",
+        "type=bind,src=<repository>/.local/security-closure-2026-11-26/glibc-probe,dst=/probe,readonly",
+        "--entrypoint",
+        "/probe",
+        "--env",
+        "GLIBC_TUNABLES=glibc.malloc.arena_max=1",
+        "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf"
+      ],
+      "result": {
+        "libc": "2.41",
+        "workers": 16,
+        "arenas": 1,
+        "sequential_stack_reuses": 31,
+        "post_join_stack_mapped": 32
+      },
+      "passed": true
+    },
+    {
+      "service": "api",
+      "image": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+      "policy": {
+        "GLIBC_TUNABLES": "glibc.malloc.arena_max=1"
+      },
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "2",
+        "--mount",
+        "type=bind,src=<repository>/.local/security-closure-2026-11-26/glibc-probe,dst=/probe,readonly",
+        "--entrypoint",
+        "/probe",
+        "--env",
+        "GLIBC_TUNABLES=glibc.malloc.arena_max=1",
+        "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0"
+      ],
+      "result": {
+        "libc": "2.39",
+        "workers": 16,
+        "arenas": 1,
+        "sequential_stack_reuses": 31,
+        "post_join_stack_mapped": 32
+      },
+      "passed": true
+    },
+    {
+      "service": "web",
+      "image": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+      "policy": {
+        "GLIBC_TUNABLES": "glibc.malloc.arena_max=1"
+      },
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "2",
+        "--mount",
+        "type=bind,src=<repository>/.local/security-closure-2026-11-26/glibc-probe,dst=/probe,readonly",
+        "--entrypoint",
+        "/probe",
+        "--env",
+        "GLIBC_TUNABLES=glibc.malloc.arena_max=1",
+        "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e"
+      ],
+      "result": {
+        "libc": "2.41",
+        "workers": 16,
+        "arenas": 1,
+        "sequential_stack_reuses": 31,
+        "post_join_stack_mapped": 32
+      },
+      "passed": true
+    },
+    {
+      "service": "storage-init",
+      "image": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+      "policy": {
+        "GLIBC_TUNABLES": "glibc.malloc.arena_max=1"
+      },
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "2",
+        "--mount",
+        "type=bind,src=<repository>/.local/security-closure-2026-11-26/glibc-probe,dst=/probe,readonly",
+        "--entrypoint",
+        "/probe",
+        "--env",
+        "GLIBC_TUNABLES=glibc.malloc.arena_max=1",
+        "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772"
+      ],
+      "result": {
+        "libc": "2.41",
+        "workers": 16,
+        "arenas": 1,
+        "sequential_stack_reuses": 31,
+        "post_join_stack_mapped": 32
+      },
+      "passed": true
+    },
+    {
+      "service": "migrate",
+      "image": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+      "policy": {
+        "GLIBC_TUNABLES": "glibc.malloc.arena_max=1"
+      },
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "2",
+        "--mount",
+        "type=bind,src=<repository>/.local/security-closure-2026-11-26/glibc-probe,dst=/probe,readonly",
+        "--entrypoint",
+        "/probe",
+        "--env",
+        "GLIBC_TUNABLES=glibc.malloc.arena_max=1",
+        "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772"
+      ],
+      "result": {
+        "libc": "2.41",
+        "workers": 16,
+        "arenas": 1,
+        "sequential_stack_reuses": 31,
+        "post_join_stack_mapped": 32
+      },
+      "passed": true
+    },
+    {
+      "service": "tools",
+      "image": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+      "policy": {
+        "GLIBC_TUNABLES": "glibc.malloc.arena_max=1"
+      },
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "2",
+        "--mount",
+        "type=bind,src=<repository>/.local/security-closure-2026-11-26/glibc-probe,dst=/probe,readonly",
+        "--entrypoint",
+        "/probe",
+        "--env",
+        "GLIBC_TUNABLES=glibc.malloc.arena_max=1",
+        "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772"
+      ],
+      "result": {
+        "libc": "2.41",
+        "workers": 16,
+        "arenas": 1,
+        "sequential_stack_reuses": 31,
+        "post_join_stack_mapped": 32
+      },
+      "passed": true
+    }
+  ],
+  "passed": true
+}

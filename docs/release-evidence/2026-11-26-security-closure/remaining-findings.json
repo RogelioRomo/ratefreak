@@ -1,0 +1,30 @@
+[
+  {
+    "id": "CVE-2019-1010022",
+    "source": "glibc",
+    "images": [
+      "postgres-trixie",
+      "tools",
+      "web"
+    ],
+    "matches": 8,
+    "severities": [
+      "LOW"
+    ],
+    "reason": "Thread-stack/TCB stack-guard mitigation property remains unresolved."
+  },
+  {
+    "id": "CVE-2019-1010024",
+    "source": "glibc",
+    "images": [
+      "postgres-trixie",
+      "tools",
+      "web"
+    ],
+    "matches": 8,
+    "severities": [
+      "LOW"
+    ],
+    "reason": "Actual stack-address reuse persists even when retired mappings are evicted."
+  }
+]

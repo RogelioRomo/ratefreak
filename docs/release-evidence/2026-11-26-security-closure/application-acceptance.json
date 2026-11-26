@@ -1,0 +1,29 @@
+{
+  "candidateImages": {
+    "api": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "web": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "tools": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772"
+  },
+  "baselineImages": null,
+  "https": true,
+  "freshInstall": true,
+  "upgrade": false,
+  "disabledUpdateChecks": true,
+  "ordinaryDenied": true,
+  "logoutDenied": true,
+  "dataPreserved": true,
+  "configuration_sha256": "e9778267b20f85117720bda6b1361672f1f362955dfaa803b767c63f24fae3ef",
+  "runtime_policy": {
+    "postgres": "glibc.malloc.arena_max=1",
+    "api": "glibc.malloc.arena_max=1",
+    "web": "glibc.malloc.arena_max=1"
+  },
+  "persistent_instance_changed": false,
+  "concurrency_smoke": {
+    "requests": 40,
+    "workers": 4,
+    "seconds": 0.11591211599989037,
+    "p95_seconds": 0.020283402999666578,
+    "limit": "Small synthetic smoke; not representative release capacity qualification."
+  }
+}

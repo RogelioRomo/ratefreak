@@ -21,7 +21,10 @@ metadata/poster refresh beginning at five months and removal of expired provider
 content at six months while keeping independent user records. This lifecycle is
 implemented and [locally verified](tmdb-lifecycle-verification.md), including
 current-policy restore protection. IGDB agreement scope and Open Library cover
-optimization also need clarification. Short request-cache TTLs do not resolve
+optimization also need clarification; the
+[November 26 reviews](provider-agreement-evidence.md#current-disposition-2026-11-26)
+narrow the remaining questions and identify direct Open Library cover URLs as an
+alternative requiring a separate implementation change. Short request-cache TTLs do not resolve
 database retention. Follow the [current disposition](provider-agreement-evidence.md#current-disposition-2026-11-24)
 before claiming an enabled instance meets provider terms; no runtime settings
 were changed by the review.
@@ -32,6 +35,14 @@ not replace base-OS or other applicable source-delivery obligations.
 The reference database disables PostgreSQL JIT compilation while an LLVM
 security finding lacks a complete caller exclusion. SQL remains supported;
 reassess the security and capacity evidence before enabling JIT.
+
+The reference package limits glibc malloc to one arena in application, database
+and maintenance services to exclude aligned secondary thread arenas
+(CVE-2019-1010025). Removing or overriding `glibc.malloc.arena_max=1` requires
+security reassessment. This may increase allocation contention; representative
+capacity qualification remains outstanding. It does not resolve the separate
+thread-stack guard/address-reuse findings. See the
+[current security closure](security-closure-2026-11-26.md).
 
 Server image optimization supports JPEG, PNG, WebP and GIF. HEIF/AVIF decoding
 is disabled while the bundled libheif has unresolved security advisories;

@@ -1,0 +1,982 @@
+{
+  "baseline_ledger": "docs/release-evidence/2026-11-25-security-followup/advisory-ledger.json",
+  "baseline_sha256": "dbd351514e8046c91e01e8fd1acf0c3cb273939a974b23ae3732b491cd217e24",
+  "scope": "Overlay of the prior 22 open image/source records; no new scan or package-fix claim. Other prior conditional assessments remain in force.",
+  "records": [
+    {
+      "id": "CVE-2026-102010",
+      "image": "postgres-trixie",
+      "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+      "source": "gcc-14",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "gcc-14-base",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libgcc-s1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libstdc++6",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        }
+      ],
+      "disposition": "conditional-supported-caller-exclusion",
+      "assessment": "Exact OS source/build review supplements prior application closure; no affected GNU pb_ds heap instantiation.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2026-114690",
+      "image": "postgres-trixie",
+      "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+      "source": "gcc-14",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "gcc-14-base",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libgcc-s1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libstdc++6",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        }
+      ],
+      "disposition": "conditional-supported-caller-exclusion",
+      "assessment": "Exact OS source/build review finds no GNU parallel-search activation or caller; Clang string matches are classified.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2026-114691",
+      "image": "postgres-trixie",
+      "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+      "source": "gcc-14",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "gcc-14-base",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libgcc-s1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libstdc++6",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        }
+      ],
+      "disposition": "conditional-supported-caller-exclusion",
+      "assessment": "Reviewed amd64 constructor counts are uint32_t, existing larger-object container lengths, or checked growth; Z3 custom vector distinguished.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2026-115455",
+      "image": "postgres-trixie",
+      "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+      "source": "gcc-14",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "gcc-14-base",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libgcc-s1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libstdc++6",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        }
+      ],
+      "disposition": "conditional-supported-caller-exclusion",
+      "assessment": "No supported wide-stream bitset extraction caller in the bound OS/native closure; actual bitset header presence is retained.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2026-125709",
+      "image": "postgres-trixie",
+      "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+      "source": "gcc-14",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "gcc-14-base",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libgcc-s1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libstdc++6",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        }
+      ],
+      "disposition": "conditional-supported-caller-exclusion",
+      "assessment": "APT/ICU file-stream callers reviewed; direct APT iterator targets memory, ICU output uses guarded ordinary streams; no repeated raw filebuf writes.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2019-1010022",
+      "image": "postgres-trixie",
+      "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+      "source": "glibc",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc-bin",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc-l10n",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc6",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "locales",
+          "severity": "LOW",
+          "source_version": "2.41"
+        }
+      ],
+      "disposition": "open-proof-gap",
+      "assessment": "Thread-stack/TCB stack-guard mitigation property remains unresolved.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2019-1010024",
+      "image": "postgres-trixie",
+      "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+      "source": "glibc",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc-bin",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc-l10n",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc6",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "locales",
+          "severity": "LOW",
+          "source_version": "2.41"
+        }
+      ],
+      "disposition": "open-proof-gap",
+      "assessment": "Actual stack-address reuse persists even when retired mappings are evicted.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2019-1010025",
+      "image": "postgres-trixie",
+      "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+      "source": "glibc",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc-bin",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc-l10n",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc6",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "locales",
+          "severity": "LOW",
+          "source_version": "2.41"
+        }
+      ],
+      "disposition": "conditional-configuration-exclusion",
+      "assessment": "Reference startup limits malloc to its main arena; the aligned secondary-arena condition is removed.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2026-102010",
+      "image": "tools",
+      "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+      "source": "gcc-14",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "gcc-14-base",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libgcc-s1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libstdc++6",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        }
+      ],
+      "disposition": "conditional-supported-caller-exclusion",
+      "assessment": "Exact OS source/build review supplements prior application closure; no affected GNU pb_ds heap instantiation.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2026-114690",
+      "image": "tools",
+      "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+      "source": "gcc-14",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "gcc-14-base",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libgcc-s1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libstdc++6",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        }
+      ],
+      "disposition": "conditional-supported-caller-exclusion",
+      "assessment": "Exact OS source/build review finds no GNU parallel-search activation or caller; Clang string matches are classified.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2026-114691",
+      "image": "tools",
+      "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+      "source": "gcc-14",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "gcc-14-base",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libgcc-s1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libstdc++6",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        }
+      ],
+      "disposition": "conditional-supported-caller-exclusion",
+      "assessment": "Reviewed amd64 constructor counts are uint32_t, existing larger-object container lengths, or checked growth; Z3 custom vector distinguished.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2026-125709",
+      "image": "tools",
+      "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+      "source": "gcc-14",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "gcc-14-base",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libgcc-s1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libstdc++6",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        }
+      ],
+      "disposition": "conditional-supported-caller-exclusion",
+      "assessment": "APT/ICU file-stream callers reviewed; direct APT iterator targets memory, ICU output uses guarded ordinary streams; no repeated raw filebuf writes.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2019-1010022",
+      "image": "tools",
+      "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+      "source": "glibc",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc-bin",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc6",
+          "severity": "LOW",
+          "source_version": "2.41"
+        }
+      ],
+      "disposition": "open-proof-gap",
+      "assessment": "Thread-stack/TCB stack-guard mitigation property remains unresolved.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2019-1010024",
+      "image": "tools",
+      "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+      "source": "glibc",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc-bin",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc6",
+          "severity": "LOW",
+          "source_version": "2.41"
+        }
+      ],
+      "disposition": "open-proof-gap",
+      "assessment": "Actual stack-address reuse persists even when retired mappings are evicted.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2019-1010025",
+      "image": "tools",
+      "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+      "source": "glibc",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc-bin",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc6",
+          "severity": "LOW",
+          "source_version": "2.41"
+        }
+      ],
+      "disposition": "conditional-configuration-exclusion",
+      "assessment": "Reference startup limits malloc to its main arena; the aligned secondary-arena condition is removed.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2026-102010",
+      "image": "web",
+      "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+      "source": "gcc-14",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "gcc-14-base",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libatomic1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libgcc-s1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libstdc++6",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        }
+      ],
+      "disposition": "conditional-supported-caller-exclusion",
+      "assessment": "Exact OS source/build review supplements prior application closure; no affected GNU pb_ds heap instantiation.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2026-114690",
+      "image": "web",
+      "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+      "source": "gcc-14",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "gcc-14-base",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libatomic1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libgcc-s1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libstdc++6",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        }
+      ],
+      "disposition": "conditional-supported-caller-exclusion",
+      "assessment": "Exact OS source/build review finds no GNU parallel-search activation or caller; Clang string matches are classified.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2026-114691",
+      "image": "web",
+      "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+      "source": "gcc-14",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "gcc-14-base",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libatomic1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libgcc-s1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libstdc++6",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        }
+      ],
+      "disposition": "conditional-supported-caller-exclusion",
+      "assessment": "Reviewed amd64 constructor counts are uint32_t, existing larger-object container lengths, or checked growth; Z3 custom vector distinguished.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2026-125709",
+      "image": "web",
+      "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+      "source": "gcc-14",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "gcc-14-base",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libatomic1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libgcc-s1",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        },
+        {
+          "fixed": "",
+          "installed": "14.2.0-19",
+          "package": "libstdc++6",
+          "severity": "MEDIUM",
+          "source_version": "14.2.0"
+        }
+      ],
+      "disposition": "conditional-supported-caller-exclusion",
+      "assessment": "Node compatibility formatter excluded by C++20 source/build-rule branch; Maglev std::cout graph diagnostics disabled; Turbolev uses custom FILE* streambuf; packaged flag setter only controls GC.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2019-1010022",
+      "image": "web",
+      "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+      "source": "glibc",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc-bin",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc6",
+          "severity": "LOW",
+          "source_version": "2.41"
+        }
+      ],
+      "disposition": "open-proof-gap",
+      "assessment": "Thread-stack/TCB stack-guard mitigation property remains unresolved.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2019-1010024",
+      "image": "web",
+      "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+      "source": "glibc",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc-bin",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc6",
+          "severity": "LOW",
+          "source_version": "2.41"
+        }
+      ],
+      "disposition": "open-proof-gap",
+      "assessment": "Actual stack-address reuse persists even when retired mappings are evicted.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    },
+    {
+      "id": "CVE-2019-1010025",
+      "image": "web",
+      "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+      "source": "glibc",
+      "matches": [
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc-bin",
+          "severity": "LOW",
+          "source_version": "2.41"
+        },
+        {
+          "fixed": "",
+          "installed": "2.41-12+deb13u5",
+          "package": "libc6",
+          "severity": "LOW",
+          "source_version": "2.41"
+        }
+      ],
+      "disposition": "conditional-configuration-exclusion",
+      "assessment": "Reference startup limits malloc to its main arena; the aligned secondary-arena condition is removed.",
+      "evidence": [
+        "../../security-closure-2026-11-26.md",
+        "source-review.json",
+        "consumer-binding.json",
+        "debug-header-binding.json",
+        "glibc-probes.json",
+        "allocator-policy-pass.json",
+        "node-stream-proof.json"
+      ],
+      "reassess_if": [
+        "Image/native bytes, architecture, compiler/header/source inputs or the documented supported caller/configuration scope change.",
+        "Allocator policy is removed/overridden, PostgreSQL JIT is enabled, or custom plugins, arbitrary SQL, native code or diagnostic startup options are introduced."
+      ]
+    }
+  ]
+}
