@@ -1,0 +1,166 @@
+{
+  "files": [
+    {
+      "file": "expat_2.6.1-2ubuntu0.7.dsc",
+      "local_file": "source-files/05412fbe9a7740f68da981474fea4872f632096e08c93bf7e72777cadcfad593-expat_2.6.1-2ubuntu0.7.dsc",
+      "sha256": "05412fbe9a7740f68da981474fea4872f632096e08c93bf7e72777cadcfad593",
+      "size": 2079,
+      "url": "https://security.ubuntu.com/ubuntu/pool/main/e/expat/expat_2.6.1-2ubuntu0.7.dsc"
+    },
+    {
+      "file": "libzstd_1.5.7+dfsg.orig.tar.xz",
+      "local_file": "source-files/0c092ef267edce57ba7f3f2645c861f72eaf5e76273c6c3632869423464b90a5-libzstd_1.5.7+dfsg.orig.tar.xz",
+      "sha256": "0c092ef267edce57ba7f3f2645c861f72eaf5e76273c6c3632869423464b90a5",
+      "size": 1834780,
+      "url": "https://deb.debian.org/debian-security/pool/updates/main/libz/libzstd/libzstd_1.5.7+dfsg.orig.tar.xz"
+    },
+    {
+      "file": "libssh_0.10.6.orig.tar.xz.asc",
+      "local_file": "source-files/140420406d7796548b0beaf736e73864c32291787cf2bd3983fdbc41741494ae-libssh_0.10.6.orig.tar.xz.asc",
+      "sha256": "140420406d7796548b0beaf736e73864c32291787cf2bd3983fdbc41741494ae",
+      "size": 833,
+      "url": "https://security.ubuntu.com/ubuntu/pool/main/libs/libssh/libssh_0.10.6.orig.tar.xz.asc"
+    },
+    {
+      "file": "expat_2.6.1.orig.tar.gz",
+      "local_file": "source-files/14113ed69357172a0bf5a268793c8b5b01afc77c7a2e5fb8dd0b06cb87c02c4a-expat_2.6.1.orig.tar.gz",
+      "sha256": "14113ed69357172a0bf5a268793c8b5b01afc77c7a2e5fb8dd0b06cb87c02c4a",
+      "size": 8414649,
+      "url": "https://security.ubuntu.com/ubuntu/pool/main/e/expat/expat_2.6.1.orig.tar.gz"
+    },
+    {
+      "file": "libssh_0.10.6.orig.tar.xz",
+      "local_file": "source-files/1861d498f5b6f1741b6abc73e608478491edcf9c9d4b6630eef6e74596de9dc1-libssh_0.10.6.orig.tar.xz",
+      "sha256": "1861d498f5b6f1741b6abc73e608478491edcf9c9d4b6630eef6e74596de9dc1",
+      "size": 561036,
+      "url": "https://security.ubuntu.com/ubuntu/pool/main/libs/libssh/libssh_0.10.6.orig.tar.xz"
+    },
+    {
+      "file": "libzstd_1.5.7+dfsg-1+deb13u1.dsc",
+      "local_file": "source-files/32f2d49685864a4f03f639ac59cfd19674b650e1f2b007705b01342cb0fd5cc3-libzstd_1.5.7+dfsg-1+deb13u1.dsc",
+      "sha256": "32f2d49685864a4f03f639ac59cfd19674b650e1f2b007705b01342cb0fd5cc3",
+      "size": 2403,
+      "url": "https://deb.debian.org/debian-security/pool/updates/main/libz/libzstd/libzstd_1.5.7+dfsg-1+deb13u1.dsc"
+    },
+    {
+      "file": "libssh_0.10.6-2ubuntu0.6.debian.tar.xz",
+      "local_file": "source-files/3c49b3903c976dffc4ebe45cf83ccc8670a07bae0048b66940e84a4c93221757-libssh_0.10.6-2ubuntu0.6.debian.tar.xz",
+      "sha256": "3c49b3903c976dffc4ebe45cf83ccc8670a07bae0048b66940e84a4c93221757",
+      "size": 64572,
+      "url": "https://security.ubuntu.com/ubuntu/pool/main/libs/libssh/libssh_0.10.6-2ubuntu0.6.debian.tar.xz"
+    },
+    {
+      "file": "sqlite3_3.45.1.orig-www.tar.xz",
+      "local_file": "source-files/79b60798195a024d447e661e5bbc1eb40af50387ebf840e6f581190cc02064b6-sqlite3_3.45.1.orig-www.tar.xz",
+      "sha256": "79b60798195a024d447e661e5bbc1eb40af50387ebf840e6f581190cc02064b6",
+      "size": 5693812,
+      "url": "https://security.ubuntu.com/ubuntu/pool/main/s/sqlite3/sqlite3_3.45.1.orig-www.tar.xz"
+    },
+    {
+      "file": "sqlite3_3.45.1-1ubuntu2.11.dsc",
+      "local_file": "source-files/84ec6e5cddabfe82bc8bb7d7014162a3c604669cf45105fd2846d22279f31bfe-sqlite3_3.45.1-1ubuntu2.11.dsc",
+      "sha256": "84ec6e5cddabfe82bc8bb7d7014162a3c604669cf45105fd2846d22279f31bfe",
+      "size": 2000,
+      "url": "https://security.ubuntu.com/ubuntu/pool/main/s/sqlite3/sqlite3_3.45.1-1ubuntu2.11.dsc"
+    },
+    {
+      "file": "expat_2.6.1-2ubuntu0.7.debian.tar.xz",
+      "local_file": "source-files/9bafc4ed1cb32b10cd5b136544596f4ea5a6808addd11020c461c0b64312f906-expat_2.6.1-2ubuntu0.7.debian.tar.xz",
+      "sha256": "9bafc4ed1cb32b10cd5b136544596f4ea5a6808addd11020c461c0b64312f906",
+      "size": 96280,
+      "url": "https://security.ubuntu.com/ubuntu/pool/main/e/expat/expat_2.6.1-2ubuntu0.7.debian.tar.xz"
+    },
+    {
+      "file": "libzstd_1.5.7+dfsg-1+deb13u1.debian.tar.xz",
+      "local_file": "source-files/adc44c628b74a7a4eff4fbed4681e8fdc8ffe8e4bc31aa9ea6a41a07a2281d23-libzstd_1.5.7+dfsg-1+deb13u1.debian.tar.xz",
+      "sha256": "adc44c628b74a7a4eff4fbed4681e8fdc8ffe8e4bc31aa9ea6a41a07a2281d23",
+      "size": 24276,
+      "url": "https://deb.debian.org/debian-security/pool/updates/main/libz/libzstd/libzstd_1.5.7+dfsg-1+deb13u1.debian.tar.xz"
+    },
+    {
+      "file": "sqlite3_3.45.1-1ubuntu2.11.debian.tar.xz",
+      "local_file": "source-files/b29e1cae92336c9370b1817b59f9bd83432139d939922a6328161bbeb685744f-sqlite3_3.45.1-1ubuntu2.11.debian.tar.xz",
+      "sha256": "b29e1cae92336c9370b1817b59f9bd83432139d939922a6328161bbeb685744f",
+      "size": 37596,
+      "url": "https://security.ubuntu.com/ubuntu/pool/main/s/sqlite3/sqlite3_3.45.1-1ubuntu2.11.debian.tar.xz"
+    },
+    {
+      "file": "libssh_0.10.6-2ubuntu0.6.dsc",
+      "local_file": "source-files/d638be00075385abca6ff0a4b723c60f2f37086ee78a9101686de9592013a97d-libssh_0.10.6-2ubuntu0.6.dsc",
+      "sha256": "d638be00075385abca6ff0a4b723c60f2f37086ee78a9101686de9592013a97d",
+      "size": 2894,
+      "url": "https://security.ubuntu.com/ubuntu/pool/main/libs/libssh/libssh_0.10.6-2ubuntu0.6.dsc"
+    },
+    {
+      "file": "sqlite3_3.45.1.orig.tar.xz",
+      "local_file": "source-files/e32e817f7b4166a301f60b14a711871bfab7d35c1d7e29b585dfc479ae150aa4-sqlite3_3.45.1.orig.tar.xz",
+      "sha256": "e32e817f7b4166a301f60b14a711871bfab7d35c1d7e29b585dfc479ae150aa4",
+      "size": 8257884,
+      "url": "https://security.ubuntu.com/ubuntu/pool/main/s/sqlite3/sqlite3_3.45.1.orig.tar.xz"
+    }
+  ],
+  "format": 1,
+  "image_ids": {
+    "api": "sha256:f45911e7f43d995ff085f49a9c04baf826e0cc6587fe17181a75772b9785b53f",
+    "tools": "sha256:acd1e7bdb00fa26568c116e10a7d448ba78c0ba2feb462acff896e5fd842aabc",
+    "web": "sha256:8ecc6945b96cb3d58b1b4a1b4f184e5b2832f328684e9d85cb2195bceb1d31c2"
+  },
+  "images": {
+    "api": [
+      {
+        "files": [
+          "source-files/14113ed69357172a0bf5a268793c8b5b01afc77c7a2e5fb8dd0b06cb87c02c4a-expat_2.6.1.orig.tar.gz",
+          "source-files/9bafc4ed1cb32b10cd5b136544596f4ea5a6808addd11020c461c0b64312f906-expat_2.6.1-2ubuntu0.7.debian.tar.xz",
+          "source-files/05412fbe9a7740f68da981474fea4872f632096e08c93bf7e72777cadcfad593-expat_2.6.1-2ubuntu0.7.dsc"
+        ],
+        "metadata_archive": "api-source-indexes.tar.gz",
+        "source_package": "expat",
+        "source_version": "2.6.1-2ubuntu0.7"
+      },
+      {
+        "files": [
+          "source-files/1861d498f5b6f1741b6abc73e608478491edcf9c9d4b6630eef6e74596de9dc1-libssh_0.10.6.orig.tar.xz",
+          "source-files/140420406d7796548b0beaf736e73864c32291787cf2bd3983fdbc41741494ae-libssh_0.10.6.orig.tar.xz.asc",
+          "source-files/3c49b3903c976dffc4ebe45cf83ccc8670a07bae0048b66940e84a4c93221757-libssh_0.10.6-2ubuntu0.6.debian.tar.xz",
+          "source-files/d638be00075385abca6ff0a4b723c60f2f37086ee78a9101686de9592013a97d-libssh_0.10.6-2ubuntu0.6.dsc"
+        ],
+        "metadata_archive": "api-source-indexes.tar.gz",
+        "source_package": "libssh",
+        "source_version": "0.10.6-2ubuntu0.6"
+      },
+      {
+        "files": [
+          "source-files/79b60798195a024d447e661e5bbc1eb40af50387ebf840e6f581190cc02064b6-sqlite3_3.45.1.orig-www.tar.xz",
+          "source-files/e32e817f7b4166a301f60b14a711871bfab7d35c1d7e29b585dfc479ae150aa4-sqlite3_3.45.1.orig.tar.xz",
+          "source-files/b29e1cae92336c9370b1817b59f9bd83432139d939922a6328161bbeb685744f-sqlite3_3.45.1-1ubuntu2.11.debian.tar.xz",
+          "source-files/84ec6e5cddabfe82bc8bb7d7014162a3c604669cf45105fd2846d22279f31bfe-sqlite3_3.45.1-1ubuntu2.11.dsc"
+        ],
+        "metadata_archive": "api-source-indexes.tar.gz",
+        "source_package": "sqlite3",
+        "source_version": "3.45.1-1ubuntu2.11"
+      }
+    ],
+    "web": [
+      {
+        "files": [
+          "source-files/32f2d49685864a4f03f639ac59cfd19674b650e1f2b007705b01342cb0fd5cc3-libzstd_1.5.7+dfsg-1+deb13u1.dsc",
+          "source-files/0c092ef267edce57ba7f3f2645c861f72eaf5e76273c6c3632869423464b90a5-libzstd_1.5.7+dfsg.orig.tar.xz",
+          "source-files/adc44c628b74a7a4eff4fbed4681e8fdc8ffe8e4bc31aa9ea6a41a07a2281d23-libzstd_1.5.7+dfsg-1+deb13u1.debian.tar.xz"
+        ],
+        "metadata_archive": "web-source-indexes.tar.gz",
+        "source_package": "libzstd",
+        "source_version": "1.5.7+dfsg-1+deb13u1"
+      }
+    ]
+  },
+  "metadata_archives": [
+    {
+      "file": "api-source-indexes.tar.gz",
+      "sha256": "01dd0f94bfe4f9063e7a90cc9f90d817ae0d3c15a3705cdcce33d9f1ae4393fc"
+    },
+    {
+      "file": "web-source-indexes.tar.gz",
+      "sha256": "90b5361af3cd5b1ed823dd0990367f505ca2cdabb34e01d8695dc23142e1f020"
+    }
+  ]
+}

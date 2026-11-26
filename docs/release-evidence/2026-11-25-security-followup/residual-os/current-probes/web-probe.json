@@ -1,0 +1,1413 @@
+{
+  "source_files": {
+    "/app/entrypoint.py": {
+      "sha256": "6ff6b8176b3234164a8c6a058dec24f4a2ea5688a3d179e482d00f7111c8694a",
+      "imports": [
+        "json",
+        "os",
+        "pathlib",
+        "re",
+        "shutil",
+        "stat",
+        "sys",
+        "tempfile"
+      ],
+      "calls": [
+        {
+          "line": 18,
+          "function": "Path"
+        },
+        {
+          "line": 19,
+          "function": "Path"
+        },
+        {
+          "line": 27,
+          "function": "os.open"
+        },
+        {
+          "line": 32,
+          "function": "no_links"
+        },
+        {
+          "line": 35,
+          "function": "path.stat"
+        },
+        {
+          "line": 40,
+          "function": "owned_directory"
+        },
+        {
+          "line": 45,
+          "function": "re.fullmatch"
+        },
+        {
+          "line": 55,
+          "function": "no_links"
+        },
+        {
+          "line": 72,
+          "function": "dict"
+        },
+        {
+          "line": 78,
+          "function": "read_owned_file"
+        },
+        {
+          "line": 95,
+          "function": "no_links"
+        },
+        {
+          "line": 96,
+          "function": "tempfile.mkstemp"
+        },
+        {
+          "line": 97,
+          "function": "Path"
+        },
+        {
+          "line": 111,
+          "function": "json.dumps(policy, separators=(',', ':')).encode"
+        },
+        {
+          "line": 112,
+          "function": "write_owned_file"
+        },
+        {
+          "line": 116,
+          "function": "Path('/proc/self/mountinfo').read_bytes"
+        },
+        {
+          "line": 117,
+          "function": "mountinfo.rstrip(b'\\n').split"
+        },
+        {
+          "line": 125,
+          "function": "owned_directory"
+        },
+        {
+          "line": 126,
+          "function": "os.open"
+        },
+        {
+          "line": 152,
+          "function": "clear_cache"
+        },
+        {
+          "line": 156,
+          "function": "no_links"
+        },
+        {
+          "line": 159,
+          "function": "read_owned_file"
+        },
+        {
+          "line": 172,
+          "function": "no_links"
+        },
+        {
+          "line": 173,
+          "function": "receipt.exists"
+        },
+        {
+          "line": 180,
+          "function": "owned_directory"
+        },
+        {
+          "line": 183,
+          "function": "owned_directory"
+        },
+        {
+          "line": 184,
+          "function": "prepare_image_cache"
+        },
+        {
+          "line": 193,
+          "function": "no_links"
+        },
+        {
+          "line": 193,
+          "function": "owned_directory"
+        },
+        {
+          "line": 199,
+          "function": "path.stat"
+        },
+        {
+          "line": 204,
+          "function": "no_links"
+        },
+        {
+          "line": 205,
+          "function": "path.stat"
+        },
+        {
+          "line": 208,
+          "function": "path.read_text().strip"
+        },
+        {
+          "line": 213,
+          "function": "read_secret"
+        },
+        {
+          "line": 214,
+          "function": "no_links"
+        },
+        {
+          "line": 215,
+          "function": "target.exists"
+        },
+        {
+          "line": 218,
+          "function": "os.open"
+        },
+        {
+          "line": 221,
+          "function": "fsync_directory"
+        },
+        {
+          "line": 226,
+          "function": "Path"
+        },
+        {
+          "line": 236,
+          "function": "ensure_journal"
+        },
+        {
+          "line": 237,
+          "function": "prepare_tmdb_storage"
+        },
+        {
+          "line": 238,
+          "function": "{'web': ['ingress', 'proxy'], 'api': ['proxy', 'setup', 'runtime'], 'tools': ['runtime', 'migrator', 'postgres', 'proxy'], 'postgres': ['postgres', 'migrator', 'runtime']}.items"
+        },
+        {
+          "line": 242,
+          "function": "print"
+        },
+        {
+          "line": 248,
+          "function": "values.get"
+        },
+        {
+          "line": 249,
+          "function": "values.get"
+        },
+        {
+          "line": 250,
+          "function": "values.get"
+        },
+        {
+          "line": 251,
+          "function": "values.get"
+        },
+        {
+          "line": 253,
+          "function": "';'.join"
+        },
+        {
+          "line": 259,
+          "function": "environment.copy"
+        },
+        {
+          "line": 284,
+          "function": "runtime_command"
+        },
+        {
+          "line": 285,
+          "function": "os.execvpe"
+        },
+        {
+          "line": 24,
+          "function": "parent.is_symlink"
+        },
+        {
+          "line": 28,
+          "function": "os.fsync"
+        },
+        {
+          "line": 29,
+          "function": "os.close"
+        },
+        {
+          "line": 34,
+          "function": "path.mkdir"
+        },
+        {
+          "line": 34,
+          "function": "os.chown"
+        },
+        {
+          "line": 34,
+          "function": "fsync_directory"
+        },
+        {
+          "line": 37,
+          "function": "StorageError"
+        },
+        {
+          "line": 43,
+          "function": "isinstance"
+        },
+        {
+          "line": 49,
+          "function": "isinstance"
+        },
+        {
+          "line": 53,
+          "function": "path.is_absolute"
+        },
+        {
+          "line": 54,
+          "function": "StorageError"
+        },
+        {
+          "line": 57,
+          "function": "os.open"
+        },
+        {
+          "line": 60,
+          "function": "os.fdopen"
+        },
+        {
+          "line": 61,
+          "function": "os.fstat"
+        },
+        {
+          "line": 66,
+          "function": "stream.read"
+        },
+        {
+          "line": 67,
+          "function": "len"
+        },
+        {
+          "line": 68,
+          "function": "StorageError"
+        },
+        {
+          "line": 73,
+          "function": "len"
+        },
+        {
+          "line": 73,
+          "function": "len"
+        },
+        {
+          "line": 74,
+          "function": "ValueError"
+        },
+        {
+          "line": 80,
+          "function": "json.loads"
+        },
+        {
+          "line": 86,
+          "function": "StorageError"
+        },
+        {
+          "line": 105,
+          "function": "os.replace"
+        },
+        {
+          "line": 106,
+          "function": "fsync_directory"
+        },
+        {
+          "line": 108,
+          "function": "staged.unlink"
+        },
+        {
+          "line": 119,
+          "function": "re.sub"
+        },
+        {
+          "line": 120,
+          "function": "Path"
+        },
+        {
+          "line": 128,
+          "function": "reject_unexpected_cache_mounts"
+        },
+        {
+          "line": 133,
+          "function": "os.fwalk"
+        },
+        {
+          "line": 139,
+          "function": "os.listdir"
+        },
+        {
+          "line": 147,
+          "function": "os.fsync"
+        },
+        {
+          "line": 149,
+          "function": "os.close"
+        },
+        {
+          "line": 157,
+          "function": "receipt.exists"
+        },
+        {
+          "line": 161,
+          "function": "json.loads"
+        },
+        {
+          "line": 166,
+          "function": "StorageError"
+        },
+        {
+          "line": 175,
+          "function": "StorageError"
+        },
+        {
+          "line": 176,
+          "function": "host_prepared_tmdb"
+        },
+        {
+          "line": 177,
+          "function": "policy.exists"
+        },
+        {
+          "line": 177,
+          "function": "policy.is_symlink"
+        },
+        {
+          "line": 179,
+          "function": "StorageError"
+        },
+        {
+          "line": 182,
+          "function": "read_tmdb_policy"
+        },
+        {
+          "line": 186,
+          "function": "clear_cache"
+        },
+        {
+          "line": 190,
+          "function": "write_owned_file"
+        },
+        {
+          "line": 194,
+          "function": "path.exists"
+        },
+        {
+          "line": 195,
+          "function": "os.open"
+        },
+        {
+          "line": 198,
+          "function": "fsync_directory"
+        },
+        {
+          "line": 201,
+          "function": "StorageError"
+        },
+        {
+          "line": 207,
+          "function": "StorageError"
+        },
+        {
+          "line": 209,
+          "function": "re.fullmatch"
+        },
+        {
+          "line": 209,
+          "function": "StorageError"
+        },
+        {
+          "line": 219,
+          "function": "os.fdopen"
+        },
+        {
+          "line": 220,
+          "function": "os.fchown"
+        },
+        {
+          "line": 220,
+          "function": "out.write"
+        },
+        {
+          "line": 220,
+          "function": "out.flush"
+        },
+        {
+          "line": 220,
+          "function": "os.fsync"
+        },
+        {
+          "line": 228,
+          "function": "no_links"
+        },
+        {
+          "line": 232,
+          "function": "owned_directory"
+        },
+        {
+          "line": 235,
+          "function": "os.chown"
+        },
+        {
+          "line": 240,
+          "function": "owned_directory"
+        },
+        {
+          "line": 252,
+          "function": "StorageError"
+        },
+        {
+          "line": 256,
+          "function": "StorageError"
+        },
+        {
+          "line": 258,
+          "function": "StorageError"
+        },
+        {
+          "line": 261,
+          "function": "read_secret"
+        },
+        {
+          "line": 262,
+          "function": "read_secret"
+        },
+        {
+          "line": 267,
+          "function": "env.get"
+        },
+        {
+          "line": 268,
+          "function": "read_secret"
+        },
+        {
+          "line": 269,
+          "function": "connection"
+        },
+        {
+          "line": 270,
+          "function": "read_secret"
+        },
+        {
+          "line": 280,
+          "function": "prepare"
+        },
+        {
+          "line": 281,
+          "function": "clear_tmdb_cache"
+        },
+        {
+          "line": 283,
+          "function": "os.execvp"
+        },
+        {
+          "line": 284,
+          "function": "Path"
+        },
+        {
+          "line": 288,
+          "function": "run"
+        },
+        {
+          "line": 24,
+          "function": "StorageError"
+        },
+        {
+          "line": 33,
+          "function": "path.exists"
+        },
+        {
+          "line": 36,
+          "function": "path.is_dir"
+        },
+        {
+          "line": 36,
+          "function": "stat.S_IMODE"
+        },
+        {
+          "line": 46,
+          "function": "int"
+        },
+        {
+          "line": 49,
+          "function": "len"
+        },
+        {
+          "line": 50,
+          "function": "re.fullmatch"
+        },
+        {
+          "line": 59,
+          "function": "StorageError"
+        },
+        {
+          "line": 61,
+          "function": "stream.fileno"
+        },
+        {
+          "line": 65,
+          "function": "StorageError"
+        },
+        {
+          "line": 80,
+          "function": "data.decode"
+        },
+        {
+          "line": 82,
+          "function": "StorageError"
+        },
+        {
+          "line": 83,
+          "function": "isinstance"
+        },
+        {
+          "line": 83,
+          "function": "policy.keys"
+        },
+        {
+          "line": 83,
+          "function": "EMPTY_TMDB_POLICY.keys"
+        },
+        {
+          "line": 84,
+          "function": "type"
+        },
+        {
+          "line": 85,
+          "function": "type"
+        },
+        {
+          "line": 91,
+          "function": "StorageError"
+        },
+        {
+          "line": 99,
+          "function": "os.fdopen"
+        },
+        {
+          "line": 100,
+          "function": "os.fchmod"
+        },
+        {
+          "line": 101,
+          "function": "os.fchown"
+        },
+        {
+          "line": 102,
+          "function": "stream.write"
+        },
+        {
+          "line": 103,
+          "function": "stream.flush"
+        },
+        {
+          "line": 104,
+          "function": "os.fsync"
+        },
+        {
+          "line": 111,
+          "function": "json.dumps"
+        },
+        {
+          "line": 116,
+          "function": "Path"
+        },
+        {
+          "line": 117,
+          "function": "mountinfo.rstrip"
+        },
+        {
+          "line": 118,
+          "function": "entry.split"
+        },
+        {
+          "line": 120,
+          "function": "os.fsdecode"
+        },
+        {
+          "line": 122,
+          "function": "StorageError"
+        },
+        {
+          "line": 129,
+          "function": "os.fstat"
+        },
+        {
+          "line": 140,
+          "function": "os.stat"
+        },
+        {
+          "line": 159,
+          "function": "root.stat"
+        },
+        {
+          "line": 163,
+          "function": "StorageError"
+        },
+        {
+          "line": 164,
+          "function": "isinstance"
+        },
+        {
+          "line": 164,
+          "function": "prepared.keys"
+        },
+        {
+          "line": 165,
+          "function": "type"
+        },
+        {
+          "line": 174,
+          "function": "read_owned_file"
+        },
+        {
+          "line": 188,
+          "function": "write_tmdb_policy"
+        },
+        {
+          "line": 190,
+          "function": "os.geteuid"
+        },
+        {
+          "line": 190,
+          "function": "os.getegid"
+        },
+        {
+          "line": 196,
+          "function": "os.fchown"
+        },
+        {
+          "line": 196,
+          "function": "os.fsync"
+        },
+        {
+          "line": 197,
+          "function": "os.close"
+        },
+        {
+          "line": 200,
+          "function": "stat.S_ISREG"
+        },
+        {
+          "line": 200,
+          "function": "stat.S_IMODE"
+        },
+        {
+          "line": 206,
+          "function": "stat.S_ISREG"
+        },
+        {
+          "line": 206,
+          "function": "stat.S_IMODE"
+        },
+        {
+          "line": 208,
+          "function": "path.read_text"
+        },
+        {
+          "line": 216,
+          "function": "StorageError"
+        },
+        {
+          "line": 220,
+          "function": "out.fileno"
+        },
+        {
+          "line": 220,
+          "function": "out.fileno"
+        },
+        {
+          "line": 229,
+          "function": "directory.exists"
+        },
+        {
+          "line": 229,
+          "function": "directory.mkdir"
+        },
+        {
+          "line": 235,
+          "function": "any"
+        },
+        {
+          "line": 241,
+          "function": "copy_secret"
+        },
+        {
+          "line": 290,
+          "function": "print"
+        },
+        {
+          "line": 290,
+          "function": "sys.exit"
+        },
+        {
+          "line": 62,
+          "function": "stat.S_ISREG"
+        },
+        {
+          "line": 63,
+          "function": "stat.S_IMODE"
+        },
+        {
+          "line": 89,
+          "function": "isinstance"
+        },
+        {
+          "line": 89,
+          "function": "len"
+        },
+        {
+          "line": 90,
+          "function": "all"
+        },
+        {
+          "line": 90,
+          "function": "len"
+        },
+        {
+          "line": 90,
+          "function": "len"
+        },
+        {
+          "line": 100,
+          "function": "stream.fileno"
+        },
+        {
+          "line": 101,
+          "function": "stream.fileno"
+        },
+        {
+          "line": 104,
+          "function": "stream.fileno"
+        },
+        {
+          "line": 119,
+          "function": "bytes"
+        },
+        {
+          "line": 135,
+          "function": "os.stat"
+        },
+        {
+          "line": 141,
+          "function": "stat.S_ISDIR"
+        },
+        {
+          "line": 142,
+          "function": "shutil.rmtree"
+        },
+        {
+          "line": 143,
+          "function": "stat.S_ISREG"
+        },
+        {
+          "line": 174,
+          "function": "os.geteuid"
+        },
+        {
+          "line": 174,
+          "function": "os.getegid"
+        },
+        {
+          "line": 216,
+          "function": "read_secret"
+        },
+        {
+          "line": 230,
+          "function": "directory.is_dir"
+        },
+        {
+          "line": 231,
+          "function": "directory.chmod"
+        },
+        {
+          "line": 235,
+          "function": "independent.iterdir"
+        },
+        {
+          "line": 235,
+          "function": "independent.stat"
+        },
+        {
+          "line": 246,
+          "function": "value.replace"
+        },
+        {
+          "line": 272,
+          "function": "env.get"
+        },
+        {
+          "line": 272,
+          "function": "env.pop"
+        },
+        {
+          "line": 273,
+          "function": "read_secret"
+        },
+        {
+          "line": 90,
+          "function": "set"
+        },
+        {
+          "line": 138,
+          "function": "StorageError"
+        },
+        {
+          "line": 144,
+          "function": "os.unlink"
+        },
+        {
+          "line": 146,
+          "function": "StorageError"
+        },
+        {
+          "line": 216,
+          "function": "target.stat"
+        },
+        {
+          "line": 230,
+          "function": "any"
+        },
+        {
+          "line": 253,
+          "function": "quote"
+        },
+        {
+          "line": 90,
+          "function": "validate"
+        },
+        {
+          "line": 119,
+          "function": "int"
+        },
+        {
+          "line": 230,
+          "function": "directory.iterdir"
+        },
+        {
+          "line": 230,
+          "function": "directory.stat"
+        },
+        {
+          "line": 136,
+          "function": "stat.S_ISREG"
+        },
+        {
+          "line": 137,
+          "function": "stat.S_ISDIR"
+        }
+      ]
+    }
+  },
+  "commands": {
+    "/usr/bin/bzip2recover": {
+      "exists": false
+    },
+    "/usr/bin/getfacl": {
+      "exists": false
+    },
+    "/usr/bin/setfacl": {
+      "exists": false
+    },
+    "/usr/bin/getfattr": {
+      "exists": false
+    },
+    "/usr/bin/setfattr": {
+      "exists": false
+    },
+    "/usr/bin/infocmp": {
+      "exists": true
+    },
+    "/usr/bin/xmlwf": {
+      "exists": false
+    },
+    "/usr/bin/gpgtar": {
+      "exists": false
+    },
+    "/usr/bin/genrb": {
+      "exists": false
+    },
+    "/usr/bin/sqlite3": {
+      "exists": false
+    },
+    "/usr/bin/chfn": {
+      "exists": true
+    },
+    "/usr/bin/chsh": {
+      "exists": true
+    },
+    "/usr/sbin/sshd": {
+      "exists": false
+    },
+    "/sbin/init": {
+      "exists": false
+    },
+    "/usr/lib/systemd/systemd": {
+      "exists": false
+    },
+    "/usr/lib/systemd/systemd-journald": {
+      "exists": false
+    },
+    "/usr/lib/systemd/systemd-homed": {
+      "exists": false
+    },
+    "/usr/lib/systemd/systemd-oomd": {
+      "exists": false
+    },
+    "/usr/lib/systemd/system-generators/systemd-gpt-auto-generator": {
+      "exists": false
+    }
+  },
+  "elf": [
+    {
+      "path": "/app/node_modules/.pnpm/@img+sharp-linux-x64@0.35.5/node_modules/@img/sharp-linux-x64/lib/sharp-linux-x64-0.35.5.node",
+      "sha256": "cf896cc1b7f3ae9c3e8eb3d7b2b198b8de2824ff7d0681d684bab5a825def335",
+      "needed": [
+        "libvips-cpp.so.8.18.7",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libpthread.so.0",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/app/node_modules/.pnpm/@img+sharp-libvips-linux-x64@1.3.4/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.18.7",
+      "sha256": "4aa73553408c3964071728f4a231a8e86918e39bc49f1fbae75355f7ea933ea9",
+      "needed": [
+        "libresolv.so.2",
+        "libdl.so.2",
+        "libstdc++.so.6",
+        "libpthread.so.0",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "selected_symbols": {
+        "iconv": "imported",
+        "iconv_open": "imported",
+        "_ZdaPvSt11align_val_t": "imported",
+        "_ZnamSt11align_val_t": "imported"
+      }
+    },
+    {
+      "path": "/usr/local/bin/node",
+      "sha256": "a7ec1b37e6ff9d187e4198c5b6df9a4eb1c74dd31804fb3bac55cc4ceca1ac01",
+      "needed": [
+        "libdl.so.2",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libpthread.so.0",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "selected_symbols": {
+        "_ZnamSt11align_val_t": "imported",
+        "_ZdaPvSt11align_val_t": "imported",
+        "_ZN8simdjson8internal10from_charsEPKc": "defined",
+        "_ZN5cppgc8internal33MakeGarbageCollectedTraitInternal8AllocateERNS_16AllocationHandleEmSt11align_val_tt": "defined",
+        "_ZN5cppgc8internal33MakeGarbageCollectedTraitInternal8AllocateERNS_16AllocationHandleEmSt11align_val_ttNS_16CustomSpaceIndexE": "defined",
+        "_ZN8simdjson8internal10from_charsEPKcS2_": "defined",
+        "_ZSt10from_charsItENSt9enable_ifIXsrSt5__or_IJS1_IJSt7is_sameINSt9remove_cvIT_E4typeEaES2_IS6_sES2_IS6_iES2_IS6_lES2_IS6_xES2_IS6_nEEES1_IJS2_IS6_hES2_IS6_tES2_IS6_jES2_IS6_mES2_IS6_yES2_IS6_oEEES2_IcS6_EEE5valueESt17from_chars_resultE4typeEPKcSR_RS4_i.constprop.0": "defined",
+        "sqlite3_open_v2": "defined",
+        "_ZN10fast_float19from_chars_advancedIdcEENS_19from_chars_result_tIT0_EERNS_22parsed_number_string_tIS2_EERT_": "defined",
+        "_ZN5cppgc8internal15ObjectAllocator28OutOfLineAllocateGCSafePointERNS0_15NormalPageSpaceEmSt11align_val_ttPPv": "defined",
+        "_ZN10fast_float19from_chars_advancedIdDsEENS_19from_chars_result_tIT0_EERNS_22parsed_number_string_tIS2_EERT_": "defined",
+        "_ZN5cppgc8internal15ObjectAllocator21OutOfLineAllocateImplERNS0_15NormalPageSpaceEmSt11align_val_tt": "defined",
+        "sqlite3_open": "defined",
+        "_ZnamSt11align_val_t@CXXABI_1.3.11": "imported",
+        "_ZdaPvSt11align_val_t@CXXABI_1.3.11": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/termios.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "6fcdcd5917eae1eaf9595ab538d233672ddd74491a29a70cf90c3efc17d74bb5",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_posixshmem.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "fe4845a708612d1a9bea9caca6b0e599d85ecea14df1e2609c569b832c176064",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_testmultiphase.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "74e8be56e5565173667d0f8ac2c77a16d1322dcad43d21e5756ae2f0b24e86b4",
+      "needed": [],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_sqlite3.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "ad902edee2ed8dbbaec17309130436ffef1b69b1547a204e41e01e0d807a0c3d",
+      "needed": [
+        "libsqlite3.so.0",
+        "libc.so.6"
+      ],
+      "selected_symbols": {
+        "sqlite3_open_v2": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_multibytecodec.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "2bcac787b55753e460453897b96dbf17f15c835954c2c54edb6c69aba6b9a2e7",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_interpqueues.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "fa69d7a8bc145d506f1aa67b4a63b73e0e1bd1d35944b88dc4ec59021053f16a",
+      "needed": [],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_testclinic.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "f8bb4ae0ea51cd0e3f8317d46baaa9b19e0e2771eb468e8c92ca1fdb3b881607",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_curses_panel.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "ec0879f168112d05d157ec1c4bd4f44f4c0809813703c5560c6f5e9fc60ea43f",
+      "needed": [
+        "libpanelw.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_codecs_tw.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "1ef3010d8c6f24b56957a70a191996640c0e650dcd65dc2452b523a71a6a27b0",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_ctypes_test.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "b033f1c033aaaed78514bf0e09bc6a46a63de9b5353c5d4a5e15c362e7755d83",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_contextvars.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "95bcf40a85f7f9ea49648ae5363acf2f632622f7db2176ed1f19da280fbb2ab8",
+      "needed": [],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/resource.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "b66dd7ff3800a4b9cd8af06bacde81201e33ce4e074082bd02b3d483fbf7ead3",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_testinternalcapi.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "07e3e7c5c250ad5f60f4ce3db9fe15f58ef025824ac15ed9ccb22615e6706c02",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_curses.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "ac06d55a987d640e88e6eb15b236a2bff0d45b3b3ac9386fd10d1f6bbd483ffe",
+      "needed": [
+        "libncursesw.so.6",
+        "libtinfo.so.6",
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_hashlib.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "fe5ccb577d81444ca5f592e7484cd43088dcc7c555736a26c9aa9f95f8e052ed",
+      "needed": [
+        "libcrypto.so.3",
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_codecs_iso2022.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "245f0d832243f217368e562169a90b16a464d15d144adc7c052ec7072443e95c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_testbuffer.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "103aee09aacf5c31b30c40da3a526b37082bf41e3e2f49252ba28e65ee289eb2",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_codecs_hk.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "6b57a6b0fe0d4f76d6090cff80eb4a268a9749ec3f85bd546520dc166e51f336",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/xxlimited_35.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "65861679d504b533ab3ff5efeae6bf39c7366031171c5f6e512a7a4219d14f4f",
+      "needed": [],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/xxsubtype.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "5a8539442bc8b58695a323f1c3bb8585175289bbd143bd4f7181b576df0a4ae9",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_ctypes.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "3e676dae0a658c6c94d82f4e49d2f4ed8a15687bb8806fcc6adfe70b2cd883e9",
+      "needed": [
+        "libffi.so.8",
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_lzma.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "5256bdb6fb1df2b0d8354aa1ba56114b1e5057c54d50e6f74c05144c74ee117a",
+      "needed": [
+        "liblzma.so.5",
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/xxlimited.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "9646ea30077602e8b567970e58f1bd378b330d64f6fabd96ed5851c0d79bd957",
+      "needed": [],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_codecs_kr.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "340d367608c5f54d17931e754212bac4ab48f824f4a651b11b49cac6a9b8d21e",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_xxtestfuzz.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "aca2da6c8770398bbdc344db588c0f4b11ff2ec57b84c06b506796931079c53b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_codecs_jp.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "220d087cf51a67fc0118d4c0d18dc0fbb00e42efd7972eecdb93e06e00166c42",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_testimportmultiple.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "3bb454da9dabf46491588403ba1f470a29ef92cb1b054c231699c7fbaab145cf",
+      "needed": [],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_testexternalinspection.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "0d73e4ee2d7fd9e1decc95c708e52a07c4b4b0274a251d4da7f820d8fc0b33b6",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_testcapi.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "63382a5045e85595d0ebf766512dcc7710961618d9d10d09b141775adb7512e3",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/readline.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "c170101593df83b709ce2a4cd9d8d931abad6ab7dd4dd25084ce4eaa2c7cc4e5",
+      "needed": [
+        "libreadline.so.8",
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_zoneinfo.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "6ebcee5c0921c0dcaaaa6f35f0f3327d7d48a0934200b922e21d0f81a3fbd379",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/mmap.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "190ea1e1881e99e7b4e3d5f62fff5ca429fe11f73b2f019cde97003f86e1fa3d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_codecs_cn.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "4c874f0d287dac4bd157c6bb24dbc75747b2ef57afab611b0a4c55f17a8405e1",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_asyncio.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "e597ee76099912e5cbd40cb47d75284c81359b93ac8659f92d68bec932fb1c19",
+      "needed": [],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_testclinic_limited.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "458111d781b51e71ca4cc9deef5b75174eb02d7729441ad2a605bb39f241553d",
+      "needed": [],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_dbm.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "c020631b8f2905607a01a9cd2aa602b0b8adce986cd39734e0ea13b9be83ca49",
+      "needed": [
+        "libdb-5.3.so",
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_bz2.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "03d72a4d9ef7ade86971407b45790bf4aa66050f18f496b0c039b7af1689c4e2",
+      "needed": [
+        "libbz2.so.1.0",
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_testsinglephase.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "9122faef0133e8168bcde127e8a46916d49de82cfe7e204f4a59c4e60dc83f37",
+      "needed": [],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_decimal.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "a79b13abf5d25baa259bc92d3f86a84ee111a766c6354d7cd2bb9b0ce2d99c31",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_queue.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "aad4ac9e48c621f4e049f88a0c0c47c58f80e2b39004d262272dd007fd2d0409",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_multiprocessing.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "2803157e76b0020c00f95749a31c9b560a5ebb205fb7ea2a896cccb960f18c50",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_ssl.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "0fa1018a902b893c15cff0d16520d307a89e5cc42ee7fb8b118ea1f9f823cf26",
+      "needed": [
+        "libssl.so.3",
+        "libcrypto.so.3",
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_interpchannels.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "01e7106f6788a649e00df38e12fc80d3f5ba331beefb40206fa9caf520ebe52a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_interpreters.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "35a685e41f818836673b6cd6f8c6081ec1b2855d5d0a6e420a9b904b50c83f00",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_testlimitedcapi.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "86c4908d4ab35fd4edcbf1d4bdf7e160acbacf103e066f85a1bd224423217fd5",
+      "needed": [
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_lsprof.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "cc1965d7bed0f53c478e82376312635ea42e10bd4319a7ee71bbea1ccd1eec9c",
+      "needed": [],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.13/lib-dynload/_uuid.cpython-313-x86_64-linux-gnu.so",
+      "sha256": "0aabccc5de2721d3cee25eef2d690665d0f5e618b1fb061216142bf1d20df592",
+      "needed": [
+        "libuuid.so.1",
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/bin/python3.13",
+      "sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+      "needed": [
+        "libm.so.6",
+        "libz.so.1",
+        "libexpat.so.1",
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    }
+  ],
+  "elf_files": 51,
+  "image_id": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e"
+}

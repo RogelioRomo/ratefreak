@@ -1,0 +1,4347 @@
+[
+  {
+    "advisory": "CVE-2026-102473",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "0.5.12-6ubuntu5",
+        "package": "dash",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "0.5.12"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "dash",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "dash: dash: Super-polynomial backtracking in pmatch when libc fnmatch is disabled",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-102473.txt",
+      "release": "noble",
+      "status": "deferred (2026-10-15)",
+      "url": "https://ubuntu.com/security/CVE-2026-102473"
+    }
+  },
+  {
+    "advisory": "CVE-2026-102474",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "0.5.12-6ubuntu5",
+        "package": "dash",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "0.5.12"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "dash",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "dash: dash: Heap out-of-bounds write in conv_escape via undersized Unicode escape reservation",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-102474.txt",
+      "release": "noble",
+      "status": "deferred (2026-10-15)",
+      "url": "https://ubuntu.com/security/CVE-2026-102474"
+    }
+  },
+  {
+    "advisory": "CVE-2025-66382",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.1-2ubuntu0.7",
+        "package": "libexpat1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "2.6.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "expat",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "libexpat: libexpat: Denial of service via crafted file processing",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2025-66382.txt",
+      "release": "noble",
+      "status": "deferred (2026-09-28)",
+      "url": "https://ubuntu.com/security/CVE-2025-66382"
+    }
+  },
+  {
+    "advisory": "CVE-2026-102633",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.1-2ubuntu0.7",
+        "package": "libexpat1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "2.6.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "expat",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "expat: expat: Denial of Service via integer overflow in expat_realloc",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-102633.html",
+      "release": "noble",
+      "status": "see-retained-official-page",
+      "url": "https://ubuntu.com/security/CVE-2026-102633"
+    }
+  },
+  {
+    "advisory": "CVE-2026-113351",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.1-2ubuntu0.7",
+        "package": "libexpat1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "2.6.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "expat",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "expat: expat: Denial of Service via improper memory tracking in XML_ParserReset",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-113351.html",
+      "release": "noble",
+      "status": "see-retained-official-page",
+      "url": "https://ubuntu.com/security/CVE-2026-113351"
+    }
+  },
+  {
+    "advisory": "CVE-2026-115506",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.1-2ubuntu0.7",
+        "package": "libexpat1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "2.6.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "expat",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "expat: expat: Denial of Service via delayed entity amplification detection",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-115506.html",
+      "release": "noble",
+      "status": "see-retained-official-page",
+      "url": "https://ubuntu.com/security/CVE-2026-115506"
+    }
+  },
+  {
+    "advisory": "CVE-2026-117610",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.1-2ubuntu0.7",
+        "package": "libexpat1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "2.6.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "expat",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "expat: expat: Denial of Service via NULL pointer dereference in external entity parsing",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-117610.html",
+      "release": "noble",
+      "status": "see-retained-official-page",
+      "url": "https://ubuntu.com/security/CVE-2026-117610"
+    }
+  },
+  {
+    "advisory": "CVE-2026-118370",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.1-2ubuntu0.7",
+        "package": "libexpat1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "2.6.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "expat",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "expat: expat: Denial of Service via integer overflow during XML attribute parsing",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-118370.html",
+      "release": "noble",
+      "status": "see-retained-official-page",
+      "url": "https://ubuntu.com/security/CVE-2026-118370"
+    }
+  },
+  {
+    "advisory": "CVE-2026-124317",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.1-2ubuntu0.7",
+        "package": "libexpat1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "2.6.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "expat",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "libexpat through 2.10.0 contains an out-of-bounds read vulnerability i ...",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-124317.html",
+      "release": "noble",
+      "status": "see-retained-official-page",
+      "url": "https://ubuntu.com/security/CVE-2026-124317"
+    }
+  },
+  {
+    "advisory": "CVE-2026-128241",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.1-2ubuntu0.7",
+        "package": "libexpat1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "2.6.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "expat",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "The xmlwf tool in libexpat through 2.10.0 contains a symlink following ...",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-128241.html",
+      "release": "noble",
+      "status": "see-retained-official-page",
+      "url": "https://ubuntu.com/security/CVE-2026-128241"
+    }
+  },
+  {
+    "advisory": "CVE-2026-134703",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.1-2ubuntu0.7",
+        "package": "libexpat1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "2.6.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "expat",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "libexpat through 2.10.0 contains an improper Unicode handling vulnerab ...",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-134703.html",
+      "release": "noble",
+      "status": "see-retained-official-page",
+      "url": "https://ubuntu.com/security/CVE-2026-134703"
+    }
+  },
+  {
+    "advisory": "CVE-2026-77214",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.1-2ubuntu0.7",
+        "package": "libexpat1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "2.6.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "expat",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "expat: expat: Information disclosure via heap buffer over-read in XML_ParseBuffer",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-77214.html",
+      "release": "noble",
+      "status": "see-retained-official-page",
+      "url": "https://ubuntu.com/security/CVE-2026-77214"
+    }
+  },
+  {
+    "advisory": "CVE-2026-93990",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.1-2ubuntu0.7",
+        "package": "libexpat1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "2.6.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "expat",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "expat: Expat: XML Injection via Malformed UTF-16 Input",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-93990.html",
+      "release": "noble",
+      "status": "see-retained-official-page",
+      "url": "https://ubuntu.com/security/CVE-2026-93990"
+    }
+  },
+  {
+    "advisory": "CVE-2026-119371",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.45.1-1ubuntu2.11",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "3.45.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "sqlite3",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "sqlite: sqlite: Denial of Service via stack exhaustion from deeply nested Common Table Expressions",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-119371.txt",
+      "release": "noble",
+      "status": "needed",
+      "url": "https://ubuntu.com/security/CVE-2026-119371"
+    }
+  },
+  {
+    "advisory": "CVE-2026-119372",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.45.1-1ubuntu2.11",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "3.45.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "sqlite3",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "sqlite: sqlite: Denial of Service via use-after-free in full-text search",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-119372.txt",
+      "release": "noble",
+      "status": "needed",
+      "url": "https://ubuntu.com/security/CVE-2026-119372"
+    }
+  },
+  {
+    "advisory": "CVE-2026-119373",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.45.1-1ubuntu2.11",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "3.45.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "sqlite3",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "sqlite: sqlite: Denial of service via heap-based buffer overflow in FTS5",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-119373.txt",
+      "release": "noble",
+      "status": "needed",
+      "url": "https://ubuntu.com/security/CVE-2026-119373"
+    }
+  },
+  {
+    "advisory": "CVE-2026-119374",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.45.1-1ubuntu2.11",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "3.45.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "sqlite3",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "sqlite: sqlite: Arbitrary code execution via corrupted FTS5 index",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-119374.txt",
+      "release": "noble",
+      "status": "needed",
+      "url": "https://ubuntu.com/security/CVE-2026-119374"
+    }
+  },
+  {
+    "advisory": "CVE-2026-119375",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.45.1-1ubuntu2.11",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "3.45.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "sqlite3",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "sqlite: sqlite: Information disclosure via undersized WAL page size",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-119375.txt",
+      "release": "noble",
+      "status": "needed",
+      "url": "https://ubuntu.com/security/CVE-2026-119375"
+    }
+  },
+  {
+    "advisory": "CVE-2026-119376",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.45.1-1ubuntu2.11",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "3.45.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "sqlite3",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "sqlite: sqlite: Denial of Service via stack exhaustion from chained COLLATE operators",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-119376.txt",
+      "release": "noble",
+      "status": "needed",
+      "url": "https://ubuntu.com/security/CVE-2026-119376"
+    }
+  },
+  {
+    "advisory": "CVE-2026-119377",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.45.1-1ubuntu2.11",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "3.45.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "sqlite3",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "sqlite: sqlite: Authorization bypass via USING clause in JOIN queries",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-119377.txt",
+      "release": "noble",
+      "status": "needed",
+      "url": "https://ubuntu.com/security/CVE-2026-119377"
+    }
+  },
+  {
+    "advisory": "CVE-2026-119378",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.45.1-1ubuntu2.11",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "3.45.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "sqlite3",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "sqlite: sqlite: Denial of Service via use-after-free in R-Tree extension",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-119378.txt",
+      "release": "noble",
+      "status": "needed",
+      "url": "https://ubuntu.com/security/CVE-2026-119378"
+    }
+  },
+  {
+    "advisory": "CVE-2026-119379",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.45.1-1ubuntu2.11",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "3.45.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "sqlite3",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "sqlite: sqlite: Arbitrary code execution via crafted session changesets",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-119379.txt",
+      "release": "noble",
+      "status": "needed",
+      "url": "https://ubuntu.com/security/CVE-2026-119379"
+    }
+  },
+  {
+    "advisory": "CVE-2026-119591",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.45.1-1ubuntu2.11",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "3.45.1"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "sqlite3",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "sqlite: sqlite: Denial of Service via stack exhaustion in countOfViewOptimization()",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-119591.txt",
+      "release": "noble",
+      "status": "needed",
+      "url": "https://ubuntu.com/security/CVE-2026-119591"
+    }
+  },
+  {
+    "advisory": "CVE-2026-121876",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "255.4-1ubuntu8.19",
+        "package": "libsystemd0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "255.4"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "255.4-1ubuntu8.19",
+        "package": "libudev1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "255.4"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "systemd",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "sandboxed-containers: kernel: systemd-gpt-auto-generator: Guest Data Leakage in Confidential Computing (Sandboxed Containers)",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-121876.html",
+      "release": "noble",
+      "status": "see-retained-official-page",
+      "url": "https://ubuntu.com/security/CVE-2026-121876"
+    }
+  },
+  {
+    "advisory": "CVE-2026-40228",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "255.4-1ubuntu8.19",
+        "package": "libsystemd0",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "ubuntu",
+        "source_version": "255.4"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "255.4-1ubuntu8.19",
+        "package": "libudev1",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "ubuntu",
+        "source_version": "255.4"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "systemd",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "systemd: systemd-journald: Unintended output to user terminals via logger command",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-40228.txt",
+      "release": "noble",
+      "status": "deferred (2026-11-13)",
+      "url": "https://ubuntu.com/security/CVE-2026-40228"
+    }
+  },
+  {
+    "advisory": "CVE-2026-18477",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "1.35+dfsg-3ubuntu0.4",
+        "package": "tar",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "1.35+dfsg"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "tar",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "tar: tar: TOCTOU in incremental dumpdir 'X' rename handling allows restore path escape",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-18477.txt",
+      "release": "noble",
+      "status": "needed",
+      "url": "https://ubuntu.com/security/CVE-2026-18477"
+    }
+  },
+  {
+    "advisory": "CVE-2026-18508",
+    "application_image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "api",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "1.35+dfsg-3ubuntu0.4",
+        "package": "tar",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "ubuntu",
+        "source_version": "1.35+dfsg"
+      }
+    ],
+    "scan_config_id": "sha256:f64fce5e16f8f2efe1d17f34757c4b06e251bbaf9057a6d0870a1bf02b02deca",
+    "source": "tar",
+    "target": "/input/api.tar.gz (ubuntu 24.04)",
+    "title": "tar: tar: --one-top-level hardlink targets not confined to top-level directory enabling arbitrary file overwrite",
+    "type": "ubuntu",
+    "vendor": {
+      "evidence": ".local/security-clearance-2026-11-25/vendor/ubuntu/CVE-2026-18508.txt",
+      "release": "noble",
+      "status": "needed",
+      "url": "https://ubuntu.com/security/CVE-2026-18508"
+    }
+  },
+  {
+    "advisory": "CVE-2026-54369",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.3.2-2+b1",
+        "package": "libacl1",
+        "scanner_status": "affected",
+        "severity": "HIGH",
+        "severity_source": null,
+        "source_version": "2.3.2"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "acl",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "acl: Symlink traversal privilege escalation via libacl functions",
+    "type": "debian",
+    "vendor": {
+      "description": "acl before version 2.4.0 contains a symlink traversal vulnerability in the libacl pathname-based functions acl_get_file(), acl_set_file(), acl_extended_file(), and acl_delete_def_file() that allows local attackers to escalate privileges by replacing any pathname component with a symbolic link. Attackers who control any component of a pathname processed by a privileged caller can redirect ACL read or write operations to arbitrary files or directories, enabling unauthorized manipulation of access control lists and local privilege escalation.",
+      "record": {
+        "nodsa": "Will be fixed first in unstable, then point release update; not to be backported by individual patches",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "2.3.2-2"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-54369"
+    }
+  },
+  {
+    "advisory": "CVE-2026-54370",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.3.2-2+b1",
+        "package": "libacl1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "2.3.2"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "acl",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "acl: TOCTOU Symlink Traversal via getfacl/setfacl",
+    "type": "debian",
+    "vendor": {
+      "description": "acl before version 2.4.0 contains a time-of-check to time-of-use (TOCTOU) race condition vulnerability that allows local attackers to escalate privileges by replacing a pathname component with a symbolic link between an lstat() check and subsequent symlink-following operations such as stat(), chown(), chmod(), acl_get_file(), and acl_set_file(). Attackers who control a pathname component can redirect file access control list operations to arbitrary files when getfacl, setfacl, or chacl is invoked by a privileged process over an attacker-controlled path, resulting in local privilege escalation.",
+      "record": {
+        "nodsa": "Will be fixed first in unstable, then point release update; not to be backported by individual patches",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "2.3.2-2"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-54370"
+    }
+  },
+  {
+    "advisory": "CVE-2026-54371",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "1:2.5.2-3",
+        "package": "libattr1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "2.5.2"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "attr",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "attr: attr: Symlink Traversal Privilege Escalation via getfattr and setfattr",
+    "type": "debian",
+    "vendor": {
+      "description": "attr before version 2.6.0 contains a symlink traversal vulnerability in the getfattr and setfattr utilities that allows local attackers to escalate privileges by replacing a pathname component with a symbolic link during directory hierarchy traversal. Attackers who control a pathname component can redirect getfattr and setfattr operations to arbitrary files by substituting a symlink, leading to local privilege escalation when getfattr or setfattr is invoked by a privileged process over an attacker-controlled path.",
+      "record": {
+        "nodsa": "Will be fixed first in unstable, then point release update; not to be backported by individual patches",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "1:2.5.2-3"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-54371"
+    }
+  },
+  {
+    "advisory": "CVE-2026-42250",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "1.0.8-6",
+        "package": "libbz2-1.0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "1.0.8"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "bzip2",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "bzip2: bzip2: Denial of Service in bzip2recover via a specially crafted file",
+    "type": "debian",
+    "vendor": {
+      "description": "bzip2 contains an off\u2011by\u2011one error in the bzip2recover utility. When processing a specially crafted file, the application performs an out\u2011of\u2011bounds write to a global buffer, resulting in memory corruption and a crash (denial of service).  This issue was fixed in bzip2 patch\u00a035d122a3df8b0cc4082a4d89fdc6ee99f375fe67",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "1.0.8-6"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-42250"
+    }
+  },
+  {
+    "advisory": "CVE-2017-18018",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "9.7-3",
+        "package": "coreutils",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "9.7"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "coreutils",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "coreutils: race condition vulnerability in chown and chgrp",
+    "type": "debian",
+    "vendor": {
+      "description": "In GNU Coreutils through 8.29, chown-core.c in chown and chgrp does not prevent replacement of a plain file with a symlink during use of the POSIX \"-R -L\" options, which allows local users to modify the ownership of arbitrary files by leveraging a race condition.",
+      "record": {
+        "repositories": {
+          "trixie": "9.7-3"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2017-18018"
+    }
+  },
+  {
+    "advisory": "CVE-2025-5278",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "9.7-3",
+        "package": "coreutils",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "9.7"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "coreutils",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "coreutils: Heap Buffer Under-Read in GNU Coreutils sort via Key Specification",
+    "type": "debian",
+    "vendor": {
+      "description": "A flaw was found in GNU Coreutils. The sort utility's begfield() function is vulnerable to a heap buffer under-read. The program may access memory outside the allocated buffer if a user runs a crafted command using the traditional key format. A malicious input could lead to a crash or leak sensitive data.",
+      "record": {
+        "repositories": {
+          "trixie": "9.7-3"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2025-5278"
+    }
+  },
+  {
+    "advisory": "CVE-2026-56391",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "9.7-3",
+        "package": "coreutils",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "9.7"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "coreutils",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "coreutils: GNU coreutils uniq: Denial of Service and information disclosure via out-of-bounds read with multibyte input",
+    "type": "debian",
+    "vendor": {
+      "description": "GNU coreutils uniq is vulnerable to an out\u2011of\u2011bounds read due to incorrect handling of multibyte input when the -w (--check-chars) option is used. The find_field() function miscalculates the byte length of characters by repeatedly processing a fixed pointer instead of advancing through the input, resulting in an inflated length value.  This incorrect length is later used in a memcmp operation, causing reads beyond the allocated buffer when processing crafted multibyte input.  When running GNU coreutils uniq with attacker-provided arguments, this behavior leads to a crash and potential adjacent heap memory exposure.   This issue has been fixed in the commit d64e35a8a4c0e4608321433e0d84d917e4e36371.",
+      "record": {
+        "repositories": {
+          "trixie": "9.7-3"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-56391"
+    }
+  },
+  {
+    "advisory": "CVE-2026-56392",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "9.7-3",
+        "package": "coreutils",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "9.7"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "coreutils",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "coreutils: GNU coreutils unexpand: Denial of Service via crafted tab stop values",
+    "type": "debian",
+    "vendor": {
+      "description": "GNU coreutils unexpand is vulnerable to a heap-based buffer overflow due to an integer overflow during buffer allocation when processing large tab stop (-t) values. The multiplication used to calculate the allocation size can wrap around, resulting in an undersized buffer. When processing crafted input, subsequent writes exceed the allocated memory, leading to an out\u2011of\u2011bounds heap write.  When running GNU coreutils unexpand with attacker-provided large tab stop (-t) arguments, this behavior leads to a crash and potentially achieve a heap write primitive depending on memory layout.           This issue has been fixed in the commit b60a159fdc5bfcf9988d3a4cb6f53abe8ad5d35d",
+      "record": {
+        "repositories": {
+          "trixie": "9.7-3"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-56392"
+    }
+  },
+  {
+    "advisory": "CVE-2026-53910",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "1:3.10-4",
+        "package": "diffutils",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.10"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "diffutils",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "diffutils: heap\u2011based buffer overflow due to multiple signed integer overflows in line\u2011mapping calculations",
+    "type": "debian",
+    "vendor": {
+      "description": "diff3\u00a0tool from GNU diffutils\u00a0is vulnerable to a heap\u2011based buffer overflow due to multiple signed integer overflows in line\u2011mapping calculations. Incorrect arithmetic in mapping line ranges can result in corrupted values being used for memory allocation and loop bounds. When processing crafted diff output, these overflows may cause the application to allocate insufficient memory and subsequently perform out\u2011of\u2011bounds writes during internal processing.\u00a0 An attacker who can control the output of the diff program used by diff3 (e.g. via --diff-program pointing to a malicious script) can trigger out-of-bounds writes, resulting in a crash and potentially remote code execution depending on the environment.   This issue has been fixed in commit 9ff04d5b84743e331e80b589335a52c5480d1815\u00a0  NOTE: The project maintainers claim that this is not a security issue. They state that the worst outcome this issue can cause is a crash of diff and that it cannot be used to escalate privileges.",
+      "record": {
+        "repositories": {
+          "trixie": "1:3.10-4"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-53910"
+    }
+  },
+  {
+    "advisory": "CVE-2026-91094",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "1.22.22",
+        "package": "dpkg",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "1.22.22"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "dpkg",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "A directory traversal bug was discovered when unpacking 3.0 (quilt) so ...",
+    "type": "debian",
+    "vendor": {
+      "description": "A directory traversal bug was discovered when unpacking 3.0 (quilt) source packages, where the packaging tarball could contain the quilt database directory (.pc) with attacker controlled symlinks, where that in combination with patches that would fail to apply, could be used to make the code used to restore the backup files to either modify or remove the files pointed to by the attacker controlled symlinks.",
+      "record": {
+        "next_point_update": true,
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "1.22.22"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-91094"
+    }
+  },
+  {
+    "advisory": "CVE-2026-102010",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "gcc-14",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "gcc-toolset-15-gcc: gcc: gcc-toolset-16: gcc: Denial of Service via use-after-free in binary heap erase_if",
+    "type": "debian",
+    "vendor": {
+      "description": "A flaw was found in GCC. When an application calls the erase_if function on a binary heap priority queue in libstdc++, the library reallocates storage but fails to update its internal entry pointer. An attacker capable of triggering this operation can exploit this use-after-free condition, leading to a Denial of Service (DoS) via an application crash or potential memory corruption.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "14.2.0-19"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-102010"
+    }
+  },
+  {
+    "advisory": "CVE-2026-114690",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "gcc-14",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "gcc: Confirmed out-of-bounds read/write in libstdc++ parallel `std",
+    "type": "debian",
+    "vendor": {
+      "description": "A flaw was found in GCC. An out-of-bounds memory access vulnerability exists in the libstdc++ parallel search implementation due to an undersized internal buffer. A local attacker can exploit this flaw by providing crafted search data to an application compiled with parallel mode, causing the process to crash and leading to a Denial of Service (DoS).",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "14.2.0-19"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-114690"
+    }
+  },
+  {
+    "advisory": "CVE-2026-114691",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "gcc-14",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "gcc: Integer wrap in `std",
+    "type": "debian",
+    "vendor": {
+      "description": "A flaw was found in the libstdc++ component of GCC. An attacker who can provide an excessively large element count to a boolean vector (std::vector<bool>) constructor can trigger an integer wrap during internal memory calculations. This issue leaves the container in an inconsistent state, leading to out-of-bounds memory access and resulting in an application crash or a Denial of Service (DoS) during subsequent operations.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "14.2.0-19"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-114691"
+    }
+  },
+  {
+    "advisory": "CVE-2026-115456",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "gcc-14",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "gcc: Out-of-bounds read in std::from_chars",
+    "type": "debian",
+    "vendor": {
+      "description": "A flaw was found in gcc. An attacker could cause a Denial of Service (DoS) by passing a string that is not null-terminated to the std::from_chars() function in the libstdc++ library. This issue triggers an out-of-bounds read beyond the allocated buffer, potentially leading to invalid data parsing or an application crash.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "14.2.0-19"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-115456"
+    }
+  },
+  {
+    "advisory": "CVE-2026-125709",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "gcc-14",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "libstdc++: overflow leaves streambuf in inconsistent state on I/O error.",
+    "type": "debian",
+    "vendor": {
+      "description": "A flaw was found in libstdc++. When a byte-by-byte write operation fails during file stream processing, the library may still append data into the internal memory buffer. An attacker capable of inducing repeated write failures in an affected service can trigger a buffer overflow, potentially resulting in a Denial of Service (DoS) or memory corruption.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "14.2.0-19"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-125709"
+    }
+  },
+  {
+    "advisory": "CVE-2026-95619",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "14.2.0"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "gcc-14",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "gcc: libstdc++ integer overflow in `new` operator",
+    "type": "debian",
+    "vendor": {
+      "description": "A flaw was found in libstdc++. An integer overflow can occur when processing large inputs to the aligned operator new in the C++ library. This vulnerability could lead to an undersized memory allocation, potentially causing memory corruption or application instability.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "14.2.0-19"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-95619"
+    }
+  },
+  {
+    "advisory": "CVE-2010-4756",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "glibc: glob implementation can cause excessive CPU and memory consumption due to crafted glob expressions",
+    "type": "debian",
+    "vendor": {
+      "description": "The glob implementation in the GNU C Library (aka glibc or libc6) allows remote authenticated users to cause a denial of service (CPU and memory consumption) via crafted glob expressions that do not match any pathnames, as demonstrated by glob expressions in STAT commands to an FTP daemon, a different vulnerability than CVE-2010-2632.",
+      "record": {
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2010-4756"
+    }
+  },
+  {
+    "advisory": "CVE-2018-20796",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c",
+    "type": "debian",
+    "vendor": {
+      "description": "In the GNU C Library (aka glibc or libc6) through 2.29, check_dst_limits_calc_pos_1 in posix/regexec.c has Uncontrolled Recursion, as demonstrated by '(\\227|)(\\\\1\\\\1|t1|\\\\\\2537)+' in grep.",
+      "record": {
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2018-20796"
+    }
+  },
+  {
+    "advisory": "CVE-2019-1010022",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "glibc: stack guard protection bypass",
+    "type": "debian",
+    "vendor": {
+      "description": "GNU Libc current is affected by: Mitigation bypass. The impact is: Attacker may bypass stack guard protection. The component is: nptl. The attack vector is: Exploit stack buffer overflow vulnerability and use this bypass vulnerability to bypass stack guard. NOTE: Upstream comments indicate \"this is being treated as a non-security bug and no real threat.",
+      "record": {
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2019-1010022"
+    }
+  },
+  {
+    "advisory": "CVE-2019-1010023",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "glibc: running ldd on malicious ELF leads to code execution because of wrong size computation",
+    "type": "debian",
+    "vendor": {
+      "description": "GNU Libc current is affected by: Re-mapping current loaded library with malicious ELF file. The impact is: In worst case attacker may evaluate privileges. The component is: libld. The attack vector is: Attacker sends 2 ELF files to victim and asks to run ldd on it. ldd execute code. NOTE: Upstream comments indicate \"this is being treated as a non-security bug and no real threat.",
+      "record": {
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2019-1010023"
+    }
+  },
+  {
+    "advisory": "CVE-2019-1010024",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "glibc: ASLR bypass using cache of thread stack and heap",
+    "type": "debian",
+    "vendor": {
+      "description": "GNU Libc current is affected by: Mitigation bypass. The impact is: Attacker may bypass ASLR using cache of thread stack and heap. The component is: glibc. NOTE: Upstream comments indicate \"this is being treated as a non-security bug and no real threat.",
+      "record": {
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2019-1010024"
+    }
+  },
+  {
+    "advisory": "CVE-2019-1010025",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "glibc: information disclosure of heap addresses of pthread_created thread",
+    "type": "debian",
+    "vendor": {
+      "description": "GNU Libc current is affected by: Mitigation bypass. The impact is: Attacker may guess the heap addresses of pthread_created thread. The component is: glibc. NOTE: the vendor's position is \"ASLR bypass itself is not a vulnerability.",
+      "record": {
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2019-1010025"
+    }
+  },
+  {
+    "advisory": "CVE-2019-9192",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c",
+    "type": "debian",
+    "vendor": {
+      "description": "In the GNU C Library (aka glibc or libc6) through 2.29, check_dst_limits_calc_pos_1 in posix/regexec.c has Uncontrolled Recursion, as demonstrated by '(|)(\\\\1\\\\1)*' in grep, a different issue than CVE-2018-20796. NOTE: the software maintainer disputes that this is a vulnerability because the behavior occurs only with a crafted pattern",
+      "record": {
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2019-9192"
+    }
+  },
+  {
+    "advisory": "CVE-2026-100290",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": null,
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": null,
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "glibc: glibc: Denial of Service via memory allocation failure during regular expression processing",
+    "type": "debian",
+    "vendor": {
+      "description": "The regcomp and regexec functions in the GNU C Library version 2.3 to version 2.44 may read freed memory and free the same heap block twice when a memory allocation fails while a regular expression is compiled or matched.  The re_dfa_add_node (the NFA node table) and build_range_exp (bracket ranges) grow several arrays with consecutive realloc calls and store the new pointers only after all of them succeed.  When a later call fails, the pattern buffer keeps pointers to blocks that were already freed, and the error cleanup frees them again.  In regexec, the back-reference cache (match_ctx_add_entry) frees its array when a realloc fails but keeps the pointer, which is freed again on the error path.  An attacker does not need to supply a crafted regular expression: patterns large enough to grow these arrays are common.  The failure has to hit a specific allocation, though, so the issue can only be reached when the system is already under memory pressure.  An attacker who supplies the pattern or the subject string has little control over which allocation fails, so the expected impact is a crash of the process.  This issue affects all architectures and ABIs supported by the GNU C Library.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-100290"
+    }
+  },
+  {
+    "advisory": "CVE-2026-115819",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "glibc: glibc: Memory corruption via out-of-bounds write in wide scanf functions",
+    "type": "debian",
+    "vendor": {
+      "description": "Calling the wide scanf family of functions (swscanf, fwscanf, wscanf, vswscanf, vfwscanf and vwscanf) with a %s or %[ conversion without the 'l' length modifier in the GNU C Library version 2.2 to version 2.44 writes an extra null byte one past the end of the destination array when the converted multibyte string and its terminating null byte exactly fill that array.  These conversions store each wide input character into the caller's char array as a multibyte sequence.  The conversion ends with the sequence that returns to the initial shift state, which also stores the terminating null byte, and the functions then append a second null byte.  A destination sized for the converted string and one terminator, as the C standard requires the caller to provide, is therefore written one byte past its end.  The out-of-bounds byte is always a null byte, which may corrupt adjacent data or crash the process.  An attacker who supplies the input can trigger the overflow with a string whose converted length exactly fills the destination.  The narrow scanf functions, the %ls and %l[ conversions into a wchar_t array, and the 'a' and 'm' allocation modifiers are not affected, and storing a wide scanf conversion into a narrow char array is uncommon.  This issue affects all architectures and ABIs supported by the GNU C Library.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-115819"
+    }
+  },
+  {
+    "advisory": "CVE-2026-121757",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "glibc: glibc: Denial of Service via out-of-bounds read in CP949 character conversion",
+    "type": "debian",
+    "vendor": {
+      "description": "Converting crafted CP949 input to UTF-8 character encoding and ignoring invalid characters, in the GNU C Library version 2.1 or later may result in the converter reading past the end of the input buffer, causing the calling application to crash.  When the CP949 decoder encounters an invalid input byte sequence like '\\xa2\\xe8' it ends up advancing the pointer tracking the read buffer position twice.  If //IGNORE is set on the destination encoding and this sequence is at the end of the input buffer, the decoder may then end up reading past the bounds of the input buffer.  To exploit this, the target iconv function needs to set //IGNORE on the destination of the conversion and the input and encoding needs to be attacker controlled.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-121757"
+    }
+  },
+  {
+    "advisory": "CVE-2026-121758",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "Converting crafted ISO-2022-CN-EXT input in the GNU C Library version  ...",
+    "type": "debian",
+    "vendor": {
+      "description": "Converting crafted ISO-2022-CN-EXT input in the GNU C Library version 2.2 through 2.44 may result in the converter reading past the end of the input buffer, causing the calling application to crash.  When the ISO-2022-CN-EXT decoder encounters an invalid input byte sequence like '\\x0e' it ends up advancing the pointer tracking the read buffer position twice.  If this sequence is at the end of the input buffer, the decoder may then end up reading past the bounds of the input buffer.  To exploit this, the input and encoding needs to be attacker controlled.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-121758"
+    }
+  },
+  {
+    "advisory": "CVE-2026-124024",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "Converting crafted input from UCS-4 to IBM1390 or IBM1399 character en ...",
+    "type": "debian",
+    "vendor": {
+      "description": "Converting crafted input from UCS-4 to IBM1390 or IBM1399 character encoding, in the GNU C Library version 2.3.3 and later may result in the converter reading past the end of the input buffer, causing the calling application to crash.  When converting from UCS-4, these encoders may encounter a combining base such as U+00E6 and jump ahead by 4 bytes to check the next UCS-4 code point.  The check for end of buffer however does not account for this, which may result in a buffer overread if the following code point has less than 4 bytes remaining.  Exploitation of this bug not only requires attacker control of input and encoding, but also strict control over layout of the input in memory.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-124024"
+    }
+  },
+  {
+    "advisory": "CVE-2026-126765",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": null,
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": null,
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "glibc: glibc: Denial of Service via double free in glob functions",
+    "type": "debian",
+    "vendor": {
+      "description": "The glob functions in the GNU C Library versions 2.44 and earlier may free the same heap block twice when a memory allocation fails while glob prepends the directory name to the names it matched.  The names already rewritten are freed, but their pointers stay in the result vector, and the error path frees them again with globfree.  The allocation must fail after at least one name has been rewritten, so the issue can only be reached when the process is already close to its memory limit, for example under an address space limit (RLIMIT_AS) or on a 32-bit system.  The attacker needs control to make the result large enough to make the program or service run out of memory, either by controlling the glob pattern and having knowledge of the filesystem layout or through other means.  This issue affects all architectures and ABIs supported by the GNU C Library.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-126765"
+    }
+  },
+  {
+    "advisory": "CVE-2026-84243",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc-bin",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "2.41"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.41-12+deb13u5",
+        "package": "libc6",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "2.41"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "glibc",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+    "type": "debian",
+    "vendor": {
+      "description": "The gettext family of functions in the GNU C Library version 2.0 and later accept LANGUAGE environment variable entries that contain '/' or that are equal to \"..\", unless the program is setuid or setgid (AT_SECURE).  An attacker who can set LANGUAGE in the environment of a program that uses gettext can make it load a message catalog (.mo file) from an arbitrary location in the file system.  A crafted .mo file can crash the program through out-of-range offsets, or supply translations whose format directives do not match the arguments passed by the program.  That causes undefined behaviour in the printf family of functions and may allow arbitrary code execution with the privileges of the program.  The safety of message catalogs relies on them being installed in trusted, read-only locations, and the directory traversal bypasses this.  The fix for CVE-2014-0475 rejects \"..\" path components in locale names passed to setlocale or taken from the LC_ALL, LC_* and LANG environment variables.  gettext reads LANGUAGE directly and appends each colon-separated entry to the message catalog directory, so that fix did not cover LANGUAGE.  LANGUAGE is only used when the LC_MESSAGES locale is not \"C\", \"C.<encoding>\" or \"POSIX\", so the attacker must also be able to select another installed locale, for example through LANG or LC_ALL.  Exploitation also requires that the attacker can place the crafted file in a location readable by the target program, and that the environment crosses a trust boundary without the program running as AT_SECURE.  An example is an SSH server that accepts LANGUAGE and LANG from clients through the AcceptEnv directive and restricts an account to a forced command; the attacker may use this to escape the restriction.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "2.41-12+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-84243"
+    }
+  },
+  {
+    "advisory": "TEMP-0000000-402D17",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.0-2",
+        "package": "libseccomp2",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "2.6.0"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "libseccomp",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "[GHSA-4q85-33p6-j5g6: Incorrect 64-bit comparison merge in libseccomp can weaken seccomp filters]",
+    "type": "debian",
+    "vendor": {
+      "description": null,
+      "record": {
+        "repositories": {
+          "trixie": "2.6.0-2"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/TEMP-0000000-402D17"
+    }
+  },
+  {
+    "advisory": "TEMP-0000000-414660",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.0-2",
+        "package": "libseccomp2",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "2.6.0"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "libseccomp",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "[GHSA-35x7-vh54-jvqf: Incorrect accumulator reloads when comparing arguments can lead to erroneous actions]",
+    "type": "debian",
+    "vendor": {
+      "description": null,
+      "record": {
+        "repositories": {
+          "trixie": "2.6.0-2"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/TEMP-0000000-414660"
+    }
+  },
+  {
+    "advisory": "TEMP-0000000-43231F",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.0-2",
+        "package": "libseccomp2",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "2.6.0"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "libseccomp",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "[GHSA-2hqh-5c36-grrm: Oversized seccomp filters can trigger libseccomp heap corruption]",
+    "type": "debian",
+    "vendor": {
+      "description": null,
+      "record": {
+        "repositories": {
+          "trixie": "2.6.0-2"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/TEMP-0000000-43231F"
+    }
+  },
+  {
+    "advisory": "TEMP-0000000-AE2C66",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.0-2",
+        "package": "libseccomp2",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "2.6.0"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "libseccomp",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "[GHSA-84vx-jqqr-h4f2: Unmatched seccomp transaction rejections can result in a segmentation fault]",
+    "type": "debian",
+    "vendor": {
+      "description": null,
+      "record": {
+        "repositories": {
+          "trixie": "2.6.0-2"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/TEMP-0000000-AE2C66"
+    }
+  },
+  {
+    "advisory": "TEMP-0000000-ED49F3",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.0-2",
+        "package": "libseccomp2",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "2.6.0"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "libseccomp",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "[GHSA-q75f-27j4-2h7j: Missing syscall-number load in BPF filter can bypass seccomp restrictions]",
+    "type": "debian",
+    "vendor": {
+      "description": null,
+      "record": {
+        "repositories": {
+          "trixie": "2.6.0-2"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/TEMP-0000000-ED49F3"
+    }
+  },
+  {
+    "advisory": "TEMP-0000000-F88C7E",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.0-2",
+        "package": "libseccomp2",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "2.6.0"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "libseccomp",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "[GHSA-qxh5-4cq9-6mjx: Crafted seccomp rules can trigger an infinite loop in libseccomp]",
+    "type": "debian",
+    "vendor": {
+      "description": null,
+      "record": {
+        "repositories": {
+          "trixie": "2.6.0-2"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/TEMP-0000000-F88C7E"
+    }
+  },
+  {
+    "advisory": "TEMP-0000000-FCA4C0",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "2.6.0-2",
+        "package": "libseccomp2",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "2.6.0"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "libseccomp",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "[GHSA-46fr-jh49-xvhx: Oversized seccomp filters can trigger libseccomp double free]",
+    "type": "debian",
+    "vendor": {
+      "description": null,
+      "record": {
+        "repositories": {
+          "trixie": "2.6.0-2"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/TEMP-0000000-FCA4C0"
+    }
+  },
+  {
+    "advisory": "CVE-2011-4116",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "libperl5.40",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl-base",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "all",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl-modules-5.40",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "5.40.1"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "perl",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "perl: File:: Temp insecure temporary file handling",
+    "type": "debian",
+    "vendor": {
+      "description": "_is_safe in the File::Temp module for Perl does not properly handle symlinks.",
+      "record": {
+        "repositories": {
+          "trixie": "5.40.1-6+deb13u1"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2011-4116"
+    }
+  },
+  {
+    "advisory": "CVE-2026-15534",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "libperl5.40",
+        "scanner_status": "fix_deferred",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl",
+        "scanner_status": "fix_deferred",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl-base",
+        "scanner_status": "fix_deferred",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "all",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl-modules-5.40",
+        "scanner_status": "fix_deferred",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "5.40.1"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "perl",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "perl: Perl: Arbitrary code execution via out-of-bounds memory access in regular expression engine.",
+    "type": "debian",
+    "vendor": {
+      "description": "Perl versions through 5.45.1 have out-of-bounds heap reads and writes during regular expression matching via an undersized superlinear cache in S_regmatch.  The regex engine's superlinear cache holds one bit per subject position for each participating WHILEM node, so the bit count is the subject length plus one times the number of nodes. Nothing checks that product for positive overflow of the signed 32-bit count: a 286331153 byte subject matched against a pattern with 15 participating nodes stores the count as 14, leaving a two byte cache. The cache is then indexed from the real match position and node number, so reads go past the end of the allocation, and on failure CACHEsayNO sets a bit past it.  A caller that matches an attacker controlled subject of this size against a pattern of this shape can crash the process or corrupt heap memory.",
+      "record": {
+        "nodsa": "Wait for exposure unstable and coordinate with Perl maintainers",
+        "nodsa_reason": "postponed",
+        "repositories": {
+          "trixie": "5.40.1-6+deb13u1"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-15534"
+    }
+  },
+  {
+    "advisory": "CVE-2026-40558",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "libperl5.40",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl-base",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "all",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl-modules-5.40",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "5.40.1"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "perl",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": null,
+    "type": "debian",
+    "vendor": {
+      "description": null,
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "5.40.1-6+deb13u1"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-40558"
+    }
+  },
+  {
+    "advisory": "CVE-2026-82560",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "libperl5.40",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl-base",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "all",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl-modules-5.40",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "5.40.1"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "perl",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "Pod::Text versions before 6.1.1 for Perl allow CPU and memory exhausti ...",
+    "type": "debian",
+    "vendor": {
+      "description": "Pod::Text versions before 6.1.1 for Perl allow CPU and memory exhaustion formatting a POD document whose =over nesting drives the margin to the output width.  Each =over adds its indent to the margin, which wrap() subtracts from the output width to get the space available for text. When that space reaches zero, the line-splitting substitution matches the empty string, and the loop consumes no input while appending the margin padding on every pass.  Formatting an attacker-supplied POD document never returns, and the output grows until memory is exhausted.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "5.40.1-6+deb13u1"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-82560"
+    }
+  },
+  {
+    "advisory": "CVE-2026-9538",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "libperl5.40",
+        "scanner_status": "fix_deferred",
+        "severity": "HIGH",
+        "severity_source": "nvd",
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl",
+        "scanner_status": "fix_deferred",
+        "severity": "HIGH",
+        "severity_source": "nvd",
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl-base",
+        "scanner_status": "fix_deferred",
+        "severity": "HIGH",
+        "severity_source": "nvd",
+        "source_version": "5.40.1"
+      },
+      {
+        "architecture": "all",
+        "fixed": "",
+        "installed": "5.40.1-6+deb13u1",
+        "package": "perl-modules-5.40",
+        "scanner_status": "fix_deferred",
+        "severity": "HIGH",
+        "severity_source": "nvd",
+        "source_version": "5.40.1"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "perl",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "perl-Archive-Tar: perl-Archive-Tar: Denial of Service via crafted tar header with large entry size",
+    "type": "debian",
+    "vendor": {
+      "description": "Archive::Tar versions before 3.10 for Perl allow memory exhaustion via attacker controlled entry size field in tar header.  _read_tar() reads each entry's payload with $handle->read($$data, $block), where $block is derived from the entry's 12-byte size field in the tar header with no upper bound on that value.  A crafted header declaring a multi-gigabyte size causes Perl to allocate a scalar of that size.",
+      "record": {
+        "nodsa": "Minor issue; wait for regressions upstream sorted out",
+        "nodsa_reason": "postponed",
+        "repositories": {
+          "trixie": "5.40.1-6+deb13u1"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-9538"
+    }
+  },
+  {
+    "advisory": "CVE-2025-12781",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "will_not_fix",
+        "severity": "MEDIUM",
+        "severity_source": "nvd",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "will_not_fix",
+        "severity": "MEDIUM",
+        "severity_source": "nvd",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "will_not_fix",
+        "severity": "MEDIUM",
+        "severity_source": "nvd",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "will_not_fix",
+        "severity": "MEDIUM",
+        "severity_source": "nvd",
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "cpython: base64.b64decode() always accepts \"+/\" characters, despite setting altchars",
+    "type": "debian",
+    "vendor": {
+      "description": "When passing data to the b64decode(), standard_b64decode(), and urlsafe_b64decode() functions in the \"base64\" module the characters \"+/\" will always be accepted, regardless of the value of \"altchars\" parameter, typically used to establish an \"alternative base64 alphabet\" such as the URL safe alphabet. This behavior matches what is recommended in earlier base64 RFCs, but newer RFCs now recommend either dropping characters outside the specified base64 alphabet or raising an error. The old behavior has the possibility of causing data integrity issues.     This behavior can only be insecure if your application uses an alternate base64 alphabet (without \"+/\"). If your application does not use the \"altchars\" parameter or the urlsafe_b64decode() function, then your application does not use an alternative base64 alphabet.     The attached patches DOES NOT make the base64-decode behavior raise an error, as this would be a change in behavior and break existing programs. Instead, the patch deprecates the behavior which will be replaced with the newly recommended behavior in a future version of Python.\u00a0Users are recommended to mitigate by verifying user-controlled inputs match the base64  alphabet they are expecting or verify that their application would not be  affected if the b64decode() functions accepted \"+\" or \"/\" outside of altchars.",
+      "record": {
+        "nodsa": "Not backported to older Python releases due to compat concerns",
+        "nodsa_reason": "ignored",
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2025-12781"
+    }
+  },
+  {
+    "advisory": "CVE-2025-15366",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "will_not_fix",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "will_not_fix",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "will_not_fix",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "will_not_fix",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "cpython: IMAP command injection in user-controlled commands",
+    "type": "debian",
+    "vendor": {
+      "description": "The imaplib module, when passed a user-controlled command, can have additional commands injected using newlines. Mitigation rejects commands containing control characters.",
+      "record": {
+        "nodsa": "Not backported to older Python releases due to compat concerns",
+        "nodsa_reason": "ignored",
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2025-15366"
+    }
+  },
+  {
+    "advisory": "CVE-2025-15367",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "will_not_fix",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "will_not_fix",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "will_not_fix",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "will_not_fix",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "cpython: POP3 command injection in user-controlled commands",
+    "type": "debian",
+    "vendor": {
+      "description": "The poplib module, when passed a user-controlled command, can have additional commands injected using newlines. Mitigation rejects commands containing control characters.",
+      "record": {
+        "nodsa": "Not backported to older Python releases due to compat concerns",
+        "nodsa_reason": "ignored",
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2025-15367"
+    }
+  },
+  {
+    "advisory": "CVE-2026-103995",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "python: python: Misinterpretation of HTTP responses via invalid chunk parsing",
+    "type": "debian",
+    "vendor": {
+      "description": "Response body and chunk parsing would handle non-hex or negative integers incorrectly which could result in misinterpreting HTTP response contents.",
+      "record": {
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-103995"
+    }
+  },
+  {
+    "advisory": "CVE-2026-115557",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "python: Distrust compromised eMudhra intermediate certificates in Python ssl module",
+    "type": "debian",
+    "vendor": {
+      "description": "Python has added a denylist for known compromised certificates to the \"ssl\" module to ensure user safety even without certificate revocation configured. Known compromised certificates will automatically be rejected regardless of the SSLContext policy configuration.",
+      "record": {
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-115557"
+    }
+  },
+  {
+    "advisory": "CVE-2026-115559",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "python: python: Response injection in imaplib via unpurged buffer during STARTTLS",
+    "type": "debian",
+    "vendor": {
+      "description": "IMAP4.starttls() wraps the socket in TLS but leaves self._readbuf, imaplib's own read-ahead buffer, untouched. Any plaintext bytes that arrived in the same recv() as the tagged OK to STARTTLS are returned by readline() after the handshake, so the client treats them as the first responses on the protected channel. A network attacker who cannot break TLS can append forged lines after the server's OK, let the handshake complete with the real server and a valid certificate, and have the client accept the forged CAPABILITY and the forged tagged completion of the next command. This is the STARTTLS command/response injection class of CVE-2011-0411.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-115559"
+    }
+  },
+  {
+    "advisory": "CVE-2026-115791",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "When tarfile or zipfile command line interface (CLI) is used to  decom ...",
+    "type": "debian",
+    "vendor": {
+      "description": "When tarfile or zipfile command line interface (CLI) is used to  decompress an archive, a Python script shadowing the stdlib can be  created. Then if an error occurs during decompressing the next file,  the newly created Python script is executed. This is especially true  if the created Python is called traceback.py. The problem is that  Python adds the current directory to sys.path when python -m MODULE is  run, and the archive is also decompressed in the current directory.    The fix removes sys.path[0] in gzip, tarfile and zipfile command line  interface to prevent shadowing standard library modules from extracted  files.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-115791"
+    }
+  },
+  {
+    "advisory": "CVE-2026-116566",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "python: python: Security bypass via null byte truncation in socket.getaddrinfo()",
+    "type": "debian",
+    "vendor": {
+      "description": "socket.getaddrinfo() previously accepted null bytes within *host* and *port* parameters which can cause the values to be silently truncated.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-116566"
+    }
+  },
+  {
+    "advisory": "CVE-2026-12003",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "python: Python: Privilege escalation due to insecure VPATH handling in Windows legacy installers",
+    "type": "debian",
+    "vendor": {
+      "description": "To allow builds of Python to be run from an in-tree layout (rather than an installed file layout), the VPATH variable is defined at build time and used to locate certain landmarks - specifically, Modules/setup.local. When this landmark is found relative to VPATH relative to the executable, Python assumes it is running in a source tree and generates a different default sys.path. This code remains in release builds, so that release-ready builds can be built in-tree.  On Windows, since builds are written to 'PCbuild/', the value of VPATH is set to '..\\..', which results in a landmark of '..\\..\\Modules\\setup.local'. This path is outside the install directory of Python, and may have different permissions, potentially allowing a low-privilege user to create the landmark and an alternative `Lib` folder that will be discovered by an otherwise restricted install.  Such a setup occurs with the legacy default install location for all users (in the now superseded EXE installer), due to how Windows allows all users to create folders in the root directory of their OS drive.  Our recommended mitigation on Windows is to migrate away from the legacy installer and use the new [Python install manager](https://www.python.org/downloads/latest/pymanager/) to install for the current user. Installs where the directory two levels above the Python installation directory have equivalent permissions are unaffected (in general, a per-user install cannot be modified at all by other users, removing any escalation of privilege risk, and could be directly modified by a privileged user, making the potential tampering irrelevant). Alternative mitigations might include preemptively creating and restricting access to a `Modules` directory. Be aware that only 3.13 and 3.14 will receive updated legacy installers - earlier fixes are only provided as sources.  Platforms other than Windows allow VPATH to be overridden, but as they don't usually use a separated directory in the build for binaries, are unlikely to have a landmark reference outside of the install directory.  The landmark detection involving VPATH is a fallback for when a more specific landmark - .\\pybuilddir.txt - is absent, and was included for compatibility. Future releases of Python will no longer include the fallback, and so builds will need to generate or preserve the pybuilddir.txt file in order to work in-tree. This landmark file has been generated on Windows since 3.11, and on other platforms for longer.",
+      "record": {
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-12003"
+    }
+  },
+  {
+    "advisory": "CVE-2026-12345",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "python: python: Arbitrary file deletion via race condition during temporary directory cleanup",
+    "type": "debian",
+    "vendor": {
+      "description": "The cleanup of tempfile.TemporaryDirectory is vulnerable to a race condition. An attacker who can modify the tree during cleanup can replace a directory with a symbolic link, causing files outside of the temporary directory to be deleted or have their permissions and file flags reset, with the privileges of the process performing the cleanup. Note that platforms where shutil.rmtree.avoids_symlink_attacks is false, remain affected, and file flags may still be reset outside of the tree on all platforms.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-12345"
+    }
+  },
+  {
+    "advisory": "CVE-2026-124249",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "python: Python: Unauthorized cross-domain cookie deletion via expired Set-Cookie headers",
+    "type": "debian",
+    "vendor": {
+      "description": "http.cookiejar.CookieJar deleted a stored cookie when a response carried an already expired Set-Cookie header for it, using the Domain and Path attributes from the header without consulting the cookie policy. A server could therefore delete cookies belonging to other domains from a shared cookie jar, such as the one used by urllib's HTTPCookieProcessor. The fix consults the cookie policy before an expired cookie may delete an existing one, as required by RFC 6265 section 5.3.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-124249"
+    }
+  },
+  {
+    "advisory": "CVE-2026-16052",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "python: python: Cookie restriction bypass via unescaped semicolons in http.cookies.Morsel",
+    "type": "debian",
+    "vendor": {
+      "description": "The http.cookies.Morsel class allows separator semicolons in attribute values and includes them verbatim in all output formats. An attacker who can control these values could use this to relax the cookie's Domain or SameSite restrictions.",
+      "record": {
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-16052"
+    }
+  },
+  {
+    "advisory": "CVE-2026-19552",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "UNKNOWN",
+        "severity_source": null,
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "When ca_certs parameter was supplied to ssl.get_server_certificate() f ...",
+    "type": "debian",
+    "vendor": {
+      "description": "When ca_certs parameter was supplied to ssl.get_server_certificate() function, the identity of the certificate is not checked.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-19552"
+    }
+  },
+  {
+    "advisory": "CVE-2026-3479",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "python: Python pkgutil.get_data(): Path Traversal via improper resource argument validation",
+    "type": "debian",
+    "vendor": {
+      "description": "DISPUTED: The project has clarified that the documentation was incorrect, and that pkgutil.get_data() has the same security model as open(). The documentation has been updated to clarify this point. There is no vulnerability in the function if following the intended security model.  pkgutil.get_data() did not validate the resource argument as documented, allowing path traversals.",
+      "record": {
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-3479"
+    }
+  },
+  {
+    "advisory": "CVE-2026-7210",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "HIGH",
+        "severity_source": "nvd",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "libpython3.13-stdlib",
+        "scanner_status": "affected",
+        "severity": "HIGH",
+        "severity_source": "nvd",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13",
+        "scanner_status": "affected",
+        "severity": "HIGH",
+        "severity_source": "nvd",
+        "source_version": "3.13.5"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.13.5-2+deb13u5",
+        "package": "python3.13-minimal",
+        "scanner_status": "affected",
+        "severity": "HIGH",
+        "severity_source": "nvd",
+        "source_version": "3.13.5"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "python3.13",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "python: Python/Expat: Denial of Service via crafted XML document",
+    "type": "debian",
+    "vendor": {
+      "description": "`xml.parsers.expat` and `xml.etree.ElementTree` use insufficient entropy for Expat hash-flooding protection, which allows a crafted XML document to trigger hash flooding.\\r\\n\\r\\nFully mitigating this vulnerability requires both updating libexpat to 2.8.0 or later and applying this patch.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "3.13.5-2+deb13u5"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-7210"
+    }
+  },
+  {
+    "advisory": "CVE-2021-45346",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.46.1-7+deb13u2",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.46.1"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "sqlite3",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "sqlite: crafted SQL query allows a malicious user to obtain sensitive information",
+    "type": "debian",
+    "vendor": {
+      "description": "A Memory Leak vulnerability exists in SQLite Project SQLite3 3.35.1 and 3.37.0 via maliciously crafted SQL Queries (made via editing the Database File), it is possible to query a record, and leak subsequent bytes of memory that extend beyond the record, which could let a malicious user obtain sensitive information. NOTE: The developer disputes this as a vulnerability stating that If you give SQLite a corrupted database file and submit a query against the database, it might read parts of the database that you did not intend or expect.",
+      "record": {
+        "repositories": {
+          "trixie": "3.46.1-7+deb13u2"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2021-45346"
+    }
+  },
+  {
+    "advisory": "CVE-2025-70873",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.46.1-7+deb13u2",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "3.46.1"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "sqlite3",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "sqlite: SQLite: Information Disclosure via Crafted ZIP File",
+    "type": "debian",
+    "vendor": {
+      "description": "An information disclosure issue in the zipfileInflate function in the zipfile extension in SQLite v3.51.1 and earlier allows attackers to obtain heap memory via supplying a crafted ZIP file.",
+      "record": {
+        "repositories": {
+          "trixie": "3.46.1-7+deb13u2"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2025-70873"
+    }
+  },
+  {
+    "advisory": "CVE-2026-50812",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.46.1-7+deb13u2",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.46.1"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "sqlite3",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "sqlite: SQLite: Denial of Service via malformed changeset in Session Extension",
+    "type": "debian",
+    "vendor": {
+      "description": "A NULL pointer dereference in the SQLite Session Extension in SQLite 3.53.1 and SQLite trunk builds before check-in e807d4e3798efd53 allows an attacker who can supply a malformed changeset blob to cause a denial of service. The issue occurs when sqlite3changeset_apply_v3() applies a corrupt changeset and reaches sqlite3_value_type() with a NULL sqlite3_value pointer.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "3.46.1-7+deb13u2"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-50812"
+    }
+  },
+  {
+    "advisory": "CVE-2026-50813",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "3.46.1-7+deb13u2",
+        "package": "libsqlite3-0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "3.46.1"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "sqlite3",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "sqlite: SQLite: Information disclosure via Session Extension changeset merge path",
+    "type": "debian",
+    "vendor": {
+      "description": "An issue in SQLite before Fossil check-in 869a51ae84df allows a local attacker to obtain sensitive information via the Session Extension changeset concat/changegroup merge path",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "3.46.1-7+deb13u2"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-50813"
+    }
+  },
+  {
+    "advisory": "CVE-2013-4392",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "257.13-1~deb13u1",
+        "package": "libsystemd0",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "257.13"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "257.13-1~deb13u1",
+        "package": "libudev1",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "257.13"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "systemd",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "systemd: TOCTOU race condition when updating file permissions and SELinux security contexts",
+    "type": "debian",
+    "vendor": {
+      "description": "systemd, when updating file permissions, allows local users to change the permissions and SELinux security contexts for arbitrary files via a symlink attack on unspecified files.",
+      "record": {
+        "repositories": {
+          "trixie": "257.13-1~deb13u1"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2013-4392"
+    }
+  },
+  {
+    "advisory": "CVE-2023-31437",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "257.13-1~deb13u1",
+        "package": "libsystemd0",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "257.13"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "257.13-1~deb13u1",
+        "package": "libudev1",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "257.13"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "systemd",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "An issue was discovered in systemd 253. An attacker can modify a seale ...",
+    "type": "debian",
+    "vendor": {
+      "description": "An issue was discovered in systemd 253. An attacker can modify a sealed log file such that, in some views, not all existing and sealed log messages are displayed. NOTE: the vendor reportedly sent \"a reply denying that any of the finding was a security vulnerability.\"",
+      "record": {
+        "repositories": {
+          "trixie": "257.13-1~deb13u1"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2023-31437"
+    }
+  },
+  {
+    "advisory": "CVE-2023-31438",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "257.13-1~deb13u1",
+        "package": "libsystemd0",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "257.13"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "257.13-1~deb13u1",
+        "package": "libudev1",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "257.13"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "systemd",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "An issue was discovered in systemd 253. An attacker can truncate a sea ...",
+    "type": "debian",
+    "vendor": {
+      "description": "An issue was discovered in systemd 253. An attacker can truncate a sealed log file and then resume log sealing such that checking the integrity shows no error, despite modifications. NOTE: the vendor reportedly sent \"a reply denying that any of the finding was a security vulnerability.\"",
+      "record": {
+        "repositories": {
+          "trixie": "257.13-1~deb13u1"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2023-31438"
+    }
+  },
+  {
+    "advisory": "CVE-2023-31439",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "257.13-1~deb13u1",
+        "package": "libsystemd0",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "257.13"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "257.13-1~deb13u1",
+        "package": "libudev1",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "257.13"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "systemd",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "An issue was discovered in systemd 253. An attacker can modify the con ...",
+    "type": "debian",
+    "vendor": {
+      "description": "An issue was discovered in systemd 253. An attacker can modify the contents of past events in a sealed log file and then adjust the file such that checking the integrity shows no error, despite modifications. NOTE: the vendor reportedly sent \"a reply denying that any of the finding was a security vulnerability.\"",
+      "record": {
+        "repositories": {
+          "trixie": "257.13-1~deb13u1"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2023-31439"
+    }
+  },
+  {
+    "advisory": "CVE-2026-15059",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "257.13-1~deb13u1",
+        "package": "libsystemd0",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "257.13"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "257.13-1~deb13u1",
+        "package": "libudev1",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": null,
+        "source_version": "257.13"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "systemd",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "systemd: systemd-oomd: Unprivileged users can terminate arbitrary processes via IPC API",
+    "type": "debian",
+    "vendor": {
+      "description": "Local unprivileged users can terminate arbitrary local processes via a systemd-oomd IPC API due to a missing path traversal validation.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "257.13-1~deb13u1"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-15059"
+    }
+  },
+  {
+    "advisory": "CVE-2026-16742",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "257.13-1~deb13u1",
+        "package": "libsystemd0",
+        "scanner_status": "affected",
+        "severity": "HIGH",
+        "severity_source": null,
+        "source_version": "257.13"
+      },
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "257.13-1~deb13u1",
+        "package": "libudev1",
+        "scanner_status": "affected",
+        "severity": "HIGH",
+        "severity_source": null,
+        "source_version": "257.13"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "systemd",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "systemd: systemd-homed: Local privilege escalation via missing home-record signature verification",
+    "type": "debian",
+    "vendor": {
+      "description": "systemd-homed contains a local privilege escalation bug via arbitrary system group addition to a local, logged in, homed-managed user",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "257.13-1~deb13u1"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-16742"
+    }
+  },
+  {
+    "advisory": "CVE-2005-2541",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "1.35+dfsg-3.1",
+        "package": "tar",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "1.35+dfsg"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "tar",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "tar: does not properly warn the user when extracting setuid or setgid files",
+    "type": "debian",
+    "vendor": {
+      "description": "Tar 1.15.1 does not properly warn the user when extracting setuid or setgid files, which may allow local users or remote attackers to gain privileges.",
+      "record": {
+        "repositories": {
+          "trixie": "1.35+dfsg-3.1"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2005-2541"
+    }
+  },
+  {
+    "advisory": "CVE-2026-5704",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "1.35+dfsg-3.1",
+        "package": "tar",
+        "scanner_status": "affected",
+        "severity": "MEDIUM",
+        "severity_source": "nvd",
+        "source_version": "1.35+dfsg"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "tar",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "tar: tar: Hidden file injection via crafted archives",
+    "type": "debian",
+    "vendor": {
+      "description": "A flaw was found in tar. A remote attacker could exploit this vulnerability by crafting a malicious archive, leading to hidden file injection with fully attacker-controlled content. This bypasses pre-extraction inspection mechanisms, potentially allowing an attacker to introduce malicious files onto a system without detection.",
+      "record": {
+        "nodsa": "Minor issue",
+        "nodsa_reason": "",
+        "repositories": {
+          "trixie": "1.35+dfsg-3.1"
+        },
+        "status": "open",
+        "urgency": "not yet assigned"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-5704"
+    }
+  },
+  {
+    "advisory": "TEMP-0290435-0B57B5",
+    "application_image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "tools",
+    "matches": [
+      {
+        "architecture": "amd64",
+        "fixed": "",
+        "installed": "1.35+dfsg-3.1",
+        "package": "tar",
+        "scanner_status": "affected",
+        "severity": "LOW",
+        "severity_source": "debian",
+        "source_version": "1.35+dfsg"
+      }
+    ],
+    "scan_config_id": "sha256:dd01671b81a6c9b96fe6b9283bcaba929d0c721da7eeac8f80e41f987eb25020",
+    "source": "tar",
+    "target": "/input/tools.tar.gz (debian 13.8)",
+    "title": "[tar's rmt command may have undesired side effects]",
+    "type": "debian",
+    "vendor": {
+      "description": null,
+      "record": {
+        "repositories": {
+          "trixie": "1.35+dfsg-3.1"
+        },
+        "status": "open",
+        "urgency": "unimportant"
+      },
+      "release": "trixie",
+      "url": "https://security-tracker.debian.org/tracker/TEMP-0290435-0B57B5"
+    }
+  }
+]

@@ -1,6 +1,6 @@
 # Current project status and release work
 
-Updated: 2026-11-24.
+Updated: 2026-11-25.
 
 RateFreak's first-release product scope is implemented and merged locally into
 `main`. **Public release is not yet cleared.** The remaining work is security,
@@ -39,7 +39,7 @@ owner's image-processing decision are recorded; no repeat TMDB storage/image
 permission request is pending. See [TMDB verification](tmdb-lifecycle-verification.md)
 and [provider disposition](provider-agreement-evidence.md#current-disposition-2026-11-24).
 
-The merged checkout passed **1,909 tests**: 778 backend (zero skips), 1,013
+The merged baseline passed **1,909 tests**: 778 backend (zero skips), 1,013
 frontend and 118 operator/release/compliance, plus model consistency. Runtime
 inputs match the recorded TMDB image proof. This is local verification, not
 qualification of a final stable release.
@@ -52,10 +52,31 @@ reapplication was idempotent. See [integration/migration evidence](release-evide
 Private backup and apply records are in
 `.local/localhost/tmdb-content-lifecycle-migration/`.
 
-API/frontend remain stopped; provider/runtime settings are unchanged. Nothing
+API/frontend remain stopped; persistent-instance provider/runtime settings are unchanged. Nothing
 was pushed or published. Upstream synchronization failed because GitHub SSH
 authentication was unavailable. Other installations need their own reviewed
 migration and configuration; this local migration does not upgrade them.
+
+The [2026-11-25 security follow-up](security-followup-2026-11-25.md) implements: Debian 13 web/tools runtimes, stable SkiaSharp 4.157.0
+with refreshed native notices, PostgreSQL 17.12 Trixie with collation safeguards,
+HEIF/AVIF and Node zstd decoder restrictions, and PostgreSQL JIT disabled.
+Verification passed 778 backend, 1,026 frontend and 123 tooling tests, plus lint,
+TypeScript, model consistency, compiled decoder checks, fresh/upgrade HTTPS,
+browser and 33-table coordinated restore acceptance. Source coverage and all 43
+image layers were inspected. JIT disabling was separately tested on those
+qualified application images; final installation-package qualification must
+include that later configuration delta. No persistent installation was upgraded.
+A fresh verification before local main integration reran all **1,927 tests**
+and passed lint, TypeScript and model consistency; see the
+[main integration record](release-evidence/2026-11-25-security-followup/main-integration.json).
+
+**Security clearance remains blocked by eight medium/low IDs:** three glibc
+mitigation findings and five C++ compiled-caller/header findings. The owner's
+release standard requires a documented fix or caller-level exclusion for every
+finding; vendor deferral or lack of a demonstrated exploit is insufficient.
+The current ledger has 22 unresolved image/source records covering 67 package
+associations, with explicit proof gaps rather than unassessed rows. See the
+[remaining-ID inventory](release-evidence/2026-11-25-security-followup/remaining-findings.json).
 
 ## Remaining release gates
 
@@ -63,16 +84,20 @@ The order below is a suggested sequence. Earlier candidate checks are completed
 evidence for their exact sources/images; changed final artifacts need matching
 qualification.
 
-1. **Clear the security gate.** Finish residual OS and bundled/native component
-   review, including Node's embedded OpenSSL; remediate applicable findings and
-   record supported-flow exclusions with their limits. Patched runtime updates
-   are merged. The Debian 13 web/tools trial passed installation, upgrade and
-   recovery checks but remains isolated and needs an integration decision. Its
-   20 newly reported advisory IDs have conditional exclusions; that assessment
-   does not clear the remaining findings or the overall security gate. Rescan
-   and reassess the chosen final images. See [runtime updates](runtime-security-update-2026-11-23.md),
-   [OS review](release-os-review-2026-11-23.md), [Debian trial](debian-runtime-trial-2026-11-23.md)
-   and [advisory assessment](debian-advisory-assessment-2026-11-23.md).
+1. **Clear the security gate.** Resolve the eight documented glibc/C++ proof
+   gaps through an applied fix or complete supported-caller exclusion. The
+   [current follow-up](security-followup-2026-11-25.md) records exact images,
+   native/OS decisions, the Skia update, resolved PostgreSQL shared-ASN.1 scope,
+   decoder mitigations and JIT-disabled configuration proof. No medium/low
+   residual-risk acceptance is authorized. A source search limited to application
+   dependencies does not establish the supported OS/native consumers' compiled
+   header inputs;
+   disputed native mitigation properties remain open. Preserve the conditional
+   exclusions and their configuration/caller limits when changing artifacts.
+   The earlier [integration](security-integration-2026-11-25.md),
+   [OS review](release-os-review-2026-11-23.md) and
+   [Debian trial](debian-runtime-trial-2026-11-23.md) retain historical scope.
+
 2. **Close remaining provider requirements.** Resolve IGDB's public catalog
    storage/display, update/removal and termination scope, and Open Library cover
    optimization/Internet Archive terms. Record applicable operator eligibility,

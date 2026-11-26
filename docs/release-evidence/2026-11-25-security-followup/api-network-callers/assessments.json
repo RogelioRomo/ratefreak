@@ -1,0 +1,1161 @@
+[
+  {
+    "advisory": "CVE-2026-107161",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "A heap-based buffer overflow flaw was found in Cyrus SASL. The add_to_challenge() function in the DIGEST-MD5 plugin computes the size of the buffer needed for a challenge/response field before DIGEST-MD5 quoting is applied, but does not recompute that size when quoting (escaping special characters) makes the value longer. The under-sized buffer is then passed to strcat(), causing a heap-based out-of-bounds write whose size depends on attacker-controlled input. A malicious or on-path DIGEST-MD5 (or HTTP Digest) server can trigger this flaw in a connecting client by supplying a crafted challenge field, such as realm or nonce, most likely resulting in a crash of the client application.",
+    "reason": "Trigger requires the Cyrus DIGEST-MD5 add_to_challenge mechanism. Exact image SASL plugin directory contains only sasldb, with no DIGEST-MD5 plugin. Supported app uses managed Npgsql SCRAM and OAuth, not Cyrus SASL; fixed curl plain-HTTP healthcheck supplies no authentication credentials or negotiation options. Cyrus core is present transitively through LDAP, so the package is not declared absent.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-5ubuntu3.1",
+        "package": "libsasl2-2",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      },
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-5ubuntu3.1",
+        "package": "libsasl2-modules-db",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-67693",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "GnuTLS v3.8.13 does not reject end-entity X.509 certificates that contain a contradictory combination of Key Usage (KU) and Extended Key Usage (EKU). NOTE: the Supplier does not consider this an actionable security vulnerability because of its \"threat model doesn't consider attacks only possible by modifying anything within the trust boundary (private keys, trusted certificate authorities and their issued certificates including intermediate CAs, etc.)\" policy.",
+    "reason": "Each finding concerns GnuTLS X509 certificate verification. API provider/OAuth clients explicitly use SocketsHttpHandler and the .NET OpenSSL native crypto path; curl --version confirms its TLS backend is OpenSSL. GnuTLS is present in curl transitive dependencies, but the supported healthcheck is fixed plain HTTP to api:8080, no redirect-following, no LDAP/RTMP protocol, no authentication negotiation. No supported caller reaches GnuTLS certificate validation.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "GnuTLS is transitively loaded by curl; loaded-library absence is not the exclusion.",
+      "Custom LDAP/RTMP clients, HTTP proxy/client reconfiguration, or other caller additions invalidate this scope."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.3-1.1ubuntu3.6",
+        "package": "libgnutls30t64",
+        "severity": "MEDIUM",
+        "source_version": "3.8.3"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-88647",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "GnuTLS v3.8.13 can perhaps unexpectedly trust a certificate on the basis of Common Name when Subject Alternative Name has an SRV otherName (1.3.6.1.5.5.7.8.7) whose value is an OCTET STRING. NOTE: the Supplier does not consider this an actionable security vulnerability because of its \"threat model doesn't consider attacks only possible by modifying anything within the trust boundary (private keys, trusted certificate authorities and their issued certificates including intermediate CAs, etc.)\" policy.",
+    "reason": "Each finding concerns GnuTLS X509 certificate verification. API provider/OAuth clients explicitly use SocketsHttpHandler and the .NET OpenSSL native crypto path; curl --version confirms its TLS backend is OpenSSL. GnuTLS is present in curl transitive dependencies, but the supported healthcheck is fixed plain HTTP to api:8080, no redirect-following, no LDAP/RTMP protocol, no authentication negotiation. No supported caller reaches GnuTLS certificate validation.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "GnuTLS is transitively loaded by curl; loaded-library absence is not the exclusion.",
+      "Custom LDAP/RTMP clients, HTTP proxy/client reconfiguration, or other caller additions invalidate this scope."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.3-1.1ubuntu3.6",
+        "package": "libgnutls30t64",
+        "severity": "MEDIUM",
+        "source_version": "3.8.3"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-88648",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "In GnuTLS v3.8.13, an excluded msUPN/SRV otherName is never checked. NOTE: the Supplier does not consider this an actionable security vulnerability because of its \"threat model doesn't consider attacks only possible by modifying anything within the trust boundary (private keys, trusted certificate authorities and their issued certificates including intermediate CAs, etc.)\" policy.",
+    "reason": "Each finding concerns GnuTLS X509 certificate verification. API provider/OAuth clients explicitly use SocketsHttpHandler and the .NET OpenSSL native crypto path; curl --version confirms its TLS backend is OpenSSL. GnuTLS is present in curl transitive dependencies, but the supported healthcheck is fixed plain HTTP to api:8080, no redirect-following, no LDAP/RTMP protocol, no authentication negotiation. No supported caller reaches GnuTLS certificate validation.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "GnuTLS is transitively loaded by curl; loaded-library absence is not the exclusion.",
+      "Custom LDAP/RTMP clients, HTTP proxy/client reconfiguration, or other caller additions invalidate this scope."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.3-1.1ubuntu3.6",
+        "package": "libgnutls30t64",
+        "severity": "MEDIUM",
+        "source_version": "3.8.3"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-95184",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "GnuTLS v3.8.13 does not properly enforce name constraints, as demonstrated by a permitted subtree violation for \"EE O=Evil accepted although outside permitted O=Good.\" NOTE: the Supplier does not consider this an actionable security vulnerability because of its \"threat model doesn't consider attacks only possible by modifying anything within the trust boundary (private keys, trusted certificate authorities and their issued certificates including intermediate CAs, etc.)\" policy.",
+    "reason": "Each finding concerns GnuTLS X509 certificate verification. API provider/OAuth clients explicitly use SocketsHttpHandler and the .NET OpenSSL native crypto path; curl --version confirms its TLS backend is OpenSSL. GnuTLS is present in curl transitive dependencies, but the supported healthcheck is fixed plain HTTP to api:8080, no redirect-following, no LDAP/RTMP protocol, no authentication negotiation. No supported caller reaches GnuTLS certificate validation.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "GnuTLS is transitively loaded by curl; loaded-library absence is not the exclusion.",
+      "Custom LDAP/RTMP clients, HTTP proxy/client reconfiguration, or other caller additions invalidate this scope."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.3-1.1ubuntu3.6",
+        "package": "libgnutls30t64",
+        "severity": "MEDIUM",
+        "source_version": "3.8.3"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-95210",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "GnuTLS v3.8.13 does not reject a critical keyUsage extension when it cannot be processed, such as when extnValue is an ASN.1 NULL (05 00) instead of a BIT STRING. NOTE: the Supplier does not consider this an actionable security vulnerability because of its \"threat model doesn't consider attacks only possible by modifying anything within the trust boundary (private keys, trusted certificate authorities and their issued certificates including intermediate CAs, etc.)\" policy.",
+    "reason": "Each finding concerns GnuTLS X509 certificate verification. API provider/OAuth clients explicitly use SocketsHttpHandler and the .NET OpenSSL native crypto path; curl --version confirms its TLS backend is OpenSSL. GnuTLS is present in curl transitive dependencies, but the supported healthcheck is fixed plain HTTP to api:8080, no redirect-following, no LDAP/RTMP protocol, no authentication negotiation. No supported caller reaches GnuTLS certificate validation.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "GnuTLS is transitively loaded by curl; loaded-library absence is not the exclusion.",
+      "Custom LDAP/RTMP clients, HTTP proxy/client reconfiguration, or other caller additions invalidate this scope."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.3-1.1ubuntu3.6",
+        "package": "libgnutls30t64",
+        "severity": "MEDIUM",
+        "source_version": "3.8.3"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2025-5222",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "A stack buffer overflow was found in Internationl components for unicode (ICU ). While running the genrb binary, the 'subtag' struct overflowed at the SRBRoot::addTag function. This issue may lead to memory corruption and local arbitrary code execution.",
+    "reason": "Affected routine SRBRoot::addTag belongs to ICU genrb resource compiler. Exact image probe verifies /usr/bin/genrb absent; application uses ICU runtime globalization, not the resource compiler. Existing exact-image residual ELF/command probe is independent corroboration. No supported lifecycle command compiles ICU resources.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "74.2-1ubuntu3.1",
+        "package": "libicu74",
+        "severity": "LOW",
+        "source_version": "74.2"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-107364",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "In all released versions of MIT krb5, an unauthenticated attacker can cause a KDC process to perform a large read overrun, likely causing the process to terminate.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-107708",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "MIT krb5 through 1.22.2 contains a NULL pointer dereference vulnerability in the KDC's get_pac_princ_with_realm() that returns success while leaving the client principal NULL on malformed names. A malicious or compromised cross-realm trusted KDC can send an S4U2Proxy request with a PAC carrying a malformed client name to crash krb5kdc and deny authentication.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-107778",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "MIT Kerberos 5 (krb5) through 1.22.2 contains a NULL pointer dereference in make_cred_list() in rd_cred.c that allows authenticated Kerberos clients to crash services by sending mismatched KRB-CRED arrays. Attackers can send forwarded credentials with more tickets than ticket_info entries through gss_accept_sec_context() to crash GSS-API acceptor services, causing denial of service.",
+    "reason": "Trigger is gss_accept_sec_context processing forwarded credentials. Application has no Negotiate acceptor handler; Npgsql is a client initiator, and exact default credential acquisition fails without a handle. Loading GSS to check default credentials is real but is not acceptance of untrusted forwarded KRB-CRED.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-107884",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "In MIT krb5 release 1.15 and later, a client with kadmin administrative privileges can bypass the lockdown_keys attribute by using the password change protocol instead of the kadmin protocol.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-112314",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "clnttcp_call() in lib/rpc/clnt_tcp.c in MIT Kerberos 5 (aka krb5) does not free the RPC reply verifier between retries, which allows remote attackers to cause a denial of service (memory leak in GSS-RPC client programs) by injecting RPC replies with mismatched XIDs or by triggering authentication retries.",
+    "reason": "Trigger requires Kerberos GSS-RPC client transport/protected RPC service use. Exact image has no libgssrpc/kadm5 or kadmin client; supported app uses managed PostgreSQL, OAuth and HTTP provider clients. Npgsql session GSS capability uses ordinary GSSAPI rather than the Kerberos administration RPC stack; no default initiator credentials are acquired.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-112315",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "The RPCSEC_GSS authentication routines in lib/rpc/authgss_prot.c in MIT Kerberos 5 (aka krb5) 1.4 and later do not free partially decoded buffers on failure, which allows remote attackers to cause a denial of service (memory leak in kadmind) via crafted RPCSEC_GSS messages.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-112316",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "xdr_krb5_tl_data() in lib/kadm5/kadm_rpc_xdr.c in MIT Kerberos 5 (aka krb5) does not free partially decoded data on failure, which allows remote authenticated users to cause a denial of service (memory leak in kadmind) via crafted RPC requests that trigger a decode failure.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-112317",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "krb5_ktkdb_get_entry() in lib/kdb/keytab.c in MIT Kerberos 5 (aka krb5) 1.2.8 and later does not free decrypted key material when a post-decryption check fails, which allows remote attackers to cause a denial of service (memory leak in the KDC or kadmind) via requests that repeatedly trigger key decryption failures.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-112318",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "The policy RPC stubs in kadmin/server/server_stubs.c in MIT Kerberos 5 (aka krb5) 1.5.3 and later do not reject a NULL policy name decoded by xdr_nullstring(), which allows remote authenticated users to cause a denial of service (kadmind crash via NULL pointer dereference) by sending a policy request with an empty policy name that reaches authorization checks or logging code.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-112319",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "The GSS-RPC layer in MIT Kerberos 5 (aka krb5) does not enforce size limits on XDR-decoded data, which allows remote authenticated users to cause a denial of service (memory exhaustion or excessive CPU consumption in kadmind) via crafted RPC requests that trigger unbounded memory allocations during XDR decoding.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-112320",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "The GSS-RPC transport layer in MIT Kerberos 5 (aka krb5) 1.4 and later does not release the previous authentication context when a client switches from an RPCSEC_GSS or AUTH_GSSAPI flavor to a non-GSS flavor on the same TCP connection. This allows remote attackers to cause a denial of service (memory exhaustion in kadmind) by repeatedly establishing and abandoning GSS authentication contexts.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-112321",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "The AUTH_GSSAPI handler in lib/rpc/svc_auth_gssapi.c in MIT Kerberos 5 (aka krb5) does not free decoded arguments on certain error paths, which allows remote attackers to cause a denial of service (memory exhaustion in kadmind) via crafted AUTH_GSSAPI_INIT requests that trigger authentication failures.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-112322",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "clean_client() in lib/rpc/svc_auth_gssapi.c in MIT Kerberos 5 (aka krb5) restarts its scan from the head of the client list after each removal, resulting in quadratic CPU cost. Remote attackers can cause a denial of service (CPU consumption in kadmind) by accumulating a large number of AUTH_GSSAPI client entries.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-112323",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "The AUTH_GSSAPI handler in lib/rpc/svc_auth_gssapi.c in MIT Kerberos 5 (aka krb5) 1.5.2 and later allows remote attackers to cause a denial of service (memory exhaustion in kadmind) by sending repeated failed AUTH_GSSAPI_INIT requests. Each failed request allocates client state that is only freed after a 15-minute expiration timeout, allowing an attacker to accumulate memory faster than it is reclaimed.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-118380",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "In MIT krb5 release 1.4 and later, an active network attacker can alter the arguments sent by a legitimate client to RPC services protected by RPCSEC_GSS, or cause return values to be sent in plain text.",
+    "reason": "Trigger requires Kerberos GSS-RPC client transport/protected RPC service use. Exact image has no libgssrpc/kadm5 or kadmin client; supported app uses managed PostgreSQL, OAuth and HTTP provider clients. Npgsql session GSS capability uses ordinary GSSAPI rather than the Kerberos administration RPC stack; no default initiator credentials are acquired.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-119079",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "decode_sequence_of() in lib/krb5/asn.1/asn1_encode.c in MIT Kerberos 5 (aka krb5) 1.11 and later grows the decoded element array one entry at a time, which allows remote attackers to cause a denial of service (CPU consumption in the KDC) by sending an unauthenticated AS-REQ or TGS-REQ with a large number of elements in a SEQUENCE OF field over TCP.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-71199",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "In MIT krb5 release 1.14 and later (since authentication indicator support was added), an authenticated attacker can bypass authentication indicator requirements using an unkeyed checksum in the CAMMAC authdata container.",
+    "reason": "Trigger bypasses authentication-indicator requirements during CAMMAC authdata verification. Application login uses Identity cookies/OAuth and does not accept Kerberos contexts or enforce Kerberos authdata indicators. Npgsql/curl supported roles do not expose this verifier; default initiator credential acquisition additionally fails.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-71200",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "If a KDC is configured to allow PKINIT authentication, an unauthenticated attacker can trigger a null pointer dereference, causing the process to terminate.",
+    "reason": "The described trigger requires KDC/kadmind/KDB/password-administration or Kerberos RPC service behavior. Exact image has no krb5kdc/kadmind/kadmin/kpasswd, KDB plugins or gssrpc/kadm5 libraries. Application authenticates with Identity cookies/OAuth, not a Kerberos acceptor or administration service. Npgsql default Prefer may load GSS to seek credentials, but default initiator acquisition fails with no credential handle in this image; supplied reference compose does not supply a cache/keytab. No supported caller exposes the described server/admin endpoint.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair.",
+      "Npgsql10 Prefer does attempt default GSS credential discovery; never classify this as GSS library absent or never loaded.",
+      "Kerberos-enabled custom database endpoints or operator credential injection require reassessment."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      },
+      {
+        "fixed": "",
+        "installed": "1.20.1-6ubuntu2.10",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.20.1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-112061",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "librtmp (RTMPDump) through 2.6 contains a heap out-of-bounds read vulnerability in AMFProp_Decode that reads an AMF0 strict-array element count before checking that four bytes remain. A malicious RTMP server or man in the middle can send an AMF0 body ending with a strict-array type byte and fewer than four trailing bytes to crash the client.",
+    "reason": "Trigger requires parsing an RTMP/AMF strict array from an RTMP server. librtmp is installed and transitively loaded by curl, but the only supported curl invocation uses fixed http://api:8080/health/ready with no redirect-following. Provider/OAuth calls are HTTP(S) SocketsHttpHandler; no supported caller speaks RTMP or invokes AMFProp_Decode.",
+    "evidence": [
+      "api-probe.json",
+      "review.md",
+      "source-input-hashes.json",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "Exact unmodified reference API image and compose configuration.",
+      "No custom credential caches/keytabs, KRB5 environment, Negotiate handlers, LDAP clients, RTMP clients, SASL modules or modified curl configuration.",
+      "Libraries remain installed and may be loaded; this is an affected-call-path exclusion, not library repair."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.4+20151223.gitfa8646d.1-2build7",
+        "package": "librtmp1",
+        "severity": "MEDIUM",
+        "source_version": "2.4+20151223.gitfa8646d.1"
+      }
+    ]
+  }
+]

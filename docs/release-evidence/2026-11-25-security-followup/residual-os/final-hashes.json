@@ -1,0 +1,17 @@
+{
+  ".local/security-residual-os-2026-11-25/final-rebind-comparison.json": "77eace4f30fc8b3a34918d64e28159750bcfea1784e25302d9088773255762da",
+  ".local/security-residual-os-2026-11-25/final-api-probe.json": "c587d9d14454dcd4e2db5c9c34a455a988d5db064d075822d59977e24a73a673",
+  ".local/security-residual-os-2026-11-25/final-tools-probe.json": "bdac52b65df581d543ce6101b18686b40af830296ac86e0bdeff00ea16d958f3",
+  ".local/security-residual-os-2026-11-25/final-config-executions.json": "3f8423d4bf6b03c41b7b1d773f9de65dc4da3cd5012ab290e869e870df056f08",
+  ".local/security-residual-os-2026-11-25/final-probe-executions.json": "a1eeb74bce6919c4303c405e2b53147ad40f08c8493dae2adc18b72adc3a80b9",
+  ".local/security-residual-os-2026-11-25/final-web-probe.json": "4dee2d9ba6e4233b6e34ecc806b45b4fb53f80d81592c31e043b3d4c72484639",
+  ".local/security-residual-os-2026-11-25/final-assessments.json": "a917f835043e2eb61a983deeb1d00e6ff0b449f225868de6301813ac8139dd11",
+  ".local/security-residual-os-2026-11-25/final-config-tools-probe.json": "320422a307da5702db4e12aa84c1d5fd860cce30f4f6e0e2582c37af81d9a0ef",
+  ".local/security-residual-os-2026-11-25/final-config-api-probe.json": "d05dae854d7e14c312d3c1746779328d2c44d050dee49fe890ce47823e8f7187",
+  ".local/security-residual-os-2026-11-25/final-config-web-probe.json": "871e96a4362460de7b1fba6d65824e88bb58a02a99b670bc57aebc9c587dc318",
+  ".local/security-residual-os-2026-11-25/rebind_final.py": "4d7fe1e921e576f49c5655c1367c4c7bf6258f0fac5389ac8be63741a829ed4c",
+  "deploy/self-host/entrypoint.py": "6ff6b8176b3234164a8c6a058dec24f4a2ea5688a3d179e482d00f7111c8694a",
+  "deploy/self-host/maintenance.py": "1f8d9dd7fc007d3ca06574905bfe52c3620d9ab448214e6e517a97cf12f16ea9",
+  "src/RateFreak.Infrastructure/Providers/Tmdb/TmdbContentPolicy.cs": "82a4956ed31d9ec6f40027c24a325c760e2dbc64c436477378907040c433e255",
+  "src/RateFreak.Api/Middleware/GlobalExceptionHandler.cs": "866310ea5d24a612c4e2ff68dea3a092bba0b84c55a10d14599be5b553a34347"
+}

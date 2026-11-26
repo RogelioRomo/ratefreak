@@ -1,0 +1,242 @@
+[
+  {
+    "file": "GHSA-74mj-m37q-h3q9.md",
+    "sha256": "31ecdab04c14a72f8c357e3dab70616683ffeb2a9edc6387597820cde3bf1bc9",
+    "bytes": 14533
+  },
+  {
+    "file": "GHSA-c4v6-gxrq-6g2x.md",
+    "sha256": "b1e9a86dc308f9e22bdfd6df40c8719e82474178c9e7b3bda92d5cee3e230a2b",
+    "bytes": 3706
+  },
+  {
+    "file": "GHSA-fpr5-xpfr-vcq3.md",
+    "sha256": "847a5b1afb4d1838efa91eb8257212c9ce31c3d2ff028a5658212d88f41f2f12",
+    "bytes": 2218
+  },
+  {
+    "file": "GHSA-g8hp-mq4h-rqm3.md",
+    "sha256": "d4416a5ed352e583f5df432cf9c748495a4e0e538226b467661f7442f7f20352",
+    "bytes": 17477
+  },
+  {
+    "file": "GHSA-hhg3-fxg7-3gxw.md",
+    "sha256": "ae7e20a5eaca17b6758e62d7042c0db669b8e8f4e1df1cc2f9fa65a05642f0d7",
+    "bytes": 5222
+  },
+  {
+    "file": "GHSA-jx54-6rm6-2cgj.md",
+    "sha256": "6fed13c0ae573d82a52e42afcd5b82628e9acb1aec6d6a757aa14f96a53a84b9",
+    "bytes": 2322
+  },
+  {
+    "file": "acquire.py",
+    "sha256": "bbde1b4017abde1a35dad52000880a5f4f3b0502abe48fa54ff8a048e0b70998",
+    "bytes": 1576
+  },
+  {
+    "file": "acquire_actionable.py",
+    "sha256": "16817b32e7e5905a2a568ce0a0c7c2e6d092b8ab39dd0ca23e52f964977c6e5f",
+    "bytes": 1085
+  },
+  {
+    "file": "acquire_more.py",
+    "sha256": "ae1b64f7cf8ebd36e7cd26077322dcfddce95cf5725ec24ecc84b8ec6d78b65b",
+    "bytes": 1200
+  },
+  {
+    "file": "acquisition-actionable.json",
+    "sha256": "451e8aa153bb5a83f6f25a4ca1e04d0364ed4dfb5123e80aef86dab728c1b8ee",
+    "bytes": 2098
+  },
+  {
+    "file": "acquisition-more.json",
+    "sha256": "285a8f61a8edb89caf75f6344783505f54b001f8f699e5df178bc886105170fb",
+    "bytes": 2286
+  },
+  {
+    "file": "acquisition.json",
+    "sha256": "4875f62266597546d8df8d52734466f0c172b51a9688fcb73b3d0902d91cd265",
+    "bytes": 1978
+  },
+  {
+    "file": "assessment.json",
+    "sha256": "f0054e3da29ab788b8c3a0637f74a8ed4545a177843c512c2a36e790f54bd591",
+    "bytes": 17900
+  },
+  {
+    "file": "block-probe.cjs",
+    "sha256": "a0e6a1934bc42ef8506652a75b201234ed268367fc84e6036c29f8fbd86799ba",
+    "bytes": 1008
+  },
+  {
+    "file": "block-probe.json",
+    "sha256": "e1782672287fb51cf691f639052aac59c3e68a9087de294922ce8be010ec079c",
+    "bytes": 203
+  },
+  {
+    "file": "expat-advisories.json",
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "bytes": 2
+  },
+  {
+    "file": "heif-advisories.json",
+    "sha256": "7e659898a8b3f7dd1aead218d0e52293f9ba7fb2e4cddb814c67e181f01a7386",
+    "bytes": 282415
+  },
+  {
+    "file": "heif-all-advisories.json",
+    "sha256": "b7de87da61e42e0af8287bd94b8b98faeacbd5c3bf3fbf3b5903759353506ca5",
+    "bytes": 1000462
+  },
+  {
+    "file": "heifload.c",
+    "sha256": "b369f0507237d99708e256f859921be2c1ec566786ed83294d22fbadb12af207",
+    "bytes": 37036
+  },
+  {
+    "file": "libarchive-advisories.json",
+    "sha256": "b9ff751e2cca9cb40a50c98fafff21c3f04f7c67e8942a251fdf890827dd7789",
+    "bytes": 21776
+  },
+  {
+    "file": "libpng-advisories.json",
+    "sha256": "e3f35577e8f43b634e27263b7755b5aa3c3e1622c87c0e1e92ccea2901ea491d",
+    "bytes": 122723
+  },
+  {
+    "file": "libvips-latest.json",
+    "sha256": "f88163320513e36d7dd201d0587c95d4bb4bd4a2e77901754a20647e803e7507",
+    "bytes": 2210
+  },
+  {
+    "file": "libxml2-advisories.json",
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "bytes": 2
+  },
+  {
+    "file": "review.md",
+    "sha256": "6332248767fad8bb870f4cf9f59e660fea748d67a20212bf77fd819f17a71472",
+    "bytes": 3338
+  },
+  {
+    "file": "sharp-advisories.json",
+    "sha256": "2099215c7a20def7f435450e7d579d8038c34db194d2f610c0be9e3d55e3741c",
+    "bytes": 18068
+  },
+  {
+    "file": "sharp-latest.json",
+    "sha256": "534cddc062d4b03df11e7558d28cb9f6c8d527f0979377c849b7e5ebb2a10612",
+    "bytes": 9727
+  },
+  {
+    "file": "sharp-linux-latest.json",
+    "sha256": "e75ac6c6c9d9bd9a7111947f507721168f9b834ab4f762127bade2184bfb77bc",
+    "bytes": 2140
+  },
+  {
+    "file": "skia-DEPS",
+    "sha256": "2b70a65335d335cea669412c14cb8cb03c1950873210b042128b357dde963d9f",
+    "bytes": 10770
+  },
+  {
+    "file": "skia-SkPngCodec.cpp",
+    "sha256": "aef1a98bc6aff82898f7debf69dd4e1aec6fa9a0a3d86bb7c4b2389a9a053979",
+    "bytes": 40727
+  },
+  {
+    "file": "skia-SkPngRustCodec.cpp",
+    "sha256": "67ee9057ac5b38ad0580b0adc20b493842e3ef3ec02d13b0462844bb5ceee9f7",
+    "bytes": 59446
+  },
+  {
+    "file": "skia-png.h",
+    "sha256": "81501c268ec5c3dc79efc6ac9fddb63b22a25e4931360ddd7b29b1744d6cb6b8",
+    "bytes": 148525
+  },
+  {
+    "file": "skia-png.h.b64",
+    "sha256": "4e6a9f557e02ad27902ae7041de6e9fd498095f47ab7800651204614535db427",
+    "bytes": 198036
+  },
+  {
+    "file": "skiasharp-advisories.json",
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "bytes": 2
+  },
+  {
+    "file": "skiasharp-gitmodules",
+    "sha256": "9d5275fdc462257c08a8194e560cebe5a3cc42c6ac893ceda2b13c13033536ec",
+    "bytes": 112
+  },
+  {
+    "file": "skiasharp-release.json",
+    "sha256": "3be7f7f1e90b6514dc3fb368e687d7c5465aceb9e25e2931d4c724348e47cc05",
+    "bytes": 2349
+  },
+  {
+    "file": "skiasharp-third-party-deps.md",
+    "sha256": "4af2d7a6a42bd464e790a98105c7e4ac1111939e65659bda2c0609343f2b42f1",
+    "bytes": 5140
+  },
+  {
+    "file": "skiasharp-tree.json",
+    "sha256": "bcf946167c63b51e54cb1b6398cab1c1827ed78e2f64627659702ae42cf55483",
+    "bytes": 1890455
+  },
+  {
+    "file": "vips-advisories.json",
+    "sha256": "911b2e92a023a3814c007bf9f48749c814d5e5810bb1f09da910748ac739f25d",
+    "bytes": 52974
+  },
+  {
+    "file": "vipspng.c",
+    "sha256": "5b6713abaaeaed1b3ad7573dbda7fdc7abd53758a4b5744b8908a5c21ac1f6b5",
+    "bytes": 31473
+  },
+  {
+    "file": "deploy/compliance/native/source-bundle.lock.json",
+    "sha256": "4be80e52d2d792e8087618ad746ff6abae74c8ebe734c030084e5c69665ab185",
+    "bytes": 133589
+  },
+  {
+    "file": "web/pnpm-lock.yaml",
+    "sha256": "083f8f3e0a3ded7c66f656f57dc05bc6b97a4787dce39976599729bfb58fe0fa",
+    "bytes": 188608
+  },
+  {
+    "file": "web/server/artwork/open-library-cover.ts",
+    "sha256": "069262f75bb8662be5f1945349b52a43de67eace9aa48096e3f73ce392d5760b",
+    "bytes": 4101
+  },
+  {
+    "file": "web/shared/artwork/provider-images.ts",
+    "sha256": "3b8a626471370fb42ba042aaf446cd55d91cbf530c8829d53a4bcd568516b593",
+    "bytes": 1394
+  },
+  {
+    "file": "web/instrumentation.ts",
+    "sha256": "e618a4ad571801f8ea6628e45748cd09b6a1ad8c410bff94c6c236c06350aab7",
+    "bytes": 487
+  },
+  {
+    "file": "src/RateFreak.Infrastructure/Artwork/ArtworkDecoder.cs",
+    "sha256": "e23cb7a1eefbc747785dfdf71c073c73b225b9d77c974bbd72cd6fda25130cc9",
+    "bytes": 4141
+  },
+  {
+    "file": "deploy/compliance/runtime-supplements/sources.json",
+    "sha256": "4956a27a953ccb31c645dddcd9a3790d758a3589587bc6415fe39b7bed28dfb8",
+    "bytes": 5128
+  },
+  {
+    "file": ".local/release-compliance/native-sources/80da7ba048c3-vips-8.18.7.tar.xz",
+    "sha256": "5baaead3b0bb20ffdb9e9ff09aa9fda08620923df77b63b436654cb5e0b3bf94",
+    "bytes": 25425084
+  },
+  {
+    "file": ".local/release-compliance/packaging/tree/sharp-libvips-ebb95f8add54eee8bed840e3fb587e4cbec857d7/build/posix.sh",
+    "sha256": "333031b3b49bf1a16d0b9d6812d98f67c404218932ef8c0b389388524a524b36",
+    "bytes": 23877
+  }
+]

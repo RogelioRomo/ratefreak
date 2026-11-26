@@ -1,0 +1,55 @@
+{
+  "uid": 999,
+  "credentials": [
+    {
+      "usage": 1,
+      "major": 458752,
+      "minor": 2529639053,
+      "handle_present": false
+    },
+    {
+      "usage": 2,
+      "major": 458752,
+      "minor": 2529639093,
+      "handle_present": false
+    }
+  ],
+  "paths": {
+    "/etc/krb5.keytab": false,
+    "/etc/krb5.conf": false,
+    "/etc/postgresql-common/pg_service.conf": false,
+    "/var/lib/postgresql/.pg_service.conf": false,
+    "/usr/sbin/krb5kdc": false,
+    "/usr/sbin/kadmind": false,
+    "/usr/sbin/slapd": false,
+    "/usr/bin/mdb_load": false
+  },
+  "environment_present": {
+    "KRB5_CONFIG": false,
+    "KRB5_KTNAME": false,
+    "KRB5CCNAME": false,
+    "PGSERVICE": false,
+    "PGSERVICEFILE": false,
+    "LDAPCONF": false
+  },
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges:true",
+    "--user",
+    "postgres",
+    "--entrypoint",
+    "/probe",
+    "--mount",
+    "type=bind,src=/home/rhaydon/documents/repos/ratefreak/.local/security-residual-os-2026-11-25/pg-gss-probe,dst=/probe,readonly",
+    "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf"
+  ],
+  "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf"
+}

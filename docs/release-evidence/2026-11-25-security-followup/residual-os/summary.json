@@ -1,0 +1,14 @@
+{
+  "source_advisory_records": 97,
+  "conditional_records": 78,
+  "open_records": 19,
+  "matched_package_associations": 388,
+  "conditional_package_associations": 294,
+  "image_ids": {
+    "api": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "web": "sha256:dd22e0040bacac02a97147c36eb4090b0aae37f735042f43ec1a1f51e42d6e09",
+    "tools": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365"
+  },
+  "security_release_gate_cleared": false,
+  "scope": "API/web/tools selected OS source families only; no scanner ignores, product changes or persistent instance access."
+}

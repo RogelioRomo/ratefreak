@@ -1,0 +1,39 @@
+{
+  "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+  "image_env": [
+    "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/17/bin",
+    "GOSU_VERSION=1.20",
+    "LANG=en_US.utf8",
+    "PG_MAJOR=17",
+    "PG_VERSION=17.12-1.pgdg13+1",
+    "PGDATA=/var/lib/postgresql/data"
+  ],
+  "entrypoint": [
+    "docker-entrypoint.sh"
+  ],
+  "command": [
+    "postgres"
+  ],
+  "probe_command": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--entrypoint",
+    "/bin/sh",
+    "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "-c",
+    "for p in /etc/editrc /root/.editrc /var/lib/postgresql/.editrc /etc/krb5.conf /etc/gss/mech; do if test -e \"$p\"; then echo \"$p exists\"; else echo \"$p absent\"; fi; done"
+  ],
+  "path_checks": [
+    "/etc/editrc absent",
+    "/root/.editrc absent",
+    "/var/lib/postgresql/.editrc absent",
+    "/etc/krb5.conf absent",
+    "/etc/gss/mech absent"
+  ]
+}

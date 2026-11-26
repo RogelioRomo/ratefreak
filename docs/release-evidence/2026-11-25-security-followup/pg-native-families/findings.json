@@ -1,0 +1,338 @@
+[
+  {
+    "advisory": "CVE-2011-3389",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "LOW",
+        "source_version": "3.8.9"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "gnutls28",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "HTTPS: block-wise chosen-plaintext attack against SSL/TLS (BEAST)",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2026-127039",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "UNKNOWN",
+        "source_version": "3.8.9"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "gnutls28",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "The certificate authentication info handling in gnutls from 2.5.9 up t ...",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2026-127040",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "UNKNOWN",
+        "source_version": "3.8.9"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "gnutls28",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "The RSA-PSK ClientKeyExchange handler in gnutls before 3.8.14 does not ...",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2026-127231",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "UNKNOWN",
+        "source_version": "3.8.9"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "gnutls28",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "A double free in the X.509 name constraints enforcement of GnuTLS 3.8. ...",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2026-67693",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "LOW",
+        "source_version": "3.8.9"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "gnutls28",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "gnutls: gnutls: Information disclosure via contradictory Key Usage and Extended Key Usage extensions",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2026-88647",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "LOW",
+        "source_version": "3.8.9"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "gnutls28",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "gnutls: gnutls: Information disclosure via hostname verification bypass",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2026-88648",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "LOW",
+        "source_version": "3.8.9"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "gnutls28",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "gnutls: gnutls: Cross-domain certificate restriction bypass via incomplete X.509 validation",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2026-95184",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "LOW",
+        "source_version": "3.8.9"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "gnutls28",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "gnutls: gnutls: legitimate user certificates incorrectly rejected causing denial of service",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2026-95210",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "LOW",
+        "source_version": "3.8.9"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "gnutls28",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "gnutls: gnutls: certificates with invalid extensions incorrectly accepted",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2018-6829",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.11.0-7+deb13u1",
+        "package": "libgcrypt20",
+        "severity": "LOW",
+        "source_version": "1.11.0"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "libgcrypt20",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "libgcrypt: ElGamal implementation doesn't have semantic security due to incorrectly encoded plaintexts possibly allowing to obtain sensitive information",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2024-2236",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.11.0-7+deb13u1",
+        "package": "libgcrypt20",
+        "severity": "LOW",
+        "source_version": "1.11.0"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "libgcrypt20",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "libgcrypt: vulnerable to Marvin Attack",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2024-7883",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:19.1.7-3+b1",
+        "package": "libllvm19",
+        "severity": "LOW",
+        "source_version": "19.1.7"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "llvm-toolchain-19",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "clang: CMSE secure state may leak from stack to floating-point registers",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2026-13573",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:19.1.7-3+b1",
+        "package": "libllvm19",
+        "severity": "LOW",
+        "source_version": "19.1.7"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "llvm-toolchain-19",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "llvm: llvm: Denial of Service via stack-based buffer overflow in StringMap::insert",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2026-13574",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:19.1.7-3+b1",
+        "package": "libllvm19",
+        "severity": "LOW",
+        "source_version": "19.1.7"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "llvm-toolchain-19",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "llvm: llvm-project: LLVM: Denial of service via heap-based buffer overflow in Bitcode File Handler",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2026-13757",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "0.25.5-3",
+        "package": "libp11-kit0",
+        "severity": "MEDIUM",
+        "source_version": "0.25.5"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "p11-kit",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "p11-kit: Stack exhaustion via unbounded recursion in RPC attribute parsing",
+    "type": "debian"
+  },
+  {
+    "advisory": "CVE-2026-18938",
+    "class": "os-pkgs",
+    "disposition": "open",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "0.25.5-3",
+        "package": "libp11-kit0",
+        "severity": "MEDIUM",
+        "source_version": "0.25.5"
+      }
+    ],
+    "scan_config_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+    "source": "p11-kit",
+    "target": "/input/postgres-trixie.tar.gz (debian 13.8)",
+    "title": "p11-kit: Integer overflow in RPC attribute-array length calculation can under-allocate nested attribute storage on 32 bit systems",
+    "type": "debian"
+  }
+]

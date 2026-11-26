@@ -1,0 +1,17 @@
+{
+  "api": {
+    "image_id": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+    "elf_files": 498,
+    "exit_code": 0
+  },
+  "web": {
+    "image_id": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+    "elf_files": 437,
+    "exit_code": 0
+  },
+  "tools": {
+    "image_id": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b",
+    "elf_files": 555,
+    "exit_code": 0
+  }
+}

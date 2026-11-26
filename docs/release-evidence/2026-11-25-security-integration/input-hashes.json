@@ -1,0 +1,1042 @@
+[
+  {
+    "bytes": 8626,
+    "path": ".local/security-clearance-2026-11-25/acceptance_with_database_upgrade.py",
+    "sha256": "74da749a678abf2752aab428ae2e12f2e3d0a9ec82f5f09e0f0fe0e4699df382"
+  },
+  {
+    "bytes": 1756,
+    "path": ".local/security-clearance-2026-11-25/acquire_skia_fix_boundary.py",
+    "sha256": "39263c89e0381db35c48cda4ea8a52f23ff1262a4e1a0a987b031619ae1de52d"
+  },
+  {
+    "bytes": 5317,
+    "path": ".local/security-clearance-2026-11-25/api-build.log",
+    "sha256": "03cb9df169238b1a0da576d53a6e196ebd82505f2efd59d62f7383f51d747e0e"
+  },
+  {
+    "bytes": 936,
+    "path": ".local/security-clearance-2026-11-25/api-trivy-execution.json",
+    "sha256": "b2c01fb3baa0c961a4b86db82c7ff5b9932bebb4e1973eef92816ad6f832827d"
+  },
+  {
+    "bytes": 1169117,
+    "path": ".local/security-clearance-2026-11-25/api-trivy.json",
+    "sha256": "f68b44ff5b51fe3f7690bb61c503ce90997a5661d789b13823f3ac6f25027b42"
+  },
+  {
+    "bytes": 7202,
+    "path": ".local/security-clearance-2026-11-25/assemble_materials.py",
+    "sha256": "4e776916acecc7e16b12be9fa7aa94afba2822a0ea511ce15cb425f56d62859e"
+  },
+  {
+    "bytes": 2455,
+    "path": ".local/security-clearance-2026-11-25/build_images_verified.py",
+    "sha256": "d230b3635a936440599ab54b9e2c79beb42062f3dfe2508d44957306fbf31672"
+  },
+  {
+    "bytes": 940,
+    "path": ".local/security-clearance-2026-11-25/caddy-trivy-execution.json",
+    "sha256": "bbf7d2fd47bf78cc56fee8ad51d0a43f602f491c1e2a442f1d33c6911d47c395"
+  },
+  {
+    "bytes": 226386,
+    "path": ".local/security-clearance-2026-11-25/caddy-trivy.json",
+    "sha256": "ace8cb3d826e0f04aa7c938d1f074d2e8831c573d9766a3d6c041986c441aaf3"
+  },
+  {
+    "bytes": 956,
+    "path": ".local/security-clearance-2026-11-25/caddy-updated-trivy-execution.json",
+    "sha256": "634cf66203122b11ea656c20eda44d065cbdebac3901225f30a2cebeea9b926c"
+  },
+  {
+    "bytes": 226402,
+    "path": ".local/security-clearance-2026-11-25/caddy-updated-trivy.json",
+    "sha256": "2ed3e2e82d9abeba7ef016a53667158252f60c6c1a19bef1d2773f7cfa13158f"
+  },
+  {
+    "bytes": 4730,
+    "path": ".local/security-clearance-2026-11-25/check_maintenance.py",
+    "sha256": "fff828cfd0da44c3a8fdb32096f00d83cf60a5dddfd9a249f3fc259faf9e92ec"
+  },
+  {
+    "bytes": 225,
+    "path": ".local/security-clearance-2026-11-25/compliance-final-check.log",
+    "sha256": "f7e0829c722f2251a4d3ebc829ef9c81dfe0af6231a23d2b135b9510f1dccb46"
+  },
+  {
+    "bytes": 225,
+    "path": ".local/security-clearance-2026-11-25/compliance-tests.log",
+    "sha256": "f7e0829c722f2251a4d3ebc829ef9c81dfe0af6231a23d2b135b9510f1dccb46"
+  },
+  {
+    "bytes": 153,
+    "path": ".local/security-clearance-2026-11-25/db/metadata.json",
+    "sha256": "70305bf8a2465fbd8cf74818b010240cf068476233c0103addd6d87b44d2c119"
+  },
+  {
+    "bytes": 213,
+    "path": ".local/security-clearance-2026-11-25/decoder-final-check.log",
+    "sha256": "207d883592c8bf6153d44d01a3d04a464658af62413279ee635356d577557822"
+  },
+  {
+    "bytes": 1988,
+    "path": ".local/security-clearance-2026-11-25/decoder-image-probe.cjs",
+    "sha256": "ab69612cac389887197aface9439779e13c0069cb6246367d17ff0df0c06f7cf"
+  },
+  {
+    "bytes": 215,
+    "path": ".local/security-clearance-2026-11-25/decoder-test-green.log",
+    "sha256": "897a2ed89cea0ff275b76720db1a33a8d043f437dac60a4449bac07a852fc918"
+  },
+  {
+    "bytes": 1500,
+    "path": ".local/security-clearance-2026-11-25/decoder-test-red.log",
+    "sha256": "bf86dad13e3cf363d33b4afa66aaee5d0db6ed38bda9ad41645864de77d15dca"
+  },
+  {
+    "bytes": 5298,
+    "path": ".local/security-clearance-2026-11-25/finalize_evidence.py",
+    "sha256": "72ec06e342857b61964bff1dae382576d99bc223285297378ae9e8e0037f14d6"
+  },
+  {
+    "bytes": 539,
+    "path": ".local/security-clearance-2026-11-25/frontend-tests.log",
+    "sha256": "27c8bd34303a69a5dc4fe2d7c351865231269890077edd5152d1fa4c7d27c48b"
+  },
+  {
+    "bytes": 274207517,
+    "path": ".local/security-clearance-2026-11-25/images/api.tar.gz",
+    "sha256": "9effe525fe2bcf58286b5d74312c7e80459037cdba942fdae0d649956641dc35"
+  },
+  {
+    "bytes": 312477858,
+    "path": ".local/security-clearance-2026-11-25/images/tools.tar.gz",
+    "sha256": "32f6cf0dc0f2073850b1b52691bf0fa59a6ea71c6e3056bae51d564323899366"
+  },
+  {
+    "bytes": 111846695,
+    "path": ".local/security-clearance-2026-11-25/images/web.tar.gz",
+    "sha256": "c2231ccb5fa617627d99c7370a27c062647983e21b704e3e03f3171fcf5f1344"
+  },
+  {
+    "bytes": 10208,
+    "path": ".local/security-clearance-2026-11-25/layer_audit.py",
+    "sha256": "d2b3b20f997a4ea2a81c8ba2df8b926c6a8f7c695d7b15ddf5d175c6c5341a20"
+  },
+  {
+    "bytes": 82,
+    "path": ".local/security-clearance-2026-11-25/lint.log",
+    "sha256": "fc014458b2b79b3a83c085789a00d25d764851938b620bd811acc03e4c0d3429"
+  },
+  {
+    "bytes": 1891,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/CVE-2026-121032.json",
+    "sha256": "deab104bbae0bf36c2451980d6324d71b2f4c851871c8fd26c9c0ab2f2884305"
+  },
+  {
+    "bytes": 1898,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/CVE-2026-121086.json",
+    "sha256": "5937ac4ab6381cc894fa039dd4fa1877a485fb24f938cdb26df3c6f07bf13479"
+  },
+  {
+    "bytes": 1891,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/CVE-2026-121160.json",
+    "sha256": "d63bc5d0dc85ce62b6b60cff44d169bb848e59705b8c1b687daa3dfa2e4914ed"
+  },
+  {
+    "bytes": 1940,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/CVE-2026-121227.json",
+    "sha256": "6a26f2781c6d17dd7b430d8b22bf772e569cf9f7c4934351cab3d082ec551951"
+  },
+  {
+    "bytes": 1945,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/CVE-2026-126841.json",
+    "sha256": "79b453e863c8a3b3f081fd091d5e978ec21466472e647fface2b9c1323eb05e1"
+  },
+  {
+    "bytes": 1924,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/CVE-2026-126846.json",
+    "sha256": "383dec181b8cc31ed3657f103c1680c5b1542a559ae16f5cdd7934f6e63ebe6b"
+  },
+  {
+    "bytes": 1953,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/CVE-2026-126848.json",
+    "sha256": "3bed4fecc7e1ecd7276609cf9c0754d8f675c13e7ac29aacfb922a679912d5e4"
+  },
+  {
+    "bytes": 1932,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/CVE-2026-126882.json",
+    "sha256": "2a0fc646364628cb582eb49869ad115d01e0442535bb001d108d024bd9957302"
+  },
+  {
+    "bytes": 2002,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/CVE-2026-126915.json",
+    "sha256": "8c87772e37031c09094394b25cbaa258690752d60989280aeabca93567f2ba79"
+  },
+  {
+    "bytes": 1895,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/CVE-2026-126920.json",
+    "sha256": "be103e9cadcf5fd25bc73b9b650ac0cc97d91d0369e60f0740e70bae58d40afe"
+  },
+  {
+    "bytes": 2510,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/acquire.py",
+    "sha256": "2a05645b1a926c655c8c1e8730c8e0fbc998e2391f35306cae2708305080e233"
+  },
+  {
+    "bytes": 575,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/acquire_alpha.py",
+    "sha256": "76b697c34e1e3966db8e2657339a1004f98bb0b6c4d14e2da0ff9e9f9b25c0fc"
+  },
+  {
+    "bytes": 1063,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/acquire_extra.py",
+    "sha256": "adcbee538ad383e3fa9df0d795989219c855e322cf9c4d9d2a397a23a03c0ed6"
+  },
+  {
+    "bytes": 682,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/acquire_last.py",
+    "sha256": "f24aef8d0c56c7d6963651d13e50b009f68b721d294e914392f9c454bbb7905b"
+  },
+  {
+    "bytes": 629,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/acquire_skia_update.py",
+    "sha256": "247f5630ad9c5b59a171a36f9975c6dc9df473386c8019096dbc14af30a46781"
+  },
+  {
+    "bytes": 2338,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/acquisition-extra.json",
+    "sha256": "867c4105132f90ae99dea3f1384d365da45fd11a841131746f7dd765b31f4274"
+  },
+  {
+    "bytes": 1301,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/acquisition-fix-boundary.json",
+    "sha256": "65190a40987d9ace528c30c8347452ae3d68695dfa1a9d1fd5aefb7ab82fe9d5"
+  },
+  {
+    "bytes": 936,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/acquisition-last.json",
+    "sha256": "1fc67921a03f2ac59ce56afe86b3aee80baa7c9190967e8f4182ba3623b83914"
+  },
+  {
+    "bytes": 875,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/acquisition-skia-update.json",
+    "sha256": "f0cb3013b6d550e6429006e1c6408e0b02d88188a288aeba065b363a676e9264"
+  },
+  {
+    "bytes": 7666,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/acquisition.json",
+    "sha256": "be18a65051ffa33eccb86c43325af44ae8ae4be8b0d5b47726b75686bfa59f11"
+  },
+  {
+    "bytes": 2,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/brotli-advisories.json",
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "bytes": 1723,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/brotli-c_common_version.h",
+    "sha256": "792d03d8feff8168edf639899f72b71a37e9cbd9f178e3be397ccef29d3346b0"
+  },
+  {
+    "bytes": 191215,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/chrome-fixed-DEPS",
+    "sha256": "70f36c59069488921a7d83b5ad0dfb3d221211be2be966f28ed84ef6ceeb8daa"
+  },
+  {
+    "bytes": 254956,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/chrome-fixed-DEPS.b64",
+    "sha256": "0deb741abedb8794fc202492245eec0de946e8f4d678674da04f970dcbe59613"
+  },
+  {
+    "bytes": 2084797,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/chrome-fixed-vs-new-skia.json",
+    "sha256": "6ae2121df8b20aa635a2786f56061096364fa413996138c21db7b76a1928177d"
+  },
+  {
+    "bytes": 2121710,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/chrome-fixed-vs-old-skia.json",
+    "sha256": "ebd5427f6388aba92a943f8c25593d6073b8131bfde5240287982616267307e0"
+  },
+  {
+    "bytes": 1166494,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/chrome-november.html",
+    "sha256": "c4a6cb6d285f7d71ae6a30a4782e761c2d9e8d519344d83d67e3cffc2d6206be"
+  },
+  {
+    "bytes": 612099,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/chrome-november.txt",
+    "sha256": "e8f663dcfc0ac9634e26d90c22736da3baa5eb3d19717703a09ee4f9c6c91b9e"
+  },
+  {
+    "bytes": 85208,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/chromium-bug-569286603.html",
+    "sha256": "403c996192616f30034276392dec324d7bf431b4cb0f60949d1b4a2987be7c5e"
+  },
+  {
+    "bytes": 55,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/chromium-search-126912.json",
+    "sha256": "4af480b8ee5b87b369a76c49bd22c9a783908272ebffbe97898f8ab0f0772a5f"
+  },
+  {
+    "bytes": 11961,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/chromium-search-569286603.json",
+    "sha256": "6be549bc1b4c306fb2b9ff1d006f7e53e846cb01c6459ca5e47d877b0f71b107"
+  },
+  {
+    "bytes": 1908,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/cve-126912.json",
+    "sha256": "1f0536642064164d4ecc5163a582ce225cf3d496457f7496eec6bc8f1cea0619"
+  },
+  {
+    "bytes": 2287,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/cve-50811.json",
+    "sha256": "2ef46cc90a2e56a8e846f06a790dfcb5a766c8808afa1329ed61f00bb2c79e6e"
+  },
+  {
+    "bytes": 9682,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/cve-95512.json",
+    "sha256": "a0093a2554ae64858e73df1035166ebb6871e9fb4b50a6ba204bcb85c02578fd"
+  },
+  {
+    "bytes": 21850,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/cve-brotli.json",
+    "sha256": "8199a16fc5cb1320ed3dcd896275413ecdf48dd377868e24c167d268b96ce427"
+  },
+  {
+    "bytes": 131312,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/expat-changes.txt",
+    "sha256": "eaaa690c4de36183599dbf92d5b68e490f10847d559b325a37bc8376926358de"
+  },
+  {
+    "bytes": 45224,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/expat-expat_lib_expat.h",
+    "sha256": "52d756026bf09befdb211c453e2009a646d6c6b519e6885e971b2550396619fb"
+  },
+  {
+    "bytes": 226724,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/freetype-changelog.txt",
+    "sha256": "802b18f9d6d4cba6fbf6b6ab254bde27937c81d1d0da2a09b3543e61208cdaa2"
+  },
+  {
+    "bytes": 177129,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/freetype-include_freetype_freetype.h",
+    "sha256": "fd45e7ee01c8f0f2419186d3fc9dd58e25cd866ef0c49f0b347c2d141665a364"
+  },
+  {
+    "bytes": 63033,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/harfbuzz-advisories.json",
+    "sha256": "08e6060d8721d6096aa42400a49ac272af727f59f8c485b188c9b6b70f05c7b0"
+  },
+  {
+    "bytes": 17738,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/harfbuzz-meson.build",
+    "sha256": "8b464ee85d596786cb2ecd5f3d0f48898aae3137cb09271bb7bf631f3f2824fa"
+  },
+  {
+    "bytes": 2653,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/harfbuzz-src_hb-version.h.in",
+    "sha256": "cad5fd6b8063e4e000e405eac9e10347eee1d815c00aa7f1899389f5bcfb155a"
+  },
+  {
+    "bytes": 2,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/jpeg-advisories.json",
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "bytes": 126541,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/jpeg-changelog.md",
+    "sha256": "ef243276b7801716938ca90f70c517dbcafbab80277943d9bb67fcd86fb1e955"
+  },
+  {
+    "bytes": 83826,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/jpeg-cmake.txt",
+    "sha256": "4ac805c5bbeb3a221d1d34b0bd908933d444bbaf60130d2829d1103393fef835"
+  },
+  {
+    "bytes": 148525,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/libpng-png.h",
+    "sha256": "81501c268ec5c3dc79efc6ac9fddb63b22a25e4931360ddd7b29b1744d6cb6b8"
+  },
+  {
+    "bytes": 15892,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/libwebp-NEWS",
+    "sha256": "a171d79c17e6b0d5857786a9727f6a44bc52bc0c42e0981527b71c51f08bffd1"
+  },
+  {
+    "bytes": 24342,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/libwebp-src_webp_decode.h",
+    "sha256": "e554551d085f234e930f36b5879a77ef58bfea34c48ebfd620426e63b224025c"
+  },
+  {
+    "bytes": 2395,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/november-skia-advisories.json",
+    "sha256": "75f30894ebe9eb80fd57c1ea6b9481a58e3aa00eb45b9b70863150ab39a1d69e"
+  },
+  {
+    "bytes": 10397,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-121084.patch",
+    "sha256": "0561885481001517868823a26955582472f0dedaaeaf2f8db3ae060b12146b6a"
+  },
+  {
+    "bytes": 6639,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-121086.patch",
+    "sha256": "f6041c4e1334529fe2f4a9f4ebd44e1a1ac0ceb2e362f49c469f53565e1b19c9"
+  },
+  {
+    "bytes": 41290,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-126876.patch",
+    "sha256": "a4a98451e0cc65beaed90453cd98a20c0dea901832c44bf5ae560e84c508a8f4"
+  },
+  {
+    "bytes": 8439,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-131013.patch",
+    "sha256": "f1c9e1c4a2d1d4cd8bc1cd55bcb285bd5436bb46e5fd3231621314f567e231e9"
+  },
+  {
+    "bytes": 1896,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-alpha-run-search.json",
+    "sha256": "c6d0d831773756f278fd917ffffce966a4328ca38ef5e65febca8e55bf68847e"
+  },
+  {
+    "bytes": 29947,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-fix-mapping.json",
+    "sha256": "45093566d0c4a8f2222435f549c7b64d22799026716c25d9da07f57afc0de453"
+  },
+  {
+    "bytes": 1041,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-fix-search.txt",
+    "sha256": "e4d5d5459f22bc7206876298968a0f1c90bcbae3a17feb7c758014a979fd1e90"
+  },
+  {
+    "bytes": 8,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-gerrit-569286603.json",
+    "sha256": "7b12556b22ae3ff4569f2143eeda2f1be10f0a74f18368bab7b620db80ff22b3"
+  },
+  {
+    "bytes": 21840,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-pin.json",
+    "sha256": "be5d1258e1ec718c43308f559e26e83c81675191620a4228ba0098fea1909087"
+  },
+  {
+    "bytes": 7188,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-search-578685477.json",
+    "sha256": "c374bffc51b35df4cac218bbfdf2e5e848472bb8a79394202b12606e0d18864b"
+  },
+  {
+    "bytes": 14096,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-search-578685706.json",
+    "sha256": "a8627205d0706009923141a046f45f55d570c7a5196dd38d9574d942ca971d3d"
+  },
+  {
+    "bytes": 6688,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-search-579276256.json",
+    "sha256": "9bce7f192946509fc35baa02eeea27fd338cd00c338e013813d6d4bf86662955"
+  },
+  {
+    "bytes": 6857,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-search-580857377.json",
+    "sha256": "37313524ed76e6b847d18904b6ca176ec29faa8b7ed7083ee22537039e845d61"
+  },
+  {
+    "bytes": 6612,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-search-580865537.json",
+    "sha256": "e1542c98ab859b61838204dd6f0e7c1d37ee28a2feae9834862a7620f13a9e11"
+  },
+  {
+    "bytes": 6802,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-search-581903854.json",
+    "sha256": "ed3ef1a436508cdc96ebaaff3dadc42f2a6fd9f5d2036e2f2e8017489f57b48e"
+  },
+  {
+    "bytes": 40251,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-src_codec_SkCodec.cpp",
+    "sha256": "7880c9c48aead3e9ab6838696d630287dda38b6f146f8b776f84b10242476636"
+  },
+  {
+    "bytes": 40588,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-src_codec_SkJpegCodec.cpp",
+    "sha256": "0cac55aac10598fb82f9d5ad512617214d2e73fc9602c6daf7d718e23df0c0ee"
+  },
+  {
+    "bytes": 29883,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-src_codec_SkWebpCodec.cpp",
+    "sha256": "3ecdc6c568582af1ac956cd937cf30bf69485f42ce3dd7314d974b90640fad1a"
+  },
+  {
+    "bytes": 120462,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-src_core_SkCanvas.cpp",
+    "sha256": "8525dcfdbc72006d1020270d3d64dc7ea4777f4d00720bddd3083f88ceac71cd"
+  },
+  {
+    "bytes": 70758,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-src_core_SkScan_AAAPath.cpp",
+    "sha256": "c7a2e2f869ce0d13f882e713e477a59b0af547cb72dd134caf04b1889d22a35e"
+  },
+  {
+    "bytes": 18774,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-src_encode_SkPngEncoderImpl.cpp",
+    "sha256": "62e102c64ce117261db60549c57383aefc13cb79ab00b386e7e3fcfb89f784c1"
+  },
+  {
+    "bytes": 10473,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-src_image_SkImage_Raster.cpp",
+    "sha256": "1f79bc2604833a9cd9154e49e96285a07c3078d13074e0e6344ff094fc767d00"
+  },
+  {
+    "bytes": 1849,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skia-third_party_libpng_BUILD.gn",
+    "sha256": "679e8ed77b88bafa087f90e2735748077ac8f845209962fe2fcac822621e9d35"
+  },
+  {
+    "bytes": 10979,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skiasharp-4.157.0-notes.html",
+    "sha256": "3b7c02256bb1c49923c11306e01e00f225b6d32be89b18686f130eef7496d493"
+  },
+  {
+    "bytes": 2762,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skiasharp-4.157.0-release.json",
+    "sha256": "a20e923e8d1b0bb96e8edf50c5cbc6abba8c33e269a2e05fd6ed29cd604ba135"
+  },
+  {
+    "bytes": 2095821,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skiasharp-4.157.0-tree.json",
+    "sha256": "c0339348f633846801fdda53a9c31222fc779ef38a18eeb99df1747d4688a6c5"
+  },
+  {
+    "bytes": 5751,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skiasharp-4.157.0.nuspec",
+    "sha256": "2487836d74c477cf7e0eed9c72317b217292ecf2a68fe6bcfa6e846ee07c8e97"
+  },
+  {
+    "bytes": 4836,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/skiasharp-nuget-versions.json",
+    "sha256": "691f164f0485cec0a2f89391bc45f2c4cefd2cfef46dddf0e6e790a138c3f646"
+  },
+  {
+    "bytes": 21192,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/webp-news.txt",
+    "sha256": "32eb266285bf42e746cbdc2b3e25aa73e697a1de3d80b5831a191926dba9e65a"
+  },
+  {
+    "bytes": 2,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/zlib-advisories.json",
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "bytes": 87991,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/zlib-changelog",
+    "sha256": "8b89a5009620ff409e7710b18221855318005596f834c11e86d738bd2a1d293a"
+  },
+  {
+    "bytes": 104484,
+    "path": ".local/security-clearance-2026-11-25/native-investigation/followup/zlib-zlib.h",
+    "sha256": "0ff41598d145693759a8322bb90bc4f2c57dcdcb3635fdf5b2195bf13df15b54"
+  },
+  {
+    "bytes": 236,
+    "path": ".local/security-clearance-2026-11-25/operator-final-check.log",
+    "sha256": "6b12ab6087b2d17597febe9360ac9430ddd941630be7d094946818a419f24e1e"
+  },
+  {
+    "bytes": 236,
+    "path": ".local/security-clearance-2026-11-25/operator-tests.log",
+    "sha256": "2b690819f59e260ac5eaaca807b3f98379c8343972204d690661c99c1294a39b"
+  },
+  {
+    "bytes": 214,
+    "path": ".local/security-clearance-2026-11-25/optimizer-test-green.log",
+    "sha256": "93ef12b105122e3ff430919000e557cee8bd8f71da4f903aeada016e1fa33316"
+  },
+  {
+    "bytes": 1951,
+    "path": ".local/security-clearance-2026-11-25/optimizer-test-red.log",
+    "sha256": "df5ce5ca4a911b441794901552aaf9271b71a98b3a3c74a784b412e66a30dd56"
+  },
+  {
+    "bytes": 946,
+    "path": ".local/security-clearance-2026-11-25/postgres-trivy-execution.json",
+    "sha256": "06e518d613e19de8b325ecad41f3078e5ba1a7607c093c34f308c64a1d2bfe7f"
+  },
+  {
+    "bytes": 3141874,
+    "path": ".local/security-clearance-2026-11-25/postgres-trivy.json",
+    "sha256": "4999392ebe8ecfbffd31132a63e96992f7532fce1377c8a3b7f9af8378155e44"
+  },
+  {
+    "bytes": 11319,
+    "path": ".local/security-clearance-2026-11-25/postgres-trixie-manifest.txt",
+    "sha256": "5893b2b280341b2877f1e225447ac2f9fccfecf714b3b99d41937c6eecfc4007"
+  },
+  {
+    "bytes": 201,
+    "path": ".local/security-clearance-2026-11-25/postgres-trixie-runtime.txt",
+    "sha256": "fd1e60122267719504af6888920f9b44d1f223483c493a32152feda2cc03124c"
+  },
+  {
+    "bytes": 960,
+    "path": ".local/security-clearance-2026-11-25/postgres-trixie-trivy-execution.json",
+    "sha256": "de19575c7b86cc72f3daddff2398501311a2510cc349a04d99e70ce7643896c5"
+  },
+  {
+    "bytes": 2381348,
+    "path": ".local/security-clearance-2026-11-25/postgres-trixie-trivy.json",
+    "sha256": "677f3c81143f5316a4e28034276105af3375ed74b2ad9fbe47a8dbe8303dbd28"
+  },
+  {
+    "bytes": 962,
+    "path": ".local/security-clearance-2026-11-25/postgres-updated-trivy-execution.json",
+    "sha256": "718482a44e93bcfd7364d07314fbc03b0e6900ff512233bc5b21697d1a28ecf2"
+  },
+  {
+    "bytes": 3263435,
+    "path": ".local/security-clearance-2026-11-25/postgres-updated-trivy.json",
+    "sha256": "11f9aba453a11e10f19b067d980749cf5ffd0d629cabec199222e581955951ed"
+  },
+  {
+    "bytes": 7542,
+    "path": ".local/security-clearance-2026-11-25/probe.py",
+    "sha256": "f0c6c379dec3b70f872cdb130bdb4d7db04a4991360f38f60032b671a342aa00"
+  },
+  {
+    "bytes": 125,
+    "path": ".local/security-clearance-2026-11-25/release-final-check.log",
+    "sha256": "190fe634439095fa6e38eab5ce7de4f8372d13a8d1d1dd4d0859274477594402"
+  },
+  {
+    "bytes": 125,
+    "path": ".local/security-clearance-2026-11-25/release-tests.log",
+    "sha256": "99ec2e0ce0f9257c35cdcb42aa629854a6eed4388e478b6254a7501d8c25d511"
+  },
+  {
+    "bytes": 684,
+    "path": ".local/security-clearance-2026-11-25/run_acceptance.py",
+    "sha256": "4d3f8304482e8cd873f9a7b2cc92bea6e1396610505d7e284d3a62eda3e29b6a"
+  },
+  {
+    "bytes": 893,
+    "path": ".local/security-clearance-2026-11-25/run_binary_probe_final.py",
+    "sha256": "22b49e1601f756650ed56297eab1e01cf9abddfd3080e454b256631f0c37e033"
+  },
+  {
+    "bytes": 1480,
+    "path": ".local/security-clearance-2026-11-25/run_browser.py",
+    "sha256": "8b29d81b23087e7dbee986fc5f8c83d9f50dda1e5f154a21973d111466a82493"
+  },
+  {
+    "bytes": 1126,
+    "path": ".local/security-clearance-2026-11-25/run_probes.py",
+    "sha256": "4131620fba8638c42f15c902a45b809a595942f4df6dfd9e82e46df8a7420fb0"
+  },
+  {
+    "bytes": 7019,
+    "path": ".local/security-clearance-2026-11-25/tools-build.log",
+    "sha256": "85b64d242aaeb1c830aacbc15aa0a6266496894c97a9ef4858d581c80e7a1d9c"
+  },
+  {
+    "bytes": 940,
+    "path": ".local/security-clearance-2026-11-25/tools-trivy-execution.json",
+    "sha256": "83fa4cbdc8fbb42bbabc8620516b9f17792286bced3e242b1a2b51964f4f8f85"
+  },
+  {
+    "bytes": 1932929,
+    "path": ".local/security-clearance-2026-11-25/tools-trivy.json",
+    "sha256": "8f610b4b6f5773460ecb99b75f83c0cd075d4c8124a34831303ff451bbaba315"
+  },
+  {
+    "bytes": 376,
+    "path": ".local/security-clearance-2026-11-25/typecheck.log",
+    "sha256": "853b97ae088085c0317a5c9cc44b864429fa67c08fb15a5e16ab153b1420ac94"
+  },
+  {
+    "bytes": 67481413,
+    "path": ".local/security-clearance-2026-11-25/vendor/debian-cve-list.txt",
+    "sha256": "ca4c7942a875a7b7db30a0d5f58c3a9df3283886291acef1fe858dd3795daa2a"
+  },
+  {
+    "bytes": 92774370,
+    "path": ".local/security-clearance-2026-11-25/vendor/debian-tracker.json",
+    "sha256": "acb1ff678467a38188457c9ae56ca07bf6e75ab4f0b775e2f358d2c9214294a9"
+  },
+  {
+    "bytes": 9067,
+    "path": ".local/security-clearance-2026-11-25/vendor/openssl-20261124.txt",
+    "sha256": "370945815429db4a94eae07603cbef690b4b1d2de0312060f35be7d6bd7a32e3"
+  },
+  {
+    "bytes": 803856,
+    "path": ".local/security-clearance-2026-11-25/vendor/openssl-vulnerabilities.html",
+    "sha256": "aa1913eb6c31e15bb11ca4629b8406d425762cd24ca1b20a341003d658dc09d3"
+  },
+  {
+    "bytes": 319,
+    "path": ".local/security-clearance-2026-11-25/verified-build.log",
+    "sha256": "1ec341a41f0fe29d45ed2b38d72a8fd1cc7649542ce0e6f6e242cd4d096f7c10"
+  },
+  {
+    "bytes": 8009,
+    "path": ".local/security-clearance-2026-11-25/web-build.log",
+    "sha256": "379fb476482b703025e6c4bcde570a5e42e66607730cdf35083c4873a729a957"
+  },
+  {
+    "bytes": 936,
+    "path": ".local/security-clearance-2026-11-25/web-trivy-execution.json",
+    "sha256": "c0edf701add8ebfe6361d4ed3fb3b1a4c7df7af38948bd51d1c57d0b7de999f9"
+  },
+  {
+    "bytes": 1621585,
+    "path": ".local/security-clearance-2026-11-25/web-trivy.json",
+    "sha256": "dfaead7e0ccf2eed6184bbb3d2018c021671e30bf2084a90a14d9754210624c9"
+  },
+  {
+    "bytes": 2279,
+    "path": "deploy/self-host/api.Dockerfile",
+    "sha256": "80cd194ab3af078805db8f2943f9c823d17af4595221332192564317c673fd29"
+  },
+  {
+    "bytes": 5363,
+    "path": "deploy/self-host/compose.yaml",
+    "sha256": "af6144dfea46899bc3dca255e745417f7aaed8d69c0ef9c750a759fde21ff77d"
+  },
+  {
+    "bytes": 14168,
+    "path": "deploy/self-host/entrypoint.py",
+    "sha256": "6ff6b8176b3234164a8c6a058dec24f4a2ea5688a3d179e482d00f7111c8694a"
+  },
+  {
+    "bytes": 13541,
+    "path": "deploy/self-host/maintenance.py",
+    "sha256": "1f8d9dd7fc007d3ca06574905bfe52c3620d9ab448214e6e517a97cf12f16ea9"
+  },
+  {
+    "bytes": 151,
+    "path": "deploy/self-host/pgdg.sources",
+    "sha256": "76b8008ab8b4ac5fb4f480df85c742bd2c8119da59fdafb142034058f803ebf4"
+  },
+  {
+    "bytes": 3332,
+    "path": "deploy/self-host/tools.Dockerfile",
+    "sha256": "c9731a6e92320171c252affd823c4384ba2ddca4aaa543eafc81f683f5c2b74e"
+  },
+  {
+    "bytes": 2089,
+    "path": "deploy/self-host/web.Dockerfile",
+    "sha256": "f44b843ae996c953e0b381a8e5c3ea4ad2e7f50bc9d91c560e39c56a6f21de7f"
+  },
+  {
+    "bytes": 1173,
+    "path": "docs/release-evidence/2026-11-25-security-integration/README.md",
+    "sha256": "649b0be55b51b1c2adcdc72b9f3fb6a52f8410af01c87e7fd1b4c6f4b13038ad"
+  },
+  {
+    "bytes": 1225622,
+    "path": "docs/release-evidence/2026-11-25-security-integration/advisory-ledger.json",
+    "sha256": "23000d974ac68f8f6d260cfd79516f84ff1587c9d7562b6d39ff5faaf4942416"
+  },
+  {
+    "bytes": 791352,
+    "path": "docs/release-evidence/2026-11-25-security-integration/all-layer-audit.json",
+    "sha256": "44857d9f0e06ab1dab291d337c1aa911146024c08d88e873e1163b3b6f745063"
+  },
+  {
+    "bytes": 5332,
+    "path": "docs/release-evidence/2026-11-25-security-integration/binary-probe-final.json",
+    "sha256": "67e00e923a6689aa8d9c44195f4f68e2118cd3cee5931a57e9b9ea9e6146d4f0"
+  },
+  {
+    "bytes": 484,
+    "path": "docs/release-evidence/2026-11-25-security-integration/browser-fixture-acceptance.json",
+    "sha256": "3aa57c463c0644be6cd322da1f5f8663ab53335758d6b411ac3833fd6a2fd926"
+  },
+  {
+    "bytes": 638,
+    "path": "docs/release-evidence/2026-11-25-security-integration/browser-results.json",
+    "sha256": "3a588ad62e4c7c8435a943c0fa22f9685771d7c00cf2c9a7fe19a846ee0ef53d"
+  },
+  {
+    "bytes": 8058,
+    "path": "docs/release-evidence/2026-11-25-security-integration/build_ledger.py",
+    "sha256": "ab11c8d23e7a2a11abad084e6c462aefe9a1a670732e1b0608cb79c8abec002d"
+  },
+  {
+    "bytes": 257,
+    "path": "docs/release-evidence/2026-11-25-security-integration/built-images.json",
+    "sha256": "b59137bbbc097abb32aece2e66f58ff3d25b14c464dd6d56e9700e550acc19c8"
+  },
+  {
+    "bytes": 194231,
+    "path": "docs/release-evidence/2026-11-25-security-integration/coverage.json",
+    "sha256": "a5153c5d362d1005f6fbc3ad400966957617bc6884724f824a5ee41059096d6f"
+  },
+  {
+    "bytes": 1988,
+    "path": "docs/release-evidence/2026-11-25-security-integration/decoder-image-probe.cjs",
+    "sha256": "ab69612cac389887197aface9439779e13c0069cb6246367d17ff0df0c06f7cf"
+  },
+  {
+    "bytes": 353,
+    "path": "docs/release-evidence/2026-11-25-security-integration/decoder-image-probe.json",
+    "sha256": "9ba86d08615b19bce7651a296b77c1d7573b17a3ff518d2185c0a2369d87b88f"
+  },
+  {
+    "bytes": 484,
+    "path": "docs/release-evidence/2026-11-25-security-integration/fresh-acceptance.json",
+    "sha256": "3aa57c463c0644be6cd322da1f5f8663ab53335758d6b411ac3833fd6a2fd926"
+  },
+  {
+    "bytes": 128,
+    "path": "docs/release-evidence/2026-11-25-security-integration/identity.json",
+    "sha256": "0f191e8fbf8bc31709a418957cb7e4ee647b874368916d76e053bff7e117b32e"
+  },
+  {
+    "bytes": 755,
+    "path": "docs/release-evidence/2026-11-25-security-integration/independent-review.json",
+    "sha256": "992ffd043ebffe0d7ee41aa5e184655e9102a102f88607360d301a5e8ff7351e"
+  },
+  {
+    "bytes": 1302,
+    "path": "docs/release-evidence/2026-11-25-security-integration/maintenance-acceptance.json",
+    "sha256": "774d6201e1bc90472e09ceaab0ad89ca9416244e6d1eba39b18c3c186647263d"
+  },
+  {
+    "bytes": 1301,
+    "path": "docs/release-evidence/2026-11-25-security-integration/native/acquisition-fix-boundary.json",
+    "sha256": "65190a40987d9ace528c30c8347452ae3d68695dfa1a9d1fd5aefb7ab82fe9d5"
+  },
+  {
+    "bytes": 875,
+    "path": "docs/release-evidence/2026-11-25-security-integration/native/acquisition-skia-update.json",
+    "sha256": "f0cb3013b6d550e6429006e1c6408e0b02d88188a288aeba065b363a676e9264"
+  },
+  {
+    "bytes": 17900,
+    "path": "docs/release-evidence/2026-11-25-security-integration/native/assessment.json",
+    "sha256": "f0054e3da29ab788b8c3a0637f74a8ed4545a177843c512c2a36e790f54bd591"
+  },
+  {
+    "bytes": 7218,
+    "path": "docs/release-evidence/2026-11-25-security-integration/native/input-hashes.json",
+    "sha256": "d16b74a0b4dc145f6ad28db1e26a25827772c38f826402d6e83e7bc5f4be5105"
+  },
+  {
+    "bytes": 859,
+    "path": "docs/release-evidence/2026-11-25-security-integration/native/mitigation-resolution.json",
+    "sha256": "8e34d6b0623c98042415de429b4f2a8d7c34b7ff1f490ed706da723d9a2fad6b"
+  },
+  {
+    "bytes": 3338,
+    "path": "docs/release-evidence/2026-11-25-security-integration/native/review.md",
+    "sha256": "6332248767fad8bb870f4cf9f59e660fea748d67a20212bf77fd819f17a71472"
+  },
+  {
+    "bytes": 344,
+    "path": "docs/release-evidence/2026-11-25-security-integration/native-rebinding.json",
+    "sha256": "7560a67f43f1a8c5e67b627f28afaa74e117df56a218e1fe7e344972635b1964"
+  },
+  {
+    "bytes": 2994,
+    "path": "docs/release-evidence/2026-11-25-security-integration/next-remediation-options.json",
+    "sha256": "b1dc502676b1e7e3b09010b371e860561cd1fc9dcb4f9b40b29545b1dbfde771"
+  },
+  {
+    "bytes": 8176,
+    "path": "docs/release-evidence/2026-11-25-security-integration/openssl/assessments.json",
+    "sha256": "abbad92f20fb7aae8fbc4fb9cd7579c9e1b3131737bb87193b1482e3416a64b9"
+  },
+  {
+    "bytes": 20826,
+    "path": "docs/release-evidence/2026-11-25-security-integration/openssl/input-hashes.json",
+    "sha256": "b56edeb2a3722bfde5750b953ce99bcefa6f8c906fced3b4cd9c8175d9d23415"
+  },
+  {
+    "bytes": 706,
+    "path": "docs/release-evidence/2026-11-25-security-integration/openssl/rebinding.json",
+    "sha256": "e68114e0df101b6f7b8800bc30253f690beb9fb914d1aa3f3c04d29d78d5de4b"
+  },
+  {
+    "bytes": 4528,
+    "path": "docs/release-evidence/2026-11-25-security-integration/openssl/review.md",
+    "sha256": "b3491da62dceb06ddacc94441352cc5aaaa219d749067ead5ed2ec75b1ffb7e7"
+  },
+  {
+    "bytes": 2464,
+    "path": "docs/release-evidence/2026-11-25-security-integration/postgres/acquisition.json",
+    "sha256": "897a72355d7811fc70a3aa38af2977d1c03620174666e1b8336b5cb0c7b75ee4"
+  },
+  {
+    "bytes": 10455,
+    "path": "docs/release-evidence/2026-11-25-security-integration/postgres/assessment.md",
+    "sha256": "46170e104e5506ad213e1d9517ec58b63d4c094a5988ead5f227a30873cbf14d"
+  },
+  {
+    "bytes": 617,
+    "path": "docs/release-evidence/2026-11-25-security-integration/postgres/local-evidence-hashes.json",
+    "sha256": "70028b14824192386fd9cdd46ea162f267ffd0e8583569d9829368661e09df29"
+  },
+  {
+    "bytes": 11319,
+    "path": "docs/release-evidence/2026-11-25-security-integration/postgres/trixie-manifest.txt",
+    "sha256": "5893b2b280341b2877f1e225447ac2f9fccfecf714b3b99d41937c6eecfc4007"
+  },
+  {
+    "bytes": 201,
+    "path": "docs/release-evidence/2026-11-25-security-integration/postgres/trixie-runtime.txt",
+    "sha256": "fd1e60122267719504af6888920f9b44d1f223483c493a32152feda2cc03124c"
+  },
+  {
+    "bytes": 960,
+    "path": "docs/release-evidence/2026-11-25-security-integration/postgres/trixie-scan-execution.json",
+    "sha256": "de19575c7b86cc72f3daddff2398501311a2510cc349a04d99e70ce7643896c5"
+  },
+  {
+    "bytes": 541,
+    "path": "docs/release-evidence/2026-11-25-security-integration/probe-execution.json",
+    "sha256": "cb2d2e8f0943cb1c2e29ae6d58dc6bdc046cc35c60357a39cec62ec48bffce71"
+  },
+  {
+    "bytes": 7542,
+    "path": "docs/release-evidence/2026-11-25-security-integration/probe.py",
+    "sha256": "f0c6c379dec3b70f872cdb130bdb4d7db04a4991360f38f60032b671a342aa00"
+  },
+  {
+    "bytes": 6693,
+    "path": "docs/release-evidence/2026-11-25-security-integration/scan-bindings.json",
+    "sha256": "5df6ab1f395b89dddfced11363ee807a25977f2f035485ead52fdce174c4b3b6"
+  },
+  {
+    "bytes": 8827,
+    "path": "docs/release-evidence/2026-11-25-security-integration/security-os-sources-manifest.json",
+    "sha256": "cae4b62a44016d1dc4ca686000169ff8e4663dfbf5ff7532cd1d4b7813f91da7"
+  },
+  {
+    "bytes": 852,
+    "path": "docs/release-evidence/2026-11-25-security-integration/security-os-sources.json",
+    "sha256": "20d6e1b2087902d77d5f8e043282fcb6827491d810f24444ed4a7c6b5d24f3b5"
+  },
+  {
+    "bytes": 719679,
+    "path": "docs/release-evidence/2026-11-25-security-integration/service/assessment-records.json",
+    "sha256": "fecb089ccab63ae37236038baa0f9d3590f24fb93011a33916745df036ddc754"
+  },
+  {
+    "bytes": 8835,
+    "path": "docs/release-evidence/2026-11-25-security-integration/service/assessment.md",
+    "sha256": "eb0f91ccec99163222514c942a282888b7e252bba6d68fa62c024a2f253dcefa"
+  },
+  {
+    "bytes": 19753,
+    "path": "docs/release-evidence/2026-11-25-security-integration/service/caddy-os-assessment.json",
+    "sha256": "a63d8b026e34c2edc679dab37e3630834a80e785988268a9299573a503798d50"
+  },
+  {
+    "bytes": 7615,
+    "path": "docs/release-evidence/2026-11-25-security-integration/service/caddy-os-assessment.md",
+    "sha256": "bd09e38f9d72d86000b8a1533a48f7d84c6f09489899020d351270b0ba7bac90"
+  },
+  {
+    "bytes": 5508,
+    "path": "docs/release-evidence/2026-11-25-security-integration/service/caddy-os-input-hashes.json",
+    "sha256": "cb3401289c5529e17251697367c7a0be613d493a92ee96edfe11355af4c9e766"
+  },
+  {
+    "bytes": 3271,
+    "path": "docs/release-evidence/2026-11-25-security-integration/service/image-extracts.json",
+    "sha256": "41034f6bb3c1875203ab031c580be92c96ecf86bdcf324c64fc743809d58a21c"
+  },
+  {
+    "bytes": 5545,
+    "path": "docs/release-evidence/2026-11-25-security-integration/service/input-hashes.json",
+    "sha256": "7f28fd3be3b2c17b2771d2440f40f3d7132ffd1ba0595f850ddbdeb30964f420"
+  },
+  {
+    "bytes": 2295,
+    "path": "docs/release-evidence/2026-11-25-security-integration/shared-checkout-source-bindings.json",
+    "sha256": "dc933c13222633148611801a274f0fb42d0541b428c89b2652ac978b0aea5dad"
+  },
+  {
+    "bytes": 440,
+    "path": "docs/release-evidence/2026-11-25-security-integration/source-delta.json",
+    "sha256": "3647ce215cf42a62a976c6ab3b2af7b78cb3bd0ab3e6b23752504e45538bc8ac"
+  },
+  {
+    "bytes": 213702,
+    "path": "docs/release-evidence/2026-11-25-security-integration/source-inventory.json",
+    "sha256": "894ab2bff168a06c1672bda3cc45189ad20397aa09069bc29487d64ccaf1b425"
+  },
+  {
+    "bytes": 1741,
+    "path": "docs/release-evidence/2026-11-25-security-integration/source-review.md",
+    "sha256": "d562bdb16800d2df546d31fdd4969af44cf9f15fe4e760c603bccb2ed7f6869f"
+  },
+  {
+    "bytes": 407,
+    "path": "docs/release-evidence/2026-11-25-security-integration/source-validation.json",
+    "sha256": "60ccae6b189dbf66eaa899730032d861b1609b5bceca30ac0268859517137b0e"
+  },
+  {
+    "bytes": 2887,
+    "path": "docs/release-evidence/2026-11-25-security-integration/summary.json",
+    "sha256": "0c023e57db31eb628ea951b6c94edb82af4d5be1252dd6288616f81196dcd1ca"
+  },
+  {
+    "bytes": 261335,
+    "path": "docs/release-evidence/2026-11-25-security-integration/tools-probe.json",
+    "sha256": "107caaa5a7545f322285a864f8bd52806f808baec6cc52a110cedda41248a06c"
+  },
+  {
+    "bytes": 10936,
+    "path": "docs/release-evidence/2026-11-25-security-integration/ubuntu-acquisition.json",
+    "sha256": "28e5ac574623b86ff2dfbc71b27d447cad8f91b54ac0a7838c3d51dc503612ee"
+  },
+  {
+    "bytes": 3030,
+    "path": "docs/release-evidence/2026-11-25-security-integration/ubuntu-page-acquisition.json",
+    "sha256": "b2a9f94555a898a7c4e2e9aa7ab85301f2ce66291bc7c3b7a90f4667c5e64fc4"
+  },
+  {
+    "bytes": 897,
+    "path": "docs/release-evidence/2026-11-25-security-integration/upgrade-acceptance.json",
+    "sha256": "c008666a29dc069005046f3529d31840897eba0647dd560f2d44e336d7b68863"
+  },
+  {
+    "bytes": 1931,
+    "path": "docs/release-evidence/2026-11-25-security-integration/vendor-acquisition.json",
+    "sha256": "4de339253cf9063f0350c701cb3bb5068fcf5dcba6eec0f25cbbe0aef87717bf"
+  },
+  {
+    "bytes": 3611,
+    "path": "docs/release-evidence/2026-11-25-security-integration/verification.json",
+    "sha256": "c3ba62248bb254ad257cc2b770effb397a945c3cb855e19277d1bee1a68d5663"
+  },
+  {
+    "bytes": 583936,
+    "path": "docs/release-evidence/2026-11-25-security-integration/web-probe.json",
+    "sha256": "7936043ffd34cb3eddf2bf4d1c20a9879dcc62a93039e2349dbca069776b514a"
+  },
+  {
+    "bytes": 738,
+    "path": "src/RateFreak.Infrastructure/RateFreak.Infrastructure.csproj",
+    "sha256": "d83ffce3de8de1e098697d2fc80f6daa04357faa4673a1c1343b7269c7bbf726"
+  },
+  {
+    "bytes": 1772,
+    "path": "web/instrumentation.test.ts",
+    "sha256": "d5b94685ca557a3e9c229a58a3f824e78c32a8213b6436e0d37b6abf80431004"
+  },
+  {
+    "bytes": 922,
+    "path": "web/instrumentation.ts",
+    "sha256": "adc6c8ca21c49b623905f99ffca881cc84a5a2c4c0950288a96b3da7247b7d80"
+  },
+  {
+    "bytes": 1390,
+    "path": "web/package.json",
+    "sha256": "cc2275d7aa573e6a84b2690c8fcf096af68deb518e17d8481a711a5828954596"
+  },
+  {
+    "bytes": 188608,
+    "path": "web/pnpm-lock.yaml",
+    "sha256": "083f8f3e0a3ded7c66f656f57dc05bc6b97a4787dce39976599729bfb58fe0fa"
+  }
+]

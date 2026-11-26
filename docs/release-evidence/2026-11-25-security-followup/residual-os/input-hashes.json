@@ -1,0 +1,192 @@
+[
+  {
+    "path": ".local/release-compliance/native-sources/2717443c7bc7-libtiff-v4.7.2.tar.gz",
+    "sha256": "62b15f44c10106065211efa22a2dc77937bd97ee1f6e3afd2c9659010de112eb",
+    "bytes": 2616788
+  },
+  {
+    "path": ".local/release-compliance/native-sources/4c8ceb233665-libarchive-3.8.9.tar.xz",
+    "sha256": "888c934f9d95648ecb9163dc8e23ab80a476ecb81a8f1154704a227b5b676dde",
+    "bytes": 6617696
+  },
+  {
+    "path": ".local/release-compliance/native-sources/80da7ba048c3-vips-8.18.7.tar.xz",
+    "sha256": "5baaead3b0bb20ffdb9e9ff09aa9fda08620923df77b63b436654cb5e0b3bf94",
+    "bytes": 25425084
+  },
+  {
+    "path": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "bytes": 5830480
+  },
+  {
+    "path": ".local/release-compliance/native-sources/d204d1d37068-libexif-0.6.26.tar.xz",
+    "sha256": "4a055ed6575e61ca46c3172be3c753cc16c9becd0f99ec71d58dd0e471476c0c",
+    "bytes": 1335488
+  },
+  {
+    "path": ".local/release-compliance/native-sources/f395c8ee8729-libxml2-2.15.4.tar.xz",
+    "sha256": "98087fd181d9070724f3fbc65c7377db03038eb92bd882374daff44940138821",
+    "bytes": 3177444
+  },
+  {
+    "path": ".local/security-clearance-2026-11-25/postgres-os-investigation/postgresql-17.12/src/bin/psql/input.c",
+    "sha256": "130f72437502dfb73864afe6127dfade43d87d64aae6457a9b2a4168ec928094",
+    "bytes": 13030
+  },
+  {
+    "path": ".local/security-clearance-2026-11-25/postgres-os-investigation/postgresql-17.12/src/bin/psql/mainloop.c",
+    "sha256": "167322cb78606250c4f977c2c7119f6cbc32e84f7071ab7a61a29a77e65cc942",
+    "bytes": 18555
+  },
+  {
+    "path": ".local/security-clearance-2026-11-25/postgres-os-investigation/postgresql-17.12/src/bin/psql/startup.c",
+    "sha256": "36e7e23fc76a99f03eeb11c10b6365560a7c908bdac2d28f18232fad569b881e",
+    "bytes": 30628
+  },
+  {
+    "path": ".local/security-clearance-2026-11-25/vendor/debian-cve-list.txt",
+    "sha256": "ca4c7942a875a7b7db30a0d5f58c3a9df3283886291acef1fe858dd3795daa2a",
+    "bytes": 67481413
+  },
+  {
+    "path": ".local/security-clearance-2026-11-25/vendor/debian-tracker.json",
+    "sha256": "acb1ff678467a38188457c9ae56ca07bf6e75ab4f0b775e2f358d2c9214294a9",
+    "bytes": 92774370
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/api-probe.json",
+    "sha256": "b089eec865a2a2a7812391c286992c860b37a970475fb4906ad57bd63116ffb6",
+    "bytes": 42576
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/assess.py",
+    "sha256": "6c2737ded452d44232debf853e5eee1d6c9e325cdc721e2240e1e7ac7bb63f88",
+    "bytes": 20854
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/native-iconv-calls.json",
+    "sha256": "d817abbaa363662777c9a990a09bd48e887bf4ba3b3976c0953e4b755c1be058",
+    "bytes": 53075
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/probe.py",
+    "sha256": "40c42b580adc719bcfb5d090de528b02c0b788ac69c8ae863e5c110faef99bfe",
+    "bytes": 3736
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/quick-probes.json",
+    "sha256": "7ec01291dae98a565b6a6502f8423f89318b4743afd0acda68cdb63ae4669cd0",
+    "bytes": 2506
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/quick_probe.py",
+    "sha256": "7bb6e4927a55231abe9fdfbf973ec731324d5290fddcafeb3765efa2148daebf",
+    "bytes": 562
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/run_probes.py",
+    "sha256": "5dbffe42890319b18cc0436ebb99399bdec5c4cd1f4a3800f5b3eb786929c522",
+    "bytes": 1049
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/selected-records.json",
+    "sha256": "3115e80eb8056a22c1fbec3824abb652c5276f290e794adf6eded8067db947a1",
+    "bytes": 166088
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/tools-probe.json",
+    "sha256": "3ed682d612c55b67ec008635ea0b91e04b7db9b679e0ad73a48740d500cc0f94",
+    "bytes": 67194
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/vendor/GLIBC-SA-2026-0025.txt",
+    "sha256": "cb0a39ecd1433247b36b280ba8a4f8a59fffdf9a90bbb6995025f6a880eca47b",
+    "bytes": 2040
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/vendor/GLIBC-SA-2026-0028.txt",
+    "sha256": "a39a85d3cf0bf62bc8a34046beb920a8d0b8b4848eff660b042f0070f1f36a86",
+    "bytes": 1488
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/vendor/GLIBC-SA-2026-0030.txt",
+    "sha256": "b997fe6d5365621543e629e64a2e21e216fc17295bd8f911860dbe810d6083d3",
+    "bytes": 896
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/vendor/GLIBC-SA-2026-0031.txt",
+    "sha256": "01de4b4db8d82af581c3328715a9f826ac278295ae3e176595579bcef322ff58",
+    "bytes": 944
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/vendor/acquisition.json",
+    "sha256": "edd543f41b9104637b950c57f323f5a3bc2a31d2d32c298674e483c4399ab72a",
+    "bytes": 2164
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/vendor/python-tempfile-fix.patch",
+    "sha256": "13dc565eeb9d313e11e72ca39cfe7776f7440f2ee408718dcedddcab7a076660",
+    "bytes": 20623
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/vendor-notes.json",
+    "sha256": "cf00a9a7714fbc4afd5d2857764cb42a9f43cb68c740cb6d80f77ab6b1bba6db",
+    "bytes": 46105
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/vips-text-callers.json",
+    "sha256": "9c02d74da45f9a5a9588f55ad6e2f77058908508420558dac68b75dc173d6a6a",
+    "bytes": 142
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/web-probe.json",
+    "sha256": "53026fe6db8b0c3f57caa5f870f8512dc62a29eaf34ac350ec15424e51baf925",
+    "bytes": 35230
+  },
+  {
+    "path": "deploy/self-host/compose.yaml",
+    "sha256": "bbd70bddb9b6f2786b0a8cae0c32c0b0198db0c46d90fb25e48b8fa22c21e3f1",
+    "bytes": 5361
+  },
+  {
+    "path": "deploy/self-host/entrypoint.py",
+    "sha256": "6ff6b8176b3234164a8c6a058dec24f4a2ea5688a3d179e482d00f7111c8694a",
+    "bytes": 14168
+  },
+  {
+    "path": "deploy/self-host/maintenance.py",
+    "sha256": "1f8d9dd7fc007d3ca06574905bfe52c3620d9ab448214e6e517a97cf12f16ea9",
+    "bytes": 13541
+  },
+  {
+    "path": "docs/release-evidence/2026-11-25-security-integration/advisory-ledger.json",
+    "sha256": "23000d974ac68f8f6d260cfd79516f84ff1587c9d7562b6d39ff5faaf4942416",
+    "bytes": 1225622
+  },
+  {
+    "path": "src/RateFreak.Infrastructure/Artwork/ArtworkDecoder.cs",
+    "sha256": "e23cb7a1eefbc747785dfdf71c073c73b225b9d77c974bbd72cd6fda25130cc9",
+    "bytes": 4141
+  },
+  {
+    "path": "src/RateFreak.Infrastructure/DependencyInjection.cs",
+    "sha256": "bd944e62e79a21d008c1c958136b397d8471734749b0694144890b3881b60527",
+    "bytes": 11088
+  },
+  {
+    "path": "src/RateFreak.Infrastructure/RateFreak.Infrastructure.csproj",
+    "sha256": "c25795ec9c5877aa668d18066ed67b53aa13b91a1406f980ca511b401ba56c8d",
+    "bytes": 738
+  },
+  {
+    "path": "web/instrumentation.ts",
+    "sha256": "adc6c8ca21c49b623905f99ffca881cc84a5a2c4c0950288a96b3da7247b7d80",
+    "bytes": 922
+  },
+  {
+    "path": "web/shared/artwork/provider-images.ts",
+    "sha256": "3b8a626471370fb42ba042aaf446cd55d91cbf530c8829d53a4bcd568516b593",
+    "bytes": 1394
+  }
+]

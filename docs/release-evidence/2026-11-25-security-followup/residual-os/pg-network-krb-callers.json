@@ -1,0 +1,187 @@
+[
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 163,
+    "context": "                                         context);\n\n    krb5_free_data(context, data);\n\n    return major_status;\n}\n\n/* Decode, decrypt and store the forwarded creds in the local ccache. */\nstatic krb5_error_code\nrd_and_store_for_creds(context, auth_context, inbuf, out_cred)\n    krb5_context context;\n    krb5_auth_context auth_context;\n    krb5_data *inbuf;\n    krb5_gss_cred_id_t *out_cred;\n{\n    krb5_creds ** creds = NULL;\n    krb5_error_code retval;\n    krb5_ccache ccache = NULL;\n    krb5_gss_cred_id_t cred = NULL;\n    krb5_auth_context new_auth_ctx = NULL;\n    krb5_int32 flags_org;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 182,
+    "context": "    krb5_auth_context new_auth_ctx = NULL;\n    krb5_int32 flags_org;\n\n    if ((retval = krb5_auth_con_getflags(context, auth_context, &flags_org)))\n        return retval;\n    krb5_auth_con_setflags(context, auth_context,\n                           0);\n\n    /*\n     * By the time krb5_rd_cred is called here (after krb5_rd_req has been\n     * called in krb5_gss_accept_sec_context), the \"keyblock\" field of\n     * auth_context contains a pointer to the session key, and the\n     * \"recv_subkey\" field might contain a session subkey.  Either of\n     * these (the \"recv_subkey\" if it isn't NULL, otherwise the\n     * \"keyblock\") might have been used to encrypt the encrypted part of\n     * the KRB_CRED message that contains the forwarded credentials.  (The\n     * Java Crypto and Security Implementation from the DSTC in Australia\n     * always uses the session key.  But apparently it never negotiates a\n     * subkey, so this code works fine against a JCSI client.)  Up to the\n     * present, though, GSSAPI clients linked against the MIT code (which\n     * is almost all GSSAPI clients) don't encrypt the KRB_CRED message at"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 194,
+    "context": "     * \"recv_subkey\" field might contain a session subkey.  Either of\n     * these (the \"recv_subkey\" if it isn't NULL, otherwise the\n     * \"keyblock\") might have been used to encrypt the encrypted part of\n     * the KRB_CRED message that contains the forwarded credentials.  (The\n     * Java Crypto and Security Implementation from the DSTC in Australia\n     * always uses the session key.  But apparently it never negotiates a\n     * subkey, so this code works fine against a JCSI client.)  Up to the\n     * present, though, GSSAPI clients linked against the MIT code (which\n     * is almost all GSSAPI clients) don't encrypt the KRB_CRED message at\n     * all -- at this level.  So if the first call to krb5_rd_cred fails,\n     * we should call it a second time with another auth context freshly\n     * created by krb5_auth_con_init.  All of its keyblock fields will be\n     * NULL, so krb5_rd_cred will assume that the KRB_CRED message is\n     * unencrypted.  (The MIT code doesn't actually send the KRB_CRED\n     * message in the clear -- the \"authenticator\" whose \"checksum\" ends up\n     * containing the KRB_CRED message does get encrypted.)\n     */\n    if (krb5_rd_cred(context, auth_context, inbuf, &creds, NULL)) {\n        if ((retval = krb5_auth_con_init(context, &new_auth_ctx)))\n            goto cleanup;\n        krb5_auth_con_setflags(context, new_auth_ctx, 0);"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 197,
+    "context": "     * the KRB_CRED message that contains the forwarded credentials.  (The\n     * Java Crypto and Security Implementation from the DSTC in Australia\n     * always uses the session key.  But apparently it never negotiates a\n     * subkey, so this code works fine against a JCSI client.)  Up to the\n     * present, though, GSSAPI clients linked against the MIT code (which\n     * is almost all GSSAPI clients) don't encrypt the KRB_CRED message at\n     * all -- at this level.  So if the first call to krb5_rd_cred fails,\n     * we should call it a second time with another auth context freshly\n     * created by krb5_auth_con_init.  All of its keyblock fields will be\n     * NULL, so krb5_rd_cred will assume that the KRB_CRED message is\n     * unencrypted.  (The MIT code doesn't actually send the KRB_CRED\n     * message in the clear -- the \"authenticator\" whose \"checksum\" ends up\n     * containing the KRB_CRED message does get encrypted.)\n     */\n    if (krb5_rd_cred(context, auth_context, inbuf, &creds, NULL)) {\n        if ((retval = krb5_auth_con_init(context, &new_auth_ctx)))\n            goto cleanup;\n        krb5_auth_con_setflags(context, new_auth_ctx, 0);\n        if ((retval = krb5_rd_cred(context, new_auth_ctx, inbuf,\n                                   &creds, NULL)))\n            goto cleanup;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 202,
+    "context": "     * is almost all GSSAPI clients) don't encrypt the KRB_CRED message at\n     * all -- at this level.  So if the first call to krb5_rd_cred fails,\n     * we should call it a second time with another auth context freshly\n     * created by krb5_auth_con_init.  All of its keyblock fields will be\n     * NULL, so krb5_rd_cred will assume that the KRB_CRED message is\n     * unencrypted.  (The MIT code doesn't actually send the KRB_CRED\n     * message in the clear -- the \"authenticator\" whose \"checksum\" ends up\n     * containing the KRB_CRED message does get encrypted.)\n     */\n    if (krb5_rd_cred(context, auth_context, inbuf, &creds, NULL)) {\n        if ((retval = krb5_auth_con_init(context, &new_auth_ctx)))\n            goto cleanup;\n        krb5_auth_con_setflags(context, new_auth_ctx, 0);\n        if ((retval = krb5_rd_cred(context, new_auth_ctx, inbuf,\n                                   &creds, NULL)))\n            goto cleanup;\n    }\n\n    if ((retval = krb5_cc_new_unique(context, \"MEMORY\", NULL, &ccache))) {\n        ccache = NULL;\n        goto cleanup;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 206,
+    "context": "     * NULL, so krb5_rd_cred will assume that the KRB_CRED message is\n     * unencrypted.  (The MIT code doesn't actually send the KRB_CRED\n     * message in the clear -- the \"authenticator\" whose \"checksum\" ends up\n     * containing the KRB_CRED message does get encrypted.)\n     */\n    if (krb5_rd_cred(context, auth_context, inbuf, &creds, NULL)) {\n        if ((retval = krb5_auth_con_init(context, &new_auth_ctx)))\n            goto cleanup;\n        krb5_auth_con_setflags(context, new_auth_ctx, 0);\n        if ((retval = krb5_rd_cred(context, new_auth_ctx, inbuf,\n                                   &creds, NULL)))\n            goto cleanup;\n    }\n\n    if ((retval = krb5_cc_new_unique(context, \"MEMORY\", NULL, &ccache))) {\n        ccache = NULL;\n        goto cleanup;\n    }\n\n    if ((retval = krb5_cc_initialize(context, ccache, creds[0]->client)))\n        goto cleanup;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 291,
+    "context": "}\n\n\n/*\n * Performs third leg of DCE authentication\n */\nstatic OM_uint32\nkg_accept_dce(minor_status, context_handle, verifier_cred_handle,\n              input_token, input_chan_bindings, src_name, mech_type,\n              output_token, ret_flags, time_rec, delegated_cred_handle)\n    OM_uint32 *minor_status;\n    gss_ctx_id_t *context_handle;\n    gss_cred_id_t verifier_cred_handle;\n    gss_buffer_t input_token;\n    gss_channel_bindings_t input_chan_bindings;\n    gss_name_t *src_name;\n    gss_OID *mech_type;\n    gss_buffer_t output_token;\n    OM_uint32 *ret_flags;\n    OM_uint32 *time_rec;\n    gss_cred_id_t *delegated_cred_handle;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 302,
+    "context": "    gss_ctx_id_t *context_handle;\n    gss_cred_id_t verifier_cred_handle;\n    gss_buffer_t input_token;\n    gss_channel_bindings_t input_chan_bindings;\n    gss_name_t *src_name;\n    gss_OID *mech_type;\n    gss_buffer_t output_token;\n    OM_uint32 *ret_flags;\n    OM_uint32 *time_rec;\n    gss_cred_id_t *delegated_cred_handle;\n{\n    krb5_error_code code;\n    krb5_gss_ctx_id_rec *ctx = 0;\n    krb5_timestamp now;\n    krb5_gss_name_t name = NULL;\n    krb5_ui_4 nonce = 0;\n    krb5_data ap_rep;\n    OM_uint32 major_status = GSS_S_FAILURE;\n\n    output_token->length = 0;\n    output_token->value = NULL;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 318,
+    "context": "    krb5_data ap_rep;\n    OM_uint32 major_status = GSS_S_FAILURE;\n\n    output_token->length = 0;\n    output_token->value = NULL;\n\n    if (mech_type)\n        *mech_type = GSS_C_NULL_OID;\n    /* return a bogus cred handle */\n    if (delegated_cred_handle)\n        *delegated_cred_handle = GSS_C_NO_CREDENTIAL;\n\n    ctx = (krb5_gss_ctx_id_rec *)*context_handle;\n\n    code = krb5_timeofday(ctx->k5_context, &now);\n    if (code != 0) {\n        major_status = GSS_S_FAILURE;\n        goto fail;\n    }\n\n    ap_rep.data = input_token->value;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 319,
+    "context": "    OM_uint32 major_status = GSS_S_FAILURE;\n\n    output_token->length = 0;\n    output_token->value = NULL;\n\n    if (mech_type)\n        *mech_type = GSS_C_NULL_OID;\n    /* return a bogus cred handle */\n    if (delegated_cred_handle)\n        *delegated_cred_handle = GSS_C_NO_CREDENTIAL;\n\n    ctx = (krb5_gss_ctx_id_rec *)*context_handle;\n\n    code = krb5_timeofday(ctx->k5_context, &now);\n    if (code != 0) {\n        major_status = GSS_S_FAILURE;\n        goto fail;\n    }\n\n    ap_rep.data = input_token->value;\n    ap_rep.length = input_token->length;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 577,
+    "context": "            option_id = k5_input_get_uint16_le(&in);\n            option_len = k5_input_get_uint16_le(&in);\n            option_bytes = k5_input_get_bytes(&in, option_len);\n            option = make_data((uint8_t *)option_bytes, option_len);\n            if (in.status) {\n                code = KG_BAD_LENGTH;\n                status = GSS_S_FAILURE;\n                goto fail;\n            }\n            if (option_id != KRB5_GSS_FOR_CREDS_OPTION) {\n                status = GSS_S_FAILURE;\n                goto fail;\n            }\n\n            /* Store the delegated credential. */\n            code = rd_and_store_for_creds(context, auth_context, &option,\n                                          deleg_out);\n            if (code) {\n                status = GSS_S_FAILURE;\n                goto fail;\n            }"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 583,
+    "context": "                status = GSS_S_FAILURE;\n                goto fail;\n            }\n            if (option_id != KRB5_GSS_FOR_CREDS_OPTION) {\n                status = GSS_S_FAILURE;\n                goto fail;\n            }\n\n            /* Store the delegated credential. */\n            code = rd_and_store_for_creds(context, auth_context, &option,\n                                          deleg_out);\n            if (code) {\n                status = GSS_S_FAILURE;\n                goto fail;\n            }\n            *flags_out |= GSS_C_DELEG_FLAG;\n        }\n\n        /* Process any extensions at the end of the checksum.  Extensions use\n         * 4-byte big-endian tag and length instead of 2-byte little-endian. */\n        while (in.len > 0) {"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 644,
+    "context": "    *code_out = code;\n    return status;\n}\n\nstatic OM_uint32\nkg_accept_krb5(minor_status, context_handle,\n               verifier_cred_handle, input_token,\n               input_chan_bindings, src_name, mech_type,\n               output_token, ret_flags, time_rec,\n               delegated_cred_handle, exts)\n    OM_uint32 *minor_status;\n    gss_ctx_id_t *context_handle;\n    gss_cred_id_t verifier_cred_handle;\n    gss_buffer_t input_token;\n    gss_channel_bindings_t input_chan_bindings;\n    gss_name_t *src_name;\n    gss_OID *mech_type;\n    gss_buffer_t output_token;\n    OM_uint32 *ret_flags;\n    OM_uint32 *time_rec;\n    gss_cred_id_t *delegated_cred_handle;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 655,
+    "context": "    gss_ctx_id_t *context_handle;\n    gss_cred_id_t verifier_cred_handle;\n    gss_buffer_t input_token;\n    gss_channel_bindings_t input_chan_bindings;\n    gss_name_t *src_name;\n    gss_OID *mech_type;\n    gss_buffer_t output_token;\n    OM_uint32 *ret_flags;\n    OM_uint32 *time_rec;\n    gss_cred_id_t *delegated_cred_handle;\n    krb5_gss_ctx_ext_t exts;\n{\n    krb5_context context;\n    unsigned char *ptr;\n    krb5_gss_cred_id_t cred = 0;\n    krb5_data ap_rep, ap_req;\n    krb5_error_code code;\n    krb5_address addr, *paddr;\n    krb5_authenticator *authdat = 0;\n    krb5_gss_name_t name = NULL;\n    krb5_ui_4 gss_flags = 0;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 713,
+    "context": "    output_token->length = 0;\n    output_token->value = NULL;\n    token.value = 0;\n    ap_req.data = 0;\n    ap_rep.data = 0;\n\n    if (mech_type)\n        *mech_type = GSS_C_NULL_OID;\n    /* return a bogus cred handle */\n    if (delegated_cred_handle)\n        *delegated_cred_handle = GSS_C_NO_CREDENTIAL;\n\n    /* handle default cred handle */\n    if (verifier_cred_handle == GSS_C_NO_CREDENTIAL) {\n        major_status = krb5_gss_acquire_cred(minor_status, GSS_C_NO_NAME,\n                                             GSS_C_INDEFINITE, GSS_C_NO_OID_SET,\n                                             GSS_C_ACCEPT, &defcred,\n                                             NULL, NULL);\n        if (major_status != GSS_S_COMPLETE) {\n            code = *minor_status;\n            goto fail;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 714,
+    "context": "    output_token->value = NULL;\n    token.value = 0;\n    ap_req.data = 0;\n    ap_rep.data = 0;\n\n    if (mech_type)\n        *mech_type = GSS_C_NULL_OID;\n    /* return a bogus cred handle */\n    if (delegated_cred_handle)\n        *delegated_cred_handle = GSS_C_NO_CREDENTIAL;\n\n    /* handle default cred handle */\n    if (verifier_cred_handle == GSS_C_NO_CREDENTIAL) {\n        major_status = krb5_gss_acquire_cred(minor_status, GSS_C_NO_NAME,\n                                             GSS_C_INDEFINITE, GSS_C_NO_OID_SET,\n                                             GSS_C_ACCEPT, &defcred,\n                                             NULL, NULL);\n        if (major_status != GSS_S_COMPLETE) {\n            code = *minor_status;\n            goto fail;\n        }"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 848,
+    "context": "    /* Limit the encryption types negotiated (if requested). */\n    if (cred->req_enctypes) {\n        if ((code = krb5_auth_con_setpermetypes(context, auth_context,\n                                                cred->req_enctypes))) {\n            major_status = GSS_S_FAILURE;\n            goto fail;\n        }\n    }\n\n    code = krb5_rd_req_decoded(context, &auth_context, request,\n                               cred->acceptor_mprinc, cred->keytab,\n                               &ap_req_options, NULL);\n    if (code) {\n        major_status = GSS_S_FAILURE;\n        goto fail;\n    }\n    krb5_auth_con_setflags(context, auth_context,\n                           KRB5_AUTH_CONTEXT_DO_SEQUENCE);\n\n    krb5_auth_con_getauthenticator(context, auth_context, &authdat);\n"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 863,
+    "context": "    }\n    krb5_auth_con_setflags(context, auth_context,\n                           KRB5_AUTH_CONTEXT_DO_SEQUENCE);\n\n    krb5_auth_con_getauthenticator(context, auth_context, &authdat);\n\n    major_status = process_checksum(minor_status, context, input_chan_bindings,\n                                    auth_context, ap_req_options,\n                                    authdat, exts,\n                                    delegated_cred_handle ? &deleg_cred : NULL,\n                                    &gss_flags, &code);\n\n    if (major_status != GSS_S_COMPLETE)\n        goto fail;\n\n    if (exts->iakerb.conv && !exts->iakerb.verified) {\n        major_status = GSS_S_BAD_SIG;\n        goto fail;\n    }\n\n    /* only DCE_STYLE clients are allowed to send raw AP-REQs */"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 963,
+    "context": "        code = kg_setup_keys(context, ctx, ctx->subkey, &ctx->cksumtype);\n        if (code) {\n            major_status = GSS_S_FAILURE;\n            goto fail;\n        }\n    }\n    ctx->krb_times = ticket->enc_part2->times; /* struct copy */\n    ctx->krb_flags = ticket->enc_part2->flags;\n\n    if (delegated_cred_handle != NULL &&\n        deleg_cred == NULL && /* no unconstrained delegation */\n        cred->usage == GSS_C_BOTH) {\n        /*\n         * Now, we always fabricate a delegated credentials handle\n         * containing the service ticket to ourselves, which can be\n         * used for S4U2Proxy.\n         */\n        major_status = create_constrained_deleg_creds(minor_status, cred,\n                                                      ticket, &deleg_cred,\n                                                      context);\n        if (GSS_ERROR(major_status))"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 1163,
+    "context": "    if (ret_flags)\n        *ret_flags = ctx->gss_flags;\n\n    *context_handle = (gss_ctx_id_t)ctx;\n    *output_token = token;\n\n    if (src_name)\n        *src_name = (gss_name_t) name;\n\n    if (delegated_cred_handle)\n        *delegated_cred_handle = (gss_cred_id_t) deleg_cred;\n\n    /* finally! */\n\n    *minor_status = 0;\n    major_status = GSS_S_COMPLETE;\n\nfail:\n    if (authdat)\n        krb5_free_authenticator(context, authdat);\n    /* The ctx structure has the handle of the auth_context */"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 1164,
+    "context": "        *ret_flags = ctx->gss_flags;\n\n    *context_handle = (gss_ctx_id_t)ctx;\n    *output_token = token;\n\n    if (src_name)\n        *src_name = (gss_name_t) name;\n\n    if (delegated_cred_handle)\n        *delegated_cred_handle = (gss_cred_id_t) deleg_cred;\n\n    /* finally! */\n\n    *minor_status = 0;\n    major_status = GSS_S_COMPLETE;\n\nfail:\n    if (authdat)\n        krb5_free_authenticator(context, authdat);\n    /* The ctx structure has the handle of the auth_context */\n    if (auth_context && !ctx) {"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 1280,
+    "context": "    gss_ctx_id_t *context_handle,\n    gss_cred_id_t verifier_cred_handle,\n    gss_buffer_t input_token,\n    gss_channel_bindings_t input_chan_bindings,\n    gss_name_t *src_name,\n    gss_OID *mech_type,\n    gss_buffer_t output_token,\n    OM_uint32 *ret_flags,\n    OM_uint32 *time_rec,\n    gss_cred_id_t *delegated_cred_handle,\n    krb5_gss_ctx_ext_t exts)\n{\n    krb5_gss_ctx_id_rec *ctx = (krb5_gss_ctx_id_rec *)*context_handle;\n\n    /*\n     * Context handle must be unspecified.  Actually, it must be\n     * non-established, but currently, accept_sec_context never returns\n     * a non-established context handle.\n     */\n    /*SUPPRESS 29*/\n    if (ctx != NULL) {"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 1297,
+    "context": "     * a non-established context handle.\n     */\n    /*SUPPRESS 29*/\n    if (ctx != NULL) {\n        if (ctx->established == 0 && (ctx->gss_flags & GSS_C_DCE_STYLE)) {\n            return kg_accept_dce(minor_status, context_handle,\n                                 verifier_cred_handle, input_token,\n                                 input_chan_bindings, src_name, mech_type,\n                                 output_token, ret_flags, time_rec,\n                                 delegated_cred_handle);\n        } else {\n            *minor_status = EINVAL;\n            save_error_string(EINVAL, \"accept_sec_context called with existing context handle\");\n            return GSS_S_FAILURE;\n        }\n    }\n\n    return kg_accept_krb5(minor_status, context_handle,\n                          verifier_cred_handle, input_token,\n                          input_chan_bindings, src_name, mech_type,\n                          output_token, ret_flags, time_rec,"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 1309,
+    "context": "            save_error_string(EINVAL, \"accept_sec_context called with existing context handle\");\n            return GSS_S_FAILURE;\n        }\n    }\n\n    return kg_accept_krb5(minor_status, context_handle,\n                          verifier_cred_handle, input_token,\n                          input_chan_bindings, src_name, mech_type,\n                          output_token, ret_flags, time_rec,\n                          delegated_cred_handle, exts);\n}\n\nOM_uint32 KRB5_CALLCONV\nkrb5_gss_accept_sec_context(minor_status, context_handle,\n                            verifier_cred_handle, input_token,\n                            input_chan_bindings, src_name, mech_type,\n                            output_token, ret_flags, time_rec,\n                            delegated_cred_handle)\n    OM_uint32 *minor_status;\n    gss_ctx_id_t *context_handle;\n    gss_cred_id_t verifier_cred_handle;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 1317,
+    "context": "                          output_token, ret_flags, time_rec,\n                          delegated_cred_handle, exts);\n}\n\nOM_uint32 KRB5_CALLCONV\nkrb5_gss_accept_sec_context(minor_status, context_handle,\n                            verifier_cred_handle, input_token,\n                            input_chan_bindings, src_name, mech_type,\n                            output_token, ret_flags, time_rec,\n                            delegated_cred_handle)\n    OM_uint32 *minor_status;\n    gss_ctx_id_t *context_handle;\n    gss_cred_id_t verifier_cred_handle;\n    gss_buffer_t input_token;\n    gss_channel_bindings_t input_chan_bindings;\n    gss_name_t *src_name;\n    gss_OID *mech_type;\n    gss_buffer_t output_token;\n    OM_uint32 *ret_flags;\n    OM_uint32 *time_rec;\n    gss_cred_id_t *delegated_cred_handle;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 1328,
+    "context": "    gss_ctx_id_t *context_handle;\n    gss_cred_id_t verifier_cred_handle;\n    gss_buffer_t input_token;\n    gss_channel_bindings_t input_chan_bindings;\n    gss_name_t *src_name;\n    gss_OID *mech_type;\n    gss_buffer_t output_token;\n    OM_uint32 *ret_flags;\n    OM_uint32 *time_rec;\n    gss_cred_id_t *delegated_cred_handle;\n{\n    krb5_gss_ctx_ext_rec exts;\n\n    memset(&exts, 0, sizeof(exts));\n\n    return krb5_gss_accept_sec_context_ext(minor_status,\n                                           context_handle,\n                                           verifier_cred_handle,\n                                           input_token,\n                                           input_chan_bindings,\n                                           src_name,"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/accept_sec_context.c",
+    "line": 1344,
+    "context": "                                           context_handle,\n                                           verifier_cred_handle,\n                                           input_token,\n                                           input_chan_bindings,\n                                           src_name,\n                                           mech_type,\n                                           output_token,\n                                           ret_flags,\n                                           time_rec,\n                                           delegated_cred_handle,\n                                           &exts);\n}"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/k5sealv3.c",
+    "line": 2,
+    "context": "/* -*- mode: c; c-basic-offset: 4; indent-tabs-mode: nil -*- */\n/* lib/gssapi/krb5/k5sealv3.c */\n/*\n * Copyright 2003,2004,2007 by the Massachusetts Institute of Technology.\n * All Rights Reserved.\n *\n * Export of this software from the United States of America may\n *   require a specific license from the United States Government.\n *   It is the responsibility of any person or organization contemplating\n *   export to obtain such a license before exporting.\n *\n * WITHIN THAT CONSTRAINT, permission to use, copy, modify, and\n * distribute this software and its documentation for any purpose and"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/k5sealv3.c",
+    "line": 61,
+    "context": "    memmove(ptr, (char *)ptr + rc, bufsiz - rc);\n    memcpy((char *)ptr + bufsiz - rc, tbuf, rc);\n    free(tbuf);\n    return 1;\n}\n\nstatic const gss_buffer_desc empty_message = { 0, 0 };\n\nkrb5_error_code\ngss_krb5int_make_seal_token_v3 (krb5_context context,\n                                krb5_gss_ctx_id_rec *ctx,\n                                const gss_buffer_desc * message,\n                                gss_buffer_t token,\n                                int conf_req_flag, int toktype)\n{\n    size_t bufsize = 16;\n    unsigned char *outbuf = 0;\n    krb5_error_code err;\n    int key_usage;\n    unsigned char acceptor_flag;\n    const gss_buffer_desc *message2 = message;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/k5sealv3.c",
+    "line": 301,
+    "context": "    token->value = NULL;\n    token->length = 0;\n    return err;\n}\n\n/* message_buffer is an input if SIGN, output if SEAL, and ignored if DEL_CTX\n   conf_state is only valid if SEAL. */\n\nOM_uint32\ngss_krb5int_unseal_token_v3(krb5_context *contextptr,\n                            OM_uint32 *minor_status,\n                            krb5_gss_ctx_id_rec *ctx,\n                            unsigned char *ptr, unsigned int bodysize,\n                            gss_buffer_t message_buffer,\n                            int *conf_state, gss_qop_t *qop_state, int toktype)\n{\n    krb5_context context = *contextptr;\n    krb5_data plain = empty_data();\n    uint64_t seqnum;\n    size_t ec, rrc;\n    int key_usage;"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/gssapiP_krb5.h",
+    "line": 110,
+    "context": "#define KG_TOK_SEAL_MSG         0x0201\n#define KG_TOK_MIC_MSG          0x0101\n#define KG_TOK_WRAP_MSG         0x0201\n#define KG_TOK_DEL_CTX          0x0102\n#define KG2_TOK_MIC_MSG         0x0404\n#define KG2_TOK_WRAP_MSG        0x0504\n#define KG2_TOK_DEL_CTX         0x0405\n#define IAKERB_TOK_PROXY        0x0501\n\n#define KRB5_GSS_FOR_CREDS_OPTION 1\n\n#define KG2_RESP_FLAG_ERROR             0x0001\n#define KG2_RESP_FLAG_DELEG_OK          0x0002\n\n/** CFX flags **/\n#define FLAG_SENDER_IS_ACCEPTOR 0x01\n#define FLAG_WRAP_CONFIDENTIAL  0x02\n#define FLAG_ACCEPTOR_SUBKEY    0x04\n\n/* These are to be stored in little-endian order, i.e., des-mac is\n   stored as 02 00.  */"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/gssapiP_krb5.h",
+    "line": 390,
+    "context": "                                          int *out_caller_provided_name);\n\nOM_uint32 kg_get_ccache_name (OM_uint32 *minor_status, char **out_name);\n\nOM_uint32 kg_set_ccache_name (OM_uint32 *minor_status,\n                              const char *name);\n\n/* AEAD */\n\nkrb5_error_code gss_krb5int_make_seal_token_v3_iov(krb5_context context,\n                           krb5_gss_ctx_id_rec *ctx,\n                           int conf_req_flag,\n                           int *conf_state,\n                           gss_iov_buffer_desc *iov,\n                           int iov_count,\n                           int toktype);\n\nOM_uint32 gss_krb5int_unseal_v3_iov(krb5_context context,\n                          OM_uint32 *minor_status,\n                          krb5_gss_ctx_id_rec *ctx,\n                          gss_iov_buffer_desc *iov,"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/gssapiP_krb5.h",
+    "line": 616,
+    "context": " gss_cred_id_t,    /* verifier_cred_handle */\n gss_buffer_t,     /* input_token_buffer */\n gss_channel_bindings_t,\n /* input_chan_bindings */\n gss_name_t*,      /* src_name */\n gss_OID*,         /* mech_type */\n gss_buffer_t,     /* output_token */\n OM_uint32*,       /* ret_flags */\n OM_uint32*,       /* time_rec */\n gss_cred_id_t*    /* delegated_cred_handle */\n);\n\nOM_uint32 KRB5_CALLCONV krb5_gss_accept_sec_context_ext\n(OM_uint32*,       /* minor_status */\n gss_ctx_id_t*,    /* context_handle */\n gss_cred_id_t,    /* verifier_cred_handle */\n gss_buffer_t,     /* input_token_buffer */\n gss_channel_bindings_t,\n /* input_chan_bindings */\n gss_name_t*,      /* src_name */\n gss_OID*,         /* mech_type */"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/gssapiP_krb5.h",
+    "line": 631,
+    "context": " gss_cred_id_t,    /* verifier_cred_handle */\n gss_buffer_t,     /* input_token_buffer */\n gss_channel_bindings_t,\n /* input_chan_bindings */\n gss_name_t*,      /* src_name */\n gss_OID*,         /* mech_type */\n gss_buffer_t,     /* output_token */\n OM_uint32*,       /* ret_flags */\n OM_uint32*,       /* time_rec */\n gss_cred_id_t*,   /* delegated_cred_handle */\n krb5_gss_ctx_ext_t/*exts */\n);\n#endif /* LEAN_CLIENT */\n\nOM_uint32 KRB5_CALLCONV krb5_gss_inquire_sec_context_by_oid\n(OM_uint32*,       /* minor_status */\n const gss_ctx_id_t,\n /* context_handle */\n const gss_OID,    /* desired_object */\n gss_buffer_set_t* /* data_set */\n);"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/gssapiP_krb5.h",
+    "line": 924,
+    "context": "    OM_uint32 *);           /* time_rec */\n\nOM_uint32\nkrb5_gss_validate_cred_1(OM_uint32 * /* minor_status */,\n                         gss_cred_id_t /* cred_handle */,\n                         krb5_context /* context */);\n\ngss_OID krb5_gss_convert_static_mech_oid(gss_OID oid);\n\nkrb5_error_code gss_krb5int_make_seal_token_v3(krb5_context,\n                                               krb5_gss_ctx_id_rec *,\n                                               const gss_buffer_desc *,\n                                               gss_buffer_t,\n                                               int, int);\n\nOM_uint32 gss_krb5int_unseal_token_v3(krb5_context *contextptr,\n                                      OM_uint32 *minor_status,\n                                      krb5_gss_ctx_id_rec *ctx,\n                                      unsigned char *ptr,\n                                      unsigned int bodysize,\n                                      gss_buffer_t message_buffer,"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/gssapiP_krb5.h",
+    "line": 930,
+    "context": "\ngss_OID krb5_gss_convert_static_mech_oid(gss_OID oid);\n\nkrb5_error_code gss_krb5int_make_seal_token_v3(krb5_context,\n                                               krb5_gss_ctx_id_rec *,\n                                               const gss_buffer_desc *,\n                                               gss_buffer_t,\n                                               int, int);\n\nOM_uint32 gss_krb5int_unseal_token_v3(krb5_context *contextptr,\n                                      OM_uint32 *minor_status,\n                                      krb5_gss_ctx_id_rec *ctx,\n                                      unsigned char *ptr,\n                                      unsigned int bodysize,\n                                      gss_buffer_t message_buffer,\n                                      int *conf_state, gss_qop_t *qop_state,\n                                      int toktype);\n\nint gss_krb5int_rotate_left (void *ptr, size_t bufsiz, size_t rc);\n\n/* naming_exts.c */"
+  },
+  {
+    "file": "src/lib/gssapi/krb5/gssapiP_krb5.h",
+    "line": 1247,
+    "context": "                              gss_ctx_id_t *context_handler,\n                              gss_cred_id_t verifier_cred_handle,\n                              gss_buffer_t input_token,\n                              gss_channel_bindings_t input_chan_bindings,\n                              gss_name_t *src_name,\n                              gss_OID *mech_type,\n                              gss_buffer_t output_token,\n                              OM_uint32 *ret_flags,\n                              OM_uint32 *time_rec,\n                              gss_cred_id_t *delegated_cred_handle);\n\nOM_uint32 KRB5_CALLCONV\niakerb_gss_delete_sec_context(OM_uint32 *minor_status,\n                              gss_ctx_id_t *context_handle,\n                              gss_buffer_t output_token);\n\nkrb5_error_code\niakerb_make_finished(krb5_context context,\n                     krb5_key key,\n                     const krb5_data *conv,\n                     krb5_data **finished);"
+  }
+]

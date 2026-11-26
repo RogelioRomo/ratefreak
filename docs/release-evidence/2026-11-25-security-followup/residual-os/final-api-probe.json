@@ -1,0 +1,6014 @@
+{
+  "source_files": {
+    "/app/entrypoint.py": {
+      "sha256": "6ff6b8176b3234164a8c6a058dec24f4a2ea5688a3d179e482d00f7111c8694a",
+      "imports": [
+        "json",
+        "os",
+        "pathlib",
+        "re",
+        "shutil",
+        "stat",
+        "sys",
+        "tempfile"
+      ],
+      "calls": [
+        {
+          "line": 18,
+          "function": "Path"
+        },
+        {
+          "line": 19,
+          "function": "Path"
+        },
+        {
+          "line": 27,
+          "function": "os.open"
+        },
+        {
+          "line": 32,
+          "function": "no_links"
+        },
+        {
+          "line": 35,
+          "function": "path.stat"
+        },
+        {
+          "line": 40,
+          "function": "owned_directory"
+        },
+        {
+          "line": 45,
+          "function": "re.fullmatch"
+        },
+        {
+          "line": 55,
+          "function": "no_links"
+        },
+        {
+          "line": 72,
+          "function": "dict"
+        },
+        {
+          "line": 78,
+          "function": "read_owned_file"
+        },
+        {
+          "line": 95,
+          "function": "no_links"
+        },
+        {
+          "line": 96,
+          "function": "tempfile.mkstemp"
+        },
+        {
+          "line": 97,
+          "function": "Path"
+        },
+        {
+          "line": 111,
+          "function": "json.dumps(policy, separators=(',', ':')).encode"
+        },
+        {
+          "line": 112,
+          "function": "write_owned_file"
+        },
+        {
+          "line": 116,
+          "function": "Path('/proc/self/mountinfo').read_bytes"
+        },
+        {
+          "line": 117,
+          "function": "mountinfo.rstrip(b'\\n').split"
+        },
+        {
+          "line": 125,
+          "function": "owned_directory"
+        },
+        {
+          "line": 126,
+          "function": "os.open"
+        },
+        {
+          "line": 152,
+          "function": "clear_cache"
+        },
+        {
+          "line": 156,
+          "function": "no_links"
+        },
+        {
+          "line": 159,
+          "function": "read_owned_file"
+        },
+        {
+          "line": 172,
+          "function": "no_links"
+        },
+        {
+          "line": 173,
+          "function": "receipt.exists"
+        },
+        {
+          "line": 180,
+          "function": "owned_directory"
+        },
+        {
+          "line": 183,
+          "function": "owned_directory"
+        },
+        {
+          "line": 184,
+          "function": "prepare_image_cache"
+        },
+        {
+          "line": 193,
+          "function": "no_links"
+        },
+        {
+          "line": 193,
+          "function": "owned_directory"
+        },
+        {
+          "line": 199,
+          "function": "path.stat"
+        },
+        {
+          "line": 204,
+          "function": "no_links"
+        },
+        {
+          "line": 205,
+          "function": "path.stat"
+        },
+        {
+          "line": 208,
+          "function": "path.read_text().strip"
+        },
+        {
+          "line": 213,
+          "function": "read_secret"
+        },
+        {
+          "line": 214,
+          "function": "no_links"
+        },
+        {
+          "line": 215,
+          "function": "target.exists"
+        },
+        {
+          "line": 218,
+          "function": "os.open"
+        },
+        {
+          "line": 221,
+          "function": "fsync_directory"
+        },
+        {
+          "line": 226,
+          "function": "Path"
+        },
+        {
+          "line": 236,
+          "function": "ensure_journal"
+        },
+        {
+          "line": 237,
+          "function": "prepare_tmdb_storage"
+        },
+        {
+          "line": 238,
+          "function": "{'web': ['ingress', 'proxy'], 'api': ['proxy', 'setup', 'runtime'], 'tools': ['runtime', 'migrator', 'postgres', 'proxy'], 'postgres': ['postgres', 'migrator', 'runtime']}.items"
+        },
+        {
+          "line": 242,
+          "function": "print"
+        },
+        {
+          "line": 248,
+          "function": "values.get"
+        },
+        {
+          "line": 249,
+          "function": "values.get"
+        },
+        {
+          "line": 250,
+          "function": "values.get"
+        },
+        {
+          "line": 251,
+          "function": "values.get"
+        },
+        {
+          "line": 253,
+          "function": "';'.join"
+        },
+        {
+          "line": 259,
+          "function": "environment.copy"
+        },
+        {
+          "line": 284,
+          "function": "runtime_command"
+        },
+        {
+          "line": 285,
+          "function": "os.execvpe"
+        },
+        {
+          "line": 24,
+          "function": "parent.is_symlink"
+        },
+        {
+          "line": 28,
+          "function": "os.fsync"
+        },
+        {
+          "line": 29,
+          "function": "os.close"
+        },
+        {
+          "line": 34,
+          "function": "path.mkdir"
+        },
+        {
+          "line": 34,
+          "function": "os.chown"
+        },
+        {
+          "line": 34,
+          "function": "fsync_directory"
+        },
+        {
+          "line": 37,
+          "function": "StorageError"
+        },
+        {
+          "line": 43,
+          "function": "isinstance"
+        },
+        {
+          "line": 49,
+          "function": "isinstance"
+        },
+        {
+          "line": 53,
+          "function": "path.is_absolute"
+        },
+        {
+          "line": 54,
+          "function": "StorageError"
+        },
+        {
+          "line": 57,
+          "function": "os.open"
+        },
+        {
+          "line": 60,
+          "function": "os.fdopen"
+        },
+        {
+          "line": 61,
+          "function": "os.fstat"
+        },
+        {
+          "line": 66,
+          "function": "stream.read"
+        },
+        {
+          "line": 67,
+          "function": "len"
+        },
+        {
+          "line": 68,
+          "function": "StorageError"
+        },
+        {
+          "line": 73,
+          "function": "len"
+        },
+        {
+          "line": 73,
+          "function": "len"
+        },
+        {
+          "line": 74,
+          "function": "ValueError"
+        },
+        {
+          "line": 80,
+          "function": "json.loads"
+        },
+        {
+          "line": 86,
+          "function": "StorageError"
+        },
+        {
+          "line": 105,
+          "function": "os.replace"
+        },
+        {
+          "line": 106,
+          "function": "fsync_directory"
+        },
+        {
+          "line": 108,
+          "function": "staged.unlink"
+        },
+        {
+          "line": 119,
+          "function": "re.sub"
+        },
+        {
+          "line": 120,
+          "function": "Path"
+        },
+        {
+          "line": 128,
+          "function": "reject_unexpected_cache_mounts"
+        },
+        {
+          "line": 133,
+          "function": "os.fwalk"
+        },
+        {
+          "line": 139,
+          "function": "os.listdir"
+        },
+        {
+          "line": 147,
+          "function": "os.fsync"
+        },
+        {
+          "line": 149,
+          "function": "os.close"
+        },
+        {
+          "line": 157,
+          "function": "receipt.exists"
+        },
+        {
+          "line": 161,
+          "function": "json.loads"
+        },
+        {
+          "line": 166,
+          "function": "StorageError"
+        },
+        {
+          "line": 175,
+          "function": "StorageError"
+        },
+        {
+          "line": 176,
+          "function": "host_prepared_tmdb"
+        },
+        {
+          "line": 177,
+          "function": "policy.exists"
+        },
+        {
+          "line": 177,
+          "function": "policy.is_symlink"
+        },
+        {
+          "line": 179,
+          "function": "StorageError"
+        },
+        {
+          "line": 182,
+          "function": "read_tmdb_policy"
+        },
+        {
+          "line": 186,
+          "function": "clear_cache"
+        },
+        {
+          "line": 190,
+          "function": "write_owned_file"
+        },
+        {
+          "line": 194,
+          "function": "path.exists"
+        },
+        {
+          "line": 195,
+          "function": "os.open"
+        },
+        {
+          "line": 198,
+          "function": "fsync_directory"
+        },
+        {
+          "line": 201,
+          "function": "StorageError"
+        },
+        {
+          "line": 207,
+          "function": "StorageError"
+        },
+        {
+          "line": 209,
+          "function": "re.fullmatch"
+        },
+        {
+          "line": 209,
+          "function": "StorageError"
+        },
+        {
+          "line": 219,
+          "function": "os.fdopen"
+        },
+        {
+          "line": 220,
+          "function": "os.fchown"
+        },
+        {
+          "line": 220,
+          "function": "out.write"
+        },
+        {
+          "line": 220,
+          "function": "out.flush"
+        },
+        {
+          "line": 220,
+          "function": "os.fsync"
+        },
+        {
+          "line": 228,
+          "function": "no_links"
+        },
+        {
+          "line": 232,
+          "function": "owned_directory"
+        },
+        {
+          "line": 235,
+          "function": "os.chown"
+        },
+        {
+          "line": 240,
+          "function": "owned_directory"
+        },
+        {
+          "line": 252,
+          "function": "StorageError"
+        },
+        {
+          "line": 256,
+          "function": "StorageError"
+        },
+        {
+          "line": 258,
+          "function": "StorageError"
+        },
+        {
+          "line": 261,
+          "function": "read_secret"
+        },
+        {
+          "line": 262,
+          "function": "read_secret"
+        },
+        {
+          "line": 267,
+          "function": "env.get"
+        },
+        {
+          "line": 268,
+          "function": "read_secret"
+        },
+        {
+          "line": 269,
+          "function": "connection"
+        },
+        {
+          "line": 270,
+          "function": "read_secret"
+        },
+        {
+          "line": 280,
+          "function": "prepare"
+        },
+        {
+          "line": 281,
+          "function": "clear_tmdb_cache"
+        },
+        {
+          "line": 283,
+          "function": "os.execvp"
+        },
+        {
+          "line": 284,
+          "function": "Path"
+        },
+        {
+          "line": 288,
+          "function": "run"
+        },
+        {
+          "line": 24,
+          "function": "StorageError"
+        },
+        {
+          "line": 33,
+          "function": "path.exists"
+        },
+        {
+          "line": 36,
+          "function": "path.is_dir"
+        },
+        {
+          "line": 36,
+          "function": "stat.S_IMODE"
+        },
+        {
+          "line": 46,
+          "function": "int"
+        },
+        {
+          "line": 49,
+          "function": "len"
+        },
+        {
+          "line": 50,
+          "function": "re.fullmatch"
+        },
+        {
+          "line": 59,
+          "function": "StorageError"
+        },
+        {
+          "line": 61,
+          "function": "stream.fileno"
+        },
+        {
+          "line": 65,
+          "function": "StorageError"
+        },
+        {
+          "line": 80,
+          "function": "data.decode"
+        },
+        {
+          "line": 82,
+          "function": "StorageError"
+        },
+        {
+          "line": 83,
+          "function": "isinstance"
+        },
+        {
+          "line": 83,
+          "function": "policy.keys"
+        },
+        {
+          "line": 83,
+          "function": "EMPTY_TMDB_POLICY.keys"
+        },
+        {
+          "line": 84,
+          "function": "type"
+        },
+        {
+          "line": 85,
+          "function": "type"
+        },
+        {
+          "line": 91,
+          "function": "StorageError"
+        },
+        {
+          "line": 99,
+          "function": "os.fdopen"
+        },
+        {
+          "line": 100,
+          "function": "os.fchmod"
+        },
+        {
+          "line": 101,
+          "function": "os.fchown"
+        },
+        {
+          "line": 102,
+          "function": "stream.write"
+        },
+        {
+          "line": 103,
+          "function": "stream.flush"
+        },
+        {
+          "line": 104,
+          "function": "os.fsync"
+        },
+        {
+          "line": 111,
+          "function": "json.dumps"
+        },
+        {
+          "line": 116,
+          "function": "Path"
+        },
+        {
+          "line": 117,
+          "function": "mountinfo.rstrip"
+        },
+        {
+          "line": 118,
+          "function": "entry.split"
+        },
+        {
+          "line": 120,
+          "function": "os.fsdecode"
+        },
+        {
+          "line": 122,
+          "function": "StorageError"
+        },
+        {
+          "line": 129,
+          "function": "os.fstat"
+        },
+        {
+          "line": 140,
+          "function": "os.stat"
+        },
+        {
+          "line": 159,
+          "function": "root.stat"
+        },
+        {
+          "line": 163,
+          "function": "StorageError"
+        },
+        {
+          "line": 164,
+          "function": "isinstance"
+        },
+        {
+          "line": 164,
+          "function": "prepared.keys"
+        },
+        {
+          "line": 165,
+          "function": "type"
+        },
+        {
+          "line": 174,
+          "function": "read_owned_file"
+        },
+        {
+          "line": 188,
+          "function": "write_tmdb_policy"
+        },
+        {
+          "line": 190,
+          "function": "os.geteuid"
+        },
+        {
+          "line": 190,
+          "function": "os.getegid"
+        },
+        {
+          "line": 196,
+          "function": "os.fchown"
+        },
+        {
+          "line": 196,
+          "function": "os.fsync"
+        },
+        {
+          "line": 197,
+          "function": "os.close"
+        },
+        {
+          "line": 200,
+          "function": "stat.S_ISREG"
+        },
+        {
+          "line": 200,
+          "function": "stat.S_IMODE"
+        },
+        {
+          "line": 206,
+          "function": "stat.S_ISREG"
+        },
+        {
+          "line": 206,
+          "function": "stat.S_IMODE"
+        },
+        {
+          "line": 208,
+          "function": "path.read_text"
+        },
+        {
+          "line": 216,
+          "function": "StorageError"
+        },
+        {
+          "line": 220,
+          "function": "out.fileno"
+        },
+        {
+          "line": 220,
+          "function": "out.fileno"
+        },
+        {
+          "line": 229,
+          "function": "directory.exists"
+        },
+        {
+          "line": 229,
+          "function": "directory.mkdir"
+        },
+        {
+          "line": 235,
+          "function": "any"
+        },
+        {
+          "line": 241,
+          "function": "copy_secret"
+        },
+        {
+          "line": 290,
+          "function": "print"
+        },
+        {
+          "line": 290,
+          "function": "sys.exit"
+        },
+        {
+          "line": 62,
+          "function": "stat.S_ISREG"
+        },
+        {
+          "line": 63,
+          "function": "stat.S_IMODE"
+        },
+        {
+          "line": 89,
+          "function": "isinstance"
+        },
+        {
+          "line": 89,
+          "function": "len"
+        },
+        {
+          "line": 90,
+          "function": "all"
+        },
+        {
+          "line": 90,
+          "function": "len"
+        },
+        {
+          "line": 90,
+          "function": "len"
+        },
+        {
+          "line": 100,
+          "function": "stream.fileno"
+        },
+        {
+          "line": 101,
+          "function": "stream.fileno"
+        },
+        {
+          "line": 104,
+          "function": "stream.fileno"
+        },
+        {
+          "line": 119,
+          "function": "bytes"
+        },
+        {
+          "line": 135,
+          "function": "os.stat"
+        },
+        {
+          "line": 141,
+          "function": "stat.S_ISDIR"
+        },
+        {
+          "line": 142,
+          "function": "shutil.rmtree"
+        },
+        {
+          "line": 143,
+          "function": "stat.S_ISREG"
+        },
+        {
+          "line": 174,
+          "function": "os.geteuid"
+        },
+        {
+          "line": 174,
+          "function": "os.getegid"
+        },
+        {
+          "line": 216,
+          "function": "read_secret"
+        },
+        {
+          "line": 230,
+          "function": "directory.is_dir"
+        },
+        {
+          "line": 231,
+          "function": "directory.chmod"
+        },
+        {
+          "line": 235,
+          "function": "independent.iterdir"
+        },
+        {
+          "line": 235,
+          "function": "independent.stat"
+        },
+        {
+          "line": 246,
+          "function": "value.replace"
+        },
+        {
+          "line": 272,
+          "function": "env.get"
+        },
+        {
+          "line": 272,
+          "function": "env.pop"
+        },
+        {
+          "line": 273,
+          "function": "read_secret"
+        },
+        {
+          "line": 90,
+          "function": "set"
+        },
+        {
+          "line": 138,
+          "function": "StorageError"
+        },
+        {
+          "line": 144,
+          "function": "os.unlink"
+        },
+        {
+          "line": 146,
+          "function": "StorageError"
+        },
+        {
+          "line": 216,
+          "function": "target.stat"
+        },
+        {
+          "line": 230,
+          "function": "any"
+        },
+        {
+          "line": 253,
+          "function": "quote"
+        },
+        {
+          "line": 90,
+          "function": "validate"
+        },
+        {
+          "line": 119,
+          "function": "int"
+        },
+        {
+          "line": 230,
+          "function": "directory.iterdir"
+        },
+        {
+          "line": 230,
+          "function": "directory.stat"
+        },
+        {
+          "line": 136,
+          "function": "stat.S_ISREG"
+        },
+        {
+          "line": 137,
+          "function": "stat.S_ISDIR"
+        }
+      ]
+    }
+  },
+  "commands": {
+    "/usr/bin/bzip2recover": {
+      "exists": false
+    },
+    "/usr/bin/getfacl": {
+      "exists": false
+    },
+    "/usr/bin/setfacl": {
+      "exists": false
+    },
+    "/usr/bin/getfattr": {
+      "exists": false
+    },
+    "/usr/bin/setfattr": {
+      "exists": false
+    },
+    "/usr/bin/infocmp": {
+      "exists": true
+    },
+    "/usr/bin/xmlwf": {
+      "exists": false
+    },
+    "/usr/bin/gpgtar": {
+      "exists": false
+    },
+    "/usr/bin/genrb": {
+      "exists": false
+    },
+    "/usr/bin/sqlite3": {
+      "exists": false
+    },
+    "/usr/bin/systemd-tmpfiles": {
+      "exists": false
+    },
+    "/usr/sbin/selinuxenabled": {
+      "exists": false
+    },
+    "/usr/bin/chfn": {
+      "exists": true
+    },
+    "/usr/bin/chsh": {
+      "exists": true
+    },
+    "/usr/sbin/sshd": {
+      "exists": false
+    },
+    "/sbin/init": {
+      "exists": false
+    },
+    "/usr/lib/systemd/systemd": {
+      "exists": false
+    },
+    "/usr/lib/systemd/systemd-journald": {
+      "exists": false
+    },
+    "/usr/lib/systemd/systemd-homed": {
+      "exists": false
+    },
+    "/usr/lib/systemd/systemd-oomd": {
+      "exists": false
+    },
+    "/usr/lib/systemd/system-generators/systemd-gpt-auto-generator": {
+      "exists": false
+    }
+  },
+  "elf": [
+    {
+      "path": "/app/runtimes/linux-arm/native/libSkiaSharp.so",
+      "sha256": "c71d39d36441d845de4e70ef14a9f4b371ee1e35f52caaf1b1f022a9c313646d",
+      "needed": [
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libc.so.6",
+        "ld-linux-armhf.so.3"
+      ],
+      "elf_machine": 40,
+      "selected_symbols": {
+        "_ZnwjSt11align_val_t": "imported",
+        "_ZdlPvjSt11align_val_t": "imported",
+        "__ThumbV7PILongThunk__ZdlPvjSt11align_val_t": "defined"
+      }
+    },
+    {
+      "path": "/app/runtimes/linux-musl-arm64/native/libSkiaSharp.so",
+      "sha256": "c3c90431c30ce57c2a6b49d4ac8c129734c99d77bf3da14ff9ca62b98ec8afc2",
+      "needed": [
+        "libstdc++.so.6",
+        "libc.musl-aarch64.so.1"
+      ],
+      "elf_machine": 183,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/app/runtimes/linux-arm64/native/libSkiaSharp.so",
+      "sha256": "43dd153d03d89f5b20c7e0dc554ee2d4bfce6cbf35ee87d7d2fd5f20a3f4e19e",
+      "needed": [
+        "libstdc++.so.6",
+        "libpthread.so.0",
+        "libdl.so.2",
+        "libm.so.6",
+        "libc.so.6",
+        "librt.so.1"
+      ],
+      "elf_machine": 183,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/app/runtimes/linux-bionic-arm64/native/libSkiaSharp.so",
+      "sha256": "fcdb780399d20858d51dff97c8a882306ac8ca589199de341c89d1fb40361c31",
+      "needed": [
+        "libdl.so",
+        "libm.so",
+        "libc.so"
+      ],
+      "elf_machine": 183,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/app/runtimes/linux-x64/native/libSkiaSharp.so",
+      "sha256": "37d70d52efbd0d03f1f1e6d458f9050e55d1f47ec8760d0fdbe5043416dbdac8",
+      "needed": [
+        "libstdc++.so.6",
+        "libpthread.so.0",
+        "libdl.so.2",
+        "libm.so.6",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2",
+        "librt.so.1"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/app/runtimes/linux-musl-x64/native/libSkiaSharp.so",
+      "sha256": "b821d27d9ecbcd18b0a2e386a36f9c999ddf47275a821a20d98922f01e2907ae",
+      "needed": [
+        "libstdc++.so.6",
+        "libc.musl-x86_64.so.1"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/app/runtimes/linux-musl-riscv64/native/libSkiaSharp.so",
+      "sha256": "62cd4e56099bbf7af93ff40e2d9c44dbf29c68679e2e39cf9fc196f3d2de2ee5",
+      "needed": [
+        "libstdc++.so.6",
+        "libc.musl-riscv64.so.1"
+      ],
+      "elf_machine": 243,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/app/runtimes/linux-musl-arm/native/libSkiaSharp.so",
+      "sha256": "f93f2b83b83c30eec637eff8339355c01baec5b23c39e22371e71673eca173e7",
+      "needed": [
+        "libstdc++.so.6",
+        "libc.musl-armv7.so.1"
+      ],
+      "elf_machine": 40,
+      "selected_symbols": {
+        "_ZdlPvjSt11align_val_t": "imported",
+        "_ZnwjSt11align_val_t": "imported",
+        "__ThumbV7PILongThunk__ZdlPvjSt11align_val_t": "defined"
+      }
+    },
+    {
+      "path": "/app/runtimes/linux-riscv64/native/libSkiaSharp.so",
+      "sha256": "227f5dd31ee4ddbf20d934c324af9e8dcc5e6fbe069679f6da36eea029249a03",
+      "needed": [
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libc.so.6",
+        "ld-linux-riscv64-lp64d.so.1"
+      ],
+      "elf_machine": 243,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/app/runtimes/linux-musl-loongarch64/native/libSkiaSharp.so",
+      "sha256": "af80129f408fb7a43ce9573aa7b9e5eddf2a8e8cc2e06d39a5beeb428cd22203",
+      "needed": [
+        "libstdc++.so.6",
+        "libc.musl-loongarch64.so.1"
+      ],
+      "elf_machine": 258,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/app/runtimes/linux-bionic-x64/native/libSkiaSharp.so",
+      "sha256": "5baf33953c8226818eb6bc41d5fe706900d19c7f75fe0f202cf7cfdf20b0a23f",
+      "needed": [
+        "libdl.so",
+        "libm.so",
+        "libc.so"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/app/runtimes/linux-x86/native/libSkiaSharp.so",
+      "sha256": "43c9b8811228cf143cf1e5484c680db7fcd6acc323d46675bda691c11ac8fc27",
+      "needed": [
+        "libstdc++.so.6",
+        "libpthread.so.0",
+        "libdl.so.2",
+        "libm.so.6",
+        "libc.so.6",
+        "ld-linux.so.2",
+        "librt.so.1"
+      ],
+      "elf_machine": 3,
+      "selected_symbols": {
+        "_ZnwjSt11align_val_t": "imported",
+        "_ZdlPvjSt11align_val_t": "imported"
+      }
+    },
+    {
+      "path": "/app/runtimes/linux-loongarch64/native/libSkiaSharp.so",
+      "sha256": "0d5d17db04d80ed5fc3a88c2ceb53d93b157e42b4b91d925e1acb5d22220573a",
+      "needed": [
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libc.so.6",
+        "ld-linux-loongarch-lp64d.so.1"
+      ],
+      "elf_machine": 258,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/dotnet",
+      "sha256": "99eb018192769d9964612afa04914e3c56187d87de1918426c0ade866db467a8",
+      "needed": [
+        "libdl.so.2",
+        "libpthread.so.0",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/host/fxr/10.0.15/libhostfxr.so",
+      "sha256": "342ccc53ed77b71fb097f548098ea5b4190069099dfd8dfef31976d308edf32b",
+      "needed": [
+        "libdl.so.2",
+        "libpthread.so.0",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libhostpolicy.so",
+      "sha256": "7c254bba5791725917384f0fd8dbc049024182c04ab9363bc8c52537d55b5047",
+      "needed": [
+        "libdl.so.2",
+        "libpthread.so.0",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/createdump",
+      "sha256": "3a5694ec9c405210312415fb5d171cdb4b827a0f55ffa0c4e7214152c5afa266",
+      "needed": [
+        "libdl.so.2",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libmscordbi.so",
+      "sha256": "c1dfa4e295a0f5aaa04fc4756605d8bbd9301984ed9aed432fbe3531b2a07e1f",
+      "needed": [
+        "libmscordaccore.so",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libclrgc.so",
+      "sha256": "cbcbf4e28d578c801adb220fcdf063c7b79683812cda4dcfa7dc306e047d14ee",
+      "needed": [
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libSystem.Globalization.Native.so",
+      "sha256": "fc46ffb92e67affc3e882fd2412af4bf08284b3ff3c8ed0754783e0de95dea77",
+      "needed": [
+        "libdl.so.2",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libmscordaccore.so",
+      "sha256": "652d073af455949e7d347dc93de9068eaccd7a2c6334f1b4ed3f92b9916a487d",
+      "needed": [
+        "libgcc_s.so.1",
+        "libpthread.so.0",
+        "librt.so.1",
+        "libdl.so.2",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libSystem.Net.Security.Native.so",
+      "sha256": "63d9670587e12c5290eafa133328124509c1a3ab7cf614b00a09998f3736e4ec",
+      "needed": [
+        "libdl.so.2",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libclrjit.so",
+      "sha256": "3f1734a308c4db2c3f286a6f9cb12d9ed71e7b2d37f9d5f276c123ae99646a61",
+      "needed": [
+        "libgcc_s.so.1",
+        "libpthread.so.0",
+        "librt.so.1",
+        "libdl.so.2",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libSystem.Native.so",
+      "sha256": "1b756e1225d65791e498057863503a8e0b485feb21ac496cff610ddcd45fb352",
+      "needed": [
+        "librt.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libclrgcexp.so",
+      "sha256": "aceb35e7b883a0db10684c19d79cc134ebf678c050eaa59d1344349e31e927ab",
+      "needed": [
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libcoreclrtraceptprovider.so",
+      "sha256": "a24105f5b272f82aa59928bf89b779f7d79388a5baaa9df01ba90473d77ca600",
+      "needed": [
+        "liblttng-ust.so.0",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libcoreclr.so",
+      "sha256": "c2a641051bb6c968fa7beacaa396c6f3ff8c0e578f6bc375678464f060c8d9cc",
+      "needed": [
+        "libgcc_s.so.1",
+        "libpthread.so.0",
+        "librt.so.1",
+        "libdl.so.2",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libSystem.Security.Cryptography.Native.OpenSsl.so",
+      "sha256": "ed43a3226b54594c582a7e51d2b8a325f5dc9e4351511dfa40bd3e955bce578c",
+      "needed": [
+        "libdl.so.2",
+        "libpthread.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libSystem.IO.Compression.Native.so",
+      "sha256": "d8d58fa325ab2338728d90b2607afe2e6222388f908ec64f067b1370b4fc78f4",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_ctypes_test.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "7dbace272fc2bd27d00db187985f5f09f18825096d2093f1c8abb4b9bb056d08",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/audioop.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "c156c588d8e600ba73c9c3186efee2d7adb13b8c8bb5acf030a8b97ce6900c66",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_ssl.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "80c755c80688b92e0f32af9168a605f1283256077f35d30f6cf518252f2a6660",
+      "needed": [
+        "libssl.so.3",
+        "libcrypto.so.3",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_decimal.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "20326fc4d39abff46814b64bf5304f8898d180ae58a66b5d60c0177ae317887d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_testmultiphase.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "b985ab811a8350fa7ea057ff2e51bdcb3615baae109d8450f057fad9c72592dd",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_contextvars.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "da24b21e136402103121806aa5b031bc50e1576a44cd4a0e1f60bc16fd936706",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_codecs_hk.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "61b28f65b6833f8f7a7853ecbf51372ce97d82340c10c96955f1130ccf44c97a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_bz2.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "eff8df23cdc54d38ce9ca600d07c21ccfd7f22bd52a0720e599e6828d3e2eb76",
+      "needed": [
+        "libbz2.so.1.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/termios.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "53fb6241c3b0a5177b5723a79eb0550fe2cd1867189cf9b1db0d12d272df3310",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_dbm.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "52cfcf3bc153163b0c7aadc2cd2d8383fb7705033be02018193c2cbd339bb0fa",
+      "needed": [
+        "libdb-5.3.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/xxlimited_35.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "75c19d1fc97c50fd8e319bffafd908b5b24735a5409cc6986e3856d21bc3ccb9",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_asyncio.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "bf62de8aaab17955c9164e582ae7ea0aae3a704e2d8068ff6da12dbf29f784e5",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_posixshmem.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "bc7d2bf7f72457b50540feae0154d3a2ebf672017ff3642531023268622be2e5",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_zoneinfo.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "0ea6146bb1b4d0a9f521d72dbe0e7a7726d0f2caf7479e2bb32af673d7a7b254",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/mmap.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "533b42ea7b719c129a0a02fda105c74a263d11a91945457a2c03bd6cd01065bc",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/resource.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "c8cc35580b497bf128cf8bb0e25efc36573a4f21a1c6877a91737fcd52e24907",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_xxinterpchannels.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "e7c3583be589eeb8c7698598c267d7cf2a2e371a96132e2eb9f757e6767d5deb",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_queue.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "6e253343c58e3d83d5aca52e85dcad640d6e332d48dc4ff9bd55fcfd8be55d2b",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_crypt.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "81e70b2d8ed4a0526f638d5b81bf12da1806d181b27d4b06b6d31f6d9a4b9b85",
+      "needed": [
+        "libcrypt.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_lzma.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "cb298120e40f064dc047e638d911f8b3b0abf625bf1d6bd07902b46efd820fd7",
+      "needed": [
+        "liblzma.so.5",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_codecs_cn.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "0880c743db9191196306f48494598d900a87df9bf0d566f46762def13195cad3",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_xxsubinterpreters.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "791a5702069b6b79db9048eea2e6910ca2bf4639f6b65aabe1c06f9dd9169cd8",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/xxsubtype.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "3603261640fad1b26b5bd412eaca8c3f3f757f34456498fac19f9c38e2237b94",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_testsinglephase.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "55c8aefde60a43acabd8f31797f8b5ed77a432cc3cf955844bbc5ced15360b04",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_sqlite3.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "ecf54958b24c533f5c8dc67ca82cdce236aeb322864140bfe93eb8a69b729f4d",
+      "needed": [
+        "libsqlite3.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "sqlite3_open_v2": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_ctypes.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "aad3e24f186e6c0a1c7efa8f16004f951f527db86f6451d30118657384a456c1",
+      "needed": [
+        "libffi.so.8",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_hashlib.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "8dc6cda6dd9495b95a2bfb5b26e8cf06b72f36dc0213d958b9277a958287f0fe",
+      "needed": [
+        "libcrypto.so.3",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_xxtestfuzz.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "be689ebf1d25c11e170de6703060acea13ae0744d1349b5960d4e7d73d4bc69e",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_multiprocessing.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "d9194cd202544d7dc11b2d5c821c82d7f2b836059ebac0958f95881255c368d6",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_json.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "ca8e35c58f7bc8e27258c4af43651c941413bc6318903621253485b0395758a3",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/readline.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "e5c64520b2582d221bec1bb39f584eb20fc5f095f8a0b0a55a53f6781585830d",
+      "needed": [
+        "libreadline.so.8",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_testinternalcapi.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "09bfb334ee960d54586faa3af693a3df2cea814c7d5fc2c84f3a1311315d0c55",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_testcapi.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "8f350b9c68ab4ee97d92bc096d1c7aa9dc82aa56e1be82dfebd79021ee0f719a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_codecs_kr.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "e22ece67cb97d685f8a3a32a8f97b4d52775760b1bb16f86a8c137c4d6a7d29e",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_multibytecodec.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "564968ab04f879409bbf8864dd0b7f3e9ebc4a2901072766486731e341f52a4f",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/ossaudiodev.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "48bbab657dd35065a8584ebaa5aa2c82ec5f35d97b7dce7e9c1d2ae83caaa510",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_testclinic.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "d146943f3604abcb3ef1bfc54ee1148a02b7c8d0b4b0da225d9ce42ff2bd3493",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_codecs_iso2022.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "469273f41255ecd52b9ea04cd4557cdedbf6831d02e02a97b934d9e170be224c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_codecs_jp.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "6791fcb3fb05bf62140670da6578e08581b252271bad441046cfba3913e1cac5",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_testimportmultiple.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "7770caadffa6cb3457bb9252b7f3382b617fe3aedbeb5de4523a1f498e74bfd0",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_curses.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "133b4dcb8547fa5b158c076142ea36a8656c2f5cedab91462a381d28757750c1",
+      "needed": [
+        "libncursesw.so.6",
+        "libtinfo.so.6",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/xxlimited.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "891a5386090229674cefc9128eabe1a566665f8bab100219f08c753c8fa75174",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_curses_panel.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "df64e64b63180ee13f8ff720835424797287d623c0ce6efe55436b6642a9e940",
+      "needed": [
+        "libpanelw.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_codecs_tw.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "22f2a1c8301f4527f803aba3769dd712b1285303e03719ee09351d828c46824b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_testbuffer.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "4f856283c8a02cf5f1c85ce3c73a393a24520ade73ab0aa7b4614ee481ac17e9",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/_lsprof.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "16d114c88e524f93e487325e164be12dc6a24470603c808a2ca04314a3755a26",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libgpg-error.so.0.34.0",
+      "sha256": "6cb18a007bfcb623029f4528a36b46578fea7dc34c2b505b8e6e0d99e6348cd1",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libformw.so.6.4",
+      "sha256": "cbbf42a3e1313ae714d756043b781b7cf86485e1735ac3f2933194f3abe1ea75",
+      "needed": [
+        "libncursesw.so.6",
+        "libtinfo.so.6",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "regcomp": "imported",
+        "regexec": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libhogweed.so.6.8",
+      "sha256": "c3c606139d4f7776efa4dbd4a6b62e30c916b07a0cafd8c3ef173d6f093607e3",
+      "needed": [
+        "libnettle.so.8",
+        "libgmp.so.10",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.5.0",
+      "sha256": "0ccdfb6d6f5c039465f6d002cf7e4c072d48ac6a2cffc8dd6c748dec31592804",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libmount.so.1.1.0",
+      "sha256": "7472255ae5799059b37ddd544788f5665dbd3e1cb78259f52180293039efc2a5",
+      "needed": [
+        "libblkid.so.1",
+        "libselinux.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libpsx.so.2.66",
+      "sha256": "7cd42c4bffba87347d7e2ec19a2d594f171f159bb32e24e04c5711e43c505911",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/librt.so.1",
+      "sha256": "5a00236da5864e8d1123d74e616713110708d6e3e604188f4f256dab4c6941d4",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libresolv.so.2",
+      "sha256": "4dcb01645dbeea5d17f28fd96a730430a808d828b3b7d6a097cfbc311501f69f",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libidn2.so.0.4.0",
+      "sha256": "6e632fd9a3125db60bbc623719bbc17b0470330321c5b1c57f1ff7190e5551ad",
+      "needed": [
+        "libunistring.so.5",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libnss_hesiod.so.2",
+      "sha256": "ba19e3303dc05d31baaf02ba5d6ca36bfbbb434414faed51b30b6f6124bf602b",
+      "needed": [
+        "libresolv.so.2",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libapt-private.so.0.0.0",
+      "sha256": "350ff18b645f88082bdf532404da40a12485fcd4363d2c0ff121aff4f2f0ac12",
+      "needed": [
+        "libapt-pkg.so.6.0",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "regcomp": "imported",
+        "regexec": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libanl.so.1",
+      "sha256": "a1513ab18da64c4b566278751b5a0e1b8166cfdf29e4a412ddea718c92289b4c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libext2fs.so.2.4",
+      "sha256": "4b03abd4f5ec8a5d7519d34931feaa39ca73b21e6946f90b328e67e0cf95ed72",
+      "needed": [
+        "libcom_err.so.2",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/liblzma.so.5.4.5",
+      "sha256": "26b37d25f7ca2a2d348de8ecabacda12e921cd933b21fa069a179760db77219d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libattr.so.1.1.2502",
+      "sha256": "5651ee014f2f42621f80995f44c10b478a0781fbfc54d2d120fb22df35ba3f22",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libsepol.so.2",
+      "sha256": "bbab0fe601f90a7e3c435a6bb3da5c85a6d80614b14af232d87387c581a77077",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libpanelw.so.6.4",
+      "sha256": "8eccca53962e74575da4b649dbafdfd24a450bafdc73d871bc5346824a1e7abd",
+      "needed": [
+        "libncursesw.so.6",
+        "libtinfo.so.6",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libapt-pkg.so.6.0.0",
+      "sha256": "582170c3fcf61a318fec500b962feb7515434d67bc07610b4978f2577896263e",
+      "needed": [
+        "libz.so.1",
+        "libbz2.so.1.0",
+        "liblzma.so.5",
+        "liblz4.so.1",
+        "libzstd.so.1",
+        "libudev.so.1",
+        "libsystemd.so.0",
+        "libgcrypt.so.20",
+        "libxxhash.so.0",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "iconv_open": "imported",
+        "glob": "imported",
+        "regcomp": "imported",
+        "regexec": "imported",
+        "iconv": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libssl.so.3",
+      "sha256": "a40e7b67489bbd257e432c700ff8f6a1ad796425b5eccecdc2930127fdd86624",
+      "needed": [
+        "libcrypto.so.3",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libnpth.so.0.1.2",
+      "sha256": "d5d934c9382c733e43edecf6d9ed446d9b9985591ee1c638413f4879c7f57f6a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+      "sha256": "5fc0940888e9d2e1a00e66d6b1a559c36364ee867683652e1074fa576952cc3f",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libcap.so.2.66",
+      "sha256": "6ac6abc86ac891c6e13486470e26f1d939f47fda9e6b5d5508a7f5ec881adc84",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+      "sha256": "5dcc4d25466e29ca390ed6fabb371c69b65dff6fa4e91c34561057a020d6994a",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libc_malloc_debug.so.0",
+      "sha256": "0395f570a59c37c876a9e69cd06ca5d5b16650d7e3e672e22fbf49472b0f80a2",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libnsl.so.1",
+      "sha256": "e93daff608c0232b9a397d756febcd32fa41d3fd694cb8d9eccd2c4e59b451c5",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libnss_compat.so.2",
+      "sha256": "362de581741de7f58da66ace1e4870a572cdaa2299051b0b480ed3f9498df1ad",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libselinux.so.1",
+      "sha256": "0ec0843463f90e227b0e138e1f379774f50b5514bd7f5dbd4c8a87aca0aa6670",
+      "needed": [
+        "libpcre2-8.so.0",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libmvec.so.1",
+      "sha256": "0d658201b7db51447c7b860f3d9eddb04017439955f7b13d28541d609012c32d",
+      "needed": [
+        "libm.so.6",
+        "ld-linux-x86-64.so.2",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libcrypt.so.1.1.0",
+      "sha256": "1502636e3be8232c9cf801dfb533694aea985d449904f3e1295db26d7b348946",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libsmartcols.so.1.1.0",
+      "sha256": "0560fded774642441657d3cf3125ac62234545dbe30725ed97cc6a79ba45791b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0",
+      "sha256": "78d7f4d6f27b7dffc1c84dfe2f83e84aefa6f6ceeffc6ac4bc41f9fbc61cb84e",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libcom_err.so.2.1",
+      "sha256": "022943b3b11c860b049bce41342f1c2594941b7b401d95dfdf235521099fee08",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libpam.so.0.85.1",
+      "sha256": "9e1c85dcceeedd56568874afa04c52bbd051fb8bac52c3e1f5feeb1eed14238a",
+      "needed": [
+        "libaudit.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libp11-kit.so.0.3.1",
+      "sha256": "a59efd4792d3343dedea1d26a28f5597abfe3369082deb504c4802a31b014897",
+      "needed": [
+        "libffi.so.8",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libcap-ng.so.0.0.0",
+      "sha256": "25349c22956c7af94f46e728d7e4c1eba57d0e4a0517f72781fb495d541eeef3",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+      "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2",
+        "libgcc_s.so.1"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "iconv_open": "imported",
+        "iconv": "imported",
+        "_ZnamSt11align_val_t": "defined",
+        "_ZnwmSt11align_val_tRKSt9nothrow_t": "defined",
+        "_ZnwmSt11align_val_t": "defined",
+        "_ZdlPvSt11align_val_tRKSt9nothrow_t": "defined",
+        "_ZSt22__from_chars_float16_tPKcS0_RfSt12chars_format": "defined",
+        "_ZSt10from_charsPKcS0_ReSt12chars_format": "defined",
+        "_ZdaPvSt11align_val_tRKSt9nothrow_t": "defined",
+        "_ZSt23__from_chars_bfloat16_tPKcS0_RfSt12chars_format": "defined",
+        "_ZdlPvmSt11align_val_t": "defined",
+        "_ZnamSt11align_val_tRKSt9nothrow_t": "defined",
+        "_ZSt10from_charsPKcS0_RDF128_St12chars_format": "defined",
+        "_ZdlPvSt11align_val_t": "defined",
+        "_ZdaPvSt11align_val_t": "defined",
+        "_ZSt10from_charsPKcS0_RfSt12chars_format": "defined",
+        "_ZdaPvmSt11align_val_t": "defined",
+        "_ZSt10from_charsPKcS0_RdSt12chars_format": "defined"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libpamc.so.0.82.1",
+      "sha256": "af3d42a137a9a2f9389e8523abe43896eab74c8e7c346477393fc0725508fcaf",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libsystemd.so.0.38.0",
+      "sha256": "b5a4dfe246bfe8a13a465791369e754cd90e6e2bfcc86f69f874e884e2b1e64a",
+      "needed": [
+        "libcap.so.2",
+        "libgcrypt.so.20",
+        "liblz4.so.1",
+        "liblzma.so.5",
+        "libzstd.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libcrypto.so.3",
+      "sha256": "6866ed711dab8927e1bf82bf1cd30e828bdfc34f3cc1e83b1c9eb01ce6c37d9a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libgcrypt.so.20.4.3",
+      "sha256": "6ad6d7007ee1ad8319eb18ba9a512cf09dda49396a303774c68b47477020bad4",
+      "needed": [
+        "libgpg-error.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libnettle.so.8.8",
+      "sha256": "a245ed916229583d6fe0b07657b3ed945bc148c28cc08b5266295f620d2b91cc",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libnss_files.so.2",
+      "sha256": "d8fce7c23c3b664871d4824950312f07e8a8f5203d638e61839e6d1ad20e45ab",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libxxhash.so.0.8.2",
+      "sha256": "a43c43c2fbb643f42572577b6c2514905804f963d186d4d630e184c4015e68a7",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libss.so.2.0",
+      "sha256": "74ec695f8d344c0a6a48f85d38b8ecf98f675de5ce30ed6e458c75c97f4f387d",
+      "needed": [
+        "libcom_err.so.2",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libacl.so.1.1.2302",
+      "sha256": "1f5247285409ec89990e9fe384d78dfb2ae6ec8e210a2657073babc8d6b7e54f",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "acl_get_file": "defined",
+        "acl_extended_file": "defined",
+        "acl_set_file": "defined",
+        "acl_delete_def_file": "defined"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libz.so.1.3",
+      "sha256": "f61677c7bdb7c2aa2a243ea781bfd16afcb361cede7b4ef76127a9d8eb9a5242",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libtinfo.so.6.4",
+      "sha256": "e6089d7bb95eee5b545f3770dd69095b0bca47d26701cad145af429561d16306",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libBrokenLocale.so.1",
+      "sha256": "8e3552f15878f78d50580f4b0de7c10e34100149fec91113288c77b765e19261",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libzstd.so.1.5.5",
+      "sha256": "0a2128bc10841fb29e76d08d945864dfb0b6a66da5df6df5d8299197439e54bb",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libe2p.so.2.3",
+      "sha256": "471a02b06797769a6d0e11a59c138074985f56d1ec62dfcbe2feb00a31f37c28",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libmemusage.so",
+      "sha256": "734e4565d1fbde8ca1ef49cbb4c6453de50748135711d607cbf1279c7cee7206",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libudev.so.1.7.8",
+      "sha256": "c9ec54d4aac342ad4e068de632dd8a9451a8d7302b7d4756b29c985989f2c02d",
+      "needed": [
+        "libcap.so.2",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+      "sha256": "cd34f895c9d2aa669d5d2654bed6b71210fc9003c3a1e96bb5311a40feb86039",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libproc2.so.0.0.2",
+      "sha256": "fe22f6fa9fcdc2aef0f8213e9f7d49cc7e2c377c68c803684fa7811a6d104a42",
+      "needed": [
+        "libsystemd.so.0",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.11.2",
+      "sha256": "6075a70c30fd7216b9214ae50f2def0ce835092b034088ed9bd64c6a376c740f",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libdebconfclient.so.0.0.0",
+      "sha256": "b0cba25f2e4b7a93a2eaa5cbc5607579dcfc91a1f4f6db262ccb4c6066a2f998",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libaudit.so.1.0.0",
+      "sha256": "36b5b7a7f0cb3ef3bddd3501f5c3fce38f200b20804993c0a249171ba7881d17",
+      "needed": [
+        "libcap-ng.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libutil.so.1",
+      "sha256": "0cf9051e58789348d681a984d8e6d96334610093289b783539764a3d611921d3",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libthread_db.so.1",
+      "sha256": "70878da3e6a196d8edfd83af921b30e7a4ecda690c85cb659ae10d3a0a4bc542",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libffi.so.8.1.4",
+      "sha256": "00f593fe192f2851b8ce23b25cec2488d769beb5a8f63e8c9e563071e1075153",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+      "sha256": "755a371e86cc9f564ab54f66140747700fb0a103f698f659f2060f707897e09a",
+      "needed": [
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "iconv_open": "defined",
+        "__isoc99_wscanf": "defined",
+        "wordexp": "defined",
+        "__isoc99_vfwscanf": "defined",
+        "iconv": "defined",
+        "__isoc23_vwscanf": "defined",
+        "regcomp": "defined",
+        "fwscanf": "defined",
+        "wordfree": "defined",
+        "__isoc23_swscanf": "defined",
+        "__isoc99_vswscanf": "defined",
+        "vwscanf": "defined",
+        "__isoc23_vfwscanf": "defined",
+        "swscanf": "defined",
+        "__isoc99_fwscanf": "defined",
+        "__isoc23_vswscanf": "defined",
+        "vfwscanf": "defined",
+        "wscanf": "defined",
+        "__isoc99_vwscanf": "defined",
+        "__isoc99_swscanf": "defined",
+        "vswscanf": "defined",
+        "glob64": "defined",
+        "__isoc23_wscanf": "defined",
+        "glob": "defined",
+        "__isoc23_fwscanf": "defined",
+        "regexec": "defined"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libmd.so.0.1.0",
+      "sha256": "423e18586b6ea740f4465afd64f7a9a4cb7264ed979c8e7256f9085af5345fef",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libpcprofile.so",
+      "sha256": "af3a1eb6934a8f8b02af4cd68cfde492037b59f6c7c823d4e4be7bea886823d7",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/liblz4.so.1.9.4",
+      "sha256": "40bffd0a098387368b16b992abd5f7cf43c0fa2f05cabe5a6d483719554adfda",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libgnutls.so.30.37.1",
+      "sha256": "ddbae2995750875c07bc218d12a062d73f8250678f54dedda7e9be5068781c98",
+      "needed": [
+        "libp11-kit.so.0",
+        "libidn2.so.0",
+        "libunistring.so.5",
+        "libtasn1.so.6",
+        "libnettle.so.8",
+        "libhogweed.so.6",
+        "libgmp.so.10",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libunistring.so.5.0.0",
+      "sha256": "7bcf825cd449892db5105ad2aed91dcf94a27b796426600c765720c584c54dd1",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "iconv": "imported",
+        "iconv_open": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libtic.so.6.4",
+      "sha256": "47ae417b7df72110c7c2a1ea7c150b1610b9a598aff31acc242254c1d0a34b36",
+      "needed": [
+        "libtinfo.so.6",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libpam_misc.so.0.82.1",
+      "sha256": "a8fddf2a564a352986de28e0146a4cd7c1dd4c64aa84e9654c38a19c29fd56b6",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libsemanage.so.2",
+      "sha256": "463e60d71e72bc97240fb17bdca7d80eb9d9b42be209cb65944c1e74aa0fac87",
+      "needed": [
+        "libsepol.so.2",
+        "libaudit.so.1",
+        "libselinux.so.1",
+        "libbz2.so.1.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "regcomp": "imported",
+        "regexec": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libblkid.so.1.1.0",
+      "sha256": "9c3860ffab5422410ff9e073d3e82267f00bc68ff1248cbb191640ee2ff045bc",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libbz2.so.1.0.4",
+      "sha256": "cc08c9f50a8009ffd6391e0116a100369b11ca9238fa52392c019e6645b122a1",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libseccomp.so.2.5.5",
+      "sha256": "b4d9140a7797ccf3ac14f5d9d579b64f157111662940cb8330c632b11a8cea8e",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "seccomp_load": "defined",
+        "seccomp_rule_add": "defined",
+        "seccomp_init": "defined"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libdl.so.2",
+      "sha256": "4dbcca3c01ca84d092b5b7b2610f5835b55fc70a0288dd9d766b40ac9386e2d9",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libtasn1.so.6.6.3",
+      "sha256": "59994414d0cdec4f678ef91eaaafc44b26b00bca507e4cc7978caaf79f584173",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libdb-5.3.so",
+      "sha256": "1812047c39ea3c26ee5b2b585abbafc18cd158dfcd84e5368c998cc6178e815b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+      "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libncursesw.so.6.4",
+      "sha256": "b552c698f9f5c7ff8a6f7c11d8595a0d3e6dc3eaf483843895ec76f418080dfb",
+      "needed": [
+        "libtinfo.so.6",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libnss_dns.so.2",
+      "sha256": "042b1959620a4974b344ba45a309f100bc6f22bffda957b276b46e8d51701f60",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libmenuw.so.6.4",
+      "sha256": "e075718444e63b4049b42b9313a45f5e247b381eb9fa43ccd5c1e8e2bec69e7f",
+      "needed": [
+        "libncursesw.so.6",
+        "libtinfo.so.6",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libassuan.so.0.8.6",
+      "sha256": "ae80d8e06d17cd95d654da3dd52f3a63ad241ea5fc001fa2f52ada5e640cfdd8",
+      "needed": [
+        "libgpg-error.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libdrop_ambient.so.0.0.0",
+      "sha256": "df1d550908fa076b66b23902582a7f483104ecb4f4f032eb31b275c64173f2f0",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libbrotlidec.so.1.1.0",
+      "sha256": "d5060475e7259904af3600d01e809710305b296441815bcaa540119a66530a70",
+      "needed": [
+        "libbrotlicommon.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/liblber.so.2.0.200",
+      "sha256": "ddf14275b1fb70ba06510094071adcc1462e675f15ae6cdcadbf40c1dabe5a03",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libssh.so.4.9.6",
+      "sha256": "361edbd89bade046fcf5a7eb4d9fdf2778d2f85444fb502edee801f3a51b5a92",
+      "needed": [
+        "libcrypto.so.3",
+        "libz.so.1",
+        "libgssapi_krb5.so.2",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "glob": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libsasl2.so.2.0.25",
+      "sha256": "a0f410ad093236856eee59c4ff2838dc04d932ea0993400f23ed77d67d85af34",
+      "needed": [
+        "libcrypto.so.3",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libk5crypto.so.3.1",
+      "sha256": "b37407fb2930939bf78b47267019cd201a8af1f4b6a3852249c849cf3a985798",
+      "needed": [
+        "libkrb5support.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libcurl.so.4.8.0",
+      "sha256": "3e51df20a6b52879ee83a207115a9bc6891092741ce2f5ec791606e6caf859fa",
+      "needed": [
+        "libnghttp2.so.14",
+        "libidn2.so.0",
+        "librtmp.so.1",
+        "libssh.so.4",
+        "libpsl.so.5",
+        "libssl.so.3",
+        "libcrypto.so.3",
+        "libgssapi_krb5.so.2",
+        "libldap.so.2",
+        "liblber.so.2",
+        "libzstd.so.1",
+        "libbrotlidec.so.1",
+        "libz.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/librtmp.so.1",
+      "sha256": "15a2a75e8c437b9c99971b5ee10278ab110beef1a56d1d9e5d6759ea140e98ac",
+      "needed": [
+        "libgnutls.so.30",
+        "libhogweed.so.6",
+        "libnettle.so.8",
+        "libgmp.so.10",
+        "libz.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libbrotlienc.so.1.1.0",
+      "sha256": "e28427af6912058426674519312a09a9e802deadb7017861460c7ead6f1a758b",
+      "needed": [
+        "libm.so.6",
+        "libbrotlicommon.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libpsl.so.5.3.4",
+      "sha256": "ae6c5a9aecc249fc66e03c16ec6c4385d09d7e12e0ea7694bb831ab4fee8133c",
+      "needed": [
+        "libunistring.so.5",
+        "libidn2.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "iconv": "imported",
+        "iconv_open": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libkeyutils.so.1.10",
+      "sha256": "f48214417757f18793ed6e180cc14ee1d6f04252a518fc7270e8ca1d0b4260fe",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libgssapi_krb5.so.2.2",
+      "sha256": "c7aa00cf51646f7c32f196d329a562bc873ff32906c9caf6554ca489dd657507",
+      "needed": [
+        "libkrb5.so.3",
+        "libk5crypto.so.3",
+        "libcom_err.so.2",
+        "libkrb5support.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "glob": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libreadline.so.8.2",
+      "sha256": "0a079f958147699f7bb5bf228406a5d878dc2387fe9cdc5cce6f3e35e20380fc",
+      "needed": [
+        "libtinfo.so.6",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libsqlite3.so.0.8.6",
+      "sha256": "cd3e4e63e95dad04bbfb8e4ad5cc632eda97a8ed61bef8ab7fb945a5bf3e722a",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "sqlite3_open_v2": "defined",
+        "sqlite3_open": "defined"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libexpatw.so.1.9.1",
+      "sha256": "c53deb049e68531496c38d1ace102af108d42c56244ab43451a61f491ff63633",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "XML_ParserCreate": "defined",
+        "XML_ParserCreateNS": "defined"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libexpat.so.1.9.1",
+      "sha256": "072ae554df205fdea5da6491ad04d431253b6c311610a039a9293e8c3c50f717",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "XML_ParserCreate": "defined",
+        "XML_ParserCreateNS": "defined"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libhistory.so.8.2",
+      "sha256": "6cb9908169c3056de7cc456a4774eae24982cda92ecc68e6d16ad73a56eddfcb",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libldap.so.2.0.200",
+      "sha256": "a9829b999c95452eb0a34cc7b5349427b76dbf3e5d5c8672a5ca69e454c1b151",
+      "needed": [
+        "liblber.so.2",
+        "libsasl2.so.2",
+        "libgnutls.so.30",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libkrb5.so.3.3",
+      "sha256": "fad617a72b5839d30143e7db03281279089def6f18788cbb0b7f86385301bf04",
+      "needed": [
+        "libk5crypto.so.3",
+        "libcom_err.so.2",
+        "libkrb5support.so.0",
+        "libkeyutils.so.1",
+        "libresolv.so.2",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "regcomp": "imported",
+        "regexec": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libkrb5support.so.0.1",
+      "sha256": "936bae947a838bd47676a419dfcfb036d0163249215b58ec706ec7d46b7497aa",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libbrotlicommon.so.1.1.0",
+      "sha256": "f8cd338ec62f719333abd5cba29a6e0bdb4597dfdffed000ffb868b47e02f2e9",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libnghttp2.so.14.26.0",
+      "sha256": "46764ab5b6ca7e353a322054f0bee45d9158a27f3e6a82a2fa4447f2ba9ba268",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libicui18n.so.74.2",
+      "sha256": "3550b194eb2cf2e6f798f033eb9ca279d498c21296b4a18790ce158d2023e47b",
+      "needed": [
+        "libicuuc.so.74",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libicuuc.so.74.2",
+      "sha256": "7560aadde38e5f4237a47a1ddd5891f9b36768a77a60faae30beee003ac01901",
+      "needed": [
+        "libicudata.so.74",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libicutu.so.74.2",
+      "sha256": "a93f8890099fe32aa569d5fe22e0537d632b144069da8b03a67d50401434b753",
+      "needed": [
+        "libicui18n.so.74",
+        "libicuuc.so.74",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libicutest.so.74.2",
+      "sha256": "549175dea22826a6d4c1a145d4e5796a6d38ccfd3b07f55be8e6250b5033c6e5",
+      "needed": [
+        "libicutu.so.74",
+        "libicuuc.so.74",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libicuio.so.74.2",
+      "sha256": "750b18b8bd63c4b60dd346de67fee24d08cc8da3dfc4cc3f709e514dc57a8493",
+      "needed": [
+        "libicuuc.so.74",
+        "libicui18n.so.74",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libicudata.so.74.2",
+      "sha256": "ddbb3718b8bd9cbd780e5ab08b4503c30a6c4fa0706ebe5d074ed6b596c1714e",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/List/Util/Util.so",
+      "sha256": "a5f578fb5f8a1cf1be6f9807d6f3205b2923cc31435c7f9edc1e3ddf4c9cadd9",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/File/Glob/Glob.so",
+      "sha256": "c09db835dc667cb1d39b8e74af0e4603ecd60253bf8ac36234ce78b0e642d211",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/attributes/attributes.so",
+      "sha256": "b1782083cce415dbcf25d712815b9359c95b314715f594317731c0270cac1d95",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/Hash/Util/Util.so",
+      "sha256": "b62512aeaf86a51e67218a248c13b0d0576746379b13454a4179015420cc9065",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/Cwd/Cwd.so",
+      "sha256": "e03b9c1190baa089710e77c7b585b4635fe8a03ffe86887fbb0ebe7edc4c23b5",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/Socket/Socket.so",
+      "sha256": "ccb3a879101d84a39f809c7f38e4e595c831d2173aa0e4fcd0c3bb9ba1ed41df",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/POSIX/POSIX.so",
+      "sha256": "1fe7ae32ad0a857ca79803530b31e9ed53564ce018c19a3561a418613b20aa55",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/Fcntl/Fcntl.so",
+      "sha256": "3254c30b2aa0857f4917150ee00448a0eb87f880848585c1e3167a2bc4200927",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/re/re.so",
+      "sha256": "4d7c9fd745d0c114ea7e3e359f72add167e22c794a74b51cadfc8f05d37c41a1",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/IO/IO.so",
+      "sha256": "9cacf971927a20d0dfc84777bfde4ac3c1065d302a06f1a4824cfe45c0e284fa",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_setquota.so",
+      "sha256": "424ec1b20b8ee3aecbc916b3ef9afe760a109d1af4e130c1f76060d158b3a2bb",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_keyinit.so",
+      "sha256": "8d93caa6e4d7bfe422a7ae92d571f9bad5ac589fe7a54b80c5861dd9c141f124",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_listfile.so",
+      "sha256": "ead0bd0996270387a534e332e0bcb129ae0d16edc32e43bb0d8dfc79220caa94",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_unix.so",
+      "sha256": "48c7a809be645451122cbf1957532dc4d3907c52eb59f01269c5380ee8cc8806",
+      "needed": [
+        "libpam.so.0",
+        "libcrypt.so.1",
+        "libselinux.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_faildelay.so",
+      "sha256": "77e33e49c6c511d1ccb24bda2cc3c2892663265c4a5cd6e1e1dcaa5a708be5c7",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_localuser.so",
+      "sha256": "2210e0443b3de9e91daae2cb0f2c6410955a77be48867d702c3bb0991a6cecfe",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_limits.so",
+      "sha256": "c760ee59d9cf02f0f783168977dcb178a485ae6e37599a342590d473c0b9a1df",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "glob": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_echo.so",
+      "sha256": "9da9305cd91249678cd8662ad827b08ea7d35a5554bb1a564989b4b36d58e6b1",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_securetty.so",
+      "sha256": "48547e98d6692d8ceccd257cec6179be541e750512cbdfc3ace338a8817b82b8",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_debug.so",
+      "sha256": "bb9e6c6c7495e65b75bdf6e58679d6275b9ed21fb365d1639fb05e899fb69b18",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_succeed_if.so",
+      "sha256": "2df7e22aab2544fea314a2eaaa6c482f940b590c6c533d6e97c69c22af73d049",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_wheel.so",
+      "sha256": "12fb8b944a2c1337221d8de7c3b84f9808e775417c20cdfaa10d525faa3e6f68",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_sepermit.so",
+      "sha256": "3db8fdcbc497f19dc6a2aca025d783630f1b9ce372a069738c39704c8abe1001",
+      "needed": [
+        "libpam.so.0",
+        "libselinux.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_issue.so",
+      "sha256": "209cdb2593bda2b07a08b23ba53e288d183eb5460c9cfe68eafd0105d3624096",
+      "needed": [
+        "libpam.so.0",
+        "libsystemd.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_pwhistory.so",
+      "sha256": "986e9ab1458b232e7b1ca34136c67c01f1eb75a186b19a7c1a017fe5d91123dc",
+      "needed": [
+        "libpam.so.0",
+        "libcrypt.so.1",
+        "libselinux.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_usertype.so",
+      "sha256": "90cb4da9a2d708b100a35b8678d792cc99aaf7ea59b9403c28c9035c87a6fa80",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_faillock.so",
+      "sha256": "1f2b70f9f2dc850d19b784af1f25276d226cbc7e47dfd3d096d8cf4a243a4660",
+      "needed": [
+        "libpam.so.0",
+        "libaudit.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_permit.so",
+      "sha256": "cc85882d1cbd05a03465d043f458a053a1d3033a35c2b0111b1f4b78e0705cfb",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_nologin.so",
+      "sha256": "b236a937af44608daf912a894c8d80a9d820c7bda4d513d8e4879ec5d2e1d13b",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_loginuid.so",
+      "sha256": "d41eaa870e16b967168abfcca535326bbb16c584a5f4276588dfd9d3dd151518",
+      "needed": [
+        "libpam.so.0",
+        "libaudit.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_selinux.so",
+      "sha256": "a1400cd395f822360e01eb4b80f8029442e4b86db443ca472bc5d68e3e307d40",
+      "needed": [
+        "libpam.so.0",
+        "libselinux.so.1",
+        "libaudit.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_mail.so",
+      "sha256": "ecdb9a940012d54a08909ab4161fb02eb37e8d12aa4d25e20d721f215cdcd7e5",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_namespace.so",
+      "sha256": "262ef7fc019118ac8e4cab53e9e6aa473bcee0b8a20ed64c5438b5220dd44632",
+      "needed": [
+        "libpam.so.0",
+        "libselinux.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "glob": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_time.so",
+      "sha256": "228b7cd084dbed39c94b3d3d731cb8f8be1d2e91057233ae1af54243aa2fa6b4",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_exec.so",
+      "sha256": "1ac881f3eb2383762917afb8197ecd0122dccf355156b70787c73d2947c5c6b1",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_deny.so",
+      "sha256": "6a40244e6f895e2f6894c008ff06a9c82cfbe26581eb620cefe9c4b3b774681c",
+      "needed": [],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_umask.so",
+      "sha256": "fac8c701cfde1f36fc4bb04c8aaa755a80373915f2a1453c292e8fb6e00b1884",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_group.so",
+      "sha256": "464e7ddd1d251061b65441cea97d73dcbf2f8ba5f9e05b2930fcf15cd74e0e36",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_tty_audit.so",
+      "sha256": "8cacc5e80e26dfd3a3c48bcacfe8dd8de1571934adbfe5ec3a6f13e50e96f4fc",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_ftp.so",
+      "sha256": "a398fbefb0bc818b6957f696537776b2414bd922117d06089a7f2c5becc74d66",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_xauth.so",
+      "sha256": "4f7d91d0e4bb8086370ae2aade4404627695aeb5d9e1655389ecf61391fb27d1",
+      "needed": [
+        "libpam.so.0",
+        "libselinux.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_userdb.so",
+      "sha256": "38843ca2240952995c74582fabb65614e846427eb5e99fe362d8edd736bed3d9",
+      "needed": [
+        "libdb-5.3.so",
+        "libcrypt.so.1",
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_shells.so",
+      "sha256": "be895a6aeafd55694c11fed33a4829562376bc1d47cea21cc2f20389f2ac6e3f",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_warn.so",
+      "sha256": "50a3d8a9b24db26f1702b8c5f04274aaf7db71803bff6a1293792bc83cbcceda",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_rootok.so",
+      "sha256": "6e0da518399a85c307604846c59a2e6c6822ba79f8158ed834d6376eaa8befd2",
+      "needed": [
+        "libpam.so.0",
+        "libselinux.so.1",
+        "libaudit.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_extrausers.so",
+      "sha256": "612255329df214295d2e8eca01d79b830fe8c94ce7d87178e371c19c01afc0a2",
+      "needed": [
+        "libpam.so.0",
+        "libcrypt.so.1",
+        "libselinux.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_filter.so",
+      "sha256": "a6c782d36204dec95c81bc45dff072dddd9c434adf678e41ed9c23705c2fb685",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_timestamp.so",
+      "sha256": "7901d11c13ba0aa06463d115636b27e52a6242d4c2ef00310e9aef371a48ba3d",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_mkhomedir.so",
+      "sha256": "f2d3e49a38d3a88daff00de921ec84673cf7e19bf8a4aca1a81bae29b84d786c",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_env.so",
+      "sha256": "8444f510b4c494d6ec4e161f37be6e6caed79f651e0e44cb00f644deef1610bc",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_rhosts.so",
+      "sha256": "6dd872bb6148987b3d1d018fb09d5aeed09038573a32d9bcda318d1f36f5bf0d",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_motd.so",
+      "sha256": "10d0a124f90eda97003f9c58510d3d687ab51151d1139e856763d52c255684d1",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_stress.so",
+      "sha256": "4418b929b99608b048f138af777f2a2b9a6fe5a8d4af7242929308f9f1b9c68b",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security/pam_access.so",
+      "sha256": "4172d6d98b421f7ea0804de51aa61aeccd4289a6104340ec6f5e2c51a4d141da",
+      "needed": [
+        "libpam.so.0",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "glob": "imported"
+      }
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/ossl-modules/legacy.so",
+      "sha256": "e639c7121825222dc720bd38aa1fca3ddcedd7d1213dc72ce006b8ccf541b547",
+      "needed": [
+        "libcrypto.so.3",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM274.so",
+      "sha256": "b82f34324e4ee2b5f041339d0e1bb4229d274ef519bd758c025e306915b85d0b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO-2022-JP-3.so",
+      "sha256": "45f899172fad2a063e5a5629e49a68f07ff5cde33af9f8e5c0acf8905063c68d",
+      "needed": [
+        "libJIS.so",
+        "libJISX0213.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1364.so",
+      "sha256": "89232d226412399ed5d396ace0b6220d0af01899b9470693f70564fc59a5e995",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM850.so",
+      "sha256": "99e67dcd26c73a1ed389546dd75ee29b137f884a61b5bd6559559b8ad95682ab",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM932.so",
+      "sha256": "558437b656edd4ba4cd7b81d974df84c0b987ceb2daa32a612b1875a344d0c03",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM275.so",
+      "sha256": "839c6acbc53ae403ec7bd5276a6682cca96a705508b87f40a8cabbe8ed7c21d6",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM922.so",
+      "sha256": "98ce0ad8d57f61a31e576c86c9de1edd8e7717764970907277ca32bbcac16a08",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM875.so",
+      "sha256": "011f9af5021a5b19bfb61b5f18ebcfe779d517b953a4e4d4c2297c2c161d8333",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM852.so",
+      "sha256": "05a91ce6442c5a7a5347f04873486f2ee4836b4b42e75701412c41b31af0bc04",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/GREEK-CCITT.so",
+      "sha256": "bbc8c3286ec9de9e0eb875968e568f2ea795d1c465a86a451706bf41c71b66e4",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM943.so",
+      "sha256": "2fde69ffa3ab87500618cee85bd8bc4dc0fe05d5acd783b935ca6f03d1f0900b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP737.so",
+      "sha256": "f4930c9f13b8243adf61bbfed493b2d64eccf53ae2470536fba08378c26f723a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ASMO_449.so",
+      "sha256": "84804ec08b362b9d0e126b6537d46c3c54b2cc139749dde16ca5314589c0d074",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1141.so",
+      "sha256": "2750f244b67a5d436d63412049bcf28d23219677e04ce56e9408d2aa600a7c4b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1123.so",
+      "sha256": "af7028086c59c2e3cdd189a77fb94f353b4fcc31599204a0e220c690a2690291",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM902.so",
+      "sha256": "876be607dccd37fd518dafab062ae884273465f3a1380b249c17540b82334000",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-ES-A.so",
+      "sha256": "751194e8fad3073aa7b3076134a160dbcba5725f65e026cc1453111e63454375",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IEC_P27-1.so",
+      "sha256": "33646ae49d7d3cfbbbf27f40ba34f816b669a351163f0ddb95dc472bcc97f988",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1097.so",
+      "sha256": "041db7a8052d28cc447a331dddb8bc8f10ae005bf0b7e18e6e67b164237f25e2",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP1254.so",
+      "sha256": "6a173b4a4c7ea4b273f1b5e8fe8feda5f9bbe38a711bd34daf89b3a49163ad10",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-DK-NO-A.so",
+      "sha256": "571942814ed9700476ff26309f86e6bcff115963e7f6d18767f6159cccc7c9b0",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM284.so",
+      "sha256": "a8e8079319828cdc7d67c055dbd9399f5945eaf2f0882e9c310e9539116d2b94",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/MIK.so",
+      "sha256": "a227201f0e124b947710be1f2ca2f17730fba487f84abde48229c09733c9f3cb",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM863.so",
+      "sha256": "8e40066d2175b93e2eb95e94615a13a7cd8a96bec6e7f98d50126fe0d7be8562",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM038.so",
+      "sha256": "575d619a8c077ecbd16ec449ff5b9d235cfbaf6b90cb097f4c25dd3e55797829",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/KOI8-T.so",
+      "sha256": "89155c2583eee28c411d49de34c407520f62c526c6cc7789b26fb4a91c500d30",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM869.so",
+      "sha256": "53e23b779ae069784cf2595f5391984c25434abcb9711e87eb9cc16f6ca60dc6",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/INIS.so",
+      "sha256": "2ae148acd6677faa1ea09a91363941842a1ba769f651a47565043fdbce4da9da",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1130.so",
+      "sha256": "c6d8926309ebed6e95bc7ecf0355dacf58dfffde4bc4afeba936d9fea41aa32d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM901.so",
+      "sha256": "d84459fd4a08af0787759a5677a16acabc5be052f830b316e48d8519c55d0d55",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/RK1048.so",
+      "sha256": "dc40bbff4efcc09fa21858921e7d6e67255b779734386aaeb1f636efadb3450a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/UNICODE.so",
+      "sha256": "ecde5b55aa10683e16703d052b5134b7620af827712fab64f8e606e1958f6f85",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/KOI8-R.so",
+      "sha256": "36c3d9afdc51ee1b05f758cdf807130e3a5679b7a8e471839ba3ae81f3ef6054",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1142.so",
+      "sha256": "31446befa520dd193ab94d1fd47b4a4d28499a3d77f72160e30349dedb917630",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM866NAV.so",
+      "sha256": "9a69d93c61e3b3d19b05df03df0fbd81e6e81b81091913be3b2bf55280839cb5",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-9.so",
+      "sha256": "974bde3238fdb6b0f917e91b8b092cfbbce08ff5d8fde2fb975b1ec435558bbc",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/BIG5.so",
+      "sha256": "937404114d840f6f146b9d2f9bf8155f2227799ae1e27df89e28dfc6fba28bd4",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1148.so",
+      "sha256": "814a7c6525b50576f5c991052032305e7b50011c9e530973fca6669952baec0c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM256.so",
+      "sha256": "5b12ed588b29063fad9027ff8255c242718093252d66bbb1f79d80b0820f80a8",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1158.so",
+      "sha256": "cf92246289c220b19de5aa2d10e4a50a0201bce20d2b9046264a1e7a3c3b3c6a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/UTF-7.so",
+      "sha256": "474a9bb958d209b0ddf272cdd711959bfebb2248fd50059e7aabf716b680893a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP1251.so",
+      "sha256": "d4d3f5c1dde2a1e8d5450a16275eba6f6a5ba756053bc74be8401b26bb381e02",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/KOI8-U.so",
+      "sha256": "6a260ba308df8afaedb0727f5b250b55bf94a3ce38b1ce04b3e5802b15c4544a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM4899.so",
+      "sha256": "3df70a65c3509a49874f7de00ab8f17e2e7e97575fdaa989dac4fdbb6cf49459",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1149.so",
+      "sha256": "18048c8c690177806905233d5bfa97d780cdd4520ee0c6cbd4f73bfbaa7dbe21",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM16804.so",
+      "sha256": "460fe997171dbad59e42d54958b6ac6289f3b1f0e62c8e8e3fcc4a2f26d255db",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/libGB.so",
+      "sha256": "1778e36c30be64a323e3c0be0ce61664820b79d79de9eb188a85ad05f178e391",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-10.so",
+      "sha256": "d2c2f8c95d857efc7932ec701f37d61a1d12d11c5f5e25a1950726dc2c237ae5",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-AT-DE.so",
+      "sha256": "4294e72b62456bd490357095831cadd6143d70235351a8b5a4ec491118e8eb00",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM870.so",
+      "sha256": "2d00f82e9aff7a0fe6ab969e803dde28f2c96a41cd765c84a1c4b472d41095e8",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM9030.so",
+      "sha256": "9c1e4c2ca695dadb918a11ca74440aee8aedd27507046e92f47b6204576a564f",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/MAC-IS.so",
+      "sha256": "091a3a443c1544cb28563b9a82035fdb1e43ca6d5586a1af9ab8a7f8d46f7a97",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO-IR-197.so",
+      "sha256": "37d5b5727413535c4c578bd3fefa356714b9092a146345838a67e7bbd0577334",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM281.so",
+      "sha256": "87d7e0c5da7a14cd77f9de6e53d6e08ba048efecdbec3bf64feafa228e2c4f45",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-16.so",
+      "sha256": "c527fbcc796ef1029d84cc2ab449360b6fc2f4d4c6c9a32c6b124178729765ae",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-FR.so",
+      "sha256": "1a120d3e3ee27b39927fe014e228c9284b689277d0f4c5ae5ecd94681bfd5ae2",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-IT.so",
+      "sha256": "42c1552ac69a33e52815e44ce558421aee47a5be3ae8564b469b2db375cd92d2",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM9448.so",
+      "sha256": "dc5d66af2cf5d75e6553863fcca636dd030fce8cdfd7a1a654a2e23a87260755",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1155.so",
+      "sha256": "40c5e2dac7f89223ed67a733cb24fa354565f24891b1cd9318bcac102cfbf19c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-15.so",
+      "sha256": "eedb24eeb0dda2a7b5e6a27d44b7344b68cdf481e81d2b67c78d9d621212d68a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM290.so",
+      "sha256": "215b79ea368b450e4ad3e09df79f7dd39b8cf45a490a7fd848ed81f9358e3805",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-6.so",
+      "sha256": "a28e193351ab13a382dee39a0b867977c377494dadcbc683dd09f6fe6e8c4792",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-2.so",
+      "sha256": "bfad81c7f19af0e29fc9504b3fbc12a33dcace6a851bad81dd05acff4c4c4672",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP10007.so",
+      "sha256": "5a1fa16412c5ea614d0c529887a8d667a384042d20cda196f33ea4f54d77256f",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM918.so",
+      "sha256": "03a8a5d75e96c55ddd3589646b3adce2c532adb36126374cb9f30c07b4931f5c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/UHC.so",
+      "sha256": "0c257aa52ea19b75ad8fbbbee2c3f7ee64cf38a65b2b6f767fe7f14e7f43d8cd",
+      "needed": [
+        "libKSC.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM278.so",
+      "sha256": "503434f9b64344c40585a0c6fa3b8180e3aa49b53315ad583716fa663569c07d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM904.so",
+      "sha256": "1763f52ff61ef1762ce74b00f2f33c4ffdaac019c3084994523283e71019fe2d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/libKSC.so",
+      "sha256": "96b1e0270a99fc956903e7c5c1b2dff5630c1dbc2d8a755fafc0dd1f8fe7075a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM856.so",
+      "sha256": "cf0b53ec35e99ffbf1d251bd041dfa43b60b98d0b5c045567a7a06bc8b846f9d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP773.so",
+      "sha256": "19f9050d90cf2eed81185ca6e3bfeb0936f630ba8b80ac9f7039a235fa4b33cf",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/GBBIG5.so",
+      "sha256": "a1c25361403f70ad0ee549101de814aa456c5e0e7b351cd4a921a97c20609d51",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EUC-KR.so",
+      "sha256": "683536de108701b95d604ca6d019d13dd00bc17230c06948cc6a84d791caee59",
+      "needed": [
+        "libKSC.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM921.so",
+      "sha256": "ee68f410593df9ee20f2b91c06d8e440315809a36aacc83910cf42a36f4330d7",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/GEORGIAN-PS.so",
+      "sha256": "92f5a097e1b494ddcd812bfda50861f5bcd7ac16bd6a9104a6fafc1ce92c70cf",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM437.so",
+      "sha256": "a0dead1fddce26050cf76c3f46281c3bd9e429e783aa5c2c6d3889a40aea9e93",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-US.so",
+      "sha256": "71bc67ba08ddefee882fe6f657bbf488eb4a5b0221e19d7484850442e4d31fc9",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1156.so",
+      "sha256": "7040bdc400323b2a07d2e8f730f604a29da76fdab6e0ebccec310aedf9e727c6",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CWI.so",
+      "sha256": "68ca16888a7419f5cd10d39b9ce8e19cce9e03f14d62b6641365eed17e9268fe",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM864.so",
+      "sha256": "3fd9dcdaa2df132c34dbf3d8cade426d0f0a176fcfcaabd608c144794f7bd85e",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/GREEK7.so",
+      "sha256": "1108ed543291ecd7c7f515838f994636710fd823231dc43d9ff712bef159ea3f",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-FI-SE.so",
+      "sha256": "ac1e6a6ff6fd9b63578764b4e7104a0dacedd5086560c05d26679abf2de7a3f6",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/GB18030.so",
+      "sha256": "85db24c73c1798cd5e8574ddc692fd1ba41e2f25b40af41303f44c18e08c9216",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP771.so",
+      "sha256": "b533479b3afac1c379d3d271315d26546db508c17757fb27ce73d1dadeacb16a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP1255.so",
+      "sha256": "d3e4d510ab82f24ecf439a867b40e771ce9571ea6436473d810a7c37e52f06b9",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-FI-SE-A.so",
+      "sha256": "d7f51c8ea666a195340ae6c1d7bbff638bd73bae24f89feee49c2f49f6991b91",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1157.so",
+      "sha256": "5d9093b6821f6d3713820e33258dfb02b55417084e7b8118d5fa872f390a79c7",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP1256.so",
+      "sha256": "2d8c572956e64d457eca6c4600d79d7bccd6677661617c8db6c67f7814ac01b9",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/LATIN-GREEK-1.so",
+      "sha256": "61a518592b4e7e3ca8cf60243aded0073d7315454dc6833f1032b12ee73c5918",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM880.so",
+      "sha256": "3672f4f35a6bf0550282a47ee0c6ef2447faebb440d7248396ab8a13f03241ba",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP1258.so",
+      "sha256": "0a1fa56ac205d4d0add85707e44be942bb778e6e28950d227b1531e709eed732",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM423.so",
+      "sha256": "b6ded40e9b6d1001284666cef7572599380521f1a243d211eeb530b931b6c022",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1399.so",
+      "sha256": "35c1a1ecd591109e6e0f649ef209c8e14a03934bb9b80bcafa5033dce9c1a0c9",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/KOI-8.so",
+      "sha256": "b78fd53dccb9bdd682a36b3bf26fbe74ea1c52e8d39867f08a772bf07b8a702e",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/GEORGIAN-ACADEMY.so",
+      "sha256": "995a43c3708eefeffec38185e523b0b204e7173f992140098cf29e8f5b2053c6",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/HP-ROMAN9.so",
+      "sha256": "932ca161641769f02a6e37f0961adfb332d37db68d0174d0132e8839d9a44cc7",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/libCNS.so",
+      "sha256": "f853907004abcdab729fc5c7ec87dc76e016eacb7550e534458a6f098960dc87",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ARMSCII-8.so",
+      "sha256": "60b666ccaeec2b7d8860c9b7073779efb797d7f1110092d75492a20f2887231c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM903.so",
+      "sha256": "dff4c26cd1f58f076fb8f68c54e1f563cb6f4ba03d8de0cfc4554fd32a298578",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EUC-CN.so",
+      "sha256": "12c0f647b84bdab02047ee40a3f2a2877fb0856b7d825293a7353b36ebffc2fb",
+      "needed": [
+        "libGB.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1167.so",
+      "sha256": "f0d38dbe63526ffeacd288e46c11fccc220325f0c782214050844edeb39483cf",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM866.so",
+      "sha256": "ca444da293ee67aae480ef39020e50d376e8bf354318a1982bde75f0a04a58d8",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM939.so",
+      "sha256": "2e2777ba05ec6bd3f1a3ce3d9376e3c99aa76bcdf752b95f838d40122058534b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO-2022-CN.so",
+      "sha256": "f1dba4c8f9b095528883ff0004301390f679443bc6eee794e36acf76a708c2cc",
+      "needed": [
+        "libGB.so",
+        "libCNS.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1132.so",
+      "sha256": "ac8d0479f1e5698889e1041206287b49df9aa4019a92d9b662d855d1d78f4442",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/SAMI-WS2.so",
+      "sha256": "ff342fbf70fde6e245dc7d0d863eccee522f3c618554347ddfadc60d4dd5746f",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO-2022-JP.so",
+      "sha256": "b75d61d5fbb98b95c11f12bdc7c6cb557f8fcdc250c3bfe6df7aaa71c922f68e",
+      "needed": [
+        "libJIS.so",
+        "libGB.so",
+        "libKSC.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/SHIFT_JISX0213.so",
+      "sha256": "e7ee7681fa416408231c98298f344f14a419f0c7ff750835191d3f919b6f28c8",
+      "needed": [
+        "libJISX0213.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO646.so",
+      "sha256": "76505d1f74cd227e516702e79aa73ab3575a0e83a298b099814470fd969dfb07",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1025.so",
+      "sha256": "e6761688a5974fbc40e75e4ebe27d4ea30cdc2129542cb8d0e81e6df17d7cdf9",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1144.so",
+      "sha256": "366bbd2fb9cf4edebc9a7c36bb1dc8e3aa1dd49e4f23db0a93bb54e08dee5e12",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/NATS-SEFI.so",
+      "sha256": "e94c25a4d8d6dba003a26ff4ea2ea6dbc28af047ef1772926b701b76fcbdda5b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/NATS-DANO.so",
+      "sha256": "f11f48136f11c0ae47b1ce85873547a69dbf963629496a32b569fd3c751d0e87",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM803.so",
+      "sha256": "68bc53ba0fe5adfd6d826751c958345fd479244ed65af13fef9f2b25d71cd7d2",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/libISOIR165.so",
+      "sha256": "ac14d9f27de2271de385e2662a2dbb273f6e9c3408447ea936faf8c94e589aee",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/SJIS.so",
+      "sha256": "2ad2af79dbd0c81d51e6905f7c67a64717ba0980403029d40965958a387cbc91",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1147.so",
+      "sha256": "fbcf37bee41ad2b62edec91f4fe72208896517e3841226c319d6af3bbfc8d701",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM935.so",
+      "sha256": "588aa8fbdaa91825d353db30fcd018e50abf8eeb3236f7ff7226f969bb37dd8d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM297.so",
+      "sha256": "c88517645842cefd8d7452e3f97ce43745185ac465c34ad1aebc7135ba74ca53",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/PT154.so",
+      "sha256": "86875f940cb7eb2f0bc50b41b5d9d3358ba08c225210cd178663a0b6bfe89652",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM4971.so",
+      "sha256": "97fb81c5fae14976c263e0c5a8a830c15bd92894b5bd6105922d0381ade2a207",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-CA-FR.so",
+      "sha256": "6a48564afd61117fa869eb2b2c90d35963d1b02d28d8d49766a78b65a9651d09",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/INIS-CYRILLIC.so",
+      "sha256": "52798feefd334aabea50457b48773390a8fcad54db78bacaab06fa6ecce1797b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM858.so",
+      "sha256": "0324449484f86135bb3e402c55144ba5ca75574e58e6cd5f70df5583b1c6764c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/KOI8-RU.so",
+      "sha256": "29a76b999d5f02c5eb386c02450e8ba2daf78da6cc9149455b95f0e330641ddb",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/TSCII.so",
+      "sha256": "2a820349d2c0cec622d11306f27b6839c6f96c5e33c04bbd761764c4ba07910c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CSN_369103.so",
+      "sha256": "26652f7a5635472caaec76e1073be280799ebfb97f11e49e1ac4ff8eb1976418",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/INIS-8.so",
+      "sha256": "92c82bdbd6b8213b4a6eeec861a2bbae4870765a728e6a00ac43705bfaf2140d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-DK-NO.so",
+      "sha256": "c438e5c439613dc16a5e084c96ca1b45e25f54e268e16178309a1ead7c272643",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM9066.so",
+      "sha256": "c3ff011d89d83c34a45d472dbd8f744481a2f243fcbbe6e19df7653745844ca4",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO_6937-2.so",
+      "sha256": "4c827131fb5be196faeb30abc14be0236b97e8857a837fdaa3e27f5613251bcf",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM851.so",
+      "sha256": "95bf17415a512cee5d39d10994513b203fc683ff483b2f34a12df2e6ca6ba125",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/UTF-32.so",
+      "sha256": "6c2528191fafc56696bf13f404e993031e4b9636723d4323a3be7d9293e4b60d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP1252.so",
+      "sha256": "c3947fa9de4eba09bdfce99d141b743b60d75a1ed2927263e617f81bff8096e6",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/HP-GREEK8.so",
+      "sha256": "c909bae7137a05dbe10420f40eaf735e6b102e3c7e64f67dfc397adcc5475010",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/GBK.so",
+      "sha256": "e98b204fb6b165f2582e778ace08611699e0265b5591a7ca4b08406799970014",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM905.so",
+      "sha256": "8e6cbe965b8d20567c34638a3022ebc8f84c2c3278b552715952c2b1866b0604",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM857.so",
+      "sha256": "8dd8cb42cdb464ffa5b6d100745e0f23ccaae974516afe0157b18823cf47e5cd",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1163.so",
+      "sha256": "970ae9b4bb929d396cc0359926367ec16e0fe8538aa7a9f76984593c9fd003ce",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-UK.so",
+      "sha256": "e836f2df544343b507d7cc0ac57ecf9d78731b545a6a2eadb38e681833eab131",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-3.so",
+      "sha256": "bed610ff3fc7f7ac581a1dd1754fd177c91c357a4bb1680441fd9d18b4f955bc",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/HP-THAI8.so",
+      "sha256": "83ef63a2e81359e59a05491c39b4c6183112aee5e764a255a433c5cd319f9a3b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP932.so",
+      "sha256": "63a9c0137340307cf09928b961360870520b5b008257448442e7527ca1a72265",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP1253.so",
+      "sha256": "b198afdc200f29168c674ef8ef6ad3a96aae0e747fe6d13eadaefefafa72bcfa",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP1257.so",
+      "sha256": "5350b8c81048bf5ceeefb9b5c385ef4150950ddaa5e484e685d870befb024a7e",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP1125.so",
+      "sha256": "b29256b2d228ce862a3821673c2efed3aa67998c148b1dc99f39428bf8432a7a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EUC-JP-MS.so",
+      "sha256": "21d727deafebcde893d69161cab5d10109d17fc522db907bc6c76d29073b55d1",
+      "needed": [
+        "libJIS.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO_10367-BOX.so",
+      "sha256": "3ffb33e76d119c6c3d41665410f0633087014032cd342ff7043862945090325c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/VISCII.so",
+      "sha256": "119b6e40275b6f40056f2ab66be06e6f63e0077675a36448e0e9ba3384ef6255",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EUC-JP.so",
+      "sha256": "3eedcad3259347dc2b85723eb3e005b48e0b228f173ee9d22359123932e22778",
+      "needed": [
+        "libJIS.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM4909.so",
+      "sha256": "8b18f05209f80bd5e4a1d47a138f64e8cc9580fa035ee5dd89523d00f718c87c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1129.so",
+      "sha256": "48d7ec6e77283d20bc53980b04a174e78f08dfabc9c09ba03299831917d8ffa7",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/BRF.so",
+      "sha256": "d014362efdec57ded2541bc44fab483c1bb0b49b5175f2a14e64057971a62059",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM871.so",
+      "sha256": "c5c9ab78d4e0f8ddf32fb59edfb6569af7bfd5084bf01e64e887bfa4591a63ac",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-1.so",
+      "sha256": "a5e0bc47cf91ef0155ba2e8aa2679cffa329f2a28ce723c47163f9c0e0e605bc",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/LATIN-GREEK.so",
+      "sha256": "f54a3cc4037c9bd1eb74c324358b4fbdba45c62330ab54c589a099ced987cdb4",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM874.so",
+      "sha256": "ca1c39fcce3de20e77e1315ceb7b30ff3d9f68266796e1e30648ae7ee7c5c69f",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1166.so",
+      "sha256": "437aa34d4b271cfe32488a8f2ae079f38a2325f10fe94d50de11fb18b8fceb8c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/BIG5HKSCS.so",
+      "sha256": "b347394c9de6edaafe74e3f0dfe024ea518aa009b0f1c3622c69b9abd9446eae",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-14.so",
+      "sha256": "ebe4b177b39c230095946d4ec21592e5af97c302b30a9a77d0b9fc69491067d4",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM500.so",
+      "sha256": "24a8898bc6ad4913a73419e818a103e054e5621167187eaab30264ee761cf536",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/DEC-MCS.so",
+      "sha256": "924f7fa7cf8b972b4ec649cc6538d9cdaff4a1cb0361164f0f73d2359b7f5f44",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-4.so",
+      "sha256": "39910bb5ffd7d5a16a8530eeb833938c53c028ae085031b9363b1c826b604cfd",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO_5427-EXT.so",
+      "sha256": "466be7edae574404dae319d63fc95c62056d17b5d3df690dc7d0bc87f69f9393",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/GOST_19768-74.so",
+      "sha256": "504e9a1d278754a011b298bb7f3b2e59f8cbe941278c9dcba8b955610f40b5fb",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/GREEK7-OLD.so",
+      "sha256": "15067519d98e923500a2f8182a5a93f37ffd35ffeb0bd8bd6a0101055ef9d83a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP774.so",
+      "sha256": "125c5d25591fbd90c8ae9e381f76394f7dda7fa44ef6a346f13f3f8190e4a5c2",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/TIS-620.so",
+      "sha256": "d3403dd748fa32950766961b81e71f62332bf37e9bd5fe1148b95fc51ddd89dc",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/HP-ROMAN8.so",
+      "sha256": "ab8c96b9e6575c2bf46552d6b4cb2d10597da72d159a20e708d5454e5071e61b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1154.so",
+      "sha256": "c0167470fd6b852d3ec3a20f6300aca640a053691970fc6330765fe3e22e5640",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1047.so",
+      "sha256": "48c090f730ada5dd96df6ea45a009028ab0776c064446b1c785f96c0dbe0a013",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1164.so",
+      "sha256": "722f41152d88934ecc261061ab04366e4e42b591c58cf633b473d451f3a27a96",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-13.so",
+      "sha256": "0bbb45603ee97439412054188f02ce8fcce0cef346cc08f87eea201b96ac0516",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM861.so",
+      "sha256": "42f4f21342a0619c567e4f17a506369fbb006b8b4b768017f58cff8079af460d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1371.so",
+      "sha256": "8b0892b09d8fbec8d3ec42425f7f0604f31bf18f61b61a5e14b265b749eeb42a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1122.so",
+      "sha256": "599d97b71d3c34e3ae92ce2abeff1471ca1e666edf619e05c3dc3ba240688962",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP1250.so",
+      "sha256": "69489163a14441e66c90eeab20871e480162dff32d72c49db46227c0932ce7bd",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1008_420.so",
+      "sha256": "c8cafa17ca89202d8209089ef53aceef4927d017bd353282ab96702057abf49a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/libJIS.so",
+      "sha256": "a382632424053b69975963ddba66a8a0b73327e2b020f635dde85e4d39a347af",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1160.so",
+      "sha256": "31a15e7ce5edd103ed61a857dd535f10c48ac06852df26bded945eac5bff2012",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO-IR-209.so",
+      "sha256": "94f61f7cd2f3de5f265a13e6d26298d00e8a49f0d37868c2836e02d9ebb54ef5",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM420.so",
+      "sha256": "231df95937c6c931079a2b5bb266a9b04487c00f88209e77a317a200e02537c2",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM930.so",
+      "sha256": "f109c95f8d0b67246fa120d3a3e7075405b2cb5a00c93087008c4b8f330658a5",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1143.so",
+      "sha256": "37f6c85b1a7285a3597a113c8662246e455c427953c9dd85cb735cd2d4f39df7",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-IS-FRISS.so",
+      "sha256": "98eb732ee6b8ba293470fcf86064bb2d12f90e91fca1de1bd1650a8677819f0c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ECMA-CYRILLIC.so",
+      "sha256": "eff5d5537e1e0d53b9e54d8a0d27e64b3838ff5df02c54df566f88f601367a93",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/UTF-16.so",
+      "sha256": "81e4cfc37ca96e6cb02b6bf13763f84f42cc526ac34c7a987067f8fd05fb0f3f",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/MAC-UK.so",
+      "sha256": "925ed7a7cbeadc88f0c6f46623a9b7077b7872b1c41d561c3e3be03916a1c664",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM285.so",
+      "sha256": "5afb0225ad80f61b36c60aff3847248746ab1883bb077a761e5c5df1b9fae05d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM280.so",
+      "sha256": "b9c2cb91a9242637e1f0106fcf78146a4581ff80795df16e1b9f1422d28b8ae8",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP772.so",
+      "sha256": "e7abca06b4582cc54844e5a4716ff6ac6ed46110ed043c9b31127085216143bd",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-7.so",
+      "sha256": "4104084ca1cc3b253c8a86e6cfa763cdf763f8b34d8ccddb84b5d9be2a96a1d8",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM868.so",
+      "sha256": "2185f316fc3beead2296bbea5dd847492d746dc2bf6e6b8282fefaedb69f7b6e",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/JOHAB.so",
+      "sha256": "92321221d98c6bf579cd3aeb1b93ae5cc3697976055311dc46c98c2c2c98cbf2",
+      "needed": [
+        "libKSC.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-11.so",
+      "sha256": "1f7ab6446fa0f35bd80e5e445a7894d5d28042d5bbe6dfaa63f4ecaa9646be34",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM4517.so",
+      "sha256": "7a75c29a53672e7cc24ee891cbff5de08ee70bb244a1449c22a6c71cd24ab169",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM037.so",
+      "sha256": "706893c7c951e43cb393c7a0e98be834e7d9f4e540133415b7dd10dfb4806493",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM273.so",
+      "sha256": "d5963b0b81d8d6f24a3e2730a197f68d5d21e29f2248918b103c5618b1264816",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO_5428.so",
+      "sha256": "796cb378d56c13cced0d943042efa0ba2a4fd9413dbd19ff94f1f75e990b9c35",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ANSI_X3.110.so",
+      "sha256": "5c13624c38cee112fb5ab4646af916ef1c2440bc12f84af127b7fe5663c241d0",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO_11548-1.so",
+      "sha256": "0d9bddb2045b2670fd8ddf309e8757595121528668a601d1fa6d35b4b291f71d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1140.so",
+      "sha256": "93d939eb80b9d2c40683b88437f9558aed0eaa35a3bbf0e12c854524ac0a2c1c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISIRI-3342.so",
+      "sha256": "63d5a5bdaf2648321e154db624479073eac5cf30ec4fca5b1535e8adf136b651",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO_5427.so",
+      "sha256": "d94f7396dbedd97fffc8b1385603e038e9a3f8d3daab182e446a74983997c733",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM5347.so",
+      "sha256": "1a6a501a46e23f1e981448d1acdb2cbf81693511efe6164bdcb0e16bc27d4d92",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1388.so",
+      "sha256": "793d0192586fe6f862387c2ff9577085a3ee0dda495679a83f5e12b794a9c0f0",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/T.61.so",
+      "sha256": "f5ef6546898c23e78221e590fc6409ad288ed8beca73d6675c5637b33859688b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1162.so",
+      "sha256": "c7d1b9c59726f81ff21b9a961c92dfe66a075d426752b4ad69872922d797dfa0",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP770.so",
+      "sha256": "4bc3d147d37f0769e762b90da0775fbf3b65b89bf311fa19ed92006481fbf11e",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-ES.so",
+      "sha256": "894b1350712d8662137d859b1ded682edab8ff8b9a7af80027472a04c3a13f9f",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO_6937.so",
+      "sha256": "dafc4481bb1532ae4fb1ac5b392137021a05645687466ead5e8e4b304e72d30b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-9E.so",
+      "sha256": "38a5859f12e159f19f18a9d48a4d09730973ddc2617cf9e153b5f61733883225",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM933.so",
+      "sha256": "604a6acad52d594b768321f66805b3d722846a35ff8cc0a9b543d3bd3208717c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM891.so",
+      "sha256": "2990d09985155fa9789b55ef6ecbd570a9baface5cd250fca5df659be3652f01",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM862.so",
+      "sha256": "e88f4ff9a7af604ba381a6f397d844616c4a66ef20038a1f59f9deb11b14bd04",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1133.so",
+      "sha256": "1ec7c046dc0e49bdc0b50ada3bdfb7f504a4ccd1fea869d7e0f542d40b588a6e",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM860.so",
+      "sha256": "7622635eb231dfe347b3c4b746504d4bc92a0a1f2586198ec0946f682603dbcf",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/HP-TURKISH8.so",
+      "sha256": "36629e1bc26765e567d1beaffcd14644a8ea4a4a96aa5d6f283dd8938cf17bf7",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM865.so",
+      "sha256": "5aba566a286bd293b79c923dcf0e10500b6e5c9924b146d57d99cb110913ad5c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1153.so",
+      "sha256": "415b44b29eb2d18249593975c22f2d6fdf5d187925de3b9062f63a25927c4146",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EUC-TW.so",
+      "sha256": "e8cab7e03b257fc48cd1741e5d74e9de44f5759357315a5fc7e168551e380800",
+      "needed": [
+        "libCNS.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1112.so",
+      "sha256": "723451385085c87d257dd6a573de7d209dc0811f3a38bf8134bdf996fdae421c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM855.so",
+      "sha256": "affc300ca0298c0ef32888ebadbcba9476cc8923dbce963f8129f47f36c01170",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM277.so",
+      "sha256": "540eab1bb3e7797d8bb1ac9eb9c478d9f6add7a472e76d0b2216b8c286ef8dff",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM424.so",
+      "sha256": "3cfe8597d02c7548da10e555c55eb5419feaab577b14c8f39bd7cc7a24abc216",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/GBGBK.so",
+      "sha256": "1be84020fc180a4b39ece64c1d0fa76051384f39c989364a0b1c6f29e480b3bd",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO_2033.so",
+      "sha256": "953d903de7e0f89b16cc14392eb157e680b188fbc0d841b59d4e09b852baf251",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1026.so",
+      "sha256": "bad7ac318c4bc5d91040a077b503b7da7d4fb782cb01a06b5ea2badf71a744cd",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1161.so",
+      "sha256": "9cce81a8b54a67536b030e49fe6f262414347467d259e1826fa285886a459983",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM937.so",
+      "sha256": "943005a0f7e30d3574210004bea3eda526e7e38052cc0ec7eca65d2e221b2bea",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-8.so",
+      "sha256": "aa8edeb2f51b2915c802e16d4c18c80ad58e88ed1c7b9e733aebaddd7014bb1c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-ES-S.so",
+      "sha256": "ed9a9d33fafb170b2386a0faaee4e441c34df9b42f9b04656a7924c088ed603b",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1008.so",
+      "sha256": "bf9e7e4b8724e1daa59221819ca425c142529e97d48b1513f04ffba5b98cede8",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-AT-DE-A.so",
+      "sha256": "14dbdb4b8484e2944fa539c8393c721f26dae5248f855b237ca28eaa62a2ccd9",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/MAC-SAMI.so",
+      "sha256": "4731f251279adb687d3898749f930f5d6326e927a55575815ac0b271a9c0d404",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1137.so",
+      "sha256": "418a1871359e648bac889d7b3fd8e555f840d91749570c1d2b048ae5b6b4edfd",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/libJISX0213.so",
+      "sha256": "9230064085c86b9f98c8a3b0431119a20a0dfa70499af461765d43cda032c6ea",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM12712.so",
+      "sha256": "acaf81f3676ce9ceb11f7f1d8e6c8f8080380c25b5da2e0a90a63f74cab8f430",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1046.so",
+      "sha256": "c806000cdae0544c25809483e3c39d11b0a097d2447201ed4bc3e49eb4135dcf",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EUC-JISX0213.so",
+      "sha256": "9022454fc6e29f97591cf328ce7beca8a2b2b1adbdf23507256c6a1345a8b4c6",
+      "needed": [
+        "libJISX0213.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO-2022-CN-EXT.so",
+      "sha256": "b9e04c6e74bbf78eb8af2dbe69beb51a640ad85e388adecbf9f9605c1e117749",
+      "needed": [
+        "libGB.so",
+        "libCNS.so",
+        "libISOIR165.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/CP775.so",
+      "sha256": "c813fcbdbd5887604ced69b03dd29fb5431b8d66495f14ced4bb05402da107f1",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1124.so",
+      "sha256": "e73295970b44788f201b0213b34a91b1c539822d19b3ed6d9c0b6358ab65417d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/TCVN5712-1.so",
+      "sha256": "fbd0dab72471bfcbc6acd90a4741ea8cff4f517eddfb8c971f5250e5b420aa8c",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/MAC-CENTRALEUROPE.so",
+      "sha256": "db6c86c6f382cb79e7edebeedb37b2f8ee4f9fdaffc89644225c3fc79d6ef06d",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO-2022-KR.so",
+      "sha256": "36e4810d6d0e1f90a2bbc6f35739fb8f4dfce2a0db1fe0b0fd6e1db27f62dd07",
+      "needed": [
+        "libKSC.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1145.so",
+      "sha256": "b21a25f8238de2eff6da5099d6c8ca079519c7522c5d55d069b7997679370f78",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1390.so",
+      "sha256": "866dae4399b1c8a82c12691812a8e403b17c5144c87d3ade5662bb05f2f61b9a",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-PT.so",
+      "sha256": "0fe1f737c6e5d301d3e1e57853c5746bb6c6dc9e5c22a3ec180f6b1bd1815559",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1146.so",
+      "sha256": "150b264451d10228ac7ade63c4e3984b019d1a8ae9cbbac10d9d105a5248ad87",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/IBM1004.so",
+      "sha256": "44667e9b7fc83fa74b29a2e0e744ce9fad4fc042a13412c186f6e9d7bb94bf4e",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/MACINTOSH.so",
+      "sha256": "fea5fe4eb50d7f4dec205337a465eb4c0799173b8ea0ffccb16acaa48a230c89",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-5.so",
+      "sha256": "179b1496536e8610d0d5b3afaa21cc1b3c1fc7f245a86c5a1cb9477121852ad6",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/engines-3/afalg.so",
+      "sha256": "24750fef21c3a4df0daaeb54b5faf1adbf8cbe92f5f8df574a69ab526a4ea270",
+      "needed": [
+        "libcrypto.so.3",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/engines-3/loader_attic.so",
+      "sha256": "c8e9c33bc895b72f7f35dd69ac55337e4dc049119d6a39d4df63214c93c932d2",
+      "needed": [
+        "libcrypto.so.3",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/engines-3/padlock.so",
+      "sha256": "8e66cf43cc3338989830b849ef89d7efc0d800a3cdc39e230ab6753b4e016da2",
+      "needed": [
+        "libcrypto.so.3",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/krb5/plugins/preauth/spake.so",
+      "sha256": "508ea9f279a427e3f308473a9d8517015324559b6de998376818c7ffd888405e",
+      "needed": [
+        "libkrb5.so.3",
+        "libk5crypto.so.3",
+        "libkrb5support.so.0",
+        "libcrypto.so.3",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/sasl2/libsasldb.so.2.0.25",
+      "sha256": "3c79d50db47596682ff49e6f5d29059e9765a29c6559648fae65d01602fac9e2",
+      "needed": [
+        "libdb-5.3.so",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/bin/python3.12",
+      "sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+      "needed": [
+        "libm.so.6",
+        "libz.so.1",
+        "libexpat.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/bin/curl",
+      "sha256": "1ccbd3dae948374ba8eef1ebda26c64b783ede50b463196e53666e0880bdac60",
+      "needed": [
+        "libcurl.so.4",
+        "libz.so.1",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/bin/perl",
+      "sha256": "3c035de4fbf090969421d4d5d5ec06ad939e342e79351e4f817906ff7e7e8dc8",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6",
+        "libcrypt.so.1"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    },
+    {
+      "path": "/usr/bin/bash",
+      "sha256": "bc5945feb8bd26203ebfafea5ce1878bb2e32cb8fb50ab7ae395cfb1e1aaaef1",
+      "needed": [
+        "libtinfo.so.6",
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {
+        "iconv": "imported",
+        "regcomp": "imported",
+        "regexec": "imported",
+        "iconv_open": "imported"
+      }
+    },
+    {
+      "path": "/usr/bin/dash",
+      "sha256": "86d31f6fb799e91fa21bad341484564510ca287703a16e9e46c53338776f4f42",
+      "needed": [
+        "libc.so.6"
+      ],
+      "elf_machine": 62,
+      "selected_symbols": {}
+    }
+  ],
+  "aliases": {
+    "/usr/lib/python3.12/_sysconfigdata__linux_x86_64-linux-gnu.py": "/usr/lib/python3.12/_sysconfigdata__x86_64-linux-gnu.py",
+    "/usr/lib/python3.12/sitecustomize.py": "/etc/python3.12/sitecustomize.py",
+    "/usr/lib/x86_64-linux-gnu/libffi.so.8": "/usr/lib/x86_64-linux-gnu/libffi.so.8.1.4",
+    "/usr/lib/x86_64-linux-gnu/libext2fs.so.2": "/usr/lib/x86_64-linux-gnu/libext2fs.so.2.4",
+    "/usr/lib/x86_64-linux-gnu/libblkid.so.1": "/usr/lib/x86_64-linux-gnu/libblkid.so.1.1.0",
+    "/usr/lib/x86_64-linux-gnu/libpam.so.0": "/usr/lib/x86_64-linux-gnu/libpam.so.0.85.1",
+    "/usr/lib/x86_64-linux-gnu/libpsx.so.2": "/usr/lib/x86_64-linux-gnu/libpsx.so.2.66",
+    "/usr/lib/x86_64-linux-gnu/libgcrypt.so.20": "/usr/lib/x86_64-linux-gnu/libgcrypt.so.20.4.3",
+    "/usr/lib/x86_64-linux-gnu/libproc2.so.0": "/usr/lib/x86_64-linux-gnu/libproc2.so.0.0.2",
+    "/usr/lib/x86_64-linux-gnu/libcap-ng.so.0": "/usr/lib/x86_64-linux-gnu/libcap-ng.so.0.0.0",
+    "/usr/lib/x86_64-linux-gnu/libattr.so.1": "/usr/lib/x86_64-linux-gnu/libattr.so.1.1.2502",
+    "/usr/lib/x86_64-linux-gnu/libzstd.so.1": "/usr/lib/x86_64-linux-gnu/libzstd.so.1.5.5",
+    "/usr/lib/x86_64-linux-gnu/libtinfo.so.6": "/usr/lib/x86_64-linux-gnu/libtinfo.so.6.4",
+    "/usr/lib/x86_64-linux-gnu/libudev.so.1": "/usr/lib/x86_64-linux-gnu/libudev.so.1.7.8",
+    "/usr/lib/x86_64-linux-gnu/libcrypt.so.1": "/usr/lib/x86_64-linux-gnu/libcrypt.so.1.1.0",
+    "/usr/lib/x86_64-linux-gnu/libtic.so.6": "/usr/lib/x86_64-linux-gnu/libtic.so.6.4",
+    "/usr/lib/x86_64-linux-gnu/libformw.so.6": "/usr/lib/x86_64-linux-gnu/libformw.so.6.4",
+    "/usr/lib/x86_64-linux-gnu/libuuid.so.1": "/usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0",
+    "/usr/lib/x86_64-linux-gnu/libss.so.2": "/usr/lib/x86_64-linux-gnu/libss.so.2.0",
+    "/usr/lib/x86_64-linux-gnu/libnettle.so.8": "/usr/lib/x86_64-linux-gnu/libnettle.so.8.8",
+    "/usr/lib/x86_64-linux-gnu/libcap.so.2": "/usr/lib/x86_64-linux-gnu/libcap.so.2.66",
+    "/usr/lib/x86_64-linux-gnu/libbz2.so.1": "/usr/lib/x86_64-linux-gnu/libbz2.so.1.0.4",
+    "/usr/lib/x86_64-linux-gnu/libp11-kit.so.0": "/usr/lib/x86_64-linux-gnu/libp11-kit.so.0.3.1",
+    "/usr/lib/x86_64-linux-gnu/liblzma.so.5": "/usr/lib/x86_64-linux-gnu/liblzma.so.5.4.5",
+    "/usr/lib/x86_64-linux-gnu/libmount.so.1": "/usr/lib/x86_64-linux-gnu/libmount.so.1.1.0",
+    "/usr/lib/x86_64-linux-gnu/libz.so.1": "/usr/lib/x86_64-linux-gnu/libz.so.1.3",
+    "/usr/lib/x86_64-linux-gnu/libmenuw.so.6": "/usr/lib/x86_64-linux-gnu/libmenuw.so.6.4",
+    "/usr/lib/x86_64-linux-gnu/libgmp.so.10": "/usr/lib/x86_64-linux-gnu/libgmp.so.10.5.0",
+    "/usr/lib/x86_64-linux-gnu/libdebconfclient.so.0": "/usr/lib/x86_64-linux-gnu/libdebconfclient.so.0.0.0",
+    "/usr/lib/x86_64-linux-gnu/libacl.so.1": "/usr/lib/x86_64-linux-gnu/libacl.so.1.1.2302",
+    "/usr/lib/x86_64-linux-gnu/libdrop_ambient.so.0": "/usr/lib/x86_64-linux-gnu/libdrop_ambient.so.0.0.0",
+    "/usr/lib/x86_64-linux-gnu/libxxhash.so.0": "/usr/lib/x86_64-linux-gnu/libxxhash.so.0.8.2",
+    "/usr/lib/x86_64-linux-gnu/libsmartcols.so.1": "/usr/lib/x86_64-linux-gnu/libsmartcols.so.1.1.0",
+    "/usr/lib/x86_64-linux-gnu/libassuan.so.0": "/usr/lib/x86_64-linux-gnu/libassuan.so.0.8.6",
+    "/usr/lib/x86_64-linux-gnu/libncursesw.so.6": "/usr/lib/x86_64-linux-gnu/libncursesw.so.6.4",
+    "/usr/lib/x86_64-linux-gnu/libpanelw.so.6": "/usr/lib/x86_64-linux-gnu/libpanelw.so.6.4",
+    "/usr/lib/x86_64-linux-gnu/libpam_misc.so.0": "/usr/lib/x86_64-linux-gnu/libpam_misc.so.0.82.1",
+    "/usr/lib/x86_64-linux-gnu/libpcre2-8.so.0": "/usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.11.2",
+    "/usr/lib/x86_64-linux-gnu/libidn2.so.0": "/usr/lib/x86_64-linux-gnu/libidn2.so.0.4.0",
+    "/usr/lib/x86_64-linux-gnu/libapt-pkg.so.6.0": "/usr/lib/x86_64-linux-gnu/libapt-pkg.so.6.0.0",
+    "/usr/lib/x86_64-linux-gnu/libtasn1.so.6": "/usr/lib/x86_64-linux-gnu/libtasn1.so.6.6.3",
+    "/usr/lib/x86_64-linux-gnu/libmd.so.0": "/usr/lib/x86_64-linux-gnu/libmd.so.0.1.0",
+    "/usr/lib/x86_64-linux-gnu/libbz2.so.1.0": "/usr/lib/x86_64-linux-gnu/libbz2.so.1.0.4",
+    "/usr/lib/x86_64-linux-gnu/libunistring.so.5": "/usr/lib/x86_64-linux-gnu/libunistring.so.5.0.0",
+    "/usr/lib/x86_64-linux-gnu/libe2p.so.2": "/usr/lib/x86_64-linux-gnu/libe2p.so.2.3",
+    "/usr/lib/x86_64-linux-gnu/libapt-private.so.0.0": "/usr/lib/x86_64-linux-gnu/libapt-private.so.0.0.0",
+    "/usr/lib/x86_64-linux-gnu/libpamc.so.0": "/usr/lib/x86_64-linux-gnu/libpamc.so.0.82.1",
+    "/usr/lib/x86_64-linux-gnu/libnpth.so.0": "/usr/lib/x86_64-linux-gnu/libnpth.so.0.1.2",
+    "/usr/lib/x86_64-linux-gnu/liblz4.so.1": "/usr/lib/x86_64-linux-gnu/liblz4.so.1.9.4",
+    "/usr/lib/x86_64-linux-gnu/libhogweed.so.6": "/usr/lib/x86_64-linux-gnu/libhogweed.so.6.8",
+    "/usr/lib/x86_64-linux-gnu/libseccomp.so.2": "/usr/lib/x86_64-linux-gnu/libseccomp.so.2.5.5",
+    "/usr/lib/x86_64-linux-gnu/libgpg-error.so.0": "/usr/lib/x86_64-linux-gnu/libgpg-error.so.0.34.0",
+    "/usr/lib/x86_64-linux-gnu/libaudit.so.1": "/usr/lib/x86_64-linux-gnu/libaudit.so.1.0.0",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+    "/usr/lib/x86_64-linux-gnu/libsystemd.so.0": "/usr/lib/x86_64-linux-gnu/libsystemd.so.0.38.0",
+    "/usr/lib/x86_64-linux-gnu/libcom_err.so.2": "/usr/lib/x86_64-linux-gnu/libcom_err.so.2.1",
+    "/usr/lib/x86_64-linux-gnu/libgnutls.so.30": "/usr/lib/x86_64-linux-gnu/libgnutls.so.30.37.1",
+    "/usr/lib/x86_64-linux-gnu/libnghttp2.so.14": "/usr/lib/x86_64-linux-gnu/libnghttp2.so.14.26.0",
+    "/usr/lib/x86_64-linux-gnu/libcurl.so.4": "/usr/lib/x86_64-linux-gnu/libcurl.so.4.8.0",
+    "/usr/lib/x86_64-linux-gnu/libkrb5support.so.0": "/usr/lib/x86_64-linux-gnu/libkrb5support.so.0.1",
+    "/usr/lib/x86_64-linux-gnu/libgssapi_krb5.so.2": "/usr/lib/x86_64-linux-gnu/libgssapi_krb5.so.2.2",
+    "/usr/lib/x86_64-linux-gnu/liblber.so.2": "/usr/lib/x86_64-linux-gnu/liblber.so.2.0.200",
+    "/usr/lib/x86_64-linux-gnu/libk5crypto.so.3": "/usr/lib/x86_64-linux-gnu/libk5crypto.so.3.1",
+    "/usr/lib/x86_64-linux-gnu/libssh.so.4": "/usr/lib/x86_64-linux-gnu/libssh.so.4.9.6",
+    "/usr/lib/x86_64-linux-gnu/libpsl.so.5": "/usr/lib/x86_64-linux-gnu/libpsl.so.5.3.4",
+    "/usr/lib/x86_64-linux-gnu/libsasl2.so.2": "/usr/lib/x86_64-linux-gnu/libsasl2.so.2.0.25",
+    "/usr/lib/x86_64-linux-gnu/libexpat.so.1": "/usr/lib/x86_64-linux-gnu/libexpat.so.1.9.1",
+    "/usr/lib/x86_64-linux-gnu/libsqlite3.so.0": "/usr/lib/x86_64-linux-gnu/libsqlite3.so.0.8.6",
+    "/usr/lib/x86_64-linux-gnu/libexpatw.so.1": "/usr/lib/x86_64-linux-gnu/libexpatw.so.1.9.1",
+    "/usr/lib/x86_64-linux-gnu/libhistory.so.8": "/usr/lib/x86_64-linux-gnu/libhistory.so.8.2",
+    "/usr/lib/x86_64-linux-gnu/libbrotlidec.so.1": "/usr/lib/x86_64-linux-gnu/libbrotlidec.so.1.1.0",
+    "/usr/lib/x86_64-linux-gnu/libkrb5.so.3": "/usr/lib/x86_64-linux-gnu/libkrb5.so.3.3",
+    "/usr/lib/x86_64-linux-gnu/libbrotlicommon.so.1": "/usr/lib/x86_64-linux-gnu/libbrotlicommon.so.1.1.0",
+    "/usr/lib/x86_64-linux-gnu/libkeyutils.so.1": "/usr/lib/x86_64-linux-gnu/libkeyutils.so.1.10",
+    "/usr/lib/x86_64-linux-gnu/libreadline.so.8": "/usr/lib/x86_64-linux-gnu/libreadline.so.8.2",
+    "/usr/lib/x86_64-linux-gnu/libbrotlienc.so.1": "/usr/lib/x86_64-linux-gnu/libbrotlienc.so.1.1.0",
+    "/usr/lib/x86_64-linux-gnu/libldap.so.2": "/usr/lib/x86_64-linux-gnu/libldap.so.2.0.200",
+    "/usr/lib/x86_64-linux-gnu/libicui18n.so.74": "/usr/lib/x86_64-linux-gnu/libicui18n.so.74.2",
+    "/usr/lib/x86_64-linux-gnu/libicutest.so.74": "/usr/lib/x86_64-linux-gnu/libicutest.so.74.2",
+    "/usr/lib/x86_64-linux-gnu/libicuio.so.74": "/usr/lib/x86_64-linux-gnu/libicuio.so.74.2",
+    "/usr/lib/x86_64-linux-gnu/libicuuc.so.74": "/usr/lib/x86_64-linux-gnu/libicuuc.so.74.2",
+    "/usr/lib/x86_64-linux-gnu/libicudata.so.74": "/usr/lib/x86_64-linux-gnu/libicudata.so.74.2",
+    "/usr/lib/x86_64-linux-gnu/libicutu.so.74": "/usr/lib/x86_64-linux-gnu/libicutu.so.74.2",
+    "/usr/lib/x86_64-linux-gnu/sasl2/libsasldb.so": "/usr/lib/x86_64-linux-gnu/sasl2/libsasldb.so.2.0.25",
+    "/usr/lib/x86_64-linux-gnu/sasl2/libsasldb.so.2": "/usr/lib/x86_64-linux-gnu/sasl2/libsasldb.so.2.0.25"
+  },
+  "selinux_fs_present": true,
+  "elf_files": 501,
+  "image_id": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0"
+}

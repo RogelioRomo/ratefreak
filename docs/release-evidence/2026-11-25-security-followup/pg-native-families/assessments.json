@@ -1,0 +1,467 @@
+[
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnutls28",
+    "id": "CVE-2011-3389",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "LOW",
+        "source_version": "3.8.9"
+      }
+    ],
+    "condition": "The SSL protocol, as used in certain configurations in Microsoft Windows and Microsoft Internet Explorer, Mozilla Firefox, Google Chrome, Opera, and other products, encrypts data by using CBC mode with chained initialization vectors, which allows man-in-the-middle attackers to obtain plaintext HTTP headers via a blockwise chosen-boundary attack (BCBA) on an HTTPS session, in conjunction with JavaScript code that uses (1) the HTML5 WebSocket API, (2) the Java URLConnection API, or (3) the Silverlight WebClient API, aka a \"BEAST\" attack.",
+    "assessment": "Actual image ELF dependency graph places GnuTLS in dirmngr; PostgreSQL server/libpq use OpenSSL, and actual libldap.so.2 also links OpenSSL rather than GnuTLS. Supported entrypoint/init/health/maintenance commands do not launch dirmngr/GnuPG network or certificate services. Thus the specific GnuTLS TLS/CBC, certificate authentication, RSA-PSK or X.509 validation condition described for this ID receives no input in supported flow. This is a caller exclusion, not removal of installed vulnerable GnuTLS bytes or acceptance of disputed vendor severity.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2011-3389.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnutls28",
+    "id": "CVE-2026-127039",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "UNKNOWN",
+        "source_version": "3.8.9"
+      }
+    ],
+    "condition": "The certificate authentication info handling in gnutls from 2.5.9 up to 3.8.13 does not reset the certificate count and list pointer when re-allocation of raw_certificate_list fails, which allows remote attackers to cause a denial of service for a peer under heap pressure.",
+    "assessment": "Actual image ELF dependency graph places GnuTLS in dirmngr; PostgreSQL server/libpq use OpenSSL, and actual libldap.so.2 also links OpenSSL rather than GnuTLS. Supported entrypoint/init/health/maintenance commands do not launch dirmngr/GnuPG network or certificate services. Thus the specific GnuTLS TLS/CBC, certificate authentication, RSA-PSK or X.509 validation condition described for this ID receives no input in supported flow. This is a caller exclusion, not removal of installed vulnerable GnuTLS bytes or acceptance of disputed vendor severity.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-127039.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnutls28",
+    "id": "CVE-2026-127040",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "UNKNOWN",
+        "source_version": "3.8.9"
+      }
+    ],
+    "condition": "The RSA-PSK ClientKeyExchange handler in gnutls before 3.8.14 does not return after detecting a memory allocation failure when copying the PSK username, which allows remote attackers to cause a denial of service for a peer under heap pressure.",
+    "assessment": "Actual image ELF dependency graph places GnuTLS in dirmngr; PostgreSQL server/libpq use OpenSSL, and actual libldap.so.2 also links OpenSSL rather than GnuTLS. Supported entrypoint/init/health/maintenance commands do not launch dirmngr/GnuPG network or certificate services. Thus the specific GnuTLS TLS/CBC, certificate authentication, RSA-PSK or X.509 validation condition described for this ID receives no input in supported flow. This is a caller exclusion, not removal of installed vulnerable GnuTLS bytes or acceptance of disputed vendor severity.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-127040.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnutls28",
+    "id": "CVE-2026-127231",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "UNKNOWN",
+        "source_version": "3.8.9"
+      }
+    ],
+    "condition": "A double free in the X.509 name constraints enforcement of GnuTLS 3.8.13 on all platforms allows a remote attacker to cause a denial of service (application crash) via a certificate chain containing a NameConstraints extension processed while the application is under memory pressure. When an already populated name constraints object is reinitialized, previously freed list pointers are not cleared, so a memory allocation failure precisely at reinitialization leaves a dangling pointer that is freed again during a later cleanup.",
+    "assessment": "Actual image ELF dependency graph places GnuTLS in dirmngr; PostgreSQL server/libpq use OpenSSL, and actual libldap.so.2 also links OpenSSL rather than GnuTLS. Supported entrypoint/init/health/maintenance commands do not launch dirmngr/GnuPG network or certificate services. Thus the specific GnuTLS TLS/CBC, certificate authentication, RSA-PSK or X.509 validation condition described for this ID receives no input in supported flow. This is a caller exclusion, not removal of installed vulnerable GnuTLS bytes or acceptance of disputed vendor severity.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-127231.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnutls28",
+    "id": "CVE-2026-67693",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "LOW",
+        "source_version": "3.8.9"
+      }
+    ],
+    "condition": "GnuTLS v3.8.13 does not reject end-entity X.509 certificates that contain a contradictory combination of Key Usage (KU) and Extended Key Usage (EKU). NOTE: the Supplier does not consider this an actionable security vulnerability because of its \"threat model doesn't consider attacks only possible by modifying anything within the trust boundary (private keys, trusted certificate authorities and their issued certificates including intermediate CAs, etc.)\" policy.",
+    "assessment": "Actual image ELF dependency graph places GnuTLS in dirmngr; PostgreSQL server/libpq use OpenSSL, and actual libldap.so.2 also links OpenSSL rather than GnuTLS. Supported entrypoint/init/health/maintenance commands do not launch dirmngr/GnuPG network or certificate services. Thus the specific GnuTLS TLS/CBC, certificate authentication, RSA-PSK or X.509 validation condition described for this ID receives no input in supported flow. This is a caller exclusion, not removal of installed vulnerable GnuTLS bytes or acceptance of disputed vendor severity.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-67693.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnutls28",
+    "id": "CVE-2026-88647",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "LOW",
+        "source_version": "3.8.9"
+      }
+    ],
+    "condition": "GnuTLS v3.8.13 can perhaps unexpectedly trust a certificate on the basis of Common Name when Subject Alternative Name has an SRV otherName (1.3.6.1.5.5.7.8.7) whose value is an OCTET STRING. NOTE: the Supplier does not consider this an actionable security vulnerability because of its \"threat model doesn't consider attacks only possible by modifying anything within the trust boundary (private keys, trusted certificate authorities and their issued certificates including intermediate CAs, etc.)\" policy.",
+    "assessment": "Actual image ELF dependency graph places GnuTLS in dirmngr; PostgreSQL server/libpq use OpenSSL, and actual libldap.so.2 also links OpenSSL rather than GnuTLS. Supported entrypoint/init/health/maintenance commands do not launch dirmngr/GnuPG network or certificate services. Thus the specific GnuTLS TLS/CBC, certificate authentication, RSA-PSK or X.509 validation condition described for this ID receives no input in supported flow. This is a caller exclusion, not removal of installed vulnerable GnuTLS bytes or acceptance of disputed vendor severity.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-88647.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnutls28",
+    "id": "CVE-2026-88648",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "LOW",
+        "source_version": "3.8.9"
+      }
+    ],
+    "condition": "In GnuTLS v3.8.13, an excluded msUPN/SRV otherName is never checked. NOTE: the Supplier does not consider this an actionable security vulnerability because of its \"threat model doesn't consider attacks only possible by modifying anything within the trust boundary (private keys, trusted certificate authorities and their issued certificates including intermediate CAs, etc.)\" policy.",
+    "assessment": "Actual image ELF dependency graph places GnuTLS in dirmngr; PostgreSQL server/libpq use OpenSSL, and actual libldap.so.2 also links OpenSSL rather than GnuTLS. Supported entrypoint/init/health/maintenance commands do not launch dirmngr/GnuPG network or certificate services. Thus the specific GnuTLS TLS/CBC, certificate authentication, RSA-PSK or X.509 validation condition described for this ID receives no input in supported flow. This is a caller exclusion, not removal of installed vulnerable GnuTLS bytes or acceptance of disputed vendor severity.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-88648.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnutls28",
+    "id": "CVE-2026-95184",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "LOW",
+        "source_version": "3.8.9"
+      }
+    ],
+    "condition": "GnuTLS v3.8.13 does not properly enforce name constraints, as demonstrated by a permitted subtree violation for \"EE O=Evil accepted although outside permitted O=Good.\" NOTE: the Supplier does not consider this an actionable security vulnerability because of its \"threat model doesn't consider attacks only possible by modifying anything within the trust boundary (private keys, trusted certificate authorities and their issued certificates including intermediate CAs, etc.)\" policy.",
+    "assessment": "Actual image ELF dependency graph places GnuTLS in dirmngr; PostgreSQL server/libpq use OpenSSL, and actual libldap.so.2 also links OpenSSL rather than GnuTLS. Supported entrypoint/init/health/maintenance commands do not launch dirmngr/GnuPG network or certificate services. Thus the specific GnuTLS TLS/CBC, certificate authentication, RSA-PSK or X.509 validation condition described for this ID receives no input in supported flow. This is a caller exclusion, not removal of installed vulnerable GnuTLS bytes or acceptance of disputed vendor severity.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-95184.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnutls28",
+    "id": "CVE-2026-95210",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.8.9-3+deb13u4",
+        "package": "libgnutls30t64",
+        "severity": "LOW",
+        "source_version": "3.8.9"
+      }
+    ],
+    "condition": "GnuTLS v3.8.13 does not reject a critical keyUsage extension when it cannot be processed, such as when extnValue is an ASN.1 NULL (05 00) instead of a BIT STRING. NOTE: the Supplier does not consider this an actionable security vulnerability because of its \"threat model doesn't consider attacks only possible by modifying anything within the trust boundary (private keys, trusted certificate authorities and their issued certificates including intermediate CAs, etc.)\" policy.",
+    "assessment": "Actual image ELF dependency graph places GnuTLS in dirmngr; PostgreSQL server/libpq use OpenSSL, and actual libldap.so.2 also links OpenSSL rather than GnuTLS. Supported entrypoint/init/health/maintenance commands do not launch dirmngr/GnuPG network or certificate services. Thus the specific GnuTLS TLS/CBC, certificate authentication, RSA-PSK or X.509 validation condition described for this ID receives no input in supported flow. This is a caller exclusion, not removal of installed vulnerable GnuTLS bytes or acceptance of disputed vendor severity.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-95210.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libgcrypt20",
+    "id": "CVE-2018-6829",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.11.0-7+deb13u1",
+        "package": "libgcrypt20",
+        "severity": "LOW",
+        "source_version": "1.11.0"
+      }
+    ],
+    "condition": "cipher/elgamal.c in Libgcrypt through 1.8.2, when used to encrypt messages directly, improperly encodes plaintexts, which allows attackers to obtain sensitive information by reading ciphertext data (i.e., it does not have semantic security in face of a ciphertext-only attack). The Decisional Diffie-Hellman (DDH) assumption does not hold for Libgcrypt's ElGamal implementation.",
+    "assessment": "Actual libgcrypt dependents are GnuPG/dirmngr utilities and libexslt. Supported PostgreSQL startup/health/maintenance does not launch those crypto utilities; current schema has no EXSLT/XSLT extension caller. PostgreSQL SCRAM and TLS use its real OpenSSL libcrypto backend, not libgcrypt. The affected direct ElGamal public-key encryption operation is therefore not invoked by supported callers. EXSLT random use would not itself establish an RSA/ElGamal caller.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2018-6829.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libgcrypt20",
+    "id": "CVE-2024-2236",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.11.0-7+deb13u1",
+        "package": "libgcrypt20",
+        "severity": "LOW",
+        "source_version": "1.11.0"
+      }
+    ],
+    "condition": "A timing-based side-channel flaw was found in libgcrypt's RSA implementation. This issue may allow a remote attacker to initiate a Bleichenbacher-style attack, which can lead to the decryption of RSA ciphertexts.",
+    "assessment": "Actual libgcrypt dependents are GnuPG/dirmngr utilities and libexslt. Supported PostgreSQL startup/health/maintenance does not launch those crypto utilities; current schema has no EXSLT/XSLT extension caller. PostgreSQL SCRAM and TLS use its real OpenSSL libcrypto backend, not libgcrypt. The affected RSA private-key decryption timing oracle operation is therefore not invoked by supported callers. EXSLT random use would not itself establish an RSA/ElGamal caller.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2024-2236.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "llvm-toolchain-19",
+    "id": "CVE-2024-7883",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:19.1.7-3+b1",
+        "package": "libllvm19",
+        "severity": "LOW",
+        "source_version": "19.1.7"
+      }
+    ],
+    "condition": "When using Arm Cortex-M Security Extensions (CMSE), Secure stack \ncontents can be leaked to Non-secure state via floating-point registers \nwhen a Secure to Non-secure function call is made that returns a \nfloating-point value and when this is the first use of floating-point \nsince entering Secure state. This allows an attacker to read a limited \nquantity of Secure stack contents with an impact on confidentiality. \nThis issue is specific to code generated using LLVM-based compilers.",
+    "assessment": "This condition is specifically ARM Cortex-M secure/nonsecure CMSE code generation, including secure-state floating-point-register transition. Current PostgreSQL JIT imports and initializes X86 target/ASM parser/printer, matching selected amd64 ELF payloads; it does not compile Cortex-M secure-world code. Actual LLVM use is acknowledged, and the excluded condition is the architecture/target transition rather than absence of LLVM.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2024-7883.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "llvm-toolchain-19",
+    "id": "CVE-2026-13573",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:19.1.7-3+b1",
+        "package": "libllvm19",
+        "severity": "LOW",
+        "source_version": "19.1.7"
+      }
+    ],
+    "condition": "A vulnerability was found in llvm llvm-project up to 22.1.6. This affects the function llvm::StringMap::insert in the library /lib/IR/ValueSymbolTable.cpp of the component ValueSymbolTable Module. The manipulation results in stack-based buffer overflow. Attacking locally is a requirement. The exploit has been made public and could be used. The presence of this vulnerability remains uncertain at this time. The LLVM project explains, that the reported behavior is outside its documented security scope and therefore not considered a security vulnerability.",
+    "assessment": "PostgreSQL really uses LLVM StringMap and IR ValueSymbolTable in its JIT. Source constructs/imports IR from supported SQL expression compilation and installed bitcode; no external bitcode input is supported. However this review has not proved that every SQL-derived symbol-name/renaming length is bounded away from the reported StringMap/ValueSymbolTable overflow condition. Do not exclude solely because the upstream report is disputed, a library is present only transitively, or imported bitcode is normally trusted.",
+    "disposition": "open",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-13573.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "llvm-toolchain-19",
+    "id": "CVE-2026-13574",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:19.1.7-3+b1",
+        "package": "libllvm19",
+        "severity": "LOW",
+        "source_version": "19.1.7"
+      }
+    ],
+    "condition": "A vulnerability was determined in llvm llvm-project up to 22.1.6. This impacts the function GCRelocateInst::getBasePtr in the library llvm/lib/IR/IntrinsicInst.cpp of the component Bitcode File Handler. This manipulation causes heap-based buffer overflow. It is possible to launch the attack on the local host. The exploit has been publicly disclosed and may be utilized. There are still doubts about whether this vulnerability truly exists. The LLVM project explains, that the reported behavior is outside its documented security scope and therefore not considered a security vulnerability.",
+    "assessment": "Actual llvmjit imports bitcode parse/load APIs. Source llvm_create_types reads only pkglib_path/llvmjit_types.bc; load_module reads pkglib_path/bitcode/<installed module identifier>, with optional extension summaries under the same installed module boundary. Current schema has no CREATE EXTENSION or custom native function input. Normal SQL values/JSON/media are not accepted as bitcode/IR and cannot supply the malformed gc.relocate intrinsic in this report. This excludes hostile bitcode input under current supported schema and immutable installed-module boundary; it does not claim LLVM bitcode parsing absent.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-13574.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment.",
+      "Installed bitcode substitution, new native/LLVM extensions, writable package paths or arbitrary bitcode/IR inputs require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "p11-kit",
+    "id": "CVE-2026-13757",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "0.25.5-3",
+        "package": "libp11-kit0",
+        "severity": "MEDIUM",
+        "source_version": "0.25.5"
+      }
+    ],
+    "condition": "A flaw was found in p11-kit. The RPC message attribute parsing functions p11_rpc_message_get_attribute() and p11_rpc_message_get_attribute_array_value() form a mutually-recursive call chain with no recursion depth limit when processing nested CKA_WRAP_TEMPLATE, CKA_UNWRAP_TEMPLATE, and CKA_DERIVE_TEMPLATE attributes. An unauthenticated attacker with local access to the p11-kit RPC Unix domain socket can send a specially crafted request with deeply nested template attributes, causing stack exhaustion and crashing the p11-kit server process and its dependent services.",
+    "assessment": "Actual p11-kit dependency is via GnuTLS/dirmngr, not PostgreSQL SQL/SCRAM or its OpenSSL TLS backend. Supplied entrypoint/health/maintenance starts no p11-kit RPC server, Unix socket or PKCS11 forwarding service, so attacker-controlled recursive RPC attributes do not reach the affected parser in supported flow. Installed p11-kit bytes are not claimed patched.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-13757.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "p11-kit",
+    "id": "CVE-2026-18938",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "0.25.5-3",
+        "package": "libp11-kit0",
+        "severity": "MEDIUM",
+        "source_version": "0.25.5"
+      }
+    ],
+    "condition": "A flaw was found in p11-kit. A local attacker, or one with equivalent access to a reachable RPC channel, could exploit an integer overflow vulnerability. By sending specially crafted messages, the attacker can cause the system to miscalculate memory allocation for nested attributes. This leads to a memory corruption issue, specifically a heap out-of-bounds write, which can crash the p11-kit RPC parsing process, resulting in a Denial of Service (DoS). This vulnerability is only exploitable on 32 bit systems.",
+    "assessment": "CVE record explicitly limits exploitable attribute-allocation overflow to 32-bit systems. Selected reference image is amd64: exact PostgreSQL and linked library ELF payloads are x86-64. In addition, supported flow launches no p11-kit RPC server/client or PKCS11 forwarding service.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-18938.json",
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "cli-callers/postgres-entrypoint.sh"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Current supplied startup, health, schema, maintenance and reference configuration only; custom init scripts, arbitrary SQL/extensions, crypto/PKCS11 services or changed native bytes require reassessment."
+    ]
+  }
+]

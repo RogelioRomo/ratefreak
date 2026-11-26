@@ -1,0 +1,20 @@
+{
+  "entrypoint_sha256": "6ff6b8176b3234164a8c6a058dec24f4a2ea5688a3d179e482d00f7111c8694a",
+  "entrypoint_imports": [
+    "json",
+    "os",
+    "pathlib",
+    "re",
+    "shutil",
+    "stat",
+    "sys",
+    "tempfile"
+  ],
+  "xml_modules_loaded_by_entrypoint": [],
+  "gpgtar_exists": false,
+  "runtime_uid": 10001,
+  "xml_modules_available": {
+    "pyexpat": true,
+    "xml.etree.ElementTree": true
+  }
+}

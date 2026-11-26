@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "suite": "RateFreak.UnitTests.dll",
+      "failed": 0,
+      "passed": 62,
+      "skipped": 0,
+      "total": 62
+    },
+    {
+      "suite": "RateFreak.IntegrationTests.dll",
+      "failed": 0,
+      "passed": 508,
+      "skipped": 0,
+      "total": 508
+    },
+    {
+      "suite": "RateFreak.ProviderContractTests.dll",
+      "failed": 0,
+      "passed": 208,
+      "skipped": 0,
+      "total": 208
+    }
+  ],
+  "total_passed": 778,
+  "zero_skips": true,
+  "log_sha256": "0c57b31355d5cec93326743780483f84d911f3da96f5a39814b6da5b16356cb9",
+  "trx_limit": "The solution logger reused one TRX filename; all three suite counters above come from the retained complete command log. Final TRX is the provider suite only."
+}

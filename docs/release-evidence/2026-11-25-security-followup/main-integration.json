@@ -1,0 +1,64 @@
+{
+  "backend": [
+    {
+      "executed": 62,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 62,
+      "suite": "RateFreak.UnitTests.dll",
+      "total": 62,
+      "trx_sha256": "fa6579ecf49d55e0e339f256ad6cdec4eb7684cad7415eaea21e39c284ae0f0a"
+    },
+    {
+      "executed": 208,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 208,
+      "suite": "RateFreak.ProviderContractTests.dll",
+      "total": 208,
+      "trx_sha256": "18b4a59e46d23ca54a8cd5212fb743048d0107b4c0d56b31d52b1c5dddc99a79"
+    },
+    {
+      "executed": 508,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 508,
+      "suite": "RateFreak.IntegrationTests.dll",
+      "total": 508,
+      "trx_sha256": "b3b640e4a526a7fa8161e962614c4f210ba7e8acfcb70b4ae97546f55c117aa0"
+    }
+  ],
+  "base_commit": "2820c916ea4d76d7b9a04062b1c31f5db84b2af5",
+  "branch": "main",
+  "compliance_passed": 20,
+  "frontend_passed": 1026,
+  "lint_exit_code": 0,
+  "log_sha256": {
+    ".local/security-main-commit-2026-11-25/backend.log": "7c3e8922a51a9118a39ba2e3a6f5efbc509c035b0b1e7daca5368d23a849b73c",
+    ".local/security-main-commit-2026-11-25/compliance.log": "d8f43c92438f5fc4ac4561d7fc19d344891ee202340ce7fcbc8729cb7d705e80",
+    ".local/security-main-commit-2026-11-25/frontend.log": "e49fc5ae9184a2da1af5abfb11d9d085c591e2fd47c7329c480527262120c788",
+    ".local/security-main-commit-2026-11-25/lint.log": "fc014458b2b79b3a83c085789a00d25d764851938b620bd811acc03e4c0d3429",
+    ".local/security-main-commit-2026-11-25/model.log": "815c5cd494b61a9d8737ba7653cd05fb05926e7b40a924683fa4eef4ca87566c",
+    ".local/security-main-commit-2026-11-25/operator.log": "4136c4224f56ea7b8967c1c304e902fcab87db4357bfa1932332e88e6d0d474a",
+    ".local/security-main-commit-2026-11-25/release.log": "6a3f074bb98420322fb0bd2f1158c74589bccde17ebef7e0b87753bc915aba3f",
+    ".local/security-main-commit-2026-11-25/typecheck.log": "853b97ae088085c0317a5c9cc44b864429fa67c08fb15a5e16ab153b1420ac94"
+  },
+  "model_exit_code": 0,
+  "operator_passed": 77,
+  "persistent_instance_changed": false,
+  "privacy_comparison": {
+    "configured_private_values_checked": 7,
+    "matches": [],
+    "scope": "Exact configured private values from existing local environment/configuration; no claim of exhaustive secret detection.",
+    "staged_files": 340
+  },
+  "published": false,
+  "raw_capture_whitespace": "Trailing whitespace retained in three hash-bound raw evidence files; staged whitespace check passes outside these captures.",
+  "recorded_utc": "2026-11-26T03:46:35.558191+00:00",
+  "release_passed": 26,
+  "remaining_distinct_ids": 8,
+  "scope": "Fresh verification of the shared main working tree before the requested local commit. No stable artifact qualification, deployment or publication claim.",
+  "security_release_gate": "held",
+  "total_passed": 1927,
+  "typecheck_exit_code": 0
+}

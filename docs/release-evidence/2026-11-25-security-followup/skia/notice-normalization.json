@@ -1,0 +1,6 @@
+{
+  "input_sha256": "4bb6f3dc4b519ba01e689c691c69ac35ad27a324c8a5bf090b759558cbddac8a",
+  "output_sha256": "bc3e2ea64ac6341c786ab4d0e1407de17c6330e08c66eb64dcc9c63a6050547e",
+  "change": "Only generated composite trailing whitespace normalized; complete original texts remain byte-preserved in126-input archive.",
+  "non_whitespace_tokens_identical": true
+}

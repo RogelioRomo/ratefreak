@@ -1,0 +1,44 @@
+{
+  "entrypoint_source": "../postgres-entrypoint.sh",
+  "entrypoint_sha256": "48647812e68165e2943abe82a1a7cb8364d6e9f8b6b6aefc179868b66a327c46",
+  "reviewed_operations": {
+    "root_chown": {
+      "lines": [
+        51,
+        58,
+        59,
+        340,
+        343,
+        360,
+        384
+      ],
+      "present": true,
+      "options": "nonrecursive chown postgres path operands selected by find; no -R/-L",
+      "ordering": "docker_create_db_directories before gosu, initdb and temporary/final server",
+      "volume_scope": "postgres_data mounted only by PostgreSQL service in supplied compose; /run/postgresql is private container runtime path"
+    },
+    "dash": {
+      "present": true,
+      "callers": [
+        "CMD-SHELL health pg_isready -U postgres -d ratefreak",
+        "psql backticks cat /run/ratefreak/migrator and cat /run/ratefreak/runtime"
+      ],
+      "request_selected_glob_or_escape_input": false
+    },
+    "initfiles": {
+      "supported_mounted_file": "/docker-entrypoint-initdb.d/10-roles.sql",
+      "optional_upstream_branches": [
+        "*.sh",
+        "*.sql.gz",
+        "*.sql.xz",
+        "*.sql.zst"
+      ],
+      "scope": "Only supplied plain SQL mount; additional custom init files excluded"
+    },
+    "backup_restore": {
+      "location": "separate tools service",
+      "archive_api": "Python tarfile, not GNU tar",
+      "database_api": "pg_dump/pg_restore"
+    }
+  }
+}

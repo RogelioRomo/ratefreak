@@ -1,0 +1,86 @@
+[
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gcc-14",
+    "id": "CVE-2026-115456",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "severity": "LOW",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "severity": "LOW",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "severity": "LOW",
+        "source_version": "14.2.0"
+      }
+    ],
+    "disposition": "conditional-supported-caller-exclusion",
+    "condition": "Affected GCC floating from_chars routine parses malformed non-NUL-terminated range",
+    "assessment": "Exact selected PostgreSQL image export examines all1005 actual ELF payloads, including LLVM19, PG extensions and OS utilities. No payload imports any from_chars API and no non-libstdc++ payload defines one. Vulnerable floating APIs are defined only in the installed runtime library, with no current compiled caller. This is a bound-image caller exclusion; it does not assume LLVM absent or copy application-only source arguments to PostgreSQL.",
+    "evidence": [
+      "gcc-rebind/pg-gcc-elf-probe.json",
+      "gcc-rebind/pg-rebinding.json",
+      "gcc-callers/web-aligned-new.txt",
+      "gcc-callers/115456.patch",
+      "gcc-callers/95619.patch"
+    ],
+    "reassess_if": [
+      "New native extensions, dynamic symbol binding, native payload, architecture or runtime implementation change. Arbitrary operator-added native code is outside the supported reference."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gcc-14",
+    "id": "CVE-2026-95619",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      }
+    ],
+    "disposition": "conditional-compiled-branch-exclusion",
+    "condition": "Aligned allocation round-up overflow in non-posix_memalign implementation",
+    "assessment": "Exact PostgreSQL libstdc++ SHA256 matches independently extracted/disassembled final web/tools library using direct posix_memalign without vulnerable size rounding; this is compiled implementation evidence, not matching version alone.",
+    "evidence": [
+      "gcc-rebind/pg-gcc-elf-probe.json",
+      "gcc-rebind/pg-rebinding.json",
+      "gcc-callers/web-aligned-new.txt",
+      "gcc-callers/115456.patch",
+      "gcc-callers/95619.patch"
+    ],
+    "reassess_if": [
+      "New native extensions, dynamic symbol binding, native payload, architecture or runtime implementation change. Arbitrary operator-added native code is outside the supported reference."
+    ]
+  }
+]

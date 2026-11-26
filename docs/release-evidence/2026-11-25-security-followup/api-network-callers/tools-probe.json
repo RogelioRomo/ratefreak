@@ -1,0 +1,84 @@
+{
+  "paths": {
+    "/etc/krb5.keytab": {
+      "exists": false
+    },
+    "/etc/krb5.conf": {
+      "exists": false
+    },
+    "/var/lib/krb5kdc": {
+      "exists": false
+    },
+    "/usr/sbin/krb5kdc": {
+      "exists": false
+    },
+    "/usr/sbin/kadmind": {
+      "exists": false
+    },
+    "/usr/bin/kadmin": {
+      "exists": false
+    },
+    "/usr/bin/kpasswd": {
+      "exists": false
+    },
+    "/usr/bin/genrb": {
+      "exists": false
+    },
+    "/usr/sbin/slapd": {
+      "exists": false
+    },
+    "/usr/bin/mdb_load": {
+      "exists": false
+    },
+    "/etc/ldap/ldap.conf": {
+      "exists": false
+    },
+    "/etc/postgresql-common/pg_service.conf": {
+      "exists": false
+    },
+    "/home/app/.pg_service.conf": {
+      "exists": false
+    },
+    "/usr/lib/postgresql/17/bin/psql": {
+      "exists": true
+    }
+  },
+  "kerberos_env_names": [],
+  "cache_path_candidates": [],
+  "sasl_modules": [
+    "/usr/lib/x86_64-linux-gnu/sasl2/libsasldb.so",
+    "/usr/lib/x86_64-linux-gnu/sasl2/libsasldb.so.2.0.25",
+    "/usr/lib/x86_64-linux-gnu/sasl2/libsasldb.so.2"
+  ],
+  "runtime_id": 10001,
+  "commands": {
+    "ldd /usr/bin/curl": {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "ldd: /usr/bin/curl: No such file or directory\n"
+    },
+    "ldd /usr/lib/x86_64-linux-gnu/libcurl.so.4": {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "ldd: /usr/lib/x86_64-linux-gnu/libcurl.so.4: No such file or directory\n"
+    },
+    "ldd /usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libSystem.Net.Security.Native.so": {
+      "exit": 0,
+      "stdout": "\tlinux-vdso.so.1 (0x000077790ce16000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x000077790ce01000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x000077790cc0d000)\n\t/lib64/ld-linux-x86-64.so.2 (0x000077790ce18000)\n",
+      "stderr": ""
+    }
+  },
+  "postgres_ldap_env_names": [],
+  "krb_library_paths": {
+    "/usr/lib/x86_64-linux-gnu/libgssrpc*": [],
+    "/usr/lib/x86_64-linux-gnu/libkadm5*": [],
+    "/usr/lib/x86_64-linux-gnu/krb5/plugins/kdb/*": []
+  },
+  "gss_default_initiator_acquire": {
+    "major": 458752,
+    "minor": 2529639053,
+    "credential_handle_present": false,
+    "network": "none",
+    "scope": "Default credential acquisition only; no context exchange or credential bytes inspected."
+  }
+}

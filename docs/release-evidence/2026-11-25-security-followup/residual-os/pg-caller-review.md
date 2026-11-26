@@ -1,0 +1,17 @@
+# PostgreSQL Trixie bounded caller rebind
+
+Exact image: postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf. Input439 scanner associations are from retained postgres-trixie-trivy.json. Selected48 source/advisory rows cover123 associations. Excludes main CLI and postgres-core assessments rather than duplicating them.
+
+Result in `pg-assessments.json`:45 conditional caller exclusions /111 associations,3 open mitigation records /12 associations. All decisions are for supplied startup, fixed SQL initialization, current application/schema and documented maintenance. No acceptance of arbitrary custom SQL/auth/schema/extensions or operator commands is implied.
+
+`pg-elf-probe.json` inventories1005 ELF files from /usr/bin,/usr/sbin,/usr/lib,/usr/local/bin in a public image exported from an unstarted disposable container; no network, persistent database or service mounts. It also retains exact entrypoint scripts and GSS configuration metadata. PostgreSQL image **does ship** systemd/systemd-tmpfiles. Exclusions for its six systemd findings use missing executed service/operation, not missing executable. PostgreSQL libsystemd.so.0 is distinct from systemd's core/shared service library and links no libseccomp.
+
+Actual OS SQLite dependencies: gpg, keyboxd, liblastlog2, outside supported execution. No plperl extension exists; only Perl interpreter needs libperl. Real startup uses bash/find/chown/chmod/gosu/initdb/psql/postgres, never Perl/apt/systemd or affected ACL programs. No PostgreSQL executable/extension imports wide scanf or directly calls libc regex/glob/iconv. PostgreSQL SQL regex is its separate pg_regcomp/pg_regexec implementation.
+
+Additional regex proof: exact Debian libedit20250104 source puts regcomp/regexec solely in search.c el_match. Callers are interactive history/line search and parse.c program-name configuration matching. The supported noninteractive psql path does initialize readline, which is explicitly acknowledged. However exact image /etc/editrc,/root/.editrc,/var/lib/postgresql/.editrc are absent (`pg-config-metadata.json`), and compose mounts none; no interactive searches run from fixed SQL pipes/files. Thus no affected libc regex operation is invoked, including the allocation-failure condition, rather than assuming benign patterns avoid failure bugs.
+
+Directional iconv proof: PostgreSQL UHC→UTF8 is `conversion_procs/utf8_and_uhc/utf8_and_uhc.c:47-54`, calling own LocalToUtf plus generated lookup tree. It is not glibc's CP949→UTF8//IGNORE. PG encoding/alias tables in common/encnames.c and include/mb/pg_wchar.h contain neither ISO-2022-CN-EXT nor IBM1390/1399. Internal pg_wchar UCS4 conversion is its own wchar.c function, not IBM output. No direct iconv import appears in server/client/encoding-extension ELF. Remaining libxml2 generic conversion is outside actual supported SQL/schema calls per main postgres-core review; LDAP auth is unconfigured; trusted image LANG=en_US.utf8 and compose do not expose a generic source/target encoding or locale selector. Installed module availability is not used as an exclusion.
+
+CVE-2019-1010022/24/25 remain open-proof-gap exactly as other images. Native mitigation behavior is not shown absent; vendor dispute alone is insufficient. No release clearance is claimed.
+
+Evidence inputs are hashed in `pg-hashes.json`; exact upstream sources are shared retained PG17.12 sources, not a bit-for-bit PGDG patch reconstruction. Per-ID conclusions and reassessment limits are explicit in JSON.

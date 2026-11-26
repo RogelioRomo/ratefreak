@@ -1,0 +1,2205 @@
+[
+  {
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "source": "shadow",
+    "id": "CVE-2024-56433",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:4.13+dfsg1-4ubuntu3.2",
+        "package": "login",
+        "severity": "LOW",
+        "source_version": "4.13+dfsg1"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.13+dfsg1-4ubuntu3.2",
+        "package": "passwd",
+        "severity": "LOW",
+        "source_version": "4.13+dfsg1"
+      }
+    ],
+    "condition": "Default subordinate UID/GID allocation collides with externally assigned user IDs.",
+    "assessment": "Supported startup and maintenance use fixed image user IDs and the Docker-managed container identity; they do not allocate subordinate UID/GID ranges or invoke newuidmap/newgidmap for user namespaces. Application accounts do not become OS users. Custom namespace/NFS/host account provisioning needs reassessment.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "source": "util-linux",
+    "id": "CVE-2026-76642",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.39.3-9ubuntu6.6",
+        "package": "bsdutils",
+        "severity": "MEDIUM",
+        "source_version": "2.39.3"
+      },
+      {
+        "fixed": "",
+        "installed": "2.39.3-9ubuntu6.6",
+        "package": "libblkid1",
+        "severity": "MEDIUM",
+        "source_version": "2.39.3"
+      },
+      {
+        "fixed": "",
+        "installed": "2.39.3-9ubuntu6.6",
+        "package": "libmount1",
+        "severity": "MEDIUM",
+        "source_version": "2.39.3"
+      },
+      {
+        "fixed": "",
+        "installed": "2.39.3-9ubuntu6.6",
+        "package": "libsmartcols1",
+        "severity": "MEDIUM",
+        "source_version": "2.39.3"
+      },
+      {
+        "fixed": "",
+        "installed": "2.39.3-9ubuntu6.6",
+        "package": "libuuid1",
+        "severity": "MEDIUM",
+        "source_version": "2.39.3"
+      },
+      {
+        "fixed": "",
+        "installed": "2.39.3-9ubuntu6.6",
+        "package": "mount",
+        "severity": "MEDIUM",
+        "source_version": "2.39.3"
+      },
+      {
+        "fixed": "",
+        "installed": "2.39.3-9ubuntu6.6",
+        "package": "util-linux",
+        "severity": "MEDIUM",
+        "source_version": "2.39.3"
+      }
+    ],
+    "condition": "mount runs privileged X-mount post-hooks after an external helper fails.",
+    "assessment": "No supported in-container startup/health/maintenance path invokes mount or an external mount helper/post-hook. Compose mounts are performed by the host container engine, outside the affected installed util-linux caller. Root tools preparation uses filesystem APIs, not mount. No assumption that root tools lack capabilities is made.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "apt",
+    "id": "CVE-2011-3374",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.0.4",
+        "package": "apt",
+        "severity": "LOW",
+        "source_version": "3.0.4"
+      },
+      {
+        "fixed": "",
+        "installed": "3.0.4",
+        "package": "libapt-pkg7.0",
+        "severity": "LOW",
+        "source_version": "3.0.4"
+      }
+    ],
+    "condition": "apt-key keyring-URI key retrieval/validation operation.",
+    "assessment": "The supported runtime/startup/health/maintenance command graph does not invoke apt-key or import keys through a keyring URI. Runtime application input never selects an APT repository or key source. Build APT/source-acquisition decisions remain a separate trust boundary; this does not approve arbitrary package installation.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "bash",
+    "id": "TEMP-0841856-B18BAF",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "5.2.37-2+b10",
+        "package": "bash",
+        "severity": "LOW",
+        "source_version": "5.2.37"
+      }
+    ],
+    "condition": "Bash privilege transition with attacker-selected environment and differing real/effective user IDs (Debian bug841856).",
+    "assessment": "Application and tools entrypoints select Python/Node/.NET directly, without a privileged Bash wrapper. PostgreSQL begins its fixed Bash entrypoint with matching real/effective UID, then gosu sets the user IDs before re-executing it. Public requests cannot supply Bash environment functions or a set-ID wrapper. Tools root preparation is Python, not Bash. This excludes the actual mismatched-identity Bash caller condition, not every local shell exploit.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "ncurses",
+    "id": "CVE-2025-6141",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "libncursesw6",
+        "severity": "LOW",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "libtinfo6",
+        "severity": "LOW",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "ncurses-base",
+        "severity": "LOW",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "ncurses-bin",
+        "severity": "LOW",
+        "source_version": "6.5+20250216"
+      }
+    ],
+    "condition": "ncurses postprocess_termcap parses a malicious termcap description.",
+    "assessment": "No supported application flow parses a request-selected termcap or provides an interactive terminal. Maintenance query passes psql stdin bytes with stdout PIPE; pg_dump writes a file and pg_restore uses DEVNULL output. Host collation psql uses docker exec -T; PostgreSQL startup SQL uses stdin heredocs. No caller-selected TERM/TERMCAP/TERMINFO is forwarded. This does not claim docker compose run always disables container TTY allocation. Arbitrary interactive operator shells, terminals and custom environment are excluded.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "ncurses",
+    "id": "CVE-2025-69720",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "libncursesw6",
+        "severity": "HIGH",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "libtinfo6",
+        "severity": "HIGH",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "ncurses-base",
+        "severity": "HIGH",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "ncurses-bin",
+        "severity": "HIGH",
+        "source_version": "6.5+20250216"
+      }
+    ],
+    "condition": "infocmp CLI processes the crafted terminal description.",
+    "assessment": "No startup, health or coordinated maintenance caller invokes infocmp; application fields are not passed as terminal descriptions. Other ncurses interfaces are not claimed fixed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "pam",
+    "id": "CVE-2026-54411",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.7.0-5",
+        "package": "libpam-modules",
+        "severity": "MEDIUM",
+        "source_version": "1.7.0"
+      },
+      {
+        "fixed": "",
+        "installed": "1.7.0-5",
+        "package": "libpam-modules-bin",
+        "severity": "MEDIUM",
+        "source_version": "1.7.0"
+      },
+      {
+        "fixed": "",
+        "installed": "1.7.0-5",
+        "package": "libpam-runtime",
+        "severity": "MEDIUM",
+        "source_version": "1.7.0"
+      },
+      {
+        "fixed": "",
+        "installed": "1.7.0-5",
+        "package": "libpam0g",
+        "severity": "MEDIUM",
+        "source_version": "1.7.0"
+      }
+    ],
+    "condition": "pam_userdb password database authentication has a timing discrepancy.",
+    "assessment": "RateFreak local accounts use ASP.NET Identity; no OS PAM login or pam_userdb service is invoked. The supplied PostgreSQL pg_hba rules use SCRAM, not PAM, and the application has no arbitrary SQL/configuration endpoint. An operator-added PAM database authentication rule is outside this exclusion.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "shadow",
+    "id": "CVE-2007-5686",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "login.defs",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "passwd",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      }
+    ],
+    "condition": "OS login failure logging records unknown usernames in an insecurely protected log.",
+    "assessment": "The supplied application does not invoke OS login, and its account/authentication records are independent of shadow login failure logging. The container entrypoints do not create a local login service. This is a missing affected caller, not a general claim about all log permissions.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "shadow",
+    "id": "CVE-2024-56433",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "login.defs",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "passwd",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      }
+    ],
+    "condition": "Default subordinate UID/GID allocation collides with externally assigned user IDs.",
+    "assessment": "Supported startup and maintenance use fixed image user IDs and the Docker-managed container identity; they do not allocate subordinate UID/GID ranges or invoke newuidmap/newgidmap for user namespaces. Application accounts do not become OS users. Custom namespace/NFS/host account provisioning needs reassessment.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "shadow",
+    "id": "CVE-2026-135901",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "login.defs",
+        "severity": "UNKNOWN",
+        "source_version": "4.17.4"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "passwd",
+        "severity": "UNKNOWN",
+        "source_version": "4.17.4"
+      }
+    ],
+    "condition": "newgidmap privileged group-ID mapping helper performs the affected proc/group mapping operation.",
+    "assessment": "No supported container entrypoint, application request, health check or maintenance command invokes newgidmap or allocates a caller-selected user namespace. Fixed gosu execution is a distinct helper and does not route through newgidmap.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "shadow",
+    "id": "TEMP-0628843-DBAD28",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "login.defs",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "passwd",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      }
+    ],
+    "condition": "su is used with a shared controlling terminal, allowing the switched user to inject terminal input (Debian bug628843).",
+    "assessment": "No supported flow invokes su or supplies an interactive controlling terminal. PostgreSQL uses the separately reviewed gosu helper; Python storage preparation does not use su. Arbitrary interactive operator switching is outside this exclusion.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "sysvinit",
+    "id": "TEMP-0517018-A83CE6",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.14-4",
+        "package": "sysvinit-utils",
+        "severity": "LOW",
+        "source_version": "3.14"
+      }
+    ],
+    "condition": "Expert installer no-root option leaves a locally exploitable sysvinit boot/rescue authentication path (Debian bug517018).",
+    "assessment": "These containers execute the supplied service entrypoints directly; they do not boot sysvinit or run an operating-system expert installer/rescue login. sysvinit-utils package presence does not create that caller.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "util-linux",
+    "id": "CVE-2022-0563",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "chfn/chsh readline handling leaks file content through an affected interactive command.",
+    "assessment": "Application accounts and maintenance do not invoke chfn/chsh or OS user-profile editing. Image users are provisioned at image build; public account fields stay in PostgreSQL. No affected interactive caller is exposed by the supplied runtime command graph.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "util-linux",
+    "id": "CVE-2026-3184",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "OS login hostname canonicalization affects PAM access-control decisions.",
+    "assessment": "The reference installation exposes no OS login service and does not invoke login for application authentication. The health/maintenance PostgreSQL paths do not use PAM login/RHOST canonicalization. This does not clear a custom shell/SSH/PAM service.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "util-linux",
+    "id": "CVE-2026-76642",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "mount runs privileged X-mount post-hooks after an external helper fails.",
+    "assessment": "No supported in-container startup/health/maintenance path invokes mount or an external mount helper/post-hook. Compose mounts are performed by the host container engine, outside the affected installed util-linux caller. Root tools preparation uses filesystem APIs, not mount. No assumption that root tools lack capabilities is made.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "util-linux",
+    "id": "CVE-2026-78410",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "Restricted bind mount X-mount.owner/group/mode handling races an unpinned source.",
+    "assessment": "No supported in-container flow invokes restricted bind mount or X-mount ownership/mode options. The application cannot choose container volume declarations. Docker host mounting is a separate host/container-engine obligation; the installed mount caller is not used.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "apt",
+    "id": "CVE-2011-3374",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.0.4",
+        "package": "apt",
+        "severity": "LOW",
+        "source_version": "3.0.4"
+      },
+      {
+        "fixed": "",
+        "installed": "3.0.4",
+        "package": "libapt-pkg7.0",
+        "severity": "LOW",
+        "source_version": "3.0.4"
+      }
+    ],
+    "condition": "apt-key keyring-URI key retrieval/validation operation.",
+    "assessment": "The supported runtime/startup/health/maintenance command graph does not invoke apt-key or import keys through a keyring URI. Runtime application input never selects an APT repository or key source. Build APT/source-acquisition decisions remain a separate trust boundary; this does not approve arbitrary package installation.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "bash",
+    "id": "TEMP-0841856-B18BAF",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "5.2.37-2+b10",
+        "package": "bash",
+        "severity": "LOW",
+        "source_version": "5.2.37"
+      }
+    ],
+    "condition": "Bash privilege transition with attacker-selected environment and differing real/effective user IDs (Debian bug841856).",
+    "assessment": "Application and tools entrypoints select Python/Node/.NET directly, without a privileged Bash wrapper. PostgreSQL begins its fixed Bash entrypoint with matching real/effective UID, then gosu sets the user IDs before re-executing it. Public requests cannot supply Bash environment functions or a set-ID wrapper. Tools root preparation is Python, not Bash. This excludes the actual mismatched-identity Bash caller condition, not every local shell exploit.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "ncurses",
+    "id": "CVE-2025-6141",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "libncursesw6",
+        "severity": "LOW",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "libtinfo6",
+        "severity": "LOW",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "ncurses-base",
+        "severity": "LOW",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "ncurses-bin",
+        "severity": "LOW",
+        "source_version": "6.5+20250216"
+      }
+    ],
+    "condition": "ncurses postprocess_termcap parses a malicious termcap description.",
+    "assessment": "No supported application flow parses a request-selected termcap or provides an interactive terminal. Maintenance query passes psql stdin bytes with stdout PIPE; pg_dump writes a file and pg_restore uses DEVNULL output. Host collation psql uses docker exec -T; PostgreSQL startup SQL uses stdin heredocs. No caller-selected TERM/TERMCAP/TERMINFO is forwarded. This does not claim docker compose run always disables container TTY allocation. Arbitrary interactive operator shells, terminals and custom environment are excluded.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "ncurses",
+    "id": "CVE-2025-69720",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "libncursesw6",
+        "severity": "HIGH",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "libtinfo6",
+        "severity": "HIGH",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "ncurses-base",
+        "severity": "HIGH",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "ncurses-bin",
+        "severity": "HIGH",
+        "source_version": "6.5+20250216"
+      }
+    ],
+    "condition": "infocmp CLI processes the crafted terminal description.",
+    "assessment": "No startup, health or coordinated maintenance caller invokes infocmp; application fields are not passed as terminal descriptions. Other ncurses interfaces are not claimed fixed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "pam",
+    "id": "CVE-2026-54411",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.7.0-5",
+        "package": "libpam-modules",
+        "severity": "MEDIUM",
+        "source_version": "1.7.0"
+      },
+      {
+        "fixed": "",
+        "installed": "1.7.0-5",
+        "package": "libpam-modules-bin",
+        "severity": "MEDIUM",
+        "source_version": "1.7.0"
+      },
+      {
+        "fixed": "",
+        "installed": "1.7.0-5",
+        "package": "libpam-runtime",
+        "severity": "MEDIUM",
+        "source_version": "1.7.0"
+      },
+      {
+        "fixed": "",
+        "installed": "1.7.0-5",
+        "package": "libpam0g",
+        "severity": "MEDIUM",
+        "source_version": "1.7.0"
+      }
+    ],
+    "condition": "pam_userdb password database authentication has a timing discrepancy.",
+    "assessment": "RateFreak local accounts use ASP.NET Identity; no OS PAM login or pam_userdb service is invoked. The supplied PostgreSQL pg_hba rules use SCRAM, not PAM, and the application has no arbitrary SQL/configuration endpoint. An operator-added PAM database authentication rule is outside this exclusion.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "shadow",
+    "id": "CVE-2007-5686",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "login.defs",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "passwd",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      }
+    ],
+    "condition": "OS login failure logging records unknown usernames in an insecurely protected log.",
+    "assessment": "The supplied application does not invoke OS login, and its account/authentication records are independent of shadow login failure logging. The container entrypoints do not create a local login service. This is a missing affected caller, not a general claim about all log permissions.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "shadow",
+    "id": "CVE-2024-56433",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "login.defs",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "passwd",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      }
+    ],
+    "condition": "Default subordinate UID/GID allocation collides with externally assigned user IDs.",
+    "assessment": "Supported startup and maintenance use fixed image user IDs and the Docker-managed container identity; they do not allocate subordinate UID/GID ranges or invoke newuidmap/newgidmap for user namespaces. Application accounts do not become OS users. Custom namespace/NFS/host account provisioning needs reassessment.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "shadow",
+    "id": "CVE-2026-135901",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "login.defs",
+        "severity": "UNKNOWN",
+        "source_version": "4.17.4"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "passwd",
+        "severity": "UNKNOWN",
+        "source_version": "4.17.4"
+      }
+    ],
+    "condition": "newgidmap privileged group-ID mapping helper performs the affected proc/group mapping operation.",
+    "assessment": "No supported container entrypoint, application request, health check or maintenance command invokes newgidmap or allocates a caller-selected user namespace. Fixed gosu execution is a distinct helper and does not route through newgidmap.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "shadow",
+    "id": "TEMP-0628843-DBAD28",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "login.defs",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "passwd",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      }
+    ],
+    "condition": "su is used with a shared controlling terminal, allowing the switched user to inject terminal input (Debian bug628843).",
+    "assessment": "No supported flow invokes su or supplies an interactive controlling terminal. PostgreSQL uses the separately reviewed gosu helper; Python storage preparation does not use su. Arbitrary interactive operator switching is outside this exclusion.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "sysvinit",
+    "id": "TEMP-0517018-A83CE6",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.14-4",
+        "package": "sysvinit-utils",
+        "severity": "LOW",
+        "source_version": "3.14"
+      }
+    ],
+    "condition": "Expert installer no-root option leaves a locally exploitable sysvinit boot/rescue authentication path (Debian bug517018).",
+    "assessment": "These containers execute the supplied service entrypoints directly; they do not boot sysvinit or run an operating-system expert installer/rescue login. sysvinit-utils package presence does not create that caller.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "util-linux",
+    "id": "CVE-2022-0563",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "chfn/chsh readline handling leaks file content through an affected interactive command.",
+    "assessment": "Application accounts and maintenance do not invoke chfn/chsh or OS user-profile editing. Image users are provisioned at image build; public account fields stay in PostgreSQL. No affected interactive caller is exposed by the supplied runtime command graph.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "util-linux",
+    "id": "CVE-2026-3184",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "OS login hostname canonicalization affects PAM access-control decisions.",
+    "assessment": "The reference installation exposes no OS login service and does not invoke login for application authentication. The health/maintenance PostgreSQL paths do not use PAM login/RHOST canonicalization. This does not clear a custom shell/SSH/PAM service.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "util-linux",
+    "id": "CVE-2026-76642",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "mount runs privileged X-mount post-hooks after an external helper fails.",
+    "assessment": "No supported in-container startup/health/maintenance path invokes mount or an external mount helper/post-hook. Compose mounts are performed by the host container engine, outside the affected installed util-linux caller. Root tools preparation uses filesystem APIs, not mount. No assumption that root tools lack capabilities is made.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "util-linux",
+    "id": "CVE-2026-78410",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "Restricted bind mount X-mount.owner/group/mode handling races an unpinned source.",
+    "assessment": "No supported in-container flow invokes restricted bind mount or X-mount ownership/mode options. The application cannot choose container volume declarations. Docker host mounting is a separate host/container-engine obligation; the installed mount caller is not used.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "apt",
+    "id": "CVE-2011-3374",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.0.4",
+        "package": "apt",
+        "severity": "LOW",
+        "source_version": "3.0.4"
+      },
+      {
+        "fixed": "",
+        "installed": "3.0.4",
+        "package": "libapt-pkg7.0",
+        "severity": "LOW",
+        "source_version": "3.0.4"
+      }
+    ],
+    "condition": "apt-key keyring-URI key retrieval/validation operation.",
+    "assessment": "The supported runtime/startup/health/maintenance command graph does not invoke apt-key or import keys through a keyring URI. Runtime application input never selects an APT repository or key source. Build APT/source-acquisition decisions remain a separate trust boundary; this does not approve arbitrary package installation.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "bash",
+    "id": "TEMP-0841856-B18BAF",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "5.2.37-2+b10",
+        "package": "bash",
+        "severity": "LOW",
+        "source_version": "5.2.37"
+      }
+    ],
+    "condition": "Bash privilege transition with attacker-selected environment and differing real/effective user IDs (Debian bug841856).",
+    "assessment": "Application and tools entrypoints select Python/Node/.NET directly, without a privileged Bash wrapper. PostgreSQL begins its fixed Bash entrypoint with matching real/effective UID, then gosu sets the user IDs before re-executing it. Public requests cannot supply Bash environment functions or a set-ID wrapper. Tools root preparation is Python, not Bash. This excludes the actual mismatched-identity Bash caller condition, not every local shell exploit.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "ncurses",
+    "id": "CVE-2025-6141",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "libncursesw6",
+        "severity": "LOW",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "libtinfo6",
+        "severity": "LOW",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "ncurses-base",
+        "severity": "LOW",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "ncurses-bin",
+        "severity": "LOW",
+        "source_version": "6.5+20250216"
+      }
+    ],
+    "condition": "ncurses postprocess_termcap parses a malicious termcap description.",
+    "assessment": "No supported application flow parses a request-selected termcap or provides an interactive terminal. Maintenance query passes psql stdin bytes with stdout PIPE; pg_dump writes a file and pg_restore uses DEVNULL output. Host collation psql uses docker exec -T; PostgreSQL startup SQL uses stdin heredocs. No caller-selected TERM/TERMCAP/TERMINFO is forwarded. This does not claim docker compose run always disables container TTY allocation. Arbitrary interactive operator shells, terminals and custom environment are excluded.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "ncurses",
+    "id": "CVE-2025-69720",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "libncursesw6",
+        "severity": "HIGH",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "libtinfo6",
+        "severity": "HIGH",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "ncurses-base",
+        "severity": "HIGH",
+        "source_version": "6.5+20250216"
+      },
+      {
+        "fixed": "",
+        "installed": "6.5+20250216-2",
+        "package": "ncurses-bin",
+        "severity": "HIGH",
+        "source_version": "6.5+20250216"
+      }
+    ],
+    "condition": "infocmp CLI processes the crafted terminal description.",
+    "assessment": "No startup, health or coordinated maintenance caller invokes infocmp; application fields are not passed as terminal descriptions. Other ncurses interfaces are not claimed fixed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "pam",
+    "id": "CVE-2026-54411",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.7.0-5",
+        "package": "libpam-modules",
+        "severity": "MEDIUM",
+        "source_version": "1.7.0"
+      },
+      {
+        "fixed": "",
+        "installed": "1.7.0-5",
+        "package": "libpam-modules-bin",
+        "severity": "MEDIUM",
+        "source_version": "1.7.0"
+      },
+      {
+        "fixed": "",
+        "installed": "1.7.0-5",
+        "package": "libpam-runtime",
+        "severity": "MEDIUM",
+        "source_version": "1.7.0"
+      },
+      {
+        "fixed": "",
+        "installed": "1.7.0-5",
+        "package": "libpam0g",
+        "severity": "MEDIUM",
+        "source_version": "1.7.0"
+      }
+    ],
+    "condition": "pam_userdb password database authentication has a timing discrepancy.",
+    "assessment": "RateFreak local accounts use ASP.NET Identity; no OS PAM login or pam_userdb service is invoked. The supplied PostgreSQL pg_hba rules use SCRAM, not PAM, and the application has no arbitrary SQL/configuration endpoint. An operator-added PAM database authentication rule is outside this exclusion.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "shadow",
+    "id": "CVE-2007-5686",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "login.defs",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "passwd",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      }
+    ],
+    "condition": "OS login failure logging records unknown usernames in an insecurely protected log.",
+    "assessment": "The supplied application does not invoke OS login, and its account/authentication records are independent of shadow login failure logging. The container entrypoints do not create a local login service. This is a missing affected caller, not a general claim about all log permissions.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "shadow",
+    "id": "CVE-2024-56433",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "login.defs",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "passwd",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      }
+    ],
+    "condition": "Default subordinate UID/GID allocation collides with externally assigned user IDs.",
+    "assessment": "Supported startup and maintenance use fixed image user IDs and the Docker-managed container identity; they do not allocate subordinate UID/GID ranges or invoke newuidmap/newgidmap for user namespaces. Application accounts do not become OS users. Custom namespace/NFS/host account provisioning needs reassessment.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "shadow",
+    "id": "CVE-2026-135901",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "login.defs",
+        "severity": "UNKNOWN",
+        "source_version": "4.17.4"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "passwd",
+        "severity": "UNKNOWN",
+        "source_version": "4.17.4"
+      }
+    ],
+    "condition": "newgidmap privileged group-ID mapping helper performs the affected proc/group mapping operation.",
+    "assessment": "No supported container entrypoint, application request, health check or maintenance command invokes newgidmap or allocates a caller-selected user namespace. Fixed gosu execution is a distinct helper and does not route through newgidmap.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "shadow",
+    "id": "TEMP-0628843-DBAD28",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "login.defs",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.17.4-2",
+        "package": "passwd",
+        "severity": "LOW",
+        "source_version": "4.17.4"
+      }
+    ],
+    "condition": "su is used with a shared controlling terminal, allowing the switched user to inject terminal input (Debian bug628843).",
+    "assessment": "No supported flow invokes su or supplies an interactive controlling terminal. PostgreSQL uses the separately reviewed gosu helper; Python storage preparation does not use su. Arbitrary interactive operator switching is outside this exclusion.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "sysvinit",
+    "id": "TEMP-0517018-A83CE6",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.14-4",
+        "package": "sysvinit-utils",
+        "severity": "LOW",
+        "source_version": "3.14"
+      }
+    ],
+    "condition": "Expert installer no-root option leaves a locally exploitable sysvinit boot/rescue authentication path (Debian bug517018).",
+    "assessment": "These containers execute the supplied service entrypoints directly; they do not boot sysvinit or run an operating-system expert installer/rescue login. sysvinit-utils package presence does not create that caller.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "util-linux",
+    "id": "CVE-2022-0563",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "LOW",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "chfn/chsh readline handling leaks file content through an affected interactive command.",
+    "assessment": "Application accounts and maintenance do not invoke chfn/chsh or OS user-profile editing. Image users are provisioned at image build; public account fields stay in PostgreSQL. No affected interactive caller is exposed by the supplied runtime command graph.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "util-linux",
+    "id": "CVE-2026-3184",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "MEDIUM",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "OS login hostname canonicalization affects PAM access-control decisions.",
+    "assessment": "The reference installation exposes no OS login service and does not invoke login for application authentication. The health/maintenance PostgreSQL paths do not use PAM login/RHOST canonicalization. This does not clear a custom shell/SSH/PAM service.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "util-linux",
+    "id": "CVE-2026-76642",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "mount runs privileged X-mount post-hooks after an external helper fails.",
+    "assessment": "No supported in-container startup/health/maintenance path invokes mount or an external mount helper/post-hook. Compose mounts are performed by the host container engine, outside the affected installed util-linux caller. Root tools preparation uses filesystem APIs, not mount. No assumption that root tools lack capabilities is made.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "util-linux",
+    "id": "CVE-2026-78410",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "Restricted bind mount X-mount.owner/group/mode handling races an unpinned source.",
+    "assessment": "No supported in-container flow invokes restricted bind mount or X-mount ownership/mode options. The application cannot choose container volume declarations. Docker host mounting is a separate host/container-engine obligation; the installed mount caller is not used.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "postgres-entrypoint.sh",
+      "../residual-os/probe-executions.json"
+    ],
+    "reassess_if": [
+      "Change fixed entrypoint, health check, maintenance, host/TTY, identity, authentication, mount or environment boundary",
+      "Enable an interactive shell/login, PAM, user namespaces, operator plugins, custom init scripts or arbitrary SQL/configuration input"
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "file": "node-v24.22.3.tar.xz",
+    "url": "https://nodejs.org/dist/v24.22.3/node-v24.22.3.tar.xz",
+    "sha256": "48ca3aa8a9b02133356922ef4fc80200e00598c80a4ef446f7c39a459222593d",
+    "bytes": 56764640,
+    "retrieved_utc": "2026-11-26T02:33:45.796876+00:00"
+  },
+  {
+    "file": "dotnet-runtime-a3788b7.tar.gz",
+    "url": "https://codeload.github.com/dotnet/runtime/tar.gz/a3788b71495457354b64ca8040b6ded5ff6ca4f9",
+    "sha256": "df3899ce646abce8486600eb7fc91dc6076d663e0f126c3dd35c7d3af939c06d",
+    "bytes": 95406896,
+    "retrieved_utc": "2026-11-26T02:34:01.654389+00:00"
+  }
+]

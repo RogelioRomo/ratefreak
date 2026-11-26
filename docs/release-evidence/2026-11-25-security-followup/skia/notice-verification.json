@@ -1,0 +1,16 @@
+{
+  "input_hashes_verified": 226,
+  "notice_archive_payloads_verified": 126,
+  "native_target_paths": 20,
+  "all_native_hashes_changed": true,
+  "ELF_files_inspected": 13,
+  "DEPS_pin_changes": [
+    "vulkan-headers"
+  ],
+  "internal_vulkan_headers_freshly_compared": 33,
+  "FTL_and_IJG_preserved": true,
+  "current_original_package_notices_preserved": true,
+  "actual_product_files_changed_by_this_agent": false,
+  "actual_image_binding": "parent task verifies",
+  "aggregate_source_exception_scope": "Exact reviewed current wrapper/Skia configured closure; complete matching notices; excludes OS and stronger native reproduction claims."
+}

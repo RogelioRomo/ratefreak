@@ -1,0 +1,77 @@
+{
+  "api": {
+    "image_id": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges:true",
+      "--env",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "--entrypoint",
+      "python3",
+      "--mount",
+      "type=bind,src=/home/rhaydon/documents/repos/ratefreak/.local/security-residual-os-2026-11-25/config_probe.py,dst=/probe.py,readonly",
+      "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+      "/probe.py"
+    ],
+    "exit_code": 0,
+    "sha256": "bc9f14a168ab6405a50ff52f60170ac3db8fab81d06579ece4f110607ea5404b"
+  },
+  "web": {
+    "image_id": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges:true",
+      "--env",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "--entrypoint",
+      "python3",
+      "--mount",
+      "type=bind,src=/home/rhaydon/documents/repos/ratefreak/.local/security-residual-os-2026-11-25/config_probe.py,dst=/probe.py,readonly",
+      "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+      "/probe.py"
+    ],
+    "exit_code": 0,
+    "sha256": "24a24e00ad353edcc318f6e3198b644a19040e1a43c2657f84307747283ab155"
+  },
+  "tools": {
+    "image_id": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges:true",
+      "--env",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "--entrypoint",
+      "python3",
+      "--mount",
+      "type=bind,src=/home/rhaydon/documents/repos/ratefreak/.local/security-residual-os-2026-11-25/config_probe.py,dst=/probe.py,readonly",
+      "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b",
+      "/probe.py"
+    ],
+    "exit_code": 0,
+    "sha256": "d7e5700087c95921bc4433e09ce2c2fab8b87cbb26a54daf7c03e7beaa566265"
+  }
+}

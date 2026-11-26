@@ -1,0 +1,215 @@
+[
+  {
+    "id": "CVE-2010-4756",
+    "images": {
+      "api": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+      "web": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+      "tools": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b"
+    },
+    "classification": "conditional-caller-exclusion",
+    "evidence": [
+      "phase2-probe-executions.json",
+      "phase2-config-executions.json",
+      "runtime-callers.json",
+      "krb5-callers.json",
+      "vendor-notes.json"
+    ],
+    "reassess_if": [
+      "The entrypoint, maintenance commands, native libraries, trusted configuration mounts or application native interop change.",
+      "New public input is passed to a libc glob, POSIX regex or wide scanf API."
+    ],
+    "reason": "No supported public glob-pattern API. The linked GSS implementation uses the compile-time /etc/gss/mech.d/*.conf pattern; that directory is root-owned mode0755 and empty in API/tools; web has no GSS library or directory. No GSS_MECH_CONFIG override is present. The API curl health call has fixed internal HTTP URL, so its libssh glob dependency is not invoked. PAM/form/apt/bash native regex/glob callers are outside entrypoint/maintenance execution. Python re and pathlib/fwalk are Python implementations, and exact production .NET/Node source and native imports do not call libc glob."
+  },
+  {
+    "id": "CVE-2018-20796",
+    "images": {
+      "api": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+      "web": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+      "tools": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b"
+    },
+    "classification": "conditional-caller-exclusion",
+    "evidence": [
+      "phase2-probe-executions.json",
+      "phase2-config-executions.json",
+      "runtime-callers.json",
+      "krb5-callers.json",
+      "vendor-notes.json"
+    ],
+    "reassess_if": [
+      "The entrypoint, maintenance commands, native libraries, trusted configuration mounts or application native interop change.",
+      "New public input is passed to a libc glob, POSIX regex or wide scanf API."
+    ],
+    "reason": "No supported libc POSIX regular-expression operation accepts public patterns. Linked libkrb5 regex functions implement configured auth_to_local RULE matching/substitution; /etc/krb5.conf and .d are absent, KRB5_CONFIG unset, and application does not map Kerberos principal names into local OS accounts. PKINIT configured certificate matching is a separate optional plugin/configuration and no configured PKINIT rule exists. apt/PAM/form/bash callers are not part of executed supported flows. Exact .NET runtime source has no libc regex calls; Node only includes such calls in GoogleTest source, and shipped runtime/addon ELF files do not import these calls. Python re uses its own engine."
+  },
+  {
+    "id": "CVE-2019-9192",
+    "images": {
+      "api": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+      "web": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+      "tools": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b"
+    },
+    "classification": "conditional-caller-exclusion",
+    "evidence": [
+      "phase2-probe-executions.json",
+      "phase2-config-executions.json",
+      "runtime-callers.json",
+      "krb5-callers.json",
+      "vendor-notes.json"
+    ],
+    "reassess_if": [
+      "The entrypoint, maintenance commands, native libraries, trusted configuration mounts or application native interop change.",
+      "New public input is passed to a libc glob, POSIX regex or wide scanf API."
+    ],
+    "reason": "No supported libc POSIX regular-expression operation accepts public patterns. Linked libkrb5 regex functions implement configured auth_to_local RULE matching/substitution; /etc/krb5.conf and .d are absent, KRB5_CONFIG unset, and application does not map Kerberos principal names into local OS accounts. PKINIT configured certificate matching is a separate optional plugin/configuration and no configured PKINIT rule exists. apt/PAM/form/bash callers are not part of executed supported flows. Exact .NET runtime source has no libc regex calls; Node only includes such calls in GoogleTest source, and shipped runtime/addon ELF files do not import these calls. Python re uses its own engine."
+  },
+  {
+    "id": "CVE-2026-100290",
+    "images": {
+      "api": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+      "web": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+      "tools": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b"
+    },
+    "classification": "conditional-caller-exclusion",
+    "evidence": [
+      "phase2-probe-executions.json",
+      "phase2-config-executions.json",
+      "runtime-callers.json",
+      "krb5-callers.json",
+      "vendor-notes.json"
+    ],
+    "reassess_if": [
+      "The entrypoint, maintenance commands, native libraries, trusted configuration mounts or application native interop change.",
+      "New public input is passed to a libc glob, POSIX regex or wide scanf API."
+    ],
+    "reason": "No supported libc POSIX regular-expression operation accepts public patterns. Linked libkrb5 regex functions implement configured auth_to_local RULE matching/substitution; /etc/krb5.conf and .d are absent, KRB5_CONFIG unset, and application does not map Kerberos principal names into local OS accounts. PKINIT configured certificate matching is a separate optional plugin/configuration and no configured PKINIT rule exists. apt/PAM/form/bash callers are not part of executed supported flows. Exact .NET runtime source has no libc regex calls; Node only includes such calls in GoogleTest source, and shipped runtime/addon ELF files do not import these calls. Python re uses its own engine."
+  },
+  {
+    "id": "CVE-2026-115819",
+    "images": {
+      "api": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+      "web": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+      "tools": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b"
+    },
+    "classification": "conditional-caller-exclusion",
+    "evidence": [
+      "phase2-probe-executions.json",
+      "phase2-config-executions.json",
+      "runtime-callers.json",
+      "krb5-callers.json",
+      "vendor-notes.json"
+    ],
+    "reassess_if": [
+      "The entrypoint, maintenance commands, native libraries, trusted configuration mounts or application native interop change.",
+      "New public input is passed to a libc glob, POSIX regex or wide scanf API."
+    ],
+    "reason": "The exact images contain no selected wide-scanf import in the 501/440/558 inspected runtime and /usr/lib/x86_64-linux-gnu ELF files. Exact .NET and Node runtime source has no swscanf/fwscanf/wscanf/vswscanf/vfwscanf/vwscanf call or matching native entrypoint string. Application interop only exposes fixed filesystem libc calls. Python startup/maintenance does not call native FFI or wide scanf. The affected %s/%[ wide-input caller is absent from supported flows; libc exports alone do not execute it."
+  },
+  {
+    "id": "CVE-2026-126765",
+    "images": {
+      "api": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+      "web": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+      "tools": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b"
+    },
+    "classification": "conditional-caller-exclusion",
+    "evidence": [
+      "phase2-probe-executions.json",
+      "phase2-config-executions.json",
+      "runtime-callers.json",
+      "krb5-callers.json",
+      "vendor-notes.json"
+    ],
+    "reassess_if": [
+      "The entrypoint, maintenance commands, native libraries, trusted configuration mounts or application native interop change.",
+      "New public input is passed to a libc glob, POSIX regex or wide scanf API."
+    ],
+    "reason": "The relevant supported GSS glob has fixed trusted pattern /etc/gss/mech.d/*.conf and an empty, root-owned image directory in API/tools (web has no GSS library/directory). It returns zero names, so cannot reach directory-prefix allocation failure after at least one match was rewritten. Public application/storage files do not populate that directory. Other imported glob callers (apt/PAM and API libssh) are not executed by supported startup, health, application or maintenance paths. Allocation failure alone is insufficient without this match-rewrite caller state."
+  },
+  {
+    "id": "CVE-2013-4392",
+    "images": {
+      "api": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+      "web": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+      "tools": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b"
+    },
+    "classification": "conditional-caller-exclusion",
+    "evidence": [
+      "phase2-probe-executions.json",
+      "phase2-config-executions.json",
+      "runtime-callers.json",
+      "krb5-callers.json",
+      "vendor-notes.json"
+    ],
+    "reassess_if": [
+      "The entrypoint, maintenance commands, native libraries, trusted configuration mounts or application native interop change.",
+      "New public input is passed to a libc glob, POSIX regex or wide scanf API."
+    ],
+    "reason": "The advisory concerns systemd tmpfiles permission/SELinux operations. /usr/bin/systemd-tmpfiles and /usr/lib/systemd/systemd are absent from all three exact images, and entrypoint directly execs Node/.NET/Python maintenance. The installed libsystemd0 is not a tmpfiles daemon/command. SELinux filesystem visibility was observed and is not used as an exclusion."
+  },
+  {
+    "id": "CVE-2019-1010022",
+    "images": {
+      "api": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+      "web": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+      "tools": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b"
+    },
+    "classification": "open-proof-gap",
+    "evidence": [
+      "phase2-probe-executions.json",
+      "phase2-config-executions.json",
+      "runtime-callers.json",
+      "krb5-callers.json",
+      "vendor-notes.json"
+    ],
+    "reassess_if": [
+      "The entrypoint, maintenance commands, native libraries, trusted configuration mounts or application native interop change.",
+      "New public input is passed to a libc glob, POSIX regex or wide scanf API."
+    ],
+    "reason": "The affected nptl stack-guard/thread-address/cache behavior may run in production runtimes. The app does not intentionally expose native addresses/thread handles or arbitrary native code, and API500 responses redact exception details, but that does not prove the mitigations cannot be bypassed following an independent memory-corruption or address-disclosure bug. Dispute/nonsecurity vendor wording is not an accepted exclusion under the user requirement. No package fix or complete caller-level exclusion established.",
+    "required_resolution": "Retain release blocker pending a documented non-applicability proof for this deployed runtime or a corrected/changed libc/runtime build; do not turn prerequisite absence into an assumption that all native parsers are memory safe."
+  },
+  {
+    "id": "CVE-2019-1010024",
+    "images": {
+      "api": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+      "web": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+      "tools": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b"
+    },
+    "classification": "open-proof-gap",
+    "evidence": [
+      "phase2-probe-executions.json",
+      "phase2-config-executions.json",
+      "runtime-callers.json",
+      "krb5-callers.json",
+      "vendor-notes.json"
+    ],
+    "reassess_if": [
+      "The entrypoint, maintenance commands, native libraries, trusted configuration mounts or application native interop change.",
+      "New public input is passed to a libc glob, POSIX regex or wide scanf API."
+    ],
+    "reason": "The affected nptl stack-guard/thread-address/cache behavior may run in production runtimes. The app does not intentionally expose native addresses/thread handles or arbitrary native code, and API500 responses redact exception details, but that does not prove the mitigations cannot be bypassed following an independent memory-corruption or address-disclosure bug. Dispute/nonsecurity vendor wording is not an accepted exclusion under the user requirement. No package fix or complete caller-level exclusion established.",
+    "required_resolution": "Retain release blocker pending a documented non-applicability proof for this deployed runtime or a corrected/changed libc/runtime build; do not turn prerequisite absence into an assumption that all native parsers are memory safe."
+  },
+  {
+    "id": "CVE-2019-1010025",
+    "images": {
+      "api": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+      "web": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+      "tools": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b"
+    },
+    "classification": "open-proof-gap",
+    "evidence": [
+      "phase2-probe-executions.json",
+      "phase2-config-executions.json",
+      "runtime-callers.json",
+      "krb5-callers.json",
+      "vendor-notes.json"
+    ],
+    "reassess_if": [
+      "The entrypoint, maintenance commands, native libraries, trusted configuration mounts or application native interop change.",
+      "New public input is passed to a libc glob, POSIX regex or wide scanf API."
+    ],
+    "reason": "The affected nptl stack-guard/thread-address/cache behavior may run in production runtimes. The app does not intentionally expose native addresses/thread handles or arbitrary native code, and API500 responses redact exception details, but that does not prove the mitigations cannot be bypassed following an independent memory-corruption or address-disclosure bug. Dispute/nonsecurity vendor wording is not an accepted exclusion under the user requirement. No package fix or complete caller-level exclusion established.",
+    "required_resolution": "Retain release blocker pending a documented non-applicability proof for this deployed runtime or a corrected/changed libc/runtime build; do not turn prerequisite absence into an assumption that all native parsers are memory safe."
+  }
+]

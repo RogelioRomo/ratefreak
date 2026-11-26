@@ -258,6 +258,23 @@ def require_prepared(root):
     if not path.exists() or json.loads(read_private(path)) != {'format': 2}:
         raise OperatorError('Run explicit prepare with the current release to provision TMDB policy and storage.')
 
+def require_database_collations(command, env):
+    # A PostgreSQL major-version match does not make libc/ICU indexes safe after
+    # changing the database image's OS. Check defaults and explicit collations.
+    sql = """SELECT NOT EXISTS (
+        SELECT 1 FROM pg_database
+        WHERE datallowconn AND datcollversion IS DISTINCT FROM pg_database_collation_actual_version(oid)
+    ) AND NOT EXISTS (
+        SELECT 1 FROM pg_collation
+        WHERE collversion IS NOT NULL AND collversion IS DISTINCT FROM pg_collation_actual_version(oid)
+    );"""
+    result = execute(command + ['exec', '-T', 'postgres', 'psql', '-X', '-q', '-A', '-t',
+        '-v', 'ON_ERROR_STOP=1', '-U', 'postgres', '-d', 'ratefreak', '-c', sql], env, capture=True)
+    if result.strip() != 't':
+        raise OperatorError('Database collation versions do not match this PostgreSQL runtime. '
+            'Keep writers stopped; use a reviewed logical backup and fresh-instance restore, '
+            'then replay and verify. No collation version is refreshed automatically.')
+
 def tmdb_remove(args, root, command, env):
     from entrypoint import TMDB_POLICY_ENTRY_LIMIT, valid_tmdb_identity, valid_tmdb_poster
 
@@ -320,6 +337,7 @@ def dispatch(args,root,config,command,env):
         # Remove prior acceptance BEFORE attempting DDL so a failed upgrade cannot restart.
         if (root/'migrated.json').exists():(root/'migrated.json').unlink()
         execute(command+['up','-d','--wait','postgres'],env)
+        require_database_collations(command, env)
         execute(command+['run','--rm','migrate'],env)
         write_state(root/'migrated.json',{'images':release_images(root),'overrideSha':override_signature(root)})
     elif operation=='enable-deletion':
@@ -369,8 +387,11 @@ def dispatch(args,root,config,command,env):
         tmdb_remove(args, root, command, env)
     elif operation=='start':
         require_release(root,release_images(root))
+        stopped_writers(command, env)
         # Require the local TLS choice to be explicit in the edge configuration.
         if args.ingress=='caddy' and urlsplit(config['origin']).port not in (None,443):raise OperatorError('Custom public ports require an operator-managed ingress configuration.')
+        execute(command+['up','-d','--wait','postgres'],env)
+        require_database_collations(command, env)
         if args.ingress=='caddy' and config['localTls']:
             env['RATEFREAK_CADDY_TLS']='tls internal'
         else:env['RATEFREAK_CADDY_TLS']=''

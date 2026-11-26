@@ -1,0 +1,192 @@
+[
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gcc-14",
+    "id": "CVE-2026-102010",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      }
+    ],
+    "classification": "open-proof-gap",
+    "condition": "GNU extension __gnu_pbds binary_heap erase_if uses storage that was freed; this is not ordinary std::priority_queue.",
+    "reason": "Header code can be inlined and symbols stripped. Exact source/build closure for every installed OS C++ consumer was not acquired. Do not apply the application-source exclusion to all OS packages or future tooling.",
+    "evidence": [
+      "gcc/gcc-assessments.json",
+      "gcc/gcc-review.md",
+      "gcc-rebind/pg-rebinding.json"
+    ],
+    "resolution_required": "Actual patched compiled input or complete supported compiled-caller exclusion; no risk acceptance."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gcc-14",
+    "id": "CVE-2026-114690",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      }
+    ],
+    "classification": "open-proof-gap",
+    "condition": "GNU parallel search header algorithm compares beyond the pattern buffer; requires GNU parallel mode or explicit GNU parallel search instantiation.",
+    "reason": "Inlined header code cannot be excluded for every OS binary by symbol absence. Missing exact OS-source/build provenance remains. A newer shared runtime alone does not fix an embedded header instantiation.",
+    "evidence": [
+      "gcc/gcc-assessments.json",
+      "gcc/gcc-review.md",
+      "gcc-rebind/pg-rebinding.json"
+    ],
+    "resolution_required": "Actual patched compiled input or complete supported compiled-caller exclusion; no risk acceptance."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gcc-14",
+    "id": "CVE-2026-114691",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      }
+    ],
+    "classification": "open-proof-gap",
+    "condition": "Certain vector<bool> size/range constructors call _S_nword with a count near SIZE_MAX (or invalid negative range), wrapping word-count addition. The patch targets constructors, not every vector<bool> operation.",
+    "reason": "Do not infer architecture-independent safety from uint32_t: on a 32-bit target that count alone would not exclude near-SIZE_MAX. Exact OS consumer constructor/build closure is incomplete. No generic 5 MB input-bound waiver is used.",
+    "evidence": [
+      "gcc/gcc-assessments.json",
+      "gcc/gcc-review.md",
+      "gcc-rebind/pg-rebinding.json"
+    ],
+    "resolution_required": "Actual patched compiled input or complete supported compiled-caller exclusion; no risk acceptance."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gcc-14",
+    "id": "CVE-2026-115455",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      }
+    ],
+    "classification": "open-proof-gap",
+    "condition": "Affected GCC C++ headers instantiate wide-character stream extraction into std::bitset.",
+    "reason": "Prior application-only proof does not cover every PostgreSQL image C++/OS consumer header instantiation. Package presence or absent headers/compilers alone cannot exclude already-compiled code.",
+    "evidence": [
+      "gcc/gcc-assessments.json",
+      "gcc/gcc-review.md",
+      "gcc-rebind/pg-rebinding.json"
+    ],
+    "resolution_required": "Actual patched compiled input or complete supported compiled-caller exclusion; no risk acceptance."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gcc-14",
+    "id": "CVE-2026-125709",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      }
+    ],
+    "classification": "open-proof-gap",
+    "condition": "Repeated byte-at-a-time filebuf writes after induced write failures leave the put pointer advancing, permitting a buffer overflow. Ordinary ostream operations set error state and prevent repeated output.",
+    "reason": "Do not use Red Hat RHEL-system-utilities statement as proof for Debian/Ubuntu apt or ICU. Every direct/custom filebuf retry caller and supported tools command needs source review, or a fixed libstdc++ package. Imported filebuf/vtables are evidence of actual API use and cannot be dismissed.",
+    "evidence": [
+      "gcc/gcc-assessments.json",
+      "gcc/gcc-review.md",
+      "gcc-rebind/pg-rebinding.json"
+    ],
+    "resolution_required": "Actual patched compiled input or complete supported compiled-caller exclusion; no risk acceptance."
+  }
+]

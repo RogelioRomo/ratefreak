@@ -1,0 +1,12 @@
+{
+  "valid": true,
+  "images": {
+    "api": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "tools": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "web": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e"
+  },
+  "components": 502,
+  "material_files": 47,
+  "new_os_source_versions": 4,
+  "native_inputs_verified": 406
+}

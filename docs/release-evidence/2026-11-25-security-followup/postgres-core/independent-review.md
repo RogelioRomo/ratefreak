@@ -1,0 +1,11 @@
+# Independent PostgreSQL core assessment review
+
+Reviewed30 per-advisory records (libxml2, libxslt, zstd,14 OpenSSL), exact-image configuration/import probe,222-file query review and retained upstream source bindings. No Critical or Important scope defect identified.
+
+Independently checked the current query-review pattern with its recorded re.I flags against XMLPARSE and CREATE EXTENSION positive controls; matches succeed and recorded application hits are empty. The initial uppercase-only probe without re.I was invalid and is not a finding against the generator. No semantic regex change was required. XML column/type, SQL/XML, XSLT and arbitrary-extension exclusions are appropriately restricted to existing parameterized schema/callers; they do not treat authentication as proof XML parsing is safe. The scan is supporting evidence, not a complete arbitrary-SQL or extension callgraph.
+
+The exact PostgreSQL configuration probe records ssl=FALSE and wal_compression=off. The supplied compose provisions no TLS certificates or custom WAL compression. Current server libcrypto SCRAM/hash use remains acknowledged. TCP SSLv23_method/TLS_method and ordinary X509 functions are not QUIC/DTLS, SuiteB certificate flags, CMS, DANE, the affected caller-stack PEM operation, EVP_EncodeBlock or AES-GCM-SIV. Direct import absence is supporting evidence coupled to source/caller scope, not a claim that all possible OpenSSL internals are absent. Operator TLS/provider/extension/configuration changes remain excluded.
+
+The coordinated logical backup invokes pg_dump --format=custom with default gzip compression; restore runs the separate patched tools client. No physical replication/archive replay or request-selected zstd input is provided by the supported lifecycle. Existing manually generated zstd WAL, arbitrary backup inputs, altered compression or direct database-image pg_restore require reassessment, as the draft states.
+
+Bounds: source is retained PostgreSQL17.12 upstream, not reproduced exact patched PGDG binary source. Exact imports/defaults and the current caller contract provide separate bindings. Final packaging must resolve every referenced evidence path. No overall security clearance claimed.

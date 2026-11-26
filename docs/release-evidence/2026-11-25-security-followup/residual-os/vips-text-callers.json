@@ -1,0 +1,7 @@
+[
+  {
+    "file": "vips-8.18.7/libvips/colour/profile_load.c",
+    "line": 79,
+    "text": "\t\t\tres = g_converter_convert(converter,"
+  }
+]

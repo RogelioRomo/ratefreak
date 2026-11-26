@@ -1,0 +1,127 @@
+[
+  {
+    "file": "consumer-source/node/common.gypi",
+    "archive_member": "node-v24.22.3/common.gypi",
+    "sha256": "3c4090d3faf964998a89bad9e501cb4dac953ef9e03e9d03ede9812ae78161b2"
+  },
+  {
+    "file": "consumer-source/node/configure.py",
+    "archive_member": "node-v24.22.3/configure.py",
+    "sha256": "c406158e940307a57828349e1d995890e7f7fa981078c36c6af2170871ba2602"
+  },
+  {
+    "file": "consumer-source/node/deps/ada/ada.cpp",
+    "archive_member": "node-v24.22.3/deps/ada/ada.cpp",
+    "sha256": "1c722f8f5355d6bf2bf3601870684edc875aa8f56b4d4735440d96263dd0207c"
+  },
+  {
+    "file": "consumer-source/node/deps/ada/ada.h",
+    "archive_member": "node-v24.22.3/deps/ada/ada.h",
+    "sha256": "0010b17b3ff489e13998e86d921b16e1643e370ee3276c584f1b0c4b72bdf628"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/builtins/setup-builtins-internal.cc",
+    "archive_member": "node-v24.22.3/deps/v8/src/builtins/setup-builtins-internal.cc",
+    "sha256": "764cfa7cf923385874572da8fb2eb09f30d39bdeddd5ef0759278fcccb420a6c"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/compiler/turbofan-graph-visualizer.cc",
+    "archive_member": "node-v24.22.3/deps/v8/src/compiler/turbofan-graph-visualizer.cc",
+    "sha256": "d486160f0255b88ef6f116c40460c47dd00b36e2bf8109e3c2b4a8c4282fb8e1"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/diagnostics/basic-block-profiler.cc",
+    "archive_member": "node-v24.22.3/deps/v8/src/diagnostics/basic-block-profiler.cc",
+    "sha256": "a0a254bc1aaaac3c85bcf5795bd976960684aa3ac1641c5ce8372c5b64fffd8f"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/maglev/maglev-graph-verifier.h",
+    "archive_member": "node-v24.22.3/deps/v8/src/maglev/maglev-graph-verifier.h",
+    "sha256": "210558f665063ba9ce0b2bbfc29e70d9ac697565b294c6a8892d69afe8726957"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/maglev/maglev-graph.h",
+    "archive_member": "node-v24.22.3/deps/v8/src/maglev/maglev-graph.h",
+    "sha256": "e57df81c9a93284ba7c4e66bd9c2494a165b9647beaf50a415fa8f4b439dd808"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/maglev/maglev-inlining.h",
+    "archive_member": "node-v24.22.3/deps/v8/src/maglev/maglev-inlining.h",
+    "sha256": "a763bba283bb8a5ee3a52d1faad285a83d6a363d57f7ea26cbeb4d3ba901098a"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/profiler/heap-profiler.cc",
+    "archive_member": "node-v24.22.3/deps/v8/src/profiler/heap-profiler.cc",
+    "sha256": "d1c4aacd49201b414cbb5440d55cad8d38ecd387b41b42f472270604d7cc2fc0"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/profiler/heap-snapshot-generator.cc",
+    "archive_member": "node-v24.22.3/deps/v8/src/profiler/heap-snapshot-generator.cc",
+    "sha256": "864411ce555d84e164f85a925f93c81980a547a0b95bef95470dfb19e58faa93"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/profiler/heap-snapshot-generator.h",
+    "archive_member": "node-v24.22.3/deps/v8/src/profiler/heap-snapshot-generator.h",
+    "sha256": "f9a258c93242a3567db6ddd5a336d12f26f6309eed34b4f7f5633fe6ae86201c"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/snapshot/context-serializer.cc",
+    "archive_member": "node-v24.22.3/deps/v8/src/snapshot/context-serializer.cc",
+    "sha256": "983523b316542584c05779113438bfb42d175da77425098e5d139f5c953aad72"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/tracing/traced-value.cc",
+    "archive_member": "node-v24.22.3/deps/v8/src/tracing/traced-value.cc",
+    "sha256": "dd6a08a4ecf5d9748d544737fed2d550e014c0f9d4b06ce299965dbb420b2011"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/tracing/traced-value.h",
+    "archive_member": "node-v24.22.3/deps/v8/src/tracing/traced-value.h",
+    "sha256": "29f64e315a51152b293310e256a9815724f2de4d5c2321c57b68186a7bb3c3b4"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/wasm/wasm-disassembler.cc",
+    "archive_member": "node-v24.22.3/deps/v8/src/wasm/wasm-disassembler.cc",
+    "sha256": "8ca79ac2e46f95f5074a0cb89cde170533ac1a8effdd2980ad573db6e4381f8a"
+  },
+  {
+    "file": "consumer-source/node/node.gyp",
+    "archive_member": "node-v24.22.3/node.gyp",
+    "sha256": "c03b2df8fce86e376f0cf33506d3a5527937091f5561d6417ed8410bdc115458"
+  },
+  {
+    "file": "consumer-source/node/src/json_utils.h",
+    "archive_member": "node-v24.22.3/src/json_utils.h",
+    "sha256": "98f4ef39666a05a3cacd882c17d95c8c5748b8281992fd623bd454bfed935237"
+  },
+  {
+    "file": "consumer-source/node/src/node_file.cc",
+    "archive_member": "node-v24.22.3/src/node_file.cc",
+    "sha256": "de02404246451e6c870aeea7d09cfbf89941dc208b28ef84755545407cabbffa"
+  },
+  {
+    "file": "consumer-source/node/src/node_file.h",
+    "archive_member": "node-v24.22.3/src/node_file.h",
+    "sha256": "0a5bc99e3c1fb101e9a34caff10decf47530e6f20aea687c29416331b56a96e3"
+  },
+  {
+    "file": "consumer-source/node/src/node_options.cc",
+    "archive_member": "node-v24.22.3/src/node_options.cc",
+    "sha256": "ec63a5a4326733816d97ec50489617150e696b905a0b6e456eb08a3fda8f8e90"
+  },
+  {
+    "file": "consumer-source/node/src/node_report.cc",
+    "archive_member": "node-v24.22.3/src/node_report.cc",
+    "sha256": "faf95608924af0b5da6748396867315e89f793b80b5582c83d0ba97645d03987"
+  },
+  {
+    "file": "consumer-source/node/src/node_snapshotable.cc",
+    "archive_member": "node-v24.22.3/src/node_snapshotable.cc",
+    "sha256": "e10b31a055515f936d362623ead637c2690e361d8e83535fb05f6247d9d24fda"
+  },
+  {
+    "file": "consumer-source/node/src/node_v8.cc",
+    "archive_member": "node-v24.22.3/src/node_v8.cc",
+    "sha256": "11b664d83de604205d95793e792e268de957e786ed5c146474354ccf2fc78061"
+  }
+]

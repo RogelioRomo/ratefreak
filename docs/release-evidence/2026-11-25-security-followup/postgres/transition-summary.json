@@ -1,0 +1,15 @@
+{
+  "format": 1,
+  "operator_patch": "operator-collation-guard.patch",
+  "root_product_files_changed": false,
+  "live_instance_changed": false,
+  "custom_database_image_built": false,
+  "collation_probe_complete": true,
+  "full_application_logical_restore_complete": true,
+  "restored_tables": 33,
+  "journal_fixture_entries": 0,
+  "guard_tests_passed": 5,
+  "operator_suite_passed": 77,
+  "input_hashes": 25,
+  "overall_security_clearance": false
+}

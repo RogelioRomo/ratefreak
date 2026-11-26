@@ -1,0 +1,59 @@
+{
+  "finding": "--describe-config does not initialize bool/real reset values; displayed FALSE/0 is not live SQL configuration",
+  "source_revision": "retained upstream PostgreSQL17.12",
+  "observations": [
+    {
+      "file": "src/backend/jit/jit.c",
+      "line": 32,
+      "fact": "jit_enabled initialized true"
+    },
+    {
+      "file": "src/backend/utils/misc/guc_tables.c",
+      "line": 1933,
+      "fact": "jit config has true boot value"
+    },
+    {
+      "file": "src/backend/utils/misc/help_config.c",
+      "line": 48,
+      "fact": "GucInfoMain calls build_guc_variables only"
+    },
+    {
+      "file": "src/backend/utils/misc/help_config.c",
+      "line": 100,
+      "fact": "PGC_BOOL prints reset_val, unlike string/enum printing boot_val"
+    },
+    {
+      "file": "src/backend/utils/misc/guc.c",
+      "line": 901,
+      "fact": "build_guc_variables is intentionally separate from InitializeGUCOptions"
+    },
+    {
+      "file": "src/backend/main/main.c",
+      "line": 193,
+      "fact": "--describe-config dispatches before PostmasterMain normal GUC initialization"
+    }
+  ],
+  "conclusion": "No JIT-off exclusion established. Need running SHOW jit, pg_jit_available, and forced-cost query with backend mappings.",
+  "inputs": [
+    {
+      "file": "source/src/backend/utils/misc/guc_tables.c",
+      "sha256": "887caa9eb375a98cad3e41b5cf401015a1e77230e01c596015cf9114800e6b43"
+    },
+    {
+      "file": "source/src/backend/utils/misc/help_config.c",
+      "sha256": "cc7766946d5542a98e4a471e7dce4d4958ccdb5f4bdc16fcd03eac82a20a5735"
+    },
+    {
+      "file": "source/src/backend/utils/misc/guc.c",
+      "sha256": "c1a70e1fd8bc5b52c284f23c2e324d23a202d0212abea13f76ac31f5cbf8ce34"
+    },
+    {
+      "file": "source/src/backend/main/main.c",
+      "sha256": "eec19f6df314ff1359be02bcd75f02fdcd01dd05023d32abc1793054df76b3d9"
+    },
+    {
+      "file": "source/src/backend/jit/jit.c",
+      "sha256": "49a977360d268ba5f1565e8fb8e4691359d3150cf4f923e6021b718b442ce487"
+    }
+  ]
+}

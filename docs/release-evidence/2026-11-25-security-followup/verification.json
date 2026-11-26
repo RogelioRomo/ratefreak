@@ -1,0 +1,61 @@
+{
+  "backend": {
+    "log_sha256": "0c57b31355d5cec93326743780483f84d911f3da96f5a39814b6da5b16356cb9",
+    "results": [
+      {
+        "failed": 0,
+        "passed": 62,
+        "skipped": 0,
+        "suite": "RateFreak.UnitTests.dll",
+        "total": 62
+      },
+      {
+        "failed": 0,
+        "passed": 508,
+        "skipped": 0,
+        "suite": "RateFreak.IntegrationTests.dll",
+        "total": 508
+      },
+      {
+        "failed": 0,
+        "passed": 208,
+        "skipped": 0,
+        "suite": "RateFreak.ProviderContractTests.dll",
+        "total": 208
+      }
+    ],
+    "total_passed": 778,
+    "trx_limit": "The solution logger reused one TRX filename; all three suite counters above come from the retained complete command log. Final TRX is the provider suite only.",
+    "zero_skips": true
+  },
+  "compliance_passed": 20,
+  "focused_decoder_tests_passed": 13,
+  "frontend_passed": 1026,
+  "layers": 43,
+  "lint_passed": true,
+  "log_hashes": {
+    ".local/security-runtime-guard-2026-11-25/acceptance.log": "d4c409e096b9a36a32b409609b9283d6489f83f8fc36fd144faa43494f714ec5",
+    ".local/security-runtime-guard-2026-11-25/browser.log": "63e65b63b1d4a154f04868a6d55a61fe950d51656ebddb59f669f60473a755d8",
+    ".local/security-runtime-guard-2026-11-25/build.log": "6048b596c7b5eb1710741811d5551b4ef6ea058fb561ade7d502743f71d62e9c",
+    ".local/security-runtime-guard-2026-11-25/compliance-tests.log": "5ae47eedb06dfe1963867e324c035d4d9a064a7774ef999b426bff9b1ac1010a",
+    ".local/security-runtime-guard-2026-11-25/decoder-image-probe.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".local/security-runtime-guard-2026-11-25/maintenance.log": "818f8df6decadc7836f7e0905d71931fc4715af04951b2b14a7d804a499c5af4",
+    ".local/security-runtime-guard-2026-11-25/operator-tests.log": "be05e0786779d19e1eae742f0c5807f7c73b5403b63fb8a6ea4a1e67d228e014",
+    ".local/security-runtime-guard-2026-11-25/release-tests-sandbox-failure.log": "89b93285c5ac848c0abf8b593343632e28f73048dbf87405525d5fa30a19ba7f",
+    ".local/security-runtime-guard-2026-11-25/release-tests.log": "98e1a9ce01f550bbfc8d2eba722efcf42e8f074af2db9073d48d721034a43dd4",
+    ".local/security-skia-update-2026-11-25/backend-tests.log": "0c57b31355d5cec93326743780483f84d911f3da96f5a39814b6da5b16356cb9",
+    ".local/security-skia-update-2026-11-25/frontend-tests.log": "a5bd4e6cac0e4b6fd6148f6b74956f84bfc68eaac0894eda214efe04dd6991fd",
+    ".local/security-skia-update-2026-11-25/lint.log": "fc014458b2b79b3a83c085789a00d25d764851938b620bd811acc03e4c0d3429",
+    ".local/security-skia-update-2026-11-25/typecheck.log": "853b97ae088085c0317a5c9cc44b864429fa67c08fb15a5e16ab153b1420ac94",
+    ".local/security-skia-update-2026-11-25/zstd-green.log": "a4837c2d68a168c5c72817c66336b347a54e6d745380759bb7c82856282a2e41",
+    ".local/security-skia-update-2026-11-25/zstd-red.log": "4e05e3e0e9efc4e44b92f96b89756806c9f2970de2337e6613a635cbf9e72c4a"
+  },
+  "model_check": "No model changes in phase2; model.log retained. Backend unchanged by subsequent web-only guard.",
+  "operator_passed": 77,
+  "persistent_instance_changed": false,
+  "published": false,
+  "raw_test_log_limit": "Solution reused a TRX filename; backend counters come from complete hashed log, not three preserved TRX files.",
+  "release_passed": 26,
+  "release_sandbox_retry": "Initial release test failed Node spawnSync git EPERM. Same26tests passed with authorized escalation; initial failure retained.",
+  "typecheck_passed": true
+}

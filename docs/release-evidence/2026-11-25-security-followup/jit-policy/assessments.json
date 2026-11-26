@@ -1,0 +1,21 @@
+[
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "llvm-toolchain-19",
+    "id": "CVE-2026-13573",
+    "disposition": "conditional-supported-caller-exclusion",
+    "condition": "Affected LLVM StringMap insertion is reached through LLVM compilation/IR processing.",
+    "assessment": "Current reference Compose explicitly starts postgres -c jit=off. Real SQL proves the pre-change default enabled JIT and compiled a forced-cost query; the changed reference setting reports off, pg_jit_available() false, no JIT section in the forced-cost plan, correct result. One backend additionally checks availability, runs the ordinary query and confirms no LLVM/provider mappings; the forced-cost plan uses a separate session. Current schema/application provides no LLVM IR/extension input or SET jit caller. Existing earlier LLVM symbol-name bound gap is not claimed solved; the supported compiler caller is disabled.",
+    "evidence": [
+      "jit-policy/default-probe.json",
+      "jit-policy/acceptance.json",
+      "jit-policy/acceptance.py",
+      "jit-policy/input-hashes.json"
+    ],
+    "limits": [
+      "Existing qualified application images remain unchanged; Compose is a separately hashed/tested postbuild configuration delta. Final installation-source archive and stable artifact qualification must include it.",
+      "No package-patched claim; operator-enabled JIT, added extension/preload/IR or arbitrary SQL/configuration needs reassessment."
+    ]
+  }
+]

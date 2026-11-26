@@ -1,0 +1,19 @@
+{
+  "docs/release-evidence/2026-11-25-security-followup/advisory-ledger.json": "2e4ec165ff5ae076147bdf8b4c2e60e1201884df54b9fad3c823410a2a10678e",
+  ".local/security-residual-os-2026-11-25/pg-network-assessments.json": "e3f9f5a285fdc557df03525d44a623365c2f906b4c3508172e5cd80592d0aab4",
+  ".local/security-residual-os-2026-11-25/pg_network_assess.py": "6b13a589ea31b6f4cbe4d85b935f80550d41a6866ed32c590e10405b457604de",
+  ".local/security-residual-os-2026-11-25/pg-network-config-probe.json": "c9f38abc8fdb28302808b17ef3163e4c37684aacdc1cdeb2c4b0c0832328d94a",
+  ".local/security-residual-os-2026-11-25/pg-network-krb-callers.json": "c4699b1d8ccb84dd244a69feacd5bf2cc40ba02fcbbb4af3ae8dd34487714253",
+  ".local/security-residual-os-2026-11-25/pg-network-vendor-notes.json": "72b112460638d26b86ffe6d781ed1a4fed8a2e36128b0fe1b90301e0fb6bf06c",
+  ".local/security-residual-os-2026-11-25/pg_gss_probe.c": "22223c26afa6a28581ea178c9fdcf867de2cc89599082e775473bc94cea07155",
+  ".local/security-residual-os-2026-11-25/pg-gss-probe": "88a24a0cbd9b0ac308477b2bb6125eaebcbe0fb3c1b020b5a1a493b671b3a6a8",
+  ".local/security-residual-os-2026-11-25/pg_network_acquire.py": "9acb6a595896975d68be15fecab5429202e7d8419faa90539ab1f6c1b470ae9b",
+  ".local/security-residual-os-2026-11-25/pg-network-review.md": "7e6c358acfc7f53e25edb9a66de4829157501e688a0725704a0542c1b94097ac",
+  ".local/security-residual-os-2026-11-25/pg-elf-probe.json": "5ce8d7e2b84fdf94256d540f3edf63f051cf17f4d0ae2492826140fdac8916a8",
+  ".local/security-residual-os-2026-11-25/vendor/pg-network-acquisition.json": "058389808dd1bfcabe77a15d457c7bf6ae19be668e0e39ae9fde21127324217e",
+  "deploy/self-host/compose.yaml": "bbd70bddb9b6f2786b0a8cae0c32c0b0198db0c46d90fb25e48b8fa22c21e3f1",
+  "deploy/self-host/database.sql": "e5a6838312fc141f7b9c4436a328b087357b02e01a5fe71f0a38e6e023c2653b",
+  ".local/security-residual-os-2026-11-25/vendor/krb5-107708-fix.patch": "cba75fe3e3d32e2cf6663eed656da7188b2e4ad0324a6f1b7a7f1d40953f632f",
+  ".local/security-residual-os-2026-11-25/vendor/krb5-26461-fix.patch": "b5eee831d921683b15a3bfe890a59580a407a51819143aa7e59ff7dd5a45155d",
+  ".local/security-residual-os-2026-11-25/vendor/krb5-107778-fix.patch": "955de54b130bc76b07d4d6ca8117eda441cbfc0daa83d93c6d05d776889bc5d0"
+}

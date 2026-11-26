@@ -1,0 +1,119 @@
+{
+  "all_layers_inspected": 43,
+  "bookworm_to_trixie_upgrade": true,
+  "chromium": {
+    "ordinaryDenied": true,
+    "results": [
+      {
+        "keyboardCheck": true,
+        "logoutConcealed": true,
+        "noBrowserGitHubRequests": true,
+        "realDisabledState": true,
+        "simulatedNewerRelease": true,
+        "theme": "light",
+        "widths": [
+          1440,
+          768,
+          390,
+          320
+        ]
+      },
+      {
+        "keyboardCheck": true,
+        "logoutConcealed": true,
+        "noBrowserGitHubRequests": true,
+        "realDisabledState": true,
+        "simulatedNewerRelease": true,
+        "theme": "dark",
+        "widths": [
+          1440,
+          768,
+          390,
+          320
+        ]
+      }
+    ],
+    "tlsVerified": true
+  },
+  "compliance_tests": 20,
+  "decoder_regression_red_then_green": true,
+  "fresh_https": true,
+  "frontend_tests": {
+    "failed": 0,
+    "files": 122,
+    "passed": 1018
+  },
+  "full_backend_suite_repeated": false,
+  "lint": true,
+  "operator_tests": 72,
+  "optimizer_bypass_regression_red_then_green": true,
+  "postgresql_upgrade": [
+    "17.11",
+    "17.12"
+  ],
+  "production_compiled_decoder_probe": {
+    "avif_metadata_rejected": true,
+    "avif_optimization_rejected": true,
+    "compiled_register": true,
+    "heif_version": "1.23.5",
+    "next_optimizer_same_sharp": true,
+    "scope": "Exact production compiled startup and optimizer module; safe synthetic inputs, no exploit payload or live-instance access.",
+    "sharp_version": "0.35.5",
+    "supported_inputs": [
+      "jpeg",
+      "png",
+      "webp",
+      "gif"
+    ]
+  },
+  "release_security_gate": "held",
+  "release_tests": 26,
+  "restore": {
+    "artwork_and_key_archives_verified": true,
+    "backup_images": {
+      "api": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+      "tools": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+      "web": "sha256:dd22e0040bacac02a97147c36eb4090b0aae37f735042f43ec1a1f51e42d6e09"
+    },
+    "candidate_images": {
+      "api": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+      "tools": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+      "web": "sha256:dd22e0040bacac02a97147c36eb4090b0aae37f735042f43ec1a1f51e42d6e09"
+    },
+    "cleanup": [
+      {
+        "containers_remaining": false,
+        "project": "ratefreak-0d425ccb634d",
+        "volumes_remaining": false
+      },
+      {
+        "containers_remaining": false,
+        "project": "ratefreak-5106d4636bc9",
+        "volumes_remaining": false
+      }
+    ],
+    "complete": true,
+    "current_journal_entries": 0,
+    "format": 1,
+    "journal_excluded_from_backup": true,
+    "repeated_replay_preserved_data": true,
+    "restore_startup_guard": true,
+    "scope": "Updated PostgreSQL client backup/isolated restore, protected key/artwork integrity and replay with an empty current fixture journal; no production data.",
+    "table_count": 33,
+    "table_fingerprints_preserved": true
+  },
+  "source_revision": "8cc1462a32c826b98d7267b5173cd9c8b9329a45",
+  "source_validation": {
+    "components": 502,
+    "images": {
+      "api": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+      "tools": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+      "web": "sha256:dd22e0040bacac02a97147c36eb4090b0aae37f735042f43ec1a1f51e42d6e09"
+    },
+    "material_files": 43,
+    "native_inputs_verified": 406,
+    "new_os_source_versions": 4,
+    "valid": true
+  },
+  "typecheck": true
+}

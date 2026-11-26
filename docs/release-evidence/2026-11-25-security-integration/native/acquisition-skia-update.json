@@ -1,0 +1,23 @@
+[
+  {
+    "file": "skiasharp-4.157.0.nuspec",
+    "url": "https://api.nuget.org/v3-flatcontainer/skiasharp/4.157.0/skiasharp.nuspec",
+    "sha256": "2487836d74c477cf7e0eed9c72317b217292ecf2a68fe6bcfa6e846ee07c8e97",
+    "bytes": 5751,
+    "retrieved_utc": "2026-11-25T16:32:08.980916+00:00"
+  },
+  {
+    "file": "skiasharp-4.157.0-release.json",
+    "url": "https://api.github.com/repos/mono/SkiaSharp/releases/tags/v4.157.0",
+    "sha256": "a20e923e8d1b0bb96e8edf50c5cbc6abba8c33e269a2e05fd6ed29cd604ba135",
+    "bytes": 2762,
+    "retrieved_utc": "2026-11-25T16:32:08.880610+00:00"
+  },
+  {
+    "file": "skiasharp-4.157.0-notes.html",
+    "url": "https://mono.github.io/SkiaSharp/docs/releases/4.157.0.html",
+    "sha256": "3b7c02256bb1c49923c11306e01e00f225b6d32be89b18686f130eef7496d493",
+    "bytes": 10979,
+    "retrieved_utc": "2026-11-25T16:32:08.798768+00:00"
+  }
+]

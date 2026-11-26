@@ -1,0 +1,192 @@
+{
+  "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+  "elf_probe_sha256": "5ce8d7e2b84fdf94256d540f3edf63f051cf17f4d0ae2492826140fdac8916a8",
+  "core_probe_sha256": "760e932a1d8a3c9b2a90563a7bd0b34af01194831380822ac4517a6c1057dbf4",
+  "native_family_consumers": [
+    {
+      "path": "/usr/bin/dirmngr",
+      "sha256": "9c72739e653b6198a780bcad5a8fdc80933727ebd76073254b02443a941c8168",
+      "needed": [
+        "libassuan.so.9",
+        "libksba.so.8",
+        "libgpg-error.so.0",
+        "libnpth.so.0",
+        "libgnutls.so.30",
+        "libgcrypt.so.20",
+        "libldap.so.2",
+        "liblber.so.2",
+        "libc.so.6"
+      ]
+    },
+    {
+      "path": "/usr/bin/dirmngr-client",
+      "sha256": "d9899554772dd62e2899612c67d7010178a1762ae22b5da87b27c71ab05e9854",
+      "needed": [
+        "libassuan.so.9",
+        "libgpg-error.so.0",
+        "libgcrypt.so.20",
+        "libc.so.6"
+      ]
+    },
+    {
+      "path": "/usr/bin/gpg",
+      "sha256": "7c9d2f9416aabcd10199e2984439f49612644a948279ac56bdf70d69c8958ddf",
+      "needed": [
+        "libz.so.1",
+        "libbz2.so.1.0",
+        "libsqlite3.so.0",
+        "libgcrypt.so.20",
+        "libreadline.so.8",
+        "libassuan.so.9",
+        "libnpth.so.0",
+        "libgpg-error.so.0",
+        "libc.so.6"
+      ]
+    },
+    {
+      "path": "/usr/bin/gpg-agent",
+      "sha256": "6855b10b86292329d6b8185e6e55a10fed0c6406756d3d04feb4633e7aaafff4",
+      "needed": [
+        "libgcrypt.so.20",
+        "libassuan.so.9",
+        "libnpth.so.0",
+        "libgpg-error.so.0",
+        "libc.so.6"
+      ]
+    },
+    {
+      "path": "/usr/bin/gpg-connect-agent",
+      "sha256": "75af86fb74d8bac594cc60528f061c4316b3bad8db1f5f3c6b14b7cbc56b5b13",
+      "needed": [
+        "libassuan.so.9",
+        "libgcrypt.so.20",
+        "libgpg-error.so.0",
+        "libreadline.so.8",
+        "libc.so.6"
+      ]
+    },
+    {
+      "path": "/usr/bin/gpgconf",
+      "sha256": "17ea11378c9d71166df855b73a66333fbf8095cb8da7d3a474bd325e3ca726db",
+      "needed": [
+        "libgcrypt.so.20",
+        "libgpg-error.so.0",
+        "libc.so.6"
+      ]
+    },
+    {
+      "path": "/usr/bin/gpgsm",
+      "sha256": "b3411f52a1e8317d523f062b920511ab2ba0da10ef995d46cf11711313484029",
+      "needed": [
+        "libgcrypt.so.20",
+        "libksba.so.8",
+        "libgpg-error.so.0",
+        "libassuan.so.9",
+        "libnpth.so.0",
+        "libreadline.so.8",
+        "libc.so.6"
+      ]
+    },
+    {
+      "path": "/usr/lib/gnupg/dirmngr_ldap",
+      "sha256": "a948ecc26c3bc603bd31b1f58d3fc740b625873d38b67977529b6ea5bcb1ab2a",
+      "needed": [
+        "libgpg-error.so.0",
+        "libgcrypt.so.20",
+        "libldap.so.2",
+        "liblber.so.2",
+        "libc.so.6"
+      ]
+    },
+    {
+      "path": "/usr/lib/gnupg/gpg-check-pattern",
+      "sha256": "c9c5e51695c271e52b0948837e87c02e6036a0b87dc20e045754e28b4182487a",
+      "needed": [
+        "libgcrypt.so.20",
+        "libgpg-error.so.0",
+        "libc.so.6"
+      ]
+    },
+    {
+      "path": "/usr/lib/gnupg/gpg-preset-passphrase",
+      "sha256": "16508dfe6953c403907b67511fe9bc995a399ec3926181505d6a92180262bee7",
+      "needed": [
+        "libassuan.so.9",
+        "libgcrypt.so.20",
+        "libgpg-error.so.0",
+        "libc.so.6"
+      ]
+    },
+    {
+      "path": "/usr/lib/gnupg/gpg-protect-tool",
+      "sha256": "5001ef385e73525e02302b6f87144340fb66895a207f995520334b7f362c559b",
+      "needed": [
+        "libgcrypt.so.20",
+        "libassuan.so.9",
+        "libgpg-error.so.0",
+        "libc.so.6"
+      ]
+    },
+    {
+      "path": "/usr/lib/gnupg/keyboxd",
+      "sha256": "05a340e708ee43637760efbbea4901137e3bb65ecc2446daa5e0e2c829924c1c",
+      "needed": [
+        "libksba.so.8",
+        "libgpg-error.so.0",
+        "libgcrypt.so.20",
+        "libassuan.so.9",
+        "libnpth.so.0",
+        "libsqlite3.so.0",
+        "libc.so.6"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libexslt.so.0.8.20",
+      "sha256": "e9adc04d969500b280950aaf4a7ee7755d030e22edbede68bce8917e5081f98c",
+      "needed": [
+        "libxslt.so.1",
+        "libxml2.so.2",
+        "libgcrypt.so.20",
+        "libm.so.6",
+        "libc.so.6"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libgnutls.so.30.40.3",
+      "sha256": "4b14edde42e7cbeefd8a6d88d035e096f2e6412a535388bb1d073a1c196e2822",
+      "needed": [
+        "libp11-kit.so.0",
+        "libidn2.so.0",
+        "libunistring.so.5",
+        "libtasn1.so.6",
+        "libhogweed.so.6",
+        "libnettle.so.8",
+        "libgmp.so.10",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ]
+    }
+  ],
+  "postgres_ldap_backend": [
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libldap.so.2.0.200",
+      "sha256": "e8f34e65087f24f296fa7a65a8c65383f4a7e2b532c46e40463d4e59a206c20a",
+      "needed": [
+        "liblber.so.2",
+        "libsasl2.so.2",
+        "libssl.so.3",
+        "libcrypto.so.3",
+        "libc.so.6"
+      ],
+      "selected_symbols": {}
+    }
+  ],
+  "source_hashes": {
+    "src/backend/jit/llvm/llvmjit.c": "07b8bc8d6ea9908bb7ea95beca1f39135c6afd186348633a3221d020aac4b443",
+    "src/backend/jit/llvm/llvmjit_inline.cpp": "b80d96480fc887bcf36805013adc5a29889c8ab98ab9fd1c9390593d0ffb37d3",
+    "src/backend/jit/llvm/llvmjit_expr.c": "d1af4fd432b22af884620973f9029d4f6d29961fa2336e728a14c98950c8aee7",
+    "src/backend/libpq/auth.c": "3257a7b822764268e1ac47c0002959c56d203d17b008538ecb179b48c6c64e0b",
+    "src/interfaces/libpq/fe-connect.c": "cb5b78c91c5eda272a2b8c85c31fcfce91fc3d4806314e99ab16b6f5be5fd6d4"
+  },
+  "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction."
+}

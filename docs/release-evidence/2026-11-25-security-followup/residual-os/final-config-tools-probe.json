@@ -1,0 +1,61 @@
+{
+  "environment_present": {
+    "GSS_MECH_CONFIG": false,
+    "KRB5_CONFIG": false,
+    "KRB5_KTNAME": false,
+    "LD_PRELOAD": false,
+    "LD_LIBRARY_PATH": false
+  },
+  "paths": {
+    "/etc/gss": {
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "entries": [
+        "mech.d"
+      ]
+    },
+    "/etc/gss/mech": {
+      "exists": false
+    },
+    "/etc/gss/mech.d": {
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "entries": []
+    },
+    "/etc/krb5.conf": {
+      "exists": false
+    },
+    "/etc/krb5.conf.d": {
+      "exists": false
+    },
+    "/etc/pam.d": {
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "entries": [
+        "chfn",
+        "chpasswd",
+        "chsh",
+        "common-account",
+        "common-auth",
+        "common-password",
+        "common-session",
+        "common-session-noninteractive",
+        "login",
+        "newusers",
+        "other",
+        "passwd",
+        "runuser",
+        "runuser-l",
+        "su",
+        "su-l"
+      ]
+    }
+  },
+  "image_id": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772"
+}

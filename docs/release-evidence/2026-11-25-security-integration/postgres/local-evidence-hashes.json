@@ -1,0 +1,14 @@
+[
+  {
+    "file": ".local/debian-trial-2026-11-23/source-files/9cf136a703d8ee2f83465c43be4e9e8e7930c82b0bfba13be7e2537be769ac55-postgresql-17_17.12.orig.tar.bz2",
+    "sha256": "9cf136a703d8ee2f83465c43be4e9e8e7930c82b0bfba13be7e2537be769ac55"
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/postgres-os-investigation/image-linkage.txt",
+    "sha256": "85c92df6c56ffc8419c462e9cfd318f1c907b3d5a8e4be8b853e9e1157373ae8"
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/postgres-os-investigation/assessment.md",
+    "sha256": "46170e104e5506ad213e1d9517ec58b63d4c094a5988ead5f227a30873cbf14d"
+  }
+]

@@ -1,0 +1,31 @@
+[
+  {
+    "file": "chrome-fixed-DEPS.b64",
+    "url": "https://chromium.googlesource.com/chromium/src/+/refs/tags/157.0.8103.78/DEPS?format=TEXT",
+    "sha256": "0deb741abedb8794fc202492245eec0de946e8f4d678674da04f970dcbe59613",
+    "bytes": 254956,
+    "retrieved_utc": "2026-11-25T21:13:43.161393+00:00"
+  },
+  {
+    "file": "chrome-fixed-vs-old-skia.json",
+    "url": "https://api.github.com/repos/mono/skia/compare/fef60e46c522b87e5802ddf0a215a763dd5e0483...c2d78902a56e24827a7273a4ed3461ce18780680",
+    "sha256": "ebd5427f6388aba92a943f8c25593d6073b8131bfde5240287982616267307e0",
+    "bytes": 2121710,
+    "status": "diverged",
+    "ahead_by": 1121,
+    "behind_by": 517,
+    "fixed_chrome_skia": "fef60e46c522b87e5802ddf0a215a763dd5e0483",
+    "head": "c2d78902a56e24827a7273a4ed3461ce18780680"
+  },
+  {
+    "file": "chrome-fixed-vs-new-skia.json",
+    "url": "https://api.github.com/repos/mono/skia/compare/fef60e46c522b87e5802ddf0a215a763dd5e0483...51cb594d773b5383a45065ea3c8cbec398ad2c36",
+    "sha256": "6ae2121df8b20aa635a2786f56061096364fa413996138c21db7b76a1928177d",
+    "bytes": 2084797,
+    "status": "ahead",
+    "ahead_by": 1180,
+    "behind_by": 0,
+    "fixed_chrome_skia": "fef60e46c522b87e5802ddf0a215a763dd5e0483",
+    "head": "51cb594d773b5383a45065ea3c8cbec398ad2c36"
+  }
+]

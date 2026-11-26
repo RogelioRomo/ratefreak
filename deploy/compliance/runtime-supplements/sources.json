@@ -25,91 +25,91 @@
       "api",
       "tools"
     ],
-    "review": "docs/bundled-runtime-license-review.md",
-    "sha256": "041b207c126bacf4660237421eb5ce98ea5e06a80006b1bb0fe9c8af194f3e5f",
+    "review": "docs/skia-4.157-native-review-2026-11-25.md",
+    "sha256": "bc3e2ea64ac6341c786ab4d0e1407de17c6330e08c66eb64dcc9c63a6050547e",
     "targets": [
       {
         "path": "/app/runtimes/linux-arm/native/libSkiaSharp.so",
-        "sha256": "d439f9976e0ec0315dd8087c31780e80d070492a444ec9880668c2ae8fee1efd"
-      },
-      {
-        "path": "/app/runtimes/linux-musl-arm64/native/libSkiaSharp.so",
-        "sha256": "483a1104b08bc97c8ebd5611fc2bc8f5d02948e9ef31cffae136b63b9a3796ef"
+        "sha256": "c71d39d36441d845de4e70ef14a9f4b371ee1e35f52caaf1b1f022a9c313646d"
       },
       {
         "path": "/app/runtimes/linux-arm64/native/libSkiaSharp.so",
-        "sha256": "fb2f5d9374aef307ed4f92272cb57c1a11c975ab98291389a61b444b2fc473e1"
+        "sha256": "43dd153d03d89f5b20c7e0dc554ee2d4bfce6cbf35ee87d7d2fd5f20a3f4e19e"
       },
       {
         "path": "/app/runtimes/linux-bionic-arm64/native/libSkiaSharp.so",
-        "sha256": "5fdf0d9f1ba48768c2f9cbedf1bbea05913ad889d8b930c5c1d4cd4b26e4f1a2"
-      },
-      {
-        "path": "/app/runtimes/linux-x64/native/libSkiaSharp.so",
-        "sha256": "26a5cf2cfb4529cf00caabc7e9f381ff59641c36690a6e658f8e3e4fa9ac850e"
-      },
-      {
-        "path": "/app/runtimes/linux-musl-x64/native/libSkiaSharp.so",
-        "sha256": "bc1d9134cf3e573615fec26f7ad411e1380718e202b6adf8667b0bbccb45ec6c"
-      },
-      {
-        "path": "/app/runtimes/linux-musl-riscv64/native/libSkiaSharp.so",
-        "sha256": "2477c0558fae1e451ee26dfdd93bf1d6be16e2a69633ab078daa849950a06d6d"
-      },
-      {
-        "path": "/app/runtimes/win-x86/native/libSkiaSharp.pdb",
-        "sha256": "d6007406766319ac58f36de36bd2be785360cad8e9560131fd0a957640a1079d"
-      },
-      {
-        "path": "/app/runtimes/win-x86/native/libSkiaSharp.dll",
-        "sha256": "af680debfa90df405b7624df8bdb1e71e2a59d9c468c13cf7cde52f76c2498d2"
-      },
-      {
-        "path": "/app/runtimes/linux-musl-arm/native/libSkiaSharp.so",
-        "sha256": "d165aeace187b37f01fff019bf049ec3864e4f598904b886cca4e415931580c1"
-      },
-      {
-        "path": "/app/runtimes/linux-riscv64/native/libSkiaSharp.so",
-        "sha256": "a280f84169f9024bc1a0bd0115e2220ab7a0da1468df48ccb728a93824cb64f9"
-      },
-      {
-        "path": "/app/runtimes/linux-musl-loongarch64/native/libSkiaSharp.so",
-        "sha256": "9ed7a5629b52487c2e0b5fa87dd299ad4fd82d148e119ef06fe8cf2d0141af18"
+        "sha256": "fcdb780399d20858d51dff97c8a882306ac8ca589199de341c89d1fb40361c31"
       },
       {
         "path": "/app/runtimes/linux-bionic-x64/native/libSkiaSharp.so",
-        "sha256": "a9203e712c241d576a098722176ee7b835bcc6d5501b742851bd8769cad7a7fc"
-      },
-      {
-        "path": "/app/runtimes/linux-x86/native/libSkiaSharp.so",
-        "sha256": "72e2d38cbc41e47544d06e04469ffba6f1f36a6bb0524e56fd14ad5facbc2c8e"
-      },
-      {
-        "path": "/app/runtimes/osx/native/libSkiaSharp.dylib",
-        "sha256": "588d04be630b26e832f621e9ed2b03235324dbe7ba452de50c2c0fdfd77d197e"
-      },
-      {
-        "path": "/app/runtimes/win-x64/native/libSkiaSharp.pdb",
-        "sha256": "d14b3fd77e54785d21c49f286a804b404d07a36c667fe65863ebb10029a370fc"
-      },
-      {
-        "path": "/app/runtimes/win-x64/native/libSkiaSharp.dll",
-        "sha256": "635d8189af815bc57f39282724e461925d17ea88877279c207e6a80ee6d8d135"
-      },
-      {
-        "path": "/app/runtimes/win-arm64/native/libSkiaSharp.pdb",
-        "sha256": "9d4c39ea07db8065c3dfbe91374add4f02cd12a578c2e0de516d6de626465b44"
-      },
-      {
-        "path": "/app/runtimes/win-arm64/native/libSkiaSharp.dll",
-        "sha256": "800abc5ae146ac93d03a916005739ddc59e478ec3d69fde04c415de1cc466f43"
+        "sha256": "5baf33953c8226818eb6bc41d5fe706900d19c7f75fe0f202cf7cfdf20b0a23f"
       },
       {
         "path": "/app/runtimes/linux-loongarch64/native/libSkiaSharp.so",
-        "sha256": "8b6f2872c41fda2eb650bad2dcca3a2a03c8cd10dc739b68555f156605018461"
+        "sha256": "0d5d17db04d80ed5fc3a88c2ceb53d93b157e42b4b91d925e1acb5d22220573a"
+      },
+      {
+        "path": "/app/runtimes/linux-musl-arm/native/libSkiaSharp.so",
+        "sha256": "f93f2b83b83c30eec637eff8339355c01baec5b23c39e22371e71673eca173e7"
+      },
+      {
+        "path": "/app/runtimes/linux-musl-arm64/native/libSkiaSharp.so",
+        "sha256": "c3c90431c30ce57c2a6b49d4ac8c129734c99d77bf3da14ff9ca62b98ec8afc2"
+      },
+      {
+        "path": "/app/runtimes/linux-musl-loongarch64/native/libSkiaSharp.so",
+        "sha256": "af80129f408fb7a43ce9573aa7b9e5eddf2a8e8cc2e06d39a5beeb428cd22203"
+      },
+      {
+        "path": "/app/runtimes/linux-musl-riscv64/native/libSkiaSharp.so",
+        "sha256": "62cd4e56099bbf7af93ff40e2d9c44dbf29c68679e2e39cf9fc196f3d2de2ee5"
+      },
+      {
+        "path": "/app/runtimes/linux-musl-x64/native/libSkiaSharp.so",
+        "sha256": "b821d27d9ecbcd18b0a2e386a36f9c999ddf47275a821a20d98922f01e2907ae"
+      },
+      {
+        "path": "/app/runtimes/linux-riscv64/native/libSkiaSharp.so",
+        "sha256": "227f5dd31ee4ddbf20d934c324af9e8dcc5e6fbe069679f6da36eea029249a03"
+      },
+      {
+        "path": "/app/runtimes/linux-x64/native/libSkiaSharp.so",
+        "sha256": "37d70d52efbd0d03f1f1e6d458f9050e55d1f47ec8760d0fdbe5043416dbdac8"
+      },
+      {
+        "path": "/app/runtimes/linux-x86/native/libSkiaSharp.so",
+        "sha256": "43c9b8811228cf143cf1e5484c680db7fcd6acc323d46675bda691c11ac8fc27"
+      },
+      {
+        "path": "/app/runtimes/osx/native/libSkiaSharp.dylib",
+        "sha256": "0954ba0eff30f1c2044107ad12e660c31b09548b195e80d3cd040ebb0a4605b8"
+      },
+      {
+        "path": "/app/runtimes/win-arm64/native/libSkiaSharp.dll",
+        "sha256": "9436dd7ec7383d7d38e94eaf8619174e4efd153cebdf823cc6e56a23ab3c183c"
+      },
+      {
+        "path": "/app/runtimes/win-arm64/native/libSkiaSharp.pdb",
+        "sha256": "9191db92aee6e972003e020ca4e74a83c4d72dbe13b5f32ddcc9a49cd6a62924"
+      },
+      {
+        "path": "/app/runtimes/win-x64/native/libSkiaSharp.dll",
+        "sha256": "1b0eabbe6738818a2e9e58bc09fb7032dfabbd5e93f65eb4f604d5000fc4b3cd"
+      },
+      {
+        "path": "/app/runtimes/win-x64/native/libSkiaSharp.pdb",
+        "sha256": "c975fc65e279a86a1ffca49ed300467e4ca9785754758742a35f4bacacbee28d"
+      },
+      {
+        "path": "/app/runtimes/win-x86/native/libSkiaSharp.dll",
+        "sha256": "e96ae6ef75c35485df75b821f40cacbee0b2d956ee13d98a9124e0b4c3ac2b8d"
+      },
+      {
+        "path": "/app/runtimes/win-x86/native/libSkiaSharp.pdb",
+        "sha256": "e47000bf9bc9c6f86d178a12743dc35bf649e3b511d3b54fc4fd6eed55d62f27"
       }
     ],
-    "url": "https://github.com/mono/SkiaSharp/tree/d25e7fa628a2576e50ecc42004cc4fd03c6657f5"
+    "url": "https://github.com/mono/SkiaSharp/tree/2a53a3c8641073bc914c63ee158bbf62b8a0bb92"
   },
   {
     "file": "NODE-REDISTRIBUTION-NOTICES.txt",

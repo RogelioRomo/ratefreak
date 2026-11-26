@@ -1,0 +1,25 @@
+{
+  "format": 1,
+  "source_pairs": 4,
+  "files": 14,
+  "descriptor_sets_complete": true,
+  "archived_hashes_verified": true,
+  "file": "security-os-sources.tar",
+  "sha256": "08a65bc3240890f56e54a56d08d2cfd001717a4f50a5ff887c44173c6b8a7a2b",
+  "bytes": 75735040,
+  "image_ids": {
+    "api": "sha256:f45911e7f43d995ff085f49a9c04baf826e0cc6587fe17181a75772b9785b53f",
+    "web": "sha256:8ecc6945b96cb3d58b1b4a1b4f184e5b2832f328684e9d85cb2195bceb1d31c2",
+    "tools": "sha256:acd1e7bdb00fa26568c116e10a7d448ba78c0ba2feb462acff896e5fd842aabc"
+  },
+  "metadata_archives": [
+    {
+      "file": "api-source-indexes.tar.gz",
+      "sha256": "01dd0f94bfe4f9063e7a90cc9f90d817ae0d3c15a3705cdcce33d9f1ae4393fc"
+    },
+    {
+      "file": "web-source-indexes.tar.gz",
+      "sha256": "90b5361af3cd5b1ed823dd0990367f505ca2cdabb34e01d8695dc23142e1f020"
+    }
+  ]
+}

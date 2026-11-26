@@ -1,0 +1,66 @@
+{
+  "revision": "8cc1462a32c826b98d7267b5173cd9c8b9329a45",
+  "files": [
+    {
+      "file": "deploy/self-host/compose.yaml",
+      "sha256": "af6144dfea46899bc3dca255e745417f7aaed8d69c0ef9c750a759fde21ff77d",
+      "matches_frozen_source": true
+    },
+    {
+      "file": "deploy/self-host/pgdg.sources",
+      "sha256": "76b8008ab8b4ac5fb4f480df85c742bd2c8119da59fdafb142034058f803ebf4",
+      "matches_frozen_source": true
+    },
+    {
+      "file": "deploy/self-host/api.Dockerfile",
+      "sha256": "80cd194ab3af078805db8f2943f9c823d17af4595221332192564317c673fd29",
+      "matches_frozen_source": true
+    },
+    {
+      "file": "deploy/self-host/tools.Dockerfile",
+      "sha256": "c9731a6e92320171c252affd823c4384ba2ddca4aaa543eafc81f683f5c2b74e",
+      "matches_frozen_source": true
+    },
+    {
+      "file": "deploy/self-host/web.Dockerfile",
+      "sha256": "f44b843ae996c953e0b381a8e5c3ea4ad2e7f50bc9d91c560e39c56a6f21de7f",
+      "matches_frozen_source": true
+    },
+    {
+      "file": "deploy/self-host/entrypoint.py",
+      "sha256": "6ff6b8176b3234164a8c6a058dec24f4a2ea5688a3d179e482d00f7111c8694a",
+      "matches_frozen_source": true
+    },
+    {
+      "file": "deploy/self-host/maintenance.py",
+      "sha256": "1f8d9dd7fc007d3ca06574905bfe52c3620d9ab448214e6e517a97cf12f16ea9",
+      "matches_frozen_source": true
+    },
+    {
+      "file": "web/instrumentation.ts",
+      "sha256": "adc6c8ca21c49b623905f99ffca881cc84a5a2c4c0950288a96b3da7247b7d80",
+      "matches_frozen_source": true
+    },
+    {
+      "file": "web/instrumentation.test.ts",
+      "sha256": "d5b94685ca557a3e9c229a58a3f824e78c32a8213b6436e0d37b6abf80431004",
+      "matches_frozen_source": true
+    },
+    {
+      "file": "web/package.json",
+      "sha256": "cc2275d7aa573e6a84b2690c8fcf096af68deb518e17d8481a711a5828954596",
+      "matches_frozen_source": true
+    },
+    {
+      "file": "web/pnpm-lock.yaml",
+      "sha256": "083f8f3e0a3ded7c66f656f57dc05bc6b97a4787dce39976599729bfb58fe0fa",
+      "matches_frozen_source": true
+    },
+    {
+      "file": "src/RateFreak.Infrastructure/RateFreak.Infrastructure.csproj",
+      "sha256": "d83ffce3de8de1e098697d2fc80f6daa04357faa4673a1c1343b7269c7bbf726",
+      "matches_frozen_source": true
+    }
+  ],
+  "later_documentation_outside_snapshot": true
+}

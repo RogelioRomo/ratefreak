@@ -1,0 +1,57 @@
+{
+  "api": {
+    "source_files_equal": true,
+    "commands_equal": true,
+    "config_metadata_equal": true,
+    "elf_changes": [],
+    "elf_count": 501
+  },
+  "web": {
+    "source_files_equal": true,
+    "commands_equal": true,
+    "config_metadata_equal": true,
+    "elf_changes": [],
+    "elf_count": 440
+  },
+  "tools": {
+    "source_files_equal": true,
+    "commands_equal": true,
+    "config_metadata_equal": true,
+    "elf_changes": [
+      {
+        "path": "/app/efbundle",
+        "before": {
+          "path": "/app/efbundle",
+          "sha256": "057ca1480314b859783c5274a2e6096d0e6bf9e2f20b3a49005add3115597011",
+          "needed": [
+            "libdl.so.2",
+            "libpthread.so.0",
+            "libstdc++.so.6",
+            "libm.so.6",
+            "libgcc_s.so.1",
+            "libc.so.6",
+            "ld-linux-x86-64.so.2"
+          ],
+          "elf_machine": 62,
+          "selected_symbols": {}
+        },
+        "after": {
+          "path": "/app/efbundle",
+          "sha256": "01f67646dcb4ef4f8d26ae47bcc91728eb474c0092a0afc0c64b2aca5ca55a73",
+          "needed": [
+            "libdl.so.2",
+            "libpthread.so.0",
+            "libstdc++.so.6",
+            "libm.so.6",
+            "libgcc_s.so.1",
+            "libc.so.6",
+            "ld-linux-x86-64.so.2"
+          ],
+          "elf_machine": 62,
+          "selected_symbols": {}
+        }
+      }
+    ],
+    "elf_count": 558
+  }
+}

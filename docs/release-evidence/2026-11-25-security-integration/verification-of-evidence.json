@@ -1,0 +1,13 @@
+{
+  "acceptance_artifact_bindings_valid": true,
+  "image_identity_bindings_valid": true,
+  "input_hashes_valid": 208,
+  "limits": "Evidence consistency verification does not close remaining security findings or establish exhaustive vulnerability/privacy coverage.",
+  "public_json_files_parsed": 47,
+  "relative_links_valid": true,
+  "release_security_gate": "held",
+  "scan_match_reconciliation": 1485,
+  "source_bindings_valid": 12,
+  "source_coverage_valid": true,
+  "whitespace_check": true
+}

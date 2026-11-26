@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/etc/krb5.keytab": {
+      "exists": false
+    },
+    "/etc/krb5.conf": {
+      "exists": false
+    },
+    "/var/lib/krb5kdc": {
+      "exists": false
+    },
+    "/usr/sbin/krb5kdc": {
+      "exists": false
+    },
+    "/usr/sbin/kadmind": {
+      "exists": false
+    },
+    "/usr/bin/kadmin": {
+      "exists": false
+    },
+    "/usr/bin/kpasswd": {
+      "exists": false
+    },
+    "/usr/bin/genrb": {
+      "exists": false
+    }
+  },
+  "kerberos_env_names": [],
+  "cache_path_candidates": [],
+  "sasl_modules": [
+    "/usr/lib/x86_64-linux-gnu/sasl2/libsasldb.so",
+    "/usr/lib/x86_64-linux-gnu/sasl2/libsasldb.so.2.0.25",
+    "/usr/lib/x86_64-linux-gnu/sasl2/libsasldb.so.2"
+  ],
+  "runtime_id": 10001,
+  "commands": {
+    "curl --version": {
+      "exit": 0,
+      "stdout": "curl 8.5.0 (x86_64-pc-linux-gnu) libcurl/8.5.0 OpenSSL/3.0.13 zlib/1.3 brotli/1.1.0 zstd/1.5.5 libidn2/2.3.7 libpsl/0.21.2 (+libidn2/2.3.7) libssh/0.10.6/openssl/zlib nghttp2/1.59.0 librtmp/2.3 OpenLDAP/2.6.10\nRelease-Date: 2023-12-06, security patched: 8.5.0-2ubuntu10.16\nProtocols: dict file ftp ftps gopher gophers http https imap imaps ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps telnet tftp\nFeatures: alt-svc AsynchDNS brotli GSS-API HSTS HTTP2 HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM PSL SPNEGO SSL threadsafe TLS-SRP UnixSockets zstd\n",
+      "stderr": ""
+    },
+    "ldd /usr/bin/curl": {
+      "exit": 0,
+      "stdout": "\tlinux-vdso.so.1 (0x00007d3497af7000)\n\tlibcurl.so.4 => /lib/x86_64-linux-gnu/libcurl.so.4 (0x00007d34979e3000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007d34979c7000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007d34977b4000)\n\tlibnghttp2.so.14 => /lib/x86_64-linux-gnu/libnghttp2.so.14 (0x00007d3497789000)\n\tlibidn2.so.0 => /lib/x86_64-linux-gnu/libidn2.so.0 (0x00007d3497767000)\n\tlibrtmp.so.1 => /lib/x86_64-linux-gnu/librtmp.so.1 (0x00007d3497747000)\n\tlibssh.so.4 => /lib/x86_64-linux-gnu/libssh.so.4 (0x00007d34976d5000)\n\tlibpsl.so.5 => /lib/x86_64-linux-gnu/libpsl.so.5 (0x00007d34976c1000)\n\tlibssl.so.3 => /lib/x86_64-linux-gnu/libssl.so.3 (0x00007d3497617000)\n\tlibcrypto.so.3 => /lib/x86_64-linux-gnu/libcrypto.so.3 (0x00007d3497103000)\n\tlibgssapi_krb5.so.2 => /lib/x86_64-linux-gnu/libgssapi_krb5.so.2 (0x00007d34970af000)\n\tlibldap.so.2 => /lib/x86_64-linux-gnu/libldap.so.2 (0x00007d349704f000)\n\tliblber.so.2 => /lib/x86_64-linux-gnu/liblber.so.2 (0x00007d349703f000)\n\tlibzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x00007d3496f85000)\n\tlibbrotlidec.so.1 => /lib/x86_64-linux-gnu/libbrotlidec.so.1 (0x00007d3496f77000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007d3497af9000)\n\tlibunistring.so.5 => /lib/x86_64-linux-gnu/libunistring.so.5 (0x00007d3496dca000)\n\tlibgnutls.so.30 => /lib/x86_64-linux-gnu/libgnutls.so.30 (0x00007d3496bcd000)\n\tlibhogweed.so.6 => /lib/x86_64-linux-gnu/libhogweed.so.6 (0x00007d3496b85000)\n\tlibnettle.so.8 => /lib/x86_64-linux-gnu/libnettle.so.8 (0x00007d3496b30000)\n\tlibgmp.so.10 => /lib/x86_64-linux-gnu/libgmp.so.10 (0x00007d3496aac000)\n\tlibkrb5.so.3 => /lib/x86_64-linux-gnu/libkrb5.so.3 (0x00007d34969e3000)\n\tlibk5crypto.so.3 => /lib/x86_64-linux-gnu/libk5crypto.so.3 (0x00007d34969b5000)\n\tlibcom_err.so.2 => /lib/x86_64-linux-gnu/libcom_err.so.2 (0x00007d34969af000)\n\tlibkrb5support.so.0 => /lib/x86_64-linux-gnu/libkrb5support.so.0 (0x00007d34969a2000)\n\tlibsasl2.so.2 => /lib/x86_64-linux-gnu/libsasl2.so.2 (0x00007d3496988000)\n\tlibbrotlicommon.so.1 => /lib/x86_64-linux-gnu/libbrotlicommon.so.1 (0x00007d3496965000)\n\tlibp11-kit.so.0 => /lib/x86_64-linux-gnu/libp11-kit.so.0 (0x00007d34967bf000)\n\tlibtasn1.so.6 => /lib/x86_64-linux-gnu/libtasn1.so.6 (0x00007d34967a9000)\n\tlibkeyutils.so.1 => /lib/x86_64-linux-gnu/libkeyutils.so.1 (0x00007d34967a2000)\n\tlibresolv.so.2 => /lib/x86_64-linux-gnu/libresolv.so.2 (0x00007d3496790000)\n\tlibffi.so.8 => /lib/x86_64-linux-gnu/libffi.so.8 (0x00007d3496784000)\n",
+      "stderr": ""
+    },
+    "ldd /usr/lib/x86_64-linux-gnu/libcurl.so.4": {
+      "exit": 0,
+      "stdout": "\tlinux-vdso.so.1 (0x0000733a44b0e000)\n\tlibnghttp2.so.14 => /lib/x86_64-linux-gnu/libnghttp2.so.14 (0x0000733a44a18000)\n\tlibidn2.so.0 => /lib/x86_64-linux-gnu/libidn2.so.0 (0x0000733a449f6000)\n\tlibrtmp.so.1 => /lib/x86_64-linux-gnu/librtmp.so.1 (0x0000733a449d8000)\n\tlibssh.so.4 => /lib/x86_64-linux-gnu/libssh.so.4 (0x0000733a44966000)\n\tlibpsl.so.5 => /lib/x86_64-linux-gnu/libpsl.so.5 (0x0000733a44952000)\n\tlibssl.so.3 => /lib/x86_64-linux-gnu/libssl.so.3 (0x0000733a448a6000)\n\tlibcrypto.so.3 => /lib/x86_64-linux-gnu/libcrypto.so.3 (0x0000733a44392000)\n\tlibgssapi_krb5.so.2 => /lib/x86_64-linux-gnu/libgssapi_krb5.so.2 (0x0000733a4433e000)\n\tlibldap.so.2 => /lib/x86_64-linux-gnu/libldap.so.2 (0x0000733a442e0000)\n\tliblber.so.2 => /lib/x86_64-linux-gnu/liblber.so.2 (0x0000733a442d0000)\n\tlibzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x0000733a44216000)\n\tlibbrotlidec.so.1 => /lib/x86_64-linux-gnu/libbrotlidec.so.1 (0x0000733a44206000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x0000733a441ea000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000733a43fd7000)\n\tlibunistring.so.5 => /lib/x86_64-linux-gnu/libunistring.so.5 (0x0000733a43e2a000)\n\tlibgnutls.so.30 => /lib/x86_64-linux-gnu/libgnutls.so.30 (0x0000733a43c2f000)\n\tlibhogweed.so.6 => /lib/x86_64-linux-gnu/libhogweed.so.6 (0x0000733a43be7000)\n\tlibnettle.so.8 => /lib/x86_64-linux-gnu/libnettle.so.8 (0x0000733a43b90000)\n\tlibgmp.so.10 => /lib/x86_64-linux-gnu/libgmp.so.10 (0x0000733a43b0c000)\n\t/lib64/ld-linux-x86-64.so.2 (0x0000733a44b10000)\n\tlibkrb5.so.3 => /lib/x86_64-linux-gnu/libkrb5.so.3 (0x0000733a43a43000)\n\tlibk5crypto.so.3 => /lib/x86_64-linux-gnu/libk5crypto.so.3 (0x0000733a43a17000)\n\tlibcom_err.so.2 => /lib/x86_64-linux-gnu/libcom_err.so.2 (0x0000733a43a11000)\n\tlibkrb5support.so.0 => /lib/x86_64-linux-gnu/libkrb5support.so.0 (0x0000733a43a02000)\n\tlibsasl2.so.2 => /lib/x86_64-linux-gnu/libsasl2.so.2 (0x0000733a439e8000)\n\tlibbrotlicommon.so.1 => /lib/x86_64-linux-gnu/libbrotlicommon.so.1 (0x0000733a439c5000)\n\tlibp11-kit.so.0 => /lib/x86_64-linux-gnu/libp11-kit.so.0 (0x0000733a43821000)\n\tlibtasn1.so.6 => /lib/x86_64-linux-gnu/libtasn1.so.6 (0x0000733a4380b000)\n\tlibkeyutils.so.1 => /lib/x86_64-linux-gnu/libkeyutils.so.1 (0x0000733a43802000)\n\tlibresolv.so.2 => /lib/x86_64-linux-gnu/libresolv.so.2 (0x0000733a437f0000)\n\tlibffi.so.8 => /lib/x86_64-linux-gnu/libffi.so.8 (0x0000733a437e4000)\n",
+      "stderr": ""
+    },
+    "ldd /usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.15/libSystem.Net.Security.Native.so": {
+      "exit": 0,
+      "stdout": "\tlinux-vdso.so.1 (0x000078e08ba8a000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x000078e08ba75000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x000078e08b862000)\n\t/lib64/ld-linux-x86-64.so.2 (0x000078e08ba8c000)\n",
+      "stderr": ""
+    }
+  },
+  "krb_library_paths": {
+    "/usr/lib/x86_64-linux-gnu/libgssrpc*": [],
+    "/usr/lib/x86_64-linux-gnu/libkadm5*": [],
+    "/usr/lib/x86_64-linux-gnu/krb5/plugins/kdb/*": []
+  },
+  "gss_default_initiator_acquire": {
+    "major": 458752,
+    "minor": 2529639053,
+    "credential_handle_present": false,
+    "network": "none",
+    "scope": "Default credential acquisition only; no context exchange or credential bytes inspected."
+  }
+}

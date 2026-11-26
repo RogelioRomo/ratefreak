@@ -15,8 +15,8 @@ COPY deploy/compliance ./deploy/compliance
 RUN python3 deploy/compliance/notices.py nuget /root/.nuget/packages /notices --assets src/RateFreak.Api/obj/project.assets.json --include-package dotnet-ef/10.0.2 --supplements deploy/compliance/supplements --project-license LICENSE --evidence deploy/compliance/native --check
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0.15-noble@sha256:aac50ceef10391e78a899e3d2ccd00bbafa2dcb56ccf4586cbccf00edb84fc21 AS dotnet
-FROM debian:bookworm-slim@sha256:734a72b3d6142a71993b4bc580ca01d8ca687f77a2c422d96a961d3376b179bc AS runtime
-RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends python3 libicu72 ca-certificates && rm -rf /var/lib/apt/lists/*
+FROM debian:trixie-slim@sha256:7378260c0a098d27ac206225db5e7d92b8c7c84ea7afccc86eeb513756bbd392 AS runtime
+RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends python3 libicu76 ca-certificates && rm -rf /var/lib/apt/lists/*
 COPY deploy/self-host/postgresql-signing-key.asc /usr/share/keyrings/ratefreak-postgresql.asc
 COPY deploy/self-host/pgdg.sources /etc/apt/sources.list.d/pgdg.sources
 # Maintenance needs psql/pg_dump/pg_restore, not a PostgreSQL server or gosu.

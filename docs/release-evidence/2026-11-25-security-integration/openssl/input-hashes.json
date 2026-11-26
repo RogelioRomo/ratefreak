@@ -1,0 +1,502 @@
+[
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/acquire.py",
+    "sha256": "4fbe04f1af5c189dd2823ae6dd6333889282fef4652decd8677e5c9d7f936ded",
+    "bytes": 1673
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/acquire_consumers.py",
+    "sha256": "c13b5211b96e8b4bca6c879bd7ba02491bac9aa06018bfdc0a19dfdc67eeb0b9",
+    "bytes": 1456
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/acquire_signed.py",
+    "sha256": "4862970763dc88f6571cc97132bc4a8886a98ffa9ccb6865a489cba23ecdcf0e",
+    "bytes": 808
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/acquisition.json",
+    "sha256": "2dadb624566885ccc593266e88462f4b71f3b35be9468da577cd8e52fc1056b3",
+    "bytes": 2421
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/application-search.json",
+    "sha256": "1401d8dac9ba040c1036b773b935f5fd5335d53d5cc1e696a33122bae5791c9b",
+    "bytes": 100999
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/assessments.json",
+    "sha256": "abbad92f20fb7aae8fbc4fb9cd7579c9e1b3131737bb87193b1482e3416a64b9",
+    "bytes": 8176
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/binary-probe.json",
+    "sha256": "f037ce4b5202d45f5365aa8ba64db3b6783198b1427cd7c686095a758e60efaf",
+    "bytes": 5332
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/binary_probe.py",
+    "sha256": "a9e689919872689a6e704553ef2495d8e560589b2f32b5db8c17f23332bd6f22",
+    "bytes": 1146
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/consumer-acquisition.json",
+    "sha256": "8894c4815be23450a69abb8d43c842c1d71e54a9ac6754e2180523b9a831ad32",
+    "bytes": 19070
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-SignedCms.cs",
+    "sha256": "e95e17eeabb499616e058e79de101605ef044185cebcac19a2a68ae2556d7119",
+    "bytes": 32971
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-SignerInfo.cs",
+    "sha256": "a304d0c3152f115dc7fc43d9bf3bb8e2118b7971fc05ffcb3fb13781171c5b98",
+    "bytes": 38601
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pal_pkcs7.c",
+    "sha256": "a89d4b1e5af3a5a0d0f2d528a1822bd5483ca55103a30eac0610d5c3453eb82b",
+    "bytes": 1692
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pal_x509.c",
+    "sha256": "ffe2cff098aaeb6490bd7a52cb9432e630ae0ff4f66e0289bafae8b0f7843035",
+    "bytes": 40851
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pal_x509_root.c",
+    "sha256": "8a13665b40d4a80382370115a71a4fd4c757cf90ee164613359f7f1add6111a7",
+    "bytes": 887
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pkcs/AsnHelpers.cs",
+    "sha256": "e0c6fff54abd9c172fdb3cc0a181375f356af6ebf22fd74560dfc75d2e77ff2f",
+    "bytes": 6216
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pkcs/ManagedPal.Asn.cs",
+    "sha256": "a33266675f868a26ce93b85d4ee4c9cbdee9e5c5a0a9bdda25bfac2876851d76",
+    "bytes": 1485
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pkcs/ManagedPal.Decode.cs",
+    "sha256": "d19637831119ddba8d4d6af991de91b37e58b4b7abf1de5bcb93f49a46d5f17e",
+    "bytes": 4308
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pkcs/ManagedPal.Decrypt.cs",
+    "sha256": "41c7f0dd2d66ccc9d1d35de3b731a20ed44651c3435e10325230ed6574e46268",
+    "bytes": 8632
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pkcs/ManagedPal.Encrypt.cs",
+    "sha256": "aa6648b9dcd71ee3a04974bc653eae551cab02b48d96a23f9ced4f1535d88011",
+    "bytes": 7982
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pkcs/ManagedPal.Exceptions.cs",
+    "sha256": "d8e5bc46d66ce2eefcc64707e429c900278d73cadffd8b07a2f0d3d570926f0b",
+    "bytes": 1164
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pkcs/ManagedPal.KeyAgree.cs",
+    "sha256": "2dd2547a63fc1ffbec8eb5f89d4514eb5a76fb7bda47b58baeb809e3d659484c",
+    "bytes": 3529
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pkcs/ManagedPal.KeyTrans.cs",
+    "sha256": "50480769288ed6a9f5c706dcd7829c91163b6190d8a3a69379cc0e2b7feb5c36",
+    "bytes": 8780
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pkcs/ManagedPal.cs",
+    "sha256": "de5b1c42ac00bd5301228f8e6d6eba946086235dadd80de8820716863566e1e8",
+    "bytes": 7961
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pkcs/PkcsPal.AnyOS.cs",
+    "sha256": "d372f31a7f315a6073d0ae0cdc783cff3c64328e2ffcd30d87e613e11d834452",
+    "bytes": 345
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pkcs-anyos-api.json",
+    "sha256": "3df9d031ab376b0e89639794fa42aa9e9bc37d47f7585dbbf028b712d853bfcc",
+    "bytes": 15263
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pkcs-api.json",
+    "sha256": "59298d4f0bc0837caae0e902c6d0d77c9b76f7f89aa2f83b14e6932e8730a296",
+    "bytes": 2427
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_aes.cc",
+    "sha256": "64f073b1649fc2d373749cafc605bf0859645ad912bfd0ca3a8bba9b81b83a91",
+    "bytes": 20377
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_aes.h",
+    "sha256": "0b794c5fab5f55344c6d0fd093627acd8272c1d85eb7b14e4d53ce35cfb8842e",
+    "bytes": 4196
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_argon2.cc",
+    "sha256": "67010c2b0afef8ac72d947981c5e51747b6d721d5b9cb2fd1444bb72c12757b6",
+    "bytes": 5616
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_argon2.h",
+    "sha256": "5429b948ee8a09844a1b71122020db768774e9efdd4bed47560d4c64d382ca6e",
+    "bytes": 2601
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_bio.cc",
+    "sha256": "8a7c9a5495381398865eed02e086298c70f1ca4e5d66d506337c8fec4f21293c",
+    "bytes": 11969
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_bio.h",
+    "sha256": "b5831a683d289ddc2d5814f4e4664256973089df61ef79c51c1c1239876fb370",
+    "bytes": 6357
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_chacha20_poly1305.cc",
+    "sha256": "ca971b386e0c1534f59c00b30b8620bb45464fdd52980da6c162441c95d7b8dc",
+    "bytes": 10101
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_chacha20_poly1305.h",
+    "sha256": "d67c5a456c6ac97f33fe4fa32b91e3e2b4e63b92718cdf07ad6975eec833d35e",
+    "bytes": 1968
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_cipher.cc",
+    "sha256": "d9ae6633ec35e1a906d20a3d02852e044beb399e44f658c9876671466cf8baf4",
+    "bytes": 34530
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_cipher.h",
+    "sha256": "cd056f36df3228dc028ff2aef6e27916ec47b47f0e82eae0e1c5bd25a0d98634",
+    "bytes": 9543
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_common.cc",
+    "sha256": "7ba47367625b9d3c96bdfec2a968f1161e3785212c1d1a375183b8bc7f54eadc",
+    "bytes": 11056
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_common.h",
+    "sha256": "c847b4492853a6ab5d3e9c961d373a62416501126830c119a6bbc33f4509c7c4",
+    "bytes": 1647
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_context.cc",
+    "sha256": "70f97e403bf6ff6854fa8c060c23455158c8431ff4e95b521b26d0c51182fb5d",
+    "bytes": 104154
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_context.h",
+    "sha256": "4e5fd1601abc6c2adaf57b4f1970711539fef95c38e8c0e89d326c609ea54d0a",
+    "bytes": 9453
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_dh.cc",
+    "sha256": "75ad88f9d74e3e8df311186d9fdb9274a0d467ab45e59a7aeb8bc7c1103ab337",
+    "bytes": 20573
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_dh.h",
+    "sha256": "a5101be0c83924cd303350b1ddb853e92c9439fda374220d778accafdcf85cc7",
+    "bytes": 3980
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_dsa.cc",
+    "sha256": "1ba023d816a9567b6bf696ce84382aa8031deaaa1da7b76824af55b508b179cf",
+    "bytes": 3076
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_dsa.h",
+    "sha256": "43ec9d85697ccf7c9e1abcda6faadf5e156a83300ba5a5523b67d8d73a51d1ae",
+    "bytes": 1507
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_ec.cc",
+    "sha256": "f2b800265ec184956e5ab000320aed5c2c8582ad284a46ad23a64a162ba86323",
+    "bytes": 24904
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_ec.h",
+    "sha256": "64bbbf7511b8ce44f5e0291af9146cf438d70ac15cab82c41b1360dc1c850afd",
+    "bytes": 4313
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_hash.cc",
+    "sha256": "866fc22855b1f51b312fb7bf6d6c19dfd2a41719bc85c55b1872d660b297c201",
+    "bytes": 39639
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_hash.h",
+    "sha256": "d6b80b2723b7526ba68274f7987129e258274628ea720ac9ea431dd96d167a21",
+    "bytes": 4844
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_hkdf.cc",
+    "sha256": "47f1af4c0f38a4d9cd8db7b1a74a07c5c6d3529f817f8124c8b46562a74f3814",
+    "bytes": 4920
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_hkdf.h",
+    "sha256": "d10d1b07af3c54aaf2723a0255c3f96dc88df756f652ec54896c864ad8e7efac",
+    "bytes": 1710
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_hmac.cc",
+    "sha256": "183fb010ba15be0389e5f0dfd5a2f7de2a9f9f5aada5268d859ceaefb127f297",
+    "bytes": 7887
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_hmac.h",
+    "sha256": "bea321fc8e6583eb6a77aa1c485a41c7985937b41e410123ed1ad2901e5a82f9",
+    "bytes": 2707
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_kem.cc",
+    "sha256": "8f67b6db7fb652f052e91726fd94e4e29e1a306d1f6fa5015870636df607d0bb",
+    "bytes": 8737
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_kem.h",
+    "sha256": "28d1806b349d31ac04c6261d87285cf5620857aff97d49bcb05d3bc1db52ff15",
+    "bytes": 3928
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_keygen.cc",
+    "sha256": "3a622fea8149e9c33aa3dd1a97c013eb982e49eafc771ed17d6c31620c8401ad",
+    "bytes": 3273
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_keygen.h",
+    "sha256": "24355e2a2ad286f253fbaaa219c71c07b583d78bdc78305aa74ea1ad4c78d42e",
+    "bytes": 13633
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_keys.cc",
+    "sha256": "34e83b6c5dd27f7689138ff4634b85fa96064b1e627115bb88868dcbc1806d7f",
+    "bytes": 78926
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_keys.h",
+    "sha256": "39039eb985d158f2f67cc96624dbf1f8db4defbf07b62dc3362ca9b266db6d2d",
+    "bytes": 18541
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_kmac.cc",
+    "sha256": "232b07383f131c70e4a1ef27eea203c6b45322d6aa62e1ae19fd42743041a512",
+    "bytes": 9653
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_kmac.h",
+    "sha256": "6cdcfd4ee5837ea6b98835b0bbb6cd44247329ef1e9d19126c455a20d6b9aba2",
+    "bytes": 2305
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_mac.cc",
+    "sha256": "14367ebc13307436693216e233818e5fbcb0ebb70de1cd7ddeec377c99ba9f74",
+    "bytes": 21155
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_mac.h",
+    "sha256": "3e1d7376a726a04602f78947646473c2a7fb67c4d92029af2788953dbe21b23a",
+    "bytes": 1517
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_pbkdf2.cc",
+    "sha256": "12a1f46e71db1bcae02be6b7266b03409c8d72be2e69f5fc92fae1df62fbb176",
+    "bytes": 4556
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_pbkdf2.h",
+    "sha256": "0b4523b0695c1e599ce6f5a231f0852d1276d0fe8fc7fcff5d448bfa90d18157",
+    "bytes": 2204
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_pkcs12.cc",
+    "sha256": "c0dcd9403131bbf05bd0f71daa60b57e5f153d5a04624c198dab889b5f01fbb0",
+    "bytes": 6426
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_pkcs12.h",
+    "sha256": "807ada9642d6d0f7731435db686a323314fa5f36031798584bfc3d20a58e7c16",
+    "bytes": 1779
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_pqc.cc",
+    "sha256": "e914088f2964e0b343c5b92c56b6e03ee4a862daa82ff259de32671c87147821",
+    "bytes": 586
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_pqc.h",
+    "sha256": "5a4e72363f8fdd26ca4ddea0398595fb21f9a1bb2184139cc8b2db9580d8e547",
+    "bytes": 391
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_random.cc",
+    "sha256": "16339a50c951cf4b5ae74358e1950ba225012b71a2664425246202d757b6bf4a",
+    "bytes": 7543
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_random.h",
+    "sha256": "8467fe7465c0467811405906320441befe8e84687a7c68d8ea770e26afe45c68",
+    "bytes": 4081
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_rsa.cc",
+    "sha256": "402455d11aa6b73100e790d4e3566ef986894cfafd6e7e8834f2c97cf510a698",
+    "bytes": 21939
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_rsa.h",
+    "sha256": "a19e43e768a3b8e303dd0b918d3a508da86b4e372e5f5252c19f5fdb70c314c8",
+    "bytes": 4161
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_scrypt.cc",
+    "sha256": "464007d17ffca6aeb7123d3b95f6d3043c8e6d759dd37a005c69aec8cdafe3cc",
+    "bytes": 4170
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_scrypt.h",
+    "sha256": "3422f31a66d3788c09d64cef3b177ff7e3c2e80e7939f51388e9c63e27db1143",
+    "bytes": 2397
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_sig.cc",
+    "sha256": "ab200f46eb0ca289a045120571f3664782dec84b33f84a99a0f6c5683a148ed4",
+    "bytes": 29288
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_sig.h",
+    "sha256": "dd2f5fb57ff4181f58b6def0204dbe9659cb0f443fd78ad2fe9602174f4f4be1",
+    "bytes": 4734
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_spkac.cc",
+    "sha256": "969afd5e9cbb9abc2800abb0db9e705d0f5567e87b64bb674c5f5d596e568aa3",
+    "bytes": 2763
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_spkac.h",
+    "sha256": "d51d15401c09fcb3e2d7c3d28fe7e4e01b12a88a9f672b1823268ba94d38f736",
+    "bytes": 538
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_timing.cc",
+    "sha256": "a822d9710003135cd5167f5829be9ad3d27cfec060d4aeb86ed9901b5ce558bf",
+    "bytes": 3389
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_timing.h",
+    "sha256": "22d863fb92b90004a60b902d7f5ae40b5401f0c3ea38e85b6aeb2e1c41edee12",
+    "bytes": 525
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_tls.cc",
+    "sha256": "1dd510d1df1d6631f84c303750695b0be0078003ab66cc91fb2caa9f9c51b43d",
+    "bytes": 85470
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_tls.h",
+    "sha256": "f0be7871521c2bfbb65a0b3baa74c95cfe70715267dfc6f7c9d832f6c19633e2",
+    "bytes": 15302
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_turboshake.cc",
+    "sha256": "005b8a83c49009118f50391d633a34f2d74dc89367532d0da684383eb0977aa8",
+    "bytes": 21423
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_turboshake.h",
+    "sha256": "478be98fda7cacb05d4bc3ea4e53a58069057dd7c10cd6af44bd221ebba593c0",
+    "bytes": 3405
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_util.cc",
+    "sha256": "030db11fd277debdb3fddd212f1ada7371664da04d7a9d010f80abe2c418a8cc",
+    "bytes": 42343
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_util.h",
+    "sha256": "8cc301bf5a274e038653b66bf04a42eed8a4a44a7d916e65b45c4e1f3138fba3",
+    "bytes": 26372
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_x509.cc",
+    "sha256": "cdba891ac9e503ff457f1989f9468d3b8d87a8314cf1f9bf65cf9719795cd2e5",
+    "bytes": 40730
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_x509.h",
+    "sha256": "3a88ec8cf679c6f483e6d13b426bc3b9f5c06f8284049add006926bdd022fcba",
+    "bytes": 5219
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto-api.json",
+    "sha256": "ed1eb705b1f97137cb87c33dcf4a50b77eb36f16fc840dfa41d1b0a03191591d",
+    "bytes": 51064
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-ncrypto.cc",
+    "sha256": "c8322d4d7dcc64c9f714410e2d02fa3f26fe007e84c8b9f2f933919ff226467b",
+    "bytes": 276285
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/node-ncrypto.h",
+    "sha256": "e3eabb5edf6100c050acca8b7a63f6ce6c9a83527c9f2e1e6153c9457d86e2b2",
+    "bytes": 75486
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/run_binary_probe.py",
+    "sha256": "992d0e1731d86f1326045ac50754a6059d40cdf6f8c2a741803b7f4769053bab",
+    "bytes": 856
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/openssl-investigation/signed-acquisition.json",
+    "sha256": "67764afce16448ab9bcd494990d8f1ec7d884ecfb7ce1a24fe662b94ff343926",
+    "bytes": 1019
+  },
+  {
+    "file": ".local/debian-advisory-assessment-2026-11-23/node-crypto_context.cc",
+    "sha256": "70f97e403bf6ff6854fa8c060c23455158c8431ff4e95b521b26d0c51182fb5d",
+    "bytes": 104154
+  },
+  {
+    "file": ".local/debian-advisory-assessment-2026-11-23/dotnet-opensslshim.h",
+    "sha256": "bf33ca9f37e5d20ede0b764e6fecfc7588920437c85a95e4f7a53a79e2b8d9a3",
+    "bytes": 68701
+  },
+  {
+    "file": ".local/debian-advisory-assessment-2026-11-23/libpq19-fe-secure-openssl.c",
+    "sha256": "1c80f0204bc5e66a5d86b5f9cd76b1230fcd9f60f6453ac8553003c66428d489",
+    "bytes": 54833
+  },
+  {
+    "file": ".local/debian-advisory-assessment-2026-11-23/libpq-source-provenance.json",
+    "sha256": "643a47fb9238043e91c31cda5d2b716d87842f3de022844b49f16adb5b2155e0",
+    "bytes": 502
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/vendor/openssl-20261110.txt",
+    "sha256": "31f4c88950cd9cd310794a218361b787d293a940d2568f9f82334915ac54a402",
+    "bytes": 11780
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/vendor/openssl-20261117.txt",
+    "sha256": "6f4219cd823c3472863cc592182ef571d7485ac2f8735845244dbc13e3e09f27",
+    "bytes": 8844
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/vendor/openssl-20261124.txt",
+    "sha256": "370945815429db4a94eae07603cbef690b4b1d2de0312060f35be7d6bd7a32e3",
+    "bytes": 9067
+  }
+]

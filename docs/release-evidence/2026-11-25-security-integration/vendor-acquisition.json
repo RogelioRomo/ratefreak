@@ -1,0 +1,51 @@
+[
+  {
+    "file": "debian-tracker.json",
+    "url": "https://security-tracker.debian.org/tracker/data/json",
+    "sha256": "acb1ff678467a38188457c9ae56ca07bf6e75ab4f0b775e2f358d2c9214294a9",
+    "bytes": 92774370,
+    "retrieved_utc": "2026-11-25T16:07:34.083698+00:00"
+  },
+  {
+    "file": "debian-cve-list.txt",
+    "url": "https://salsa.debian.org/security-tracker-team/security-tracker/-/raw/master/data/CVE/list",
+    "sha256": "ca4c7942a875a7b7db30a0d5f58c3a9df3283886291acef1fe858dd3795daa2a",
+    "bytes": 67481413,
+    "retrieved_utc": "2026-11-25T16:07:47.533441+00:00"
+  },
+  {
+    "file": "openssl-vulnerabilities.html",
+    "url": "https://openssl-library.org/news/vulnerabilities/index.html",
+    "sha256": "aa1913eb6c31e15bb11ca4629b8406d425762cd24ca1b20a341003d658dc09d3",
+    "bytes": 803856,
+    "retrieved_utc": "2026-11-25T16:07:31.063749+00:00"
+  },
+  {
+    "file": "openssl-20261124.txt",
+    "url": "https://openssl-library.org/news/secadv/20261124.txt",
+    "sha256": "370945815429db4a94eae07603cbef690b4b1d2de0312060f35be7d6bd7a32e3",
+    "bytes": 9067,
+    "retrieved_utc": "2026-11-25T16:07:30.583739+00:00"
+  },
+  {
+    "file": "openssl-20261117.txt",
+    "url": "https://openssl-library.org/news/secadv/20261117.txt",
+    "sha256": "6f4219cd823c3472863cc592182ef571d7485ac2f8735845244dbc13e3e09f27",
+    "bytes": 8844,
+    "retrieved_utc": "2026-11-25T16:07:30.946097+00:00"
+  },
+  {
+    "file": "openssl-20261110.txt",
+    "url": "https://openssl-library.org/news/secadv/20261110.txt",
+    "sha256": "31f4c88950cd9cd310794a218361b787d293a940d2568f9f82334915ac54a402",
+    "bytes": 11780,
+    "retrieved_utc": "2026-11-25T16:07:31.222690+00:00"
+  },
+  {
+    "file": "node-releases.json",
+    "url": "https://nodejs.org/dist/index.json",
+    "sha256": "cb36ee534b08ef30f63c0c8e1bff66ec143fb2ceedb26b331b58309165a4451d",
+    "bytes": 338361,
+    "retrieved_utc": "2026-11-25T16:07:31.366042+00:00"
+  }
+]

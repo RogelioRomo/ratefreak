@@ -1,0 +1,1132 @@
+[
+  {
+    "path": ".local/release-compliance/runtime-review-2026-11-21/native/skia-redistribution-notices/manifest.json",
+    "sha256": "458b28a4e50e007ea2f1b838d19a3e3d67234baf29d22425640ac130ca7fb1e5",
+    "bytes": 17879
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/SKIA-REDISTRIBUTION-NOTICES.txt",
+    "sha256": "4bb6f3dc4b519ba01e689c691c69ac35ad27a324c8a5bf090b759558cbddac8a",
+    "bytes": 622818
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/acquire.py",
+    "sha256": "f22ec23beea931a30d9b29b0cd4b0990c763b0600e0676f0a9ab978cdd1af20d",
+    "bytes": 1918
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/acquire_archives.py",
+    "sha256": "959f9639e1a18dbad325f7bd76a931a8e0b398cd9ad02f59bdf54dcd7b99c219",
+    "bytes": 664
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/acquire_more.py",
+    "sha256": "d1daacc375f669e6226f2640d27d9018c00bd3c9d4d8644fc027ae11402a11bc",
+    "bytes": 1382
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/acquisition-archives.json",
+    "sha256": "ccde74dbf63d42e0edd7bac21aaa0b60e4cd91ac98b78b1920fe2525c05904ae",
+    "bytes": 1012
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/acquisition-notice-refresh.json",
+    "sha256": "d89b5669d8bfdf190311024e08a4d8dbc830e5e39c74d9fadd8ee68f23e98676",
+    "bytes": 17797
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/acquisition-source.json",
+    "sha256": "de262c212c433d35ea503dc74714968561ef17226049fab5db2dfbb6fe10f89f",
+    "bytes": 7578
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/archive-acquisition.log",
+    "sha256": "b3eeedb3bcc973aea642dee369d961abb2de730aa81b2ec3f7056fa44b91f0d2",
+    "bytes": 158
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/deps-comparison.json",
+    "sha256": "4f1d320f4b500aee447dda143ae49f32589733f2bfad753363b25170704dce14",
+    "bytes": 5200
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/internal-vulkan-comparison.json",
+    "sha256": "c09bb558f1a4c1bf39695ad7b77738d4054d13cf5ea5442f213d8dc809918d69",
+    "bytes": 8064
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/native-shared.cake.diff",
+    "sha256": "2738da0dab264203607785fa6a2fd814114f31558595da17f59d3a709aba6c72",
+    "bytes": 6120
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/notice-refresh.log",
+    "sha256": "50d3dcb862b26611ea8adb129f451ba1e819019b2a000f4977198059bb404e33",
+    "bytes": 3802
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/notice-reuse-comparison.json",
+    "sha256": "fb0a8ddd4e76ebfc7074068651b141d74f91a3caecfb4abe3babca82c8a857c3",
+    "bytes": 29085
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/package-notices.diff",
+    "sha256": "bad6fb9b6252d89982a763151df5ee2568b1b59abcdcd6e3da2b84ecd7e1e990",
+    "bytes": 27635
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/review.md",
+    "sha256": "ad319b10565969e0527c293cc156d851735bbb97a33135423444ece63b3bb0f9",
+    "bytes": 8774
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-BUILD.gn.diff",
+    "sha256": "1af15aa7187869a2ec5e0b1feb7a306f4465bb987c153d52209ae9d520ba7c09",
+    "bytes": 9464
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-elf-toolchains.json",
+    "sha256": "1ecb7964cc9de1605ceb4e42b8af92efe2b8c80328d88235b07b6ded29036e38",
+    "bytes": 26660
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-gn_skia.gni.diff",
+    "sha256": "3a052c9846480f575b32ac03ad6b6f75ca918825bf911fe790a588d81ace9b2f",
+    "bytes": 641
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-payload-mapping.json",
+    "sha256": "d55f454a65732b19a3ad41c28efd18823d446cd516c1a65ccde3725a0aee72bf",
+    "bytes": 6625
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/README.txt",
+    "sha256": "3c39595dd0e4027bf0dce086262db834c943f85c1072c84bbf603f867572533d",
+    "bytes": 3352
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/acquisition-archives.json",
+    "sha256": "ccde74dbf63d42e0edd7bac21aaa0b60e4cd91ac98b78b1920fe2525c05904ae",
+    "bytes": 1012
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/acquisition-notice-refresh.json",
+    "sha256": "d89b5669d8bfdf190311024e08a4d8dbc830e5e39c74d9fadd8ee68f23e98676",
+    "bytes": 17797
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/acquisition-skia-dependency-notices.json",
+    "sha256": "136779774addbb6e2843bdb4ce339b87f495f4095fc3cff5e4e357bdb02b1003",
+    "bytes": 6352
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/acquisition-skia-dependency-sources.json",
+    "sha256": "e4ff016235a97bb1fe68b11659ddb269dabd17338ee1cbf249e7b2e7b61ddab9",
+    "bytes": 5997
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/acquisition-source.json",
+    "sha256": "de262c212c433d35ea503dc74714968561ef17226049fab5db2dfbb6fe10f89f",
+    "bytes": 7578
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/android-d8003a/compiler-rt/LICENSE.TXT",
+    "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+    "bytes": 16708
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/android-d8003a/libcxx/LICENSE.TXT",
+    "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+    "bytes": 16703
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/android-d8003a/libcxxabi/LICENSE.TXT",
+    "sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+    "bytes": 16706
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-11.4.0/COPYING.RUNTIME",
+    "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+    "bytes": 3324
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-11.4.0/COPYING3",
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "bytes": 35147
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-12.2.0/COPYING.RUNTIME",
+    "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+    "bytes": 3324
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-12.2.0/COPYING3",
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "bytes": 35147
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-13.3.0/COPYING.RUNTIME",
+    "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+    "bytes": 3324
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-13.3.0/COPYING3",
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "bytes": 35147
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-14.2.0/COPYING.RUNTIME",
+    "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+    "bytes": 3324
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-14.2.0/COPYING3",
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "bytes": 35147
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-15.2.0/COPYING.RUNTIME",
+    "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+    "bytes": 3324
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-15.2.0/COPYING3",
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "bytes": 35147
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-16.2.0/COPYING.RUNTIME",
+    "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+    "bytes": 3324
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-16.2.0/COPYING3",
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "bytes": 35147
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-7.5.0/COPYING.RUNTIME",
+    "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+    "bytes": 3324
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/gcc-7.5.0/COPYING3",
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "bytes": 35147
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/llvm-20.1.8/LICENSE.TXT",
+    "sha256": "8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee",
+    "bytes": 15141
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/llvm-20.1.8/compiler-rt/LICENSE.TXT",
+    "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+    "bytes": 16708
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/llvm-20.1.8/libcxx/LICENSE.TXT",
+    "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+    "bytes": 16703
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/compiler-runtime-notices/llvm-20.1.8/libcxxabi/LICENSE.TXT",
+    "sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+    "bytes": 16706
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/deps-comparison.json",
+    "sha256": "4f1d320f4b500aee447dda143ae49f32589733f2bfad753363b25170704dce14",
+    "bytes": 5200
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/brotli/LICENSE",
+    "sha256": "3d180008e36922a4e8daec11c34c7af264fed5962d07924aea928c38e8663c94",
+    "bytes": 1084
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/d3d12allocator/LICENSE.txt",
+    "sha256": "e078ee4f8c5ed0673f4d93b5318557eb8b4e0d7dbccef2ab45c763c7693f0f37",
+    "bytes": 1099
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/expat/COPYING",
+    "sha256": "73cc92f80889ab23c7287b1a11dd50fdec190c3f26ebe5938c579043817d651e",
+    "bytes": 1144
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/freetype/LICENSE.TXT",
+    "sha256": "bd36c8b474855fa294c2ec5c184544478ef3720aad37d65a6296a4f264fd2d3b",
+    "bytes": 2149
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/freetype/docs/FTL.TXT",
+    "sha256": "5a5ee54c5001bbad1cdc1a57cc3dd4c42199b2da09d39c7ee41fab002d02967f",
+    "bytes": 6743
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/freetype/src/gzip/zlib.h",
+    "sha256": "c86a25c27f74cb97b8fa07b175f479f063d5064ace9995b4684063643c81cf1b",
+    "bytes": 97499
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/harfbuzz/COPYING",
+    "sha256": "ba8f810f2455c2f08e2d56bb49b72f37fcf68f1f4fade38977cfd7372050ad64",
+    "bytes": 1971
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/libjpeg-turbo/LICENSE.md",
+    "sha256": "e10114e6e40f3d0311c401ca25245ac5ef459a43c20f976fd63f03e816f5741f",
+    "bytes": 5622
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/libjpeg-turbo/README.ijg",
+    "sha256": "75815e3bf6484201a3c3d17a1bbf10f2e8e3237f84df10a2357ea896db2a81d6",
+    "bytes": 12799
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/libjpeg-turbo/simd/nasm/jsimdext.inc",
+    "sha256": "68c5d236785edf75344cebe8b9bec36568bd35c96eb72cc67ffecd66c17dbd74",
+    "bytes": 15563
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/libjpeg-turbo/src/turbojpeg.c",
+    "sha256": "858ee66a752ffc24927635b25152248aa53afef3c477f0f416e70d908245165a",
+    "bytes": 101414
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/libpng/LICENSE",
+    "sha256": "bdb0a645ea18c60507d0368379b1ac5474b92255fcc2d115e07486a7672ba526",
+    "bytes": 5345
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/libwebp/COPYING",
+    "sha256": "5aec868f669e384a22372a4e8a1a6cd7d44c64cd451f960ca69cc170d1e13acf",
+    "bytes": 1496
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/libwebp/PATENTS",
+    "sha256": "cc3273e0694ea5896145e0677699b53471b03ea43021ddc50e7923fbb9f5023c",
+    "bytes": 1436
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/spirv-cross/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/vulkan-headers/LICENSE.md",
+    "sha256": "95ad366d23fadf701d355bc45fb8b82ae2d700239471d35d41286ac3b08ff903",
+    "bytes": 495
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/vulkan-headers/LICENSES/Apache-2.0.txt",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/vulkan-headers/LICENSES/MIT.txt",
+    "sha256": "1ca3502222d967f3be5751c55f6b7ee735b5383909c3b501495f54b216dbf227",
+    "bytes": 1084
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/vulkanmemoryallocator/LICENSE.txt",
+    "sha256": "52df2c03d6cfc9ffec13c9d3626c530fc9ce0cbe41d5ea3d10cd46edeb1aeb38",
+    "bytes": 1099
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/wuffs/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/wuffs/release/c/wuffs-v0.3.c",
+    "sha256": "ca10c422ebd4bf9f2cc469bafec4d5606eed3db0db7cbe21cb5232249ac0fe68",
+    "bytes": 1825556
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/exact-dependency-notices/zlib/LICENSE",
+    "sha256": "e32ff4e00d9d94930537635291da39e7e612703334bf6fde8c7f1686fe8a45a2",
+    "bytes": 1002
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/incorporated-notices/d3d12allocator/NOTICES.txt",
+    "sha256": "454c8e691b2637c10c7ea3eb51c342369a8ed5e617ed25dc69ade8f86b0a3b72",
+    "bytes": 4432
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/incorporated-notices/expat/expat/COPYING",
+    "sha256": "31b15de82aa19a845156169a17a5488bf597e561b2c318d159ed583139b25e87",
+    "bytes": 1144
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/incorporated-notices/freetype/include/freetype/internal/fthash.h",
+    "sha256": "023d88d49d29ecf3833db7717a3f7ae223c17ec2012bdb5bf33bb67abaf616c4",
+    "bytes": 4055
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/incorporated-notices/freetype/src/autofit/ft-hb-decls.h",
+    "sha256": "ed05eec3b5657f98a0c106fa4aa2e5a4bc7f0864e5d34bd5989eee6d8b718bcf",
+    "bytes": 5350
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/incorporated-notices/freetype/src/autofit/ft-hb-ft.c",
+    "sha256": "84dd5ddff1cec222e1755b4962faf45836238dfa3a46854dabd969eb4e50f8be",
+    "bytes": 3315
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/incorporated-notices/freetype/src/autofit/ft-hb-types.h",
+    "sha256": "f106bf7cc41f52cd70907266a74a293c57bc5f71285b01c36bf198ad8b1c6234",
+    "bytes": 4139
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/incorporated-notices/freetype/src/autofit/hb-script-list.h",
+    "sha256": "0627d9f6a59a8b09e562e8aeaf414300899308725350beeb50b62b8657399576",
+    "bytes": 19854
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/incorporated-notices/freetype/src/base/fthash.c",
+    "sha256": "693e5a54b3ce30140975a94a3369dbe706eb1f280c69e80da426d39cc45b94ef",
+    "bytes": 8406
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/incorporated-notices/freetype/src/bdf/README",
+    "sha256": "7984455e7e5a9faba3797c8bf095fbe10cc846316b7320aff8c58402e22b82fe",
+    "bytes": 5972
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/incorporated-notices/freetype/src/gzip/zlib.h",
+    "sha256": "c86a25c27f74cb97b8fa07b175f479f063d5064ace9995b4684063643c81cf1b",
+    "bytes": 97499
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/incorporated-notices/freetype/src/pcf/README",
+    "sha256": "18d9782898d9eac04476e2f744678137b2a889689ed3e923e052fc396a86f86b",
+    "bytes": 3311
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/incorporated-notices/spirv-cross/LICENSES/LicenseRef-KhronosFreeUse.txt",
+    "sha256": "fbeaca472f4f70e276dd1106ca5097435967a22ad6c1d8200aef7ad9f70aaf3f",
+    "bytes": 1305
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/internal-vulkan-comparison.json",
+    "sha256": "c09bb558f1a4c1bf39695ad7b77738d4054d13cf5ea5442f213d8dc809918d69",
+    "bytes": 8064
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/manifest.json",
+    "sha256": "c20cfbd18b961ab22ace80408299fe9fe9e980aa84a7429e39443dfa3d2ef19c",
+    "bytes": 22839
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-elf-toolchains.json",
+    "sha256": "1ecb7964cc9de1605ceb4e42b8af92efe2b8c80328d88235b07b6ded29036e38",
+    "bytes": 26660
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-notices/LICENSE",
+    "sha256": "5f787c1dee3c56547f09ccc2906ab5f5293c4d8dd6c8654e573216c38e908dbd",
+    "bytes": 1507
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-notices/include/third_party/vulkan/LICENSE",
+    "sha256": "e59bb5c5c6ba426a9ac4ba9fe667ad14c5166b12aa25be8af1d122b14fbe2e36",
+    "bytes": 1635
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-notices/modules/skcms/LICENSE",
+    "sha256": "e59bb5c5c6ba426a9ac4ba9fe667ad14c5166b12aa25be8af1d122b14fbe2e36",
+    "bytes": 1635
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-notices/third_party/wuffs/LICENSE",
+    "sha256": "e59bb5c5c6ba426a9ac4ba9fe667ad14c5166b12aa25be8af1d122b14fbe2e36",
+    "bytes": 1635
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-payload-mapping.json",
+    "sha256": "d55f454a65732b19a3ad41c28efd18823d446cd516c1a65ccde3725a0aee72bf",
+    "bytes": 6625
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_icd.h",
+    "sha256": "15d092840ca6d45fca3ccdc50cf021943e6c88aefe2a730c391f26d60bba9018",
+    "bytes": 8224
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_layer.h",
+    "sha256": "bfe6804d3f527138fcfebb0845c1c0077c5718725bf338be09b0f9be3e8dede5",
+    "bytes": 7178
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_platform.h",
+    "sha256": "949d517bb83e1d88fd4f1cef02bd3cb9ab50d44e8354cc68227cf2dccfdd3307",
+    "bytes": 2828
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_av1std.h",
+    "sha256": "9b4ebcef0d6844b226803fa91b4c4c8bf9eb941aa31b19cea48ded0886a8f9e2",
+    "bytes": 16687
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_av1std_decode.h",
+    "sha256": "f03abf49fcaf2bd179d48d768164f9494264b58401b98899e8860ba297a1e7aa",
+    "bytes": 4250
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_av1std_encode.h",
+    "sha256": "40f84c98d0341246ead3e864e1378df47d861505c5c139da5ed85c352d5e2300",
+    "bytes": 5979
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_h264std.h",
+    "sha256": "f6691f82e4637adda20e56d56951c673cc1ecdf2fa77e09cc8eba4b1f45118c1",
+    "bytes": 13861
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_h264std_decode.h",
+    "sha256": "8c4682860954d6bfc603e200d9e12586bc57265bd37b73a12b1ecf0c1ad42721",
+    "bytes": 2723
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_h264std_encode.h",
+    "sha256": "75cc54e489b1ec7e3c635680cabaf7c9c2ddd4071a485440e5368e76ede30a85",
+    "bytes": 6878
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_h265std.h",
+    "sha256": "01b5f3d0fd9d273a68ed90f898ba94c05c0305280a753bf95fab60d60727c22e",
+    "bytes": 23439
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_h265std_decode.h",
+    "sha256": "926a24d94afed2b1ab030e81c3b9e2e6730cca530f7a5a5bd821e7b896b93a41",
+    "bytes": 2429
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_h265std_encode.h",
+    "sha256": "8a56e0c78496affa84eca39ec0f5636df681c04623dd0291aeeadd012df324be",
+    "bytes": 7462
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_vp9std.h",
+    "sha256": "e18e20b197945929d5871836bfde923e38b350b09e1cbe430f1bd802d9eda34e",
+    "bytes": 5384
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_vp9std_decode.h",
+    "sha256": "c3929bbdd0ab79128c7f9bfb9641c9a017b3983529315b771caaafc74fdbb89a",
+    "bytes": 2371
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codecs_common.h",
+    "sha256": "be6d2495d19e96aca6aa5c11e5c418d1cd72beac23fe19eb9169c06e2843f0af",
+    "bytes": 660
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan.h",
+    "sha256": "72b952cc6de70ee12d118d3095e80346b42ff01cfc6f2bbb37ec01800eab1da6",
+    "bytes": 1616
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_android.h",
+    "sha256": "49cd5e53156cb9e36fa03d81a5f1b8c1e93428e3499698309398d66dc3872948",
+    "bytes": 6330
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_beta.h",
+    "sha256": "0c8306cc75db2a51fe5c29654afde8587f44fc84c2d123eaadf538e86dd0541c",
+    "bytes": 17412
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_core.h",
+    "sha256": "c115dc56f21dd0489fe2cfe00ab80ba5880ad601418f0c7d5e399812e8a7a21b",
+    "bytes": 1296391
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_directfb.h",
+    "sha256": "4c6be34ee27f2fce4870c4046304b0c53f1fe62b13a4c21da8d537ec4cf8b965",
+    "bytes": 1952
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_fuchsia.h",
+    "sha256": "8a7a0c52e8c1ab41ede66bdabc32057255a7b385441d67dd4023121de5801194",
+    "bytes": 12900
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_ggp.h",
+    "sha256": "97cb1776742a4d8aae9f258ce908da76d0466da8864a5036aaca834af5f62e8d",
+    "bytes": 1939
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_ios.h",
+    "sha256": "8bb052cc162b4086c0f1cd29a5ed11ccf921b8ee83551194394b86efd249c572",
+    "bytes": 1352
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_macos.h",
+    "sha256": "00f532e9b7229488ac9932c2b391d74e9e8566ed91d0dbbad10e15dc356c9293",
+    "bytes": 1384
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_metal.h",
+    "sha256": "8f84536896b8d3c6c49883ce34242f8922840617d0b184b338c0f83da5bfaaaa",
+    "bytes": 8066
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_ohos.h",
+    "sha256": "9da9b4f1a23adc0b705450ce4b5c934dff2fd1eb8cdf4ac3273465420fc9475a",
+    "bytes": 4106
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_screen.h",
+    "sha256": "ffe2e63fbea5f0a9a7948a998eb7e1085e1f7cd5fd55b3d9a0146fe1aa8307bd",
+    "bytes": 4193
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_vi.h",
+    "sha256": "8caacbb6eccae5946fb367145ba5222b85d4747a3f8b30632fdfca0503f0c339",
+    "bytes": 1325
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_wayland.h",
+    "sha256": "d43ca1c45cd4b2e1119c168b780e2864205ad8119e5f42d9d99aa29d2654a3f2",
+    "bytes": 1952
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_win32.h",
+    "sha256": "0b11442e7efa0d5b6732b9964edf6dbdf3f6cf1dd58afe7572cc9b7f6de24317",
+    "bytes": 15757
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_xcb.h",
+    "sha256": "1e1525fc64826ab3ea9e8a6ee6a618ef14db3e27397fcf8fb070bb1ddaf00c0b",
+    "bytes": 1966
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_xlib.h",
+    "sha256": "82346aaa80a5c984b6a26f55c7c363c65be43029da539ba0fbdfea9840051cca",
+    "bytes": 1947
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_xlib_xrandr.h",
+    "sha256": "da5d5311bcffa49c614e9f397784e44668466890aeaf4e54c2e0064c20259089",
+    "bytes": 1497
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skiasharp-LICENSE.txt",
+    "sha256": "89101e35a8c66fd4d6dffc1763259161d35cb564c169714ec227a768c89f2938",
+    "bytes": 1129
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/skiasharp.nativeassets.linux.nodependencies-THIRD-PARTY-NOTICES.txt",
+    "sha256": "243f2276bde636931b1cf8517fb11c0451be857996fbe1a2c690a3c7d39502ac",
+    "bytes": 112187
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/BUILD.gn",
+    "sha256": "d1694dd1e829d2cc65ecb0da7100936cdc57c4921776952fe32067c720b4fc87",
+    "bytes": 121400
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/DEPS",
+    "sha256": "84cde7ff1429d47d3b0b1b6d15e2a99ea805484829e3d706a9077fd76999795a",
+    "bytes": 10770
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/LICENSE",
+    "sha256": "5f787c1dee3c56547f09ccc2906ab5f5293c4d8dd6c8654e573216c38e908dbd",
+    "bytes": 1507
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/gn/skia.gni",
+    "sha256": "97605ed474dee8d78708bec9e6c6054174abff38f8e357983a8c50b3e35173ff",
+    "bytes": 10627
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/include/third_party/vulkan/vulkan/vulkan_core.h",
+    "sha256": "c115dc56f21dd0489fe2cfe00ab80ba5880ad601418f0c7d5e399812e8a7a21b",
+    "bytes": 1296391
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/modules/skcms/LICENSE",
+    "sha256": "e59bb5c5c6ba426a9ac4ba9fe667ad14c5166b12aa25be8af1d122b14fbe2e36",
+    "bytes": 1635
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/third_party/expat/BUILD.gn",
+    "sha256": "efe31d76fe837fe109060ed7d163260c38e2e336ab679ec39c41005e4312160a",
+    "bytes": 1998
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/third_party/freetype2/BUILD.gn",
+    "sha256": "c32abe72aae05e0c8808e87fc3c9140191f22297135ded71d961189456947d6f",
+    "bytes": 3876
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/third_party/libjpeg-turbo/BUILD.gn",
+    "sha256": "344b742706fd242b8c7190524af99351009d16addb1d2ed8012cd6de7572173a",
+    "bytes": 8010
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/third_party/libpng/BUILD.gn",
+    "sha256": "679e8ed77b88bafa087f90e2735748077ac8f845209962fe2fcac822621e9d35",
+    "bytes": 1849
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/third_party/libwebp/BUILD.gn",
+    "sha256": "a652d8fd8a6ad169d7848b21cad395f614745eb270de2da8db289471c7b2bbf2",
+    "bytes": 8449
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/third_party/wuffs/BUILD.gn",
+    "sha256": "45b1ac75fe1d40d97c71c756ffc5c8aba18043aa091fb52e90717b071fd12915",
+    "bytes": 1639
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/third_party/wuffs/LICENSE",
+    "sha256": "e59bb5c5c6ba426a9ac4ba9fe667ad14c5166b12aa25be8af1d122b14fbe2e36",
+    "bytes": 1635
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/skia/third_party/zlib/BUILD.gn",
+    "sha256": "8e02353ad35905ece2bca2886436800600ab9b222e1e68469cd36a0aa805df76",
+    "bytes": 6200
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/wrapper/.gitmodules",
+    "sha256": "9d5275fdc462257c08a8194e560cebe5a3cc42c6ac893ceda2b13c13033536ec",
+    "bytes": 112
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/wrapper/LICENSE.txt",
+    "sha256": "bc2eb4f37d574f9b1b67da2b17e14d151618850527d78f7323239e7518df5b77",
+    "bytes": 1110
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/wrapper/native/linux/build.cake",
+    "sha256": "10e8da0bedcb0a329447d7fafa311fa2cd497d6fe0abf94759329a96f6350e48",
+    "bytes": 5820
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/wrapper/native/linuxnodeps/build.cake",
+    "sha256": "4f2aa3322f3dadffbc6c223c5392e3bfc4e17baee967a2e41751170c43b95c2d",
+    "bytes": 691
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/wrapper/native/macos/build.cake",
+    "sha256": "cc70f148b438beb2baf4694f78a566b60605209aa64e22d9751e5d753b41088e",
+    "bytes": 2716
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/wrapper/native/windows/build.cake",
+    "sha256": "ac59a6261817ffd2ccdf2d338af275497e42cf6510b3e0478989da1c787fc1bc",
+    "bytes": 5824
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/wrapper/scripts/infra/native/shared/native-shared.cake",
+    "sha256": "8fa691e2960644fbd7c063b39f9668d9ff5e5a2c289c37bcea5abc8de0df19a7",
+    "bytes": 5367
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices/source-configuration/wrapper/scripts/infra/native/windows/windows-shared.cake",
+    "sha256": "d916d65fb6d232a3be25fd2b1040b20d0ef3ca574432a6cbe9d12a706fc5a007",
+    "bytes": 2652
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skia-redistribution-notices.tar.gz",
+    "sha256": "5c4703f11ecaf305fc298574075fe534fcc2b4174499eb45a0b88da897794363",
+    "bytes": 888450
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skiasharp-linux-build.cake.diff",
+    "sha256": "8fc27ef97d75fea73c07f3029fed41a86a1c509ad0206fd6c5fc0fea881df51e",
+    "bytes": 2080
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skiasharp-linuxnodeps-build.cake.diff",
+    "sha256": "f73b8dec78b5d2858ff1eefe7599437bd7eb10a920c62543e72776f9747bf4d6",
+    "bytes": 522
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skiasharp-native_macos_build.cake.diff",
+    "sha256": "e8a86c13794a338efd556d40258df5a836365fe34cce3a18a18f3687e49b0ce6",
+    "bytes": 269
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/skiasharp-native_windows_build.cake.diff",
+    "sha256": "150607441f1be260d327c56f04d371adb9c18846fe43c6b67d2ca5327fce1a44",
+    "bytes": 5218
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/source-exception-decisions.json",
+    "sha256": "9fa8b624bc3befcff7ed3d2a0d9cd4a8d88eb946ed36ef025653d8284768f818",
+    "bytes": 4287
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/summary.json",
+    "sha256": "a2b0f309c859a3e8e926e9e2d4740b0eaf1fed8c9b6edc8cfde0b2928a1f6fad",
+    "bytes": 1073
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/SkiaSharp-2a53a3c.tar.gz",
+    "sha256": "b540ead4713b90e4cfe0eb1d2ec683d5978e26ba2f9392ecfd0a45c955a84911",
+    "bytes": 285579265
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+    "sha256": "aabdab5dd8be2fe8bded5bd6161c5c0e41bc85ec7d50bff64e2fe5bd7e8fbd5c",
+    "bytes": 80081073
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/dependency-sources/vulkan-headers.tar.gz",
+    "sha256": "539ff8eaa4abf22fddbd98225c68a0c5ddb940075a4048c8b7f5d04449070a4e",
+    "bytes": 3440044
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/gcc-16.2.0/COPYING.RUNTIME",
+    "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+    "bytes": 3324
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/gcc-16.2.0/COPYING3",
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "bytes": 35147
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/BUILD.gn",
+    "sha256": "d1694dd1e829d2cc65ecb0da7100936cdc57c4921776952fe32067c720b4fc87",
+    "bytes": 121400
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/DEPS",
+    "sha256": "84cde7ff1429d47d3b0b1b6d15e2a99ea805484829e3d706a9077fd76999795a",
+    "bytes": 10770
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/LICENSE",
+    "sha256": "5f787c1dee3c56547f09ccc2906ab5f5293c4d8dd6c8654e573216c38e908dbd",
+    "bytes": 1507
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/gn/skia.gni",
+    "sha256": "97605ed474dee8d78708bec9e6c6054174abff38f8e357983a8c50b3e35173ff",
+    "bytes": 10627
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/include/third_party/vulkan/vulkan/vulkan_core.h",
+    "sha256": "c115dc56f21dd0489fe2cfe00ab80ba5880ad601418f0c7d5e399812e8a7a21b",
+    "bytes": 1296391
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/modules/skcms/LICENSE",
+    "sha256": "e59bb5c5c6ba426a9ac4ba9fe667ad14c5166b12aa25be8af1d122b14fbe2e36",
+    "bytes": 1635
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/third_party/expat/BUILD.gn",
+    "sha256": "efe31d76fe837fe109060ed7d163260c38e2e336ab679ec39c41005e4312160a",
+    "bytes": 1998
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/third_party/freetype2/BUILD.gn",
+    "sha256": "c32abe72aae05e0c8808e87fc3c9140191f22297135ded71d961189456947d6f",
+    "bytes": 3876
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/third_party/libjpeg-turbo/BUILD.gn",
+    "sha256": "344b742706fd242b8c7190524af99351009d16addb1d2ed8012cd6de7572173a",
+    "bytes": 8010
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/third_party/libpng/BUILD.gn",
+    "sha256": "679e8ed77b88bafa087f90e2735748077ac8f845209962fe2fcac822621e9d35",
+    "bytes": 1849
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/third_party/libwebp/BUILD.gn",
+    "sha256": "a652d8fd8a6ad169d7848b21cad395f614745eb270de2da8db289471c7b2bbf2",
+    "bytes": 8449
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/third_party/wuffs/BUILD.gn",
+    "sha256": "45b1ac75fe1d40d97c71c756ffc5c8aba18043aa091fb52e90717b071fd12915",
+    "bytes": 1639
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/third_party/wuffs/LICENSE",
+    "sha256": "e59bb5c5c6ba426a9ac4ba9fe667ad14c5166b12aa25be8af1d122b14fbe2e36",
+    "bytes": 1635
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia/third_party/zlib/BUILD.gn",
+    "sha256": "8e02353ad35905ece2bca2886436800600ab9b222e1e68469cd36a0aa805df76",
+    "bytes": 6200
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-notices/LICENSE",
+    "sha256": "5f787c1dee3c56547f09ccc2906ab5f5293c4d8dd6c8654e573216c38e908dbd",
+    "bytes": 1507
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-notices/include/third_party/vulkan/LICENSE",
+    "sha256": "e59bb5c5c6ba426a9ac4ba9fe667ad14c5166b12aa25be8af1d122b14fbe2e36",
+    "bytes": 1635
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-notices/modules/skcms/LICENSE",
+    "sha256": "e59bb5c5c6ba426a9ac4ba9fe667ad14c5166b12aa25be8af1d122b14fbe2e36",
+    "bytes": 1635
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-notices/third_party/wuffs/LICENSE",
+    "sha256": "e59bb5c5c6ba426a9ac4ba9fe667ad14c5166b12aa25be8af1d122b14fbe2e36",
+    "bytes": 1635
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-tree.json",
+    "sha256": "1e0a5968268c4d8d02739ad92bfefe1d63a3fa435f04db6410459b063fb404ce",
+    "bytes": 3175412
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_icd.h",
+    "sha256": "15d092840ca6d45fca3ccdc50cf021943e6c88aefe2a730c391f26d60bba9018",
+    "bytes": 8224
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_layer.h",
+    "sha256": "bfe6804d3f527138fcfebb0845c1c0077c5718725bf338be09b0f9be3e8dede5",
+    "bytes": 7178
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_platform.h",
+    "sha256": "949d517bb83e1d88fd4f1cef02bd3cb9ab50d44e8354cc68227cf2dccfdd3307",
+    "bytes": 2828
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_av1std.h",
+    "sha256": "9b4ebcef0d6844b226803fa91b4c4c8bf9eb941aa31b19cea48ded0886a8f9e2",
+    "bytes": 16687
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_av1std_decode.h",
+    "sha256": "f03abf49fcaf2bd179d48d768164f9494264b58401b98899e8860ba297a1e7aa",
+    "bytes": 4250
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_av1std_encode.h",
+    "sha256": "40f84c98d0341246ead3e864e1378df47d861505c5c139da5ed85c352d5e2300",
+    "bytes": 5979
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_h264std.h",
+    "sha256": "f6691f82e4637adda20e56d56951c673cc1ecdf2fa77e09cc8eba4b1f45118c1",
+    "bytes": 13861
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_h264std_decode.h",
+    "sha256": "8c4682860954d6bfc603e200d9e12586bc57265bd37b73a12b1ecf0c1ad42721",
+    "bytes": 2723
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_h264std_encode.h",
+    "sha256": "75cc54e489b1ec7e3c635680cabaf7c9c2ddd4071a485440e5368e76ede30a85",
+    "bytes": 6878
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_h265std.h",
+    "sha256": "01b5f3d0fd9d273a68ed90f898ba94c05c0305280a753bf95fab60d60727c22e",
+    "bytes": 23439
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_h265std_decode.h",
+    "sha256": "926a24d94afed2b1ab030e81c3b9e2e6730cca530f7a5a5bd821e7b896b93a41",
+    "bytes": 2429
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_h265std_encode.h",
+    "sha256": "8a56e0c78496affa84eca39ec0f5636df681c04623dd0291aeeadd012df324be",
+    "bytes": 7462
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_vp9std.h",
+    "sha256": "e18e20b197945929d5871836bfde923e38b350b09e1cbe430f1bd802d9eda34e",
+    "bytes": 5384
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codec_vp9std_decode.h",
+    "sha256": "c3929bbdd0ab79128c7f9bfb9641c9a017b3983529315b771caaafc74fdbb89a",
+    "bytes": 2371
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vk_video/vulkan_video_codecs_common.h",
+    "sha256": "be6d2495d19e96aca6aa5c11e5c418d1cd72beac23fe19eb9169c06e2843f0af",
+    "bytes": 660
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan.h",
+    "sha256": "72b952cc6de70ee12d118d3095e80346b42ff01cfc6f2bbb37ec01800eab1da6",
+    "bytes": 1616
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_android.h",
+    "sha256": "49cd5e53156cb9e36fa03d81a5f1b8c1e93428e3499698309398d66dc3872948",
+    "bytes": 6330
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_beta.h",
+    "sha256": "0c8306cc75db2a51fe5c29654afde8587f44fc84c2d123eaadf538e86dd0541c",
+    "bytes": 17412
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_core.h",
+    "sha256": "c115dc56f21dd0489fe2cfe00ab80ba5880ad601418f0c7d5e399812e8a7a21b",
+    "bytes": 1296391
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_directfb.h",
+    "sha256": "4c6be34ee27f2fce4870c4046304b0c53f1fe62b13a4c21da8d537ec4cf8b965",
+    "bytes": 1952
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_fuchsia.h",
+    "sha256": "8a7a0c52e8c1ab41ede66bdabc32057255a7b385441d67dd4023121de5801194",
+    "bytes": 12900
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_ggp.h",
+    "sha256": "97cb1776742a4d8aae9f258ce908da76d0466da8864a5036aaca834af5f62e8d",
+    "bytes": 1939
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_ios.h",
+    "sha256": "8bb052cc162b4086c0f1cd29a5ed11ccf921b8ee83551194394b86efd249c572",
+    "bytes": 1352
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_macos.h",
+    "sha256": "00f532e9b7229488ac9932c2b391d74e9e8566ed91d0dbbad10e15dc356c9293",
+    "bytes": 1384
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_metal.h",
+    "sha256": "8f84536896b8d3c6c49883ce34242f8922840617d0b184b338c0f83da5bfaaaa",
+    "bytes": 8066
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_ohos.h",
+    "sha256": "9da9b4f1a23adc0b705450ce4b5c934dff2fd1eb8cdf4ac3273465420fc9475a",
+    "bytes": 4106
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_screen.h",
+    "sha256": "ffe2e63fbea5f0a9a7948a998eb7e1085e1f7cd5fd55b3d9a0146fe1aa8307bd",
+    "bytes": 4193
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_vi.h",
+    "sha256": "8caacbb6eccae5946fb367145ba5222b85d4747a3f8b30632fdfca0503f0c339",
+    "bytes": 1325
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_wayland.h",
+    "sha256": "d43ca1c45cd4b2e1119c168b780e2864205ad8119e5f42d9d99aa29d2654a3f2",
+    "bytes": 1952
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_win32.h",
+    "sha256": "0b11442e7efa0d5b6732b9964edf6dbdf3f6cf1dd58afe7572cc9b7f6de24317",
+    "bytes": 15757
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_xcb.h",
+    "sha256": "1e1525fc64826ab3ea9e8a6ee6a618ef14db3e27397fcf8fb070bb1ddaf00c0b",
+    "bytes": 1966
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_xlib.h",
+    "sha256": "82346aaa80a5c984b6a26f55c7c363c65be43029da539ba0fbdfea9840051cca",
+    "bytes": 1947
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/skia-vulkan-header-evidence/include/third_party/vulkan/vulkan/vulkan_xlib_xrandr.h",
+    "sha256": "da5d5311bcffa49c614e9f397784e44668466890aeaf4e54c2e0064c20259089",
+    "bytes": 1497
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/vulkan-headers/LICENSE.md",
+    "sha256": "95ad366d23fadf701d355bc45fb8b82ae2d700239471d35d41286ac3b08ff903",
+    "bytes": 495
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/vulkan-headers/LICENSES/Apache-2.0.txt",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/vulkan-headers/LICENSES/MIT.txt",
+    "sha256": "1ca3502222d967f3be5751c55f6b7ee735b5383909c3b501495f54b216dbf227",
+    "bytes": 1084
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/wrapper/.gitmodules",
+    "sha256": "9d5275fdc462257c08a8194e560cebe5a3cc42c6ac893ceda2b13c13033536ec",
+    "bytes": 112
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/wrapper/LICENSE.txt",
+    "sha256": "bc2eb4f37d574f9b1b67da2b17e14d151618850527d78f7323239e7518df5b77",
+    "bytes": 1110
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/wrapper/native/linux/build.cake",
+    "sha256": "10e8da0bedcb0a329447d7fafa311fa2cd497d6fe0abf94759329a96f6350e48",
+    "bytes": 5820
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/wrapper/native/linuxnodeps/build.cake",
+    "sha256": "4f2aa3322f3dadffbc6c223c5392e3bfc4e17baee967a2e41751170c43b95c2d",
+    "bytes": 691
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/wrapper/native/macos/build.cake",
+    "sha256": "cc70f148b438beb2baf4694f78a566b60605209aa64e22d9751e5d753b41088e",
+    "bytes": 2716
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/wrapper/native/windows/build.cake",
+    "sha256": "ac59a6261817ffd2ccdf2d338af275497e42cf6510b3e0478989da1c787fc1bc",
+    "bytes": 5824
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/wrapper/scripts/infra/native/shared/native-shared.cake",
+    "sha256": "8fa691e2960644fbd7c063b39f9668d9ff5e5a2c289c37bcea5abc8de0df19a7",
+    "bytes": 5367
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/notice-review/upstream/wrapper/scripts/infra/native/windows/windows-shared.cake",
+    "sha256": "d916d65fb6d232a3be25fd2b1040b20d0ef3ca574432a6cbe9d12a706fc5a007",
+    "bytes": 2652
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/packages/skiasharp.4.157.0.nupkg",
+    "sha256": "efd16d3f8ff965f6cdd1f66fbd422b9985b78b22da3ab5d10c5eab3b40cf3327",
+    "bytes": 15351190
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/packages/skiasharp.nativeassets.linux.nodependencies.4.157.0.nupkg",
+    "sha256": "9b31c2350afde73552dd390891a20bb790f9580b9890ef40aeaf27ee58e86c2f",
+    "bytes": 63112699
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/packages/skiasharp.nativeassets.macos.4.157.0.nupkg",
+    "sha256": "de782e40cb27d11805d9a4c461ee540abde49c55dd675399815ae17233d138b9",
+    "bytes": 7731536
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/packages/skiasharp.nativeassets.win32.4.157.0.nupkg",
+    "sha256": "f0b5f48d63b154dddd06d4ab8eb5552f9b792214cc1691ac53445f2d324f1a0d",
+    "bytes": 89264174
+  }
+]

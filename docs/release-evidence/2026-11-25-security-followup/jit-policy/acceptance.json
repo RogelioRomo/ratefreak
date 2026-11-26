@@ -1,0 +1,60 @@
+{
+  "application_images": {
+    "api": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "web": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "tools": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772"
+  },
+  "postgres_image": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+  "configuration_sha256": "45708d8c7b2038d798b35ae28f155230360c472d4e8e5129b9bee32510fc181b",
+  "configuration_scope": "Current Compose jit=off delta on the previously qualified ede1b61 application images; frozen installation archive remains historical until final candidate freeze.",
+  "persistent_instance_changed": false,
+  "jit": "off",
+  "ssl": "off",
+  "wal_compression": "off",
+  "pg_jit_available": "f",
+  "forced_cost_plan": [
+    {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 150.0,
+        "Total Cost": 150.01,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Actual Startup Time": 1.293,
+        "Actual Total Time": 1.294,
+        "Actual Rows": 1,
+        "Actual Loops": 1,
+        "Plans": [
+          {
+            "Node Type": "Function Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Function Name": "generate_series",
+            "Alias": "g",
+            "Startup Cost": 0.0,
+            "Total Cost": 100.0,
+            "Plan Rows": 10000,
+            "Plan Width": 4,
+            "Actual Startup Time": 0.597,
+            "Actual Total Time": 0.91,
+            "Actual Rows": 10000,
+            "Actual Loops": 1
+          }
+        ]
+      },
+      "Planning Time": 0.081,
+      "Triggers": [],
+      "Execution Time": 1.388
+    }
+  ],
+  "result": "50005000",
+  "llvm_not_mapped": true,
+  "fresh_https_acceptance": true,
+  "passed": true,
+  "fixture_removed": true
+}

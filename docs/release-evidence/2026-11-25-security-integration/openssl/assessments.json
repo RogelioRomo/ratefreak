@@ -1,0 +1,123 @@
+{
+  "format": 1,
+  "date": "2026-11-25",
+  "source_revision": "c4b8302b1568b88a5400d9a13b01a4ad83b9218e",
+  "images": {
+    "api": "sha256:f45911e7f43d995ff085f49a9c04baf826e0cc6587fe17181a75772b9785b53f",
+    "web": "sha256:8ecc6945b96cb3d58b1b4a1b4f184e5b2832f328684e9d85cb2195bceb1d31c2"
+  },
+  "assessments": [
+    {
+      "id": "CVE-2026-107493",
+      "disposition": "conditional-supported-consumer-exclusion",
+      "scope": "Pinned Node 24.22.3, .NET 10.0.15 crypto PAL and libpq 19.0-2.pgdg13+1 used by supported RateFreak application/maintenance flows. Not a clearance of all native consumers, API curl, separate services or host.",
+      "affected_condition": "Caller passes a non-NULL X509_INFO stack into PEM_X509_INFO_read[_bio][_ex] and reuses/frees it after read failure.",
+      "assessment": "No calls to that family in the pinned Node crypto bindings/ncrypto, .NET OpenSSL shim or libpq TLS consumer. Node CA/file loading uses PEM_read_bio_X509 or PEM_read_bio_X509_AUX with null object arguments; .NET uses those same individual certificate APIs. libpq delegates root store loading through SSL_CTX_load_verify_locations/default paths. OpenSSL advisory states its own TLS CA-loading callers always pass NULL.",
+      "evidence": [
+        "node-crypto/crypto_context.cc:287",
+        "node-crypto/crypto_context.cc:2142",
+        "dotnet-pal_x509.c:135",
+        "dotnet-pal_x509.c:141",
+        "../../debian-advisory-assessment-2026-11-23/libpq19-fe-secure-openssl.c:918",
+        "../../debian-advisory-assessment-2026-11-23/libpq19-fe-secure-openssl.c:936",
+        "../vendor/openssl-20261117.txt"
+      ],
+      "limits": [
+        "Underlying affected OpenSSL code remains present. This is a caller exclusion, not a vendor-unaffected claim.",
+        "Other native consumers such as API curl require their own assessment."
+      ],
+      "reassess_if": [
+        "Runtime/native dependency or crypto source changes",
+        "New custom server/plugin/PInvoke/native addon consumers",
+        "CMS/PKCS7 encryption or verification, user-supplied certificate/CRL stores or DANE is introduced"
+      ],
+      "vendor_patched_claim": false
+    },
+    {
+      "id": "CVE-2026-107496",
+      "disposition": "conditional-supported-consumer-exclusion",
+      "scope": "Pinned Node 24.22.3, .NET 10.0.15 crypto PAL and libpq 19.0-2.pgdg13+1 used by supported RateFreak application/maintenance flows. Not a clearance of all native consumers, API curl, separate services or host.",
+      "affected_condition": "CMS_encrypt/CMS_encrypt_ex encrypt to an attacker-controlled EC certificate with group order 1.",
+      "assessment": "No CMS_encrypt[_ex] call or binding in reviewed Node crypto/ncrypto, .NET crypto shim or libpq TLS consumer. .NET AnyOS uses ManagedPkcsPal, constructs EnvelopedData in managed code and encrypts recipient keys through managed RSA APIs. Ordinary TLS/QUIC does not use affected CMS_encrypt path per advisory. Production application search found no CMS consumption/encryption feature.",
+      "evidence": [
+        "dotnet-pkcs/PkcsPal.AnyOS.cs:10",
+        "dotnet-pkcs/ManagedPal.Encrypt.cs:19",
+        "dotnet-pkcs/ManagedPal.Encrypt.cs:66",
+        "dotnet-pkcs/ManagedPal.KeyTrans.cs:174",
+        "consumer-acquisition.json",
+        "../../debian-advisory-assessment-2026-11-23/dotnet-opensslshim.h",
+        "application-search.json",
+        "../vendor/openssl-20261110.txt"
+      ],
+      "limits": [
+        "No CMS library-wide safety claim. New native CMS callers or arbitrary EC certificate workflows require reassessment."
+      ],
+      "reassess_if": [
+        "Runtime/native dependency or crypto source changes",
+        "New custom server/plugin/PInvoke/native addon consumers",
+        "CMS/PKCS7 encryption or verification, user-supplied certificate/CRL stores or DANE is introduced"
+      ],
+      "vendor_patched_claim": false
+    },
+    {
+      "id": "CVE-2026-84786",
+      "disposition": "conditional-supported-consumer-exclusion",
+      "scope": "Pinned Node 24.22.3, .NET 10.0.15 crypto PAL and libpq 19.0-2.pgdg13+1 used by supported RateFreak application/maintenance flows. Not a clearance of all native consumers, API curl, separate services or host.",
+      "affected_condition": "DANE-enabled TLS client combines PKIX-TA/PKIX-EE and DANE-TA TLSA validation through OpenSSL DANE APIs.",
+      "assessment": "Pinned Node crypto/ncrypto and .NET shim expose no OpenSSL DANE initialization/TLSA APIs; libpq TLS source also has no DANE operation. Supported application configuration contains no DANE client or custom native binding. Actual .NET/libpq binaries contain no strings for the named DANE imports, while ordinary X509 store/check symbols are present.",
+      "evidence": [
+        "consumer-acquisition.json",
+        "node-ncrypto.cc",
+        "../../debian-advisory-assessment-2026-11-23/dotnet-opensslshim.h",
+        "../../debian-advisory-assessment-2026-11-23/libpq19-fe-secure-openssl.c",
+        "binary-probe.json",
+        "application-search.json",
+        "../vendor/openssl-20261124.txt"
+      ],
+      "limits": [
+        "Ordinary TLS use is not proof of DANE use. DANE may be available in underlying OpenSSL; no removal claim.",
+        "Does not cover curl/DANE-capable external tools or new custom native networking clients."
+      ],
+      "reassess_if": [
+        "Runtime/native dependency or crypto source changes",
+        "New custom server/plugin/PInvoke/native addon consumers",
+        "CMS/PKCS7 encryption or verification, user-supplied certificate/CRL stores or DANE is introduced"
+      ],
+      "vendor_patched_claim": false
+    },
+    {
+      "id": "CVE-2026-121482",
+      "disposition": "conditional-supported-consumer-exclusion",
+      "scope": "Pinned Node 24.22.3, .NET 10.0.15 crypto PAL and libpq 19.0-2.pgdg13+1 used by supported RateFreak application/maintenance flows. Not a clearance of all native consumers, API curl, separate services or host.",
+      "affected_condition": "OpenSSL CMS_verify/PKCS7_verify with CRL checking enabled accepts hostile SignedData containing both CRL distribution points and candidate CRLs, causing repeated relative-name rebuilding.",
+      "assessment": "No CMS_verify/PKCS7_verify operation in reviewed Node bindings/ncrypto, .NET shim or libpq. .NET SignedCms delegates signature checking to managed SignerInfo; SignerInfo verifies the cryptographic signature before X509Chain.Build, and does not import SignedData CRLs into a native CMS verification store. Its online revocation support is present and must not be described as absent. Node and libpq can enable CRL checking using application/operator-supplied CRLs, but the supported RateFreak application does not provide a hostile CMS-to-CRL verification endpoint.",
+      "evidence": [
+        "dotnet-SignedCms.cs:619",
+        "dotnet-SignerInfo.cs:843",
+        "dotnet-SignerInfo.cs:854",
+        "dotnet-SignerInfo.cs:864",
+        "dotnet-pal_x509.c:246",
+        "node-crypto/crypto_context.cc:2163",
+        "../../debian-advisory-assessment-2026-11-23/libpq19-fe-secure-openssl.c:970",
+        "application-search.json",
+        "../vendor/openssl-20261124.txt"
+      ],
+      "limits": [
+        "The advisory also notes TLS uses local CRLs, so this does not assert that every CRL-enabled TLS configuration has zero CPU cost.",
+        "New CMS verification, untrusted CRL-store provisioning, revocation configuration or native crypto callers require reassessment."
+      ],
+      "reassess_if": [
+        "Runtime/native dependency or crypto source changes",
+        "New custom server/plugin/PInvoke/native addon consumers",
+        "CMS/PKCS7 encryption or verification, user-supplied certificate/CRL stores or DANE is introduced"
+      ],
+      "vendor_patched_claim": false
+    }
+  ],
+  "source_identities": {
+    "node": "v24.22.3",
+    "dotnet_vmr_commit": "8e0f8ed2312954727f8919d7d1c2f78b483b4ee7",
+    "libpq_source": "postgresql-19 19.0-2.pgdg13+1"
+  },
+  "scope_limit": "Four advisory conditions, three reviewed consumer families; not overall release/security clearance. No exploit harness or complete dynamic callgraph proof performed."
+}

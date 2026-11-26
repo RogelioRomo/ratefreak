@@ -1,0 +1,505 @@
+[
+  {
+    "advisory": "CVE-2026-107161",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "cyrus-sasl: Heap buffer overflow in cyrus-sasl add_to_challenge() allows malicious server to crash or compromise DIGEST-MD5 clients",
+    "reason": "The affected Cyrus DIGEST-MD5, SRP-server or SCRAM-server mechanism is not installed: exact image SASL plugin directory has only sasldb. Tools act as PostgreSQL clients using managed Npgsql or libpq SCRAM, not the Cyrus SASL mechanism. No SASL server or LDAP client authentication caller is provided.",
+    "evidence": [
+      "tools-probe.json",
+      "tools-probe.py",
+      "review.md",
+      "https://www.postgresql.org/docs/17/libpq-ldap.html",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "No broad absent-Kerberos/LDAP/SASL-library claim.",
+      "Scope excludes credential caches/keytabs, custom LDAP service files, operator-added auth/plugins, extra mounts/env or arbitrary manual commands.",
+      "Default credential probe covers immutable reference image; it does not inspect actual installation secrets."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-2",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      },
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-modules-db",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-129483",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "cyrus-sasl: Cyrus SASL through 2.1.28 SRP Authentication Bypass via plugins/srp.c",
+    "reason": "The affected Cyrus DIGEST-MD5, SRP-server or SCRAM-server mechanism is not installed: exact image SASL plugin directory has only sasldb. Tools act as PostgreSQL clients using managed Npgsql or libpq SCRAM, not the Cyrus SASL mechanism. No SASL server or LDAP client authentication caller is provided.",
+    "evidence": [
+      "tools-probe.json",
+      "tools-probe.py",
+      "review.md",
+      "https://www.postgresql.org/docs/17/libpq-ldap.html",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "No broad absent-Kerberos/LDAP/SASL-library claim.",
+      "Scope excludes credential caches/keytabs, custom LDAP service files, operator-added auth/plugins, extra mounts/env or arbitrary manual commands.",
+      "Default credential probe covers immutable reference image; it does not inspect actual installation secrets."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-2",
+        "severity": "LOW",
+        "source_version": "2.1.28+dfsg1"
+      },
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-modules-db",
+        "severity": "LOW",
+        "source_version": "2.1.28+dfsg1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-132138",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "cyrus-sasl: SCRAM channel-binding NULL dereference allows remote denial of service",
+    "reason": "The affected Cyrus DIGEST-MD5, SRP-server or SCRAM-server mechanism is not installed: exact image SASL plugin directory has only sasldb. Tools act as PostgreSQL clients using managed Npgsql or libpq SCRAM, not the Cyrus SASL mechanism. No SASL server or LDAP client authentication caller is provided.",
+    "evidence": [
+      "tools-probe.json",
+      "tools-probe.py",
+      "review.md",
+      "https://www.postgresql.org/docs/17/libpq-ldap.html",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "No broad absent-Kerberos/LDAP/SASL-library claim.",
+      "Scope excludes credential caches/keytabs, custom LDAP service files, operator-added auth/plugins, extra mounts/env or arbitrary manual commands.",
+      "Default credential probe covers immutable reference image; it does not inspect actual installation secrets."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-2",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      },
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-modules-db",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2018-5709",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c",
+    "reason": "Affected KDC/database dump/GSS-RPC path has no supported caller. Exact tools image has no KDC/kadmind/kadmin/KDB plugins/gssrpc/kadm5 libraries. PostgreSQL pg_dump processes application PostgreSQL backups, not MIT Kerberos database dumps.",
+    "evidence": [
+      "tools-probe.json",
+      "tools-probe.py",
+      "review.md",
+      "https://www.postgresql.org/docs/17/libpq-ldap.html",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "No broad absent-Kerberos/LDAP/SASL-library claim.",
+      "Scope excludes credential caches/keytabs, custom LDAP service files, operator-added auth/plugins, extra mounts/env or arbitrary manual commands.",
+      "Default credential probe covers immutable reference image; it does not inspect actual installation secrets."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2024-26458",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c",
+    "reason": "Affected KDC/database dump/GSS-RPC path has no supported caller. Exact tools image has no KDC/kadmind/kadmin/KDB plugins/gssrpc/kadm5 libraries. PostgreSQL pg_dump processes application PostgreSQL backups, not MIT Kerberos database dumps.",
+    "evidence": [
+      "tools-probe.json",
+      "tools-probe.py",
+      "review.md",
+      "https://www.postgresql.org/docs/17/libpq-ldap.html",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "No broad absent-Kerberos/LDAP/SASL-library claim.",
+      "Scope excludes credential caches/keytabs, custom LDAP service files, operator-added auth/plugins, extra mounts/env or arbitrary manual commands.",
+      "Default credential probe covers immutable reference image; it does not inspect actual installation secrets."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2024-26461",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c",
+    "reason": "Affected k5sealv3 GSS message sealing requires an established Kerberos context. Default INITIATE credential acquisition in exact tools image fails/no handle, no keytab/cache/env is supplied by reference compose, and reference PostgreSQL uses password/SCRAM. Npgsql may load GSS to check credentials and libpq has GSS capability; neither is declared absent. No supported flow establishes the affected Kerberos context.",
+    "evidence": [
+      "tools-probe.json",
+      "tools-probe.py",
+      "review.md",
+      "https://www.postgresql.org/docs/17/libpq-ldap.html",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "No broad absent-Kerberos/LDAP/SASL-library claim.",
+      "Scope excludes credential caches/keytabs, custom LDAP service files, operator-added auth/plugins, extra mounts/env or arbitrary manual commands.",
+      "Default credential probe covers immutable reference image; it does not inspect actual installation secrets."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-107708",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "krb5: krb5: Denial of Service via malformed PAC in S4U2Proxy requests",
+    "reason": "Affected KDC/database dump/GSS-RPC path has no supported caller. Exact tools image has no KDC/kadmind/kadmin/KDB plugins/gssrpc/kadm5 libraries. PostgreSQL pg_dump processes application PostgreSQL backups, not MIT Kerberos database dumps.",
+    "evidence": [
+      "tools-probe.json",
+      "tools-probe.py",
+      "review.md",
+      "https://www.postgresql.org/docs/17/libpq-ldap.html",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "No broad absent-Kerberos/LDAP/SASL-library claim.",
+      "Scope excludes credential caches/keytabs, custom LDAP service files, operator-added auth/plugins, extra mounts/env or arbitrary manual commands.",
+      "Default credential probe covers immutable reference image; it does not inspect actual installation secrets."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-107778",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "krb5: krb5: Denial of Service via crafted forwarded credentials",
+    "reason": "Affected forwarded credential parser is a GSS acceptor path. Tools are PostgreSQL client/replay/migration processes, not a Kerberos acceptor service. No default credentials are acquired and reference database uses password/SCRAM.",
+    "evidence": [
+      "tools-probe.json",
+      "tools-probe.py",
+      "review.md",
+      "https://www.postgresql.org/docs/17/libpq-ldap.html",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "No broad absent-Kerberos/LDAP/SASL-library claim.",
+      "Scope excludes credential caches/keytabs, custom LDAP service files, operator-added auth/plugins, extra mounts/env or arbitrary manual commands.",
+      "Default credential probe covers immutable reference image; it does not inspect actual installation secrets."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2015-3276",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "openldap: incorrect multi-keyword mode cipherstring parsing",
+    "reason": "Affected LDAP TLS/cipher validation has no supported caller. Tools connection env supplies PostgreSQL host/port/database/user/password directly; no PGSERVICE/LDAP env or system pg_service.conf is present. Official libpq docs tie LDAP parameter lookup to a service-file ldap:// stanza, which reference lifecycle does not provision. No custom LDAP service/client or LDAP connection configuration is supported here.",
+    "evidence": [
+      "tools-probe.json",
+      "tools-probe.py",
+      "review.md",
+      "https://www.postgresql.org/docs/17/libpq-ldap.html",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "No broad absent-Kerberos/LDAP/SASL-library claim.",
+      "Scope excludes credential caches/keytabs, custom LDAP service files, operator-added auth/plugins, extra mounts/env or arbitrary manual commands.",
+      "Default credential probe covers immutable reference image; it does not inspect actual installation secrets."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2017-14159",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "openldap: Privilege escalation via PID file manipulation",
+    "reason": "Affected slapd PID-file/module/server path is not present: exact tools image has no slapd executable and no supported startup/maintenance command launches an LDAP server. libldap client presence does not expose slapd.",
+    "evidence": [
+      "tools-probe.json",
+      "tools-probe.py",
+      "review.md",
+      "https://www.postgresql.org/docs/17/libpq-ldap.html",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "No broad absent-Kerberos/LDAP/SASL-library claim.",
+      "Scope excludes credential caches/keytabs, custom LDAP service files, operator-added auth/plugins, extra mounts/env or arbitrary manual commands.",
+      "Default credential probe covers immutable reference image; it does not inspect actual installation secrets."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2017-17740",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "openldap: contrib/slapd-modules/nops/nops.c attempts to free stack buffer allowing remote attackers to cause a denial of service",
+    "reason": "Affected slapd PID-file/module/server path is not present: exact tools image has no slapd executable and no supported startup/maintenance command launches an LDAP server. libldap client presence does not expose slapd.",
+    "evidence": [
+      "tools-probe.json",
+      "tools-probe.py",
+      "review.md",
+      "https://www.postgresql.org/docs/17/libpq-ldap.html",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "No broad absent-Kerberos/LDAP/SASL-library claim.",
+      "Scope excludes credential caches/keytabs, custom LDAP service files, operator-added auth/plugins, extra mounts/env or arbitrary manual commands.",
+      "Default credential probe covers immutable reference image; it does not inspect actual installation secrets."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2020-15719",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "openldap: Certificate validation incorrectly matches name against CN-ID",
+    "reason": "Affected LDAP TLS/cipher validation has no supported caller. Tools connection env supplies PostgreSQL host/port/database/user/password directly; no PGSERVICE/LDAP env or system pg_service.conf is present. Official libpq docs tie LDAP parameter lookup to a service-file ldap:// stanza, which reference lifecycle does not provision. No custom LDAP service/client or LDAP connection configuration is supported here.",
+    "evidence": [
+      "tools-probe.json",
+      "tools-probe.py",
+      "review.md",
+      "https://www.postgresql.org/docs/17/libpq-ldap.html",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "No broad absent-Kerberos/LDAP/SASL-library claim.",
+      "Scope excludes credential caches/keytabs, custom LDAP service files, operator-added auth/plugins, extra mounts/env or arbitrary manual commands.",
+      "Default credential probe covers immutable reference image; it does not inspect actual installation secrets."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ]
+  },
+  {
+    "advisory": "CVE-2026-22185",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "OpenLDAP: OpenLDAP LMDB: Denial of Service and Information Disclosure via Heap Buffer Underflow",
+    "reason": "Affected mdb_load command is absent from exact tools image and never invoked by fixed backup/restore/replay flow. PostgreSQL dump restore is not LMDB database loading.",
+    "evidence": [
+      "tools-probe.json",
+      "tools-probe.py",
+      "review.md",
+      "https://www.postgresql.org/docs/17/libpq-ldap.html",
+      "https://www.npgsql.org/doc/security"
+    ],
+    "limitations": [
+      "No broad absent-Kerberos/LDAP/SASL-library claim.",
+      "Scope excludes credential caches/keytabs, custom LDAP service files, operator-added auth/plugins, extra mounts/env or arbitrary manual commands.",
+      "Default credential probe covers immutable reference image; it does not inspect actual installation secrets."
+    ],
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ]
+  }
+]

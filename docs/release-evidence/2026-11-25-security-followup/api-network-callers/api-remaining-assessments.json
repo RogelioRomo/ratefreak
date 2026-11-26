@@ -1,0 +1,42 @@
+[
+  {
+    "advisory": "CVE-2026-105712",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "Extraction by gpgtar into a directory containing pre-existing symlinks",
+    "reason": "Exact API image does not contain /usr/bin/gpgtar. Fixed API entrypoint/health/lifecycle do not invoke gpgtar; archive maintenance is in separate tools image using Python tarfile, not GnuPG tar extraction.",
+    "evidence": [
+      "api-remaining-probe.json",
+      "api-remaining-probe.py",
+      "source-input-hashes.json",
+      "deploy/self-host/entrypoint.py",
+      "deploy/self-host/compose.yaml"
+    ],
+    "limitations": [
+      "Exact immutable reference image and supported command graph only.",
+      "Arbitrary Python modules/operator scripts, XML parsing features, new archive commands, or added gpgtar package require reassessment.",
+      "Python XML parsers are available; this does not claim their entropy vulnerability is fixed."
+    ]
+  },
+  {
+    "advisory": "CVE-2026-7210",
+    "image": "api",
+    "image_reference": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "Attacker-supplied XML parsed through Python xml.parsers.expat or ElementTree with insufficient hash salt entropy",
+    "reason": "Exact entrypoint imports JSON/filesystem/OS utilities and os.exec replaces it with .NET for API service. Isolated entrypoint module load records no XML parser modules; parsers remain available, so this is no affected caller rather than module absence. All supported API preparation/secret loading uses filesystem/JSON operations. Native image parsing is SKCodec, not Python XML. Healthcheck uses curl, not Python XML or a Python HTTP server. No supported code passes request-controlled XML to Expat/ElementTree.",
+    "evidence": [
+      "api-remaining-probe.json",
+      "api-remaining-probe.py",
+      "source-input-hashes.json",
+      "deploy/self-host/entrypoint.py",
+      "deploy/self-host/compose.yaml"
+    ],
+    "limitations": [
+      "Exact immutable reference image and supported command graph only.",
+      "Arbitrary Python modules/operator scripts, XML parsing features, new archive commands, or added gpgtar package require reassessment.",
+      "Python XML parsers are available; this does not claim their entropy vulnerability is fixed."
+    ]
+  }
+]

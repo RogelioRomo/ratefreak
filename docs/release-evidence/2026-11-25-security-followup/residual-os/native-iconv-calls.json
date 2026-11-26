@@ -1,0 +1,490 @@
+[
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/gio/glocalfile.c",
+    "line": 365,
+    "source_sha256": "978382a74d90f36d8a13ad3368bad46a94c49af8265f3f768b30b19b35d8c85d",
+    "context": "      is_valid_utf8 = FALSE; /* Can't guarantee this */\n    }\n  else\n    {\n      utf8_filename = g_convert (filename, -1, \n\t\t\t\t \"UTF-8\", charset, NULL, NULL, NULL);\n      free_utf8_filename = TRUE;\n      is_valid_utf8 = TRUE;\n\n      if (utf8_filename != NULL)\n\t{\n\t  /* Make sure we can roundtrip: */\n\t  roundtripped_filename = g_convert (utf8_filename, -1,\n\t\t\t\t\t     charset, \"UTF-8\", NULL, NULL, NULL);"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/gio/glocalfile.c",
+    "line": 373,
+    "source_sha256": "978382a74d90f36d8a13ad3368bad46a94c49af8265f3f768b30b19b35d8c85d",
+    "context": "\n      if (utf8_filename != NULL)\n\t{\n\t  /* Make sure we can roundtrip: */\n\t  roundtripped_filename = g_convert (utf8_filename, -1,\n\t\t\t\t\t     charset, \"UTF-8\", NULL, NULL, NULL);\n\t  \n\t  if (roundtripped_filename == NULL ||\n\t      strcmp (filename, roundtripped_filename) != 0)\n\t    {\n\t      g_free (utf8_filename);\n\t      utf8_filename = NULL;\n\t    }\n"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/gio/gwin32registrykey.c",
+    "line": 1644,
+    "source_sha256": "b625057e341b10a5b20f4a7e2343ed267063802950a8baf61df2baf99af5026f",
+    "context": "  if (!auto_expand || (iter->value_type != G_WIN32_REGISTRY_VALUE_EXPAND_STR))\n    {\n      if (iter->value_data_u8 == NULL)\n        {\n          iter->value_data_u8 = g_convert ((const gchar *) iter->value_data,\n                                           iter->value_actual_data_size - sizeof (gunichar2) /* excl. 0 */,\n                                           \"UTF8\", \"UTF16\", NULL,\n                                           &value_data_len_gsize,\n                                           error);\n\n          if (iter->value_data_u8 == NULL)\n            return FALSE;\n\n          iter->value_data_u8_size = value_data_len_gsize + 1; /* incl. 0 */"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/gio/gwin32registrykey.c",
+    "line": 1673,
+    "source_sha256": "b625057e341b10a5b20f4a7e2343ed267063802950a8baf61df2baf99af5026f",
+    "context": "                                                   &tmp_size,\n                                                   error))\n        return FALSE;\n\n      iter->value_data_expanded_u8 = g_convert ((const gchar *) iter->value_data_expanded,\n                                                iter->value_data_expanded_charsize * sizeof (gunichar2) - sizeof (gunichar2) /* excl. 0 */,\n                                                \"UTF8\", \"UTF16\", NULL,\n                                                &value_data_len_gsize,\n                                                error);\n\n      if (iter->value_data_expanded_u8 == NULL)\n        return FALSE;\n\n      iter->value_data_u8_size = value_data_len_gsize + 1; /* incl. 0 */"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/gio/gwin32registrykey.c",
+    "line": 2116,
+    "source_sha256": "b625057e341b10a5b20f4a7e2343ed267063802950a8baf61df2baf99af5026f",
+    "context": "      value_type_g == G_WIN32_REGISTRY_VALUE_LINK ||\n      value_type_g == G_WIN32_REGISTRY_VALUE_STR ||\n      value_type_g == G_WIN32_REGISTRY_VALUE_MULTI_STR)\n    {\n      value_data_u8 = g_convert ((const gchar *) value_data_w,\n                                 value_data_w_size - sizeof (gunichar2) /* excl. 0 */,\n                                 \"UTF8\",\n                                 \"UTF16\",\n                                 NULL,\n                                 &value_data_u8_len,\n                                 error);\n      g_free (value_data_w);\n\n      if (value_data_u8 == NULL)"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gcharset.c",
+    "line": 181,
+    "source_sha256": "80724d09b4e3a0dae71dce8b22386787d2f08fa7975bd71ee2cea73f2a6e238c",
+    "context": " * @charset: (out) (optional) (transfer none): return location for character set\n *   name, or %NULL.\n *\n * Obtains the character set for the [current locale](running.html#locale);\n * you might use this character set as an argument to g_convert(), to convert\n * from the current locale's encoding to some other encoding. (Frequently\n * g_locale_to_utf8() and g_locale_from_utf8() are nice shortcuts, though.)\n *\n * On Windows the character set returned by this function is the\n * so-called system default ANSI code-page. That is the character set\n * used by the \"narrow\" versions of C library and Win32 functions that\n * handle file names. It might be different from the character set\n * used by the C library's current locale.\n *"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gcharset.c",
+    "line": 197,
+    "source_sha256": "80724d09b4e3a0dae71dce8b22386787d2f08fa7975bd71ee2cea73f2a6e238c",
+    "context": " * and `CHARSET` are queried in order. nl_langinfo() returns the C locale if\n * no locale has been loaded by setlocale().\n *\n * The return value is %TRUE if the locale's encoding is UTF-8, in that\n * case you can perhaps avoid calling g_convert().\n *\n * The string returned in @charset is not allocated, and should not be\n * freed.\n *\n * Returns: %TRUE if the returned charset is UTF-8\n */\ngboolean\ng_get_charset (const char **charset)\n{"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gcharset.c",
+    "line": 352,
+    "source_sha256": "80724d09b4e3a0dae71dce8b22386787d2f08fa7975bd71ee2cea73f2a6e238c",
+    "context": " * If the codepage can't be determined (for example because there is no\n * console attached) UTF-8 is assumed.\n *\n * The return value is %TRUE if the locale's encoding is UTF-8, in that\n * case you can perhaps avoid calling g_convert().\n *\n * The string returned in @charset is not allocated, and should not be\n * freed.\n *\n * Returns: %TRUE if the returned charset is UTF-8\n *\n * Since: 2.62\n */\ngboolean"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 56,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": "#include \"glibintl.h\"\n\n/* We try to terminate strings in unknown charsets with this many zero bytes\n * to ensure that multibyte strings really are nul-terminated when we return\n * them from g_convert() and friends.\n */\n#define NUL_TERMINATOR_LENGTH 4\n\nG_DEFINE_QUARK (g_convert_error, g_convert_error)\n\nstatic gboolean\ntry_conversion (const char *to_codeset,\n\t\tconst char *from_codeset,\n\t\ticonv_t    *cd)"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 67,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": "try_conversion (const char *to_codeset,\n\t\tconst char *from_codeset,\n\t\ticonv_t    *cd)\n{\n  *cd = iconv_open (to_codeset, from_codeset);\n\n  if (*cd == (iconv_t)-1 && errno == EINVAL)\n    return FALSE;\n\n#if defined(__FreeBSD__) && defined(ICONV_SET_ILSEQ_INVALID)\n  /* On FreeBSD request GNU iconv compatible handling of characters that cannot\n   * be represented in the destination character set.\n   * See https://cgit.freebsd.org/src/commit/?id=7c5b23111c5fd1992047922d4247c4a1ce1bb6c3\n   */"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 109,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * g_iconv_open: (skip)\n * @to_codeset: destination codeset\n * @from_codeset: source codeset\n * \n * Same as the standard UNIX routine iconv_open(), but\n * may be implemented via libiconv on UNIX flavors that lack\n * a native implementation.\n * \n * GLib provides g_convert() and g_locale_to_utf8() which are likely\n * more convenient than the raw iconv wrappers.\n * \n * Returns: a \"conversion descriptor\", or (GIConv)-1 if\n *  opening the converter failed.\n **/"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 113,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * Same as the standard UNIX routine iconv_open(), but\n * may be implemented via libiconv on UNIX flavors that lack\n * a native implementation.\n * \n * GLib provides g_convert() and g_locale_to_utf8() which are likely\n * more convenient than the raw iconv wrappers.\n * \n * Returns: a \"conversion descriptor\", or (GIConv)-1 if\n *  opening the converter failed.\n **/\nGIConv\ng_iconv_open (const gchar  *to_codeset,\n\t      const gchar  *from_codeset)\n{"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 165,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * Same as the standard UNIX routine iconv(), but\n * may be implemented via libiconv on UNIX flavors that lack\n * a native implementation.\n *\n * GLib provides g_convert() and g_locale_to_utf8() which are likely\n * more convenient than the raw iconv wrappers.\n * \n * Note that the behaviour of iconv() for characters which are valid in the\n * input character set, but which have no representation in the output character\n * set, is implementation defined. This function may return success (with a\n * positive number of non-reversible conversions as replacement characters were\n * used), or it may return -1 and set an error such as %EILSEQ, in such a\n * situation.\n *"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 202,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * a native implementation. Should be called to clean up\n * the conversion descriptor from g_iconv_open() when\n * you are done converting things.\n *\n * GLib provides g_convert() and g_locale_to_utf8() which are likely\n * more convenient than the raw iconv wrappers.\n * \n * Returns: -1 on error, 0 on success\n **/\ngint\ng_iconv_close (GIConv converter)\n{\n  iconv_t cd = (iconv_t)converter;\n"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 280,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * Note that you should use g_iconv() for streaming conversions. \n * Despite the fact that @bytes_read can return information about partial\n * characters, the g_convert_... functions are not generally suitable\n * for streaming. If the underlying converter maintains internal state,\n * then this won't be preserved across successive calls to g_convert(),\n * g_convert_with_iconv() or g_convert_with_fallback(). (An example of\n * this is the GNU C converter for CP1255 which does not emit a base\n * character until it knows that the next character is not a mark that\n * could combine with the base character.)\n *\n * Characters which are valid in the input character set, but which have no\n * representation in the output character set will result in a\n * %G_CONVERT_ERROR_ILLEGAL_SEQUENCE error. This is in contrast to the iconv()\n * specification, which leaves this behaviour implementation defined. Note that"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 281,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * Despite the fact that @bytes_read can return information about partial\n * characters, the g_convert_... functions are not generally suitable\n * for streaming. If the underlying converter maintains internal state,\n * then this won't be preserved across successive calls to g_convert(),\n * g_convert_with_iconv() or g_convert_with_fallback(). (An example of\n * this is the GNU C converter for CP1255 which does not emit a base\n * character until it knows that the next character is not a mark that\n * could combine with the base character.)\n *\n * Characters which are valid in the input character set, but which have no\n * representation in the output character set will result in a\n * %G_CONVERT_ERROR_ILLEGAL_SEQUENCE error. This is in contrast to the iconv()\n * specification, which leaves this behaviour implementation defined. Note that\n * this is the same error code as is returned for an invalid byte sequence in"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 292,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * %G_CONVERT_ERROR_ILLEGAL_SEQUENCE error. This is in contrast to the iconv()\n * specification, which leaves this behaviour implementation defined. Note that\n * this is the same error code as is returned for an invalid byte sequence in\n * the input character set. To get defined behaviour for conversion of\n * unrepresentable characters, use g_convert_with_fallback().\n *\n * Returns: (array length=bytes_written) (element-type guint8) (transfer full):\n *               If the conversion was successful, a newly allocated buffer\n *               containing the converted string, which must be freed with\n *               g_free(). Otherwise %NULL and @error will be set.\n **/\ngchar*\ng_convert_with_iconv (const gchar *str,\n\t\t      gssize       len,"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 300,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " *               containing the converted string, which must be freed with\n *               g_free(). Otherwise %NULL and @error will be set.\n **/\ngchar*\ng_convert_with_iconv (const gchar *str,\n\t\t      gssize       len,\n\t\t      GIConv       converter,\n\t\t      gsize       *bytes_read, \n\t\t      gsize       *bytes_written, \n\t\t      GError     **error)\n{\n  gchar *dest;\n  gchar *outp;\n  const gchar *p;"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 451,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * Note that you should use g_iconv() for streaming conversions. \n * Despite the fact that @bytes_read can return information about partial\n * characters, the g_convert_... functions are not generally suitable\n * for streaming. If the underlying converter maintains internal state,\n * then this won't be preserved across successive calls to g_convert(),\n * g_convert_with_iconv() or g_convert_with_fallback(). (An example of\n * this is the GNU C converter for CP1255 which does not emit a base\n * character until it knows that the next character is not a mark that\n * could combine with the base character.)\n *\n * Using extensions such as \"//TRANSLIT\" may not work (or may not work\n * well) on many platforms.  Consider using g_str_to_ascii() instead.\n *\n * Returns: (array length=bytes_written) (element-type guint8) (transfer full):"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 452,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * Despite the fact that @bytes_read can return information about partial\n * characters, the g_convert_... functions are not generally suitable\n * for streaming. If the underlying converter maintains internal state,\n * then this won't be preserved across successive calls to g_convert(),\n * g_convert_with_iconv() or g_convert_with_fallback(). (An example of\n * this is the GNU C converter for CP1255 which does not emit a base\n * character until it knows that the next character is not a mark that\n * could combine with the base character.)\n *\n * Using extensions such as \"//TRANSLIT\" may not work (or may not work\n * well) on many platforms.  Consider using g_str_to_ascii() instead.\n *\n * Returns: (array length=bytes_written) (element-type guint8) (transfer full):\n *          If the conversion was successful, a newly allocated buffer"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 466,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " *          containing the converted string, which must be freed with g_free().\n *          Otherwise %NULL and @error will be set.\n **/\ngchar*\ng_convert (const gchar *str,\n           gssize       len,  \n           const gchar *to_codeset,\n           const gchar *from_codeset,\n           gsize       *bytes_read, \n\t   gsize       *bytes_written, \n\t   GError     **error)\n{\n  gchar *res;\n  GIConv cd;"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 494,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": "      \n      return NULL;\n    }\n\n  res = g_convert_with_iconv (str, len, cd,\n\t\t\t      bytes_read, bytes_written,\n\t\t\t      error);\n\n  close_converter (cd);\n\n  return res;\n}\n\n/**"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 540,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * Note that you should use g_iconv() for streaming conversions. \n * Despite the fact that @bytes_read can return information about partial\n * characters, the g_convert_... functions are not generally suitable\n * for streaming. If the underlying converter maintains internal state,\n * then this won't be preserved across successive calls to g_convert(),\n * g_convert_with_iconv() or g_convert_with_fallback(). (An example of\n * this is the GNU C converter for CP1255 which does not emit a base\n * character until it knows that the next character is not a mark that\n * could combine with the base character.)\n *\n * Returns: (array length=bytes_written) (element-type guint8) (transfer full):\n *          If the conversion was successful, a newly allocated buffer\n *          containing the converted string, which must be freed with g_free().\n *          Otherwise %NULL and @error will be set."
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 541,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * Despite the fact that @bytes_read can return information about partial\n * characters, the g_convert_... functions are not generally suitable\n * for streaming. If the underlying converter maintains internal state,\n * then this won't be preserved across successive calls to g_convert(),\n * g_convert_with_iconv() or g_convert_with_fallback(). (An example of\n * this is the GNU C converter for CP1255 which does not emit a base\n * character until it knows that the next character is not a mark that\n * could combine with the base character.)\n *\n * Returns: (array length=bytes_written) (element-type guint8) (transfer full):\n *          If the conversion was successful, a newly allocated buffer\n *          containing the converted string, which must be freed with g_free().\n *          Otherwise %NULL and @error will be set.\n **/"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 552,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " *          containing the converted string, which must be freed with g_free().\n *          Otherwise %NULL and @error will be set.\n **/\ngchar*\ng_convert_with_fallback (const gchar *str,\n\t\t\t gssize       len,    \n\t\t\t const gchar *to_codeset,\n\t\t\t const gchar *from_codeset,\n\t\t\t const gchar *fallback,\n\t\t\t gsize       *bytes_read,\n\t\t\t gsize       *bytes_written,\n\t\t\t GError     **error)\n{\n  gchar *utf8;"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 588,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": "  \n  /* Try an exact conversion; we only proceed if this fails\n   * due to an illegal sequence in the input string.\n   */\n  dest = g_convert (str, len, to_codeset, from_codeset, \n\t\t    bytes_read, bytes_written, &local_error);\n  if (!local_error)\n    return dest;\n\n  g_assert (dest == NULL);\n\n  if (!g_error_matches (local_error, G_CONVERT_ERROR, G_CONVERT_ERROR_ILLEGAL_SEQUENCE))\n    {\n      g_propagate_error (error, local_error);"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 620,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": "      \n      return NULL;\n    }\n\n  utf8 = g_convert (str, len, \"UTF-8\", from_codeset, \n\t\t    bytes_read, &inbytes_remaining, error);\n  if (!utf8)\n    {\n      close_converter (cd);\n      if (bytes_written)\n        *bytes_written = 0;\n      return NULL;\n    }\n"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 852,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": "          return NULL;\n        }\n    }\n\n  out = g_convert (string, len, to_codeset, from_codeset,\n                   bytes_read, &outbytes, error);\n  if (out == NULL)\n    {\n      if (bytes_written)\n        *bytes_written = 0;\n      return NULL;\n    }\n\n  if ((flags & CONVERT_CHECK_NO_NULS_IN_OUTPUT)"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 908,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * nul character, the error %G_CONVERT_ERROR_EMBEDDED_NUL is set and the\n * function returns %NULL.\n * If the source encoding is UTF-8, an embedded nul character is treated with\n * the %G_CONVERT_ERROR_ILLEGAL_SEQUENCE error for backward compatibility with\n * earlier versions of this library. Use g_convert() to produce output that\n * may contain embedded nul characters.\n * \n * Returns: (type utf8): The converted string, or %NULL on an error.\n **/\ngchar *\ng_locale_to_utf8 (const gchar  *opsysstring,\n\t\t  gssize        len,            \n\t\t  gsize        *bytes_read,    \n\t\t  gsize        *bytes_written,"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 1001,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * On Windows this means the system codepage.\n *\n * The input string shall not contain nul characters even if the @len\n * argument is positive. A nul character found inside the string will result\n * in error %G_CONVERT_ERROR_ILLEGAL_SEQUENCE. Use g_convert() to convert\n * input that may contain embedded nul characters.\n *\n * Returns: (array length=bytes_written) (element-type guint8) (transfer full):\n *          A newly-allocated buffer containing the converted string,\n *          or %NULL on an error, and error will be set.\n **/\ngchar *\ng_locale_from_utf8 (const gchar *utf8string,\n\t\t    gssize       len,            "
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 1213,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": " * argument is positive. A nul character found inside the string will result\n * in error %G_CONVERT_ERROR_ILLEGAL_SEQUENCE.\n * If the source encoding is not UTF-8 and the conversion output contains a\n * nul character, the error %G_CONVERT_ERROR_EMBEDDED_NUL is set and the\n * function returns %NULL. Use g_convert() to produce output that\n * may contain embedded nul characters.\n * \n * Returns: (type utf8): The converted string, or %NULL on an error.\n **/\ngchar*\ng_filename_to_utf8 (const gchar *opsysstring, \n\t\t    gssize       len,           \n\t\t    gsize       *bytes_read,   \n\t\t    gsize       *bytes_written,"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.c",
+    "line": 1924,
+    "source_sha256": "603c828c2be0fe0a9046dd34b412ab62811ba97500bfef8fd4e3282393ef8283",
+    "context": "       * Skip the first charset if it is UTF-8.\n       */\n      for (i = is_utf8 ? 1 : 0; charsets[i]; i++)\n\t{\n\t  display_name = g_convert (filename, -1, \"UTF-8\", charsets[i], \n\t\t\t\t    NULL, NULL, NULL);\n\n\t  if (display_name)\n\t    break;\n\t}\n    }\n  \n  /* if all conversions failed, we replace invalid UTF-8\n   * by a question mark"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.h",
+    "line": 101,
+    "source_sha256": "37e3abdc61f2c59acacb1035631ef6f49e1e09de87de627844db3ce9cae9be38",
+    "context": "gint   g_iconv_close  (GIConv        converter);\n\n\nGLIB_AVAILABLE_IN_ALL\ngchar* g_convert               (const gchar  *str,\n\t\t\t\tgssize        len,            \n\t\t\t\tconst gchar  *to_codeset,\n\t\t\t\tconst gchar  *from_codeset,\n\t\t\t\tgsize        *bytes_read,     \n\t\t\t\tgsize        *bytes_written,  \n\t\t\t\tGError      **error) G_GNUC_MALLOC;\nGLIB_AVAILABLE_IN_ALL\ngchar* g_convert_with_iconv    (const gchar  *str,\n\t\t\t\tgssize        len,"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.h",
+    "line": 109,
+    "source_sha256": "37e3abdc61f2c59acacb1035631ef6f49e1e09de87de627844db3ce9cae9be38",
+    "context": "\t\t\t\tgsize        *bytes_read,     \n\t\t\t\tgsize        *bytes_written,  \n\t\t\t\tGError      **error) G_GNUC_MALLOC;\nGLIB_AVAILABLE_IN_ALL\ngchar* g_convert_with_iconv    (const gchar  *str,\n\t\t\t\tgssize        len,\n\t\t\t\tGIConv        converter,\n\t\t\t\tgsize        *bytes_read,     \n\t\t\t\tgsize        *bytes_written,  \n\t\t\t\tGError      **error) G_GNUC_MALLOC;\nGLIB_AVAILABLE_IN_ALL\ngchar* g_convert_with_fallback (const gchar  *str,\n\t\t\t\tgssize        len,            \n\t\t\t\tconst gchar  *to_codeset,"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gconvert.h",
+    "line": 116,
+    "source_sha256": "37e3abdc61f2c59acacb1035631ef6f49e1e09de87de627844db3ce9cae9be38",
+    "context": "\t\t\t\tgsize        *bytes_read,     \n\t\t\t\tgsize        *bytes_written,  \n\t\t\t\tGError      **error) G_GNUC_MALLOC;\nGLIB_AVAILABLE_IN_ALL\ngchar* g_convert_with_fallback (const gchar  *str,\n\t\t\t\tgssize        len,            \n\t\t\t\tconst gchar  *to_codeset,\n\t\t\t\tconst gchar  *from_codeset,\n\t\t\t\tconst gchar  *fallback,\n\t\t\t\tgsize        *bytes_read,     \n\t\t\t\tgsize        *bytes_written,  \n\t\t\t\tGError      **error) G_GNUC_MALLOC;\n\n"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gprint.c",
+    "line": 68,
+    "source_sha256": "e1678a3fe7b715a539aaa105c237f6930452abfd3965886608ed2dae7e47e10a",
+    "context": "  else\n    {\n      GError *err = NULL;\n\n      gchar *result = g_convert_with_fallback (string, -1, charset, \"UTF-8\", \"?\", NULL, NULL, &err);\n      if (result)\n        return result;\n      else\n        {\n          /* Not thread-safe, but doesn't matter if we print the warning twice\n           */\n          static gboolean warned = FALSE;\n          if (!warned)\n            {"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gunicollate.c",
+    "line": 145,
+    "source_sha256": "ef8a8cd6c5a2cd0c918b55dcb75904f583ada870638699a631abff5453a9517d",
+    "context": "      result = strcoll (str1_norm, str2_norm);\n    }\n  else\n    {\n      gchar *str1_locale = g_convert (str1_norm, -1, charset, \"UTF-8\", NULL, NULL, NULL);\n      gchar *str2_locale = g_convert (str2_norm, -1, charset, \"UTF-8\", NULL, NULL, NULL);\n\n      if (str1_locale && str2_locale)\n\tresult =  strcoll (str1_locale, str2_locale);\n      else if (str1_locale)\n\tresult = -1;\n      else if (str2_locale)\n\tresult = 1;\n      else"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gunicollate.c",
+    "line": 146,
+    "source_sha256": "ef8a8cd6c5a2cd0c918b55dcb75904f583ada870638699a631abff5453a9517d",
+    "context": "    }\n  else\n    {\n      gchar *str1_locale = g_convert (str1_norm, -1, charset, \"UTF-8\", NULL, NULL, NULL);\n      gchar *str2_locale = g_convert (str2_norm, -1, charset, \"UTF-8\", NULL, NULL, NULL);\n\n      if (str1_locale && str2_locale)\n\tresult =  strcoll (str1_locale, str2_locale);\n      else if (str1_locale)\n\tresult = -1;\n      else if (str2_locale)\n\tresult = 1;\n      else\n\tresult = strcmp (str1_norm, str2_norm);"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/gunicollate.c",
+    "line": 452,
+    "source_sha256": "ef8a8cd6c5a2cd0c918b55dcb75904f583ada870638699a631abff5453a9517d",
+    "context": "        }\n    }\n  else\n    {\n      gchar *str_locale = g_convert (str_norm, -1, charset, \"UTF-8\", NULL, NULL, NULL);\n\n      if (str_locale)\n\t{\n\t  xfrm_len = strxfrm (NULL, str_locale, 0);\n\t  if (xfrm_len >= G_MAXINT - 2)\n\t    {\n\t      g_free (str_locale);\n\t      str_locale = NULL;\n\t    }"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/tests/convert.c",
+    "line": 46,
+    "source_sha256": "8a8e688b1a296fe9cb999ac24f9e2288d2b099a3f0ade975a5ee18afb3ae4d27",
+    "context": "  gsize bytes_read = 0;\n  gsize bytes_written = 0;\n  GError *error = NULL;\n\n  out = g_convert (in, -1, \"UTF-8\", \"CP1255\", \n\t\t   &bytes_read, &bytes_written, &error);\n\n  if (error && error->code == G_CONVERT_ERROR_NO_CONVERSION)\n    return; /* silently skip if CP1255 is not supported, see bug 467707 */ \n\n  g_assert_no_error (error);\n  g_assert_cmpint (bytes_read, ==, 5);\n  g_assert_cmpint (bytes_written, ==, 10);\n  g_assert_cmpstr (out, ==, expected);"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/tests/convert.c",
+    "line": 71,
+    "source_sha256": "8a8e688b1a296fe9cb999ac24f9e2288d2b099a3f0ade975a5ee18afb3ae4d27",
+    "context": "  gsize bytes_read = 0;\n  gsize bytes_written = 0;\n  GError *error = NULL;  \n\n  out = g_convert (in_utf8, -1,\n\t\t   \"ISO-8859-1\", \"UTF-8\",\n\t\t   &bytes_read, &bytes_written,\n\t\t   &error);\n\n  g_assert_no_error (error);\n  g_assert_cmpint (bytes_read, ==, 2);\n  g_assert_cmpint (bytes_written, ==, 1);\n  g_assert_cmpstr (out, ==, \"\\xbd\");\n  g_free (out);"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/tests/convert.c",
+    "line": 82,
+    "source_sha256": "8a8e688b1a296fe9cb999ac24f9e2288d2b099a3f0ade975a5ee18afb3ae4d27",
+    "context": "  g_assert_cmpint (bytes_written, ==, 1);\n  g_assert_cmpstr (out, ==, \"\\xbd\");\n  g_free (out);\n\n  out = g_convert (in_utf8, -1,\n\t\t   \"ISO-8859-15\", \"UTF-8\",\n\t\t   &bytes_read, &bytes_written,\n\t\t   &error);\n\n  g_assert_error (error, G_CONVERT_ERROR, G_CONVERT_ERROR_ILLEGAL_SEQUENCE);\n  g_assert_cmpint (bytes_read, ==, 0);\n  g_assert_cmpint (bytes_written, ==, 0);\n  g_assert_cmpstr (out, ==, NULL);\n  g_clear_error (&error);"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/tests/convert.c",
+    "line": 94,
+    "source_sha256": "8a8e688b1a296fe9cb999ac24f9e2288d2b099a3f0ade975a5ee18afb3ae4d27",
+    "context": "  g_assert_cmpstr (out, ==, NULL);\n  g_clear_error (&error);\n  g_free (out);\n\n  out = g_convert_with_fallback (in_utf8, -1,\n\t\t\t\t \"ISO8859-15\", \"UTF-8\",\n\t\t\t\t \"a\",\n\t\t\t\t &bytes_read, &bytes_written,\n\t\t\t\t &error);\n\n  g_assert_no_error (error);\n  g_assert_cmpint (bytes_read, ==, 2);\n  g_assert_cmpint (bytes_written, ==, 1);\n  g_assert_cmpstr (out, ==, \"a\");"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/tests/convert.c",
+    "line": 118,
+    "source_sha256": "8a8e688b1a296fe9cb999ac24f9e2288d2b099a3f0ade975a5ee18afb3ae4d27",
+    "context": "  gsize bytes_read = 0;\n  gsize bytes_written = 0;\n  GError *error = NULL;  \n\n  out = g_convert (in_be, sizeof (in_be), \n\t\t   \"UTF-8\", \"UTF-16\",\n\t\t   &bytes_read, &bytes_written,\n\t\t   &error);\n\n  g_assert_no_error (error);\n  g_assert_cmpint (bytes_read, ==, 4);\n  g_assert_cmpint (bytes_written, ==, 2);\n  g_assert_cmpstr (out, ==, expected);\n  g_free (out);"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/tests/convert.c",
+    "line": 129,
+    "source_sha256": "8a8e688b1a296fe9cb999ac24f9e2288d2b099a3f0ade975a5ee18afb3ae4d27",
+    "context": "  g_assert_cmpint (bytes_written, ==, 2);\n  g_assert_cmpstr (out, ==, expected);\n  g_free (out);\n\n  out = g_convert (in_le, sizeof (in_le), \n\t\t   \"UTF-8\", \"UTF-16\",\n\t\t   &bytes_read, &bytes_written,\n\t\t   &error);\n\n  g_assert_no_error (error);\n  g_assert_cmpint (bytes_read, ==, 4);\n  g_assert_cmpint (bytes_written, ==, 2);\n  g_assert_cmpstr (out, ==, expected);\n  g_free (out);"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/tests/convert.c",
+    "line": 691,
+    "source_sha256": "8a8e688b1a296fe9cb999ac24f9e2288d2b099a3f0ade975a5ee18afb3ae4d27",
+    "context": "\n  g_free (display);\n}\n\n/* g_convert() should accept and produce text buffers with embedded\n * nul bytes/characters.\n */\nstatic void\ntest_convert_embedded_nul (void)\n{\n  gchar *res;\n  gsize bytes_read, bytes_written;\n  GError *error = NULL;\n"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/tests/convert.c",
+    "line": 701,
+    "source_sha256": "8a8e688b1a296fe9cb999ac24f9e2288d2b099a3f0ade975a5ee18afb3ae4d27",
+    "context": "  gchar *res;\n  gsize bytes_read, bytes_written;\n  GError *error = NULL;\n\n  res = g_convert (\"ab\\0\\xf6\", 4, \"UTF-8\", \"ISO-8859-1\",\n                   &bytes_read, &bytes_written, &error);\n  g_assert_no_error (error);\n  g_assert_cmpuint (bytes_read, ==, 4);\n  g_assert_cmpmem (res, bytes_written, \"ab\\0\\xc3\\xb6\", 5);\n  g_free (res);\n}\n\nstatic void\ntest_locale_to_utf8_embedded_nul (void)"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/tests/convert.c",
+    "line": 944,
+    "source_sha256": "8a8e688b1a296fe9cb999ac24f9e2288d2b099a3f0ade975a5ee18afb3ae4d27",
+    "context": "  gsize bytes_read = 0;\n  gsize bytes_written = 0;\n  GError *error = NULL;\n\n  out = g_convert (in, -1, \"XXX\", \"UVZ\",\n                   &bytes_read, &bytes_written, &error);\n\n  /* error code is unreliable, since we mishandle errno there */\n  g_assert (error && error->domain == G_CONVERT_ERROR);\n  g_error_free (error);\n}\n\nstatic void\ntest_filename_from_uri_helper (const gchar *uri,"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/tests/unicode-encoding.c",
+    "line": 151,
+    "source_sha256": "edcc905e7bc5e23744e41255f5a9022f8e6642c6b5407ca541d5043abcfb03b0",
+    "context": "#define TARGET \"UTF-16\"\n#endif\n\n      utf16_expected_tmp =\n        (gunichar2 *) g_convert (utf8, -1, TARGET, \"UTF-8\", NULL, &bytes_written, NULL);\n      g_assert_nonnull (utf16_expected_tmp);\n\n      /* zero-terminate and remove BOM */\n      n_chars = bytes_written / 2;\n      if (utf16_expected_tmp[0] == 0xfeff) /* BOM */\n        {\n          n_chars--;\n          utf16_expected = g_new (gunichar2, n_chars + 1);\n          memcpy (utf16_expected, utf16_expected_tmp + 1, sizeof(gunichar2) * n_chars);"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/win_iconv.c",
+    "line": 10,
+    "source_sha256": "cea2ae7f5fb78fbb501a7da8814c32482bf81d46cf8ce79a3bc4ef33d7a70a0e",
+    "context": " * Maintainer: Yukihiro Nakadaira <yukihiro.nakadaira@gmail.com>\n *\n * If $WINICONV_LIBICONV_DLL environment variable was defined, win_iconv\n * loads the specified DLL dynamically and uses it.  If loading the DLL\n * or iconv_open() failed, falls back to internal conversion.\n * $WINICONV_LIBICONV_DLL is a comma separated list.  The first loadable\n * DLL is used.  The specified DLL should have iconv_open(),\n * iconv_close() and iconv() functions.  Or these functions can be\n * libiconv_open(), libiconv_close() and libiconv().\n *\n * Win32 API does not support strict encoding conversion for some\n * codepage.  And MLang function drop or replace invalid bytes and does\n * not return useful error status as iconv.  This implementation cannot\n * be used for encoding validation purpose."
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/win_iconv.c",
+    "line": 12,
+    "source_sha256": "cea2ae7f5fb78fbb501a7da8814c32482bf81d46cf8ce79a3bc4ef33d7a70a0e",
+    "context": " * If $WINICONV_LIBICONV_DLL environment variable was defined, win_iconv\n * loads the specified DLL dynamically and uses it.  If loading the DLL\n * or iconv_open() failed, falls back to internal conversion.\n * $WINICONV_LIBICONV_DLL is a comma separated list.  The first loadable\n * DLL is used.  The specified DLL should have iconv_open(),\n * iconv_close() and iconv() functions.  Or these functions can be\n * libiconv_open(), libiconv_close() and libiconv().\n *\n * Win32 API does not support strict encoding conversion for some\n * codepage.  And MLang function drop or replace invalid bytes and does\n * not return useful error status as iconv.  This implementation cannot\n * be used for encoding validation purpose.\n */\n"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/win_iconv.c",
+    "line": 72,
+    "source_sha256": "cea2ae7f5fb78fbb501a7da8814c32482bf81d46cf8ce79a3bc4ef33d7a70a0e",
+    "context": "typedef unsigned int uint;\n\ntypedef void* iconv_t;\n\niconv_t iconv_open(const char *tocode, const char *fromcode);\nint iconv_close(iconv_t cd);\nsize_t iconv(iconv_t cd, /* const */ char **inbuf, size_t *inbytesleft, char **outbuf, size_t *outbytesleft);\n\n/* libiconv interface for vim */\n#if defined(MAKE_DLL)\nint\niconvctl (iconv_t cd, int request, void* argument)\n{\n    /* not supported */"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/win_iconv.c",
+    "line": 748,
+    "source_sha256": "cea2ae7f5fb78fbb501a7da8814c32482bf81d46cf8ce79a3bc4ef33d7a70a0e",
+    "context": "    return TRUE;\n}\n\niconv_t\niconv_open(const char *tocode, const char *fromcode)\n{\n    rec_iconv_t *cd;\n\n    cd = (rec_iconv_t *)calloc(1, sizeof(rec_iconv_t));\n    if (cd == NULL)\n        return (iconv_t)(-1);\n\n#if defined(USE_LIBICONV_DLL)\n    errno = 0;"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "archive_sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "file": "glib-2.90.0/glib/win_iconv.c",
+    "line": 2058,
+    "source_sha256": "cea2ae7f5fb78fbb501a7da8814c32482bf81d46cf8ce79a3bc4ef33d7a70a0e",
+    "context": "        strcpy(tocode, p);\n        strcat(tocode, \"//IGNORE\");\n    }\n\n    cd = iconv_open(tocode, fromcode);\n    if (cd == (iconv_t)(-1))\n    {\n        perror(\"iconv_open error\");\n        return 1;\n    }\n\n    while ((inbytesleft = fread(inbuf + rest, 1, sizeof(inbuf) - rest, in)) != 0\n            || rest != 0)\n    {"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/4c8ceb233665-libarchive-3.8.9.tar.xz",
+    "archive_sha256": "888c934f9d95648ecb9163dc8e23ab80a476ecb81a8f1154704a227b5b676dde",
+    "file": "libarchive-3.8.9/libarchive/archive_string.c",
+    "line": 1307,
+    "source_sha256": "b58d8a36ebeaec20a669d45e7d7107cc21ec1c2287edb42d878241d2fa5d83c1",
+    "context": "\t    (flag & SCONV_WIN_CP)) {\n\t\t/* This case we won't use iconv. */\n\t\tsc->cd = (iconv_t)-1;\n\t} else {\n\t\tsc->cd = iconv_open(tc, fc);\n\t\tif (sc->cd == (iconv_t)-1 && (sc->flag & SCONV_BEST_EFFORT)) {\n\t\t\t/*\n\t\t\t * Unfortunately, all of iconv implements do support\n\t\t\t * \"CP932\" character-set, so we should use \"SJIS\"\n\t\t\t * instead if iconv_open failed.\n\t\t\t */\n\t\t\tif (strcmp(tc, \"CP932\") == 0)\n\t\t\t\tsc->cd = iconv_open(\"SJIS\", fc);\n\t\t\telse if (strcmp(fc, \"CP932\") == 0)"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/4c8ceb233665-libarchive-3.8.9.tar.xz",
+    "archive_sha256": "888c934f9d95648ecb9163dc8e23ab80a476ecb81a8f1154704a227b5b676dde",
+    "file": "libarchive-3.8.9/libarchive/archive_string.c",
+    "line": 1315,
+    "source_sha256": "b58d8a36ebeaec20a669d45e7d7107cc21ec1c2287edb42d878241d2fa5d83c1",
+    "context": "\t\t\t * \"CP932\" character-set, so we should use \"SJIS\"\n\t\t\t * instead if iconv_open failed.\n\t\t\t */\n\t\t\tif (strcmp(tc, \"CP932\") == 0)\n\t\t\t\tsc->cd = iconv_open(\"SJIS\", fc);\n\t\t\telse if (strcmp(fc, \"CP932\") == 0)\n\t\t\t\tsc->cd = iconv_open(tc, \"SJIS\");\n\t\t}\n#if defined(__FreeBSD__) && !defined(HAVE_LIBICONV)\n\t\t/*\n\t\t * FreeBSD's native iconv() by default returns the number of\n\t\t * invalid characters in the input string, as specified by\n\t\t * POSIX, but iconv_strncat_in_locale() assumes GNU iconv\n\t\t * semantics."
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/4c8ceb233665-libarchive-3.8.9.tar.xz",
+    "archive_sha256": "888c934f9d95648ecb9163dc8e23ab80a476ecb81a8f1154704a227b5b676dde",
+    "file": "libarchive-3.8.9/libarchive/archive_string.c",
+    "line": 1317,
+    "source_sha256": "b58d8a36ebeaec20a669d45e7d7107cc21ec1c2287edb42d878241d2fa5d83c1",
+    "context": "\t\t\t */\n\t\t\tif (strcmp(tc, \"CP932\") == 0)\n\t\t\t\tsc->cd = iconv_open(\"SJIS\", fc);\n\t\t\telse if (strcmp(fc, \"CP932\") == 0)\n\t\t\t\tsc->cd = iconv_open(tc, \"SJIS\");\n\t\t}\n#if defined(__FreeBSD__) && !defined(HAVE_LIBICONV)\n\t\t/*\n\t\t * FreeBSD's native iconv() by default returns the number of\n\t\t * invalid characters in the input string, as specified by\n\t\t * POSIX, but iconv_strncat_in_locale() assumes GNU iconv\n\t\t * semantics.\n\t\t */\n\t\tint v = 1;"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/4c8ceb233665-libarchive-3.8.9.tar.xz",
+    "archive_sha256": "888c934f9d95648ecb9163dc8e23ab80a476ecb81a8f1154704a227b5b676dde",
+    "file": "libarchive-3.8.9/libarchive/archive_string.c",
+    "line": 1337,
+    "source_sha256": "b58d8a36ebeaec20a669d45e7d7107cc21ec1c2287edb42d878241d2fa5d83c1",
+    "context": "\t\t * so that you can do a I18N programming. This will be\n\t\t * used only in archive_mstring_copy_mbs_len_l so far.\n\t\t */\n\t\tif (flag & SCONV_FROM_CHARSET) {\n\t\t\tsc->cd_w = iconv_open(\"UTF-8\", fc);\n\t\t\tif (sc->cd_w == (iconv_t)-1 &&\n\t\t\t    (sc->flag & SCONV_BEST_EFFORT)) {\n\t\t\t\tif (strcmp(fc, \"CP932\") == 0)\n\t\t\t\t\tsc->cd_w = iconv_open(\"UTF-8\", \"SJIS\");\n\t\t\t}\n\t\t}\n#endif /* _WIN32 && !__CYGWIN__ */\n\t}\n#endif\t/* HAVE_ICONV */"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/4c8ceb233665-libarchive-3.8.9.tar.xz",
+    "archive_sha256": "888c934f9d95648ecb9163dc8e23ab80a476ecb81a8f1154704a227b5b676dde",
+    "file": "libarchive-3.8.9/libarchive/archive_string.c",
+    "line": 1341,
+    "source_sha256": "b58d8a36ebeaec20a669d45e7d7107cc21ec1c2287edb42d878241d2fa5d83c1",
+    "context": "\t\t\tsc->cd_w = iconv_open(\"UTF-8\", fc);\n\t\t\tif (sc->cd_w == (iconv_t)-1 &&\n\t\t\t    (sc->flag & SCONV_BEST_EFFORT)) {\n\t\t\t\tif (strcmp(fc, \"CP932\") == 0)\n\t\t\t\t\tsc->cd_w = iconv_open(\"UTF-8\", \"SJIS\");\n\t\t\t}\n\t\t}\n#endif /* _WIN32 && !__CYGWIN__ */\n\t}\n#endif\t/* HAVE_ICONV */\n\n\tsc->flag = flag;\n\n\t/*"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/f395c8ee8729-libxml2-2.15.4.tar.xz",
+    "archive_sha256": "98087fd181d9070724f3fbc65c7377db03038eb92bd882374daff44940138821",
+    "file": "libxml2-2.15.4/encoding.c",
+    "line": 1381,
+    "source_sha256": "45fc7bc3332409ed55bc7dd94cc356d378e3028efbeb795f7d7867bae67263ad",
+    "context": "            goto error;\n        }\n        inputCtxt->cd = (iconv_t) -1;\n\n        icv_in = iconv_open(\"UTF-8\", name);\n        if (icv_in == (iconv_t) -1) {\n            if (errno == EINVAL)\n                ret = XML_ERR_UNSUPPORTED_ENCODING;\n            else if (errno == ENOMEM)\n                ret = XML_ERR_NO_MEMORY;\n            else\n                ret = XML_ERR_SYSTEM;\n            goto error;\n        }"
+  },
+  {
+    "archive": ".local/release-compliance/native-sources/f395c8ee8729-libxml2-2.15.4.tar.xz",
+    "archive_sha256": "98087fd181d9070724f3fbc65c7377db03038eb92bd882374daff44940138821",
+    "file": "libxml2-2.15.4/encoding.c",
+    "line": 1404,
+    "source_sha256": "45fc7bc3332409ed55bc7dd94cc356d378e3028efbeb795f7d7867bae67263ad",
+    "context": "            goto error;\n        }\n        outputCtxt->cd = (iconv_t) -1;\n\n        icv_out = iconv_open(name, \"UTF-8\");\n        if (icv_out == (iconv_t) -1) {\n            if (errno == EINVAL)\n                ret = XML_ERR_UNSUPPORTED_ENCODING;\n            else if (errno == ENOMEM)\n                ret = XML_ERR_NO_MEMORY;\n            else\n                ret = XML_ERR_SYSTEM;\n            goto error;\n        }"
+  }
+]

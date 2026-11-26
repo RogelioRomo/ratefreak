@@ -1,0 +1,2058 @@
+{
+  "archives": [
+    {
+      "file": ".local/release-compliance/native-sources/0422e43fe363-librsvg-2.63.2.tar.xz",
+      "sha256": "852b18e1a00b8605528825a27dc7748bff2a5dd254028f59dc22a34ea57e81b6"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+      "sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/b02fe6d03be3-pixman-0.46.4.tar.gz",
+      "sha256": "d09c44ebc3bd5bee7021c79f922fe8fb2fb57f7320f55e97ff9914d2346a591c"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/c0c76e912dfd-libffi-3.8.0.tar.gz",
+      "sha256": "7da3e2d9a171eb0a038f592ecad3ff2bb2550f3496d87b3b29ad0cf4430c0db4"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/d2b5992c45ca-pango-1.58.2.tar.xz",
+      "sha256": "342385b6ca3b7c73455d7c80a13b7dbe4489e00bc3bd4c5bd6ed4dce421e374a"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/da7971bb1d61-libaom-3.15.1.tar.gz",
+      "sha256": "8ca0c52746174603500f0adb6f2a215d69c9ca2aab2acb3caa06fb791d8d01bf"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/c0aed89de3a8-0.5.tar.gz",
+      "sha256": "f7a1cbd7579baaf575c66f9d99fb6295e9b0684a28b095967cfda17857595303"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/4c8ceb233665-libarchive-3.8.9.tar.xz",
+      "sha256": "888c934f9d95648ecb9163dc8e23ab80a476ecb81a8f1154704a227b5b676dde"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/7f7f03957345-2.3.3.tar.gz",
+      "sha256": "f9c65aa9c852eb8255b636fd9f07ce1c406f061ec19a2e7d508b318ca0c907d1"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/be01d2b4df7b-VER-2-14-3.tar.gz",
+      "sha256": "dc49de6b01a266eef4876a4dd34d9842c475d3e28ff2eff63bd2fb760ab56261"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/d204d1d37068-libexif-0.6.26.tar.xz",
+      "sha256": "4a055ed6575e61ca46c3172be3c753cc16c9becd0f99ec71d58dd0e471476c0c"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/0d0122bb4a3d-0826579.tar.gz",
+      "sha256": "b680167bd5d9afebdd576a12f8c49d2c9066a3b92ef96a2b2c5f7829b8600fe5"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/b37f66ae431a-v0.5.4.tar.gz",
+      "sha256": "83a70a15bc2da41f081a44ebc58ee48e2e1d524a6d3fdb4a24064afa08d5ad4d"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/cf04ebba3a72-fribidi-1.0.17.tar.xz",
+      "sha256": "6949dcde27d41cebad1fd741fcafc36d55a1020d2d872d4a6eb3914caabbada2"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/988e326b75ce-v1.6.58.tar.gz",
+      "sha256": "a9d4df463d36a6e5f9c29bd6f4967312d17e996c1854f3511f833924eb1993cf"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/3835b73bff61-libwebp-1.6.0.tar.gz",
+      "sha256": "e4ab7009bf0629fd11982d4c2aa83964cf244cffba7347ecd39019a9e38c4564"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/6faa085a005d-14.5.0.tar.gz",
+      "sha256": "97ec7488a46b974e18e08ee774af93173e7e1dbf738424796eb315ebcb735ec5"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/80da7ba048c3-vips-8.18.7.tar.xz",
+      "sha256": "5baaead3b0bb20ffdb9e9ff09aa9fda08620923df77b63b436654cb5e0b3bf94"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/d0646ec9ec25-cairo-1.18.6.tar.xz",
+      "sha256": "1c767308174337a74694da0f3ec069c271452163a1ef4540964c50c301f157d4"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/bfa4c88bb206-lcms2-2.19.1.tar.gz",
+      "sha256": "bfc54f7bab59fbc921012014a8032e4cba4abd46db47d46b76416a8c0b2815c8"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/f395c8ee8729-libxml2-2.15.4.tar.xz",
+      "sha256": "98087fd181d9070724f3fbc65c7377db03038eb92bd882374daff44940138821"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/3054e502a21a-expat-2.8.5.tar.xz",
+      "sha256": "1e727b8933ec51a77a9a9d9afcf8e688bce45d907c13e36ab7393fe36e703182"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/2495609b7f19-fontconfig-2.18.3.tar.gz",
+      "sha256": "9ae01e1d53acdef56010c5451cd34aa41d325b2faccd8606448d8fa01b2496b3"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/39b2dedd66b3-1.4.0.tar.gz",
+      "sha256": "e72241ac9524bb653ae52ced768b508045d4438726a303f10181a38f764a453c"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/2717443c7bc7-libtiff-v4.7.2.tar.gz",
+      "sha256": "62b15f44c10106065211efa22a2dc77937bd97ee1f6e3afd2c9659010de112eb"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/0a02487f4e44-libheif-1.23.5.tar.gz",
+      "sha256": "fd9036064c4432f0550d15072ddf34956a248279ee9aeaff0fba3fa0f77d8f1a"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/e4358859871e-v2.0.2.tar.gz",
+      "sha256": "aa8d193bb887c348c419780511dd03b374f4e07af8812b6d3f80c8537cf1ef2c"
+    },
+    {
+      "file": ".local/release-compliance/native-sources/6dcbd089a8f8-v2.4.1.tar.gz",
+      "sha256": "47d2a84b7b1052975c9d50a3d4e3cacbf57b43d84a4c3131210848ead9964dfb"
+    },
+    {
+      "file": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "sha256": "aabdab5dd8be2fe8bded5bd6161c5c0e41bc85ec7d50bff64e2fe5bd7e8fbd5c"
+    },
+    {
+      "file": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "sha256": "48ca3aa8a9b02133356922ef4fc80200e00598c80a4ef446f7c39a459222593d"
+    },
+    {
+      "file": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/dotnet-runtime-a3788b7.tar.gz",
+      "sha256": "df3899ce646abce8486600eb7fc91dc6076d663e0f126c3dd35c7d3af939c06d"
+    },
+    {
+      "file": ".local/release-compliance/os-audit-2026-11-21/source-files/5e4fb11d6a3e6b85afb55de8da8a71538f1d8fd64fce893986b37d60e5bb0091-icu_74.2.orig.tar.gz",
+      "sha256": "5e4fb11d6a3e6b85afb55de8da8a71538f1d8fd64fce893986b37d60e5bb0091"
+    },
+    {
+      "file": ".local/debian-trial-2026-11-23/source-files/dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e-icu_76.1.orig.tar.gz",
+      "sha256": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e"
+    },
+    {
+      "file": ".local/security-clearance-2026-11-25/source-materials/sharp-0.35.5.tgz",
+      "sha256": "3b6bbbe6b308f5c383938ca4a31926cd5d79c4651ed8c5fda16a97da2014a9ac"
+    },
+    {
+      "file": ".local/security-clearance-2026-11-25/source-materials/node-addon-api-8.9.2.tgz",
+      "sha256": "4cd65698541b19a33f798f1dc25c02c6ed1c9d7749b8824b1a1ccecdd197c8ea"
+    },
+    {
+      "file": ".local/release-compliance/source-set/packaging/sharp-libvips-packaging.tar.gz",
+      "sha256": "65fdb633c2d97626352a3771b7a0ce30b6a89af03d2a1238491c8b068e6b8dad"
+    }
+  ],
+  "source_files": {
+    ".local/release-compliance/native-sources/0422e43fe363-librsvg-2.63.2.tar.xz": 58,
+    ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz": 1664,
+    ".local/release-compliance/native-sources/b02fe6d03be3-pixman-0.46.4.tar.gz": 132,
+    ".local/release-compliance/native-sources/c0c76e912dfd-libffi-3.8.0.tar.gz": 363,
+    ".local/release-compliance/native-sources/d2b5992c45ca-pango-1.58.2.tar.xz": 227,
+    ".local/release-compliance/native-sources/da7971bb1d61-libaom-3.15.1.tar.gz": 1392,
+    ".local/release-compliance/native-sources/c0aed89de3a8-0.5.tar.gz": 3,
+    ".local/release-compliance/native-sources/4c8ceb233665-libarchive-3.8.9.tar.xz": 827,
+    ".local/release-compliance/native-sources/7f7f03957345-2.3.3.tar.gz": 290,
+    ".local/release-compliance/native-sources/be01d2b4df7b-VER-2-14-3.tar.gz": 526,
+    ".local/release-compliance/native-sources/d204d1d37068-libexif-0.6.26.tar.xz": 104,
+    ".local/release-compliance/native-sources/0d0122bb4a3d-0826579.tar.gz": 260,
+    ".local/release-compliance/native-sources/b37f66ae431a-v0.5.4.tar.gz": 62,
+    ".local/release-compliance/native-sources/cf04ebba3a72-fribidi-1.0.17.tar.xz": 93,
+    ".local/release-compliance/native-sources/988e326b75ce-v1.6.58.tar.gz": 176,
+    ".local/release-compliance/native-sources/3835b73bff61-libwebp-1.6.0.tar.gz": 286,
+    ".local/release-compliance/native-sources/6faa085a005d-14.5.0.tar.gz": 425,
+    ".local/release-compliance/native-sources/80da7ba048c3-vips-8.18.7.tar.xz": 652,
+    ".local/release-compliance/native-sources/d0646ec9ec25-cairo-1.18.6.tar.xz": 943,
+    ".local/release-compliance/native-sources/bfa4c88bb206-lcms2-2.19.1.tar.gz": 140,
+    ".local/release-compliance/native-sources/f395c8ee8729-libxml2-2.15.4.tar.xz": 258,
+    ".local/release-compliance/native-sources/3054e502a21a-expat-2.8.5.tar.xz": 123,
+    ".local/release-compliance/native-sources/2495609b7f19-fontconfig-2.18.3.tar.gz": 161,
+    ".local/release-compliance/native-sources/39b2dedd66b3-1.4.0.tar.gz": 226,
+    ".local/release-compliance/native-sources/2717443c7bc7-libtiff-v4.7.2.tar.gz": 349,
+    ".local/release-compliance/native-sources/0a02487f4e44-libheif-1.23.5.tar.gz": 491,
+    ".local/release-compliance/native-sources/e4358859871e-v2.0.2.tar.gz": 169,
+    ".local/release-compliance/native-sources/6dcbd089a8f8-v2.4.1.tar.gz": 16,
+    ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz": 6567,
+    "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz": 14660,
+    "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/dotnet-runtime-a3788b7.tar.gz": 6272,
+    ".local/release-compliance/os-audit-2026-11-21/source-files/5e4fb11d6a3e6b85afb55de8da8a71538f1d8fd64fce893986b37d60e5bb0091-icu_74.2.orig.tar.gz": 1883,
+    ".local/debian-trial-2026-11-23/source-files/dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e-icu_76.1.orig.tar.gz": 1828,
+    ".local/security-clearance-2026-11-25/source-materials/sharp-0.35.5.tgz": 14,
+    ".local/security-clearance-2026-11-25/source-materials/node-addon-api-8.9.2.tgz": 9,
+    ".local/release-compliance/source-set/packaging/sharp-libvips-packaging.tar.gz": 17
+  },
+  "matches": [
+    {
+      "archive": ".local/release-compliance/native-sources/0a02487f4e44-libheif-1.23.5.tar.gz",
+      "file": "libheif-1.23.5/libheif/api/libheif/heif_context.cc",
+      "file_sha256": "cfeaeae9ebcb24f4ef7291af7c676d103b5c2ea79ab2af5ab60d7b8df629c162",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 251,
+            "text": "  std::ofstream ostr(HeifFile::convert_utf8_path_to_utf16(filename).c_str(), std::ios_base::binary);"
+          },
+          {
+            "line": 253,
+            "text": "  std::ofstream ostr(filename, std::ios_base::binary);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/native-sources/0a02487f4e44-libheif-1.23.5.tar.gz",
+      "file": "libheif-1.23.5/libheif/codecs/vvc_boxes.h",
+      "file_sha256": "aaa8ab3ad74504a426883cf9d188cf4cda316a4302a4466ce2ed00aa3f45277e",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 51,
+            "text": "    std::vector<bool> ptl_sublayer_level_present_flag; // TODO: should we save this here or can we simply derive it on the fly?"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/native-sources/0a02487f4e44-libheif-1.23.5.tar.gz",
+      "file": "libheif-1.23.5/libheif/codecs/hevc_boxes.cc",
+      "file_sha256": "fce664303e682f7c2464aa2ab0aa9fdbe1fced0729cca1890e2e848e06a4f395",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 634,
+            "text": "  std::vector<bool> layer_profile_present(nMaxSubLayersMinus1);"
+          },
+          {
+            "line": 635,
+            "text": "  std::vector<bool> layer_level_present(nMaxSubLayersMinus1);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/native-sources/0a02487f4e44-libheif-1.23.5.tar.gz",
+      "file": "libheif-1.23.5/libheif/image-items/unc_image.cc",
+      "file_sha256": "946ff854535eaa79ed44373a622602baa80508b2134c9ff373f90f8545deef82",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 86,
+            "text": "  std::vector<bool> cmpd_index_has_description(cmpd_components.size(), false);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/native-sources/0a02487f4e44-libheif-1.23.5.tar.gz",
+      "file": "libheif-1.23.5/tests/conversion.cc",
+      "file_sha256": "4ec7c2cb9f4053b689abe250ab2922380334e4ae5756e8170c94fb7dcffc0a9b",
+      "test_or_example": true,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 407,
+            "text": "std::vector<bool> GetValidHasAlpha(heif_chroma chroma) {"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/native-sources/0a02487f4e44-libheif-1.23.5.tar.gz",
+      "file": "libheif-1.23.5/tests/catch_amalgamated.hpp",
+      "file_sha256": "da5061b0106279065b900530663672e5181912f35ba4b3c7ebd94f4158d38203",
+      "test_or_example": true,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 2924,
+            "text": "    // Handle vector<bool> specially"
+          },
+          {
+            "line": 2926,
+            "text": "    std::string rangeToString( std::vector<bool, Allocator> const& v ) {"
+          },
+          {
+            "line": 7543,
+            "text": "            \"FixedValuesGenerator does not support bools because of std::vector<bool>\""
+          },
+          {
+            "line": 7788,
+            "text": "            \"because of std::vector<bool> specialization\");"
+          },
+          {
+            "line": 8692,
+            "text": "        \"because of std::vector<bool> specialization\");"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/native-sources/0a02487f4e44-libheif-1.23.5.tar.gz",
+      "file": "libheif-1.23.5/tests/catch_amalgamated.cpp",
+      "file_sha256": "08d2dca7f40b529a294d7de2cc69f958969a081b4b353914161e5d858cbe43b3",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 945,
+            "text": "            std::ofstream f( bazelShardOptions->shardFilePath,"
+          },
+          {
+            "line": 4382,
+            "text": "            std::ofstream m_ofs;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/native-sources/0a02487f4e44-libheif-1.23.5.tar.gz",
+      "file": "libheif-1.23.5/examples/heif_dec.cc",
+      "file_sha256": "37b48a3b017541436d77d391b10f34956be3a92353e89cc27bd6fd10a872ad0b",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 470,
+            "text": "            std::ofstream ostr(xmp_filename.c_str());"
+          },
+          {
+            "line": 503,
+            "text": "            std::ofstream ostr(exif_filename.c_str());"
+          },
+          {
+            "line": 1130,
+            "text": "            std::ofstream ostr(\"mime-item.data\");"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/native-sources/e4358859871e-v2.0.2.tar.gz",
+      "file": "libultrahdr-2.0.2/examples/ultrahdr_app.cpp",
+      "file_sha256": "0c85dd3cafd4bac6fe46eabb89caee3b15bdca48e812c8cfaa338533eaed2c10",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 208,
+            "text": "  std::ofstream ofd(filename, std::ios::binary);"
+          },
+          {
+            "line": 218,
+            "text": "  std::ofstream ofd(filename, std::ios::binary);"
+          },
+          {
+            "line": 862,
+            "text": "    std::ofstream file(mGainMapMetadataCfgFile);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/native-sources/e4358859871e-v2.0.2.tar.gz",
+      "file": "libultrahdr-2.0.2/tests/editorhelper_test.cpp",
+      "file_sha256": "cbf602516cfacf07593a5ad86126c75e7087c1d089c18e50c70a0917d887f5c7",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 47,
+            "text": "  std::ofstream ofd(filename, std::ios::binary);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/native-sources/e4358859871e-v2.0.2.tar.gz",
+      "file": "libultrahdr-2.0.2/tests/jpegr_test.cpp",
+      "file_sha256": "49ef884aed3a4251340d9e091ca2a1da9fe2ea913a94fff73e898e200a219a61",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 299,
+            "text": "  std::ofstream ofd(filename, std::ios::binary);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/modules/jsonreader/SkJSONReader.cpp",
+      "file_sha256": "80dc51d3e8567533262a12fb0f3eb9e8c2667ec82363d1f030fe391d55e39309",
+      "test_or_example": false,
+      "matches": {
+        "from_chars": [
+          {
+            "line": 877,
+            "text": "        auto result = std::from_chars(p, p_stop + 1, f);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/modules/skplaintexteditor/app/editor_application.cpp",
+      "file_sha256": "d2b0601f2798a964538e6948532d213df4e4e7c5702084de92da2c59de975168",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 253,
+            "text": "                        std::ofstream out(fPath.c_str());"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/modules/skplaintexteditor/include/editor.h",
+      "file_sha256": "d9012fcf5fba73a3f03c5d36d111eeca624ed11f3b6ed1b2e15678f46ebb64f9",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 112,
+            "text": "        std::vector<bool> fWordBoundaries;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/modules/skplaintexteditor/src/editor.cpp",
+      "file_sha256": "2bda74d69386cf0ea56f6cd8d5b87fd206fd84c376bb21b2eacb53094578cd3b",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 51,
+            "text": "    line->fWordBoundaries = std::vector<bool>();"
+          },
+          {
+            "line": 409,
+            "text": "                const std::vector<bool>& words = fLines[pos.fParagraphIndex].fWordBoundaries;"
+          },
+          {
+            "line": 423,
+            "text": "                const std::vector<bool>& words = fLines[pos.fParagraphIndex].fWordBoundaries;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/modules/skplaintexteditor/src/shape.h",
+      "file_sha256": "256fcf5c1e7dd79cad743af95c4ae9dc8630b146c4305660b1d9070b6605bb98",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 16,
+            "text": "    std::vector<bool> wordBreaks;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/modules/skplaintexteditor/src/word_boundaries.cpp",
+      "file_sha256": "39ed7e1eee4509a700fac0fb79d5fd0376146dbb5eff8502670a2eb2cabc1400",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 43,
+            "text": "std::vector<bool> GetUtf8WordBoundaries(const char* begin, size_t byteCount, const char* locale) {"
+          },
+          {
+            "line": 52,
+            "text": "    std::vector<bool> result;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/modules/skplaintexteditor/src/word_boundaries.h",
+      "file_sha256": "7e339e1a3cb49ef03b2d0657d9df81b75810cc0bbfcc2f435b569bfb37f0be20",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 10,
+            "text": "std::vector<bool> GetUtf8WordBoundaries(const char* begin, std::size_t byteLen, const char* locale);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/src/gpu/graphite/vk/VulkanSpirvTransforms.cpp",
+      "file_sha256": "37a67062f3774690cebd01f972933931cde56de4db0bc007bef40556979d909d",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 119,
+            "text": "    std::vector<bool> fIsInputAttachmentImage;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/src/sksl/ir/SkSLFunctionCall.cpp",
+      "file_sha256": "fad270bfda114a5e3b3878ebb42c2d96bd9ff25ee25e4b242bc5b39a44f923da",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 992,
+            "text": "            return coalesce_vector<bool>(arguments, /*startingState=*/false, returnType,"
+          },
+          {
+            "line": 996,
+            "text": "            return coalesce_vector<bool>(arguments, /*startingState=*/true, returnType,"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/src/sksl/lex/Main.cpp",
+      "file_sha256": "349214178de2e64eecd4f3602d21fa824f179cea7b26bbce15e9368453576cb2",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 43,
+            "text": "    std::ofstream out(hPath);"
+          },
+          {
+            "line": 106,
+            "text": "    std::ofstream out(cppPath);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/src/sksl/lex/NFAState.h",
+      "file_sha256": "de5132c577da0e8d88b939a20d978c682725878d9d2075eabcdb7623212f0a2a",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 46,
+            "text": "    NFAState(bool inverse, std::vector<bool> accepts, std::vector<int> next)"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/src/sksl/lex/RegexNode.cpp",
+      "file_sha256": "973a39d4ed32aa662d565a3e161d33ef9d488a43d51c139af777ba993159a68b",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 23,
+            "text": "            std::vector<bool> chars;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/src/sksl/lex/TransitionTable.cpp",
+      "file_sha256": "80d40640fda38e94094132c4a7afd763730fa8216b2f73c9bfb52e727e54c1b1",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 109,
+            "text": "void WriteTransitionTable(std::ofstream& out, const DFA& dfa, size_t states) {"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/src/sksl/lex/TransitionTable.h",
+      "file_sha256": "535a9cc7a908d3eebc87b6264b2c4f5ebe8e72f034152dcd116cdfa995b0ee05",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 16,
+            "text": "void WriteTransitionTable(std::ofstream& out, const DFA& dfa, size_t states);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/tests/CodecAnimTest.cpp",
+      "file_sha256": "f3d158b859891b1b51ce5ecc626330a3e975f6481d7054977ad3c064d0fd6a69",
+      "test_or_example": true,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 125,
+            "text": "        std::vector<bool>                             fAlphaWithinBounds;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/tests/TopoSortTest.cpp",
+      "file_sha256": "7fe01e3d89683d6a6f979cf7ed71952bca340bbbfee56a8cd71f1ed28179a392",
+      "test_or_example": true,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 212,
+            "text": "            std::vector<bool> seen(numNodes, false);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/tests/TypefaceTest.cpp",
+      "file_sha256": "e0d60cade1c835738dd8ec7d22cb7e561b410ffeaf43f5433751833ecfdc5f6c",
+      "test_or_example": true,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 276,
+            "text": "    std::vector<bool> found(std::size(expectedNames));"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/tests/graphite/precompile/PrecompileTestUtils.cpp",
+      "file_sha256": "bf3e7bbf5b2b498767ed0484ef26a48f5228c036fdd29905aa570101df2773bf",
+      "test_or_example": true,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 288,
+            "text": "    std::vector<bool> localMatches;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+      "file": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/tools/trace/SkPerfettoTrace.cpp",
+      "file_sha256": "04fe2e814c49737d620ec882c125a2bca81525d2576070e0e03b84eb086f3c7a",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 100,
+            "text": "        std::ofstream output;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/LIEF/src/DEX/File.cpp",
+      "file_sha256": "9bd41fa2814de03dcd6f05a036a21778f49460e6860b5f620aae30c6c349b306",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 58,
+            "text": "  if (std::ofstream ifs{path, std::ios::binary | std::ios::trunc}) {"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/LIEF/src/ELF/Builder.cpp",
+      "file_sha256": "9d88e9eed90acab8f4ac7d773818eec28e8b1e3a06a4d8afbeda965bb192d733",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 107,
+            "text": "  std::ofstream output_file{filename, std::ios::out | std::ios::binary | std::ios::trunc};"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/LIEF/src/MachO/Builder.cpp",
+      "file_sha256": "e8d23b8464a176e6a747bc85796441e33f5b93a509ad35ec00b09e3d67d1e463",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 412,
+            "text": "  std::ofstream output_file{filename, std::ios::out | std::ios::binary | std::ios::trunc};"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/LIEF/src/PE/Binary.cpp",
+      "file_sha256": "b7c2f5c9350d307448ec46753b30e5a7efb355b48373f2b16e3fec33b8383115",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 898,
+            "text": "  // std::ofstream output_file{\"/tmp/hash.blob\", std::ios::out | std::ios::binary | std::ios::trunc};"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/LIEF/src/PE/Builder.cpp",
+      "file_sha256": "f93213d949ca52810cfd5b6592d0080f5e1b9b7ba0a858c246cb7526e7ddc00f",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 55,
+            "text": "  std::ofstream output_file(filename, DEFAULT_MODE);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/LIEF/src/PE/resources/ResourceIcon.cpp",
+      "file_sha256": "4b3860872c9babee26c55ea4c6cd05c8437c31da6cd602c9e6fae82d0d02f6c9",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 125,
+            "text": "  std::ofstream output_file(filename,"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/LIEF/third-party/spdlog/include/spdlog/fmt/bundled/base.h",
+      "file_sha256": "13c8d953fb2d98dc955289dd166999bd22dbabfeba7f486b3693c2c6d9d627db",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 2244,
+            "text": "    // T may overload operator& e.g. std::vector<bool>::reference in libc++."
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/LIEF/third-party/spdlog/include/spdlog/fmt/bundled/ostream.h",
+      "file_sha256": "c49f07be57b7fb2abc89e34284574740c24c2de6d6df0b08aff1a0b8f537c090",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 12,
+            "text": "#  include <fstream>  // std::filebuf"
+          },
+          {
+            "line": 47,
+            "text": "template class file_access<file_access_tag, std::filebuf,"
+          },
+          {
+            "line": 48,
+            "text": "                           &std::filebuf::_Myfile>;"
+          },
+          {
+            "line": 49,
+            "text": "auto get_file(std::filebuf&) -> FILE*;"
+          },
+          {
+            "line": 121,
+            "text": "  if (auto* buf = dynamic_cast<std::filebuf*>(os.rdbuf()))"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/LIEF/third-party/spdlog/include/spdlog/fmt/bundled/std.h",
+      "file_sha256": "a20cdb81353109416ea43a33096006d3232159e895e90b6411b691d29f6347c0",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 610,
+            "text": "// We can't use std::vector<bool, Allocator>::reference and"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ada/ada.cpp",
+      "file_sha256": "1c722f8f5355d6bf2bf3601870684edc875aa8f56b4d4735440d96263dd0207c",
+      "test_or_example": false,
+      "matches": {
+        "from_chars": [
+          {
+            "line": 13836,
+            "text": "  auto result = std::from_chars(digits_to_parse.data(),"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ada/ada.h",
+      "file_sha256": "0010b17b3ff489e13998e86d921b16e1643e370ee3276c584f1b0c4b72bdf628",
+      "test_or_example": false,
+      "matches": {
+        "from_chars": [
+          {
+            "line": 7536,
+            "text": "  auto r = std::from_chars(view.data(), view.data() + view.size(), parsed_port);"
+          },
+          {
+            "line": 9003,
+            "text": "  auto r = std::from_chars(view.data(), view.data() + view.size(), parsed_port);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/icu-small/source/tools/escapesrc/escapesrc.cpp",
+      "file_sha256": "2b54f8e8a18f35b1080f4fdd162e294cac87c02f3573eb6c3dbb88ca2134e0f4",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 380,
+            "text": "  std::ofstream outf;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/icu-small/source/tools/toolutil/json-json.hpp",
+      "file_sha256": "d8da3c602b6d122acf458d24941565afee05fcaef6f284c77147313bb5a33afa",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 5595,
+            "text": "    static void construct(BasicJsonType& j, const std::vector<bool>& arr)"
+          },
+          {
+            "line": 5677,
+            "text": "               ((std::is_same<std::vector<bool>::reference, BoolRef>::value"
+          },
+          {
+            "line": 5678,
+            "text": "                 && !std::is_same <std::vector<bool>::reference, typename BasicJsonType::boolean_t&>::value)"
+          },
+          {
+            "line": 5679,
+            "text": "                || (std::is_same<std::vector<bool>::const_reference, BoolRef>::value"
+          },
+          {
+            "line": 5680,
+            "text": "                    && !std::is_same <detail::uncvref_t<std::vector<bool>::const_reference>,"
+          },
+          {
+            "line": 5733,
+            "text": "inline void to_json(BasicJsonType& j, const std::vector<bool>& e)"
+          },
+          {
+            "line": 7301,
+            "text": "    std::vector<bool> keep_stack {};"
+          },
+          {
+            "line": 7303,
+            "text": "    std::vector<bool> key_keep_stack {};"
+          },
+          {
+            "line": 12380,
+            "text": "        std::vector<bool> states;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/icu-small/source/tools/toolutil/toolutil.cpp",
+      "file_sha256": "ff2a2bf07a9f512c8e4683183f2c0b363e7dc2c1d0515aa6208352aef113f6f5",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 291,
+            "text": "        std::ofstream ofs;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/inspector_protocol/crdtp/transcode.cc",
+      "file_sha256": "1e44188f7a9a41886841ffad81f2dafbe07b12d5ac1c3e48e63a08cffe0498f4",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 42,
+            "text": "  std::ofstream output_file(output_file_name, std::ios::binary);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ngtcp2/ngtcp2/examples/client.cc",
+      "file_sha256": "c4406dabf0a6f947cbc1a85bfd39e6a69d001659c8bb7e565837cc0944ed07f8",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 1932,
+            "text": "std::ofstream keylog_file;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ngtcp2/ngtcp2/examples/server.cc",
+      "file_sha256": "f1b8a0289cde44ed17ff753438d404897b0f7597b3c7bc3394be5149c8bfde1f",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 2680,
+            "text": "std::ofstream keylog_file;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ngtcp2/ngtcp2/examples/tls_client_context_boringssl.cc",
+      "file_sha256": "19308758aacf3bb511237e968d64bac56b1c51d4deb397c81720f63897dd83f5",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 127,
+            "text": "extern std::ofstream keylog_file;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ngtcp2/ngtcp2/examples/tls_client_context_ossl.cc",
+      "file_sha256": "dce1a137e3b1ed3d35b0f08705817fc20535c8e0c39355b5385a94eef1e1ede1",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 127,
+            "text": "extern std::ofstream keylog_file;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ngtcp2/ngtcp2/examples/tls_client_context_quictls.cc",
+      "file_sha256": "d4ef9b92ee53744ea754b77de7ad1fef0e2a02fd614a00051dbc18f36e09fee9",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 140,
+            "text": "extern std::ofstream keylog_file;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ngtcp2/ngtcp2/examples/tls_client_context_wolfssl.cc",
+      "file_sha256": "6ee5d432dc168a32bb14f3600641acc203c7a6aec34a01c6180f42a18da47927",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 157,
+            "text": "extern std::ofstream keylog_file;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ngtcp2/ngtcp2/examples/tls_client_session_boringssl.cc",
+      "file_sha256": "56036f2a5163eba996b51aec4c94a19889480dc0d4bad08b3786c24352ada20b",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 129,
+            "text": "  auto f = std::ofstream(path);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ngtcp2/ngtcp2/examples/tls_server_context_boringssl.cc",
+      "file_sha256": "67f50967f8c071e713e0df56516ff8d43484e9ed0a1c9fb17a68d93626726f90",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 253,
+            "text": "extern std::ofstream keylog_file;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ngtcp2/ngtcp2/examples/tls_server_context_ossl.cc",
+      "file_sha256": "755cf123dabfc14f38ce0172ded601e123a80f9a2b88591a6bc5acc2ce6b27fd",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 286,
+            "text": "extern std::ofstream keylog_file;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ngtcp2/ngtcp2/examples/tls_server_context_quictls.cc",
+      "file_sha256": "4f38535a3de413a3a27090ecdc73575db1167ed49e5a8fbc7d7ffd91fb0ab2c1",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 306,
+            "text": "extern std::ofstream keylog_file;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ngtcp2/ngtcp2/examples/tls_server_context_wolfssl.cc",
+      "file_sha256": "32664f1cf45482b4e049610b3ba376d9929058b22948cf817bf928107e183656",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 226,
+            "text": "extern std::ofstream keylog_file;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ngtcp2/ngtcp2/examples/tls_shared_picotls.cc",
+      "file_sha256": "ae0cb4487c9f233cc3fc7d65de3b49a5fd6459e92bf6ba1c04360768a80c80ef",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 31,
+            "text": "extern std::ofstream keylog_file;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/ngtcp2/ngtcp2/examples/util.cc",
+      "file_sha256": "8b7288792e8c97a0f858b64a5b00a792b359d941ff6a05a7811d1a0de1209345",
+      "test_or_example": true,
+      "matches": {
+        "from_chars": [
+          {
+            "line": 725,
+            "text": "  auto rv = std::from_chars(k.data(), k_last, v, 16);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/simdjson/simdjson.h",
+      "file_sha256": "a5c467c33c7871262eb4c82775490430758939c1c516fbdaeb662f8255860a60",
+      "test_or_example": false,
+      "matches": {
+        "from_chars": [
+          {
+            "line": 187146,
+            "text": "        std::from_chars(json.data(), json.data() + json.size(), int_value);"
+          },
+          {
+            "line": 187160,
+            "text": "        std::from_chars(json.data(), json.data() + json.size(), uint_value);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/builtins/generate-bytecodes-builtins-list.cc",
+      "file_sha256": "ea68f0dd4146eeeb6cc3b591a1139af4aa60cd35ecffed36031a852ebe23c81c",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 17,
+            "text": "void WriteBytecode(std::ofstream& out, Bytecode bytecode,"
+          },
+          {
+            "line": 42,
+            "text": "  std::ofstream out(header_filename);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/builtins/setup-builtins-internal.cc",
+      "file_sha256": "764cfa7cf923385874572da8fb2eb09f30d39bdeddd5ef0759278fcccb420a6c",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 382,
+            "text": "    std::ofstream(v8_flags.dump_builtins_hashes_to_file, std::ios_base::trunc);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/compiler/pipeline.cc",
+      "file_sha256": "db53f6d87fac2011d51e5bcfcc0d4042068cd0e935c546bf42650f25fbfe42a3",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 2177,
+            "text": "      std::ofstream out(v8_flags.dump_builtins_hashes_to_file,"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/compiler/turbofan-graph-visualizer.cc",
+      "file_sha256": "d486160f0255b88ef6f116c40460c47dd00b36e2bf8109e3c2b4a8c4282fb8e1",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 50,
+            "text": "    : std::ofstream(get_cached_trace_turbo_filename(info), mode) {}"
+          },
+          {
+            "line": 55,
+            "text": "    : std::ofstream(Isolate::GetTurboCfgFileName(isolate).c_str(),"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/compiler/turbofan-graph-visualizer.h",
+      "file_sha256": "ab83546c634c617b9bcfd0c1cf6e556ef082e53861577b933d7d6a5100cdd2b9",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 81,
+            "text": "struct V8_EXPORT_PRIVATE TurboJsonFile : public std::ofstream {"
+          },
+          {
+            "line": 86,
+            "text": "struct TurboCfgFile : public std::ofstream {"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/compiler/turboshaft/graph-visualizer.cc",
+      "file_sha256": "dba41a8d3708b686cb41f904e20f3a9e985dca0c17fbef24d0f35af5bdd484ab",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 108,
+            "text": "    std::ofstream& stream, const char* data_name, const Graph& graph,"
+          },
+          {
+            "line": 127,
+            "text": "    std::ofstream& stream, const char* data_name, const Graph& graph,"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/compiler/turboshaft/graph-visualizer.h",
+      "file_sha256": "f29d85496078b2ae982c99dbd5cd68d9253cf26bbc05399587aad12c666208f9",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 53,
+            "text": "    std::ofstream& stream, const char* data_name, const Graph& graph,"
+          },
+          {
+            "line": 56,
+            "text": "    std::ofstream& stream, const char* data_name, const Graph& graph,"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/compiler/turboshaft/phase.cc",
+      "file_sha256": "bceffed1af450a8ce60788ac7724133ab8836516d45a60b2558f967743e12cf1",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 62,
+            "text": "void PrintTurboshaftGraphForTurbolizer(std::ofstream& stream,"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/compiler/turboshaft/phase.h",
+      "file_sha256": "1abd0461762cb6bfdf6f2b2a9cfcf3fdbc7ad142c1b32ff764257903d55a1630",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 548,
+            "text": "void PrintTurboshaftGraphForTurbolizer(std::ofstream& stream,"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/d8/d8-console.cc",
+      "file_sha256": "1398de1f91ceb60ce29bbd2fff9bd78cc140a2f2963f77e9ef451fac1f8945d7",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 57,
+            "text": "  std::ofstream os_;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/d8/d8.cc",
+      "file_sha256": "88f85b6f2282534e5a6d124099408a27f29a9e896cbcfcdf4333f7c124612a54",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 4593,
+            "text": "  std::vector<bool>* storage = new std::vector<bool>(3);"
+          },
+          {
+            "line": 6810,
+            "text": "        std::vector<bool> bitmap;"
+          }
+        ],
+        "filebuf": [
+          {
+            "line": 4337,
+            "text": "  std::ofstream dispatch_counters_stream("
+          },
+          {
+            "line": 4377,
+            "text": "  std::ofstream sink(file, std::ofstream::app);"
+          },
+          {
+            "line": 6506,
+            "text": "  std::ofstream trace_file;"
+          },
+          {
+            "line": 6822,
+            "text": "          std::ofstream covlog(\"covlog.txt\", std::ios::app);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/diagnostics/basic-block-profiler.cc",
+      "file_sha256": "a0a254bc1aaaac3c85bcf5795bd976960684aa3ac1641c5ce8372c5b64fffd8f",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 206,
+            "text": "std::vector<bool> BasicBlockProfiler::GetCoverageBitmap(Isolate* isolate) {"
+          },
+          {
+            "line": 209,
+            "text": "  std::vector<bool> out;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/diagnostics/basic-block-profiler.h",
+      "file_sha256": "292147640cc22dcb88d23e532a006d707c64487a8a134ab3236f72f5f247d280",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 94,
+            "text": "  V8_EXPORT_PRIVATE std::vector<bool> GetCoverageBitmap(Isolate* isolate);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/execution/isolate.cc",
+      "file_sha256": "2605712e0238124f9aacf860cb0cd54c633c0da6c345bf2fbb3172174f6c3183",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 5992,
+            "text": "    std::ofstream(GetTurboCfgFileName(this).c_str(), std::ios_base::trunc);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/fuzzilli/cov.cc",
+      "file_sha256": "2b1b44c7ca4634b06baf8ea2dce13fa8dc42aa8b86dffd7ef939665faa5921fc",
+      "test_or_example": true,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 130,
+            "text": "    const std::vector<bool>& cov_map) {"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/fuzzilli/cov.h",
+      "file_sha256": "ac61ea2ac4d5e8b36956dc7af8b25623d3f2a560252d99a98c46a597ee4b0d0d",
+      "test_or_example": true,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 19,
+            "text": "void cov_update_builtins_basic_block_coverage(const std::vector<bool>& cov_map);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/init/v8.cc",
+      "file_sha256": "1504589bff02fc3aaf16c88d7d965a9d08f129651056ce1fa6d4d1d61c8892e4",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 151,
+            "text": "    std::ofstream(Isolate::GetTurboCfgFileName(nullptr).c_str(),"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/maglev/maglev-graph-verifier.h",
+      "file_sha256": "210558f665063ba9ce0b2bbfc29e70d9ac697565b294c6a8892d69afe8726957",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 57,
+            "text": "  std::vector<bool> seen_;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/maglev/maglev-inlining.h",
+      "file_sha256": "a763bba283bb8a5ee3a52d1faad285a83d6a363d57f7ea26cbeb4d3ba901098a",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 286,
+            "text": "    std::vector<bool> reachable_blocks(graph_->max_block_id(), false);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/profiler/heap-profiler.cc",
+      "file_sha256": "d1c4aacd49201b414cbb5440d55cad8d38ecd387b41b42f472270604d7cc2fc0",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 167,
+            "text": "  std::ofstream os_;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/profiler/heap-snapshot-generator.h",
+      "file_sha256": "f9a258c93242a3567db6ddd5a336d12f26f6309eed34b4f7f5633fe6ae86201c",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 598,
+            "text": "  std::vector<bool> visited_fields_;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/regexp/gen-regexp-special-case.cc",
+      "file_sha256": "59271405c5f4474de3658df6aff7b7466ccf19c63674f8a3494a5d3d5cde4ccb",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 21,
+            "text": "void PrintSet(std::ofstream& out, const char* name,"
+          },
+          {
+            "line": 50,
+            "text": "void PrintSpecial(std::ofstream& out) {"
+          },
+          {
+            "line": 130,
+            "text": "  std::ofstream out(header_filename);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/snapshot/context-serializer.cc",
+      "file_sha256": "983523b316542584c05779113438bfb42d175da77425098e5d139f5c953aad72",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 331,
+            "text": "  std::vector<bool> should_clear_slot;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/snapshot/read-only-serializer-deserializer.h",
+      "file_sha256": "2de7ef3320ceeff8f9b4c1f8bd1b95fb6f4b05a7d81915be4b559633a9a30b58",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 47,
+            "text": "// Like std::vector<bool> but with a known underlying encoding."
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/snapshot/static-roots-gen.cc",
+      "file_sha256": "943bfc161bf16a98d0bc0436582aeb6a190b3b1a28e8f281a8ea0ea159101fa3",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 61,
+            "text": "  std::ofstream out(file, std::ios::binary);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/torque/ls/globals.h",
+      "file_sha256": "7e5e1bd0745dd2dd7b5327bb6d8b0d569a18b01bafd0dadc84e2ac2b890b57c9",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 42,
+            "text": "  static std::ofstream& Stream() {"
+          },
+          {
+            "line": 50,
+            "text": "  std::ofstream logfile_;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/torque/utils.cc",
+      "file_sha256": "f2eb029edace1125bcb41d02dd0c1b8b0bf1b44579dfa6879dc831a564c1ed54",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 340,
+            "text": "    std::ofstream new_contents_stream;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/tracing/traced-value.h",
+      "file_sha256": "29f64e315a51152b293310e256a9815724f2de4d5c2321c57b68186a7bb3c3b4",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 79,
+            "text": "  std::vector<bool> nesting_stack_;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/src/wasm/wasm-disassembler.cc",
+      "file_sha256": "8ca79ac2e46f95f5074a0cb89cde170533ac1a8effdd2980ad573db6e4381f8a",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 816,
+            "text": "  std::vector<bool> exported_tags(num_tags, false);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/third_party/abseil-cpp/absl/flags/parse_test.cc",
+      "file_sha256": "d06e85fb2040c1e556897487a6f2148749d0a5bda46d0efe5974640344bf54f2",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 213,
+            "text": "    std::ofstream flagfile_out(flagfile_name);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/third_party/abseil-cpp/absl/hash/hash_instantiated_test.cc",
+      "file_sha256": "53828668947bfde7543763603983e66de72ed2be70308bd7a34991635bb7dbe4",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 122,
+            "text": "    std::vector<bool>, TypeErasedContainer<std::vector<int>>, std::set<int>,"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/third_party/abseil-cpp/absl/hash/internal/hash.h",
+      "file_sha256": "8b3cfe1efcf00d1a3cca4b0391c8e9811e0f847000753b52ad9203ce2dc8938b",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 715,
+            "text": "// Do not use this for vector<bool> on platforms that have a working"
+          },
+          {
+            "line": 727,
+            "text": "// AbslHashValue special cases for hashing std::vector<bool>"
+          },
+          {
+            "line": 732,
+            "text": "// std::hash in libstdc++ does not work correctly with vector<bool> on Big"
+          },
+          {
+            "line": 749,
+            "text": "// with the fact that std::hash<vector<bool>> is often poor quality, hashing"
+          },
+          {
+            "line": 751,
+            "text": "// vector<bool>{1, 1} and vector<bool>{1, 1, 0} hash to the same value."
+          },
+          {
+            "line": 907,
+            "text": "// platforms, for the same reason as for vector<bool> (see std::vector above):"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/third_party/abseil-cpp/absl/strings/internal/str_format/convert_test.cc",
+      "file_sha256": "ecda44231b5163c51ad66121e2c647a677a901f4dbd115755b81f2953755b1d5",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 700,
+            "text": "  // Make sure vector<bool>'s values behave as bools."
+          },
+          {
+            "line": 701,
+            "text": "  std::vector<bool> v = {true, false};"
+          },
+          {
+            "line": 702,
+            "text": "  const std::vector<bool> cv = {true, false};"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/third_party/abseil-cpp/absl/strings/internal/str_join_internal.h",
+      "file_sha256": "bd2b261cacd31a6a8b648b39478d5e9cb8f6734ef001552be0ce5a8f580bf690",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 68,
+            "text": "  // vector<bool>::iterator"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/third_party/abseil-cpp/absl/strings/str_cat.h",
+      "file_sha256": "c092f5f1a82233ec4a45dd553a0a2c1777cd27429afafd50b3200b31defcfb99",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 417,
+            "text": "  // vector<bool>::reference and const_reference require special help to"
+          },
+          {
+            "line": 423,
+            "text": "          (std::is_same<T, std::vector<bool>::reference>::value ||"
+          },
+          {
+            "line": 424,
+            "text": "           std::is_same<T, std::vector<bool>::const_reference>::value)>::type* ="
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/third_party/abseil-cpp/absl/strings/str_cat_test.cc",
+      "file_sha256": "5653872771c7efb975afcb2f72af5b64bdebc52a663140044fd8885a7612c791",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 437,
+            "text": "  std::vector<bool> v;"
+          },
+          {
+            "line": 440,
+            "text": "  std::vector<bool> const& cv = v;"
+          },
+          {
+            "line": 441,
+            "text": "  // Test that vector<bool>::reference and vector<bool>::const_reference"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/third_party/abseil-cpp/absl/strings/str_join_test.cc",
+      "file_sha256": "822529b2fde738c31d9027044e676f1c2f3f0253e828b9f76b988b483c6fe27d",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 172,
+            "text": "    std::vector<bool> v = {true, false, true};"
+          },
+          {
+            "line": 234,
+            "text": "// Make sure people who are mistakenly using std::vector<bool> even though"
+          },
+          {
+            "line": 239,
+            "text": "  std::vector<bool> v = {true, false, true};"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/third_party/abseil-cpp/absl/strings/substitute.h",
+      "file_sha256": "010e00270eedf689c3b3f8f2a67e36cb5bd724094dbb0d351ed6305d986ddae3",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 188,
+            "text": "  // vector<bool>::reference and const_reference require special help to convert"
+          },
+          {
+            "line": 193,
+            "text": "                (std::is_same<T, std::vector<bool>::reference>::value ||"
+          },
+          {
+            "line": 194,
+            "text": "                 std::is_same<T, std::vector<bool>::const_reference>::value)>* ="
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/third_party/abseil-cpp/absl/strings/substitute_test.cc",
+      "file_sha256": "3ded69261da1627d34d941691dc74e7a44364daec20d9132d5a2ef031fc9ef6c",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 201,
+            "text": "  std::vector<bool> v = {true, false};"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/tools/gcmole/gcmole.cc",
+      "file_sha256": "0f38e58bf0161a72aac2b4c876c31e39033d6afcce2cc6ff3654acf42a542d58",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 573,
+            "text": "  std::vector<bool> live_;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/deps/v8/tools/wasm/module-inspector.cc",
+      "file_sha256": "02fd4e18e9627fb7e409d7cdf7be8283acbfe90340d0fc01f2d2f2cf6356e578",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 1060,
+            "text": "    std::optional<std::ofstream> filestream_;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/src/node_options.cc",
+      "file_sha256": "ec63a5a4326733816d97ec50489617150e696b905a0b6e456eb08a3fda8f8e90",
+      "test_or_example": false,
+      "matches": {
+        "from_chars": [
+          {
+            "line": 1552,
+            "text": "  auto r = std::from_chars(port.data(), port.data() + port.size(), result);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/src/node_report.cc",
+      "file_sha256": "faf95608924af0b5da6748396867315e89f793b80b5582c83d0ba97645d03987",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 862,
+            "text": "  std::ofstream outfile;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/src/node_snapshotable.cc",
+      "file_sha256": "e10b31a055515f936d362623ead637c2690e361d8e83535fb05f6247d9d24fda",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 1301,
+            "text": "  std::ofstream out(out_path, std::ios::out | std::ios::binary);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+      "file": "node-v24.22.3/tools/gen_node_def.cc",
+      "file_sha256": "8ca2ae3620560413f0d37c0d54852ca40333bde4a29064c2e4b2a1b8b36091ca",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 196,
+            "text": "  auto defFile = std::ofstream(argv[2]);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": "/home/rhaydon/documents/repos/ratefreak/.local/security-skia-update-2026-11-25/glibc-callers/dotnet-runtime-a3788b7.tar.gz",
+      "file": "runtime-a3788b71495457354b64ca8040b6ded5ff6ca4f9/src/native/external/zlib-ng/win32/depcheck.cpp",
+      "file_sha256": "51fa4ce567d140863a1030ecbfc8fa4d071d0346fa82eaee3c70afd0a812dce9",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 16,
+            "text": "  std::filebuf fb;"
+          },
+          {
+            "line": 42,
+            "text": "           std::filebuf fb2;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/os-audit-2026-11-21/source-files/5e4fb11d6a3e6b85afb55de8da8a71538f1d8fd64fce893986b37d60e5bb0091-icu_74.2.orig.tar.gz",
+      "file": "icu/source/test/intltest/numbertest_permutation.cpp",
+      "file_sha256": "e2a25b37564e5d5a36f56379e643e4688bc7f21f863557edc3d92b6f3eab88e7",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 191,
+            "text": "        std::ofstream outFile;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/os-audit-2026-11-21/source-files/5e4fb11d6a3e6b85afb55de8da8a71538f1d8fd64fce893986b37d60e5bb0091-icu_74.2.orig.tar.gz",
+      "file": "icu/source/tools/toolutil/toolutil.cpp",
+      "file_sha256": "502a279586722196cee0be91d04e83d4411e616fe9865c27f3c23e837f6e65a5",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 221,
+            "text": "        std::ofstream ofs;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/os-audit-2026-11-21/source-files/5e4fb11d6a3e6b85afb55de8da8a71538f1d8fd64fce893986b37d60e5bb0091-icu_74.2.orig.tar.gz",
+      "file": "icu/source/tools/escapesrc/escapesrc.cpp",
+      "file_sha256": "7f7488a5c285ca30dfbf64be89892f4d8e29807b67f2d587c76b154b092ad2d6",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 380,
+            "text": "  std::ofstream outf;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/release-compliance/os-audit-2026-11-21/source-files/5e4fb11d6a3e6b85afb55de8da8a71538f1d8fd64fce893986b37d60e5bb0091-icu_74.2.orig.tar.gz",
+      "file": "icu/source/tools/tzcode/tz2icu.cpp",
+      "file_sha256": "d8373b7f38951bb2c74a272a8cd525040aa795d70726391ece2c1b1c148d55bb",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 473,
+            "text": "        vector<bool> abbrseen(abbroffset.size(), false);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/debian-trial-2026-11-23/source-files/dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e-icu_76.1.orig.tar.gz",
+      "file": "icu/source/test/intltest/numbertest_permutation.cpp",
+      "file_sha256": "f6c798f423f960ec38bf37e4dd21d64d67200d5a2ecd88fd7c9230fbf6538433",
+      "test_or_example": true,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 191,
+            "text": "        std::ofstream outFile;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/debian-trial-2026-11-23/source-files/dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e-icu_76.1.orig.tar.gz",
+      "file": "icu/source/tools/tzcode/tz2icu.cpp",
+      "file_sha256": "c825f3c1cacb4f4fdba09e65122a7f272bd3a64153a9d144ae47774652ab4e0b",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 473,
+            "text": "        vector<bool> abbrseen(abbroffset.size(), false);"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/debian-trial-2026-11-23/source-files/dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e-icu_76.1.orig.tar.gz",
+      "file": "icu/source/tools/escapesrc/escapesrc.cpp",
+      "file_sha256": "2b54f8e8a18f35b1080f4fdd162e294cac87c02f3573eb6c3dbb88ca2134e0f4",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 380,
+            "text": "  std::ofstream outf;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/debian-trial-2026-11-23/source-files/dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e-icu_76.1.orig.tar.gz",
+      "file": "icu/source/tools/toolutil/json-json.hpp",
+      "file_sha256": "f19eb6f99478ddc7003796d743d0190a597d1d540c4429d57ec868d73aca8a9f",
+      "test_or_example": false,
+      "matches": {
+        "vector_bool": [
+          {
+            "line": 5595,
+            "text": "    static void construct(BasicJsonType& j, const std::vector<bool>& arr)"
+          },
+          {
+            "line": 5677,
+            "text": "               ((std::is_same<std::vector<bool>::reference, BoolRef>::value"
+          },
+          {
+            "line": 5678,
+            "text": "                 && !std::is_same <std::vector<bool>::reference, typename BasicJsonType::boolean_t&>::value)"
+          },
+          {
+            "line": 5679,
+            "text": "                || (std::is_same<std::vector<bool>::const_reference, BoolRef>::value"
+          },
+          {
+            "line": 5680,
+            "text": "                    && !std::is_same <detail::uncvref_t<std::vector<bool>::const_reference>,"
+          },
+          {
+            "line": 5733,
+            "text": "inline void to_json(BasicJsonType& j, const std::vector<bool>& e)"
+          },
+          {
+            "line": 7301,
+            "text": "    std::vector<bool> keep_stack {};"
+          },
+          {
+            "line": 7303,
+            "text": "    std::vector<bool> key_keep_stack {};"
+          },
+          {
+            "line": 12380,
+            "text": "        std::vector<bool> states;"
+          }
+        ]
+      }
+    },
+    {
+      "archive": ".local/debian-trial-2026-11-23/source-files/dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e-icu_76.1.orig.tar.gz",
+      "file": "icu/source/tools/toolutil/toolutil.cpp",
+      "file_sha256": "ff2a2bf07a9f512c8e4683183f2c0b363e7dc2c1d0515aa6208352aef113f6f5",
+      "test_or_example": false,
+      "matches": {
+        "filebuf": [
+          {
+            "line": 291,
+            "text": "        std::ofstream ofs;"
+          }
+        ]
+      }
+    }
+  ]
+}

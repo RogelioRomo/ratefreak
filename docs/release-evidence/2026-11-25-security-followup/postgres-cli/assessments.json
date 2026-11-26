@@ -1,0 +1,1006 @@
+[
+  {
+    "id": "CVE-2026-54371",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "attr",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.5.2-3",
+        "package": "libattr1",
+        "severity": "MEDIUM",
+        "source_version": "2.5.2"
+      }
+    ],
+    "condition": "Privileged getfattr/setfattr traverses attacker-controlled path components.",
+    "assessment": "Affected operations belong to getfattr/setfattr command path traversal. Fixed PostgreSQL Bash entrypoint, plain role-initialization SQL and pg_isready health do not invoke either utility. Ordinary ownership/filesystem operations do not imply this command-specific attr path.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "attr before version 2.6.0 contains a symlink traversal vulnerability in the getfattr and setfattr utilities that allows local attackers to escalate privileges by replacing a pathname component with a symbolic link during directory hierarchy traversal. Attackers who control a pathname component can redirect getfattr and setfattr operations to arbitrary files by substituting a symlink, leading to local privilege escalation when getfattr or setfattr is invoked by a privileged process over an attacker-controlled path."
+  },
+  {
+    "id": "CVE-2026-42250",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "bzip2",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.0.8-6",
+        "package": "libbz2-1.0",
+        "severity": "MEDIUM",
+        "source_version": "1.0.8"
+      }
+    ],
+    "condition": "bzip2recover processes a crafted recovery input file.",
+    "assessment": "Affected command is bzip2recover on recovery input. Reference mounts only 10-roles.sql, and entrypoint never invokes bzip2recover. It has optional gzip/xz/zstd SQL branches, but none selects the bzip2 recovery tool; custom extra initialization files are excluded.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "bzip2 contains an off\u2011by\u2011one error in the bzip2recover utility. When processing a specially crafted file, the application performs an out\u2011of\u2011bounds write to a global buffer, resulting in memory corruption and a crash (denial of service).  This issue was fixed in bzip2 patch\u00a035d122a3df8b0cc4082a4d89fdc6ee99f375fe67"
+  },
+  {
+    "id": "CVE-2017-18018",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "coreutils",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "9.7-3",
+        "package": "coreutils",
+        "severity": "LOW",
+        "source_version": "9.7"
+      }
+    ],
+    "condition": "Concurrent attacker replaces a path during privileged chown/chgrp recursive symlink dereference (-R -L); additional generic pathname-race concerns require a concurrent writer.",
+    "assessment": "Root really executes find PGDATA ! -user postgres -exec chown postgres operands +, and the analogous /run/postgresql operation, before gosu or any temporary/final PostgreSQL server starts. The primary discoverer describes the chown -R -L recursive-dereference traversal race; these invocations use nonrecursive chown operands without -R/-L. More importantly for generic find/chown pathname races, reference compose gives PGDATA named volume only to this PostgreSQL service; root setup runs before the server or application writers can modify it, directory modes are restricted, and no untrusted concurrent local process shares the volume. This is a sequencing/exclusive-writer exclusion, not a false absent-chown claim or general assertion that find-exec chown cannot race.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql",
+      "https://www.openwall.com/lists/oss-security/2018/01/04/3"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "In GNU Coreutils through 8.29, chown-core.c in chown and chgrp does not prevent replacement of a plain file with a symlink during use of the POSIX \"-R -L\" options, which allows local users to modify the ownership of arbitrary files by leveraging a race condition."
+  },
+  {
+    "id": "CVE-2025-5278",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "coreutils",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "9.7-3",
+        "package": "coreutils",
+        "severity": "LOW",
+        "source_version": "9.7"
+      }
+    ],
+    "condition": "GNU sort receives the affected key specification and input.",
+    "assessment": "Affected GNU sort key-specification path is not called. Entrypoint does not invoke sort, neither does plain initialization SQL or fixed pg_isready health. Database ORDER BY/internal sorting is not GNU sort CLI key parsing.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "A flaw was found in GNU Coreutils. The sort utility's begfield() function is vulnerable to a heap buffer under-read. The program may access memory outside the allocated buffer if a user runs a crafted command using the traditional key format. A malicious input could lead to a crash or leak sensitive data."
+  },
+  {
+    "id": "CVE-2026-56391",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "coreutils",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "9.7-3",
+        "package": "coreutils",
+        "severity": "LOW",
+        "source_version": "9.7"
+      }
+    ],
+    "condition": "GNU uniq processes crafted multibyte input.",
+    "assessment": "Affected GNU uniq multibyte-input path is not called by entrypoint, plain role initialization or health. PostgreSQL DISTINCT/internal grouping does not invoke GNU uniq.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "GNU coreutils uniq is vulnerable to an out\u2011of\u2011bounds read due to incorrect handling of multibyte input when the -w (--check-chars) option is used. The find_field() function miscalculates the byte length of characters by repeatedly processing a fixed pointer instead of advancing through the input, resulting in an inflated length value.  This incorrect length is later used in a memcmp operation, causing reads beyond the allocated buffer when processing crafted multibyte input.  When running GNU coreutils uniq with attacker-provided arguments, this behavior leads to a crash and potential adjacent heap memory exposure.   This issue has been fixed in the commit d64e35a8a4c0e4608321433e0d84d917e4e36371."
+  },
+  {
+    "id": "CVE-2026-56392",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "coreutils",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "9.7-3",
+        "package": "coreutils",
+        "severity": "LOW",
+        "source_version": "9.7"
+      }
+    ],
+    "condition": "GNU unexpand processes crafted tab stops.",
+    "assessment": "Affected GNU unexpand tab-stop parsing is not called by fixed entrypoint/SQL/health. Neither application fields nor operator-independent initialization input select unexpand tab-stop options.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "GNU coreutils unexpand is vulnerable to a heap-based buffer overflow due to an integer overflow during buffer allocation when processing large tab stop (-t) values. The multiplication used to calculate the allocation size can wrap around, resulting in an undersized buffer. When processing crafted input, subsequent writes exceed the allocated memory, leading to an out\u2011of\u2011bounds heap write.  When running GNU coreutils unexpand with attacker-provided large tab stop (-t) arguments, this behavior leads to a crash and potentially achieve a heap write primitive depending on memory layout.           This issue has been fixed in the commit b60a159fdc5bfcf9988d3a4cb6f53abe8ad5d35d"
+  },
+  {
+    "id": "CVE-2026-102473",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "dash",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "0.5.12-12",
+        "package": "dash",
+        "severity": "LOW",
+        "source_version": "0.5.12"
+      }
+    ],
+    "condition": "dash pmatch processes the affected pathological pattern with libc fnmatch disabled.",
+    "assessment": "Dash may actually run: compose healthcheck is CMD-SHELL pg_isready -U postgres -d ratefreak, and psql initialization backticks invoke fixed cat commands. Those shell strings contain no caller-selected pathological match pattern; PostgreSQL entrypoint itself uses Bash. No untrusted request parameter or filename is interpolated into these dash command strings. The affected pmatch condition is excluded, not the shell executable.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "A flaw was found in dash. When built without libc fnmatch, the internal pmatch() matcher implements * by unbounded recursion over candidate positions. A local user who can plant filenames, or otherwise feed that matcher, can make a short multi-star pattern such as *.*.*.*.*.tar.gz consume excessive CPU."
+  },
+  {
+    "id": "CVE-2026-102474",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "dash",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "0.5.12-12",
+        "package": "dash",
+        "severity": "LOW",
+        "source_version": "0.5.12"
+      }
+    ],
+    "condition": "dash conv_escape processes the affected Unicode escape.",
+    "assessment": "Dash may actually run for fixed health and psql cat commands. Neither fixed command invokes dash printf/echo escape processing on attacker-controlled Unicode escapes; the password file bytes returned by cat become psql variable data, not a new shell program or escape-format argument. Bash entrypoint password printf uses constant %s format. This excludes conv_escape trigger rather than claiming dash absent.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "A flaw was found in dash. The printf builtin reserves four bytes before converting a Unicode \\u or \\U escape, but the multi-byte token can need five or six bytes. A local user who can supply such an escape to dash printf or echo %b, including through dash -c and a positional argument, can write one or two bytes past that reservation."
+  },
+  {
+    "id": "CVE-2026-53910",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "diffutils",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:3.10-4",
+        "package": "diffutils",
+        "severity": "LOW",
+        "source_version": "3.10"
+      }
+    ],
+    "condition": "GNU diff/diff3 performs the affected large line-mapping calculations.",
+    "assessment": "Affected diff/diff3 large line-mapping path is not called by entrypoint/plain SQL/health. No supported PostgreSQL lifecycle command compares attacker-supplied text through GNU diff.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "diff3\u00a0tool from GNU diffutils\u00a0is vulnerable to a heap\u2011based buffer overflow due to multiple signed integer overflows in line\u2011mapping calculations. Incorrect arithmetic in mapping line ranges can result in corrupted values being used for memory allocation and loop bounds. When processing crafted diff output, these overflows may cause the application to allocate insufficient memory and subsequently perform out\u2011of\u2011bounds writes during internal processing.\u00a0 An attacker who can control the output of the diff program used by diff3 (e.g. via --diff-program pointing to a malicious script) can trigger out-of-bounds writes, resulting in a crash and potentially remote code execution depending on the environment.   This issue has been fixed in commit 9ff04d5b84743e331e80b589335a52c5480d1815\u00a0  NOTE: The project maintainers claim that this is not a security issue. They state that the worst outcome this issue can cause is a crash of diff and that it cannot be used to escalate privileges."
+  },
+  {
+    "id": "CVE-2026-91094",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "dpkg",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.22.22",
+        "package": "dpkg",
+        "severity": "UNKNOWN",
+        "source_version": "1.22.22"
+      }
+    ],
+    "condition": "dpkg-source unpacks a crafted 3.0(quilt) source package.",
+    "assessment": "Affected dpkg-source 3.0(quilt) source-package unpacking is not a runtime/initialization/health operation. Image build package acquisition is a separate trust boundary, not cleared by this runtime caller exclusion.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "A directory traversal bug was discovered when unpacking 3.0 (quilt) source packages, where the packaging tarball could contain the quilt database directory (.pc) with attacker controlled symlinks, where that in combination with patches that would fail to apply, could be used to make the code used to restore the backup files to either modify or remove the files pointed to by the attacker controlled symlinks."
+  },
+  {
+    "id": "CVE-2022-3219",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnupg2",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "dirmngr",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1",
+        "package": "gnupg",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1",
+        "package": "gnupg-l10n",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpg",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpg-agent",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpgconf",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpgsm",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      }
+    ],
+    "condition": "GnuPG can be made to spin on a relatively small input by (for example) crafting a public key with thousands of signatures attached, compressed down to just a few KB.",
+    "assessment": "The affected GnuPG/gpgv/gpgsm/gpgtar/tpm2daemon message, signature, archive or TPM operation has no caller in the fixed PostgreSQL entrypoint, plain role initialization SQL or pg_isready health. No runtime key import/signature verification, CMS parsing, TPM decryption, compressed GPG input or GnuPG tar extraction is provisioned. The package may remain installed; arbitrary operator crypto commands and package-signature/build acquisition are outside this scope.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "GnuPG can be made to spin on a relatively small input by (for example) crafting a public key with thousands of signatures attached, compressed down to just a few KB."
+  },
+  {
+    "id": "CVE-2025-68972",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnupg2",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "dirmngr",
+        "severity": "MEDIUM",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1",
+        "package": "gnupg",
+        "severity": "MEDIUM",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1",
+        "package": "gnupg-l10n",
+        "severity": "MEDIUM",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpg",
+        "severity": "MEDIUM",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpg-agent",
+        "severity": "MEDIUM",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpgconf",
+        "severity": "MEDIUM",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpgsm",
+        "severity": "MEDIUM",
+        "source_version": "2.4.7"
+      }
+    ],
+    "condition": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+    "assessment": "The affected GnuPG/gpgv/gpgsm/gpgtar/tpm2daemon message, signature, archive or TPM operation has no caller in the fixed PostgreSQL entrypoint, plain role initialization SQL or pg_isready health. No runtime key import/signature verification, CMS parsing, TPM decryption, compressed GPG input or GnuPG tar extraction is provisioned. The package may remain installed; arbitrary operator crypto commands and package-signature/build acquisition are outside this scope.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line."
+  },
+  {
+    "id": "CVE-2026-105712",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnupg2",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "dirmngr",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1",
+        "package": "gnupg",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1",
+        "package": "gnupg-l10n",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpg",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpg-agent",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpgconf",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpgsm",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      }
+    ],
+    "condition": "gpgtar in GnuPG before 2.5.19 can allow file overwrite via crafted data in an archive. When extracting an untrusted archive with --directory (aka -C) into an existing directory containing a pre-existing symlink, gpgtar can follow that symlink and create or overwrite a file outside the selected extraction directory. The write is limited by the extraction user's filesystem permissions. An archive extracted into a fresh empty directory does not have this risk.",
+    "assessment": "The affected GnuPG/gpgv/gpgsm/gpgtar/tpm2daemon message, signature, archive or TPM operation has no caller in the fixed PostgreSQL entrypoint, plain role initialization SQL or pg_isready health. No runtime key import/signature verification, CMS parsing, TPM decryption, compressed GPG input or GnuPG tar extraction is provisioned. The package may remain installed; arbitrary operator crypto commands and package-signature/build acquisition are outside this scope.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "gpgtar in GnuPG before 2.5.19 can allow file overwrite via crafted data in an archive. When extracting an untrusted archive with --directory (aka -C) into an existing directory containing a pre-existing symlink, gpgtar can follow that symlink and create or overwrite a file outside the selected extraction directory. The write is limited by the extraction user's filesystem permissions. An archive extracted into a fresh empty directory does not have this risk."
+  },
+  {
+    "id": "CVE-2026-24882",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnupg2",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "dirmngr",
+        "severity": "HIGH",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1",
+        "package": "gnupg",
+        "severity": "HIGH",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1",
+        "package": "gnupg-l10n",
+        "severity": "HIGH",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpg",
+        "severity": "HIGH",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpg-agent",
+        "severity": "HIGH",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpgconf",
+        "severity": "HIGH",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpgsm",
+        "severity": "HIGH",
+        "source_version": "2.4.7"
+      }
+    ],
+    "condition": "In GnuPG before 2.5.17, a stack-based buffer overflow exists in tpm2daemon during handling of the PKDECRYPT command for TPM-backed RSA and ECC keys.",
+    "assessment": "The affected GnuPG/gpgv/gpgsm/gpgtar/tpm2daemon message, signature, archive or TPM operation has no caller in the fixed PostgreSQL entrypoint, plain role initialization SQL or pg_isready health. No runtime key import/signature verification, CMS parsing, TPM decryption, compressed GPG input or GnuPG tar extraction is provisioned. The package may remain installed; arbitrary operator crypto commands and package-signature/build acquisition are outside this scope.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "In GnuPG before 2.5.17, a stack-based buffer overflow exists in tpm2daemon during handling of the PKDECRYPT command for TPM-backed RSA and ECC keys."
+  },
+  {
+    "id": "CVE-2026-57062",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "gnupg2",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "dirmngr",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1",
+        "package": "gnupg",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1",
+        "package": "gnupg-l10n",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpg",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpg-agent",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpgconf",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      },
+      {
+        "fixed": "",
+        "installed": "2.4.7-21+deb13u1+b5",
+        "package": "gpgsm",
+        "severity": "LOW",
+        "source_version": "2.4.7"
+      }
+    ],
+    "condition": "CMS (Cryptographic Message Syntax) parsing in gpgsm in GnuPG through 2.5.20 mishandles the CMS format for AES-GCM because aes-ICVlen is supposed to be 12 bytes but 4 bytes is accepted. NOTE: this is related to CVE-2026-34182.",
+    "assessment": "The affected GnuPG/gpgv/gpgsm/gpgtar/tpm2daemon message, signature, archive or TPM operation has no caller in the fixed PostgreSQL entrypoint, plain role initialization SQL or pg_isready health. No runtime key import/signature verification, CMS parsing, TPM decryption, compressed GPG input or GnuPG tar extraction is provisioned. The package may remain installed; arbitrary operator crypto commands and package-signature/build acquisition are outside this scope.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "CMS (Cryptographic Message Syntax) parsing in gpgsm in GnuPG through 2.5.20 mishandles the CMS format for AES-GCM because aes-ICVlen is supposed to be 12 bytes but 4 bytes is accepted. NOTE: this is related to CVE-2026-34182."
+  },
+  {
+    "id": "CVE-2005-2541",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "tar",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.35+dfsg-3.1",
+        "package": "tar",
+        "severity": "LOW",
+        "source_version": "1.35+dfsg"
+      }
+    ],
+    "condition": "GNU tar extracts setuid/setgid archive members without the discussed warning.",
+    "assessment": "GNU tar extraction/incremental restore/one-top-level/hardlink or remote-rmt operation is not invoked by fixed PostgreSQL entrypoint, plain initialization SQL or pg_isready health. Coordinated product backups/restores execute PostgreSQL clients and Python tarfile in the separate tools container, not GNU tar in this database image. No public or fixed lifecycle path supplies GNU tar with attacker-selected archives/options. PostgreSQL arbitrary SQL/COPY PROGRAM/custom initialization is outside the reviewed contract.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "Tar 1.15.1 does not properly warn the user when extracting setuid or setgid files, which may allow local users or remote attackers to gain privileges."
+  },
+  {
+    "id": "CVE-2026-18477",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "tar",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.35+dfsg-3.1",
+        "package": "tar",
+        "severity": "MEDIUM",
+        "source_version": "1.35+dfsg"
+      }
+    ],
+    "condition": "GNU tar incremental dumpdir X rename extraction.",
+    "assessment": "GNU tar extraction/incremental restore/one-top-level/hardlink or remote-rmt operation is not invoked by fixed PostgreSQL entrypoint, plain initialization SQL or pg_isready health. Coordinated product backups/restores execute PostgreSQL clients and Python tarfile in the separate tools container, not GNU tar in this database image. No public or fixed lifecycle path supplies GNU tar with attacker-selected archives/options. PostgreSQL arbitrary SQL/COPY PROGRAM/custom initialization is outside the reviewed contract.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "A TOCTOU (Time-of-Check Time-of-Use) vulnerability in GNU tar's incremental dumpdir 'X' rename handling allows a local attacker with write access to a directory being backed up to influence the restore process if the attacker has access to the system where the restore is being performed. During restoration, files or directories may be created, renamed or overwritten outside the intended extraction directory. This could lead to unauthorized file modification or, in some cases, privilege escalation. Exploitation does not require the attacker to modify or craft the archive, and standard backup and restore workflows\u2014including extracting into a newly created directory without using the -P option do not mitigate the issue."
+  },
+  {
+    "id": "CVE-2026-18508",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "tar",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.35+dfsg-3.1",
+        "package": "tar",
+        "severity": "MEDIUM",
+        "source_version": "1.35+dfsg"
+      }
+    ],
+    "condition": "GNU tar --one-top-level extraction of crafted hard links.",
+    "assessment": "GNU tar extraction/incremental restore/one-top-level/hardlink or remote-rmt operation is not invoked by fixed PostgreSQL entrypoint, plain initialization SQL or pg_isready health. Coordinated product backups/restores execute PostgreSQL clients and Python tarfile in the separate tools container, not GNU tar in this database image. No public or fixed lifecycle path supplies GNU tar with attacker-selected archives/options. PostgreSQL arbitrary SQL/COPY PROGRAM/custom initialization is outside the reviewed contract.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "A flaw was found in GNU tar. When extracting an archive with the --one-top-level option, hardlink targets are not confined to the designated top-level directory and may resolve relative to the extraction working directory. A crafted archive can create hardlinks that escape the intended boundary and, when combined with a preexisting symbolic link under the working directory, may allow writing outside that boundary during a single extraction."
+  },
+  {
+    "id": "CVE-2026-5704",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "tar",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.35+dfsg-3.1",
+        "package": "tar",
+        "severity": "MEDIUM",
+        "source_version": "1.35+dfsg"
+      }
+    ],
+    "condition": "GNU tar parses/extracts the affected crafted archive.",
+    "assessment": "GNU tar extraction/incremental restore/one-top-level/hardlink or remote-rmt operation is not invoked by fixed PostgreSQL entrypoint, plain initialization SQL or pg_isready health. Coordinated product backups/restores execute PostgreSQL clients and Python tarfile in the separate tools container, not GNU tar in this database image. No public or fixed lifecycle path supplies GNU tar with attacker-selected archives/options. PostgreSQL arbitrary SQL/COPY PROGRAM/custom initialization is outside the reviewed contract.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "A flaw was found in tar. A remote attacker could exploit this vulnerability by crafting a malicious archive, leading to hidden file injection with fully attacker-controlled content. This bypasses pre-extraction inspection mechanisms, potentially allowing an attacker to introduce malicious files onto a system without detection."
+  },
+  {
+    "id": "TEMP-0290435-0B57B5",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "tar",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.35+dfsg-3.1",
+        "package": "tar",
+        "severity": "LOW",
+        "source_version": "1.35+dfsg"
+      }
+    ],
+    "condition": "GNU tar remote-tape rmt command is invoked with the affected authority/input.",
+    "assessment": "GNU tar extraction/incremental restore/one-top-level/hardlink or remote-rmt operation is not invoked by fixed PostgreSQL entrypoint, plain initialization SQL or pg_isready health. Coordinated product backups/restores execute PostgreSQL clients and Python tarfile in the separate tools container, not GNU tar in this database image. No public or fixed lifecycle path supplies GNU tar with attacker-selected archives/options. PostgreSQL arbitrary SQL/COPY PROGRAM/custom initialization is outside the reviewed contract.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance."
+  },
+  {
+    "id": "CVE-2026-78408",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "util-linux",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "The nsenter --join-cgroup option opens the target cgroup.procs file as root and leaves that file descriptor open across later namespace and credential changes and across execve(). Because the kernel checks later cgroup migrations using the credentials from the original open, a program run in an attacker-controlled target can inherit root's ability to move host processes between cgroups. After a privileged operator uses --join-cgroup against that target, an unprivileged user can migrate and terminate unrelated root processes.",
+    "assessment": "No fixed PostgreSQL initialization/health/entrypoint command uses nsenter --join-cgroup or hands an inherited cgroup.procs descriptor to a namespace target. gosu identity switching is a different operation. Host runtime namespace creation is separate from installed nsenter caller.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "The nsenter --join-cgroup option opens the target cgroup.procs file as root and leaves that file descriptor open across later namespace and credential changes and across execve(). Because the kernel checks later cgroup migrations using the credentials from the original open, a program run in an attacker-controlled target can inherit root's ability to move host processes between cgroups. After a privileged operator uses --join-cgroup against that target, an unprivileged user can migrate and terminate unrelated root processes."
+  },
+  {
+    "id": "CVE-2026-78409",
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "util-linux",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1:2.41.5-0+deb13u1",
+        "package": "bsdutils",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libblkid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "liblastlog2-2",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libmount1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libsmartcols1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "libuuid1",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "package": "login",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "mount",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      },
+      {
+        "fixed": "",
+        "installed": "2.41.5-0+deb13u1",
+        "package": "util-linux",
+        "severity": "HIGH",
+        "source_version": "2.41.5"
+      }
+    ],
+    "condition": "The X-mount.subdir option uses a detached-tree fast path on Linux 6.15 and later and passes the configured subdirectory to open_tree() with AT_SYMLINK_NOFOLLOW. That flag does not stop intermediate symlink traversal or keep resolution inside the newly mounted filesystem. A local unprivileged user with an fstab-authorized X-mount.subdir entry can attach a host path at the intended mountpoint.",
+    "assessment": "No supported in-container command invokes mount with X-mount.subdir. Docker host mounts the fixed named/config/SQL volumes; it does not invoke this container-installed mount option path. Entrypoint has a mountpoint check in a PG18+ branch, but mountpoint is distinct from mount and the selected major is17.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "source-input-hashes.json",
+      "entrypoint-caller-review.json",
+      "../postgres-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Share PGDATA with another process/container or change ownership/startup ordering; root or privileged attacker modifies host/volume.",
+      "Add custom init scripts/compressed initialization, operator shell commands, runtime package/source installation, crypto/TPM/archive workflows, arbitrary SQL/program execution or command/environment overrides."
+    ],
+    "scope_limit": "Exact image and supplied supported startup/health/lifecycle only; no blanket absent-utility, package-fixed or arbitrary-authenticated-SQL clearance.",
+    "retained_vendor_condition_description": "The X-mount.subdir option uses a detached-tree fast path on Linux 6.15 and later and passes the configured subdirectory to open_tree() with AT_SYMLINK_NOFOLLOW. That flag does not stop intermediate symlink traversal or keep resolution inside the newly mounted filesystem. A local unprivileged user with an fstab-authorized X-mount.subdir entry can attach a host path at the intended mountpoint."
+  }
+]

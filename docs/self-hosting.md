@@ -29,6 +29,20 @@ The verified [application-native source sidecar](native-source-package-verificat
 must accompany its matching image when a binary release is authorized. It does
 not replace base-OS or other applicable source-delivery obligations.
 
+The reference database disables PostgreSQL JIT compilation while an LLVM
+security finding lacks a complete caller exclusion. SQL remains supported;
+reassess the security and capacity evidence before enabling JIT.
+
+Server image optimization supports JPEG, PNG, WebP and GIF. HEIF/AVIF decoding
+is disabled while the bundled libheif has unresolved security advisories;
+provider images requiring that decoder cannot be optimized. This restriction
+does not patch the bundled library or change the direct TMDB poster byte cache.
+Server-side HTTP responses compressed with Zstandard are also rejected while
+Node’s embedded decoder is affected by CVE-2026-124851. Gzip, deflate and
+Brotli responses remain supported. Providers requiring Zstandard responses
+cannot be used until a patched runtime is qualified.
+See the [security follow-up](security-followup-2026-11-25.md).
+
 ## Install
 
 Choose a private instance directory outside the repository. Keep the source
@@ -187,6 +201,27 @@ Record the existing source/image identities, migration history, named volumes an
 configuration. Read release/migration notes and stop every writer before backup
 and migration. Use matching API/web/tools artifacts from one release.
 
+The reference database pin now selects PostgreSQL 17.12 on Debian 13 Trixie.
+The PostgreSQL major version and data-directory layout remain at 17, but the
+libc/ICU collation versions differ from Bookworm. Existing Bookworm installations
+must use the fresh-instance logical restore procedure below before the usual
+application upgrade; reusing the old volume can leave indexes ordered under
+different collation rules. Before upgrading, also review the
+[17.12 migration notes](https://www.postgresql.org/docs/release/17.12/):
+they identify circumstances requiring index repair and recommend a new full
+backup for users of PostgreSQL incremental backups. RateFreak's coordinated
+backup uses `pg_dump`, rather than PostgreSQL incremental backups. A disposable
+reference upgrade does not establish that every installation's indexes are
+unaffected. Keep the previous image identity and a verified coordinated backup.
+
+`migrate` and `start` reject mismatched database-default or explicit collation
+versions. They never refresh collation metadata or rebuild indexes implicitly.
+`start` requires application writers to be stopped before it starts PostgreSQL
+for the check. Repeating `start` on a running stack therefore requires `stop`
+first. Do not suppress a mismatch by refreshing version metadata alone.
+
+For an application-only upgrade with unchanged, current database collations:
+
 ```bash
 python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_INSTANCE" stop
 python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_INSTANCE" backup --output /protected/backups/ratefreak-before-upgrade
@@ -202,6 +237,35 @@ app stopped. Do not start old artifacts against a newer schema or assume a guard
 downgrade can reconstruct discarded data. Prefer forward fixes or an isolated
 matching-version restore. Rebuilding replaces local image tags; retain the previous
 release artifacts/images before doing so if they are needed for recovery.
+
+### Bookworm-to-Trixie database transition
+
+Keep the old instance stopped and retain its source, complete application image
+set, private configuration, named volumes and a coordinated backup. Initialize
+a **new private instance directory** with the reviewed Trixie installation
+package; do not mount the old database volume into it. Use the planned public
+origin and reconcile provider/OAuth/ingress settings privately before cutover.
+
+Restore and replay with the **old matching API/web/tools images first**. Backup
+validation intentionally binds their exact IDs; a backup from the previous
+application cannot be restored directly with the new Skia image set. For a
+bundle-based installation, select the retained, validated old bundle in the new
+instance before `prepare` and follow [backup and isolated restore](#backup-and-isolated-restore).
+Supply the current independently protected erasure journal and TMDB policy,
+preserving their required ownership and mode. Do not take those records from
+the snapshot or bypass the image/ownership checks. Source-built installations
+must preserve and select the equivalent complete old image set with reviewed
+operator tooling; rebuilding old tags does not establish the old identities.
+
+The fresh Trixie database recreates indexes under its current collation rules.
+Verify restored content, artwork, keys, current-policy replay, database-default
+and explicit collations while traffic remains stopped. Then select the new
+application image set and run `prepare`, `migrate` and acceptance before
+`start`. This separates the database OS restore from the application update
+without weakening either restore binding. Verify the new instance over HTTPS
+before switching traffic, and retain the old stopped instance and backup for
+the reviewed recovery plan. Never run both instances as writers or roll back
+over newer user data.
 
 ### Downloaded release bundles
 
@@ -227,7 +291,9 @@ selection; successful selection invalidates prior migration acceptance. Old imag
 are retained. Bundle-selected services resolve immutable image IDs, so another
 instance cannot change their selection by moving a Docker tag. A subsequent
 source `build` explicitly selects the complete local image set only after all
-three builds succeed, and requires fresh migration acceptance. Start never implicitly pulls or upgrades. Do not set independent
+three builds succeed, and requires fresh migration acceptance. Application image
+selection does not change implicitly on start. PostgreSQL selection comes from
+the reviewed reference/instance configuration and is checked before writers start. Do not set independent
 API/web/tools versions or substitute images in the instance override.
 
 See [release preparation and announcements](releasing.md) for versioning, required

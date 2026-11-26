@@ -1,0 +1,127 @@
+[
+  {
+    "bytes": 5506,
+    "path": ".local/postgres-security-transition-2026-11-25/check_maintenance.py",
+    "sha256": "1deffc2171d09d9915157261b41f682f923f2ccd4ed92fe7fdc9db6645212dcc"
+  },
+  {
+    "bytes": 2090,
+    "path": ".local/postgres-security-transition-2026-11-25/collation-probe.json",
+    "sha256": "d20c18f9b385105def8df0e3c5df4f0f65622ef3f09ddbeb881c6c7d6fc9d32c"
+  },
+  {
+    "bytes": 2090,
+    "path": ".local/postgres-security-transition-2026-11-25/collation-probe.log",
+    "sha256": "559210e0925654dd1ea49c9591337cc926e194b77ff07b278de47d7a6a9a38c5"
+  },
+  {
+    "bytes": 6256,
+    "path": ".local/postgres-security-transition-2026-11-25/collation_probe.py",
+    "sha256": "e35414c159afade50438723a5de7be2c2bf9bcd23f7f827aa845787c95fc214e"
+  },
+  {
+    "bytes": 484,
+    "path": ".local/postgres-security-transition-2026-11-25/fresh-bookworm/acceptance.json",
+    "sha256": "3aa57c463c0644be6cd322da1f5f8663ab53335758d6b411ac3833fd6a2fd926"
+  },
+  {
+    "bytes": 103,
+    "path": ".local/postgres-security-transition-2026-11-25/guard-green.log",
+    "sha256": "3872f5a85da677f909ec5c55a5821758c34e2394460567a29f8043b480cc1105"
+  },
+  {
+    "bytes": 6330,
+    "path": ".local/postgres-security-transition-2026-11-25/guard-red-confirmed.log",
+    "sha256": "2ef57ee4a3044495f5c96757e47f90f0dc52d274087f69dd9e4f517dba252910"
+  },
+  {
+    "bytes": 5470,
+    "path": ".local/postgres-security-transition-2026-11-25/guard-red.log",
+    "sha256": "c9d344b2e1f6d38bc73bae2968e547d99092163e837038ab3a24695baed77d6d"
+  },
+  {
+    "bytes": 1466,
+    "path": ".local/postgres-security-transition-2026-11-25/maintenance-acceptance.json",
+    "sha256": "0dc8884bf5b56e536d4967cf5f92a39d3d995d5de604434af8e85f125d62adc4"
+  },
+  {
+    "bytes": 8113,
+    "path": ".local/postgres-security-transition-2026-11-25/maintenance.log",
+    "sha256": "e38b01bc26a8edeff6e9e179a8c6ae6ccc6540e743f5c72328901a310ad271ab"
+  },
+  {
+    "bytes": 6889,
+    "path": ".local/postgres-security-transition-2026-11-25/operator-collation-guard.patch",
+    "sha256": "4e3d4fe443529a2baeef0a42620c7c0af7e4e3aa40e5305fb0e24679d1aaf42b"
+  },
+  {
+    "bytes": 241,
+    "path": ".local/postgres-security-transition-2026-11-25/operator-suite.log",
+    "sha256": "ca46c0dcf2ffe640f888d6240a7427a99bb8edd641606505a98521ad45014b1f"
+  },
+  {
+    "bytes": 967,
+    "path": ".local/postgres-security-transition-2026-11-25/package-refresh-simulation.json",
+    "sha256": "22e65686a71fb22762b0017b5ad70dc93c86ef6a0622c6936fe271982896f80d"
+  },
+  {
+    "bytes": 1446,
+    "path": ".local/postgres-security-transition-2026-11-25/package-refresh-simulation.log",
+    "sha256": "6150dfc449e13969b0d54a732413f1f28cf793b739db6f0e04a7fbbb5605dc4d"
+  },
+  {
+    "bytes": 774,
+    "path": ".local/postgres-security-transition-2026-11-25/postgres-defaults.json",
+    "sha256": "2f1b9e59a167eba86b6a0a041ca4389a10aecb19f6369972c0f5493f9be535db"
+  },
+  {
+    "bytes": 810,
+    "path": ".local/postgres-security-transition-2026-11-25/probe_defaults.py",
+    "sha256": "87d5d5d46bf609054732c14db9dd6a0ffd64cd4b94ebbec980fafca1da63714f"
+  },
+  {
+    "bytes": 1212,
+    "path": ".local/postgres-security-transition-2026-11-25/probe_package_refresh.py",
+    "sha256": "5b683a79064902480c0097d9fc3b0600872cb47cdbbd185e2187ed496c2020b0"
+  },
+  {
+    "bytes": 8531,
+    "path": ".local/postgres-security-transition-2026-11-25/review.md",
+    "sha256": "6d816b80c693617a85ef4c93f5f4fdc5dddf6e970550bbeaf0a8da3303035781"
+  },
+  {
+    "bytes": 682,
+    "path": ".local/postgres-security-transition-2026-11-25/run_fresh.py",
+    "sha256": "4c63adf2a784f6f9b05ac01fcda3e5d10d2e23f7d7c09bd47166990c668710f0"
+  },
+  {
+    "bytes": 24377,
+    "path": ".local/postgres-security-transition-2026-11-25/source/deploy/self-host/ratefreak.py",
+    "sha256": "69348a92878cf79317534f63c495fdaf56ff01954d4845d98112deb0861a82aa"
+  },
+  {
+    "bytes": 3633,
+    "path": ".local/postgres-security-transition-2026-11-25/source/deploy/self-host/test_database_collations.py",
+    "sha256": "613b7dbb44f3b11df156e780c5ff86e2f4c52dcc10e69df773fcbe59f09ce6fe"
+  },
+  {
+    "bytes": 873,
+    "path": ".local/postgres-security-transition-2026-11-25/start-writer-red.log",
+    "sha256": "7a0f4741f8a8ffa1ff526e1807c69cd58740a1fe11578b0e17439e69531de5ed"
+  },
+  {
+    "bytes": 960,
+    "path": ".local/security-clearance-2026-11-25/postgres-trixie-trivy-execution.json",
+    "sha256": "de19575c7b86cc72f3daddff2398501311a2510cc349a04d99e70ce7643896c5"
+  },
+  {
+    "bytes": 2381348,
+    "path": ".local/security-clearance-2026-11-25/postgres-trixie-trivy.json",
+    "sha256": "677f3c81143f5316a4e28034276105af3375ed74b2ad9fbe47a8dbe8303dbd28"
+  },
+  {
+    "bytes": 92774370,
+    "path": ".local/security-clearance-2026-11-25/vendor/debian-tracker.json",
+    "sha256": "acb1ff678467a38188457c9ae56ca07bf6e75ab4f0b775e2f358d2c9214294a9"
+  }
+]

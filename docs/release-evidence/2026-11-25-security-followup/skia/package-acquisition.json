@@ -1,0 +1,61 @@
+[
+  {
+    "name": "skiasharp",
+    "version": "4.157.0",
+    "url": "https://api.nuget.org/v3-flatcontainer/skiasharp/4.157.0/skiasharp.4.157.0.nupkg",
+    "file": "packages/skiasharp.4.157.0.nupkg",
+    "sha256": "efd16d3f8ff965f6cdd1f66fbd422b9985b78b22da3ab5d10c5eab3b40cf3327",
+    "bytes": 15351190,
+    "signature_present": true,
+    "license_metadata_files": [
+      "SkiaSharp.nuspec",
+      "LICENSE.txt"
+    ],
+    "retrieved_utc": "2026-11-25T21:47:31.601029+00:00"
+  },
+  {
+    "name": "skiasharp.nativeassets.linux.nodependencies",
+    "version": "4.157.0",
+    "url": "https://api.nuget.org/v3-flatcontainer/skiasharp.nativeassets.linux.nodependencies/4.157.0/skiasharp.nativeassets.linux.nodependencies.4.157.0.nupkg",
+    "file": "packages/skiasharp.nativeassets.linux.nodependencies.4.157.0.nupkg",
+    "sha256": "9b31c2350afde73552dd390891a20bb790f9580b9890ef40aeaf27ee58e86c2f",
+    "bytes": 63112699,
+    "signature_present": true,
+    "license_metadata_files": [
+      "SkiaSharp.NativeAssets.Linux.NoDependencies.nuspec",
+      "LICENSE.txt",
+      "THIRD-PARTY-NOTICES.txt"
+    ],
+    "retrieved_utc": "2026-11-25T21:47:33.937636+00:00"
+  },
+  {
+    "name": "skiasharp.nativeassets.win32",
+    "version": "4.157.0",
+    "url": "https://api.nuget.org/v3-flatcontainer/skiasharp.nativeassets.win32/4.157.0/skiasharp.nativeassets.win32.4.157.0.nupkg",
+    "file": "packages/skiasharp.nativeassets.win32.4.157.0.nupkg",
+    "sha256": "f0b5f48d63b154dddd06d4ab8eb5552f9b792214cc1691ac53445f2d324f1a0d",
+    "bytes": 89264174,
+    "signature_present": true,
+    "license_metadata_files": [
+      "SkiaSharp.NativeAssets.Win32.nuspec",
+      "LICENSE.txt",
+      "THIRD-PARTY-NOTICES.txt"
+    ],
+    "retrieved_utc": "2026-11-25T21:47:32.529438+00:00"
+  },
+  {
+    "name": "skiasharp.nativeassets.macos",
+    "version": "4.157.0",
+    "url": "https://api.nuget.org/v3-flatcontainer/skiasharp.nativeassets.macos/4.157.0/skiasharp.nativeassets.macos.4.157.0.nupkg",
+    "file": "packages/skiasharp.nativeassets.macos.4.157.0.nupkg",
+    "sha256": "de782e40cb27d11805d9a4c461ee540abde49c55dd675399815ae17233d138b9",
+    "bytes": 7731536,
+    "signature_present": true,
+    "license_metadata_files": [
+      "SkiaSharp.NativeAssets.macOS.nuspec",
+      "LICENSE.txt",
+      "THIRD-PARTY-NOTICES.txt"
+    ],
+    "retrieved_utc": "2026-11-25T21:47:30.897753+00:00"
+  }
+]

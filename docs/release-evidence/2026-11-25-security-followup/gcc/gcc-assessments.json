@@ -1,0 +1,100 @@
+{
+  "created_utc": "2026-11-26T02:43:12.143646+00:00",
+  "scope": "Caller investigation only; not a package fix, release clearance, or blanket disposition of every OS finding.",
+  "images": {
+    "api": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+    "web": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+    "tools": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b"
+  },
+  "source_scan": {
+    "archives": 36,
+    "source_files": 41666,
+    "files_with_matches": 114,
+    "pbds_files": 0,
+    "parallel_files": 0
+  },
+  "assessments": [
+    {
+      "id": "CVE-2026-102010",
+      "affected_condition": "GNU extension __gnu_pbds binary_heap erase_if uses storage that was freed; this is not ordinary std::priority_queue.",
+      "service_assessment": "No pb_ds include, __gnu_pbds identifier, or binary_heap_tag in the 41,666 scanned exact consumer/build files. No __gnu_pbds symbol in the complete image ELF probes.",
+      "proposed_disposition": "open-global; application-source-exclusion-supported",
+      "remaining": "Header code can be inlined and symbols stripped. Exact source/build closure for every installed OS C++ consumer was not acquired. Do not apply the application-source exclusion to all OS packages or future tooling.",
+      "proof": [
+        "102010.patch",
+        "source-search.json",
+        "caller-summary.json",
+        "*-probe-full.json"
+      ]
+    },
+    {
+      "id": "CVE-2026-114690",
+      "affected_condition": "GNU parallel search header algorithm compares beyond the pattern buffer; requires GNU parallel mode or explicit GNU parallel search instantiation.",
+      "service_assessment": "No _GLIBCXX_PARALLEL, __gnu_parallel, or parallel/search or algorithm includes in the scanned exact consumer/build files. Only the library __gnu_parallel Settings functions are visible in image probes, not an application search instantiation.",
+      "proposed_disposition": "open-global; application-source-exclusion-supported",
+      "remaining": "Inlined header code cannot be excluded for every OS binary by symbol absence. Missing exact OS-source/build provenance remains. A newer shared runtime alone does not fix an embedded header instantiation.",
+      "proof": [
+        "114690.patch",
+        "source-search.json",
+        "*-probe-full.json"
+      ]
+    },
+    {
+      "id": "CVE-2026-114691",
+      "affected_condition": "Certain vector<bool> size/range constructors call _S_nword with a count near SIZE_MAX (or invalid negative range), wrapping word-count addition. The patch targets constructors, not every vector<bool> operation.",
+      "service_assessment": "Node: Maglev constructor count is BasicBlock::Id uint32_t, far below SIZE_MAX on these amd64 images. Wasm constructor count is tags.size() of an existing std::vector<WasmTag>; valid existing container size is bounded below the overflow region. Other service V8 vectors use default construction then checked resize/push_back. Skia vector<bool> implementations use libc++ std::__1, not affected GCC header. libheif uses a 3-bit HEVC layer count or an existing component container length; service HEIF input is separately blocked.",
+      "proposed_disposition": "open-global; bounded-known-service-constructors",
+      "remaining": "Do not infer architecture-independent safety from uint32_t: on a 32-bit target that count alone would not exclude near-SIZE_MAX. Exact OS consumer constructor/build closure is incomplete. No generic 5 MB input-bound waiver is used.",
+      "proof": [
+        "114691.patch",
+        "source-search.json",
+        "selected-source-files.json",
+        "selected-source-files-addendum.json",
+        "*-probe-full.json"
+      ]
+    },
+    {
+      "id": "CVE-2026-115456",
+      "affected_condition": "GCC floating-point from_chars implementation pattern() may read beyond [first,last) on specific non-NUL-terminated tokens. Integral from_chars and other libraries own implementations are outside this patch.",
+      "service_assessment": "Complete /usr,/app,/bin,/sbin,/lib,/lib64 ELF probes have zero imported from_chars symbols. All defined affected GCC floating APIs occur only in the two installed shared-libstdc++ payload hashes. Node definitions are integer std::from_chars or independent fast_float/simdjson routines; exact source direct std calls are integral. Skia JSON float fallback is libc++ or strtof, consistent with payload std::__1 implementation and absence of GCC floating imports.",
+      "proposed_disposition": "caller-exclusion-supported-for-current-images",
+      "remaining": "The vulnerable library bytes remain installed. This is a bound-image caller exclusion, not a patched-package claim; future plugins, new PInvoke/dlsym bindings, rebuilt consumers or changed library payloads require reassessment. No source-wide dynamic symbol-loading proof for arbitrary operator-added code is claimed.",
+      "proof": [
+        "115456.patch",
+        "gcc14-charconv",
+        "source-search.json",
+        "caller-summary.json",
+        "*-probe-full.json"
+      ]
+    },
+    {
+      "id": "CVE-2026-125709",
+      "affected_condition": "Repeated byte-at-a-time filebuf writes after induced write failures leave the put pointer advancing, permitting a buffer overflow. Ordinary ostream operations set error state and prevent repeated output.",
+      "service_assessment": "Imports exist in Node, Sharp addon, apt libraries and ICU toolutil. Exact Node heap-profiler FileOutputStream uses os_.write and close; report/snapshot/debug paths use ordinary ostream/ofstream operations. Sharp service path processes buffer input/output; source search shows no direct sputc retry loop. Red Hat explicitly distinguishes standard stream operations from the affected pattern.",
+      "proposed_disposition": "open-global; known-service-stream-paths-not-triggering",
+      "remaining": "Do not use Red Hat RHEL-system-utilities statement as proof for Debian/Ubuntu apt or ICU. Every direct/custom filebuf retry caller and supported tools command needs source review, or a fixed libstdc++ package. Imported filebuf/vtables are evidence of actual API use and cannot be dismissed.",
+      "proof": [
+        "125709-redhat.json",
+        "gcc14-fstream.tcc",
+        "source-search.json",
+        "selected-source-files.json",
+        "caller-summary.json"
+      ]
+    },
+    {
+      "id": "CVE-2026-95619",
+      "affected_condition": "Aligned operator new rounds a huge size/alignment into a small allocation in C11 aligned_alloc, Wine, or fallback implementations. Upstream explicitly identifies posix_memalign implementation as unaffected.",
+      "service_assessment": "Exact extracted libstdc++ from API/web/tools amd64 images disassembles aligned operator new directly calling posix_memalign@plt. No vulnerable round-up occurs on that compiled branch. The inspected throwing scalar aligned-new entrypoint selects this branch; the source branch contains no size round-up.",
+      "proposed_disposition": "compiled-branch-exclusion-supported-for-current-amd64-images",
+      "remaining": "Scope is the exact host libstdc++ payload hashes in libstdcpp-binding.json. Other-architecture packaged Skia assets are not running against this amd64 library and are not independently cleared by this finding. Rebind any rebuilt image to these library hashes.",
+      "proof": [
+        "95619.patch",
+        "gcc14-new",
+        "libstdcpp-binding.json",
+        "api-aligned-new.txt",
+        "web-aligned-new.txt",
+        "tools-aligned-new.txt"
+      ]
+    }
+  ]
+}

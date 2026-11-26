@@ -12,7 +12,7 @@ COPY LICENSE /src/LICENSE
 COPY deploy/compliance /src/deploy/compliance
 RUN pnpm build
 
-FROM debian:bookworm-slim@sha256:734a72b3d6142a71993b4bc580ca01d8ca687f77a2c422d96a961d3376b179bc AS runtime
+FROM debian:trixie-slim@sha256:7378260c0a098d27ac206225db5e7d92b8c7c84ea7afccc86eeb513756bbd392 AS runtime
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends python3 ca-certificates libstdc++6 libatomic1 && rm -rf /var/lib/apt/lists/*
 # Copy only Node and its complete composite license; package managers stay in build.
 COPY --from=build /usr/local/bin/node /usr/local/bin/node

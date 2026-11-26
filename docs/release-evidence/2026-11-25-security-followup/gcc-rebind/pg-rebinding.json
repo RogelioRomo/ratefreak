@@ -1,0 +1,17 @@
+{
+  "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+  "elf_records": 1005,
+  "every_pg_elf_hash_equals_residual_probe": true,
+  "libstdcxx_sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+  "libstdcxx_equals_disassembled_web_tools_payload": true,
+  "from_chars_imports": [],
+  "non_libstdcxx_from_chars_definitions": [],
+  "llvm_payload": {
+    "path": "/usr/lib/x86_64-linux-gnu/libLLVM.so.19.1",
+    "sha256": "3523f50f635d2a1ea47518a392451f2854b92823ceaf1345fb806099dd1a3b8a",
+    "selected_symbols": {
+      "_ZdlPvmSt11align_val_t": "imported",
+      "_ZnwmSt11align_val_t": "imported"
+    }
+  }
+}

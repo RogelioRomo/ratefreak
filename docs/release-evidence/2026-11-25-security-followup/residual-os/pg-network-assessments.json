@@ -1,0 +1,557 @@
+[
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "cyrus-sasl2",
+    "id": "CVE-2026-107161",
+    "condition": "cyrus-sasl: Heap buffer overflow in cyrus-sasl add_to_challenge() allows malicious server to crash or compromise DIGEST-MD5 clients",
+    "classification": "conditional-caller-exclusion",
+    "reason": "Affected Cyrus DIGEST-MD5 client add_to_challenge plugin is not installed. Full SASL plugin ELF inventory contains only libsasldb; no DIGEST-MD5 module. PostgreSQL password/SCRAM is its own implementation, not Cyrus SASL, and no LDAP auth/service flow is configured. Base libsasl presence does not provide this missing mechanism.",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-2",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      },
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-modules-db",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      }
+    ],
+    "evidence": [
+      "pg-elf-probe.json",
+      "pg-network-config-probe.json",
+      "pg-network-krb-callers.json",
+      "pg-network-vendor-notes.json",
+      "vendor/pg-network-acquisition.json",
+      "pg-docker-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Any extra keytab/cache/Kerberos environment or acceptor credential provision; default credential acquisition proof is immutable image only and never reads an existing instance.",
+      "Changed pg_hba authentication, LDAP/service configuration, SASL mechanisms, initdb scripts, schema/extensions, native packages, operator commands or supported mounts.",
+      "Other previously fixed GSS ASN.1 parser findings are independent; no broad GSS-unreachable claim."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "cyrus-sasl2",
+    "id": "CVE-2026-129483",
+    "condition": "cyrus-sasl: Cyrus SASL through 2.1.28 SRP Authentication Bypass via plugins/srp.c",
+    "classification": "conditional-caller-exclusion",
+    "reason": "Affected SRP authentication-server plugin is not installed; exact SASL plugin inventory contains only libsasldb. No PostgreSQL/default bootstrap flow is a Cyrus SRP server. Retained Debian notes independently record --disable-srp, but missing mechanism/current supported caller proof is used rather than package vendor rating.",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-2",
+        "severity": "LOW",
+        "source_version": "2.1.28+dfsg1"
+      },
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-modules-db",
+        "severity": "LOW",
+        "source_version": "2.1.28+dfsg1"
+      }
+    ],
+    "evidence": [
+      "pg-elf-probe.json",
+      "pg-network-config-probe.json",
+      "pg-network-krb-callers.json",
+      "pg-network-vendor-notes.json",
+      "vendor/pg-network-acquisition.json",
+      "pg-docker-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Any extra keytab/cache/Kerberos environment or acceptor credential provision; default credential acquisition proof is immutable image only and never reads an existing instance.",
+      "Changed pg_hba authentication, LDAP/service configuration, SASL mechanisms, initdb scripts, schema/extensions, native packages, operator commands or supported mounts.",
+      "Other previously fixed GSS ASN.1 parser findings are independent; no broad GSS-unreachable claim."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "cyrus-sasl2",
+    "id": "CVE-2026-132138",
+    "condition": "cyrus-sasl: SCRAM channel-binding NULL dereference allows remote denial of service",
+    "classification": "conditional-caller-exclusion",
+    "reason": "Affected Cyrus SCRAM server channel-binding plugin is not installed; exact SASL plugin inventory contains only libsasldb. PostgreSQL native SCRAM server/client code is separate and does not call Cyrus SCRAM plugin. No supported LDAP/SASL server is configured.",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-2",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      },
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-modules-db",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      }
+    ],
+    "evidence": [
+      "pg-elf-probe.json",
+      "pg-network-config-probe.json",
+      "pg-network-krb-callers.json",
+      "pg-network-vendor-notes.json",
+      "vendor/pg-network-acquisition.json",
+      "pg-docker-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Any extra keytab/cache/Kerberos environment or acceptor credential provision; default credential acquisition proof is immutable image only and never reads an existing instance.",
+      "Changed pg_hba authentication, LDAP/service configuration, SASL mechanisms, initdb scripts, schema/extensions, native packages, operator commands or supported mounts.",
+      "Other previously fixed GSS ASN.1 parser findings are independent; no broad GSS-unreachable claim."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "krb5",
+    "id": "CVE-2018-5709",
+    "condition": "krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c",
+    "classification": "conditional-caller-exclusion",
+    "reason": "Affected kadmin database dump n_key_data parser is not a PostgreSQL backup parser. No krb5kdc/kadmind/KDB plugins/kadm5 executable/library exists in the exact exported image; supported initialization and maintenance only use PostgreSQL SQL/dump formats. GSS libraries do not load a Kerberos administrative dump.",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      }
+    ],
+    "evidence": [
+      "pg-elf-probe.json",
+      "pg-network-config-probe.json",
+      "pg-network-krb-callers.json",
+      "pg-network-vendor-notes.json",
+      "vendor/pg-network-acquisition.json",
+      "pg-docker-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Any extra keytab/cache/Kerberos environment or acceptor credential provision; default credential acquisition proof is immutable image only and never reads an existing instance.",
+      "Changed pg_hba authentication, LDAP/service configuration, SASL mechanisms, initdb scripts, schema/extensions, native packages, operator commands or supported mounts.",
+      "Other previously fixed GSS ASN.1 parser findings are independent; no broad GSS-unreachable claim."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "krb5",
+    "id": "CVE-2024-26458",
+    "condition": "krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c",
+    "classification": "conditional-caller-exclusion",
+    "reason": "Affected xmt_rmtcallres is libgssrpc portmapper/RPC helper code. Exact full ELF inventory contains no libgssrpc or kadm5 library/daemon, and Postgres links libgssapi_krb5 for GSS contexts over PostgreSQL wire protocol, not ONC RPC/portmapper. No supported caller invokes xmt_rmtcallres; unused-code vendor wording is corroborating, not the exclusion itself.",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      }
+    ],
+    "evidence": [
+      "pg-elf-probe.json",
+      "pg-network-config-probe.json",
+      "pg-network-krb-callers.json",
+      "pg-network-vendor-notes.json",
+      "vendor/pg-network-acquisition.json",
+      "pg-docker-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Any extra keytab/cache/Kerberos environment or acceptor credential provision; default credential acquisition proof is immutable image only and never reads an existing instance.",
+      "Changed pg_hba authentication, LDAP/service configuration, SASL mechanisms, initdb scripts, schema/extensions, native packages, operator commands or supported mounts.",
+      "Other previously fixed GSS ASN.1 parser findings are independent; no broad GSS-unreachable claim."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "krb5",
+    "id": "CVE-2024-26461",
+    "condition": "krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c",
+    "classification": "conditional-caller-exclusion",
+    "reason": "Affected gss_krb5int_make_seal_token_v3 is an established-context outgoing GSS wrap path. PostgreSQL genuinely has gss_wrap/unwrap and pre-auth GSSENC accept negotiation, but exact immutable reference image as postgres UID999 cannot acquire default ACCEPT or INITIATE credentials: nonzero major status and no credential handle. Keytab/config and credential environment overrides are absent; compose mounts no Kerberos material and provisions password/SCRAM only. No supported flow establishes a Kerberos context to invoke message sealing. This does not claim GSS input parsing is absent or waive other GSS parser bugs.",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      }
+    ],
+    "evidence": [
+      "pg-elf-probe.json",
+      "pg-network-config-probe.json",
+      "pg-network-krb-callers.json",
+      "pg-network-vendor-notes.json",
+      "vendor/pg-network-acquisition.json",
+      "pg-docker-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Any extra keytab/cache/Kerberos environment or acceptor credential provision; default credential acquisition proof is immutable image only and never reads an existing instance.",
+      "Changed pg_hba authentication, LDAP/service configuration, SASL mechanisms, initdb scripts, schema/extensions, native packages, operator commands or supported mounts.",
+      "Other previously fixed GSS ASN.1 parser findings are independent; no broad GSS-unreachable claim."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "krb5",
+    "id": "CVE-2026-107708",
+    "condition": "krb5: krb5: Denial of Service via malformed PAC in S4U2Proxy requests",
+    "classification": "conditional-caller-exclusion",
+    "reason": "Official fix is solely src/kdc/kdc_util.c get_pac_princ_with_realm, processing PAC data in KDC S4U2Proxy service. No KDC/kadmind executable or KDB backend exists in exact exported image, and supported PostgreSQL server is a GSS application acceptor, not a ticket-granting KDC. Native library presence/GSSENC does not execute the KDC-only source function.",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      }
+    ],
+    "evidence": [
+      "pg-elf-probe.json",
+      "pg-network-config-probe.json",
+      "pg-network-krb-callers.json",
+      "pg-network-vendor-notes.json",
+      "vendor/pg-network-acquisition.json",
+      "pg-docker-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Any extra keytab/cache/Kerberos environment or acceptor credential provision; default credential acquisition proof is immutable image only and never reads an existing instance.",
+      "Changed pg_hba authentication, LDAP/service configuration, SASL mechanisms, initdb scripts, schema/extensions, native packages, operator commands or supported mounts.",
+      "Other previously fixed GSS ASN.1 parser findings are independent; no broad GSS-unreachable claim."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "krb5",
+    "id": "CVE-2026-107778",
+    "condition": "krb5: krb5: Denial of Service via crafted forwarded credentials",
+    "classification": "conditional-caller-exclusion",
+    "reason": "Affected krb5_rd_cred make_cred_list is the forwarded KRB-CRED parser. PostgreSQL is a real GSS acceptor and GSSENCRequest is reachable before pg_hba choice; no absence claim. MIT accept_sec_context.c calls krb5_rd_req_decoded with service acceptor principal/keytab at848 and fails on error before process_checksum at860 and rd_and_store_for_creds/krb5_rd_cred. Default ACCEPT credential acquisition fails without a handle in exact immutable image as postgres UID999; no keytab/config/env or compose Kerberos provisioning exists. Therefore supported default reference cannot reach authenticated forwarded-credential processing. gss_accept_delegation=false alone is explicitly NOT the exclusion: MIT still decodes forwarded credentials with NULL output. Reassess any added acceptor keytab/credential/config/auth material.",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      }
+    ],
+    "evidence": [
+      "pg-elf-probe.json",
+      "pg-network-config-probe.json",
+      "pg-network-krb-callers.json",
+      "pg-network-vendor-notes.json",
+      "vendor/pg-network-acquisition.json",
+      "pg-docker-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Any extra keytab/cache/Kerberos environment or acceptor credential provision; default credential acquisition proof is immutable image only and never reads an existing instance.",
+      "Changed pg_hba authentication, LDAP/service configuration, SASL mechanisms, initdb scripts, schema/extensions, native packages, operator commands or supported mounts.",
+      "Other previously fixed GSS ASN.1 parser findings are independent; no broad GSS-unreachable claim."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openldap",
+    "id": "CVE-2015-3276",
+    "condition": "openldap: incorrect multi-keyword mode cipherstring parsing",
+    "classification": "conditional-caller-exclusion",
+    "reason": "Affected nss_parse_ciphers is the OpenLDAP Mozilla NSS TLS backend in tls_m.c. Actual PG image libldap.so.2.0.200 links OpenSSL libssl.so.3/libcrypto.so.3, not NSS; no libnss3 in full ELF inventory. No configured LDAP caller exists either. Do not use Debian GnuTLS-build note here: this exact image uses OpenSSL.",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ],
+    "evidence": [
+      "pg-elf-probe.json",
+      "pg-network-config-probe.json",
+      "pg-network-krb-callers.json",
+      "pg-network-vendor-notes.json",
+      "vendor/pg-network-acquisition.json",
+      "pg-docker-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Any extra keytab/cache/Kerberos environment or acceptor credential provision; default credential acquisition proof is immutable image only and never reads an existing instance.",
+      "Changed pg_hba authentication, LDAP/service configuration, SASL mechanisms, initdb scripts, schema/extensions, native packages, operator commands or supported mounts.",
+      "Other previously fixed GSS ASN.1 parser findings are independent; no broad GSS-unreachable claim."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openldap",
+    "id": "CVE-2017-14159",
+    "condition": "openldap: Privilege escalation via PID file manipulation",
+    "classification": "conditional-caller-exclusion",
+    "reason": "Affected slapd daemon PID-file creation occurs after dropping privilege. /usr/sbin/slapd and all slapd modules/daemon ELF are absent. PostgreSQL startup/PID-file logic is unrelated; libldap client library does not create a slapd PID file.",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ],
+    "evidence": [
+      "pg-elf-probe.json",
+      "pg-network-config-probe.json",
+      "pg-network-krb-callers.json",
+      "pg-network-vendor-notes.json",
+      "vendor/pg-network-acquisition.json",
+      "pg-docker-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Any extra keytab/cache/Kerberos environment or acceptor credential provision; default credential acquisition proof is immutable image only and never reads an existing instance.",
+      "Changed pg_hba authentication, LDAP/service configuration, SASL mechanisms, initdb scripts, schema/extensions, native packages, operator commands or supported mounts.",
+      "Other previously fixed GSS ASN.1 parser findings are independent; no broad GSS-unreachable claim."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openldap",
+    "id": "CVE-2017-17740",
+    "condition": "openldap: contrib/slapd-modules/nops/nops.c attempts to free stack buffer allowing remote attackers to cause a denial of service",
+    "classification": "conditional-caller-exclusion",
+    "reason": "Affected contrib/slapd-modules/nops server overlay is absent from full image ELF inventory, as is slapd. Supported container starts postgres and SQL roles, never an LDAP directory server or nops overlay.",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ],
+    "evidence": [
+      "pg-elf-probe.json",
+      "pg-network-config-probe.json",
+      "pg-network-krb-callers.json",
+      "pg-network-vendor-notes.json",
+      "vendor/pg-network-acquisition.json",
+      "pg-docker-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Any extra keytab/cache/Kerberos environment or acceptor credential provision; default credential acquisition proof is immutable image only and never reads an existing instance.",
+      "Changed pg_hba authentication, LDAP/service configuration, SASL mechanisms, initdb scripts, schema/extensions, native packages, operator commands or supported mounts.",
+      "Other previously fixed GSS ASN.1 parser findings are independent; no broad GSS-unreachable claim."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openldap",
+    "id": "CVE-2020-15719",
+    "condition": "openldap: Certificate validation incorrectly matches name against CN-ID",
+    "classification": "conditional-caller-exclusion",
+    "reason": "This is a real possible LDAP TLS hostname-validation operation in installed libldap; OpenSSL presence is acknowledged. Supplied bootstrap/auth config uses password/SCRAM, not PostgreSQL LDAP auth. PostgreSQL libpq LDAP parameter lookup needs a service-file LDAP URL stanza; exact system/postgres-home pg_service.conf and PGSERVICE/PGSERVICEFILE/LDAPCONF overrides are absent, and startup/health connects through local PostgreSQL sockets. No supported LDAP TLS handshake reaches the affected certificate identity comparison. Not waived because disputed or TLS generally disabled.",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ],
+    "evidence": [
+      "pg-elf-probe.json",
+      "pg-network-config-probe.json",
+      "pg-network-krb-callers.json",
+      "pg-network-vendor-notes.json",
+      "vendor/pg-network-acquisition.json",
+      "pg-docker-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Any extra keytab/cache/Kerberos environment or acceptor credential provision; default credential acquisition proof is immutable image only and never reads an existing instance.",
+      "Changed pg_hba authentication, LDAP/service configuration, SASL mechanisms, initdb scripts, schema/extensions, native packages, operator commands or supported mounts.",
+      "Other previously fixed GSS ASN.1 parser findings are independent; no broad GSS-unreachable claim."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openldap",
+    "id": "CVE-2026-22185",
+    "condition": "OpenLDAP: OpenLDAP LMDB: Denial of Service and Information Disclosure via Heap Buffer Underflow",
+    "classification": "conditional-caller-exclusion",
+    "reason": "Affected LMDB mdb_load input parser/command is absent from exact image, and no liblmdb/LDAP slapd database backend appears in full ELF inventory. PostgreSQL initdb/pg_restore process PostgreSQL database formats, not LMDB load files. OpenLDAP client linkage does not invoke mdb_load.",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ],
+    "evidence": [
+      "pg-elf-probe.json",
+      "pg-network-config-probe.json",
+      "pg-network-krb-callers.json",
+      "pg-network-vendor-notes.json",
+      "vendor/pg-network-acquisition.json",
+      "pg-docker-entrypoint.sh",
+      "deploy/self-host/compose.yaml",
+      "deploy/self-host/database.sql"
+    ],
+    "reassess_if": [
+      "Any extra keytab/cache/Kerberos environment or acceptor credential provision; default credential acquisition proof is immutable image only and never reads an existing instance.",
+      "Changed pg_hba authentication, LDAP/service configuration, SASL mechanisms, initdb scripts, schema/extensions, native packages, operator commands or supported mounts.",
+      "Other previously fixed GSS ASN.1 parser findings are independent; no broad GSS-unreachable claim."
+    ]
+  }
+]

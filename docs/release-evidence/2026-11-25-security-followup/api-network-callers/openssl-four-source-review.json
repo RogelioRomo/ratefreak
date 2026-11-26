@@ -1,0 +1,286 @@
+{
+  "node_quic": false,
+  "node_feature_image": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+  "direct_EVP_EncodeBlock_source_hits": [],
+  "source_files": [
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_pqc.cc",
+      "sha256": "e914088f2964e0b343c5b92c56b6e03ee4a862daa82ff259de32671c87147821"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_scrypt.h",
+      "sha256": "3422f31a66d3788c09d64cef3b177ff7e3c2e80e7939f51388e9c63e27db1143"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_rsa.cc",
+      "sha256": "402455d11aa6b73100e790d4e3566ef986894cfafd6e7e8834f2c97cf510a698"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_dsa.cc",
+      "sha256": "1ba023d816a9567b6bf696ce84382aa8031deaaa1da7b76824af55b508b179cf"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_kem.cc",
+      "sha256": "8f67b6db7fb652f052e91726fd94e4e29e1a306d1f6fa5015870636df607d0bb"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_common.cc",
+      "sha256": "7ba47367625b9d3c96bdfec2a968f1161e3785212c1d1a375183b8bc7f54eadc"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_mac.cc",
+      "sha256": "14367ebc13307436693216e233818e5fbcb0ebb70de1cd7ddeec377c99ba9f74"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_argon2.h",
+      "sha256": "5429b948ee8a09844a1b71122020db768774e9efdd4bed47560d4c64d382ca6e"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_aes.h",
+      "sha256": "0b794c5fab5f55344c6d0fd093627acd8272c1d85eb7b14e4d53ce35cfb8842e"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_x509.h",
+      "sha256": "3a88ec8cf679c6f483e6d13b426bc3b9f5c06f8284049add006926bdd022fcba"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_keygen.cc",
+      "sha256": "3a622fea8149e9c33aa3dd1a97c013eb982e49eafc771ed17d6c31620c8401ad"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_cipher.h",
+      "sha256": "cd056f36df3228dc028ff2aef6e27916ec47b47f0e82eae0e1c5bd25a0d98634"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_random.cc",
+      "sha256": "16339a50c951cf4b5ae74358e1950ba225012b71a2664425246202d757b6bf4a"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_pbkdf2.h",
+      "sha256": "0b4523b0695c1e599ce6f5a231f0852d1276d0fe8fc7fcff5d448bfa90d18157"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_scrypt.cc",
+      "sha256": "464007d17ffca6aeb7123d3b95f6d3043c8e6d759dd37a005c69aec8cdafe3cc"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_dh.h",
+      "sha256": "a5101be0c83924cd303350b1ddb853e92c9439fda374220d778accafdcf85cc7"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_ec.h",
+      "sha256": "64bbbf7511b8ce44f5e0291af9146cf438d70ac15cab82c41b1360dc1c850afd"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_bio.h",
+      "sha256": "b5831a683d289ddc2d5814f4e4664256973089df61ef79c51c1c1239876fb370"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_util.h",
+      "sha256": "8cc301bf5a274e038653b66bf04a42eed8a4a44a7d916e65b45c4e1f3138fba3"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_ec.cc",
+      "sha256": "f2b800265ec184956e5ab000320aed5c2c8582ad284a46ad23a64a162ba86323"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_keys.cc",
+      "sha256": "34e83b6c5dd27f7689138ff4634b85fa96064b1e627115bb88868dcbc1806d7f"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_context.h",
+      "sha256": "4e5fd1601abc6c2adaf57b4f1970711539fef95c38e8c0e89d326c609ea54d0a"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_pbkdf2.cc",
+      "sha256": "12a1f46e71db1bcae02be6b7266b03409c8d72be2e69f5fc92fae1df62fbb176"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_kmac.cc",
+      "sha256": "232b07383f131c70e4a1ef27eea203c6b45322d6aa62e1ae19fd42743041a512"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_random.h",
+      "sha256": "8467fe7465c0467811405906320441befe8e84687a7c68d8ea770e26afe45c68"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_timing.cc",
+      "sha256": "a822d9710003135cd5167f5829be9ad3d27cfec060d4aeb86ed9901b5ce558bf"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_x509.cc",
+      "sha256": "cdba891ac9e503ff457f1989f9468d3b8d87a8314cf1f9bf65cf9719795cd2e5"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_argon2.cc",
+      "sha256": "67010c2b0afef8ac72d947981c5e51747b6d721d5b9cb2fd1444bb72c12757b6"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_spkac.cc",
+      "sha256": "969afd5e9cbb9abc2800abb0db9e705d0f5567e87b64bb674c5f5d596e568aa3"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_spkac.h",
+      "sha256": "d51d15401c09fcb3e2d7c3d28fe7e4e01b12a88a9f672b1823268ba94d38f736"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_dh.cc",
+      "sha256": "75ad88f9d74e3e8df311186d9fdb9274a0d467ab45e59a7aeb8bc7c1103ab337"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_util.cc",
+      "sha256": "030db11fd277debdb3fddd212f1ada7371664da04d7a9d010f80abe2c418a8cc"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_hmac.h",
+      "sha256": "bea321fc8e6583eb6a77aa1c485a41c7985937b41e410123ed1ad2901e5a82f9"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_rsa.h",
+      "sha256": "a19e43e768a3b8e303dd0b918d3a508da86b4e372e5f5252c19f5fdb70c314c8"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_mac.h",
+      "sha256": "3e1d7376a726a04602f78947646473c2a7fb67c4d92029af2788953dbe21b23a"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_bio.cc",
+      "sha256": "8a7c9a5495381398865eed02e086298c70f1ca4e5d66d506337c8fec4f21293c"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_pqc.h",
+      "sha256": "5a4e72363f8fdd26ca4ddea0398595fb21f9a1bb2184139cc8b2db9580d8e547"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_chacha20_poly1305.cc",
+      "sha256": "ca971b386e0c1534f59c00b30b8620bb45464fdd52980da6c162441c95d7b8dc"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_sig.h",
+      "sha256": "dd2f5fb57ff4181f58b6def0204dbe9659cb0f443fd78ad2fe9602174f4f4be1"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_dsa.h",
+      "sha256": "43ec9d85697ccf7c9e1abcda6faadf5e156a83300ba5a5523b67d8d73a51d1ae"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_keygen.h",
+      "sha256": "24355e2a2ad286f253fbaaa219c71c07b583d78bdc78305aa74ea1ad4c78d42e"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_hash.h",
+      "sha256": "d6b80b2723b7526ba68274f7987129e258274628ea720ac9ea431dd96d167a21"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_aes.cc",
+      "sha256": "64f073b1649fc2d373749cafc605bf0859645ad912bfd0ca3a8bba9b81b83a91"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_cipher.cc",
+      "sha256": "d9ae6633ec35e1a906d20a3d02852e044beb399e44f658c9876671466cf8baf4"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_sig.cc",
+      "sha256": "ab200f46eb0ca289a045120571f3664782dec84b33f84a99a0f6c5683a148ed4"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_kmac.h",
+      "sha256": "6cdcfd4ee5837ea6b98835b0bbb6cd44247329ef1e9d19126c455a20d6b9aba2"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_tls.cc",
+      "sha256": "1dd510d1df1d6631f84c303750695b0be0078003ab66cc91fb2caa9f9c51b43d"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_hash.cc",
+      "sha256": "866fc22855b1f51b312fb7bf6d6c19dfd2a41719bc85c55b1872d660b297c201"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_turboshake.h",
+      "sha256": "478be98fda7cacb05d4bc3ea4e53a58069057dd7c10cd6af44bd221ebba593c0"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_chacha20_poly1305.h",
+      "sha256": "d67c5a456c6ac97f33fe4fa32b91e3e2b4e63b92718cdf07ad6975eec833d35e"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_kem.h",
+      "sha256": "28d1806b349d31ac04c6261d87285cf5620857aff97d49bcb05d3bc1db52ff15"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_turboshake.cc",
+      "sha256": "005b8a83c49009118f50391d633a34f2d74dc89367532d0da684383eb0977aa8"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_hkdf.h",
+      "sha256": "d10d1b07af3c54aaf2723a0255c3f96dc88df756f652ec54896c864ad8e7efac"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_hkdf.cc",
+      "sha256": "47f1af4c0f38a4d9cd8db7b1a74a07c5c6d3529f817f8124c8b46562a74f3814"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_hmac.cc",
+      "sha256": "183fb010ba15be0389e5f0dfd5a2f7de2a9f9f5aada5268d859ceaefb127f297"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_tls.h",
+      "sha256": "f0be7871521c2bfbb65a0b3baa74c95cfe70715267dfc6f7c9d832f6c19633e2"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_pkcs12.cc",
+      "sha256": "c0dcd9403131bbf05bd0f71daa60b57e5f153d5a04624c198dab889b5f01fbb0"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_pkcs12.h",
+      "sha256": "807ada9642d6d0f7731435db686a323314fa5f36031798584bfc3d20a58e7c16"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_keys.h",
+      "sha256": "39039eb985d158f2f67cc96624dbf1f8db4defbf07b62dc3362ca9b266db6d2d"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_common.h",
+      "sha256": "c847b4492853a6ab5d3e9c961d373a62416501126830c119a6bbc33f4509c7c4"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_timing.h",
+      "sha256": "22d863fb92b90004a60b902d7f5ae40b5401f0c3ea38e85b6aeb2e1c41edee12"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-crypto/crypto_context.cc",
+      "sha256": "70f97e403bf6ff6854fa8c060c23455158c8431ff4e95b521b26d0c51182fb5d"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-ncrypto.cc",
+      "sha256": "c8322d4d7dcc64c9f714410e2d02fa3f26fe007e84c8b9f2f933919ff226467b"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/node-ncrypto.h",
+      "sha256": "e3eabb5edf6100c050acca8b7a63f6ce6c9a83527c9f2e1e6153c9457d86e2b2"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pal_x509.c",
+      "sha256": "ffe2cff098aaeb6490bd7a52cb9432e630ae0ff4f66e0289bafae8b0f7843035"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pal_x509_root.c",
+      "sha256": "8a13665b40d4a80382370115a71a4fd4c757cf90ee164613359f7f1add6111a7"
+    },
+    {
+      "path": ".local/security-clearance-2026-11-25/openssl-investigation/dotnet-pal_pkcs7.c",
+      "sha256": "a89d4b1e5af3a5a0d0f2d528a1822bd5483ca55103a30eac0610d5c3453eb82b"
+    }
+  ],
+  "libmsquic_path_results": {
+    "web": [],
+    "tools": []
+  },
+  "source_limit": "Retained exact-version consumer sources and actual runtime features; not exhaustive OpenSSL binary-to-source reconstruction.",
+  "primary_source_checks": {
+    "CVE-2026-107494": "Retained and live official20261124 advisory: OpenSSL QUIC frame queue condition.",
+    "CVE-2026-84785": "Retained20261124 advisory: incoming QUIC stream policy condition.",
+    "CVE-2026-95690": "Official OpenSSL project PR33620 live verification: DTLS handshake reassembly; these IDs are not in retained17/24 text files.",
+    "CVE-2026-121481": "Official OpenSSL project PR33652 live verification: oversized caller length/base64 result integer representation; advisory pending in project discussion. Not in retained17/24 text files."
+  }
+}

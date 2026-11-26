@@ -1,0 +1,9 @@
+{
+  "deploy/self-host/compose.yaml": "bbd70bddb9b6f2786b0a8cae0c32c0b0198db0c46d90fb25e48b8fa22c21e3f1",
+  "deploy/self-host/entrypoint.py": "6ff6b8176b3234164a8c6a058dec24f4a2ea5688a3d179e482d00f7111c8694a",
+  "deploy/self-host/maintenance.py": "1f8d9dd7fc007d3ca06574905bfe52c3620d9ab448214e6e517a97cf12f16ea9",
+  "deploy/self-host/database.sql": "e5a6838312fc141f7b9c4436a328b087357b02e01a5fe71f0a38e6e023c2653b",
+  "deploy/self-host/ratefreak.py": "69348a92878cf79317534f63c495fdaf56ff01954d4845d98112deb0861a82aa",
+  "src/RateFreak.Infrastructure/DependencyInjection.cs": "bd944e62e79a21d008c1c958136b397d8471734749b0694144890b3881b60527",
+  "postgres-entrypoint.sh": "48647812e68165e2943abe82a1a7cb8364d6e9f8b6b6aefc179868b66a327c46"
+}

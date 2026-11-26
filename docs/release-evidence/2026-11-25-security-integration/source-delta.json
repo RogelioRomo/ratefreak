@@ -1,0 +1,32 @@
+{
+  "api": {
+    "all_pairs": 86,
+    "new_pairs": [
+      [
+        "expat",
+        "2.6.1-2ubuntu0.7"
+      ],
+      [
+        "libssh",
+        "0.10.6-2ubuntu0.6"
+      ],
+      [
+        "sqlite3",
+        "3.45.1-1ubuntu2.11"
+      ]
+    ]
+  },
+  "web": {
+    "all_pairs": 63,
+    "new_pairs": [
+      [
+        "libzstd",
+        "1.5.7+dfsg-1+deb13u1"
+      ]
+    ]
+  },
+  "tools": {
+    "all_pairs": 74,
+    "new_pairs": []
+  }
+}

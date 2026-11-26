@@ -1,0 +1,22 @@
+[
+  {
+    "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+    "member": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/src/codec/SkPngCodec.cpp",
+    "sha256": "aef1a98bc6aff82898f7debf69dd4e1aec6fa9a0a3d86bb7c4b2389a9a053979",
+    "png_process_data_lines": [
+      155,
+      184,
+      202,
+      243,
+      253
+    ],
+    "png_read_end_lines": []
+  },
+  {
+    "archive": ".local/security-skia-update-2026-11-25/notice-review/upstream/archives/skia-51cb594.tar.gz",
+    "member": "skia-51cb594d773b5383a45065ea3c8cbec398ad2c36/src/codec/SkPngCodecBase.cpp",
+    "sha256": "92f087d9624bc4320e7225f78b26064a112436436aa7883b90ca047eb17d7349",
+    "png_process_data_lines": [],
+    "png_read_end_lines": []
+  }
+]

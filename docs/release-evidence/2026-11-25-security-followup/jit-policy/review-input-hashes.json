@@ -1,0 +1,34 @@
+[
+  {
+    "path": "deploy/self-host/compose.yaml",
+    "sha256": "45708d8c7b2038d798b35ae28f155230360c472d4e8e5129b9bee32510fc181b"
+  },
+  {
+    "path": ".local/security-runtime-guard-2026-11-25/jit-policy/acceptance.py",
+    "sha256": "ae6ad43c37e397ce10606635c4c3f235d2da90f1d82b7fa3fba379694b03f211"
+  },
+  {
+    "path": ".local/security-runtime-guard-2026-11-25/jit-policy/probe.py",
+    "sha256": "9d6b4648b506c10c4ffb865fc6b02787045cb499aef446d5730d069175f4f58d"
+  },
+  {
+    "path": ".local/security-runtime-guard-2026-11-25/jit-policy/acceptance.json",
+    "sha256": "0ba1056535c7d5b95701ca29e78ed7af18886f883fcd315a51f551958ea364c5"
+  },
+  {
+    "path": ".local/security-runtime-guard-2026-11-25/jit-policy/default-probe.json",
+    "sha256": "686b8caf551b4f26043e97325edfa74d5925ee06084ef678104c28ce71eca838"
+  },
+  {
+    "path": ".local/security-runtime-guard-2026-11-25/jit-policy/assessments.json",
+    "sha256": "253732b57548ebfd1e47113f08460159f6f016c2e5445a6eff1bbcdcaf2396f4"
+  },
+  {
+    "path": "deploy/release/acceptance.py",
+    "sha256": "33bb68a2be6d6449c095f0e8b11bcb7425ec435577a04e0d76e7ccd559b92564"
+  },
+  {
+    "path": ".local/security-runtime-guard-2026-11-25/images/built-images.json",
+    "sha256": "6eb6c886516f2093e1d377490c63f4f95d70fd8607e3939dff9e0461931c7c0d"
+  }
+]

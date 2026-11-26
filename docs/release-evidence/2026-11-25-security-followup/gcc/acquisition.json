@@ -1,0 +1,65 @@
+[
+  {
+    "file": "102010.patch",
+    "url": "https://github.com/gcc-mirror/gcc/commit/aaa8351f4d2e636f9680a1f0a8ebc2f0a60611e6.patch",
+    "sha256": "6bd11207cafce8e595a83726936f5ecc29906fa2e8426076b91a46813997327c",
+    "bytes": 2422,
+    "retrieved_utc": "2026-11-26T02:30:23.854736+00:00"
+  },
+  {
+    "file": "114690.patch",
+    "url": "https://github.com/gcc-mirror/gcc/commit/c1f32b67510f6f9998deadaef5090b6663adb979.patch",
+    "sha256": "01318e456935ef581b8f463f8b28fb2ef67a514b81679b106aaa34110db65f52",
+    "bytes": 1477,
+    "retrieved_utc": "2026-11-26T02:30:23.793643+00:00"
+  },
+  {
+    "file": "114691.patch",
+    "url": "https://github.com/gcc-mirror/gcc/commit/2fd8866591b5aea7098835f80ab7e176382175ae.patch",
+    "sha256": "c576c66b0b9bca80417fcfa73bb38471737f97a826d843ea6e9b817407b430ea",
+    "bytes": 9561,
+    "retrieved_utc": "2026-11-26T02:30:23.846884+00:00"
+  },
+  {
+    "file": "115456.patch",
+    "url": "https://github.com/gcc-mirror/gcc/commit/524847fec983eaedca147840ce46fcbb0cd38952.patch",
+    "sha256": "8779cf4ca29f265e89bdc396eb94328ce2c62bd4f0f069fd48dd16611d991530",
+    "bytes": 4369,
+    "retrieved_utc": "2026-11-26T02:30:24.040410+00:00"
+  },
+  {
+    "file": "95619.patch",
+    "url": "https://github.com/gcc-mirror/gcc/commit/59d235ffa5a69231eb42e5290d52dc8c90d28b7a.patch",
+    "sha256": "635a269a976fa69e48c0bbb2054cc244910630ff093b9e5b70599880b86af6a0",
+    "bytes": 6878,
+    "retrieved_utc": "2026-11-26T02:30:24.073638+00:00"
+  },
+  {
+    "file": "125709-redhat.json",
+    "url": "https://access.redhat.com/hydra/rest/securitydata/cve/CVE-2026-125709.json",
+    "sha256": "62617937913944c33a0a27840234e30be8d8e4cb00cbdf819b3785f8565d8bf2",
+    "bytes": 6535,
+    "retrieved_utc": "2026-11-26T02:30:23.783155+00:00"
+  },
+  {
+    "file": "gcc14-charconv",
+    "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/releases/gcc-14.2.0/libstdc++-v3/include/std/charconv",
+    "sha256": "535b25963b988655d070e853c98a97b3bd93c03972f2fa5600a33d1b6f814730",
+    "bytes": 29830,
+    "retrieved_utc": "2026-11-26T02:30:24.064930+00:00"
+  },
+  {
+    "file": "gcc14-fstream.tcc",
+    "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/releases/gcc-14.2.0/libstdc++-v3/include/bits/fstream.tcc",
+    "sha256": "ffa3dcccad52f014ab39295d6b59e8462d9b7d64563c4487a1974422bdba32a0",
+    "bytes": 33421,
+    "retrieved_utc": "2026-11-26T02:30:24.127261+00:00"
+  },
+  {
+    "file": "gcc14-new",
+    "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/releases/gcc-14.2.0/libstdc++-v3/libsupc++/new_opa.cc",
+    "sha256": "d1dd10cc18ef66d0496c67f9bc80c5b0b307251551c243e1c29b96c3a3aad6d7",
+    "bytes": 5267,
+    "retrieved_utc": "2026-11-26T02:30:24.118450+00:00"
+  }
+]

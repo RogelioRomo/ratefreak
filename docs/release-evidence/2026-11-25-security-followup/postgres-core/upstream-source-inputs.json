@@ -1,0 +1,6 @@
+{
+  "src/backend/libpq/be-secure-openssl.c": "f4cc17235758b4a81811c34b916858c0e69344992f308e285573fa4e912bfe7c",
+  "src/interfaces/libpq/fe-secure-openssl.c": "ee2345aa47b8153164408155683352901c3667d168ae2584d8e04e7e33c754d3",
+  "src/common/base64.c": "b89d864df7463dd00c945ccf7925a0cb217e035c8400bf9ee162ffbecc039167",
+  "src/backend/utils/adt/xml.c": "3ca6768a8505829a73e1e9136b3f3179b71a5893f2fb9949efc5af4ebf0506e9"
+}

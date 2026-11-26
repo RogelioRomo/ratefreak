@@ -1,0 +1,90 @@
+[
+  {
+    "image": "postgres",
+    "layer": "blobs/sha256/dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3",
+    "path": "etc/group",
+    "file": "postgres-group",
+    "sha256": "74842904631a5088b134a25257b8180367913d2b64cf1e3fed061db5fcbd8379",
+    "bytes": 434
+  },
+  {
+    "image": "postgres",
+    "layer": "blobs/sha256/dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3",
+    "path": "etc/passwd",
+    "file": "postgres-passwd",
+    "sha256": "21352194cc533bc5878721507450d867d28ccb1c2f5cd773c792251fa1e63185",
+    "bytes": 839
+  },
+  {
+    "image": "postgres",
+    "layer": "blobs/sha256/4fd88e65335919095974515153c41c2514c5d7bf466c75a7b3f67a0a72f35e29",
+    "path": "etc/group",
+    "file": "postgres-group",
+    "sha256": "787eeb287d90749e8b65b817de38da7796806bef72ed767181ddd7760845e7fd",
+    "bytes": 450
+  },
+  {
+    "image": "postgres",
+    "layer": "blobs/sha256/4fd88e65335919095974515153c41c2514c5d7bf466c75a7b3f67a0a72f35e29",
+    "path": "etc/passwd",
+    "file": "postgres-passwd",
+    "sha256": "99d10fe0d1cadf0cbb484a1becf3b0c22718e4b726c0716b4579b6faefa53d43",
+    "bytes": 889
+  },
+  {
+    "image": "postgres",
+    "layer": "blobs/sha256/cecd59c0f4e809bc4ce5e9076339ba2cc5058ad986b1059ecd39bbb87bb4b8c2",
+    "path": "usr/local/bin/gosu",
+    "file": "postgres-gosu",
+    "sha256": "52c8749d0142edd234e9d6bd5237dff2d81e71f43537e2f4f66f75dd4b243dd0",
+    "bytes": 1769900
+  },
+  {
+    "image": "postgres",
+    "layer": "blobs/sha256/80ed7b53ecf0b278aaa5809e28681d596e6959dfba77f3d390b8243c01412df7",
+    "path": "etc/group",
+    "file": "postgres-group",
+    "sha256": "c11da36377347465b27481b8be0e370051783eb299eee7b0ba7b65a8e038aa28",
+    "bytes": 474
+  },
+  {
+    "image": "postgres",
+    "layer": "blobs/sha256/f4368716ea81f6efdbd410538ba52e75e9ed07ca493ed70ffd6a412e037ad8c4",
+    "path": "usr/local/bin/docker-entrypoint.sh",
+    "file": "postgres-docker-entrypoint.sh",
+    "sha256": "9c440299ae04a0a79d55b8bf03307036d890a40979d2fb698073c9050d4b20a5",
+    "bytes": 14577
+  },
+  {
+    "image": "caddy",
+    "layer": "blobs/sha256/5000c332a1cc372a1a248c2923696c0bc7817d213f2db0f4161fc18a3fc17cd7",
+    "path": "usr/bin/caddy",
+    "file": "caddy-caddy",
+    "sha256": "a563843e11cbce39c557bd429ebb787d56f49d51d9bbb3292cd9b36b37a60cdf",
+    "bytes": 50892960
+  },
+  {
+    "image": "postgres-updated",
+    "layer": "blobs/sha256/273a40752861fa2a3e6d88c6dd3fcba8a5b58d46988b006e0c6c51f2336d8224",
+    "path": "usr/local/bin/gosu",
+    "file": "postgres-updated-gosu",
+    "sha256": "b1892636c281590f34bc63c1118f058cd9de66c4ea463772e3909672d8b302ac",
+    "bytes": 1774474
+  },
+  {
+    "image": "postgres-updated",
+    "layer": "blobs/sha256/61e9934b38e3ecf789ad1223f1d5ec578faa7a9364b7e7600ad70a91cb98f424",
+    "path": "usr/local/bin/docker-entrypoint.sh",
+    "file": "postgres-updated-docker-entrypoint.sh",
+    "sha256": "48647812e68165e2943abe82a1a7cb8364d6e9f8b6b6aefc179868b66a327c46",
+    "bytes": 14565
+  },
+  {
+    "image": "caddy-updated",
+    "layer": "blobs/sha256/5000c332a1cc372a1a248c2923696c0bc7817d213f2db0f4161fc18a3fc17cd7",
+    "path": "usr/bin/caddy",
+    "file": "caddy-updated-caddy",
+    "sha256": "a563843e11cbce39c557bd429ebb787d56f49d51d9bbb3292cd9b36b37a60cdf",
+    "bytes": 50892960
+  }
+]

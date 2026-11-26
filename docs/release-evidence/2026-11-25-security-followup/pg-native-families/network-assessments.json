@@ -1,0 +1,518 @@
+[
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "cyrus-sasl2",
+    "id": "CVE-2026-107161",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-2",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      },
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-modules-db",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      }
+    ],
+    "condition": "A heap-based buffer overflow flaw was found in Cyrus SASL. The add_to_challenge() function in the DIGEST-MD5 plugin computes the size of the buffer needed for a challenge/response field before DIGEST-MD5 quoting is applied, but does not recompute that size when quoting (escaping special characters) makes the value longer. The under-sized buffer is then passed to strcat(), causing a heap-based out-of-bounds write whose size depends on attacker-controlled input. A malicious or on-path DIGEST-MD5 (or HTTP Digest) server can trigger this flaw in a connecting client by supplying a crafted challenge field, such as realm or nonce, most likely resulting in a crash of the client application.",
+    "assessment": "PostgreSQL uses its own SCRAM implementation (src/backend/libpq/auth-scram.c, src/interfaces/libpq/fe-auth-scram.c), not the Cyrus SCRAM/SRP/DIGEST plugins. Its selected HBA/entrypoint uses SCRAM and peer/trust for supported initialization; it does not run saslauthd or a Cyrus protocol service. Actual Cyrus dependency is via libldap, whose LDAP auth/lookup path is not configured in the supplied reference flow. PostgreSQL SASL protocol tokens do not imply invocation of the affected Cyrus DIGEST-MD5 client mechanism.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-107161.json",
+      "postgres-core/probe.json",
+      "cli-callers/postgres-entrypoint.sh",
+      "pg-native-families/source/src/backend/libpq/auth.c",
+      "pg-native-families/source/src/interfaces/libpq/fe-connect.c"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "cyrus-sasl2",
+    "id": "CVE-2026-129483",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-2",
+        "severity": "LOW",
+        "source_version": "2.1.28+dfsg1"
+      },
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-modules-db",
+        "severity": "LOW",
+        "source_version": "2.1.28+dfsg1"
+      }
+    ],
+    "condition": "Cyrus SASL through 2.1.28 contains an authentication bypass vulnerability in the SRP server mechanism because srp_server_mech_step2 does not reject client public values A that are multiples of N. Unauthenticated network clients can send A equal to N to force a zero shared secret, authenticating as any existing user without the password and learning session keys.",
+    "assessment": "PostgreSQL uses its own SCRAM implementation (src/backend/libpq/auth-scram.c, src/interfaces/libpq/fe-auth-scram.c), not the Cyrus SCRAM/SRP/DIGEST plugins. Its selected HBA/entrypoint uses SCRAM and peer/trust for supported initialization; it does not run saslauthd or a Cyrus protocol service. Actual Cyrus dependency is via libldap, whose LDAP auth/lookup path is not configured in the supplied reference flow. PostgreSQL SASL protocol tokens do not imply invocation of the affected Cyrus SRP server mechanism.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-129483.json",
+      "postgres-core/probe.json",
+      "cli-callers/postgres-entrypoint.sh",
+      "pg-native-families/source/src/backend/libpq/auth.c",
+      "pg-native-families/source/src/interfaces/libpq/fe-connect.c"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "cyrus-sasl2",
+    "id": "CVE-2026-132138",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-2",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      },
+      {
+        "fixed": "",
+        "installed": "2.1.28+dfsg1-9",
+        "package": "libsasl2-modules-db",
+        "severity": "MEDIUM",
+        "source_version": "2.1.28+dfsg1"
+      }
+    ],
+    "condition": "A flaw was found in cyrus-sasl. When processing authentication requests using the Salted Challenge Response Authentication Mechanism (SCRAM), a remote attacker can trigger a null pointer dereference by submitting unexpected channel-binding data. This causes the server process to crash before validating authentication proofs, leading to a Denial of Service (DoS).",
+    "assessment": "PostgreSQL uses its own SCRAM implementation (src/backend/libpq/auth-scram.c, src/interfaces/libpq/fe-auth-scram.c), not the Cyrus SCRAM/SRP/DIGEST plugins. Its selected HBA/entrypoint uses SCRAM and peer/trust for supported initialization; it does not run saslauthd or a Cyrus protocol service. Actual Cyrus dependency is via libldap, whose LDAP auth/lookup path is not configured in the supplied reference flow. PostgreSQL SASL protocol tokens do not imply invocation of the affected Cyrus SCRAM channel-binding server mechanism.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-132138.json",
+      "postgres-core/probe.json",
+      "cli-callers/postgres-entrypoint.sh",
+      "pg-native-families/source/src/backend/libpq/auth.c",
+      "pg-native-families/source/src/interfaces/libpq/fe-connect.c"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "krb5",
+    "id": "CVE-2018-5709",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      }
+    ],
+    "condition": "An issue was discovered in MIT Kerberos 5 (aka krb5) through 1.16. There is a variable \"dbentry->n_key_data\" in kadmin/dbutil/dump.c that can store 16-bit data but unknowingly the developer has assigned a \"u4\" variable to it, which is for 32-bit data. An attacker can use this vulnerability to affect other artifacts of the database as we know that a Kerberos database dump file contains trusted data.",
+    "assessment": "Condition is KDC administration database-dump loading in kadmin/dbutil/dump.c. Supplied flow runs PostgreSQL/libpq GSS client/acceptor support but does not run kadmin/kdb5_util, host a Kerberos database or import its dumps. PostgreSQL custom-format backups are unrelated to Kerberos database dumps.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2018-5709.json",
+      "postgres-core/probe.json",
+      "cli-callers/postgres-entrypoint.sh",
+      "pg-native-families/source/src/backend/libpq/auth.c",
+      "pg-native-families/source/src/interfaces/libpq/fe-connect.c"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "krb5",
+    "id": "CVE-2024-26458",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      }
+    ],
+    "condition": "Kerberos 5 (aka krb5) 1.21.2 contains a memory leak in /krb5/src/lib/rpc/pmap_rmt.c.",
+    "assessment": "Condition is RPC portmapper remote-call implementation lib/rpc/pmap_rmt.c. Actual PostgreSQL server/libpq depend on libgssapi_krb5, not libgssrpc, and their exact undefined symbols show GSS context/wrap APIs rather than portmapper RPC. Supplied flow launches no Kerberos admin RPC/KDC service or RPC portmapper consumer. No library-absence claim is used for installed optional utilities.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2024-26458.json",
+      "postgres-core/probe.json",
+      "cli-callers/postgres-entrypoint.sh",
+      "pg-native-families/source/src/backend/libpq/auth.c",
+      "pg-native-families/source/src/interfaces/libpq/fe-connect.c"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "krb5",
+    "id": "CVE-2024-26461",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "LOW",
+        "source_version": "1.21.3"
+      }
+    ],
+    "condition": "Kerberos 5 (aka krb5) 1.21.2 contains a memory leak vulnerability in /krb5/src/lib/gssapi/krb5/k5sealv3.c.",
+    "assessment": "Actual PostgreSQL GSS use remains relevant: gss_wrap uses k5sealv3. This review has not proved whether the precise memory-leak branch is excluded for supported GSS context/wrap flags. Do not claim no Kerberos or GSS solely from SCRAM HBA.",
+    "disposition": "open",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2024-26461.json",
+      "postgres-core/probe.json",
+      "cli-callers/postgres-entrypoint.sh",
+      "pg-native-families/source/src/backend/libpq/auth.c",
+      "pg-native-families/source/src/interfaces/libpq/fe-connect.c"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "krb5",
+    "id": "CVE-2026-107708",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      }
+    ],
+    "condition": "MIT krb5 through 1.22.2 contains a NULL pointer dereference vulnerability in the KDC's get_pac_princ_with_realm() that returns success while leaving the client principal NULL on malformed names. A malicious or compromised cross-realm trusted KDC can send an S4U2Proxy request with a PAC carrying a malformed client name to crash krb5kdc and deny authentication.",
+    "assessment": "Condition is KDC get_pac_princ_with_realm while processing malicious cross-realm S4U2Proxy PACs. PostgreSQL is a GSS acceptor/client, not krb5kdc; its supported entrypoint does not start a KDC or host its realm/admin service. This excludes that KDC-server condition and does not exclude GSS acceptor parsing generally.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-107708.json",
+      "postgres-core/probe.json",
+      "cli-callers/postgres-entrypoint.sh",
+      "pg-native-families/source/src/backend/libpq/auth.c",
+      "pg-native-families/source/src/interfaces/libpq/fe-connect.c"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "krb5",
+    "id": "CVE-2026-107778",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libgssapi-krb5-2",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libk5crypto3",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5-3",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      },
+      {
+        "fixed": "",
+        "installed": "1.21.3-5+deb13u2",
+        "package": "libkrb5support0",
+        "severity": "MEDIUM",
+        "source_version": "1.21.3"
+      }
+    ],
+    "condition": "MIT Kerberos 5 (krb5) through 1.22.2 contains a NULL pointer dereference in make_cred_list() in rd_cred.c that allows authenticated Kerberos clients to crash services by sending mismatched KRB-CRED arrays. Attackers can send forwarded credentials with more tickets than ticket_info entries through gss_accept_sec_context() to crash GSS-API acceptor services, causing denial of service.",
+    "assessment": "Actual PostgreSQL GSS use remains relevant: gss_accept_sec_context can process the crafted forwarded KRB-CRED array. SCRAM HBA does not by itself remove the pre-authentication GSS encryption negotiation path. Parent has independent package-fix evidence to apply if it binds this exact advisory/version.",
+    "disposition": "open",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-107778.json",
+      "postgres-core/probe.json",
+      "cli-callers/postgres-entrypoint.sh",
+      "pg-native-families/source/src/backend/libpq/auth.c",
+      "pg-native-families/source/src/interfaces/libpq/fe-connect.c"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openldap",
+    "id": "CVE-2015-3276",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ],
+    "condition": "The nss_parse_ciphers function in libraries/libldap/tls_m.c in OpenLDAP does not properly parse OpenSSL-style multi-keyword mode cipher strings, which might cause a weaker than intended cipher to be used and allow remote attackers to have unspecified impact via unknown vectors.",
+    "assessment": "Condition is nss_parse_ciphers in the Mozilla NSS tls_m backend. Actual selected libldap.so.2.0.200 links libssl.so.3/libcrypto.so.3, not NSS. Independently, supplied PostgreSQL flow uses neither configured LDAP HBA authentication nor LDAP libpq service discovery.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2015-3276.json",
+      "postgres-core/probe.json",
+      "cli-callers/postgres-entrypoint.sh",
+      "pg-native-families/source/src/backend/libpq/auth.c",
+      "pg-native-families/source/src/interfaces/libpq/fe-connect.c"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openldap",
+    "id": "CVE-2017-14159",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ],
+    "condition": "slapd in OpenLDAP 2.4.45 and earlier creates a PID file after dropping privileges to a non-root account, which might allow local users to kill arbitrary processes by leveraging access to this non-root account for PID file modification before a root script executes a \"kill `cat /pathname`\" command, as demonstrated by openldap-initscript.",
+    "assessment": "Condition requires running slapd with the affected PID management or configured nops/memberof module. Supplied container entrypoint starts PostgreSQL; health and maintenance do not start slapd or configure an LDAP directory daemon. Actual libldap linkage for optional client/auth functionality does not invoke slapd daemon PID or overlay code.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2017-14159.json",
+      "postgres-core/probe.json",
+      "cli-callers/postgres-entrypoint.sh",
+      "pg-native-families/source/src/backend/libpq/auth.c",
+      "pg-native-families/source/src/interfaces/libpq/fe-connect.c"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openldap",
+    "id": "CVE-2017-17740",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ],
+    "condition": "contrib/slapd-modules/nops/nops.c in OpenLDAP through 2.4.45, when both the nops module and the memberof overlay are enabled, attempts to free a buffer that was allocated on the stack, which allows remote attackers to cause a denial of service (slapd crash) via a member MODDN operation.",
+    "assessment": "Condition requires running slapd with the affected PID management or configured nops/memberof module. Supplied container entrypoint starts PostgreSQL; health and maintenance do not start slapd or configure an LDAP directory daemon. Actual libldap linkage for optional client/auth functionality does not invoke slapd daemon PID or overlay code.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2017-17740.json",
+      "postgres-core/probe.json",
+      "cli-callers/postgres-entrypoint.sh",
+      "pg-native-families/source/src/backend/libpq/auth.c",
+      "pg-native-families/source/src/interfaces/libpq/fe-connect.c"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openldap",
+    "id": "CVE-2020-15719",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ],
+    "condition": "libldap in certain third-party OpenLDAP packages has a certificate-validation flaw when the third-party package is asserting RFC6125 support. It considers CN even when there is a non-matching subjectAltName (SAN). This is fixed in, for example, openldap-2.4.46-10.el8 in Red Hat Enterprise Linux.",
+    "assessment": "Requires LDAP TLS certificate hostname validation by a libldap caller. PostgreSQL really imports libldap for optional HBA authentication and client LDAP lookup, but current supplied HBA uses SCRAM and client uses explicit database host rather than LDAP discovery. Supported initialization, health and maintenance do not invoke LDAP TLS.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2020-15719.json",
+      "postgres-core/probe.json",
+      "cli-callers/postgres-entrypoint.sh",
+      "pg-native-families/source/src/backend/libpq/auth.c",
+      "pg-native-families/source/src/interfaces/libpq/fe-connect.c"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration."
+    ]
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openldap",
+    "id": "CVE-2026-22185",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.6.10+dfsg-1",
+        "package": "libldap2",
+        "severity": "LOW",
+        "source_version": "2.6.10+dfsg"
+      }
+    ],
+    "condition": "OpenLDAP Lightning Memory-Mapped Database (LMDB) versions 0.9.14 before 0.9.34, prior to commit 8e1fda8, contain a heap buffer underflow in the readline() function of mdb_load. When processing malformed input containing an embedded NUL byte, an unsigned offset calculation can underflow and cause an out-of-bounds read of one byte before the allocated heap buffer. This can cause mdb_load to crash, leading to a limited denial-of-service condition.",
+    "assessment": "CVE specifically requires malformed text input to the standalone LMDB mdb_load utility; it is not the SQL/PostgreSQL database parser. Supplied startup, schema and maintenance use initdb/psql/pg_dump/pg_restore and do not load LMDB dumps or invoke mdb_load.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "pg-native-families/caller-proof.json",
+      "pg-native-families/CVE-2026-22185.json",
+      "postgres-core/probe.json",
+      "cli-callers/postgres-entrypoint.sh",
+      "pg-native-families/source/src/backend/libpq/auth.c",
+      "pg-native-families/source/src/interfaces/libpq/fe-connect.c"
+    ],
+    "source_limit": "Retained upstream PostgreSQL17.12 source; exact native imports and image hashes bind behavior independently, not a bit-for-bit PGDG source reconstruction.",
+    "reassess_if": [
+      "Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration."
+    ]
+  }
+]

@@ -1,0 +1,1165 @@
+[
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxml2",
+    "id": "CVE-2026-11979",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "package": "libxml2",
+        "severity": "LOW",
+        "source_version": "2.12.7+dfsg+really2.9.14"
+      }
+    ],
+    "condition": "The affected XML/catalog/validation/XPointer/XInclude/output or Python-binding path described in CVE-2026-11979 receives attacker-controlled input.",
+    "assessment": "PostgreSQL really links and exposes SQL/XML; no claim that authentication or external-entity blocking makes it safe. Current RateFreak schema/migrations contain no XML columns, SQL/XML or XML extension calls; all application text/JSON remains ordinary parameters and is not implicitly XML-parsed. Reviewed supported bootstrap, migration, health, backup and restore of that schema do not invoke the affected XML operations. This excludes current application callers only: arbitrary authenticated SQL, imported schemas, XML columns, custom extensions and external database configurations remain unassessed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxml2",
+    "id": "CVE-2026-6653",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "package": "libxml2",
+        "severity": "CRITICAL",
+        "source_version": "2.12.7+dfsg+really2.9.14"
+      }
+    ],
+    "condition": "The affected XML/catalog/validation/XPointer/XInclude/output or Python-binding path described in CVE-2026-6653 receives attacker-controlled input.",
+    "assessment": "PostgreSQL really links and exposes SQL/XML; no claim that authentication or external-entity blocking makes it safe. Current RateFreak schema/migrations contain no XML columns, SQL/XML or XML extension calls; all application text/JSON remains ordinary parameters and is not implicitly XML-parsed. Reviewed supported bootstrap, migration, health, backup and restore of that schema do not invoke the affected XML operations. This excludes current application callers only: arbitrary authenticated SQL, imported schemas, XML columns, custom extensions and external database configurations remain unassessed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxml2",
+    "id": "CVE-2026-74860",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "package": "libxml2",
+        "severity": "HIGH",
+        "source_version": "2.12.7+dfsg+really2.9.14"
+      }
+    ],
+    "condition": "The affected XML/catalog/validation/XPointer/XInclude/output or Python-binding path described in CVE-2026-74860 receives attacker-controlled input.",
+    "assessment": "PostgreSQL really links and exposes SQL/XML; no claim that authentication or external-entity blocking makes it safe. Current RateFreak schema/migrations contain no XML columns, SQL/XML or XML extension calls; all application text/JSON remains ordinary parameters and is not implicitly XML-parsed. Reviewed supported bootstrap, migration, health, backup and restore of that schema do not invoke the affected XML operations. This excludes current application callers only: arbitrary authenticated SQL, imported schemas, XML columns, custom extensions and external database configurations remain unassessed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxml2",
+    "id": "CVE-2026-76781",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "package": "libxml2",
+        "severity": "MEDIUM",
+        "source_version": "2.12.7+dfsg+really2.9.14"
+      }
+    ],
+    "condition": "The affected XML/catalog/validation/XPointer/XInclude/output or Python-binding path described in CVE-2026-76781 receives attacker-controlled input.",
+    "assessment": "PostgreSQL really links and exposes SQL/XML; no claim that authentication or external-entity blocking makes it safe. Current RateFreak schema/migrations contain no XML columns, SQL/XML or XML extension calls; all application text/JSON remains ordinary parameters and is not implicitly XML-parsed. Reviewed supported bootstrap, migration, health, backup and restore of that schema do not invoke the affected XML operations. This excludes current application callers only: arbitrary authenticated SQL, imported schemas, XML columns, custom extensions and external database configurations remain unassessed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxml2",
+    "id": "CVE-2026-86137",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "package": "libxml2",
+        "severity": "MEDIUM",
+        "source_version": "2.12.7+dfsg+really2.9.14"
+      }
+    ],
+    "condition": "The affected XML/catalog/validation/XPointer/XInclude/output or Python-binding path described in CVE-2026-86137 receives attacker-controlled input.",
+    "assessment": "PostgreSQL really links and exposes SQL/XML; no claim that authentication or external-entity blocking makes it safe. Current RateFreak schema/migrations contain no XML columns, SQL/XML or XML extension calls; all application text/JSON remains ordinary parameters and is not implicitly XML-parsed. Reviewed supported bootstrap, migration, health, backup and restore of that schema do not invoke the affected XML operations. This excludes current application callers only: arbitrary authenticated SQL, imported schemas, XML columns, custom extensions and external database configurations remain unassessed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxml2",
+    "id": "CVE-2026-86138",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "package": "libxml2",
+        "severity": "HIGH",
+        "source_version": "2.12.7+dfsg+really2.9.14"
+      }
+    ],
+    "condition": "The affected XML/catalog/validation/XPointer/XInclude/output or Python-binding path described in CVE-2026-86138 receives attacker-controlled input.",
+    "assessment": "PostgreSQL really links and exposes SQL/XML; no claim that authentication or external-entity blocking makes it safe. Current RateFreak schema/migrations contain no XML columns, SQL/XML or XML extension calls; all application text/JSON remains ordinary parameters and is not implicitly XML-parsed. Reviewed supported bootstrap, migration, health, backup and restore of that schema do not invoke the affected XML operations. This excludes current application callers only: arbitrary authenticated SQL, imported schemas, XML columns, custom extensions and external database configurations remain unassessed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxml2",
+    "id": "CVE-2026-86139",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "package": "libxml2",
+        "severity": "HIGH",
+        "source_version": "2.12.7+dfsg+really2.9.14"
+      }
+    ],
+    "condition": "The affected XML/catalog/validation/XPointer/XInclude/output or Python-binding path described in CVE-2026-86139 receives attacker-controlled input.",
+    "assessment": "PostgreSQL really links and exposes SQL/XML; no claim that authentication or external-entity blocking makes it safe. Current RateFreak schema/migrations contain no XML columns, SQL/XML or XML extension calls; all application text/JSON remains ordinary parameters and is not implicitly XML-parsed. Reviewed supported bootstrap, migration, health, backup and restore of that schema do not invoke the affected XML operations. This excludes current application callers only: arbitrary authenticated SQL, imported schemas, XML columns, custom extensions and external database configurations remain unassessed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxml2",
+    "id": "CVE-2026-86140",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "package": "libxml2",
+        "severity": "HIGH",
+        "source_version": "2.12.7+dfsg+really2.9.14"
+      }
+    ],
+    "condition": "The affected XML/catalog/validation/XPointer/XInclude/output or Python-binding path described in CVE-2026-86140 receives attacker-controlled input.",
+    "assessment": "PostgreSQL really links and exposes SQL/XML; no claim that authentication or external-entity blocking makes it safe. Current RateFreak schema/migrations contain no XML columns, SQL/XML or XML extension calls; all application text/JSON remains ordinary parameters and is not implicitly XML-parsed. Reviewed supported bootstrap, migration, health, backup and restore of that schema do not invoke the affected XML operations. This excludes current application callers only: arbitrary authenticated SQL, imported schemas, XML columns, custom extensions and external database configurations remain unassessed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxml2",
+    "id": "CVE-2026-86141",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "package": "libxml2",
+        "severity": "LOW",
+        "source_version": "2.12.7+dfsg+really2.9.14"
+      }
+    ],
+    "condition": "The affected XML/catalog/validation/XPointer/XInclude/output or Python-binding path described in CVE-2026-86141 receives attacker-controlled input.",
+    "assessment": "PostgreSQL really links and exposes SQL/XML; no claim that authentication or external-entity blocking makes it safe. Current RateFreak schema/migrations contain no XML columns, SQL/XML or XML extension calls; all application text/JSON remains ordinary parameters and is not implicitly XML-parsed. Reviewed supported bootstrap, migration, health, backup and restore of that schema do not invoke the affected XML operations. This excludes current application callers only: arbitrary authenticated SQL, imported schemas, XML columns, custom extensions and external database configurations remain unassessed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxml2",
+    "id": "CVE-2026-86142",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "package": "libxml2",
+        "severity": "HIGH",
+        "source_version": "2.12.7+dfsg+really2.9.14"
+      }
+    ],
+    "condition": "The affected XML/catalog/validation/XPointer/XInclude/output or Python-binding path described in CVE-2026-86142 receives attacker-controlled input.",
+    "assessment": "PostgreSQL really links and exposes SQL/XML; no claim that authentication or external-entity blocking makes it safe. Current RateFreak schema/migrations contain no XML columns, SQL/XML or XML extension calls; all application text/JSON remains ordinary parameters and is not implicitly XML-parsed. Reviewed supported bootstrap, migration, health, backup and restore of that schema do not invoke the affected XML operations. This excludes current application callers only: arbitrary authenticated SQL, imported schemas, XML columns, custom extensions and external database configurations remain unassessed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxml2",
+    "id": "CVE-2026-86143",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "package": "libxml2",
+        "severity": "HIGH",
+        "source_version": "2.12.7+dfsg+really2.9.14"
+      }
+    ],
+    "condition": "The affected XML/catalog/validation/XPointer/XInclude/output or Python-binding path described in CVE-2026-86143 receives attacker-controlled input.",
+    "assessment": "PostgreSQL really links and exposes SQL/XML; no claim that authentication or external-entity blocking makes it safe. Current RateFreak schema/migrations contain no XML columns, SQL/XML or XML extension calls; all application text/JSON remains ordinary parameters and is not implicitly XML-parsed. Reviewed supported bootstrap, migration, health, backup and restore of that schema do not invoke the affected XML operations. This excludes current application callers only: arbitrary authenticated SQL, imported schemas, XML columns, custom extensions and external database configurations remain unassessed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxml2",
+    "id": "CVE-2026-86144",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "package": "libxml2",
+        "severity": "HIGH",
+        "source_version": "2.12.7+dfsg+really2.9.14"
+      }
+    ],
+    "condition": "The affected XML/catalog/validation/XPointer/XInclude/output or Python-binding path described in CVE-2026-86144 receives attacker-controlled input.",
+    "assessment": "PostgreSQL really links and exposes SQL/XML; no claim that authentication or external-entity blocking makes it safe. Current RateFreak schema/migrations contain no XML columns, SQL/XML or XML extension calls; all application text/JSON remains ordinary parameters and is not implicitly XML-parsed. Reviewed supported bootstrap, migration, health, backup and restore of that schema do not invoke the affected XML operations. This excludes current application callers only: arbitrary authenticated SQL, imported schemas, XML columns, custom extensions and external database configurations remain unassessed.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxslt",
+    "id": "CVE-2015-9019",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.1.35-1.2+deb13u3",
+        "package": "libxslt1.1",
+        "severity": "LOW",
+        "source_version": "1.1.35"
+      }
+    ],
+    "condition": "The affected XSLT/EXSLT transform, math.random or result-tree-fragment key handling receives a stylesheet/document.",
+    "assessment": "No application schema, migration, provider or maintenance call uses XSLT, EXSLT or the PostgreSQL xml2/xslt extension. Core SQL/XML is a separate libxml2 capability, not evidence of libxslt use. Current source query review finds no CREATE EXTENSION or stylesheet/transform caller. An operator-added extension or arbitrary SQL/stylesheet is outside this exclusion.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxslt",
+    "id": "CVE-2025-10911",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.1.35-1.2+deb13u3",
+        "package": "libxslt1.1",
+        "severity": "MEDIUM",
+        "source_version": "1.1.35"
+      }
+    ],
+    "condition": "The affected XSLT/EXSLT transform, math.random or result-tree-fragment key handling receives a stylesheet/document.",
+    "assessment": "No application schema, migration, provider or maintenance call uses XSLT, EXSLT or the PostgreSQL xml2/xslt extension. Core SQL/XML is a separate libxml2 capability, not evidence of libxslt use. Current source query review finds no CREATE EXTENSION or stylesheet/transform caller. An operator-added extension or arbitrary SQL/stylesheet is outside this exclusion.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libxslt",
+    "id": "CVE-2025-11731",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "1.1.35-1.2+deb13u3",
+        "package": "libxslt1.1",
+        "severity": "LOW",
+        "source_version": "1.1.35"
+      }
+    ],
+    "condition": "The affected XSLT/EXSLT transform, math.random or result-tree-fragment key handling receives a stylesheet/document.",
+    "assessment": "No application schema, migration, provider or maintenance call uses XSLT, EXSLT or the PostgreSQL xml2/xslt extension. Core SQL/XML is a separate libxml2 capability, not evidence of libxslt use. Current source query review finds no CREATE EXTENSION or stylesheet/transform caller. An operator-added extension or arbitrary SQL/stylesheet is outside this exclusion.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "libzstd",
+    "id": "CVE-2026-124851",
+    "matches": [
+      {
+        "fixed": "1.5.7+dfsg-1+deb13u1",
+        "installed": "1.5.7+dfsg-1",
+        "package": "libzstd1",
+        "severity": "HIGH",
+        "source_version": "1.5.7+dfsg"
+      },
+      {
+        "fixed": "1.5.7+dfsg-1+deb13u1",
+        "installed": "1.5.7+dfsg-1",
+        "package": "zstd",
+        "severity": "HIGH",
+        "source_version": "1.5.7+dfsg"
+      }
+    ],
+    "condition": "A crafted Zstandard frame is passed to the vulnerable1.5.7 decompressor (CVE-2026-124851).",
+    "assessment": "Exact PostgreSQL default wal_compression=off and supplied Compose has no override. Coordinated pg_dump custom backups use default gzip and the actual restore client is the separate tools image with fixed1.5.7+dfsg-1+deb13u1. Current reference has no physical restore/replication or attacker-selected Zstandard archive/WAL input. Database-image zstd packages remain unpatched. Imported zstd archives, custom WAL compression, physical replication/restores or direct database-image pg_restore need reassessment.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-107493",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "LOW",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "LOW",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "LOW",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "openssl: openssl: Denial of Service via malformed PEM data in PEM_X509_INFO_read_bio_ex",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-107494",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "HIGH",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "HIGH",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "HIGH",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "openssl: OpenSSL: Denial of Service via unbounded QUIC frame queueing",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-107496",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "openssl: openssl: Denial of Service via crafted EC certificate in CMS encryption",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-121481",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "LOW",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "LOW",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "LOW",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "openssl: openssl: Out-of-bounds write via integer overflow in EVP_EncodeBlock()",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-121482",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "openssl: openssl: Denial of Service via crafted CMS or PKCS#7 SignedData message",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-124709",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "HIGH",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "HIGH",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "HIGH",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "openssl: openssl: Denial of Service via memory leak in QUIC stream handling",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-35190",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "openssl: openssl: Denial of Service via out-of-bounds read during TLS key-share processing",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-84785",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "UNKNOWN",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "UNKNOWN",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "UNKNOWN",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "Issue summary: A QUIC peer that sends many small out-of-order STREAM f ...",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-84786",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "openssl: OpenSSL: Denial of Service via NULL pointer dereference during DANE TLSA record processing",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-88822",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "LOW",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "LOW",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "LOW",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "openssl: openssl: Information disclosure via uninitialized memory in QUIC peer detection",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-88823",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "LOW",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "LOW",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "LOW",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "openssl: OpenSSL: Message authentication bypass via zero-length AAD update",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-95690",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "openssl: openssl: Denial of service via crafted out-of-sequence DTLS handshake fragments",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-95691",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "openssl: openssl: Denial of Service via overlapping QUIC CRYPTO frame processing",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  },
+  {
+    "image": "postgres-trixie",
+    "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "source": "openssl",
+    "id": "CVE-2026-95692",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "libssl3t64",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      },
+      {
+        "fixed": "",
+        "installed": "3.5.9-1~deb13u1",
+        "package": "openssl-provider-legacy",
+        "severity": "MEDIUM",
+        "source_version": "3.5.9"
+      }
+    ],
+    "condition": "openssl: OpenSSL: Denial of Service via out-of-bounds read in AES-GCM-SIV",
+    "assessment": "Exact reference PostgreSQL defaults SSL off; supplied Compose has no SSL override/certificate provisioning, and host operator SQL uses local sockets. Its real libcrypto use for SCRAM/hashes does not invoke these TLS/DTLS/QUIC, CMS/PKCS7, DANE, AES-GCM-SIV, PEM-stack-append or EVP_EncodeBlock conditions. Reviewed PostgreSQL17.12 server/libpq source uses the TCP SSLv23_method API (not QUIC/DTLS), has no SuiteB cert-flag setter, CMS/DANE/affected PEM/EncodeBlock caller; own pg_b64_encode implements base64. Exact ELF imports independently lack the affected direct APIs. No arbitrary openssl command is invoked by the supplied entrypoint/health/init/maintenance flow. This does not approve arbitrary crypto commands, TLS/custom provider configuration, operator-added extensions or every OpenSSL consumer in other images.",
+    "disposition": "conditional-supported-caller-exclusion",
+    "evidence": [
+      "postgres-core/probe.json",
+      "postgres-core/application-query-review.json",
+      "postgres-core/upstream-source-inputs.json",
+      "postgres/transition-review.md",
+      "../2026-11-25-security-integration/postgres/assessment.md",
+      "jit-policy/acceptance.json"
+    ],
+    "source_limit": "Retained PG17.12 upstream source, not a bit-for-bit patched PGDG source reconstruction; exact selected binary imports/defaults and application caller scope independently bound.",
+    "reassess_if": [
+      "Change schema/query/extension/crypto/compression/replication/restore or operator configuration",
+      "Change PostgreSQL/native image bytes, supported architecture or application inputs"
+    ],
+    "live_sql_defaults": "Current explicit reference configuration verifies ssl=off, wal_compression=off; do not infer live BOOL defaults from --describe-config reset fields."
+  }
+]

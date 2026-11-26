@@ -1,0 +1,19 @@
+{
+  "candidateImages": {
+    "api": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "web": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "tools": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772"
+  },
+  "baselineImages": {
+    "api": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "web": "sha256:dd22e0040bacac02a97147c36eb4090b0aae37f735042f43ec1a1f51e42d6e09",
+    "tools": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365"
+  },
+  "https": true,
+  "freshInstall": false,
+  "upgrade": true,
+  "disabledUpdateChecks": true,
+  "ordinaryDenied": true,
+  "logoutDenied": true,
+  "dataPreserved": true
+}

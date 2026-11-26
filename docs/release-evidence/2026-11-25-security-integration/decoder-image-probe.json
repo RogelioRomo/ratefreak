@@ -1,0 +1,1 @@
+{"compiled_register":true,"next_optimizer_same_sharp":true,"avif_metadata_rejected":true,"avif_optimization_rejected":true,"supported_inputs":["jpeg","png","webp","gif"],"sharp_version":"0.35.5","heif_version":"1.23.5","scope":"Exact production compiled startup and optimizer module; safe synthetic inputs, no exploit payload or live-instance access."}

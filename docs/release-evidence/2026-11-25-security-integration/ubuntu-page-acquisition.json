@@ -1,0 +1,93 @@
+[
+  {
+    "id": "CVE-2026-102633",
+    "file": "CVE-2026-102633.html",
+    "url": "https://ubuntu.com/security/CVE-2026-102633",
+    "sha256": "fc1248bf28eb5296b467f70fe7d646670f5296af23b7cf8f37a927f4fd0a48bf",
+    "bytes": 231601
+  },
+  {
+    "id": "CVE-2026-113351",
+    "file": "CVE-2026-113351.html",
+    "url": "https://ubuntu.com/security/CVE-2026-113351",
+    "sha256": "6190ef94b382372a5b8c3de879ace4d18103d5394f054ec885db3add09a0d78e",
+    "bytes": 232687
+  },
+  {
+    "id": "CVE-2026-115506",
+    "file": "CVE-2026-115506.html",
+    "url": "https://ubuntu.com/security/CVE-2026-115506",
+    "sha256": "1bdfa906d17bfb2142bb8fe9298809a986cf4ac0ad43c63f03b952245ac8f5f3",
+    "bytes": 231490
+  },
+  {
+    "id": "CVE-2026-117610",
+    "file": "CVE-2026-117610.html",
+    "url": "https://ubuntu.com/security/CVE-2026-117610",
+    "sha256": "a6ab00aadb24417c91cf0697d16005262ca09f8802282e2c5345c81eae48eac2",
+    "bytes": 235593
+  },
+  {
+    "id": "CVE-2026-118370",
+    "file": "CVE-2026-118370.html",
+    "url": "https://ubuntu.com/security/CVE-2026-118370",
+    "sha256": "fcea4912da693f29d3419d079a0d051c5691bb228818077d3a7a1f00493549cf",
+    "bytes": 232074
+  },
+  {
+    "id": "CVE-2026-121876",
+    "file": "CVE-2026-121876.html",
+    "url": "https://ubuntu.com/security/CVE-2026-121876",
+    "sha256": "b18f946d84a206a097ac6144bb119c02c77ba424e54ca0b2ac1f984662ae2a07",
+    "bytes": 87452
+  },
+  {
+    "id": "CVE-2026-124317",
+    "file": "CVE-2026-124317.html",
+    "url": "https://ubuntu.com/security/CVE-2026-124317",
+    "sha256": "e5216a13430ba33bdd99cf3e81e760a94e0203e9ee8b824749d19d000571ec1f",
+    "bytes": 231500
+  },
+  {
+    "id": "CVE-2026-128241",
+    "file": "CVE-2026-128241.html",
+    "url": "https://ubuntu.com/security/CVE-2026-128241",
+    "sha256": "e278f003fc42abc4a8d2154f1e0b00e5111809cabfe4816dff1f54837d028f99",
+    "bytes": 231685
+  },
+  {
+    "id": "CVE-2026-134703",
+    "file": "CVE-2026-134703.html",
+    "url": "https://ubuntu.com/security/CVE-2026-134703",
+    "sha256": "1b462464e08a7333cb4130218676988bfe5af99b6972942831f4a6487b58e7d1",
+    "bytes": 231497
+  },
+  {
+    "id": "CVE-2026-77214",
+    "file": "CVE-2026-77214.html",
+    "url": "https://ubuntu.com/security/CVE-2026-77214",
+    "sha256": "ed790a1541e24d62e6050ea0e75d271287d383dc9e0c28a0621bffec9666e759",
+    "bytes": 231120
+  },
+  {
+    "id": "CVE-2026-88647",
+    "file": "CVE-2026-88647.html",
+    "url": "https://ubuntu.com/security/CVE-2026-88647",
+    "sha256": "6a6f85227295a5ea1248a7cbb1602e77b2e3d2673af474fa687d91960eb8661a",
+    "bytes": 90022
+  },
+  {
+    "id": "CVE-2026-88648",
+    "file": "CVE-2026-88648.html",
+    "url": "https://ubuntu.com/security/CVE-2026-88648",
+    "sha256": "33f824e41a639d89d82613eded05e760f757f175f3d2591efc9b28e276324034",
+    "bytes": 90347
+  },
+  {
+    "id": "CVE-2026-93990",
+    "file": "CVE-2026-93990.html",
+    "url": "https://ubuntu.com/security/CVE-2026-93990",
+    "sha256": "1e05b7d9f198ce560da19f964189ccff10dc78e252f224d4da87bcc7d51bcc96",
+    "bytes": 231426
+  }
+]

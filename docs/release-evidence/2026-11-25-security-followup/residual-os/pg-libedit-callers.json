@@ -1,0 +1,42 @@
+[
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 126,
+    "context": "regerror(const char *msg)\n{\n}\n#endif\n\n\n/* el_match():\n *\tReturn if string matches pattern\n */\nlibedit_private int\nel_match(const wchar_t *str, const wchar_t *pat)\n{\n\tstatic ct_buffer_t conv;\n#if defined (REGEX)\n\tregex_t re;\n\tint rv;\n#elif defined (REGEXP)\n\tregexp *rp;\n\tint rv;\n#else\n\textern char\t*re_comp(const char *);\n\textern int\t re_exec(const char *);\n#endif\n\n\tif (wcsstr(str, pat) != 0)\n\t\treturn 1;\n\n#if defined(REGEX)\n\tif (regcomp(&re, ct_encode_string(pat, &conv), 0) == 0) {\n\t\trv = regexec(&re, ct_encode_string(str, &conv), (size_t)0, NULL,"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 127,
+    "context": "{\n}\n#endif\n\n\n/* el_match():\n *\tReturn if string matches pattern\n */\nlibedit_private int\nel_match(const wchar_t *str, const wchar_t *pat)\n{\n\tstatic ct_buffer_t conv;\n#if defined (REGEX)\n\tregex_t re;\n\tint rv;\n#elif defined (REGEXP)\n\tregexp *rp;\n\tint rv;\n#else\n\textern char\t*re_comp(const char *);\n\textern int\t re_exec(const char *);\n#endif\n\n\tif (wcsstr(str, pat) != 0)\n\t\treturn 1;\n\n#if defined(REGEX)\n\tif (regcomp(&re, ct_encode_string(pat, &conv), 0) == 0) {\n\t\trv = regexec(&re, ct_encode_string(str, &conv), (size_t)0, NULL,\n\t\t    0) == 0;"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 134,
+    "context": " */\nlibedit_private int\nel_match(const wchar_t *str, const wchar_t *pat)\n{\n\tstatic ct_buffer_t conv;\n#if defined (REGEX)\n\tregex_t re;\n\tint rv;\n#elif defined (REGEXP)\n\tregexp *rp;\n\tint rv;\n#else\n\textern char\t*re_comp(const char *);\n\textern int\t re_exec(const char *);\n#endif\n\n\tif (wcsstr(str, pat) != 0)\n\t\treturn 1;\n\n#if defined(REGEX)\n\tif (regcomp(&re, ct_encode_string(pat, &conv), 0) == 0) {\n\t\trv = regexec(&re, ct_encode_string(str, &conv), (size_t)0, NULL,\n\t\t    0) == 0;\n\t\tregfree(&re);\n\t} else {\n\t\trv = 0;\n\t}\n\treturn rv;\n#elif defined(REGEXP)\n\tif ((re = regcomp(ct_encode_string(pat, &conv))) != NULL) {"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 135,
+    "context": "libedit_private int\nel_match(const wchar_t *str, const wchar_t *pat)\n{\n\tstatic ct_buffer_t conv;\n#if defined (REGEX)\n\tregex_t re;\n\tint rv;\n#elif defined (REGEXP)\n\tregexp *rp;\n\tint rv;\n#else\n\textern char\t*re_comp(const char *);\n\textern int\t re_exec(const char *);\n#endif\n\n\tif (wcsstr(str, pat) != 0)\n\t\treturn 1;\n\n#if defined(REGEX)\n\tif (regcomp(&re, ct_encode_string(pat, &conv), 0) == 0) {\n\t\trv = regexec(&re, ct_encode_string(str, &conv), (size_t)0, NULL,\n\t\t    0) == 0;\n\t\tregfree(&re);\n\t} else {\n\t\trv = 0;\n\t}\n\treturn rv;\n#elif defined(REGEXP)\n\tif ((re = regcomp(ct_encode_string(pat, &conv))) != NULL) {\n\t\trv = regexec(re, ct_encode_string(str, &conv));"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 143,
+    "context": "\tregexp *rp;\n\tint rv;\n#else\n\textern char\t*re_comp(const char *);\n\textern int\t re_exec(const char *);\n#endif\n\n\tif (wcsstr(str, pat) != 0)\n\t\treturn 1;\n\n#if defined(REGEX)\n\tif (regcomp(&re, ct_encode_string(pat, &conv), 0) == 0) {\n\t\trv = regexec(&re, ct_encode_string(str, &conv), (size_t)0, NULL,\n\t\t    0) == 0;\n\t\tregfree(&re);\n\t} else {\n\t\trv = 0;\n\t}\n\treturn rv;\n#elif defined(REGEXP)\n\tif ((re = regcomp(ct_encode_string(pat, &conv))) != NULL) {\n\t\trv = regexec(re, ct_encode_string(str, &conv));\n\t\tel_free(re);\n\t} else {\n\t\trv = 0;\n\t}\n\treturn rv;\n#else\n\tif (re_comp(ct_encode_string(pat, &conv)) != NULL)\n\t\treturn 0;"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 144,
+    "context": "\tint rv;\n#else\n\textern char\t*re_comp(const char *);\n\textern int\t re_exec(const char *);\n#endif\n\n\tif (wcsstr(str, pat) != 0)\n\t\treturn 1;\n\n#if defined(REGEX)\n\tif (regcomp(&re, ct_encode_string(pat, &conv), 0) == 0) {\n\t\trv = regexec(&re, ct_encode_string(str, &conv), (size_t)0, NULL,\n\t\t    0) == 0;\n\t\tregfree(&re);\n\t} else {\n\t\trv = 0;\n\t}\n\treturn rv;\n#elif defined(REGEXP)\n\tif ((re = regcomp(ct_encode_string(pat, &conv))) != NULL) {\n\t\trv = regexec(re, ct_encode_string(str, &conv));\n\t\tel_free(re);\n\t} else {\n\t\trv = 0;\n\t}\n\treturn rv;\n#else\n\tif (re_comp(ct_encode_string(pat, &conv)) != NULL)\n\t\treturn 0;\n\telse"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 151,
+    "context": "\t\treturn 1;\n\n#if defined(REGEX)\n\tif (regcomp(&re, ct_encode_string(pat, &conv), 0) == 0) {\n\t\trv = regexec(&re, ct_encode_string(str, &conv), (size_t)0, NULL,\n\t\t    0) == 0;\n\t\tregfree(&re);\n\t} else {\n\t\trv = 0;\n\t}\n\treturn rv;\n#elif defined(REGEXP)\n\tif ((re = regcomp(ct_encode_string(pat, &conv))) != NULL) {\n\t\trv = regexec(re, ct_encode_string(str, &conv));\n\t\tel_free(re);\n\t} else {\n\t\trv = 0;\n\t}\n\treturn rv;\n#else\n\tif (re_comp(ct_encode_string(pat, &conv)) != NULL)\n\t\treturn 0;\n\telse\n\t\treturn re_exec(ct_encode_string(str, &conv)) == 1;\n#endif\n}\n\n\n/* c_hmatch():\n *\t return True if the pattern matches the prefix"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 154,
+    "context": "\tif (regcomp(&re, ct_encode_string(pat, &conv), 0) == 0) {\n\t\trv = regexec(&re, ct_encode_string(str, &conv), (size_t)0, NULL,\n\t\t    0) == 0;\n\t\tregfree(&re);\n\t} else {\n\t\trv = 0;\n\t}\n\treturn rv;\n#elif defined(REGEXP)\n\tif ((re = regcomp(ct_encode_string(pat, &conv))) != NULL) {\n\t\trv = regexec(re, ct_encode_string(str, &conv));\n\t\tel_free(re);\n\t} else {\n\t\trv = 0;\n\t}\n\treturn rv;\n#else\n\tif (re_comp(ct_encode_string(pat, &conv)) != NULL)\n\t\treturn 0;\n\telse\n\t\treturn re_exec(ct_encode_string(str, &conv)) == 1;\n#endif\n}\n\n\n/* c_hmatch():\n *\t return True if the pattern matches the prefix\n */\nlibedit_private int\nc_hmatch(EditLine *el, const wchar_t *str)"
+  }
+]

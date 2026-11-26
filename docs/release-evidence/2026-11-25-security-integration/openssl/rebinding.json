@@ -1,0 +1,13 @@
+{
+  "source_revision": "8cc1462a32c826b98d7267b5173cd9c8b9329a45",
+  "images": {
+    "api": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "web": "sha256:dd22e0040bacac02a97147c36eb4090b0aae37f735042f43ec1a1f51e42d6e09",
+    "tools": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365"
+  },
+  "basis": "Exact final runtime versions/features and .NET crypto shim/libpq hashes match the retained reviewed consumer inputs.",
+  "evidence": "../binary-probe-final.json",
+  "scope": "Reviewed Node/.NET/libpq consumers only; not every caller of an installed OpenSSL library.",
+  "original_assessment": "assessments.json",
+  "upstream_patched_claim": false
+}

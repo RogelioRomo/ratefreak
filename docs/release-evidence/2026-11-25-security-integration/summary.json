@@ -1,0 +1,102 @@
+{
+  "application_images": {
+    "api": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "tools": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "web": "sha256:dd22e0040bacac02a97147c36eb4090b0aae37f735042f43ec1a1f51e42d6e09"
+  },
+  "database": {
+    "DownloadedAt": "2026-11-25T16:07:10.835104227Z",
+    "NextUpdate": "2026-11-26T13:07:24.554567247Z",
+    "UpdatedAt": "2026-11-25T13:07:24.554567818Z",
+    "Version": 2
+  },
+  "date": "2026-11-25",
+  "match_dispositions": {
+    "binary-build-exclusion": 1,
+    "conditional-exclusion-supported-consumers": 10,
+    "conditional-exclusion-supported-gosu-flow": 60,
+    "conditional-exclusion-supported-reference-config": 10,
+    "conditional-supported-flow-exclusion": 167,
+    "open": 1236,
+    "platform-exclusion-linux-image": 1
+  },
+  "no_suppressions_added": true,
+  "persistent_instance_changed": false,
+  "published": false,
+  "raw_matches": 1485,
+  "record_dispositions": {
+    "binary-build-exclusion": 1,
+    "conditional-exclusion-supported-consumers": 5,
+    "conditional-exclusion-supported-gosu-flow": 60,
+    "conditional-exclusion-supported-reference-config": 10,
+    "conditional-supported-flow-exclusion": 40,
+    "open": 493,
+    "platform-exclusion-linux-image": 1
+  },
+  "records": 610,
+  "release_security_gate": "held",
+  "scanner": "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+  "scans": {
+    "api": {
+      "distinct_ids": 57,
+      "fixed_version_listed": 0,
+      "matches": 124,
+      "severities": {
+        "LOW": 6,
+        "MEDIUM": 118
+      }
+    },
+    "caddy": {
+      "distinct_ids": 14,
+      "fixed_version_listed": 18,
+      "matches": 21,
+      "severities": {
+        "HIGH": 2,
+        "LOW": 4,
+        "MEDIUM": 14,
+        "UNKNOWN": 1
+      }
+    },
+    "postgres-updated": {
+      "distinct_ids": 256,
+      "fixed_version_listed": 61,
+      "matches": 615,
+      "severities": {
+        "CRITICAL": 4,
+        "HIGH": 141,
+        "LOW": 200,
+        "MEDIUM": 244,
+        "UNKNOWN": 26
+      }
+    },
+    "tools": {
+      "distinct_ids": 147,
+      "fixed_version_listed": 0,
+      "matches": 382,
+      "severities": {
+        "HIGH": 80,
+        "LOW": 119,
+        "MEDIUM": 154,
+        "UNKNOWN": 29
+      }
+    },
+    "web": {
+      "distinct_ids": 134,
+      "fixed_version_listed": 0,
+      "matches": 343,
+      "severities": {
+        "HIGH": 77,
+        "LOW": 98,
+        "MEDIUM": 142,
+        "UNKNOWN": 26
+      }
+    }
+  },
+  "scope": "Current merged-filesystem scans and recorded scoped assessments. Not all-layer vulnerability scanning, a claim of exploitability, or final stable-release clearance.",
+  "source_identity": {
+    "dirty": false,
+    "official": false,
+    "revision": "8cc1462a32c826b98d7267b5173cd9c8b9329a45",
+    "version": "0.1.0-dev.1"
+  }
+}

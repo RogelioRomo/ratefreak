@@ -1,0 +1,29 @@
+{
+  "imageProbe": true,
+  "node": "24.22.3",
+  "libvips": "8.18.7",
+  "results": [
+    {
+      "encoding": "UTF-8",
+      "optimizerStatus": 400,
+      "directNativeResult": "svg"
+    },
+    {
+      "encoding": "CP949",
+      "optimizerStatus": 400,
+      "directNativeResult": "rejected:Input buffer has corrupt header: glib: XML parse error: Error domain 1 code 32 on line 1 column 37 of data: Unsupported encoding: CP949"
+    },
+    {
+      "encoding": "ISO-2022-CN-EXT",
+      "optimizerStatus": 400,
+      "directNativeResult": "rejected:Input buffer has corrupt header: glib: XML parse error: Error domain 1 code 32 on line 1 column 47 of data: Unsupported encoding: ISO-2022-CN-EXT"
+    }
+  ],
+  "rasterFormats": [
+    "jpeg",
+    "png",
+    "webp",
+    "gif"
+  ],
+  "scope": "Benign ASCII-compatible XML and generated raster images only; direct Sharp native capability is distinguished from supported optimizer gate. Trace records charset names, never data. No live instance or network."
+}

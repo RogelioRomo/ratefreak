@@ -1,0 +1,70 @@
+[
+  {
+    "archive": ".local/security-skia-update-2026-11-25/glibc-callers/dotnet-runtime-a3788b7.tar.gz",
+    "sha256": "df3899ce646abce8486600eb7fc91dc6076d663e0f126c3dd35c7d3af939c06d",
+    "files_scanned": 36620,
+    "matches": []
+  },
+  {
+    "archive": ".local/security-skia-update-2026-11-25/glibc-callers/node-v24.22.3.tar.xz",
+    "sha256": "48ca3aa8a9b02133356922ef4fc80200e00598c80a4ef446f7c39a459222593d",
+    "files_scanned": 12775,
+    "matches": [
+      {
+        "file": "node-v24.22.3/deps/googletest/include/gtest/gtest.h",
+        "line": 586,
+        "text": "// A filter is a colon-separated list of glob (not regex) patterns,"
+      },
+      {
+        "file": "node-v24.22.3/deps/googletest/src/gtest-port.cc",
+        "line": 716,
+        "text": "return regexec(&re.full_regex_, str, 1, &match, 0) == 0;"
+      },
+      {
+        "file": "node-v24.22.3/deps/googletest/src/gtest-port.cc",
+        "line": 725,
+        "text": "return regexec(&re.partial_regex_, str, 1, &match, 0) == 0;"
+      },
+      {
+        "file": "node-v24.22.3/deps/googletest/src/gtest-port.cc",
+        "line": 749,
+        "text": "int error = regcomp(&full_regex_, full_pattern, reg_flags);"
+      },
+      {
+        "file": "node-v24.22.3/deps/googletest/src/gtest-port.cc",
+        "line": 750,
+        "text": "// We want to call regcomp(&partial_regex_, ...) even if the"
+      },
+      {
+        "file": "node-v24.22.3/deps/googletest/src/gtest-port.cc",
+        "line": 760,
+        "text": "error = regcomp(&partial_regex_, partial_regex, reg_flags);"
+      },
+      {
+        "file": "node-v24.22.3/deps/googletest/src/gtest.cc",
+        "line": 308,
+        "text": "\"A colon-separated list of glob (not regex) patterns \""
+      },
+      {
+        "file": "node-v24.22.3/deps/sqlite/sqlite3.c",
+        "line": 118433,
+        "text": "** \"glob(B,A).  We want to use the A in \"A glob B\" to test"
+      },
+      {
+        "file": "node-v24.22.3/deps/sqlite/sqlite3.c",
+        "line": 118434,
+        "text": "** for function overloading.  But we use the B term in \"glob(B,A)\"."
+      },
+      {
+        "file": "node-v24.22.3/deps/sqlite/sqlite3.c",
+        "line": 168053,
+        "text": "** If pExpr is one of \"like\", \"glob\", \"match\", or \"regexp\", then"
+      },
+      {
+        "file": "node-v24.22.3/deps/sqlite/sqlite3.c",
+        "line": 168065,
+        "text": "{ \"glob\",   SQLITE_INDEX_CONSTRAINT_GLOB },"
+      }
+    ]
+  }
+]

@@ -1,0 +1,188 @@
+[
+  {
+    "advisory": "CVE-2026-121757",
+    "trigger_condition": "CP949 source converted to UTF-8//IGNORE destination",
+    "overall_assessment": "per_image_scopes_only",
+    "image_scopes": [
+      {
+        "image": "postgres-trixie",
+        "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+        "assessment": "unresolved",
+        "conditions": [],
+        "evidence": [
+          "../gconv-probes.json"
+        ],
+        "limits": [
+          "This investigator did not audit PostgreSQL server conversion callers or provide exact server-image native execution proof."
+        ]
+      },
+      {
+        "image": "tools",
+        "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+        "assessment": "not_reachable_in_reviewed_supported_callers",
+        "conditions": [
+          "Unmodified supported operator lifecycle and image configuration; no operator-selected exotic locale or new caller"
+        ],
+        "evidence": [
+          "review.md",
+          "native-image-probe.json",
+          "packaging-posix.sh",
+          "libxml-source/libxml2-2.15.4/meson.build",
+          "existing-binary-probe-iconv.json"
+        ],
+        "limits": [
+          "All affected converters remain installed and callable. This assessment is scoped to supported callers, not library repair.",
+          "Exact web dynamic proof binds c04ceb image; tools exclusion uses unchanged maintenance source and existing binary probes.",
+          "Additional/custom callers, locales, or environment overrides require reassessment."
+        ]
+      },
+      {
+        "image": "web",
+        "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+        "assessment": "not_reachable_in_reviewed_supported_callers",
+        "conditions": [
+          "Unmodified supported operator lifecycle and image configuration; no operator-selected exotic locale or new caller"
+        ],
+        "evidence": [
+          "review.md",
+          "native-image-probe.json",
+          "packaging-posix.sh",
+          "libxml-source/libxml2-2.15.4/meson.build",
+          "existing-binary-probe-iconv.json"
+        ],
+        "limits": [
+          "All affected converters remain installed and callable. This assessment is scoped to supported callers, not library repair.",
+          "Exact web dynamic proof binds c04ceb image; tools exclusion uses unchanged maintenance source and existing binary probes.",
+          "Additional/custom callers, locales, or environment overrides require reassessment."
+        ]
+      }
+    ],
+    "caller_reason": "No supported caller requests UTF-8//IGNORE; libxml input destination is ordinary UTF-8 and its iconv backend is disabled by minimum build. GLib converters remain but no caller selects affected pair.",
+    "evidence_report": "review.md",
+    "general_library_clearance": false
+  },
+  {
+    "advisory": "CVE-2026-121758",
+    "trigger_condition": "ISO-2022-CN-EXT decoder input",
+    "overall_assessment": "per_image_scopes_only",
+    "image_scopes": [
+      {
+        "image": "postgres-trixie",
+        "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+        "assessment": "unresolved",
+        "conditions": [],
+        "evidence": [
+          "../gconv-probes.json"
+        ],
+        "limits": [
+          "This investigator did not audit PostgreSQL server conversion callers or provide exact server-image native execution proof."
+        ]
+      },
+      {
+        "image": "tools",
+        "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+        "assessment": "not_reachable_in_reviewed_supported_callers",
+        "conditions": [
+          "Unmodified supported operator lifecycle and image configuration; no operator-selected exotic locale or new caller"
+        ],
+        "evidence": [
+          "review.md",
+          "native-image-probe.json",
+          "packaging-posix.sh",
+          "libxml-source/libxml2-2.15.4/meson.build",
+          "existing-binary-probe-iconv.json"
+        ],
+        "limits": [
+          "All affected converters remain installed and callable. This assessment is scoped to supported callers, not library repair.",
+          "Exact web dynamic proof binds c04ceb image; tools exclusion uses unchanged maintenance source and existing binary probes.",
+          "Additional/custom callers, locales, or environment overrides require reassessment."
+        ]
+      },
+      {
+        "image": "web",
+        "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+        "assessment": "not_reachable_in_reviewed_supported_callers",
+        "conditions": [
+          "Unmodified supported operator lifecycle and image configuration; no operator-selected exotic locale or new caller"
+        ],
+        "evidence": [
+          "review.md",
+          "native-image-probe.json",
+          "packaging-posix.sh",
+          "libxml-source/libxml2-2.15.4/meson.build",
+          "existing-binary-probe-iconv.json"
+        ],
+        "limits": [
+          "All affected converters remain installed and callable. This assessment is scoped to supported callers, not library repair.",
+          "Exact web dynamic proof binds c04ceb image; tools exclusion uses unchanged maintenance source and existing binary probes.",
+          "Additional/custom callers, locales, or environment overrides require reassessment."
+        ]
+      }
+    ],
+    "caller_reason": "Supported optimizer rejects SVG bytes before native parsing, and exact bundled libxml minimum build lacks generic iconv input support. Benign direct Sharp ISO-2022-CN-EXT declaration is rejected as unsupported.",
+    "evidence_report": "review.md",
+    "general_library_clearance": false
+  },
+  {
+    "advisory": "CVE-2026-124024",
+    "trigger_condition": "UCS-4 input converted to IBM1390 or IBM1399 output",
+    "overall_assessment": "per_image_scopes_only",
+    "image_scopes": [
+      {
+        "image": "postgres-trixie",
+        "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+        "assessment": "unresolved",
+        "conditions": [],
+        "evidence": [
+          "../gconv-probes.json"
+        ],
+        "limits": [
+          "This investigator did not audit PostgreSQL server conversion callers or provide exact server-image native execution proof."
+        ]
+      },
+      {
+        "image": "tools",
+        "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+        "assessment": "not_reachable_in_reviewed_supported_callers",
+        "conditions": [
+          "Unmodified supported operator lifecycle and image configuration; no operator-selected exotic locale or new caller"
+        ],
+        "evidence": [
+          "review.md",
+          "native-image-probe.json",
+          "packaging-posix.sh",
+          "libxml-source/libxml2-2.15.4/meson.build",
+          "existing-binary-probe-iconv.json"
+        ],
+        "limits": [
+          "All affected converters remain installed and callable. This assessment is scoped to supported callers, not library repair.",
+          "Exact web dynamic proof binds c04ceb image; tools exclusion uses unchanged maintenance source and existing binary probes.",
+          "Additional/custom callers, locales, or environment overrides require reassessment."
+        ]
+      },
+      {
+        "image": "web",
+        "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+        "assessment": "not_reachable_in_reviewed_supported_callers",
+        "conditions": [
+          "Unmodified supported operator lifecycle and image configuration; no operator-selected exotic locale or new caller"
+        ],
+        "evidence": [
+          "review.md",
+          "native-image-probe.json",
+          "packaging-posix.sh",
+          "libxml-source/libxml2-2.15.4/meson.build",
+          "existing-binary-probe-iconv.json"
+        ],
+        "limits": [
+          "All affected converters remain installed and callable. This assessment is scoped to supported callers, not library repair.",
+          "Exact web dynamic proof binds c04ceb image; tools exclusion uses unchanged maintenance source and existing binary probes.",
+          "Additional/custom callers, locales, or environment overrides require reassessment."
+        ]
+      }
+    ],
+    "caller_reason": "Reviewed app emits raster WebP, JSON or fixed SQL/maintenance outputs; no supported caller selects IBM1390/IBM1399. Generic GLib/locale interfaces remain broader capabilities.",
+    "evidence_report": "review.md",
+    "general_library_clearance": false
+  }
+]

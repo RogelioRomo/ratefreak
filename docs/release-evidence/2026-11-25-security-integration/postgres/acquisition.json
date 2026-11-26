@@ -1,0 +1,56 @@
+[
+  {
+    "url": "https://github.com/krb5/krb5/commit/782e5ac4fb1496a79de0b87e1fc485f897e97d6d.patch",
+    "file": "krb5-asn1-fix.patch",
+    "sha256": "1c9f5facbcb81930d9c7dac552750273045e35e85dbfbc873b2ce140acf96705",
+    "acquired_utc": "2026-11-25T16:30:09.388317+00:00"
+  },
+  {
+    "url": "https://web.mit.edu/kerberos/advisories/MITKRB5-SA-2026-001.txt",
+    "file": "krb5-advisory.txt",
+    "sha256": "f9c74d67b460c9d08c14078430714c362021ec690492f376e373760ef69fe7b8",
+    "acquired_utc": "2026-11-25T16:30:09.716872+00:00"
+  },
+  {
+    "url": "https://www.openwall.com/lists/oss-security/2026/11/24/1",
+    "file": "zstd-advisory.txt",
+    "sha256": "e129fe1497d360bab8d2c924da8268499933daa7ca2a7de101b9b0e6cb5ffde3",
+    "acquired_utc": "2026-11-25T16:30:10.583827+00:00"
+  },
+  {
+    "url": "https://github.com/meta/zstd/commit/0c9d297531a9f15a717ff24604afc0843b3b1427.patch",
+    "file": "zstd-fix.patch",
+    "sha256": "90921df445d34a802175cb32e929ff93b3d5037ed25342abd55980e2e217622b",
+    "acquired_utc": "2026-11-25T16:30:10.816659+00:00"
+  },
+  {
+    "url": "https://github.com/madler/zlib/commit/df84af25dc1942490e1d1c899a07619152a46148.patch",
+    "file": "zlib-fix.patch",
+    "sha256": "110ff14375733173d8aa54574473424fbd7dfe4b81f1ca34a759c6fe14b15b14",
+    "acquired_utc": "2026-11-25T16:30:11.022350+00:00"
+  },
+  {
+    "url": "https://mailman.mit.edu/pipermail/kerberos-announce/2026q4/000212.html",
+    "file": "krb5-announcement.html",
+    "sha256": "f792573f55c35c5596b9c662b0b12b3f49828a28c2b2f345f0fadb40764dbfee",
+    "acquired_utc": "2026-11-25T16:30:11.261394+00:00"
+  },
+  {
+    "url": "https://github.com/GNOME/libxml2/commit/a4cba4b5b5a8c42e155ed42d2d2a44955465a2e4.patch",
+    "file": "libxml-dict-fix.patch",
+    "sha256": "f207c148a8defa5fcf564a05396748b1cf23e9788ae174a750556efdf9261f29",
+    "acquired_utc": "2026-11-25T16:30:11.471661+00:00"
+  },
+  {
+    "url": "https://github.com/GNOME/libxml2/commit/d1686f91dbda141a752200419d35639fd6b38340.patch",
+    "file": "libxml-validation-fix.patch",
+    "sha256": "5e51f8dcadfe3294a15d9e8644d61e8d92bd5b9e72c10cf13ef010eccfbfa4df",
+    "acquired_utc": "2026-11-25T16:30:11.703574+00:00"
+  },
+  {
+    "url": "https://github.com/GNOME/libxml2/commit/90f293ba74d28b1d570920382e707586f68ebf35.patch",
+    "file": "libxml-output-fix.patch",
+    "sha256": "f521d43d4bdd669009c0986963c33465f33ef7390343491bf751b25d72a0655d",
+    "acquired_utc": "2026-11-25T16:30:11.924530+00:00"
+  }
+]

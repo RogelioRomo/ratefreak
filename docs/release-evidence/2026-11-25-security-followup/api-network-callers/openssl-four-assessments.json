@@ -1,0 +1,162 @@
+[
+  {
+    "advisory": "CVE-2026-107494",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "OpenSSL QUIC peer causes unbounded RETIRE_CONNECTION_ID queueing on retransmitted NEW_CONNECTION_ID frames",
+    "reason": "Exact tools runtime inventory records no libmsquic paths. Tools execute fixed PostgreSQL TCP/local-socket clients, managed maintenance and filesystem operations, not an HTTP3/QUIC listener/client; no OpenSSL QUIC context or incoming stream policy is selected. No blanket absence-of-OpenSSL claim.",
+    "evidence": [
+      "openssl-four-source-review.json",
+      "../../security-runtime-guard-2026-11-25/binary-probe-final.json",
+      "../../security-runtime-guard-2026-11-25/tools-probe.json",
+      "source-input-hashes.json",
+      "https://openssl-library.org/news/secadv/20261124.txt"
+    ],
+    "limitations": [
+      "Exact supported image/source/configuration and current request/lifecycle callers only.",
+      "No package-wide fixed or absent-OpenSSL claim; unused native capabilities remain.",
+      "QUIC/DTLS integrations, custom native addons, direct PEM/SPKAC signing/base64 primitives, arbitrary caller lengths, plugins or operator crypto commands require reassessment."
+    ]
+  },
+  {
+    "advisory": "CVE-2026-121481",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "Application calls EVP_EncodeBlock with a caller-provided length whose base64 output calculation exceeds signed int capacity",
+    "reason": "No direct EVP_EncodeBlock call was found in retained Node crypto/ncrypto and reviewed .NET PAL source set. More importantly, supported app provides no raw native base64/PEM/SPKAC-signing API that forwards request-selected lengths to EVP_EncodeBlock. Normal HTTP/TLS certificate operations use bounded local trust/configuration inputs rather than caller-provided multi-gigabyte encoding lengths. Existing app artwork/body and credential/cookie paths do not expose this native encoding primitive. Internal OpenSSL PEM/base64 use is not declared absent; this is exclusion of the required oversized caller length.",
+    "evidence": [
+      "openssl-four-source-review.json",
+      "../../security-runtime-guard-2026-11-25/binary-probe-final.json",
+      "../../security-runtime-guard-2026-11-25/tools-probe.json",
+      "source-input-hashes.json",
+      "https://github.com/openssl/openssl/pull/33652"
+    ],
+    "limitations": [
+      "Exact supported image/source/configuration and current request/lifecycle callers only.",
+      "No package-wide fixed or absent-OpenSSL claim; unused native capabilities remain.",
+      "QUIC/DTLS integrations, custom native addons, direct PEM/SPKAC signing/base64 primitives, arbitrary caller lengths, plugins or operator crypto commands require reassessment."
+    ]
+  },
+  {
+    "advisory": "CVE-2026-84785",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "OpenSSL QUIC accepts incoming streams and retains many out-of-order fragments while first byte is missing",
+    "reason": "Exact tools runtime inventory records no libmsquic paths. Tools execute fixed PostgreSQL TCP/local-socket clients, managed maintenance and filesystem operations, not an HTTP3/QUIC listener/client; no OpenSSL QUIC context or incoming stream policy is selected. No blanket absence-of-OpenSSL claim.",
+    "evidence": [
+      "openssl-four-source-review.json",
+      "../../security-runtime-guard-2026-11-25/binary-probe-final.json",
+      "../../security-runtime-guard-2026-11-25/tools-probe.json",
+      "source-input-hashes.json",
+      "https://openssl-library.org/news/secadv/20261124.txt"
+    ],
+    "limitations": [
+      "Exact supported image/source/configuration and current request/lifecycle callers only.",
+      "No package-wide fixed or absent-OpenSSL claim; unused native capabilities remain.",
+      "QUIC/DTLS integrations, custom native addons, direct PEM/SPKAC signing/base64 primitives, arbitrary caller lengths, plugins or operator crypto commands require reassessment."
+    ]
+  },
+  {
+    "advisory": "CVE-2026-95690",
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "DTLS endpoint reassembles attacker-controlled out-of-sequence handshake fragments with large declared lengths",
+    "reason": "Supported web/maintenance network callers use TCP HTTP(S), SslStream and PostgreSQL local/TCP transport. Node TLS contexts and libpq source use ordinary TCP TLS methods; no DTLS constructor or datagram-secure transport is selected by application/entrypoints. UDP/dgram socket capability, if present in a runtime, does not by itself instantiate OpenSSL DTLS. This excludes the DTLS handshake reassembly caller, not ordinary TLS or all datagram capability.",
+    "evidence": [
+      "openssl-four-source-review.json",
+      "../../security-runtime-guard-2026-11-25/binary-probe-final.json",
+      "../../security-runtime-guard-2026-11-25/tools-probe.json",
+      "source-input-hashes.json",
+      "https://github.com/openssl/openssl/pull/33620"
+    ],
+    "limitations": [
+      "Exact supported image/source/configuration and current request/lifecycle callers only.",
+      "No package-wide fixed or absent-OpenSSL claim; unused native capabilities remain.",
+      "QUIC/DTLS integrations, custom native addons, direct PEM/SPKAC signing/base64 primitives, arbitrary caller lengths, plugins or operator crypto commands require reassessment."
+    ]
+  },
+  {
+    "advisory": "CVE-2026-107494",
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "OpenSSL QUIC peer causes unbounded RETIRE_CONNECTION_ID queueing on retransmitted NEW_CONNECTION_ID frames",
+    "reason": "Exact Node24.22.3 feature probe reports quic:false. Supported web server/Undici/artwork transports use HTTP(S) over TCP; no OpenSSL QUIC context or incoming QUIC stream API is selected. Node bundled OpenSSL and OS OpenSSL remain present.",
+    "evidence": [
+      "openssl-four-source-review.json",
+      "../../security-runtime-guard-2026-11-25/binary-probe-final.json",
+      "../../security-runtime-guard-2026-11-25/web-probe.json",
+      "source-input-hashes.json",
+      "https://openssl-library.org/news/secadv/20261124.txt"
+    ],
+    "limitations": [
+      "Exact supported image/source/configuration and current request/lifecycle callers only.",
+      "No package-wide fixed or absent-OpenSSL claim; unused native capabilities remain.",
+      "QUIC/DTLS integrations, custom native addons, direct PEM/SPKAC signing/base64 primitives, arbitrary caller lengths, plugins or operator crypto commands require reassessment."
+    ]
+  },
+  {
+    "advisory": "CVE-2026-121481",
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "Application calls EVP_EncodeBlock with a caller-provided length whose base64 output calculation exceeds signed int capacity",
+    "reason": "No direct EVP_EncodeBlock call was found in retained Node crypto/ncrypto and reviewed .NET PAL source set. More importantly, supported app provides no raw native base64/PEM/SPKAC-signing API that forwards request-selected lengths to EVP_EncodeBlock. Normal HTTP/TLS certificate operations use bounded local trust/configuration inputs rather than caller-provided multi-gigabyte encoding lengths. Existing app artwork/body and credential/cookie paths do not expose this native encoding primitive. Internal OpenSSL PEM/base64 use is not declared absent; this is exclusion of the required oversized caller length.",
+    "evidence": [
+      "openssl-four-source-review.json",
+      "../../security-runtime-guard-2026-11-25/binary-probe-final.json",
+      "../../security-runtime-guard-2026-11-25/web-probe.json",
+      "source-input-hashes.json",
+      "https://github.com/openssl/openssl/pull/33652"
+    ],
+    "limitations": [
+      "Exact supported image/source/configuration and current request/lifecycle callers only.",
+      "No package-wide fixed or absent-OpenSSL claim; unused native capabilities remain.",
+      "QUIC/DTLS integrations, custom native addons, direct PEM/SPKAC signing/base64 primitives, arbitrary caller lengths, plugins or operator crypto commands require reassessment."
+    ]
+  },
+  {
+    "advisory": "CVE-2026-84785",
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "OpenSSL QUIC accepts incoming streams and retains many out-of-order fragments while first byte is missing",
+    "reason": "Exact Node24.22.3 feature probe reports quic:false. Supported web server/Undici/artwork transports use HTTP(S) over TCP; no OpenSSL QUIC context or incoming QUIC stream API is selected. Node bundled OpenSSL and OS OpenSSL remain present.",
+    "evidence": [
+      "openssl-four-source-review.json",
+      "../../security-runtime-guard-2026-11-25/binary-probe-final.json",
+      "../../security-runtime-guard-2026-11-25/web-probe.json",
+      "source-input-hashes.json",
+      "https://openssl-library.org/news/secadv/20261124.txt"
+    ],
+    "limitations": [
+      "Exact supported image/source/configuration and current request/lifecycle callers only.",
+      "No package-wide fixed or absent-OpenSSL claim; unused native capabilities remain.",
+      "QUIC/DTLS integrations, custom native addons, direct PEM/SPKAC signing/base64 primitives, arbitrary caller lengths, plugins or operator crypto commands require reassessment."
+    ]
+  },
+  {
+    "advisory": "CVE-2026-95690",
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "assessment": "not_reachable_in_supported_configuration",
+    "affected_condition": "DTLS endpoint reassembles attacker-controlled out-of-sequence handshake fragments with large declared lengths",
+    "reason": "Supported web/maintenance network callers use TCP HTTP(S), SslStream and PostgreSQL local/TCP transport. Node TLS contexts and libpq source use ordinary TCP TLS methods; no DTLS constructor or datagram-secure transport is selected by application/entrypoints. UDP/dgram socket capability, if present in a runtime, does not by itself instantiate OpenSSL DTLS. This excludes the DTLS handshake reassembly caller, not ordinary TLS or all datagram capability.",
+    "evidence": [
+      "openssl-four-source-review.json",
+      "../../security-runtime-guard-2026-11-25/binary-probe-final.json",
+      "../../security-runtime-guard-2026-11-25/web-probe.json",
+      "source-input-hashes.json",
+      "https://github.com/openssl/openssl/pull/33620"
+    ],
+    "limitations": [
+      "Exact supported image/source/configuration and current request/lifecycle callers only.",
+      "No package-wide fixed or absent-OpenSSL claim; unused native capabilities remain.",
+      "QUIC/DTLS integrations, custom native addons, direct PEM/SPKAC signing/base64 primitives, arbitrary caller lengths, plugins or operator crypto commands require reassessment."
+    ]
+  }
+]

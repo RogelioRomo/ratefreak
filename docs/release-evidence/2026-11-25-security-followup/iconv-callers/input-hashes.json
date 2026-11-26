@@ -1,0 +1,86 @@
+[
+  {
+    "path": "optimizer-svg-gate.json",
+    "sha256": "65ef72b3d363dc5c5c118f79d668670edee5a6f2c753a59d7ffbef863a412ff0"
+  },
+  {
+    "path": "iconv-trace.c",
+    "sha256": "7f8fabea1674af3b29eccad141b1ef768a210ab108f4bd44ca7cef6a1f1e526d"
+  },
+  {
+    "path": "native-iconv-call-sites.json",
+    "sha256": "ac9af73c05e664f268166892e646931d0d193eeb84598b78c51aa4057ef8432b"
+  },
+  {
+    "path": "optimizer-svg-gate.cjs",
+    "sha256": "b5114f2eab7c62041b9c0fea81209c67faa2a54f786327996d7a559da4721c4a"
+  },
+  {
+    "path": "per-advisory-assessments.json",
+    "sha256": "3456b94f5c3fe97f8f01c612ae7bddf6f41e0891ae97acfc6facf57b678adc94"
+  },
+  {
+    "path": "native-image-probe.json",
+    "sha256": "bc2a62b7c645b20db87aa8da7371d9fb44f78378dc03540a7c4cd9fe8464c622"
+  },
+  {
+    "path": "iconv-trace.so",
+    "sha256": "1acd3021997becf0d5d7c4abd08f23b8d159f90ccef1090b9523ac4c83fc6ab5"
+  },
+  {
+    "path": "native-image-probe.log",
+    "sha256": "c5dacc3da5fac5bcc03e252de5efe8bb1f80325f657fc13abc9ec708b1b7dc3a"
+  },
+  {
+    "path": "native-image-probe.cjs",
+    "sha256": "3ce2c80809cd3dd6355ccf8acb4c31d4dcc30922c6131f5383ed3c04c908668b"
+  },
+  {
+    "path": "packaging-posix.sh",
+    "sha256": "333031b3b49bf1a16d0b9d6812d98f67c404218932ef8c0b389388524a524b36"
+  },
+  {
+    "path": "review.md",
+    "sha256": "c42da6cedd6faa8d8c07d06f9954967b4bf6c89d559311627bf8bb81570cd302"
+  },
+  {
+    "path": "existing-binary-probe-iconv.json",
+    "sha256": "002c27c658175e53c72f05f8e8b0c90c621a2ff62947336e4ea78458a73dc5cd"
+  },
+  {
+    "path": "tar-zstd-probe.json",
+    "sha256": "94c1b30fb1348b7a9d0e8eb5774900f08d09afe36d1e575cf07a1d7d6eea0c9c"
+  },
+  {
+    "path": "tar-zstd-probe.cjs",
+    "sha256": "ffd756feda1c4009ac10a6acdb4e542be104f574986d0e1ed0c83530dcf40fb9"
+  },
+  {
+    "path": "tar-zstd-probe.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "source-inputs.json",
+    "sha256": "5180c69d7b4042b2fd39537dd15dccae94a87588444b3eca19990dbbb6c3ec84"
+  },
+  {
+    "path": "libxml-source/libxml2-2.15.4/encoding.c",
+    "sha256": "45fc7bc3332409ed55bc7dd94cc356d378e3028efbeb795f7d7867bae67263ad"
+  },
+  {
+    "path": "libxml-source/libxml2-2.15.4/meson.build",
+    "sha256": "93ec777cd13a9f8ab280e7f05319769b0192024b53163edc97c9d65c79bc1939"
+  },
+  {
+    "path": "libxml-source/libxml2-2.15.4/meson_options.txt",
+    "sha256": "a32bb2908f6af87d40db1538150bc90a73f0c449d3100513ed31f3016a41fd06"
+  },
+  {
+    "path": "vips-source/vips-8.18.7/libvips/colour/profile_load.c",
+    "sha256": "3d9d764be5ff2023ba5b91cddaead1b74e21527beb96465114722ba4c4c3369a"
+  },
+  {
+    "path": "vips-source/vips-8.18.7/libvips/foreign/svgload.c",
+    "sha256": "76941f18ffc306dbf543f16ad9c66e2a70a621702d86dde7d6f3d561c754834a"
+  }
+]

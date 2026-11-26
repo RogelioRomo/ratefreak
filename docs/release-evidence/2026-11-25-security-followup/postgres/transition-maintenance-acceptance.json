@@ -1,0 +1,36 @@
+{
+  "artwork_and_key_archives_verified": true,
+  "backup_images": {
+    "api": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "tools": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "web": "sha256:dd22e0040bacac02a97147c36eb4090b0aae37f735042f43ec1a1f51e42d6e09"
+  },
+  "candidate_images": {
+    "api": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "tools": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "web": "sha256:dd22e0040bacac02a97147c36eb4090b0aae37f735042f43ec1a1f51e42d6e09"
+  },
+  "cleanup": [
+    {
+      "containers_remaining": false,
+      "project": "ratefreak-e8484edce3a2",
+      "volumes_remaining": false
+    },
+    {
+      "containers_remaining": false,
+      "project": "ratefreak-17fc8a78d69b",
+      "volumes_remaining": false
+    }
+  ],
+  "collation_versions": "2.41:2.41",
+  "complete": true,
+  "current_journal_entries": 0,
+  "format": 1,
+  "journal_excluded_from_backup": true,
+  "repeated_replay_preserved_data": true,
+  "restore_startup_guard": true,
+  "restored_app_services_ready": true,
+  "scope": "Qualified parent application images and host collation guard: Bookworm17.12 coordinated logical backup to fresh Trixie17.12 restore, independent current policy/journal, fingerprints, app readiness; empty journal fixture, no production data.",
+  "table_count": 33,
+  "table_fingerprints_preserved": true
+}

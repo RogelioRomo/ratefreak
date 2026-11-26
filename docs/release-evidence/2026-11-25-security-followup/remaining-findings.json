@@ -1,0 +1,112 @@
+[
+  {
+    "id": "CVE-2019-1010022",
+    "source": "glibc",
+    "images": [
+      "postgres-trixie",
+      "tools",
+      "web"
+    ],
+    "matches": 8,
+    "severities": [
+      "LOW"
+    ],
+    "reason": "Native thread/stack mitigation property; no applied fix or complete exclusion."
+  },
+  {
+    "id": "CVE-2019-1010024",
+    "source": "glibc",
+    "images": [
+      "postgres-trixie",
+      "tools",
+      "web"
+    ],
+    "matches": 8,
+    "severities": [
+      "LOW"
+    ],
+    "reason": "Native thread/stack mitigation property; no applied fix or complete exclusion."
+  },
+  {
+    "id": "CVE-2019-1010025",
+    "source": "glibc",
+    "images": [
+      "postgres-trixie",
+      "tools",
+      "web"
+    ],
+    "matches": 8,
+    "severities": [
+      "LOW"
+    ],
+    "reason": "Native thread/stack mitigation property; no applied fix or complete exclusion."
+  },
+  {
+    "id": "CVE-2026-102010",
+    "source": "gcc-14",
+    "images": [
+      "postgres-trixie",
+      "tools",
+      "web"
+    ],
+    "matches": 10,
+    "severities": [
+      "MEDIUM"
+    ],
+    "reason": "GNU pb_ds heap erase_if; application source exclusion does not complete OS compiled-header provenance."
+  },
+  {
+    "id": "CVE-2026-114690",
+    "source": "gcc-14",
+    "images": [
+      "postgres-trixie",
+      "tools",
+      "web"
+    ],
+    "matches": 10,
+    "severities": [
+      "MEDIUM"
+    ],
+    "reason": "GNU parallel search; complete OS header-instantiation closure not established."
+  },
+  {
+    "id": "CVE-2026-114691",
+    "source": "gcc-14",
+    "images": [
+      "postgres-trixie",
+      "tools",
+      "web"
+    ],
+    "matches": 10,
+    "severities": [
+      "MEDIUM"
+    ],
+    "reason": "vector<bool> count overflow; complete OS caller/count-bound proof not established."
+  },
+  {
+    "id": "CVE-2026-115455",
+    "source": "gcc-14",
+    "images": [
+      "postgres-trixie"
+    ],
+    "matches": 3,
+    "severities": [
+      "MEDIUM"
+    ],
+    "reason": "Wide-character bitset extraction; PostgreSQL-image C++ consumer scope not completely excluded."
+  },
+  {
+    "id": "CVE-2026-125709",
+    "source": "gcc-14",
+    "images": [
+      "postgres-trixie",
+      "tools",
+      "web"
+    ],
+    "matches": 10,
+    "severities": [
+      "MEDIUM"
+    ],
+    "reason": "streambuf I/O-failure handling; remaining OS/ICU caller closure not established."
+  }
+]

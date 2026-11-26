@@ -1,0 +1,26 @@
+[
+  {
+    "image": "api",
+    "image_id": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+    "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+    "aligned_new_calls_posix_memalign": true,
+    "disassembly": "api-aligned-new.txt"
+  },
+  {
+    "image": "web",
+    "image_id": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+    "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+    "aligned_new_calls_posix_memalign": true,
+    "disassembly": "web-aligned-new.txt"
+  },
+  {
+    "image": "tools",
+    "image_id": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b",
+    "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+    "aligned_new_calls_posix_memalign": true,
+    "disassembly": "tools-aligned-new.txt"
+  }
+]

@@ -1,0 +1,164 @@
+[
+  {
+    "archive": ".local/security-residual-os-2026-11-25/vendor/krb5-1.20.1.tar.gz",
+    "sha256": "704aed49b19eb5a7178b34b2873620ec299db08752d6a8574f95d41879ab8851",
+    "matches": [
+      {
+        "file": "krb5-1.20.1/src/plugins/preauth/pkinit/pkinit_matching.c",
+        "line": 343,
+        "context": "\n    value = calloc(1, len+1);\n    if (value == NULL) {\n        retval = ENOMEM;\n        goto out;\n    }\n    memcpy(value, *rule, len);\n    *remaining -= len;\n    *rule += len;\n    pkiDebug(\"%s: found value '%s'\\n\", __FUNCTION__, value);\n\n    if (kw->kwvaltype == kwvaltype_regexp) {\n        ret = regcomp(&rc->regexp, value, REG_EXTENDED);\n        if (ret) {\n            regerror(ret, &rc->regexp, err_buf, sizeof(err_buf));\n            pkiDebug(\"%s: Error compiling reg-exp '%s': %s\\n\",\n                     __FUNCTION__, value, err_buf);\n            retval = ret;\n            goto out;\n        }\n        rc->regsrc = strdup(value);"
+      },
+      {
+        "file": "krb5-1.20.1/src/plugins/preauth/pkinit/pkinit_matching.c",
+        "line": 455,
+        "context": "    if (retval && rs != NULL) {\n        free_rule_set(context, rs);\n    }\n    pkiDebug(\"%s: returning %d\\n\", __FUNCTION__, retval);\n    return retval;\n}\n\nstatic int\nregexp_match(krb5_context context, rule_component *rc, char *value, int idx)\n{\n    int code;\n\n    code = regexec(&rc->regexp, value, 0, NULL, 0);\n\n    if (code == 0) {\n        TRACE_PKINIT_REGEXP_MATCH(context, keyword2string(rc->kw_type),\n                                  rc->regsrc, value, idx);\n    } else {\n        TRACE_PKINIT_REGEXP_NOMATCH(context, keyword2string(rc->kw_type),\n                                    rc->regsrc, value, idx);\n    }"
+      },
+      {
+        "file": "krb5-1.20.1/src/lib/gssapi/mechglue/g_initialize.c",
+        "line": 503,
+        "context": "\t\treturn;\n\tg_confLastCall = now;\n\n\tval = secure_getenv(\"GSS_MECH_CONFIG\");\n\tif (val != NULL) {\n\t\tload_if_changed(val, g_confFileModTime, &g_confFileModTime);\n\t\treturn;\n\t}\n\n\tload_if_changed(MECH_CONF, g_confFileModTime, &highest);\n\n\tmemset(&globbuf, 0, sizeof(globbuf));\n\tif (glob(MECH_CONF_PATTERN, 0, NULL, &globbuf) == 0) {\n\t\tfor (path = globbuf.gl_pathv; *path != NULL; path++)\n\t\t\tload_if_changed(*path, g_confFileModTime, &highest);\n\t}\n\tglobfree(&globbuf);\n\n\tg_confFileModTime = highest;\n}\n#endif"
+      },
+      {
+        "file": "krb5-1.20.1/src/lib/kadm5/srv/svr_iters.c",
+        "line": 52,
+        "context": "#endif\n#ifdef POSIX_REGEXPS\n    regex_t preg;\n#endif\n};\n\n/* XXX Duplicated in kdb5_util!  */\n/*\n * Function: glob_to_regexp\n *\n * Arguments:\n *\n *      glob    (r) the shell-style glob (?*[]) to convert\n *      realm   (r) the default realm to append, or NULL\n *      regexp  (w) the ed-style regexp created from glob\n *\n * Effects:\n *\n * regexp is filled in with allocated memory contained a regular\n * expression to be used with re_comp/compile that matches what the\n * shell-style glob would match.  If glob does not contain an \"@\""
+      },
+      {
+        "file": "krb5-1.20.1/src/lib/kadm5/srv/svr_iters.c",
+        "line": 137,
+        "context": "    *p++ = '$';\n    *p++ = '\\0';\n    return KADM5_OK;\n}\n\nstatic void get_either_iter(struct iter_data *data, char *name)\n{\n    int match;\n#ifdef SOLARIS_REGEXPS\n    match = (step(name, data->expbuf) != 0);\n#endif\n#ifdef POSIX_REGEXPS\n    match = (regexec(&data->preg, name, 0, NULL, 0) == 0);\n#endif\n#ifdef BSD_REGEXPS\n    match = (re_exec(name) != 0);\n#endif\n    if (match) {\n        if (data->n_names == data->sz_names) {\n            int new_sz = data->sz_names * 2;\n            char **new_names = realloc(data->names,"
+      },
+      {
+        "file": "krb5-1.20.1/src/lib/kadm5/srv/svr_iters.c",
+        "line": 210,
+        "context": "\n    CHECK_HANDLE(server_handle);\n\n    if ((ret = glob_to_regexp(exp, princ ? handle->params.realm : NULL,\n                              &regexp)) != KADM5_OK)\n        return ret;\n\n    if (\n#ifdef SOLARIS_REGEXPS\n        ((data.expbuf = compile(regexp, NULL, NULL)) == NULL)\n#endif\n#ifdef POSIX_REGEXPS\n        ((regcomp(&data.preg, regexp, REG_NOSUB)) != 0)\n#endif\n#ifdef BSD_REGEXPS\n        ((msg = (char *) re_comp(regexp)) != NULL)\n#endif\n    )\n    {\n        /* XXX syslog msg or regerr(regerrno) */\n        free(regexp);"
+      },
+      {
+        "file": "krb5-1.20.1/src/lib/krb5/os/localauth_rule.c",
+        "line": 100,
+        "context": "        return 0;\n\n    /* Find the end of the regexp and make a copy of it. */\n    startp = *contextp + 1;\n    endp = strchr(startp, ')');\n    if (endp == NULL)\n        return KRB5_CONFIG_BADFORMAT;\n    regstr = k5memdup0(startp, endp - startp, &ret);\n    if (regstr == NULL)\n        return ret;\n\n    /* Perform the match. */\n    ret = (regcomp(&re, regstr, REG_EXTENDED) == 0 &&\n           regexec(&re, selstring, 1, &m, 0) == 0 &&\n           m.rm_so == 0 && (size_t)m.rm_eo == strlen(selstring)) ? 0 :\n        KRB5_LNAME_NOTRANS;\n    regfree(&re);\n    free(regstr);\n    *contextp = endp + 1;\n    return ret;\n}"
+      },
+      {
+        "file": "krb5-1.20.1/src/lib/krb5/os/localauth_rule.c",
+        "line": 101,
+        "context": "\n    /* Find the end of the regexp and make a copy of it. */\n    startp = *contextp + 1;\n    endp = strchr(startp, ')');\n    if (endp == NULL)\n        return KRB5_CONFIG_BADFORMAT;\n    regstr = k5memdup0(startp, endp - startp, &ret);\n    if (regstr == NULL)\n        return ret;\n\n    /* Perform the match. */\n    ret = (regcomp(&re, regstr, REG_EXTENDED) == 0 &&\n           regexec(&re, selstring, 1, &m, 0) == 0 &&\n           m.rm_so == 0 && (size_t)m.rm_eo == strlen(selstring)) ? 0 :\n        KRB5_LNAME_NOTRANS;\n    regfree(&re);\n    free(regstr);\n    *contextp = endp + 1;\n    return ret;\n}\n"
+      },
+      {
+        "file": "krb5-1.20.1/src/lib/krb5/os/localauth_rule.c",
+        "line": 121,
+        "context": "\n/* Replace regular expression matches of regstr with repl in instr, producing\n * *outstr.  If doall is true, replace all matches for regstr. */\nstatic krb5_error_code\ndo_replacement(const char *regstr, const char *repl, krb5_boolean doall,\n               const char *instr, char **outstr)\n{\n    struct k5buf buf;\n    regex_t re;\n    regmatch_t m;\n\n    *outstr = NULL;\n    if (regcomp(&re, regstr, REG_EXTENDED))\n        return KRB5_LNAME_NOTRANS;\n    k5_buf_init_dynamic(&buf);\n    while (regexec(&re, instr, 1, &m, 0) == 0) {\n        k5_buf_add_len(&buf, instr, m.rm_so);\n        k5_buf_add(&buf, repl);\n        instr += m.rm_eo;\n        if (!doall)\n            break;"
+      },
+      {
+        "file": "krb5-1.20.1/src/lib/krb5/os/localauth_rule.c",
+        "line": 124,
+        "context": "static krb5_error_code\ndo_replacement(const char *regstr, const char *repl, krb5_boolean doall,\n               const char *instr, char **outstr)\n{\n    struct k5buf buf;\n    regex_t re;\n    regmatch_t m;\n\n    *outstr = NULL;\n    if (regcomp(&re, regstr, REG_EXTENDED))\n        return KRB5_LNAME_NOTRANS;\n    k5_buf_init_dynamic(&buf);\n    while (regexec(&re, instr, 1, &m, 0) == 0) {\n        k5_buf_add_len(&buf, instr, m.rm_so);\n        k5_buf_add(&buf, repl);\n        instr += m.rm_eo;\n        if (!doall)\n            break;\n    }\n    regfree(&re);\n    k5_buf_add(&buf, instr);"
+      },
+      {
+        "file": "krb5-1.20.1/src/kadmin/dbutil/kdb5_mkey.c",
+        "line": 664,
+        "context": "#endif\n#if !defined(SOLARIS_REGEXPS) && !defined(POSIX_REGEXPS)\n    unsigned char placeholder;\n#endif\n};\n\n/* XXX Duplicated in libkadm5srv! */\n/*\n * Function: glob_to_regexp\n *\n * Arguments:\n *\n *      glob    (r) the shell-style glob (?*[]) to convert\n *      realm   (r) the default realm to append, or NULL\n *      regexp  (w) the ed-style regexp created from glob\n *\n * Effects:\n *\n * regexp is filled in with allocated memory contained a regular\n * expression to be used with re_comp/compile that matches what the\n * shell-style glob would match.  If glob does not contain an \"@\""
+      },
+      {
+        "file": "krb5-1.20.1/src/kadmin/dbutil/kdb5_mkey.c",
+        "line": 768,
+        "context": "                _(\"getting string representation of principal name\"));\n        goto fail;\n    }\n\n    if (krb5_principal_compare(util_context, ent->princ, master_princ)) {\n        goto skip;\n    }\n\n#ifdef SOLARIS_REGEXPS\n    match = (step(pname, p->expbuf) != 0);\n#endif\n#ifdef POSIX_REGEXPS\n    match = (regexec(&p->preg, pname, 0, NULL, 0) == 0);\n#endif\n#ifdef BSD_REGEXPS\n    match = (re_exec(pname) != 0);\n#endif\n    if (!match) {\n        goto skip;\n    }\n    p->re_match_count++;"
+      },
+      {
+        "file": "krb5-1.20.1/src/kadmin/dbutil/kdb5_mkey.c",
+        "line": 925,
+        "context": "        com_err(progname, ENOMEM,\n                _(\"converting glob pattern '%s' to regular expression\"),\n                name_pattern);\n        exit_status++;\n        goto cleanup;\n    }\n\n    if (\n#ifdef SOLARIS_REGEXPS\n        ((data.expbuf = compile(regexp, NULL, NULL)) == NULL)\n#endif\n#ifdef POSIX_REGEXPS\n        ((regcomp(&data.preg, regexp, REG_NOSUB)) != 0)\n#endif\n#ifdef BSD_REGEXPS\n        ((msg = (char *) re_comp(regexp)) != NULL)\n#endif\n    ) {\n        /* XXX syslog msg or regerr(regerrno) */\n        com_err(progname, 0, _(\"error compiling converted regexp '%s'\"),\n                regexp);"
+      },
+      {
+        "file": "krb5-1.20.1/src/kadmin/dbutil/dump.c",
+        "line": 257,
+        "context": "    char regexp_buffer[RE_BUF_SIZE];\n#elif   HAVE_RE_COMP\n    extern char *re_comp();\n    char *re_result;\n#endif  /* HAVE_RE_COMP */\n    int i, match;\n\n    /* Check each regular expression in args. */\n    match = args->nnames ? 0 : 1;\n    for (i = 0; i < args->nnames && !match; i++) {\n#if HAVE_REGCOMP\n        /* Compile the regular expression. */\n        st = regcomp(&reg, args->names[i], REG_EXTENDED);\n        if (st) {\n            regerror(st, &reg, errmsg, sizeof(errmsg));\n            fprintf(stderr, _(\"%s: regular expression error: %s\\n\"), progname,\n                    errmsg);\n            break;\n        }\n        /* See if we have a match. */\n        st = regexec(&reg, name, 1, &rmatch, 0);"
+      },
+      {
+        "file": "krb5-1.20.1/src/kadmin/dbutil/dump.c",
+        "line": 265,
+        "context": "    match = args->nnames ? 0 : 1;\n    for (i = 0; i < args->nnames && !match; i++) {\n#if HAVE_REGCOMP\n        /* Compile the regular expression. */\n        st = regcomp(&reg, args->names[i], REG_EXTENDED);\n        if (st) {\n            regerror(st, &reg, errmsg, sizeof(errmsg));\n            fprintf(stderr, _(\"%s: regular expression error: %s\\n\"), progname,\n                    errmsg);\n            break;\n        }\n        /* See if we have a match. */\n        st = regexec(&reg, name, 1, &rmatch, 0);\n        if (st == 0) {\n            /* See if it matches the whole name. */\n            if (rmatch.rm_so == 0 && (size_t)rmatch.rm_eo == strlen(name))\n                match = 1;\n        } else if (st != REG_NOMATCH) {\n            regerror(st, &reg, errmsg, sizeof(errmsg));\n            fprintf(stderr, _(\"%s: regular expression match error: %s\\n\"),\n                    progname, errmsg);"
+      }
+    ]
+  },
+  {
+    "archive": ".local/security-residual-os-2026-11-25/vendor/krb5-1.21.3.tar.gz",
+    "sha256": "b7a4cd5ead67fb08b980b21abd150ff7217e85ea320c9ed0c6dadd304840ad35",
+    "matches": [
+      {
+        "file": "krb5-1.21.3/src/lib/krb5/os/localauth_rule.c",
+        "line": 100,
+        "context": "        return 0;\n\n    /* Find the end of the regexp and make a copy of it. */\n    startp = *contextp + 1;\n    endp = strchr(startp, ')');\n    if (endp == NULL)\n        return KRB5_CONFIG_BADFORMAT;\n    regstr = k5memdup0(startp, endp - startp, &ret);\n    if (regstr == NULL)\n        return ret;\n\n    /* Perform the match. */\n    ret = (regcomp(&re, regstr, REG_EXTENDED) == 0 &&\n           regexec(&re, selstring, 1, &m, 0) == 0 &&\n           m.rm_so == 0 && (size_t)m.rm_eo == strlen(selstring)) ? 0 :\n        KRB5_LNAME_NOTRANS;\n    regfree(&re);\n    free(regstr);\n    *contextp = endp + 1;\n    return ret;\n}"
+      },
+      {
+        "file": "krb5-1.21.3/src/lib/krb5/os/localauth_rule.c",
+        "line": 101,
+        "context": "\n    /* Find the end of the regexp and make a copy of it. */\n    startp = *contextp + 1;\n    endp = strchr(startp, ')');\n    if (endp == NULL)\n        return KRB5_CONFIG_BADFORMAT;\n    regstr = k5memdup0(startp, endp - startp, &ret);\n    if (regstr == NULL)\n        return ret;\n\n    /* Perform the match. */\n    ret = (regcomp(&re, regstr, REG_EXTENDED) == 0 &&\n           regexec(&re, selstring, 1, &m, 0) == 0 &&\n           m.rm_so == 0 && (size_t)m.rm_eo == strlen(selstring)) ? 0 :\n        KRB5_LNAME_NOTRANS;\n    regfree(&re);\n    free(regstr);\n    *contextp = endp + 1;\n    return ret;\n}\n"
+      },
+      {
+        "file": "krb5-1.21.3/src/lib/krb5/os/localauth_rule.c",
+        "line": 121,
+        "context": "\n/* Replace regular expression matches of regstr with repl in instr, producing\n * *outstr.  If doall is true, replace all matches for regstr. */\nstatic krb5_error_code\ndo_replacement(const char *regstr, const char *repl, krb5_boolean doall,\n               const char *instr, char **outstr)\n{\n    struct k5buf buf;\n    regex_t re;\n    regmatch_t m;\n\n    *outstr = NULL;\n    if (regcomp(&re, regstr, REG_EXTENDED))\n        return KRB5_LNAME_NOTRANS;\n    k5_buf_init_dynamic(&buf);\n    while (regexec(&re, instr, 1, &m, 0) == 0) {\n        k5_buf_add_len(&buf, instr, m.rm_so);\n        k5_buf_add(&buf, repl);\n        instr += m.rm_eo;\n        if (!doall)\n            break;"
+      },
+      {
+        "file": "krb5-1.21.3/src/lib/krb5/os/localauth_rule.c",
+        "line": 124,
+        "context": "static krb5_error_code\ndo_replacement(const char *regstr, const char *repl, krb5_boolean doall,\n               const char *instr, char **outstr)\n{\n    struct k5buf buf;\n    regex_t re;\n    regmatch_t m;\n\n    *outstr = NULL;\n    if (regcomp(&re, regstr, REG_EXTENDED))\n        return KRB5_LNAME_NOTRANS;\n    k5_buf_init_dynamic(&buf);\n    while (regexec(&re, instr, 1, &m, 0) == 0) {\n        k5_buf_add_len(&buf, instr, m.rm_so);\n        k5_buf_add(&buf, repl);\n        instr += m.rm_eo;\n        if (!doall)\n            break;\n    }\n    regfree(&re);\n    k5_buf_add(&buf, instr);"
+      },
+      {
+        "file": "krb5-1.21.3/src/lib/kadm5/srv/svr_iters.c",
+        "line": 52,
+        "context": "#endif\n#ifdef POSIX_REGEXPS\n    regex_t preg;\n#endif\n};\n\n/* XXX Duplicated in kdb5_util!  */\n/*\n * Function: glob_to_regexp\n *\n * Arguments:\n *\n *      glob    (r) the shell-style glob (?*[]) to convert\n *      realm   (r) the default realm to append, or NULL\n *      regexp  (w) the ed-style regexp created from glob\n *\n * Effects:\n *\n * regexp is filled in with allocated memory contained a regular\n * expression to be used with re_comp/compile that matches what the\n * shell-style glob would match.  If glob does not contain an \"@\""
+      },
+      {
+        "file": "krb5-1.21.3/src/lib/kadm5/srv/svr_iters.c",
+        "line": 137,
+        "context": "    *p++ = '$';\n    *p++ = '\\0';\n    return KADM5_OK;\n}\n\nstatic void get_either_iter(struct iter_data *data, char *name)\n{\n    int match;\n#ifdef SOLARIS_REGEXPS\n    match = (step(name, data->expbuf) != 0);\n#endif\n#ifdef POSIX_REGEXPS\n    match = (regexec(&data->preg, name, 0, NULL, 0) == 0);\n#endif\n#ifdef BSD_REGEXPS\n    match = (re_exec(name) != 0);\n#endif\n    if (match) {\n        if (data->n_names == data->sz_names) {\n            int new_sz = data->sz_names * 2;\n            char **new_names = realloc(data->names,"
+      },
+      {
+        "file": "krb5-1.21.3/src/lib/kadm5/srv/svr_iters.c",
+        "line": 210,
+        "context": "\n    CHECK_HANDLE(server_handle);\n\n    if ((ret = glob_to_regexp(exp, princ ? handle->params.realm : NULL,\n                              &regexp)) != KADM5_OK)\n        return ret;\n\n    if (\n#ifdef SOLARIS_REGEXPS\n        ((data.expbuf = compile(regexp, NULL, NULL)) == NULL)\n#endif\n#ifdef POSIX_REGEXPS\n        ((regcomp(&data.preg, regexp, REG_NOSUB)) != 0)\n#endif\n#ifdef BSD_REGEXPS\n        ((msg = (char *) re_comp(regexp)) != NULL)\n#endif\n    )\n    {\n        /* XXX syslog msg or regerr(regerrno) */\n        free(regexp);"
+      },
+      {
+        "file": "krb5-1.21.3/src/lib/gssapi/mechglue/g_initialize.c",
+        "line": 503,
+        "context": "\t\treturn;\n\tg_confLastCall = now;\n\n\tval = secure_getenv(\"GSS_MECH_CONFIG\");\n\tif (val != NULL) {\n\t\tload_if_changed(val, g_confFileModTime, &g_confFileModTime);\n\t\treturn;\n\t}\n\n\tload_if_changed(MECH_CONF, g_confFileModTime, &highest);\n\n\tmemset(&globbuf, 0, sizeof(globbuf));\n\tif (glob(MECH_CONF_PATTERN, 0, NULL, &globbuf) == 0) {\n\t\tfor (path = globbuf.gl_pathv; *path != NULL; path++)\n\t\t\tload_if_changed(*path, g_confFileModTime, &highest);\n\t}\n\tglobfree(&globbuf);\n\n\tg_confFileModTime = highest;\n}\n#endif"
+      },
+      {
+        "file": "krb5-1.21.3/src/plugins/preauth/pkinit/pkinit_matching.c",
+        "line": 343,
+        "context": "\n    value = calloc(1, len+1);\n    if (value == NULL) {\n        retval = ENOMEM;\n        goto out;\n    }\n    memcpy(value, *rule, len);\n    *remaining -= len;\n    *rule += len;\n    pkiDebug(\"%s: found value '%s'\\n\", __FUNCTION__, value);\n\n    if (kw->kwvaltype == kwvaltype_regexp) {\n        ret = regcomp(&rc->regexp, value, REG_EXTENDED);\n        if (ret) {\n            regerror(ret, &rc->regexp, err_buf, sizeof(err_buf));\n            pkiDebug(\"%s: Error compiling reg-exp '%s': %s\\n\",\n                     __FUNCTION__, value, err_buf);\n            retval = ret;\n            goto out;\n        }\n        rc->regsrc = strdup(value);"
+      },
+      {
+        "file": "krb5-1.21.3/src/plugins/preauth/pkinit/pkinit_matching.c",
+        "line": 455,
+        "context": "    if (retval && rs != NULL) {\n        free_rule_set(context, rs);\n    }\n    pkiDebug(\"%s: returning %d\\n\", __FUNCTION__, retval);\n    return retval;\n}\n\nstatic int\nregexp_match(krb5_context context, rule_component *rc, char *value, int idx)\n{\n    int code;\n\n    code = regexec(&rc->regexp, value, 0, NULL, 0);\n\n    if (code == 0) {\n        TRACE_PKINIT_REGEXP_MATCH(context, keyword2string(rc->kw_type),\n                                  rc->regsrc, value, idx);\n    } else {\n        TRACE_PKINIT_REGEXP_NOMATCH(context, keyword2string(rc->kw_type),\n                                    rc->regsrc, value, idx);\n    }"
+      },
+      {
+        "file": "krb5-1.21.3/src/kadmin/dbutil/dump.c",
+        "line": 257,
+        "context": "    char regexp_buffer[RE_BUF_SIZE];\n#elif   HAVE_RE_COMP\n    extern char *re_comp();\n    char *re_result;\n#endif  /* HAVE_RE_COMP */\n    int i, match;\n\n    /* Check each regular expression in args. */\n    match = args->nnames ? 0 : 1;\n    for (i = 0; i < args->nnames && !match; i++) {\n#if HAVE_REGCOMP\n        /* Compile the regular expression. */\n        st = regcomp(&reg, args->names[i], REG_EXTENDED);\n        if (st) {\n            regerror(st, &reg, errmsg, sizeof(errmsg));\n            fprintf(stderr, _(\"%s: regular expression error: %s\\n\"), progname,\n                    errmsg);\n            break;\n        }\n        /* See if we have a match. */\n        st = regexec(&reg, name, 1, &rmatch, 0);"
+      },
+      {
+        "file": "krb5-1.21.3/src/kadmin/dbutil/dump.c",
+        "line": 265,
+        "context": "    match = args->nnames ? 0 : 1;\n    for (i = 0; i < args->nnames && !match; i++) {\n#if HAVE_REGCOMP\n        /* Compile the regular expression. */\n        st = regcomp(&reg, args->names[i], REG_EXTENDED);\n        if (st) {\n            regerror(st, &reg, errmsg, sizeof(errmsg));\n            fprintf(stderr, _(\"%s: regular expression error: %s\\n\"), progname,\n                    errmsg);\n            break;\n        }\n        /* See if we have a match. */\n        st = regexec(&reg, name, 1, &rmatch, 0);\n        if (st == 0) {\n            /* See if it matches the whole name. */\n            if (rmatch.rm_so == 0 && (size_t)rmatch.rm_eo == strlen(name))\n                match = 1;\n        } else if (st != REG_NOMATCH) {\n            regerror(st, &reg, errmsg, sizeof(errmsg));\n            fprintf(stderr, _(\"%s: regular expression match error: %s\\n\"),\n                    progname, errmsg);"
+      },
+      {
+        "file": "krb5-1.21.3/src/kadmin/dbutil/kdb5_mkey.c",
+        "line": 664,
+        "context": "#endif\n#if !defined(SOLARIS_REGEXPS) && !defined(POSIX_REGEXPS)\n    unsigned char placeholder;\n#endif\n};\n\n/* XXX Duplicated in libkadm5srv! */\n/*\n * Function: glob_to_regexp\n *\n * Arguments:\n *\n *      glob    (r) the shell-style glob (?*[]) to convert\n *      realm   (r) the default realm to append, or NULL\n *      regexp  (w) the ed-style regexp created from glob\n *\n * Effects:\n *\n * regexp is filled in with allocated memory contained a regular\n * expression to be used with re_comp/compile that matches what the\n * shell-style glob would match.  If glob does not contain an \"@\""
+      },
+      {
+        "file": "krb5-1.21.3/src/kadmin/dbutil/kdb5_mkey.c",
+        "line": 768,
+        "context": "                _(\"getting string representation of principal name\"));\n        goto fail;\n    }\n\n    if (krb5_principal_compare(util_context, ent->princ, master_princ)) {\n        goto skip;\n    }\n\n#ifdef SOLARIS_REGEXPS\n    match = (step(pname, p->expbuf) != 0);\n#endif\n#ifdef POSIX_REGEXPS\n    match = (regexec(&p->preg, pname, 0, NULL, 0) == 0);\n#endif\n#ifdef BSD_REGEXPS\n    match = (re_exec(pname) != 0);\n#endif\n    if (!match) {\n        goto skip;\n    }\n    p->re_match_count++;"
+      },
+      {
+        "file": "krb5-1.21.3/src/kadmin/dbutil/kdb5_mkey.c",
+        "line": 925,
+        "context": "        com_err(progname, ENOMEM,\n                _(\"converting glob pattern '%s' to regular expression\"),\n                name_pattern);\n        exit_status++;\n        goto cleanup;\n    }\n\n    if (\n#ifdef SOLARIS_REGEXPS\n        ((data.expbuf = compile(regexp, NULL, NULL)) == NULL)\n#endif\n#ifdef POSIX_REGEXPS\n        ((regcomp(&data.preg, regexp, REG_NOSUB)) != 0)\n#endif\n#ifdef BSD_REGEXPS\n        ((msg = (char *) re_comp(regexp)) != NULL)\n#endif\n    ) {\n        /* XXX syslog msg or regerr(regerrno) */\n        com_err(progname, 0, _(\"error compiling converted regexp '%s'\"),\n                regexp);"
+      }
+    ]
+  }
+]

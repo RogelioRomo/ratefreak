@@ -1,0 +1,31 @@
+[
+  {
+    "image": "api",
+    "prior_image_id": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+    "final_image_id": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "elf_records": 1632,
+    "changed_paths": [],
+    "changed_path_needed_and_selected_symbols_unchanged": true,
+    "os_native_libraries_identical": true
+  },
+  {
+    "image": "web",
+    "prior_image_id": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+    "final_image_id": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "elf_records": 1433,
+    "changed_paths": [],
+    "changed_path_needed_and_selected_symbols_unchanged": true,
+    "os_native_libraries_identical": true
+  },
+  {
+    "image": "tools",
+    "prior_image_id": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b",
+    "final_image_id": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "elf_records": 1650,
+    "changed_paths": [
+      "/app/efbundle"
+    ],
+    "changed_path_needed_and_selected_symbols_unchanged": true,
+    "os_native_libraries_identical": true
+  }
+]

@@ -1,0 +1,64 @@
+{
+  "archive": {
+    "bytes": 2435,
+    "file": "ratefreak-collation-cea8ac6e6f-synthetic.dump",
+    "sha256": "410e864ec00158f78751353950f9800b1e7608eddf4140e3ccec61bc6eb40018"
+  },
+  "before": {
+    "custom": {
+      "actual": "153.120",
+      "name": "fixture_icu",
+      "stored": "153.120"
+    },
+    "database": {
+      "actual": "2.36",
+      "name": "ratefreak",
+      "stored": "2.36"
+    },
+    "server": "PostgreSQL 17.12 (Debian 17.12-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit"
+  },
+  "before_guard": "t",
+  "bookworm": "postgres:17-bookworm@sha256:1eff563f6c868b9b433566e9f3cf6e5c79fbd3b95bf70ec7277d376cdbfc50d7",
+  "cleanup": {
+    "owned_containers_removed": true,
+    "owned_volumes_removed": true,
+    "prefix": "ratefreak-collation-cea8ac6e6f"
+  },
+  "complete": true,
+  "custom_icu_collation_recreated_at_current_version": true,
+  "format": 1,
+  "fresh_metadata_matches_runtime": true,
+  "logical_restore_preserved_rows": true,
+  "restored_guard": "t",
+  "restored_index_order_matches_sequence_order": true,
+  "restored_volume": {
+    "custom": {
+      "actual": "153.128",
+      "name": "fixture_icu",
+      "stored": "153.128"
+    },
+    "database": {
+      "actual": "2.41",
+      "name": "ratefreak",
+      "stored": "2.41"
+    },
+    "server": "PostgreSQL 17.12 (Debian 17.12-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit"
+  },
+  "reused_guard": "f",
+  "reused_heap_data_preserved_not_index_safety_proof": true,
+  "reused_volume": {
+    "custom": {
+      "actual": "153.128",
+      "name": "fixture_icu",
+      "stored": "153.120"
+    },
+    "database": {
+      "actual": "2.41",
+      "name": "ratefreak",
+      "stored": "2.36"
+    },
+    "server": "PostgreSQL 17.12 (Debian 17.12-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit"
+  },
+  "scope": "Networkless synthetic fixture only; no persistent application instance/data.",
+  "trixie": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf"
+}

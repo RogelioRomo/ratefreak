@@ -1,0 +1,28 @@
+from pathlib import Path
+import json,hashlib
+b=Path(__file__).resolve().parent;rows=json.loads((b/'network-findings.json').read_text());base=json.loads((b/'caller-proof.json').read_text());out=[]
+for r in rows:
+ id=r['advisory'];src=r['source'];c=json.loads((b/(id+'.json')).read_text());condition=c['containers']['cna']['descriptions'][0]['value'];status='conditional-supported-caller-exclusion'
+ if src=='cyrus-sasl2':
+  text='PostgreSQL uses its own SCRAM implementation (src/backend/libpq/auth-scram.c, src/interfaces/libpq/fe-auth-scram.c), not the Cyrus SCRAM/SRP/DIGEST plugins. Its selected HBA/entrypoint uses SCRAM and peer/trust for supported initialization; it does not run saslauthd or a Cyrus protocol service. Actual Cyrus dependency is via libldap, whose LDAP auth/lookup path is not configured in the supplied reference flow. PostgreSQL SASL protocol tokens do not imply invocation of the affected Cyrus '+('DIGEST-MD5 client' if id=='CVE-2026-107161' else 'SRP server' if id=='CVE-2026-129483' else 'SCRAM channel-binding server')+' mechanism.'
+ elif src=='openldap':
+  if id=='CVE-2015-3276':text='Condition is nss_parse_ciphers in the Mozilla NSS tls_m backend. Actual selected libldap.so.2.0.200 links libssl.so.3/libcrypto.so.3, not NSS. Independently, supplied PostgreSQL flow uses neither configured LDAP HBA authentication nor LDAP libpq service discovery.'
+  elif id=='CVE-2020-15719':text='Requires LDAP TLS certificate hostname validation by a libldap caller. PostgreSQL really imports libldap for optional HBA authentication and client LDAP lookup, but current supplied HBA uses SCRAM and client uses explicit database host rather than LDAP discovery. Supported initialization, health and maintenance do not invoke LDAP TLS.'
+  elif id=='CVE-2026-22185':text='CVE specifically requires malformed text input to the standalone LMDB mdb_load utility; it is not the SQL/PostgreSQL database parser. Supplied startup, schema and maintenance use initdb/psql/pg_dump/pg_restore and do not load LMDB dumps or invoke mdb_load.'
+  else:text='Condition requires running slapd with the affected PID management or configured nops/memberof module. Supplied container entrypoint starts PostgreSQL; health and maintenance do not start slapd or configure an LDAP directory daemon. Actual libldap linkage for optional client/auth functionality does not invoke slapd daemon PID or overlay code.'
+ elif id=='CVE-2018-5709':text='Condition is KDC administration database-dump loading in kadmin/dbutil/dump.c. Supplied flow runs PostgreSQL/libpq GSS client/acceptor support but does not run kadmin/kdb5_util, host a Kerberos database or import its dumps. PostgreSQL custom-format backups are unrelated to Kerberos database dumps.'
+ elif id=='CVE-2024-26458':text='Condition is RPC portmapper remote-call implementation lib/rpc/pmap_rmt.c. Actual PostgreSQL server/libpq depend on libgssapi_krb5, not libgssrpc, and their exact undefined symbols show GSS context/wrap APIs rather than portmapper RPC. Supplied flow launches no Kerberos admin RPC/KDC service or RPC portmapper consumer. No library-absence claim is used for installed optional utilities.'
+ elif id=='CVE-2026-107708':text='Condition is KDC get_pac_princ_with_realm while processing malicious cross-realm S4U2Proxy PACs. PostgreSQL is a GSS acceptor/client, not krb5kdc; its supported entrypoint does not start a KDC or host its realm/admin service. This excludes that KDC-server condition and does not exclude GSS acceptor parsing generally.'
+ else:
+  status='open'
+  text='Actual PostgreSQL GSS use remains relevant: '+('gss_accept_sec_context can process the crafted forwarded KRB-CRED array. SCRAM HBA does not by itself remove the pre-authentication GSS encryption negotiation path. Parent has independent package-fix evidence to apply if it binds this exact advisory/version.' if id=='CVE-2026-107778' else 'gss_wrap uses k5sealv3. This review has not proved whether the precise memory-leak branch is excluded for supported GSS context/wrap flags. Do not claim no Kerberos or GSS solely from SCRAM HBA.')
+ out.append({'image':'postgres-trixie','image_reference':base['image_reference'],'source':src,'id':id,'matches':r['matches'],'condition':condition,'assessment':text,'disposition':status,'evidence':['pg-native-families/caller-proof.json','pg-native-families/'+id+'.json','postgres-core/probe.json','cli-callers/postgres-entrypoint.sh','pg-native-families/source/src/backend/libpq/auth.c','pg-native-families/source/src/interfaces/libpq/fe-connect.c'],'source_limit':base['source_limit'],'reassess_if':['Change HBA, LDAP service discovery, GSS flags/forwarding, daemon command, custom init script, extension or external crypto/Kerberos service configuration.']})
+(b/'network-assessments.json').write_text(json.dumps(out,indent=2)+'\n');print(len(out),'records;',sum(r['disposition']!='open' for r in out),'exclusions; open:',[r['id'] for r in out if r['disposition']=='open'])
+# Retain extra native SCRAM implementation source to distinguish protocol from Cyrus.
+pg=b.parents[1]/'security-clearance-2026-11-25/postgres-os-investigation/postgresql-17.12'
+for rel in ['src/backend/libpq/auth-scram.c','src/interfaces/libpq/fe-auth-scram.c','src/backend/libpq/be-secure-gssapi.c']:
+ p=b/'source'/rel;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes((pg/rel).read_bytes())
+manifest=[]
+for p in sorted(b.rglob('*')):
+ if p.is_file() and p.name!='proof-manifest.json':manifest.append({'file':str(p.relative_to(b)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size})
+(b/'proof-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

@@ -1,0 +1,17 @@
+{
+  "scope": "Independent review of shared-checkout runtime/database/decoder changes; not overall security clearance.",
+  "findings": [
+    {
+      "severity": "important",
+      "finding": "Next lazy optimizer initialization re-enabled the HEIF loader after startup block.",
+      "resolution": "Initialize the exact runtime optimizer before blocking. Real optimizeImage regression observed RED then GREEN; exact production compiled startup/optimizer probe passed.",
+      "re_review_claimed": false
+    }
+  ],
+  "remaining_security_scope": [
+    "PostgreSQL preauthentication GSS/shared ASN.1 caller conditions",
+    "Remaining OS and recursive native assessments",
+    "Skia126912 fix/caller evidence",
+    "Final stable candidate qualification"
+  ]
+}

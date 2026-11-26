@@ -1,0 +1,12 @@
+[
+  {
+    "file": "consumer-source/node/deps/v8/src/maglev/maglev-basic-block.h",
+    "archive_member": "node-v24.22.3/deps/v8/src/maglev/maglev-basic-block.h",
+    "sha256": "32cc980fc5c8a3ceb7e2754c10302acc68574e687ed6a59d52707c4f45158150"
+  },
+  {
+    "file": "consumer-source/node/deps/v8/src/wasm/wasm-module.h",
+    "archive_member": "node-v24.22.3/deps/v8/src/wasm/wasm-module.h",
+    "sha256": "ff878406f0f829527fd00106ee2aaf761b4d354839dd053f7c29b0d29637e75c"
+  }
+]

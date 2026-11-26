@@ -1,0 +1,80 @@
+{
+  "api": {
+    "image_id": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges:true",
+      "--env",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "--entrypoint",
+      "python3",
+      "--mount",
+      "type=bind,src=/home/rhaydon/documents/repos/ratefreak/.local/security-runtime-guard-2026-11-25/residual-probes/probe.py,dst=/probe.py,readonly",
+      "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+      "/probe.py"
+    ],
+    "exit_code": 0,
+    "elf_files": 77,
+    "report_sha256": "dd58a286944d8befa1af70b8e41a0c56fb708af8e9c10171341b2db82ea8289b"
+  },
+  "web": {
+    "image_id": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges:true",
+      "--env",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "--entrypoint",
+      "python3",
+      "--mount",
+      "type=bind,src=/home/rhaydon/documents/repos/ratefreak/.local/security-runtime-guard-2026-11-25/residual-probes/probe.py,dst=/probe.py,readonly",
+      "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+      "/probe.py"
+    ],
+    "exit_code": 0,
+    "elf_files": 51,
+    "report_sha256": "e7c6d671c8b4d7bcd6bff13e396aa4f271f0065f106a7fab078341052a419b7d"
+  },
+  "tools": {
+    "image_id": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges:true",
+      "--env",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "--entrypoint",
+      "python3",
+      "--mount",
+      "type=bind,src=/home/rhaydon/documents/repos/ratefreak/.local/security-runtime-guard-2026-11-25/residual-probes/probe.py,dst=/probe.py,readonly",
+      "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+      "/probe.py"
+    ],
+    "exit_code": 0,
+    "elf_files": 97,
+    "report_sha256": "6378614bc0619cd9fccb4b591d3f1d7f75d3527802ee68f495dfc5f6c7f2b24d"
+  }
+}

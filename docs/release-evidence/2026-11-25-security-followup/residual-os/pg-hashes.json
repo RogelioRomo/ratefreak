@@ -1,0 +1,16 @@
+{
+  "docs/release-evidence/2026-11-25-security-followup/advisory-ledger.json": "a9efb5d03b10875030a0e063be38492188fdd13bc86f5f3da574f11ed57845fe",
+  ".local/security-clearance-2026-11-25/postgres-trixie-trivy.json": "677f3c81143f5316a4e28034276105af3375ed74b2ad9fbe47a8dbe8303dbd28",
+  "deploy/self-host/compose.yaml": "bbd70bddb9b6f2786b0a8cae0c32c0b0198db0c46d90fb25e48b8fa22c21e3f1",
+  "deploy/self-host/database.sql": "e5a6838312fc141f7b9c4436a328b087357b02e01a5fe71f0a38e6e023c2653b",
+  ".local/security-residual-os-2026-11-25/pg-elf-probe.json": "5ce8d7e2b84fdf94256d540f3edf63f051cf17f4d0ae2492826140fdac8916a8",
+  ".local/security-residual-os-2026-11-25/pg-docker-entrypoint.sh": "48647812e68165e2943abe82a1a7cb8364d6e9f8b6b6aefc179868b66a327c46",
+  ".local/security-residual-os-2026-11-25/pg_elf_probe.py": "7cf2b3c21d488737f5fb70e355bdb6c7d3a2b546981e64223f46057b00b7b8f8",
+  ".local/security-residual-os-2026-11-25/pg_assess.py": "757ebdb49d00d37448a8ba31b8b4ff49cf46c9c00a5e72e16ca568e1b9eb6ba3",
+  ".local/security-residual-os-2026-11-25/pg-assessments.json": "92448379870a4e896d05509972d2c5ded17016a4c963087a8c8cf07594674ecc",
+  ".local/security-residual-os-2026-11-25/pg-libedit-callers.json": "04c824b1449ecfabcf1b202be88e6f03c6bb0f96d45db6a3da0819207540d5a0",
+  ".local/security-residual-os-2026-11-25/pg-libedit-caller-closure.json": "75bad9a282c550517a8e7252d795f645e0ba4f9922aba6177d40c44a40f44e18",
+  ".local/security-residual-os-2026-11-25/pg-config-metadata.json": "22fa4652f5f0c52bb6be1432ba0045880ea1b83b99e4981b3ee3537eca910344",
+  ".local/security-residual-os-2026-11-25/vendor/libedit-acquisition.json": "31be404d3c82374b3f02a9c3566e151cef2c2a4114b71ffad8e1904bf35c218d",
+  ".local/security-residual-os-2026-11-25/pg-caller-review.md": "423b18db3f1c8010b4542b92106ddce7b73cf206b671e1b0d77091de44b581f0"
+}

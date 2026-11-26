@@ -1,0 +1,18 @@
+[
+  {
+    "path": "assessments.json",
+    "sha256": "ffff80ed21920e178eb5c1bfb65fbd77d98976d849a952a5a4a6f40b87d92a43"
+  },
+  {
+    "path": "source-input-hashes.json",
+    "sha256": "c25967cd0dc007f4e6169563cb148395fd87c0a61131e78cc2614770e8a41eed"
+  },
+  {
+    "path": "entrypoint-caller-review.json",
+    "sha256": "6094864c7cf2959f1992f6772a34f24dc3ba83146ba19411ada355c958b5714a"
+  },
+  {
+    "path": "review.md",
+    "sha256": "ef934d525e48d6a638f6207a26d57f329d827fe43063b2c8448d3d128c3df3a0"
+  }
+]

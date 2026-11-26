@@ -1,0 +1,38 @@
+[
+  {
+    "path": "deploy/self-host/compose.yaml",
+    "sha256": "bbd70bddb9b6f2786b0a8cae0c32c0b0198db0c46d90fb25e48b8fa22c21e3f1"
+  },
+  {
+    "path": "deploy/self-host/entrypoint.py",
+    "sha256": "6ff6b8176b3234164a8c6a058dec24f4a2ea5688a3d179e482d00f7111c8694a"
+  },
+  {
+    "path": "src/RateFreak.Infrastructure/DependencyInjection.cs",
+    "sha256": "bd944e62e79a21d008c1c958136b397d8471734749b0694144890b3881b60527"
+  },
+  {
+    "path": "src/RateFreak.Api/Security/ExternalIdentityReader.cs",
+    "sha256": "129dccb230e7714a6a1bb068a9fac83448c9a593575029ea2d6f8cad5c0686f5"
+  },
+  {
+    "path": "src/RateFreak.Api/Security/ExternalAuthentication.cs",
+    "sha256": "c49cb587cd9b34e30b51ac45734f2d9602c5edc1bb4a06f467955ccb6ddb296d"
+  },
+  {
+    "path": "src/RateFreak.Api/Security/ApiSecurity.cs",
+    "sha256": "a386213b93b7ddcce1399ca863d4e49356fd8aa61bf0320c7778bfca4853f99e"
+  },
+  {
+    "path": ".local/security-runtime-guard-2026-11-25/binary-probe-final.json",
+    "sha256": "016f0313f39e9a90b1dc76b96a9da2ef44eddd6006d371abc2d51e29f4e27d37"
+  },
+  {
+    "path": ".local/security-runtime-guard-2026-11-25/residual-probes/api-probe.json",
+    "sha256": "dd58a286944d8befa1af70b8e41a0c56fb708af8e9c10171341b2db82ea8289b"
+  },
+  {
+    "path": "docs/release-evidence/2026-11-25-security-followup/advisory-ledger.json",
+    "sha256": "a9efb5d03b10875030a0e063be38492188fdd13bc86f5f3da574f11ed57845fe"
+  }
+]

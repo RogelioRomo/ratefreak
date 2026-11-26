@@ -1,0 +1,34 @@
+{
+  "api": {
+    "current_image_id": "sha256:3984e4af4f632a888cdb60337103b44bc8c88a9450e89631761fef1b87e822e0",
+    "prior_image_id": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+    "matched_elf_files": 501,
+    "changed": [],
+    "unmatched_paths": [],
+    "source_files_unchanged": true,
+    "current_file_inventory_sha256": "b413d91c27c586a793e6f29b421545f3f86ffa75e2aad5fc2c5800da12ec99fc",
+    "prior_elf_report_sha256": "9c768ec0a14e7aa961c23679d713ef9acd6403ff8e0f8b352a03c9f2b42b0077"
+  },
+  "web": {
+    "current_image_id": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "prior_image_id": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+    "matched_elf_files": 440,
+    "changed": [],
+    "unmatched_paths": [],
+    "source_files_unchanged": true,
+    "current_file_inventory_sha256": "a45561164faead75b5bc9ad355efbd85814bbd709dc966e1f5be35e01bea2baf",
+    "prior_elf_report_sha256": "de0d81006dec1884c0c6227ae8647a559a82c5798ec20021ac893d29b623f826"
+  },
+  "tools": {
+    "current_image_id": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "prior_image_id": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b",
+    "matched_elf_files": 557,
+    "changed": [
+      "/app/efbundle"
+    ],
+    "unmatched_paths": [],
+    "source_files_unchanged": true,
+    "current_file_inventory_sha256": "45a0ef76b06c895901d5c3a8c7bc75111f276a8b208b6a7d0e276c5223f650e9",
+    "prior_elf_report_sha256": "f3f3e88dd7eaf8df43b64509c6ad707d3f7f95310805a1bbf9268471829f2091"
+  }
+}

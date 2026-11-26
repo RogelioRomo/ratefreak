@@ -1,0 +1,255 @@
+{
+  "api": {
+    "image_id": "sha256:f3359d3594f31e845fa9cf1058a10effdbcd9260a5a6fff4a1a0a13261e18f83",
+    "elf_records": 1632,
+    "unique_elf_hashes": 828,
+    "from_chars_imports": [],
+    "from_chars_definitions": [
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+        "symbol": "_ZSt22__from_chars_float16_tPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+        "symbol": "_ZSt10from_charsPKcS0_ReSt12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+        "symbol": "_ZSt23__from_chars_bfloat16_tPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+        "symbol": "_ZSt10from_charsPKcS0_RDF128_St12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+        "symbol": "_ZSt10from_charsPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+        "symbol": "_ZSt10from_charsPKcS0_RdSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+        "symbol": "_ZSt22__from_chars_float16_tPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+        "symbol": "_ZSt10from_charsPKcS0_ReSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+        "symbol": "_ZSt23__from_chars_bfloat16_tPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+        "symbol": "_ZSt10from_charsPKcS0_RDF128_St12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+        "symbol": "_ZSt10from_charsPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+        "symbol": "_ZSt10from_charsPKcS0_RdSt12chars_format"
+      }
+    ],
+    "file_stream_importers": [
+      "/lib/x86_64-linux-gnu/libapt-pkg.so.6.0.0",
+      "/lib/x86_64-linux-gnu/libapt-private.so.0.0.0",
+      "/lib/x86_64-linux-gnu/libicutu.so.74.2",
+      "/usr/lib/x86_64-linux-gnu/libapt-pkg.so.6.0.0",
+      "/usr/lib/x86_64-linux-gnu/libapt-private.so.0.0.0",
+      "/usr/lib/x86_64-linux-gnu/libicutu.so.74.2"
+    ]
+  },
+  "web": {
+    "image_id": "sha256:4a6b8ab7205e4876631bcd76313c756c74f2a1fb144340774f68fb9cd9e42bad",
+    "elf_records": 1433,
+    "unique_elf_hashes": 717,
+    "from_chars_imports": [],
+    "from_chars_definitions": [
+      {
+        "path": "/usr/local/bin/node",
+        "sha256": "a7ec1b37e6ff9d187e4198c5b6df9a4eb1c74dd31804fb3bac55cc4ceca1ac01",
+        "symbol": "_ZN8simdjson8internal10from_charsEPKc"
+      },
+      {
+        "path": "/usr/local/bin/node",
+        "sha256": "a7ec1b37e6ff9d187e4198c5b6df9a4eb1c74dd31804fb3bac55cc4ceca1ac01",
+        "symbol": "_ZN8simdjson8internal10from_charsEPKcS2_"
+      },
+      {
+        "path": "/usr/local/bin/node",
+        "sha256": "a7ec1b37e6ff9d187e4198c5b6df9a4eb1c74dd31804fb3bac55cc4ceca1ac01",
+        "symbol": "_ZSt10from_charsItENSt9enable_ifIXsrSt5__or_IJS1_IJSt7is_sameINSt9remove_cvIT_E4typeEaES2_IS6_sES2_IS6_iES2_IS6_lES2_IS6_xES2_IS6_nEEES1_IJS2_IS6_hES2_IS6_tES2_IS6_jES2_IS6_mES2_IS6_yES2_IS6_oEEES2_IcS6_EEE5valueESt17from_chars_resultE4typeEPKcSR_RS4_i.constprop.0"
+      },
+      {
+        "path": "/usr/local/bin/node",
+        "sha256": "a7ec1b37e6ff9d187e4198c5b6df9a4eb1c74dd31804fb3bac55cc4ceca1ac01",
+        "symbol": "_ZN10fast_float19from_chars_advancedIdcEENS_19from_chars_result_tIT0_EERNS_22parsed_number_string_tIS2_EERT_"
+      },
+      {
+        "path": "/usr/local/bin/node",
+        "sha256": "a7ec1b37e6ff9d187e4198c5b6df9a4eb1c74dd31804fb3bac55cc4ceca1ac01",
+        "symbol": "_ZN10fast_float19from_chars_advancedIdDsEENS_19from_chars_result_tIT0_EERNS_22parsed_number_string_tIS2_EERT_"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt22__from_chars_float16_tPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_ReSt12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt23__from_chars_bfloat16_tPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_RDF128_St12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_RdSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt22__from_chars_float16_tPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_ReSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt23__from_chars_bfloat16_tPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_RDF128_St12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_RdSt12chars_format"
+      }
+    ],
+    "file_stream_importers": [
+      "/app/node_modules/.pnpm/@img+sharp-linux-x64@0.35.5/node_modules/@img/sharp-linux-x64/lib/sharp-linux-x64-0.35.5.node",
+      "/lib/x86_64-linux-gnu/libapt-pkg.so.7.0.0",
+      "/lib/x86_64-linux-gnu/libapt-private.so.0.0.0",
+      "/usr/lib/x86_64-linux-gnu/libapt-pkg.so.7.0.0",
+      "/usr/lib/x86_64-linux-gnu/libapt-private.so.0.0.0",
+      "/usr/local/bin/node"
+    ]
+  },
+  "tools": {
+    "image_id": "sha256:b1d9464dd3fb3c3f109c9161b2cb03fc8132a149e1c8fb449fe3ea1176b49a9b",
+    "elf_records": 1650,
+    "unique_elf_hashes": 839,
+    "from_chars_imports": [],
+    "from_chars_definitions": [
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt22__from_chars_float16_tPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_ReSt12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt23__from_chars_bfloat16_tPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_RDF128_St12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_RdSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt22__from_chars_float16_tPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_ReSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt23__from_chars_bfloat16_tPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_RDF128_St12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_RfSt12chars_format"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+        "symbol": "_ZSt10from_charsPKcS0_RdSt12chars_format"
+      }
+    ],
+    "file_stream_importers": [
+      "/lib/x86_64-linux-gnu/libapt-pkg.so.7.0.0",
+      "/lib/x86_64-linux-gnu/libapt-private.so.0.0.0",
+      "/lib/x86_64-linux-gnu/libicutu.so.76.1",
+      "/usr/lib/x86_64-linux-gnu/libapt-pkg.so.7.0.0",
+      "/usr/lib/x86_64-linux-gnu/libapt-private.so.0.0.0",
+      "/usr/lib/x86_64-linux-gnu/libicutu.so.76.1"
+    ]
+  }
+}

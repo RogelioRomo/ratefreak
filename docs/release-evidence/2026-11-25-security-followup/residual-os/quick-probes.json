@@ -1,0 +1,80 @@
+{
+  "api": {
+    "image_id": "sha256:ed6892b5bb0217a3a8d21d251a8af0818eed1b397705b7f54afa5f38cd44b9c6",
+    "probe": {
+      "commands": {
+        "/usr/bin/dpkg-source": false,
+        "/usr/share/perl5/Dpkg/Source/Package/V3/Quilt.pm": false,
+        "/usr/bin/apt-key": true,
+        "/usr/bin/infocmp": true,
+        "/usr/bin/bzip2recover": false,
+        "/usr/bin/getfacl": false,
+        "/usr/bin/setfacl": false,
+        "/usr/bin/getfattr": false,
+        "/usr/bin/setfattr": false
+      },
+      "locale_environment": {
+        "LANG": null,
+        "LC_ALL": null,
+        "LC_MESSAGES": null,
+        "LANGUAGE": null,
+        "CHARSET": null,
+        "G_FILENAME_ENCODING": null
+      },
+      "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+      "rmtree_fd_symlink_protection": true
+    }
+  },
+  "web": {
+    "image_id": "sha256:dd22e0040bacac02a97147c36eb4090b0aae37f735042f43ec1a1f51e42d6e09",
+    "probe": {
+      "commands": {
+        "/usr/bin/dpkg-source": false,
+        "/usr/share/perl5/Dpkg/Source/Package/V3/Quilt.pm": false,
+        "/usr/bin/apt-key": false,
+        "/usr/bin/infocmp": true,
+        "/usr/bin/bzip2recover": false,
+        "/usr/bin/getfacl": false,
+        "/usr/bin/setfacl": false,
+        "/usr/bin/getfattr": false,
+        "/usr/bin/setfattr": false
+      },
+      "locale_environment": {
+        "LANG": null,
+        "LC_ALL": null,
+        "LC_MESSAGES": null,
+        "LANGUAGE": null,
+        "CHARSET": null,
+        "G_FILENAME_ENCODING": null
+      },
+      "python_version": "3.13.5 (main, Aug 10 2026, 12:06:59) [GCC 14.2.0]",
+      "rmtree_fd_symlink_protection": true
+    }
+  },
+  "tools": {
+    "image_id": "sha256:57e7688f79384a7a80539dc19f5664cca48da1bc1bae5e75fb8e0a18b65fa365",
+    "probe": {
+      "commands": {
+        "/usr/bin/dpkg-source": false,
+        "/usr/share/perl5/Dpkg/Source/Package/V3/Quilt.pm": false,
+        "/usr/bin/apt-key": false,
+        "/usr/bin/infocmp": true,
+        "/usr/bin/bzip2recover": false,
+        "/usr/bin/getfacl": false,
+        "/usr/bin/setfacl": false,
+        "/usr/bin/getfattr": false,
+        "/usr/bin/setfattr": false
+      },
+      "locale_environment": {
+        "LANG": null,
+        "LC_ALL": null,
+        "LC_MESSAGES": null,
+        "LANGUAGE": null,
+        "CHARSET": null,
+        "G_FILENAME_ENCODING": null
+      },
+      "python_version": "3.13.5 (main, Aug 10 2026, 12:06:59) [GCC 14.2.0]",
+      "rmtree_fd_symlink_protection": true
+    }
+  }
+}

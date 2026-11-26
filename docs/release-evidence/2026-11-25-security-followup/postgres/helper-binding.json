@@ -1,0 +1,7 @@
+{
+  "comparison": "Exact SHA256 matches reviewed Bookworm gosu1.20; Go/module versions match both scanned binaries.",
+  "image_reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+  "path": "/usr/local/bin/gosu",
+  "prior_evidence": ".local/security-clearance-2026-11-25/service-investigation/image-extracts.json",
+  "sha256": "b1892636c281590f34bc63c1118f058cd9de66c4ea463772e3909672d8b302ac"
+}

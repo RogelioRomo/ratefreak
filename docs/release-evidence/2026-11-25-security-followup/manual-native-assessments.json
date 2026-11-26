@@ -1,0 +1,43 @@
+[
+  {
+    "id": "CVE-2026-126912",
+    "component": "Skia",
+    "disposition": "reviewed-source-fix-boundary",
+    "scope": "SkiaSharp4.157.0 exact signed packages/native mappings include the fixed upstream ancestry. No exploit reproduction or bit-for-bit rebuild.",
+    "evidence": [
+      "skia/fix-boundary.json",
+      "skia/payload-mapping.json",
+      "skia/notice-verification.json"
+    ]
+  },
+  {
+    "id": "CVE-2026-124851",
+    "component": "Node embedded zstd1.5.7",
+    "disposition": "conditional-supported-caller-mitigation",
+    "scope": "Exact compiled Node24.22.3 warmfetch, CommonJS/ESM4decoder APIs and preloaded Next tar reject after registration. Native copy not patched.",
+    "evidence": [
+      "decoder-image-probe.json",
+      "iconv-callers/tar-zstd-probe.json",
+      "zstd-review.md"
+    ]
+  },
+  {
+    "id": "CVE-2026-46675",
+    "component": "Bundled libpng1.6.58",
+    "disposition": "conditional-supported-reader-exclusion",
+    "scope": "Affected png_read_end path absent from pinned libvips reader and current Skia157 reader; progressive png_process_data reader matches vendor-unaffected API condition. Scope excludes new readers/native addons.",
+    "evidence": [
+      "../2026-11-25-security-integration/native/review.md",
+      "skia-png-reader-rebinding.json"
+    ]
+  },
+  {
+    "component": "Bundled libheif1.23.5",
+    "disposition": "conditional-supported-caller-mitigation",
+    "scope": "VipsForeignLoadHeif blocked after exact Next optimizer initialization; real compiled metadata/optimizer rejection verified. Upstream native package remains unpatched. Assess current libheif advisories as a family, no blanket all-native exclusion.",
+    "evidence": [
+      "decoder-image-probe.json",
+      "../2026-11-25-security-integration/native/review.md"
+    ]
+  }
+]

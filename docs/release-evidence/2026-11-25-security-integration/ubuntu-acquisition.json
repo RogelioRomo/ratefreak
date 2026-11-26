@@ -1,0 +1,318 @@
+[
+  {
+    "id": "CVE-2024-56433",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2024-56433",
+    "bytes": 2106,
+    "sha256": "dfddd29f0a283f12826ac166981949fd124bfe2a20abac56ae4c90762cf31d3d"
+  },
+  {
+    "id": "CVE-2025-5222",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2025-5222",
+    "bytes": 1659,
+    "sha256": "b10c482e5acda00057dfd347188e3efc2f3aca3a5e8c4666d516fc8e02cd8673"
+  },
+  {
+    "id": "CVE-2025-66382",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2025-66382",
+    "bytes": 14414,
+    "sha256": "e67335afc55c5aadd7d6aa3c15c03440f304ff6cb7ccac255b619406c8e22fb6"
+  },
+  {
+    "id": "CVE-2026-102473",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-102473",
+    "bytes": 1283,
+    "sha256": "48f87377bf37cae7992bb45cb62ad78ab4665eff2bc0f2bbdc0cae208ad55d72"
+  },
+  {
+    "id": "CVE-2026-102474",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-102474",
+    "bytes": 1255,
+    "sha256": "1c9a093cbdb9b3e5072721f9b1db5636f51b72776b4b9e36a16dea4b54f4482b"
+  },
+  {
+    "id": "CVE-2026-102633",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "CVE-2026-105712",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-105712",
+    "bytes": 1337,
+    "sha256": "b0634daf4377005df1523ca4f51bd7b79998ae07f09381420a28ca1c4b026553"
+  },
+  {
+    "id": "CVE-2026-107161",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-107161",
+    "bytes": 1815,
+    "sha256": "647886d588a950baa5bae09e46ce1eb1a9f9836d10ff3d3d57bf2fca68221dfa"
+  },
+  {
+    "id": "CVE-2026-107364",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-107364",
+    "bytes": 910,
+    "sha256": "4a0b24726be3d4939ec87242e19f97268522fa90891362d282b38d4de58a06cd"
+  },
+  {
+    "id": "CVE-2026-107708",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-107708",
+    "bytes": 1518,
+    "sha256": "e2515f27360d753ecb280738b6db2858c0dc6f8a32273443987392c17822a394"
+  },
+  {
+    "id": "CVE-2026-107778",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-107778",
+    "bytes": 1502,
+    "sha256": "0381cd45bffd7e32e024b84ad977e8cd0b12cb255e965b2ca96ca1c6690101fc"
+  },
+  {
+    "id": "CVE-2026-107884",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-107884",
+    "bytes": 990,
+    "sha256": "211ac093bf05cf4369cad2a3e517a40eaf5c47c51555c3ce73bee0abc9e369b0"
+  },
+  {
+    "id": "CVE-2026-112061",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-112061",
+    "bytes": 1126,
+    "sha256": "482885858c405b355e762a3509daca7f55e705dc2588353019f1d459fd8158ec"
+  },
+  {
+    "id": "CVE-2026-112314",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-112314",
+    "bytes": 1264,
+    "sha256": "a6c2ce979c3cf7bbb7b1bfd69f1990bc5db44835d83c9807c6493b524772e1ec"
+  },
+  {
+    "id": "CVE-2026-112315",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-112315",
+    "bytes": 1235,
+    "sha256": "69107e94a4dd24b1ed87b6b82a50cc140216e2167d5d3ece66e916497f396edc"
+  },
+  {
+    "id": "CVE-2026-112316",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-112316",
+    "bytes": 1235,
+    "sha256": "7d87d58d840e5466c61abd373c5ea7f47adbbcb4d8997414761964bc9f2a3faf"
+  },
+  {
+    "id": "CVE-2026-112317",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-112317",
+    "bytes": 1279,
+    "sha256": "629c1f415660af33ef6c976eb12cfffd2b02bdd23eac227fcb7f52f4ac1cf34b"
+  },
+  {
+    "id": "CVE-2026-112318",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-112318",
+    "bytes": 1341,
+    "sha256": "6f04261b377a3d4d644336191ff3bb9dc10ccc6bf31cd7f3b4e93d6ce05bbb6d"
+  },
+  {
+    "id": "CVE-2026-112319",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-112319",
+    "bytes": 1501,
+    "sha256": "e86fd061f16505b088b9ee0906eb278e970c99a245edaecb1db55c7a5678c801"
+  },
+  {
+    "id": "CVE-2026-112320",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-112320",
+    "bytes": 1354,
+    "sha256": "e7c95525e61c11d59d1900cd66f802a97c8f8e66070371e87aa63ba2645d07d0"
+  },
+  {
+    "id": "CVE-2026-112321",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-112321",
+    "bytes": 1384,
+    "sha256": "ad9650f8228ca120e12840cb6969f6a5154071b1986a3804a69ab5292e6a2f1f"
+  },
+  {
+    "id": "CVE-2026-112322",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-112322",
+    "bytes": 1666,
+    "sha256": "7037e172eb794443006d1e1b70d7962ff09ac4ca132d67a229aa052812d5f6a7"
+  },
+  {
+    "id": "CVE-2026-112323",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-112323",
+    "bytes": 1759,
+    "sha256": "42eb47731512a1cd7c07d21ddd2e4e7a06fe3d5a55261226801d2f30df01926a"
+  },
+  {
+    "id": "CVE-2026-113351",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "CVE-2026-115506",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "CVE-2026-117610",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "CVE-2026-118370",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "CVE-2026-118380",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-118380",
+    "bytes": 910,
+    "sha256": "606037293cdd371a6601954eb995710a17ddb0d7b48327a65b5a006c622895c8"
+  },
+  {
+    "id": "CVE-2026-119079",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-119079",
+    "bytes": 1476,
+    "sha256": "7e6f193d40efa8402d53c6c9fcd7911722a2b4b0d1f4cefd1745bc91c8061e20"
+  },
+  {
+    "id": "CVE-2026-119371",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-119371",
+    "bytes": 2438,
+    "sha256": "5e76e634a6fc65618d3613e24cbf9e77c534b6aaaf1539148551f110ef59b768"
+  },
+  {
+    "id": "CVE-2026-119372",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-119372",
+    "bytes": 2112,
+    "sha256": "c4359f0deb856b1927e06165f47982b9cc9e618733cc6bf452e78a0a662f883a"
+  },
+  {
+    "id": "CVE-2026-119373",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-119373",
+    "bytes": 2135,
+    "sha256": "ec1e3dbae547cb7027953d2a6d496ba15fddcf57f512518fcb656c98d2b8a1af"
+  },
+  {
+    "id": "CVE-2026-119374",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-119374",
+    "bytes": 2107,
+    "sha256": "c3a143d9bce06e94788f727bd6a46a90bb31accf3bd67f929b7b4bb358c2fca2"
+  },
+  {
+    "id": "CVE-2026-119375",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-119375",
+    "bytes": 2138,
+    "sha256": "59e7643f46ba9c92a99a361a809a7a0e80dd4ad5bd50b867648920d87133f11f"
+  },
+  {
+    "id": "CVE-2026-119376",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-119376",
+    "bytes": 2118,
+    "sha256": "8c8ed4d81d763403a2034ca1142887457b69bf5334e0a9288c61e7b5cab9f4e6"
+  },
+  {
+    "id": "CVE-2026-119377",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-119377",
+    "bytes": 2829,
+    "sha256": "03cad03037a4b06fb93f5829475d41ffe3c4b7b355554eeeb3989c56650a2f53"
+  },
+  {
+    "id": "CVE-2026-119378",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-119378",
+    "bytes": 2079,
+    "sha256": "7fb793d60d073da27951cce986c90c89b124fab9ad1f5dd3d46231adc66134dd"
+  },
+  {
+    "id": "CVE-2026-119379",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-119379",
+    "bytes": 2183,
+    "sha256": "1957b4a95d5110c590506abaf46234699a19b8e1d905615a696b14dcef2ba506"
+  },
+  {
+    "id": "CVE-2026-119591",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-119591",
+    "bytes": 2465,
+    "sha256": "bd76fcf6108735055c49b4c7acbdaddf2d22283c8f4fd798b47fe477aad9efb1"
+  },
+  {
+    "id": "CVE-2026-121876",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "CVE-2026-124317",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "CVE-2026-128241",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "CVE-2026-134703",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "CVE-2026-18477",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-18477",
+    "bytes": 1768,
+    "sha256": "065a876a6718a674e9b851bac79246f584c36b2193784d31580d5b995e5bc32e"
+  },
+  {
+    "id": "CVE-2026-18508",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-18508",
+    "bytes": 1481,
+    "sha256": "4cc1b8b7f60f55d32e8426846fc81b7ea454ade1acf4011ea7dbc027a354e66f"
+  },
+  {
+    "id": "CVE-2026-40228",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-40228",
+    "bytes": 1827,
+    "sha256": "9118f2492309ee3c436f6be5815c588e78f5cb87a563a654421556c2cbe85f34"
+  },
+  {
+    "id": "CVE-2026-67693",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-67693",
+    "bytes": 1900,
+    "sha256": "360c5e0f0dda469daf25f9b53d1ad85c4b98e70c082f66a416ab6a8ad928b10a"
+  },
+  {
+    "id": "CVE-2026-71199",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-71199",
+    "bytes": 949,
+    "sha256": "c2cce5649a95a94ec9c72a8fdc64430a766c7f948dc075c0565890711b86e85e"
+  },
+  {
+    "id": "CVE-2026-71200",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-71200",
+    "bytes": 908,
+    "sha256": "16b6cb6a6d1497235d62db0562b45369eee264f21f7c08ddcc40c9df39fb11f2"
+  },
+  {
+    "id": "CVE-2026-7210",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-7210",
+    "bytes": 4341,
+    "sha256": "0fc223581490eeb2c5588870661f293e658198d4055c26473c1d6298db0d4d79"
+  },
+  {
+    "id": "CVE-2026-76642",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-76642",
+    "bytes": 1373,
+    "sha256": "220f2cf3a33cca2c9411e3c5544393271d51bd61760b84fe37ec61ecbbec202e"
+  },
+  {
+    "id": "CVE-2026-77214",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "CVE-2026-88647",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "CVE-2026-88648",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "CVE-2026-93990",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "CVE-2026-95184",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-95184",
+    "bytes": 1881,
+    "sha256": "6f9ac14569988f27308e8fb0a9d01e5c492fb92ab548c424577666c491bcd30e"
+  },
+  {
+    "id": "CVE-2026-95210",
+    "url": "https://git.launchpad.net/ubuntu-cve-tracker/plain/active/CVE-2026-95210",
+    "bytes": 1917,
+    "sha256": "35280eebb2ba1af4ef7a66b8fb6e24aee3ce0f6052b324866619b202511adeb2"
+  }
+]

@@ -1,0 +1,176 @@
+[
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "gcc-14",
+    "id": "CVE-2026-115456",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "severity": "LOW",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libatomic1",
+        "severity": "LOW",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "severity": "LOW",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "severity": "LOW",
+        "source_version": "14.2.0"
+      }
+    ],
+    "disposition": "conditional-supported-caller-exclusion",
+    "condition": "Affected GCC floating from_chars parser receives crafted non-NUL-terminated range",
+    "assessment": "Current complete image ELF probe again shows zero GCC floating from_chars imports. All native bytes equal prior reviewed source/caller closure except EF bundle, whose native dependency/selected caller symbols remain identical; its changed managed bundle does not introduce a GCC floating parser binding. Exact source distinguishes integral/custom parser implementations and Skia libc++ from affected GCC routines.",
+    "evidence": [
+      "gcc-rebind/rebinding.json",
+      "gcc-rebind/web-probe-full.json",
+      "gcc-callers/gcc-review.md"
+    ],
+    "reassess_if": [
+      "Change native bytes, architecture, native extension or dynamic symbol bindings; add new native consumers"
+    ]
+  },
+  {
+    "image": "web",
+    "image_reference": "sha256:c04ceb1759155f4b84d00b0bf51f24e0280a174affb8197430f3934316952e1e",
+    "source": "gcc-14",
+    "id": "CVE-2026-95619",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libatomic1",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      }
+    ],
+    "disposition": "conditional-compiled-branch-exclusion",
+    "condition": "Aligned allocation size round-up on non-posix_memalign branch",
+    "assessment": "Host libstdc++ payload is byte-identical to previously reviewed direct posix_memalign implementation; this compiled branch does not round up the allocation size.",
+    "evidence": [
+      "gcc-rebind/rebinding.json",
+      "gcc-rebind/web-probe-full.json",
+      "gcc-callers/gcc-review.md"
+    ],
+    "reassess_if": [
+      "Change native bytes, architecture, native extension or dynamic symbol bindings; add new native consumers"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "gcc-14",
+    "id": "CVE-2026-115456",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "severity": "LOW",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "severity": "LOW",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "severity": "LOW",
+        "source_version": "14.2.0"
+      }
+    ],
+    "disposition": "conditional-supported-caller-exclusion",
+    "condition": "Affected GCC floating from_chars parser receives crafted non-NUL-terminated range",
+    "assessment": "Current complete image ELF probe again shows zero GCC floating from_chars imports. All native bytes equal prior reviewed source/caller closure except EF bundle, whose native dependency/selected caller symbols remain identical; its changed managed bundle does not introduce a GCC floating parser binding. Exact source distinguishes integral/custom parser implementations and Skia libc++ from affected GCC routines.",
+    "evidence": [
+      "gcc-rebind/rebinding.json",
+      "gcc-rebind/tools-probe-full.json",
+      "gcc-callers/gcc-review.md"
+    ],
+    "reassess_if": [
+      "Change native bytes, architecture, native extension or dynamic symbol bindings; add new native consumers"
+    ]
+  },
+  {
+    "image": "tools",
+    "image_reference": "sha256:4a3f1d57fecb70da5aadc05d16eb604545b0de59a502b6753511298e3804f772",
+    "source": "gcc-14",
+    "id": "CVE-2026-95619",
+    "matches": [
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "gcc-14-base",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libgcc-s1",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      },
+      {
+        "fixed": "",
+        "installed": "14.2.0-19",
+        "package": "libstdc++6",
+        "severity": "MEDIUM",
+        "source_version": "14.2.0"
+      }
+    ],
+    "disposition": "conditional-compiled-branch-exclusion",
+    "condition": "Aligned allocation size round-up on non-posix_memalign branch",
+    "assessment": "Host libstdc++ payload is byte-identical to previously reviewed direct posix_memalign implementation; this compiled branch does not round up the allocation size.",
+    "evidence": [
+      "gcc-rebind/rebinding.json",
+      "gcc-rebind/tools-probe-full.json",
+      "gcc-callers/gcc-review.md"
+    ],
+    "reassess_if": [
+      "Change native bytes, architecture, native extension or dynamic symbol bindings; add new native consumers"
+    ]
+  }
+]

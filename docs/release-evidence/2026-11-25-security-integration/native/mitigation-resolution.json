@@ -1,0 +1,24 @@
+{
+  "source_revision": "8cc1462a32c826b98d7267b5173cd9c8b9329a45",
+  "web_image": "sha256:dd22e0040bacac02a97147c36eb4090b0aae37f735042f43ec1a1f51e42d6e09",
+  "advisories": [
+    "GHSA-hhg3-fxg7-3gxw",
+    "GHSA-74mj-m37q-h3q9",
+    "GHSA-fpr5-xpfr-vcq3",
+    "GHSA-jx54-6rm6-2cgj"
+  ],
+  "disposition": "mitigated-by-blocking-HEIF-loader-in-supported-web-decoding-flow",
+  "native_library_patched": false,
+  "decoder_policy_installed_after_real_Next_initialization": true,
+  "exact_production_image_evidence": "../decoder-image-probe.json",
+  "reassess_if": [
+    "Next/Sharp/native inputs change",
+    "Optimizer moves to a child process or worker",
+    "Startup policy changes",
+    "New native HEIF consumer or output workflow is added"
+  ],
+  "remaining_scope": [
+    "Skia and recursive codec decisions",
+    "Separate API/tools native consumers"
+  ]
+}

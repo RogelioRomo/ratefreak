@@ -1,0 +1,72 @@
+{
+  "date": "2026-11-25",
+  "live_database_modified": false,
+  "postgres_trixie": {
+    "acceptance_completed": false,
+    "fixed_version_listed_matches": 63,
+    "gss_ids_absent": true,
+    "raw_matches": 439,
+    "reference": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "relevant_runtime_versions": {
+      "glibc": "2.41",
+      "libgssapi-krb5-2": "1.21.3-5+deb13u2",
+      "libkrb5-3": "1.21.3-5+deb13u2",
+      "libxml2": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+      "libzstd1": "1.5.7+dfsg-1",
+      "postgres": "17.12 (Debian 17.12-1.pgdg13+1)"
+    },
+    "remaining": [
+      "Database collation/reindex or logical-restore migration assessment",
+      "Fresh installation/upgrade/recovery acceptance",
+      "Remaining SQL/XML and other OS findings; libzstd still has a listed fix"
+    ],
+    "scan_sha256": "677f3c81143f5316a4e28034276105af3375ed74b2ad9fbe47a8dbe8303dbd28",
+    "severities": {
+      "CRITICAL": 2,
+      "HIGH": 99,
+      "LOW": 164,
+      "MEDIUM": 145,
+      "UNKNOWN": 29
+    }
+  },
+  "reference_pin_changed_to_trial": false,
+  "skia_update": {
+    "binaries_updated_or_qualified": false,
+    "candidate_skia_pin": "51cb594d773b5383a45065ea3c8cbec398ad2c36",
+    "candidate_skiasharp": "4.157.0",
+    "candidate_skiasharp_repository_commit": "2a53a3c8641073bc914c63ee158bbf62b8a0bb92",
+    "current_skiasharp": "4.155.0",
+    "fixed_chrome_release": "157.0.8103.78",
+    "fixed_chrome_skia_pin": "fef60e46c522b87e5802ddf0a215a763dd5e0483",
+    "limit": "Source ancestry is not private-bug reproduction, a demonstrated RateFreak exploit, or qualified binary/source/notice correspondence.",
+    "remaining": [
+      "Review updated native payloads and complete notices/provenance",
+      "Run relevant backend/image/artifact acceptance",
+      "Complete other embedded-component decisions"
+    ],
+    "source_ancestry": [
+      {
+        "ahead_by": 1121,
+        "behind_by": 517,
+        "bytes": 2121710,
+        "file": "chrome-fixed-vs-old-skia.json",
+        "fixed_chrome_skia": "fef60e46c522b87e5802ddf0a215a763dd5e0483",
+        "head": "c2d78902a56e24827a7273a4ed3461ce18780680",
+        "sha256": "ebd5427f6388aba92a943f8c25593d6073b8131bfde5240287982616267307e0",
+        "status": "diverged",
+        "url": "https://api.github.com/repos/mono/skia/compare/fef60e46c522b87e5802ddf0a215a763dd5e0483...c2d78902a56e24827a7273a4ed3461ce18780680"
+      },
+      {
+        "ahead_by": 1180,
+        "behind_by": 0,
+        "bytes": 2084797,
+        "file": "chrome-fixed-vs-new-skia.json",
+        "fixed_chrome_skia": "fef60e46c522b87e5802ddf0a215a763dd5e0483",
+        "head": "51cb594d773b5383a45065ea3c8cbec398ad2c36",
+        "sha256": "6ae2121df8b20aa635a2786f56061096364fa413996138c21db7b76a1928177d",
+        "status": "ahead",
+        "url": "https://api.github.com/repos/mono/skia/compare/fef60e46c522b87e5802ddf0a215a763dd5e0483...51cb594d773b5383a45065ea3c8cbec398ad2c36"
+      }
+    ]
+  }
+}

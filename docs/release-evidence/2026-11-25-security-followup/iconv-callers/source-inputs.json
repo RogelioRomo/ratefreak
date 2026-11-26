@@ -1,0 +1,92 @@
+[
+  {
+    "path": "web/shared/artwork/provider-images.ts",
+    "sha256": "3b8a626471370fb42ba042aaf446cd55d91cbf530c8829d53a4bcd568516b593",
+    "bytes": 1394
+  },
+  {
+    "path": "web/node_modules/next/dist/server/image-optimizer/transform.js",
+    "sha256": "7234aedad279bacd68855dfe629bfb5c50b6afe4cc58221543673d28c50a9455",
+    "bytes": 8521
+  },
+  {
+    "path": "web/node_modules/next/dist/server/image-optimizer/detect-content-type.js",
+    "sha256": "3fb3b483c7fd69d4d9cd6dd9d8811a1aec28deca1de21d5c25dddc4ce32be280",
+    "bytes": 4874
+  },
+  {
+    "path": "web/server/artwork/tmdb-poster-source.ts",
+    "sha256": "26f2c468194e7f2443df93e0276d6591f449375efd2432b1737f1710c07ff027",
+    "bytes": 3086
+  },
+  {
+    "path": "web/server/artwork/open-library-cover.ts",
+    "sha256": "069262f75bb8662be5f1945349b52a43de67eace9aa48096e3f73ce392d5760b",
+    "bytes": 4101
+  },
+  {
+    "path": "src/RateFreak.Infrastructure/Artwork/ArtworkDecoder.cs",
+    "sha256": "e23cb7a1eefbc747785dfdf71c073c73b225b9d77c974bbd72cd6fda25130cc9",
+    "bytes": 4141
+  },
+  {
+    "path": "deploy/self-host/maintenance.py",
+    "sha256": "1f8d9dd7fc007d3ca06574905bfe52c3620d9ab448214e6e517a97cf12f16ea9",
+    "bytes": 13541
+  },
+  {
+    "path": ".local/release-compliance/rust-source/librsvg-2.63.2/rsvg/src/xml/xml2_load.rs",
+    "sha256": "2883f230291263f9fa5f1688b2089450812f6da3a3be528dae13b49890e7287e",
+    "bytes": 18140
+  },
+  {
+    "path": ".local/release-compliance/source-set/instructions/rebuild_native.py",
+    "sha256": "63b88cf6e29032a138ca87115b4b26bb6fe2cb8532336af39d55406522a35548",
+    "bytes": 3783
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/gconv-probes.json",
+    "sha256": "79fe9105ca29a94cc677b17733f6c27d38b2f0848198b8dfc5e4477e1d97ada1",
+    "bytes": 4943
+  },
+  {
+    "path": ".local/release-compliance/native-sources/80da7ba048c3-vips-8.18.7.tar.xz",
+    "sha256": "5baaead3b0bb20ffdb9e9ff09aa9fda08620923df77b63b436654cb5e0b3bf94",
+    "bytes": 25425084
+  },
+  {
+    "path": ".local/release-compliance/native-sources/c89c4b6083ba-glib-2.90.0.tar.xz",
+    "sha256": "17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f",
+    "bytes": 5830480
+  },
+  {
+    "path": ".local/release-compliance/native-sources/f395c8ee8729-libxml2-2.15.4.tar.xz",
+    "sha256": "98087fd181d9070724f3fbc65c7377db03038eb92bd882374daff44940138821",
+    "bytes": 3177444
+  },
+  {
+    "path": ".local/release-compliance/native-sources/4c8ceb233665-libarchive-3.8.9.tar.xz",
+    "sha256": "888c934f9d95648ecb9163dc8e23ab80a476ecb81a8f1154704a227b5b676dde",
+    "bytes": 6617696
+  },
+  {
+    "path": ".local/release-compliance/native-sources/d204d1d37068-libexif-0.6.26.tar.xz",
+    "sha256": "4a055ed6575e61ca46c3172be3c753cc16c9becd0f99ec71d58dd0e471476c0c",
+    "bytes": 1335488
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/glibc-callers/web-probe.json",
+    "sha256": "302ea931d963e8a491cbce331f9328e9087f1a21dd7c9e0abd3223f249fb6b69",
+    "bytes": 157809
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/glibc-callers/tools-probe.json",
+    "sha256": "3d686040f215099d8341b47b81f7ae067adc8e2711afab2440ed3a05fa90654a",
+    "bytes": 202294
+  },
+  {
+    "path": ".local/security-skia-update-2026-11-25/glibc-callers/api-probe.json",
+    "sha256": "d4712f00a268f8e7edc115da4a623ca7e71dc83b065964b5e457e36f23744e99",
+    "bytes": 168323
+  }
+]

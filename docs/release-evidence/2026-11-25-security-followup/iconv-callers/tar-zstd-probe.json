@@ -1,0 +1,1 @@
+{"node":"24.22.3","tarLoadedBeforeHook":true,"zstdTarDecodesBeforeHook":true,"zstdTarRejectedAfterHook":true,"gzipTarAfterHook":true,"plainTarAfterHook":true,"scope":"Empty 1024-byte tar fixture; real Next bundled tar and compiled instrumentation in exact candidate image. No extraction or filesystem writes."}

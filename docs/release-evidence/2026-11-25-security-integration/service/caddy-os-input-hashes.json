@@ -1,0 +1,137 @@
+[
+  {
+    "file": ".local/security-clearance-2026-11-25/caddy-trivy.json",
+    "sha256": "ace8cb3d826e0f04aa7c938d1f074d2e8831c573d9766a3d6c041986c441aaf3",
+    "bytes": 226386
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/caddy-updated-trivy.json",
+    "sha256": "2ed3e2e82d9abeba7ef016a53667158252f60c6c1a19bef1d2773f7cfa13158f",
+    "bytes": 226402
+  },
+  {
+    "file": "deploy/self-host/Caddyfile",
+    "sha256": "bb66f3a5289e39a9ea275f33f57d5a7429e7f7d45a08fcf8cc01f796f59e50a1",
+    "bytes": 719
+  },
+  {
+    "file": "deploy/self-host/edge-entrypoint.sh",
+    "sha256": "ff212587333e34d04cefe8d400ac36d3f5ef0c7fa3fe0d7363c42211806502ee",
+    "bytes": 166
+  },
+  {
+    "file": "deploy/self-host/compose.caddy.yaml",
+    "sha256": "0375253c376d24b2277951460967f168b5e4d2b0b30a0753fcfddde3de5f57dc",
+    "bytes": 734
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/caddy-os-assessment.json",
+    "sha256": "a63d8b026e34c2edc679dab37e3630834a80e785988268a9299573a503798d50",
+    "bytes": 19753
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/caddy-rootfs-paths.json",
+    "sha256": "082a920d2488b1a6b2da262af0800dc42f167f403ba34edf28ef5cbccfd77ec5",
+    "bytes": 193700
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/caddy-rootfs-extracts.json",
+    "sha256": "389a092e8d40ffca907fb7a07bb49eedc621c4561be5f56091fa6ec2dff05715",
+    "bytes": 4216
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/caddy-os-elf-inspection.json",
+    "sha256": "00ded825788e32d5e16908927437f9a4de5ca3d69bbfc06447d73cd87bfc6a35",
+    "bytes": 802109
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/caddy-os-image-comparison.json",
+    "sha256": "45b1420e3291489b4a44eca7158fd8b104937100d9da5a76c776de6dc2df7dfb",
+    "bytes": 2572
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/acquisition-caddy-os.json",
+    "sha256": "a605abbc797d8de64d54ca71e18eea2c2703b056279cb2ceb6e2680c52d0862d",
+    "bytes": 1367
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/acquisition-caddy-os-sources.json",
+    "sha256": "d6b7651abbc9c68ba65e5c21b2139d42553596ea872e9018df2b937c56b6f5c7",
+    "bytes": 684
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/ca-certificates-APKBUILD",
+    "sha256": "7b35fb8e11790105578f47d57a3b22831227b0d8ad7d064e575bad146023f3da",
+    "bytes": 2520
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/zlib-APKBUILD",
+    "sha256": "c9348892bf3857602fe74fcc1d411e263b408b7d70344170396f5993a62bbe26",
+    "bytes": 1134
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/sources/truststore-0.13.0/truststore_linux.go",
+    "sha256": "2bd2e5e5f9387c2353c24f93de58f65055a9a14400fb9cfa303f3fafc0b8c1d2",
+    "bytes": 3249
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/sources/caddy-2.11.9/modules/caddypki/ca.go",
+    "sha256": "6d21eea49a1205e515cb7852b01e567e335ba611b15253b94ac98d5c870b208b",
+    "bytes": 15487
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/sources/caddy-2.11.9/modules/caddypki/pki.go",
+    "sha256": "bf6a672d7bdc6ffdfff2bf4742d9d5e03d4f93436efa4983f97fde5ab16076b9",
+    "bytes": 4259
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/sources/ca-certificates-20261020/Makefile",
+    "sha256": "f1a076623b2ba6fbd45e84a9f0b0ba0cc7f07e8654754191962ce948533ea759",
+    "bytes": 1585
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/sources/ca-certificates-20261020/update-ca.c",
+    "sha256": "fff6ee69a2f5705e0ae5a0214f0e1fff029b14adef49359160cf9a5c867d5df4",
+    "bytes": 7736
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/sources/ca-certificates-20261020/c_rehash.c",
+    "sha256": "a68fedc0edd976b9f35ecfdcb252d80dc12084b1bc4e945be7dc42c437d8b540",
+    "bytes": 9533
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/sources/zlib-1.3.2/Makefile.in",
+    "sha256": "33952d61d881fd3b41d087e84f8ef3c3c25a6bc4d6f6e3b115e13004a1d54b2a",
+    "bytes": 14693
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/caddy-os-assessment.md",
+    "sha256": "bd09e38f9d72d86000b8a1533a48f7d84c6f09489899020d351270b0ba7bac90",
+    "bytes": 7615
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/vendor/openssl-20261110.txt",
+    "sha256": "31f4c88950cd9cd310794a218361b787d293a940d2568f9f82334915ac54a402",
+    "bytes": 11780
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/vendor/openssl-20261117.txt",
+    "sha256": "6f4219cd823c3472863cc592182ef571d7485ac2f8735845244dbc13e3e09f27",
+    "bytes": 8844
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/GDAL-12244.json",
+    "sha256": "d6af9461b30e2f2833ea0809b448523c9c01432e120a78328040a8c9d57afde6",
+    "bytes": 19048
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/zlib-CVE-2026-85091.patch",
+    "sha256": "110ff14375733173d8aa54574473424fbd7dfe4b81f1ca34a759c6fe14b15b14",
+    "bytes": 854
+  },
+  {
+    "file": ".local/security-clearance-2026-11-25/service-investigation/acquisition-zlib-patch.json",
+    "sha256": "b9d27d578fba9b95c65d0f35664f30d90100fec56543aacd1aa5a6addf0b9061",
+    "bytes": 277
+  }
+]

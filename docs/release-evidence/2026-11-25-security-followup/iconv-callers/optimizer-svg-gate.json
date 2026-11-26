@@ -1,0 +1,43 @@
+{
+  "hostNode": "v24.22.2",
+  "results": [
+    {
+      "declaration": "UTF-8",
+      "declaredHttpType": "image/jpeg",
+      "detectedType": "image/svg+xml",
+      "optimizerStatus": 400
+    },
+    {
+      "declaration": "CP949",
+      "declaredHttpType": "image/jpeg",
+      "detectedType": "image/svg+xml",
+      "optimizerStatus": 400
+    },
+    {
+      "declaration": "ISO-2022-CN-EXT",
+      "declaredHttpType": "image/jpeg",
+      "detectedType": "image/svg+xml",
+      "optimizerStatus": 400
+    },
+    {
+      "declaration": "UCS-4",
+      "declaredHttpType": "image/jpeg",
+      "detectedType": "image/svg+xml",
+      "optimizerStatus": 400
+    },
+    {
+      "declaration": "IBM1390",
+      "declaredHttpType": "image/jpeg",
+      "detectedType": "image/svg+xml",
+      "optimizerStatus": 400
+    },
+    {
+      "declaration": "IBM1399",
+      "declaredHttpType": "image/jpeg",
+      "detectedType": "image/svg+xml",
+      "optimizerStatus": 400
+    }
+  ],
+  "sharpLoads": 0,
+  "scope": "Installed Next16.4.6 modules; no native parse or exploit inputs. XML bytes have ASCII declarations, not actual UCS4 encoding. No claim of exhaustive format confusion proof."
+}

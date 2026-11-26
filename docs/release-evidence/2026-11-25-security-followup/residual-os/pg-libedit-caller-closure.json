@@ -1,0 +1,237 @@
+[
+  {
+    "file": "libedit-20250104-3.1/src/histedit.h",
+    "line": 86,
+    "context": "#define\tCC_FATAL\t7\n#define\tCC_REDISPLAY\t8\n#define\tCC_REFRESH_BEEP\t9\n\n/*\n * Initialization, cleanup, and resetting\n */\nEditLine\t*el_init(const char *, FILE *, FILE *, FILE *);\nEditLine\t*el_init_fd(const char *, FILE *, FILE *, FILE *,\n    int, int, int);\nvoid\t\t el_end(EditLine *);\nvoid\t\t el_reset(EditLine *);\n\n/*\n * Get a line, a character or push a string back in the input queue\n */"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/histedit.h",
+    "line": 168,
+    "context": "#define\tEL_SAFEREAD\t25\t/* , int);\t\t\t      set/get */\n\n#define\tEL_BUILTIN_GETCFN\t(NULL)\n\n/*\n * Source named file or $PWD/.editrc or $HOME/.editrc\n */\nint\t\tel_source(EditLine *, const char *);\n\n/*\n * Must be called when the terminal changes size; If EL_SIGNAL\n * is set this is done automatically otherwise it is the responsibility\n * of the application\n */\nvoid\t\t el_resize(EditLine *);\n"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 67,
+    "context": "/*\n * Adjust cursor in vi mode to include the character under it\n */\n#define\tEL_CURSOR(el) \\\n    ((el)->el_line.cursor + (((el)->el_map.type == MAP_VI) && \\\n\t\t\t    ((el)->el_map.current == (el)->el_map.alt)))\n\n/* search_init():\n *\tInitialize the search stuff\n */\nlibedit_private int\nsearch_init(EditLine *el)\n{\n\n\tel->el_search.patbuf = el_calloc(EL_BUFSIZ,\n\t    sizeof(*el->el_search.patbuf));"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 71,
+    "context": "    ((el)->el_line.cursor + (((el)->el_map.type == MAP_VI) && \\\n\t\t\t    ((el)->el_map.current == (el)->el_map.alt)))\n\n/* search_init():\n *\tInitialize the search stuff\n */\nlibedit_private int\nsearch_init(EditLine *el)\n{\n\n\tel->el_search.patbuf = el_calloc(EL_BUFSIZ,\n\t    sizeof(*el->el_search.patbuf));\n\tif (el->el_search.patbuf == NULL)\n\t\treturn -1;\n\tel->el_search.patbuf[0] = L'\\0';\n\tel->el_search.patlen = 0;"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 112,
+    "context": "/*ARGSUSED*/\nregerror(const char *msg)\n{\n}\n#endif\n\n\n/* el_match():\n *\tReturn if string matches pattern\n */\nlibedit_private int\nel_match(const wchar_t *str, const wchar_t *pat)\n{\n\tstatic ct_buffer_t conv;\n#if defined (REGEX)\n\tregex_t re;"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 116,
+    "context": "#endif\n\n\n/* el_match():\n *\tReturn if string matches pattern\n */\nlibedit_private int\nel_match(const wchar_t *str, const wchar_t *pat)\n{\n\tstatic ct_buffer_t conv;\n#if defined (REGEX)\n\tregex_t re;\n\tint rv;\n#elif defined (REGEXP)\n\tregexp *rp;\n\tint rv;"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 170,
+    "context": "c_hmatch(EditLine *el, const wchar_t *str)\n{\n#ifdef SDEBUG\n\t(void) fprintf(el->el_errfile, \"match `%ls' with `%ls'\\n\",\n\t    el->el_search.patbuf, str);\n#endif /* SDEBUG */\n\n\treturn el_match(str, el->el_search.patbuf);\n}\n\n\n/* c_setpat():\n *\tSet the history seatch pattern\n */\nlibedit_private void\nc_setpat(EditLine *el)"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 547,
+    "context": "#else\n\tocp = pattern;\n\toc = *ocp;\n#endif\n\n\tif (dir == ED_SEARCH_PREV_HISTORY) {\n\t\tfor (; cp >= el->el_line.buffer; cp--) {\n\t\t\tif (el_match(cp, ocp)) {\n\t\t\t\t*ocp = oc;\n\t\t\t\tel->el_line.cursor = cp;\n\t\t\t\treturn CC_NORM;\n\t\t\t}\n\t\t}\n\t\t*ocp = oc;\n\t\treturn CC_ERROR;\n\t} else {"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.c",
+    "line": 557,
+    "context": "\t\t\t\treturn CC_NORM;\n\t\t\t}\n\t\t}\n\t\t*ocp = oc;\n\t\treturn CC_ERROR;\n\t} else {\n\t\tfor (; *cp != '\\0' && cp < el->el_line.limit; cp++) {\n\t\t\tif (el_match(cp, ocp)) {\n\t\t\t\t*ocp = oc;\n\t\t\t\tel->el_line.cursor = cp;\n\t\t\t\treturn CC_NORM;\n\t\t\t}\n\t\t}\n\t\t*ocp = oc;\n\t\treturn CC_ERROR;\n\t}"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 309,
+    "context": "\trl_prompt_saved = NULL;\n}\n\n/*\n * initialize rl compat stuff\n */\nint\nrl_initialize(void)\n{\n\tHistEvent ev;\n\tint editmode = 1;\n\tstruct termios t;\n\n\tif (e != NULL)\n\t\tel_end(e);\n\tif (h != NULL)"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 422,
+    "context": "\tel_set(e, EL_BIND, \"\\\\e[1;5D\", \"ed-prev-word\", NULL);\n\tel_set(e, EL_BIND, \"\\\\e[5C\", \"em-next-word\", NULL);\n\tel_set(e, EL_BIND, \"\\\\e[5D\", \"ed-prev-word\", NULL);\n\tel_set(e, EL_BIND, \"\\\\e\\\\e[C\", \"em-next-word\", NULL);\n\tel_set(e, EL_BIND, \"\\\\e\\\\e[D\", \"ed-prev-word\", NULL);\n\n\t/* read settings from configuration file */\n\tel_source(e, NULL);\n\n\t/*\n\t * Unfortunately, some applications really do use rl_point\n\t * and rl_line_buffer directly.\n\t */\n\t_resize_fun(e, &rl_line_buffer);\n\t_rl_update_pos();\n"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 452,
+    "context": "\tconst char * volatile prompt = p;\n\tint count;\n\tconst char *ret;\n\tchar *buf;\n\tstatic int used_event_hook;\n\n\tif (e == NULL || h == NULL)\n\t\trl_initialize();\n\tif (rl_startup_hook) {\n\t\t(*rl_startup_hook)();\n\t}\n\ttty_init(e);\n\n\n\trl_done = 0;\n"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 518,
+    "context": " * is normally called before application starts to use\n * history expansion functions\n */\nvoid\nusing_history(void)\n{\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\thistory_offset = history_length;\n}\n\n\n/*\n * substitute ``what'' with ``with'', returning resulting string; if\n * globally == 1, substitutes all occurrences of what, otherwise only the\n * first one"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 999,
+    "context": "history_expand(char *str, char **output)\n{\n\tint ret = 0;\n\tsize_t idx, i, size;\n\tchar *tmp, *result;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\tif (history_expansion_char == 0) {\n\t\t*output = strdup(str);\n\t\treturn 0;\n\t}\n\n\t*output = NULL;\n\tif (str[0] == history_subst_char) {"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 1244,
+    "context": "void\nstifle_history(int max)\n{\n\tHistEvent ev;\n\tHIST_ENTRY *he;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\tif (history(h, &ev, H_SETSIZE, max) == 0) {\n\t\tmax_input_history = max;\n\t\tif (history_length > max)\n\t\t\thistory_base = history_length - max;\n\t\twhile (history_length > max) {\n\t\t\the = remove_history(0);\n\t\t\tel_free(he->data);"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 1431,
+    "context": " */\nint\nread_history(const char *filename)\n{\n\tHistEvent ev;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\tif (filename == NULL && (filename = _default_history_file()) == NULL)\n\t\treturn errno;\n\terrno = 0;\n\tif (history(h, &ev, H_LOAD, filename) == -1)\n\t\treturn errno ? errno : EINVAL;\n\tif (history(h, &ev, H_GETSIZE) == 0)\n\t\thistory_length = ev.num;\n\tif (history_length < 0)"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 1454,
+    "context": " */\nint\nwrite_history(const char *filename)\n{\n\tHistEvent ev;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\tif (filename == NULL && (filename = _default_history_file()) == NULL)\n\t\treturn errno;\n\treturn history(h, &ev, H_SAVE, filename) == -1 ?\n\t    (errno ? errno : EINVAL) : 0;\n}\n\nint\nappend_history(int n, const char *filename)"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 1468,
+    "context": "int\nappend_history(int n, const char *filename)\n{\n\tHistEvent ev;\n\tFILE *fp;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\tif (filename == NULL && (filename = _default_history_file()) == NULL)\n\t\treturn errno;\n\n\tif ((fp = fopen(filename, \"a\")) == NULL)\n\t\treturn errno;\n\n\tif (history(h, &ev, H_NSAVE_FP, (size_t)n,  fp) == -1) {\n\t\tint serrno = errno ? errno : EINVAL;"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 1497,
+    "context": "history_get(int num)\n{\n\tstatic HIST_ENTRY she;\n\tHistEvent ev;\n\tint curr_num;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\tif (num < history_base)\n\t\treturn NULL;\n\n\t/* save current position */\n\tif (history(h, &ev, H_CURR) != 0)\n\t\treturn NULL;\n\tcurr_num = ev.num;"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 1542,
+    "context": " */\nint\nadd_history(const char *line)\n{\n\tHistEvent ev;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\tif (history(h, &ev, H_ENTER, line) == -1)\n\t\treturn 0;\n\n\t(void)history(h, &ev, H_GETSIZE);\n\tif (ev.num == history_length)\n\t\thistory_base++;\n\telse {"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 1568,
+    "context": "HIST_ENTRY *\nremove_history(int num)\n{\n\tHIST_ENTRY *he;\n\tHistEvent ev;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\tif ((he = el_malloc(sizeof(*he))) == NULL)\n\t\treturn NULL;\n\n\tif (history(h, &ev, H_DELDATA, num, &he->data) != 0) {\n\t\tel_free(he);\n\t\treturn NULL;\n\t}"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 1597,
+    "context": "replace_history_entry(int num, const char *line, histdata_t data)\n{\n\tHIST_ENTRY *he;\n\tHistEvent ev;\n\tint curr_num;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\t/* save current position */\n\tif (history(h, &ev, H_CURR) != 0)\n\t\treturn NULL;\n\tcurr_num = ev.num;\n\n\t/* start from the oldest */\n\tif (history(h, &ev, H_LAST) != 0)"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 1641,
+    "context": " */\nvoid\nclear_history(void)\n{\n\tHistEvent ev;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\t(void)history(h, &ev, H_CLEAR);\n\thistory_offset = history_length = 0;\n}\n\n\n/*\n * returns offset of the current history event"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 1961,
+    "context": "int\nrl_complete(int ignore __attribute__((__unused__)), int invoking_key)\n{\n\tstatic ct_buffer_t wbreak_conv, sprefix_conv;\n\tconst char *breakchars;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\tif (rl_inhibit_completion) {\n\t\tchar arr[2];\n\t\tarr[0] = (char)invoking_key;\n\t\tarr[1] = '\\0';\n\t\tel_insertstr(e, arr);\n\t\treturn CC_REFRESH;\n\t}"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 2013,
+    "context": " */\nint\nrl_bind_key(int c, rl_command_func_t *func)\n{\n\tint retval = -1;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\tif (func == rl_insert) {\n\t\t/* XXX notice there is no range checking of ``c'' */\n\t\te->el_map.key[c] = ED_INSERT;\n\t\tretval = 0;\n\t}\n\treturn retval;\n}"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 2034,
+    "context": " */\nint\nrl_read_key(void)\n{\n\tchar fooarr[2 * sizeof(int)];\n\n\tif (e == NULL || h == NULL)\n\t\trl_initialize();\n\n\treturn el_getc(e, fooarr);\n}\n\n\n/*\n * reset the terminal\n */"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 2049,
+    "context": " */\n/* ARGSUSED */\nint\nrl_reset_terminal(const char *p __attribute__((__unused__)))\n{\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\tel_reset(e);\n\treturn 0;\n}\n\n\n/*\n * insert character ``c'' back into input stream, ``count'' times\n */"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 2064,
+    "context": " */\nint\nrl_insert(int count, int c)\n{\n\tchar arr[2];\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\t/* XXX - int -> char conversion can lose on multichars */\n\tarr[0] = (char)c;\n\tarr[1] = '\\0';\n\n\tfor (; count > 0; count--)\n\t\tel_push(e, arr);\n"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 2083,
+    "context": "int\nrl_insert_text(const char *text)\n{\n\tif (!text || *text == 0)\n\t\treturn 0;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\tif (el_insertstr(e, text) < 0)\n\t\treturn 0;\n\treturn (int)strlen(text);\n}\n\n/*ARGSUSED*/\nint"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 2164,
+    "context": "\t_rl_update_pos();\n}\n\nvoid\nrl_callback_handler_install(const char *prompt, rl_vcpfunc_t *linefunc)\n{\n\tif (e == NULL) {\n\t\trl_initialize();\n\t}\n\t(void)rl_set_prompt(prompt);\n\trl_linefunc = linefunc;\n\tel_set(e, EL_UNBUFFERED, 1);\n}\n\nvoid\nrl_callback_handler_remove(void)"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 2215,
+    "context": "{\n\tel_set(e, EL_PREP_TERM, 0);\n}\n\nint\nrl_read_init_file(const char *s)\n{\n\treturn el_source(e, s);\n}\n\nint\nrl_parse_and_bind(const char *line)\n{\n\tconst char **argv;\n\tint argc;\n\tTokenizer *tok;"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 2317,
+    "context": "rl_copy_text(int from, int to)\n{\n\tconst LineInfo *li;\n\tsize_t len;\n\tchar * out;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\tli = el_line(e);\n\n\tif (from > to)\n\t\treturn NULL;\n\n\tif (li->buffer + from > li->lastchar)\n\t\tfrom = (int)(li->lastchar - li->buffer);"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 2346,
+    "context": "void\nrl_replace_line(const char * text, int clear_undo __attribute__((__unused__)))\n{\n\tif (!text || *text == 0)\n\t\treturn;\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\tel_replacestr(e, text);\n}\n\nint\nrl_delete_text(int start, int end)\n{\n"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/readline.c",
+    "line": 2356,
+    "context": "}\n\nint\nrl_delete_text(int start, int end)\n{\n\n\tif (h == NULL || e == NULL)\n\t\trl_initialize();\n\n\treturn el_deletestr1(e, start, end);\n}\n\nvoid\nrl_get_screen_size(int *rows, int *cols)\n{\n\tif (rows)"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/parse.c",
+    "line": 121,
+    "context": "\t\tl = (size_t)(ptr - argv[0]);\n\t\ttprog = el_calloc(l + 1, sizeof(*tprog));\n\t\tif (tprog == NULL)\n\t\t\treturn 0;\n\t\t(void) wcsncpy(tprog, argv[0], l);\n\t\ttprog[l] = '\\0';\n\t\tptr++;\n\t\tl = (size_t)el_match(el->el_prog, tprog);\n\t\tel_free(tprog);\n\t\tif (!l)\n\t\t\treturn 0;\n\t} else\n\t\tptr = argv[0];\n\n\tfor (i = 0; cmds[i].name != NULL; i++)\n\t\tif (wcscmp(cmds[i].name, ptr) == 0) {"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.h",
+    "line": 53,
+    "context": "\tint\t patdir;\t\t/* Direction of the last search\t*/\n\tint\t chadir;\t\t/* Character search direction\t*/\n\twchar_t\t chacha;\t\t/* Character we are looking for\t*/\n\tchar\t chatflg;\t\t/* 0 if f, 1 if t */\n} el_search_t;\n\n\nlibedit_private int\t\tel_match(const wchar_t *, const wchar_t *);\nlibedit_private int\t\tsearch_init(EditLine *);\nlibedit_private void\t\tsearch_end(EditLine *);\nlibedit_private int\t\tc_hmatch(EditLine *, const wchar_t *);\nlibedit_private void\t\tc_setpat(EditLine *);\nlibedit_private el_action_t\tce_inc_search(EditLine *, int);\nlibedit_private el_action_t\tcv_search(EditLine *, int);\nlibedit_private el_action_t\tce_search_line(EditLine *, int);\nlibedit_private el_action_t\tcv_repeat_srch(EditLine *, wint_t);"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/search.h",
+    "line": 54,
+    "context": "\tint\t chadir;\t\t/* Character search direction\t*/\n\twchar_t\t chacha;\t\t/* Character we are looking for\t*/\n\tchar\t chatflg;\t\t/* 0 if f, 1 if t */\n} el_search_t;\n\n\nlibedit_private int\t\tel_match(const wchar_t *, const wchar_t *);\nlibedit_private int\t\tsearch_init(EditLine *);\nlibedit_private void\t\tsearch_end(EditLine *);\nlibedit_private int\t\tc_hmatch(EditLine *, const wchar_t *);\nlibedit_private void\t\tc_setpat(EditLine *);\nlibedit_private el_action_t\tce_inc_search(EditLine *, int);\nlibedit_private el_action_t\tcv_search(EditLine *, int);\nlibedit_private el_action_t\tce_search_line(EditLine *, int);\nlibedit_private el_action_t\tcv_repeat_srch(EditLine *, wint_t);\nlibedit_private el_action_t\tcv_csearch(EditLine *, int, wint_t, int, int);"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/el.c",
+    "line": 87,
+    "context": "{\n\tif (issetugid())\n\t\treturn 0;\n\treturn getenv(name);\n}\n#endif\n\n/* el_init():\n *\tInitialize editline and set default parameters.\n */\nEditLine *\nel_init(const char *prog, FILE *fin, FILE *fout, FILE *ferr)\n{\n    return el_init_fd(prog, fin, fout, ferr, fileno(fin), fileno(fout),\n\tfileno(ferr));\n}"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/el.c",
+    "line": 91,
+    "context": "}\n#endif\n\n/* el_init():\n *\tInitialize editline and set default parameters.\n */\nEditLine *\nel_init(const char *prog, FILE *fin, FILE *fout, FILE *ferr)\n{\n    return el_init_fd(prog, fin, fout, ferr, fileno(fin), fileno(fout),\n\tfileno(ferr));\n}\n\nlibedit_private EditLine *\nel_init_internal(const char *prog, FILE *fin, FILE *fout, FILE *ferr,\n    int fdin, int fdout, int fderr, int flags)"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/el.c",
+    "line": 135,
+    "context": "\t\treturn NULL;\n\t}\n\t(void) keymacro_init(el);\n\t(void) map_init(el);\n\tif (tty_init(el) == -1)\n\t\tel->el_flags |= NO_TTY;\n\t(void) ch_init(el);\n\t(void) search_init(el);\n\t(void) hist_init(el);\n\t(void) prompt_init(el);\n\t(void) sig_init(el);\n\t(void) literal_init(el);\n\tif (read_init(el) == -1) {\n\t\tel_end(el);\n\t\treturn NULL;\n\t}"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/el.c",
+    "line": 547,
+    "context": "el_wline(EditLine *el)\n{\n\n\treturn (const LineInfoW *)(void *)&el->el_line;\n}\n\n\n/* el_source():\n *\tSource a file\n */\nint\nel_source(EditLine *el, const char *fname)\n{\n\tFILE *fp;\n\tsize_t len;\n\tssize_t slen;"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/el.c",
+    "line": 551,
+    "context": "}\n\n\n/* el_source():\n *\tSource a file\n */\nint\nel_source(EditLine *el, const char *fname)\n{\n\tFILE *fp;\n\tsize_t len;\n\tssize_t slen;\n\tchar *ptr;\n\tchar *path = NULL;\n\tconst wchar_t *dptr;\n\tint error = 0;"
+  },
+  {
+    "file": "libedit-20250104-3.1/src/editline/readline.h",
+    "line": 177,
+    "context": "extern int\t\t_rl_echoing_p;\nextern int\t\thistory_max_entries;\nextern char\t\t*rl_display_prompt;\nextern int\t\trl_erase_empty_line;\n\n/* supported functions */\nchar\t\t*readline(const char *);\nint\t\t rl_initialize(void);\n\nvoid\t\t using_history(void);\nint\t\t add_history(const char *);\nvoid\t\t clear_history(void);\nint\t\t append_history(int, const char *);\nvoid\t\t stifle_history(int);\nint\t\t unstifle_history(void);\nint\t\t history_is_stifled(void);"
+  },
+  {
+    "file": "libedit-20250104-3.1/examples/tc1.c",
+    "line": 153,
+    "context": "\thist = history_init();\t\t/* Init the builtin history\t*/\n\t\t\t\t\t/* Remember 100 events\t\t*/\n\thistory(hist, &ev, H_SETSIZE, 100);\n\n\ttok  = tok_init(NULL);\t\t/* Initialize the tokenizer\t*/\n\n\t\t\t\t\t/* Initialize editline\t\t*/\n\tel = el_init(*argv, stdin, stdout, stderr);\n\n\tel_set(el, EL_EDITOR, \"vi\");\t/* Default editor is vi\t\t*/\n\tel_set(el, EL_SIGNAL, 1);\t/* Handle signals gracefully\t*/\n\tel_set(el, EL_PROMPT_ESC, prompt, '\\1');/* Set the prompt function */\n\n\t\t\t/* Tell editline to use this history interface\t*/\n\tel_set(el, EL_HIST, history, hist);\n"
+  },
+  {
+    "file": "libedit-20250104-3.1/examples/tc1.c",
+    "line": 178,
+    "context": "\t */\n\tel_set(el, EL_BIND, \"-a\", \"k\", \"ed-prev-line\", NULL);\n\tel_set(el, EL_BIND, \"-a\", \"j\", \"ed-next-line\", NULL);\n\n\t/*\n\t * Source the user's defaults file.\n\t */\n\tel_source(el, NULL);\n\n\twhile ((buf = el_gets(el, &num)) != NULL && num != 0)  {\n\t\tint ac, cc, co;\n#ifdef DEBUG\n\t\tint i;\n#endif\n\t\tconst char **av;\n\t\tconst LineInfo *li;"
+  },
+  {
+    "file": "libedit-20250104-3.1/examples/wtc1.c",
+    "line": 137,
+    "context": "\n\thist = history_winit();\t\t/* Init built-in history     */\n\thistory_w(hist, &ev, H_SETSIZE, 100);\t/* Remember 100 events\t     */\n\thistory_w(hist, &ev, H_LOAD, hfile);\n\n\ttok = tok_winit(NULL);\t\t\t/* Init the tokenizer\t     */\n\n\tel = el_init(argv[0], stdin, stdout, stderr);\n\n\tel_wset(el, EL_EDITOR, L\"vi\");\t\t/* Default editor is vi\t     */\n\tel_wset(el, EL_SIGNAL, 1);\t\t/* Handle signals gracefully */\n\tel_wset(el, EL_PROMPT_ESC, prompt, '\\1'); /* Set the prompt function */\n\n\tel_wset(el, EL_HIST, history_w, hist);\t/* FIXME - history_w? */\n\n\t\t\t\t\t/* Add a user-defined function\t*/"
+  },
+  {
+    "file": "libedit-20250104-3.1/examples/wtc1.c",
+    "line": 159,
+    "context": "\t* Bind j, k in vi command mode to previous and next line, instead\n\t* of previous and next history.\n\t*/\n\tel_wset(el, EL_BIND, L\"-a\", L\"k\", L\"ed-prev-line\", NULL);\n\tel_wset(el, EL_BIND, L\"-a\", L\"j\", L\"ed-next-line\", NULL);\n\n\t/* Source the user's defaults file. */\n\tel_source(el, NULL);\n\n\twhile((line = el_wgets(el, &numc)) != NULL && numc != 0) {\n\t\tint ac, cc, co, rc;\n\t\tconst wchar_t **av;\n\n\t\tconst LineInfoW *li;\n\t\tli = el_wline(el);\n"
+  }
+]

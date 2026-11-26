@@ -1,0 +1,30 @@
+[
+  {
+    "path": ".local/security-runtime-guard-2026-11-25/postgres-entrypoint.sh",
+    "sha256": "48647812e68165e2943abe82a1a7cb8364d6e9f8b6b6aefc179868b66a327c46"
+  },
+  {
+    "path": "deploy/self-host/compose.yaml",
+    "sha256": "bbd70bddb9b6f2786b0a8cae0c32c0b0198db0c46d90fb25e48b8fa22c21e3f1"
+  },
+  {
+    "path": "deploy/self-host/database.sql",
+    "sha256": "e5a6838312fc141f7b9c4436a328b087357b02e01a5fe71f0a38e6e023c2653b"
+  },
+  {
+    "path": "deploy/self-host/ratefreak.py",
+    "sha256": "69348a92878cf79317534f63c495fdaf56ff01954d4845d98112deb0861a82aa"
+  },
+  {
+    "path": "deploy/self-host/maintenance.py",
+    "sha256": "1f8d9dd7fc007d3ca06574905bfe52c3620d9ab448214e6e517a97cf12f16ea9"
+  },
+  {
+    "path": ".local/security-residual-os-2026-11-25/assessments.json",
+    "sha256": "4de95fafa8af764726f5328af724fcc5a00533cbe8acf351984f946dbc55f9b6"
+  },
+  {
+    "path": ".local/security-clearance-2026-11-25/vendor/debian-tracker.json",
+    "sha256": "acb1ff678467a38188457c9ae56ca07bf6e75ab4f0b775e2f358d2c9214294a9"
+  }
+]
