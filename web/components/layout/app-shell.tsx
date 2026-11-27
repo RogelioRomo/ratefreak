@@ -11,7 +11,7 @@ export function AppShell({ children, className }: AppShellProps) {
       <SiteHeader />
       <main id="main-content" tabIndex={-1} className={className}>{children}</main>
       <footer className={styles.footer}>
-        <p>Made with <a href="https://github.com/RogelioRomo/ratefreak">RateFreak</a></p>
+        <p>Made with <a href="https://github.com/RogelioRomo/ratefreak" target="_blank" rel="noopener noreferrer">RateFreak</a></p>
         <Link className={styles.credits} href="/credits">Credits</Link>
         <ThemeControl />
       </footer>
