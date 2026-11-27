@@ -9,15 +9,21 @@ import { MediaArtwork, supportedArtwork } from "./media-artwork";
 function artwork(reference: string, type: "movie" | "video_game" | "book" | "custom" = "movie") {
   return <ImageConfigContext.Provider value={{ ...imageConfigDefault, ...config.images }}><MediaArtwork reference={reference} title="A title" type={type} /></ImageConfigContext.Provider>;
 }
-it.each([
-  ["https://images.igdb.com/igdb/image/upload/t_cover_big/co123.jpg", "video_game"],
-  ["https://covers.openlibrary.org/b/id/12345-L.jpg?default=false", "book"],
-] as const)("renders public %s through the image optimizer", (url, type) => {
-  render(artwork(url, type)); const image = screen.getByRole("img", { name: "Artwork for A title" });
-  const optimized = new URL(image.getAttribute("src")!, window.location.origin);
-  expect(optimized.origin).toBe(window.location.origin); expect(optimized.pathname).toBe("/_next/image");
-  expect(optimized.searchParams.get("url")).toBe(type === "book" ? "/provider-artwork/openlibrary/12345" : url); expect(image).toHaveAttribute("loading", "lazy");
-  expect(image).toHaveAttribute("srcSet"); expect(image).toHaveAttribute("sizes");
+it("renders Open Library covers directly without proxying or optimization", () => {
+  const url = "https://covers.openlibrary.org/b/id/12345-L.jpg?default=false";
+  render(artwork(url, "book"));
+  const image = screen.getByRole("img", { name: "Artwork for A title" });
+  expect(image).toHaveAttribute("src", url);
+  expect(image).not.toHaveAttribute("srcset");
+  expect(image).toHaveAttribute("loading", "lazy");
+  expect(image).toHaveAttribute("decoding", "async");
+  expect(image).toHaveAttribute("referrerpolicy", "no-referrer");
+});
+it("shows a fallback when a direct Open Library cover is unavailable", () => {
+  render(artwork("https://covers.openlibrary.org/b/id/12345-L.jpg?default=false", "book"));
+  fireEvent.error(screen.getByRole("img"));
+  expect(screen.queryByRole("img")).not.toBeInTheDocument();
+  expect(screen.getByText("Artwork unavailable")).toBeInTheDocument();
 });
 it("renders TMDB artwork from the unoptimized same-origin poster route", () => {
   render(artwork("https://image.tmdb.org/t/p/w500/example.jpg"));
@@ -38,6 +44,15 @@ it("shows an honest fallback on errors and retries when the source changes", () 
   fireEvent.error(screen.getByRole("img")); expect(screen.getByText("Artwork unavailable")).toBeInTheDocument();
   view.rerender(artwork("https://image.tmdb.org/t/p/w500/two.jpg")); expect(screen.getByRole("img")).toBeInTheDocument();
 });
-it.each(["https://evil.test/image.jpg", "https://image.tmdb.org/t/p/w500/evil.svg", "https://covers.openlibrary.org/b/isbn/123-L.jpg", "https://covers.openlibrary.org/b/id/0-L.jpg?default=false"])("rejects unsafe or unsupported references %s", reference => {
+it.each(["https://evil.test/image.jpg", "https://image.tmdb.org/t/p/w500/evil.svg", "https://covers.openlibrary.org/b/isbn/123-L.jpg", "https://covers.openlibrary.org/b/id/0-L.jpg?default=false", "https://covers.openlibrary.org/b/id/12345-L.jpg?default=false&target=http://127.0.0.1", "https://covers.openlibrary.org/b/id/12345-L.jpg?default=false#fragment", "https://covers.openlibrary.org.evil.test/b/id/12345-L.jpg?default=false", "https://covers.openlibrary.org/b/id/12345-L.jpg?default=false\n"])("rejects unsafe or unsupported references %s", reference => {
   expect(supportedArtwork(reference)).toBeNull();
+});
+
+it("renders IGDB artwork through the unoptimized managed cover route", () => {
+  render(artwork("https://images.igdb.com/igdb/image/upload/t_cover_big/co123.jpg", "video_game"));
+  const image = screen.getByRole("img", { name: "Artwork for A title" });
+  const url = new URL(image.getAttribute("src")!, window.location.origin);
+  expect(url.origin).toBe(window.location.origin);
+  expect(url.pathname + url.search).toBe("/igdb-covers/co123.jpg");
+  expect(image).not.toHaveAttribute("srcset");
 });

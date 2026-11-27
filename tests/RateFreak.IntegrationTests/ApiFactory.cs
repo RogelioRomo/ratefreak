@@ -15,6 +15,7 @@ public sealed class ApiFactory(string environment = "Production", string? connec
         ?? Path.Combine(Path.GetTempPath(), "ratefreak-test-keys-" + Guid.NewGuid());
 
     private readonly DirectoryInfo policyDirectory = Directory.CreateTempSubdirectory("ratefreak-test-policy-");
+    public string IgdbPolicyPath => Path.Combine(policyDirectory.FullName, "igdb-policy.json");
     public string PolicyPath => Path.Combine(policyDirectory.FullName, "tmdb-policy.json");
     public override async ValueTask DisposeAsync()
     {
@@ -24,7 +25,7 @@ public sealed class ApiFactory(string environment = "Production", string? connec
             Directory.Delete(keyDirectory, recursive: true);
     }
 
-    private sealed class ReadyCatalog : RateFreak.Infrastructure.Providers.Tmdb.ITmdbCatalogReadiness { public bool Ready => true; }
+    private sealed class ReadyCatalog : RateFreak.Infrastructure.Providers.Tmdb.ITmdbCatalogReadiness, RateFreak.Infrastructure.Providers.Igdb.IIgdbCatalogReadiness { public bool Ready => true; }
 
     private sealed class CompletedInstallation : IInstallationService
     {
@@ -37,18 +38,22 @@ public sealed class ApiFactory(string environment = "Production", string? connec
         builder.UseEnvironment(environment);
         File.WriteAllText(PolicyPath, """{"format":1,"terminated":false,"blockedIdentities":[],"blockedPosters":[]}""");
         if (!OperatingSystem.IsWindows()) File.SetUnixFileMode(PolicyPath, UnixFileMode.UserRead | UnixFileMode.UserWrite);
+        File.WriteAllText(IgdbPolicyPath, """{"format":1,"terminated":false,"blockedIdentities":[],"blockedPosters":[]}""");
+        if (!OperatingSystem.IsWindows()) File.SetUnixFileMode(IgdbPolicyPath, UnixFileMode.UserRead | UnixFileMode.UserWrite);
         // Database-free contract tests isolate their endpoint behavior. Real setup
         // tests always supply PostgreSQL and never replace the production guard.
         if (connectionString is null) builder.ConfigureTestServices(services =>
         {
             services.AddScoped<IInstallationService, CompletedInstallation>();
             services.AddSingleton<RateFreak.Infrastructure.Providers.Tmdb.ITmdbCatalogReadiness, ReadyCatalog>();
+            services.AddSingleton<RateFreak.Infrastructure.Providers.Igdb.IIgdbCatalogReadiness, ReadyCatalog>();
         });
         if (configureServices is not null) builder.ConfigureServices(configureServices);
         builder.ConfigureAppConfiguration((_, configuration) => configuration.AddInMemoryCollection(
             new Dictionary<string, string?>
             {
                 ["Providers:Tmdb:PolicyPath"] = PolicyPath,
+                ["Providers:Igdb:PolicyPath"] = IgdbPolicyPath,
                 ["Installation:SetupSecret"] = setupSecret,
                 ["Authentication:DataProtectionKeysPath"] = keyDirectory,
                 ["ConnectionStrings:Default"] = connectionString ??

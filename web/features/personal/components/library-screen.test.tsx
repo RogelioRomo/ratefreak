@@ -72,3 +72,11 @@ it("refreshes a conflicting entry for the verified same account before retrying"
  const item={...entry,status:conflict?"dropped":"planned",updatedAt:conflict?"2026-02-01":entry.updatedAt};return Response.json(String(u).includes("library?")?{items:[item],page:1,pageSize:20,totalCount:1}:item);
  });setup();selectValue(await screen.findByRole("combobox",{name:"Status for A film"}),"paused");fireEvent.click(screen.getByRole("button",{name:"Save status for A film"}));await screen.findByRole("alert");fireEvent.click(screen.getByRole("button",{name:"Refresh library"}));await waitFor(()=>expect(screen.getByRole("combobox",{name:"Status for A film"})).toHaveTextContent("Dropped"));selectValue(screen.getByRole("combobox",{name:"Status for A film"}),"completed");fireEvent.click(screen.getByRole("button",{name:"Save status for A film"}));await screen.findByText("Status saved for A film. Completed.");expect(writes).toBe(2);
 });
+
+it("keeps the direct Open Library cover URL in library rows", async()=>{
+ const imageReference="https://covers.openlibrary.org/b/id/12345-L.jpg?default=false";
+ mock.mockResolvedValue(Response.json({items:[{...entry,media:{...entry.media,type:"book",imageReference}}],page:1,pageSize:20,totalCount:1}));
+ setup();
+ const image=await screen.findByRole("img",{name:"Artwork for A film"});
+ expect(image).toHaveAttribute("src",imageReference);expect(image).not.toHaveAttribute("srcset");
+});

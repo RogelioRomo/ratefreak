@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "date": "2026-11-27",
+  "baseRevision": "1e71d4429ed1a1f9b86a60159f9978f172686f63",
+  "official": false,
+  "kind": "nonofficial dirty-source development proof",
+  "tests": {
+    "unit": 62,
+    "providerContracts": 215,
+    "postgresIntegration": 516,
+    "frontend": 1072,
+    "operator": 100,
+    "release": 26,
+    "compliance": 20,
+    "total": 2011,
+    "failed": 0,
+    "skipped": 0
+  },
+  "checks": {
+    "efModelConsistency": "no pending model changes",
+    "webLint": "passed",
+    "webTypecheck": "passed",
+    "webProductionBuild": "passed",
+    "apiImageBuild": "passed",
+    "webImageBuild": "passed",
+    "toolsImageBuild": "passed",
+    "independentReview": "no remaining critical or important findings"
+  },
+  "migration": "20261127171719_AddIgdbContentLifecycle",
+  "acceptance": {
+    "candidateImages": {
+      "api": "sha256:4808988fd9738bf6ebaad172d72d73c11ce0d6807a76905cafab75951066df51",
+      "web": "sha256:7535c5b7f62f4aa85a9d56bce607ad2c25fb929d86eea8ef4c93e8358e2c061f",
+      "tools": "sha256:4b2fc893d1eeb0822f89245a236edfa1265ca46139e38a8898af87178162faf2"
+    },
+    "baselineImages": null,
+    "https": true,
+    "freshInstall": true,
+    "upgrade": false,
+    "disabledUpdateChecks": true,
+    "ordinaryDenied": true,
+    "logoutDenied": true,
+    "dataPreserved": true,
+    "igdbOfflineRemoval": true,
+    "isolatedRestoreCurrentPolicy": true,
+    "replayPreservesOtherTables": true,
+    "globalTermination": true
+  },
+  "browser": {
+    "catalogDirectOpenLibrary": true,
+    "libraryManagedIgdb": true,
+    "viewports": [
+      1440,
+      390
+    ],
+    "optimizerDenied": true,
+    "legacyRouteDenied": true,
+    "tlsVerified": true,
+    "runtimeErrors": [],
+    "previewDirectOpenLibrary": true,
+    "libraryDirectOpenLibrary": true,
+    "controlledUpstreamImages": true
+  },
+  "cleanup": "Successful and interrupted disposable proof projects have no remaining containers or named volumes. Private synthetic fixtures/backups retained separately with maximum 30-day retention.",
+  "limits": [
+    "No persistent installation migrated or service started.",
+    "No live provider credentials or provider correspondence used.",
+    "The fresh current-image installation and current-policy restore were verified; historical-image upgrade/rollback was not requalified in this proof.",
+    "Final stable source/image, security, all-layer privacy, notices/source sidecar and complete installation-package qualification remain release gates.",
+    "Five/six-month IGDB interval is RateFreak policy, not provider-confirmed approval."
+  ]
+}

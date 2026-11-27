@@ -2,6 +2,7 @@ namespace RateFreak.Infrastructure.Providers.Igdb;
 
 public sealed class IgdbOptions
 {
+    public string? PolicyPath { get; set; }
     public bool Enabled { get; set; }
     public string? ClientId { get; set; }
     public string? ClientSecret { get; set; }

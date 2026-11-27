@@ -134,3 +134,12 @@ it("falls back when supported artwork fails and blocks untrusted hosts", async (
   await waitFor(() => expect(screen.queryByRole("img")).not.toBeInTheDocument());
   expect(screen.getAllByText("Artwork unavailable")).toHaveLength(2);
 });
+
+it("keeps the direct Open Library cover URL in catalog results", async () => {
+  const imageReference = "https://covers.openlibrary.org/b/id/12345-L.jpg?default=false";
+  fetchMock.mockResolvedValue(Response.json({ ...page, items: [{ ...item, type: "book", imageReference }] }));
+  setup();
+  const image = await screen.findByRole("img", { name: /artwork for/i });
+  expect(image).toHaveAttribute("src", imageReference);
+  expect(image).not.toHaveAttribute("srcset");
+});

@@ -13,5 +13,7 @@ export async function register() {
     sharp.block({ operation: ["VipsForeignLoadHeif"] });
     const { startTmdbPosterScheduler } = await import("./server/artwork/tmdb-posters");
     await startTmdbPosterScheduler();
+    const { startIgdbCoverScheduler } = await import("./server/artwork/igdb-covers");
+    await startIgdbCoverScheduler();
   }
 }

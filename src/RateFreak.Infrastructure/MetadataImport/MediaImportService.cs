@@ -5,16 +5,19 @@ using RateFreak.Domain.Catalog;
 using RateFreak.Infrastructure.Persistence;
 using System.Text.Json;
 using RateFreak.Infrastructure.Providers.Tmdb;
+using RateFreak.Infrastructure.Providers.Igdb;
 
 namespace RateFreak.Infrastructure.MetadataImport;
 
-internal sealed class MediaImportService(RateFreakDbContext context, IMediaProviderRegistry providers, TmdbContentPolicy policy, TimeProvider clock) : IMediaImportService
+internal sealed class MediaImportService(RateFreakDbContext context, IMediaProviderRegistry providers, TmdbContentPolicy policy, IgdbContentPolicy igdbPolicy, TimeProvider clock) : IMediaImportService
 {
     public async Task<ImportMediaResult?> ImportAsync(string providerName, string externalId, string type, CancellationToken cancellationToken)
     {
         if (!MediaProviderInput.TryIdentity(providerName, type, externalId, out var identity))
             throw new ArgumentException("Invalid provider identity.");
         var provider = providers.Find(providerName) ?? throw new ArgumentException("Unknown provider.");
+        var igdb = identity.Provider == "igdb";
+        if (igdb && igdbPolicy.ForOperation().Blocks(identity.Namespace, identity.ExternalId)) return null;
         var tmdb = identity.Provider == "tmdb";
         if (tmdb && policy.ForOperation().Blocks(identity.Namespace, identity.ExternalId)) return null;
         var existing = await FindAsync(identity, cancellationToken);
@@ -32,6 +35,12 @@ internal sealed class MediaImportService(RateFreakDbContext context, IMediaProvi
             details = policy.ForOperation().Filter(details);
             if (details == null) return null;
         }
+        if (igdb)
+        {
+            await IgdbLifecycle.AcquireWriterAsync(context, cancellationToken);
+            details = igdbPolicy.ForOperation().Filter(details);
+            if (details == null) return null;
+        }
         MediaItem item;
         try { item = new MediaItem(type, details.Title, details.Description, details.ReleaseDate, details.ImageReference, details.Metadata.GetRawText()); }
         catch (Exception ex) when (ex is ArgumentException or JsonException or InvalidOperationException)
@@ -43,6 +52,7 @@ internal sealed class MediaImportService(RateFreakDbContext context, IMediaProvi
             context.Add(mapping);
             await context.SaveChangesAsync(cancellationToken);
             if (tmdb) await TmdbLifecycle.RememberPosterAsync(context, mapping.Id, sourceImage, cancellationToken);
+            if (igdb) await IgdbLifecycle.RememberPosterAsync(context, mapping.Id, sourceImage, cancellationToken);
             await transaction.CommitAsync(cancellationToken);
             return new ImportMediaResult(item.Id, true);
         }
@@ -59,7 +69,8 @@ internal sealed class MediaImportService(RateFreakDbContext context, IMediaProvi
     }
 
     private ImportMediaResult? ExistingResult(ProviderIdentity identity, Guid id) =>
-        identity.Provider == "tmdb" && policy.ForOperation().Blocks(identity.Namespace, identity.ExternalId)
+        (identity.Provider == "tmdb" && policy.ForOperation().Blocks(identity.Namespace, identity.ExternalId) ||
+         identity.Provider == "igdb" && igdbPolicy.ForOperation().Blocks(identity.Namespace, identity.ExternalId))
             ? null
             : new ImportMediaResult(id, false);
 

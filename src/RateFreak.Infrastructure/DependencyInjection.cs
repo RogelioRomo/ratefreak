@@ -118,6 +118,12 @@ public static class DependencyInjection
         services.AddOptions<IgdbOptions>().Bind(configuration.GetSection("Providers:Igdb"))
             .Validate(options => options.IsValid(), "IGDB configuration is invalid: check timeout and enabled-provider app credentials.").ValidateOnStart();
         services.AddSingleton<IgdbSession>();
+        services.AddSingleton<IgdbContentPolicy>();
+        services.AddScoped<IgdbLifecycle>();
+        services.AddSingleton<IgdbLifecycleWorker>();
+        services.AddSingleton<IIgdbCatalogReadiness>(sp => sp.GetRequiredService<IgdbLifecycleWorker>());
+        services.AddHostedService(sp => sp.GetRequiredService<IgdbLifecycleWorker>());
+        services.AddHealthChecks().AddCheck<IgdbLifecycleWorker>("igdb-lifecycle", tags: ["ready"]);
         services.AddHttpClient("igdb-auth", client => client.Timeout = Timeout.InfiniteTimeSpan)
             .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
             { AllowAutoRedirect = false, PooledConnectionLifetime = TimeSpan.FromMinutes(5), MaxConnectionsPerServer = 1 })

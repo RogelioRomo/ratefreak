@@ -565,15 +565,19 @@ python3 - <<'PYCODE'
 from pathlib import Path
 import os, sys
 sys.path.insert(0, 'deploy/self-host')
-from entrypoint import prepare_tmdb_storage
+from entrypoint import prepare_tmdb_storage, prepare_igdb_storage
 root = Path('.local/provider-runtime').resolve()
 for name in ('runtime', 'storage', 'independent'):
     (root / name).mkdir(mode=0o700, parents=True, exist_ok=True)
 prepare_tmdb_storage(root, os.getuid(), os.getgid())
+prepare_igdb_storage(root, os.getuid(), os.getgid())
 PYCODE
 export Providers__Tmdb__PolicyPath="$PWD/.local/provider-runtime/independent/tmdb/tmdb-policy.json"
 export RATEFREAK_TMDB_POLICY_PATH="$Providers__Tmdb__PolicyPath"
 export RATEFREAK_TMDB_CACHE_PATH="$PWD/.local/provider-runtime/storage/tmdb-posters"
+export Providers__Igdb__PolicyPath="$PWD/.local/provider-runtime/independent/igdb/igdb-policy.json"
+export RATEFREAK_IGDB_POLICY_PATH="$Providers__Igdb__PolicyPath"
+export RATEFREAK_IGDB_CACHE_PATH="$PWD/.local/provider-runtime/storage/igdb-covers"
 ```
 
 Keep that policy current and private; do not clear it to recover from an error.
@@ -974,9 +978,18 @@ read requests, without enabling the provider in the normal runtime configuration
 | Configuration | Contract |
 | --- | --- |
 | `Providers:Igdb:Enabled` | false |
+| `Providers:Igdb:PolicyPath` | Required protected current policy path even when disabled; provision with the local storage example above or reference `prepare` |
 | `Providers:Igdb:ClientId` | Required when enabled; 1..256 ASCII alphanumeric characters |
 | `Providers:Igdb:ClientSecret` | Required when enabled; same bounds, server secret |
 | `Providers:Igdb:TimeoutMilliseconds` | 6000; allowed 500..15000, covers auth, pacing, retries and bodies |
+
+Migration `20261127171719_AddIgdbContentLifecycle` adds lifecycle/control tables.
+Follow the reviewed migration process. IGDB metadata and cached covers refresh
+from five UTC calendar months and expire at six while preserving user records.
+This interval is RateFreak policy. Confirmed game removal and operator termination
+use a separately protected policy that must accompany isolated restore; disabling
+API access alone does not purge. See the
+[IGDB lifecycle runbook](docs/self-hosting.md#igdb-refresh-expiry-and-removal).
 
 Environment names use `Providers__Igdb__...`. Twitch client_credentials requests
 send credentials in a form body to a fixed HTTPS token endpoint. The app token
@@ -1397,10 +1410,13 @@ has a 20-second ceiling. The metadata cache resets with the API process; persist
 catalog items remain in PostgreSQL. React Query also keeps its existing browser
 JSON cache/session isolation.
 
-IGDB/Open Library images use the shared Next.js optimizer/disk cache, with a
-24-hour minimum TTL and 1 GiB capacity. TMDB posters use a separate managed cache
+Open Library covers use direct validated `covers.openlibrary.org` image URLs;
+viewing them contacts the provider from the browser, with no referrer. They bypass
+the proxy and Next.js optimizer. IGDB and TMDB images use separate managed caches
 with five-month refresh, six-month hard expiry and `no-store` delivery through
-`/tmdb-posters/<filename>`. Protected uploads remain locally stored,
+`/igdb-covers/<imageid>.jpg` and `/tmdb-posters/<filename>`. IGDB metadata follows
+the same calendar lifecycle; this interval is our policy. See the
+[IGDB removal/restore runbook](docs/self-hosting.md#igdb-refresh-expiry-and-removal). Protected uploads remain locally stored,
 access-checked and `no-store`. See [cache/storage operations](docs/self-hosting.md#provider-configuration-and-image-cache),
 [verification and limits](docs/books-and-provider-cache-verification.md), and
 [Open Library rights guidance](docs/provider-terms-review.md#open-library-follow-up-2026-11-17).

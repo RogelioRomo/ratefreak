@@ -2,10 +2,12 @@ import sharp from "sharp";
 import { createRequire } from "node:module";
 import { afterEach, beforeAll, beforeEach, expect, it, vi } from "vitest";
 import { register } from "./instrumentation";
+import { startIgdbCoverScheduler } from "./server/artwork/igdb-covers";
 
 const { optimizeImage } = createRequire(import.meta.url)("next/dist/server/image-optimizer/transform") as typeof import("next/dist/server/image-optimizer/transform");
 
 vi.mock("./server/artwork/tmdb-posters", () => ({ startTmdbPosterScheduler: vi.fn() }));
+vi.mock("./server/artwork/igdb-covers", () => ({ startIgdbCoverScheduler: vi.fn() }));
 
 const heifLoader = { operation: ["VipsForeignLoadHeif"] };
 const pixel = { create: { width: 2, height: 2, channels: 3 as const, background: "red" } };
@@ -41,4 +43,10 @@ it.each(["jpeg", "png", "webp", "gif"] as const)("continues to optimize %s image
 
   const output = await optimizeImage({ buffer: input, contentType: "image/webp", width: 1, quality: 75 });
   expect(await sharp(output).metadata()).toMatchObject({ format: "webp", width: 1, height: 1 });
+});
+
+it("starts IGDB expiry reconciliation when the Node server starts", async () => {
+  vi.mocked(startIgdbCoverScheduler).mockClear();
+  await register();
+  expect(startIgdbCoverScheduler).toHaveBeenCalledExactlyOnceWith();
 });

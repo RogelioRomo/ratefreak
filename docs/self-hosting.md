@@ -20,11 +20,11 @@ refresh and retention of TMDB IDs after termination. The owner approved automati
 metadata/poster refresh beginning at five months and removal of expired provider
 content at six months while keeping independent user records. This lifecycle is
 implemented and [locally verified](tmdb-lifecycle-verification.md), including
-current-policy restore protection. IGDB agreement scope and Open Library cover
-optimization also need clarification; the
-[November 26 reviews](provider-agreement-evidence.md#current-disposition-2026-11-26)
-narrow the remaining questions and identify direct Open Library cover URLs as an
-alternative requiring a separate implementation change. Short request-cache TTLs do not resolve
+current-policy restore protection. The
+[November 26 handoff](provider-implementation-handoff.md) selects the same lifecycle
+for IGDB and direct Open Library cover URLs; this checkout implements those
+choices. The interval is our policy, and research limits remain recorded in the
+[November 26 reviews](provider-agreement-evidence.md#current-disposition-2026-11-26). Short request-cache TTLs do not resolve
 database retention. Follow the [current disposition](provider-agreement-evidence.md#current-disposition-2026-11-24)
 before claiming an enabled instance meets provider terms; no runtime settings
 were changed by the review.
@@ -119,9 +119,11 @@ also rejects it permanently. Keep secrets out of screenshots, support tickets an
 | `storage/artwork/` | API-only catalog artwork; never a static web directory |
 | `storage/artwork/avatars/` | Account-owned avatar images and their staging/lease files, separate from catalog content |
 | `storage/keys/` | Durable ASP.NET Data Protection keys |
-| `storage/image-cache/` | Disposable Next.js optimizer cache for IGDB/Open Library; excluded from account/recovery backups |
+| `storage/image-cache/` | Legacy disposable Next.js optimizer cache; cleared once during provider lifecycle preparation |
 | `storage/tmdb-posters/` | Disposable managed TMDB poster cache with independent fetch timestamps; excluded from backups |
 | `independent/tmdb/tmdb-policy.json` | Current protected TMDB termination/identity/poster blocks, independently replicated and excluded from database backups |
+| `storage/igdb-covers/` | Disposable managed IGDB cover cache with independent fetch timestamps; excluded from backups |
+| `independent/igdb/igdb-policy.json` | Current protected IGDB termination/game/cover blocks, independently replicated and excluded from database backups |
 | `independent/account-erasures.jsonl` | Private durable erasure journal, excluded from ordinary backups |
 | `prepared.json`, `migrated.json`, `deployment.json` | Lifecycle acceptance/configuration records; not substitutes for database health |
 
@@ -262,7 +264,7 @@ validation intentionally binds their exact IDs; a backup from the previous
 application cannot be restored directly with the new Skia image set. For a
 bundle-based installation, select the retained, validated old bundle in the new
 instance before `prepare` and follow [backup and isolated restore](#backup-and-isolated-restore).
-Supply the current independently protected erasure journal and TMDB policy,
+Supply the current independently protected erasure journal and TMDB/IGDB policies,
 preserving their required ownership and mode. Do not take those records from
 the snapshot or bypass the image/ownership checks. Source-built installations
 must preserve and select the equivalent complete old image set with reviewed
@@ -332,48 +334,37 @@ symlinks. This cache is mounted at `/app/.next/cache/images`; it survives web
 container recreation while the rest of the cache parent remains temporary.
 Do not skip preparation and rely on Docker creating a root-owned bind source.
 
-IGDB and Open Library images use that common bounded cache. TMDB uses the
-separate managed cache described below. MusicBrainz
-currently supplies no artwork. The minimum image TTL is 24 hours; upstream cache
-headers can make it longer. Capacity is 1 GiB with framework eviction. Different
-width/quality/format variants can each need an initial fetch. Cold/evicted images
-still require their source; retained expired images can be served stale during
-failed background refresh. This is a disposable performance cache, not an artwork
-backup or an unlimited offline guarantee.
+IGDB and TMDB images use separate managed caches, described below. Open Library
+covers are delivered directly as validated HTTPS image URLs on
+`covers.openlibrary.org`, using its large (`-L.jpg?default=false`) size and CSS
+layout dimensions. They bypass the same-origin cover proxy and Next.js optimizer.
+The old `/provider-artwork/openlibrary/` route and optimizer source admission are
+removed; there is no optimizer fallback. MusicBrainz currently supplies no artwork.
 
-The Open Library cover route only accepts a numeric CoverID, validates every
-redirect to a known same-cover Archive path, pins public DNS results, and bounds
-time, bytes and redirect count. It admits at most eight simultaneous upstream
-cover operations with 64 waiting requests per web process; excess work returns
-503/Retry-After, and the ten-second deadline includes queue time. Unknown redirect layouts fail with the normal
-artwork fallback. The optimizer admits only that dedicated local source route;
-uploaded/API/moderation artwork cannot be requested through it. External source
-redirects remain disabled for other providers. The default optimizer also has
-explicit source, quality, size and response limits. Monitor CPU, egress and disk;
-this does not add a perimeter abuse-budget service.
+Viewing book covers causes the browser to contact Open Library and any provider
+redirect destinations directly, sharing its IP address and normal connection
+metadata with those services. Images use `referrerPolicy="no-referrer"`.
+Operators should disclose this external image delivery in their privacy notice.
+If adding a Content Security Policy, permit `https://covers.openlibrary.org` in
+`img-src` and review actual provider redirect destinations; the repository does
+not ship a CSP. Source attribution remains linked beside provider details.
+A missing or blocked image shows the normal accessible artwork fallback.
 
-The `/provider-artwork/` namespace is an **internal optimizer source**, not a
-public endpoint. The bundled Caddy edge returns 404 for it before proxying; Next.js
-dispatches authorized optimizer source requests internally. Every alternate
-ingress must likewise reject the namespace (including normalized/encoded path
-variants) before forwarding. Browsers use `/_next/image`, which remains available.
-Keep the web service's direct port private. Otherwise callers could bypass the
-image cache by requesting the source route directly.
+During the first provider-lifecycle preparation with this package, stop web
+writers and run the normal explicit `prepare` command. It clears the contents of
+`storage/image-cache` once because legacy optimizer variants cannot reliably be
+identified by provider. It preserves that directory's ownership/mode and refuses
+unexpected mounts, symlinks or special files. The operation does not touch
+`storage/tmdb-posters`, `storage/igdb-covers` or protected uploads in
+`storage/artwork`. Repeated preparation preserves caches and policies. Do not
+restore legacy optimizer backups or re-enable their source routes. Previously
+delivered browser copies cannot be recalled; direct covers thereafter follow the
+provider's own browser cache headers.
 
-For IGDB/Open Library takedowns or immediate refresh, stop the web service and
-remove only the contents of `storage/image-cache`, preserving its directory ownership/mode;
-restart through the normal accepted lifecycle. There is no general per-image
-invalidation API. Browser copies may last until their HTTP TTL expires. Database
-metadata/import removal and permission revocation for those providers remain separate operator work;
-disabling an adapter does not erase prior imports or cached images.
-Purging alone does not prevent refetching a still-allowed source URL. When a
-removal must prevent future serving, also remove/block the affected source and
-its catalog references under the applicable provider/rights policy.
-
-The image cache contains only public provider artwork and is excluded from the
-coordinated database/artwork/key-recovery backups. Never put private uploads,
-erasure records or secrets there. Existing protected uploaded artwork remains in
-`storage/artwork`, behind current visibility/authorization checks and `no-store`.
+The `/provider-artwork/` namespace remains blocked at the bundled ingress;
+alternate ingress must preserve that denial. Provider artwork is excluded from
+the coordinated database/artwork/key-recovery backup. Private uploads remain
+behind current visibility/authorization checks and `no-store`.
 The API's shared public metadata cache is process-local (five-minute searches,
 one-hour details), and resets on API restart. Each API replica needs coordinated
 provider budgets when sharing egress.
@@ -383,7 +374,7 @@ Open Library requests application registration in its
 identifies requests; it does not submit the registration form. Record the actual
 operator/application, intended use and deployment egress before making the form's
 acknowledgments. Metadata caching guidance does not by itself approve the
-same-origin cover optimizer. See the
+direct browser cover delivery. See the
 [registration and cover-scope review](provider-public-guidance-2026-11-18.md).
 
 ## TMDB refresh, expiry and removal
@@ -416,7 +407,8 @@ separately at `/journal/account-erasures.jsonl` for its writers.
 
 On this upgrade, preparation clears the legacy shared Next.js image cache once,
 with web writers stopped, because old TMDB entries cannot be individually
-identified. IGDB/Open Library caches also become cold. The receipt prevents repeat
+identified. Legacy IGDB/Open Library optimizer entries also become cold;
+managed provider caches remain separate. The receipt prevents repeat
 preparation from clearing ordinary cached images again. Old browser copies cannot
 be recalled; do not claim retroactive erasure of previously delivered content.
 
@@ -495,6 +487,67 @@ Calendar deadlines use UTC with month-end clamping, not a fixed 180-day
 approximation. This lifecycle does not clear operator eligibility, attribution,
 other providers' policy questions or the independent release security gate.
 
+
+## IGDB refresh, expiry and removal
+
+IGDB uses the selected TMDB-style lifecycle: refresh starts at five UTC calendar
+months after successful synchronization; unrefreshed metadata expires at six.
+This interval is RateFreak policy, not a provider-confirmed deadline. Temporary
+failures retain the successful timestamp and retry with backoff and provider
+cooldowns. Expiry sweeps run independently of network access. API disablement
+stops requests but does not purge content; existing imports still expire.
+
+Expired provider fields become an "Unavailable title" placeholder while the
+catalog UUID, game source identifier, ratings, reviews, libraries, history and
+collections remain. Confirmed provider not-found results and explicit operator
+removals are durably blocked; age expiry alone can recover on a valid refresh.
+Current policy also filters cached searches/details and prevents reimport.
+
+Covers use `/igdb-covers/<imageid>.jpg`, `no-store` and a separate bounded cache.
+Actual successful cover fetch time controls its five/six-month dates; metadata
+refresh cannot renew cached bytes. Old remote optimizer URLs are denied, including
+historical size/quality variants. Startup and minute sweeps remove expired or
+blocked cached content. Stale, unexpired images may be served after a failed
+refresh; expired images are withheld. Remote browser copies cannot be recalled.
+
+`prepare` provisions the protected policy even when the provider is disabled.
+Compose mounts `/independent-igdb/igdb-policy.json` writable to API/tools (the API
+persists confirmed provider removals) and read-only to web, plus `/data/igdb-covers` for web/tools. Local processes use
+`Providers__Igdb__PolicyPath`, `RATEFREAK_IGDB_POLICY_PATH` and
+`RATEFREAK_IGDB_CACHE_PATH`. Preserve policy ownership UID/GID 10001, mode 0600,
+and parent/cache directories mode 0700 in the reference containers. Missing,
+unsafe or unreconciled policy withholds dependent catalog and cover requests.
+Never recreate an empty policy to bypass a missing initialized policy.
+
+With all application/maintenance writers stopped, run:
+
+```bash
+python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_INSTANCE" igdb-remove --database-name ratefreak --identity game:123 --confirm-igdb-removal
+# Include any known search-only or otherwise unknown historical cover image IDs:
+python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_INSTANCE" igdb-remove --database-name ratefreak --identity game:123 --poster co123.jpg --confirm-igdb-removal
+# For applicable operator termination/removal of all IGDB content:
+python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_INSTANCE" igdb-remove --database-name ratefreak --terminate --confirm-igdb-removal
+```
+
+The command writes durable blocks before database cleanup, clears the IGDB cache,
+and records completion. Interrupted removal blocks startup until the identical
+intent is retried successfully. Known cover history is retained for removal;
+unknown preview-only/historical filenames require explicit `--poster`. Global
+termination blocks every IGDB cover. Blocking covers prevents server refetch,
+including old optimizer URLs. It does not recall copies already delivered.
+
+Replicate the current policy independently of database snapshots. Isolated
+restore requires both `--tmdb-policy` and `--igdb-policy`, from protected current
+files outside the snapshot and target. Replay reconciles both providers before
+verification can reopen traffic. Monitor readiness and sanitized `IGDB
+reconciliation failed`, `IGDB refresh batch failed` and `IGDB poster cache
+reconciliation failed` messages. Inspect `igdb_refresh_schedule` and
+`igdb_lifecycle_states` for scheduling/outcomes. Per provider, each minute batch
+handles at most 100 items; multiple API processes coordinate through database
+locks and the persisted cooldown. Size capacity to finish refreshes before expiry
+and coordinate discovery/import budgets across replicas.
+
+
 ## Secret rotation
 
 Stop all writers and record the named operator/change before rotating credentials.
@@ -527,7 +580,7 @@ The explicit `backup` command requires writers stopped, a ready instance and a
 new destination. It takes a custom-format PostgreSQL dump, artwork archive and
 private key-recovery archive, validates the dump inventory and records hashes,
 schema and matching API/web/tools image identities. It never includes the erasure
-journal, current TMDB removal policy or disposable provider image caches.
+journal, current TMDB/IGDB removal policies or disposable provider image caches.
 Protect/encrypt the output and enforce expiration externally; files on the same
 host are not disaster recovery. The command does not configure a backup schedule.
 
@@ -540,19 +593,19 @@ with source writers stopped; never use an older journal bundled with a snapshot.
 export RATEFREAK_RESTORE="$HOME/.local/share/ratefreak-restore"
 python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_RESTORE" init --origin https://restore.example.com
 python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_RESTORE" prepare
-python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_RESTORE" restore --backup /protected/backups/ratefreak-before-upgrade --journal /protected/current-account-erasures.jsonl --tmdb-policy /protected/current-tmdb-policy.json --confirm-restore
+python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_RESTORE" restore --backup /protected/backups/ratefreak-before-upgrade --journal /protected/current-account-erasures.jsonl --tmdb-policy /protected/current-tmdb-policy.json --igdb-policy /protected/current-igdb-policy.json --confirm-restore
 python3 deploy/self-host/ratefreak.py --instance-dir "$RATEFREAK_RESTORE" replay --database-name ratefreak --confirm-erasure-replay
 ```
 
 Restore validates matching artifacts/hashes and rejects a populated target. It
 imports the supplied current journal only into the verified empty journal prepared
 for that new instance; it refuses to replace journal records. It also requires
-and installs the independently supplied current TMDB policy; a database snapshot
+and installs the independently supplied current TMDB/IGDB policies; a database snapshot
 cannot grant permission to serve blocked provider content. A `restore-pending`
 marker blocks startup. A separate matching completion receipt is written only
 after the full database/artwork/key restore succeeds. Replay refuses incomplete
 restores and cannot reaccept an invalidated migration or changed image set. Replay uses the existing explicit database-name maintenance
-command, reconciles TMDB expiry/current blocks, checks journaled accounts are
+command, reconciles TMDB and IGDB expiry/current blocks, checks journaled accounts are
 absent and referenced artwork exists, and
 only then clears the startup block. A failed/interrupted restore stays stopped;
 inspect and recover into another fresh isolated target rather than retry blindly.

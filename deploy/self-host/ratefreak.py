@@ -139,7 +139,7 @@ def main():
     release=sub.add_parser('load-release');release.add_argument('--bundle',required=True,type=Path)
     deletion=sub.add_parser('enable-deletion');deletion.add_argument('--confirm-independent-journal',required=True,action='store_true')
     backup=sub.add_parser('backup');backup.add_argument('--output',required=True,type=Path)
-    restore=sub.add_parser('restore');restore.add_argument('--backup',required=True,type=Path);restore.add_argument('--journal',required=True,type=Path);restore.add_argument('--tmdb-policy',required=True,type=Path);restore.add_argument('--confirm-restore',action='store_true',required=True)
+    restore=sub.add_parser('restore');restore.add_argument('--backup',required=True,type=Path);restore.add_argument('--journal',required=True,type=Path);restore.add_argument('--tmdb-policy',required=True,type=Path);restore.add_argument('--igdb-policy',required=True,type=Path);restore.add_argument('--confirm-restore',action='store_true',required=True)
     replay=sub.add_parser('replay');replay.add_argument('--database-name',required=True);replay.add_argument('--confirm-erasure-replay',action='store_true',required=True)
     remove = sub.add_parser('tmdb-remove')
     remove.add_argument('--database-name', required=True)
@@ -148,6 +148,13 @@ def main():
     choice.add_argument('--terminate', action='store_true')
     remove.add_argument('--poster', action='append', default=[], help='Additional known poster filename for the blocked identity; repeat as needed.')
     remove.add_argument('--confirm-tmdb-removal', action='store_true', required=True)
+    remove = sub.add_parser('igdb-remove')
+    remove.add_argument('--database-name', required=True)
+    choice = remove.add_mutually_exclusive_group(required=True)
+    choice.add_argument('--identity')
+    choice.add_argument('--terminate', action='store_true')
+    remove.add_argument('--poster', action='append', default=[], help='Additional known poster filename for the blocked identity; repeat as needed.')
+    remove.add_argument('--confirm-igdb-removal', action='store_true', required=True)
     args=parser.parse_args()
     try:
         if args.command=='init':
@@ -172,11 +179,14 @@ def write_state(path, value):
     exclusive_file(temporary,(json.dumps(value,indent=2)+'\n').encode())
     os.replace(temporary,path);sync_directory(path.parent)
 
-def require_ready(root, allow_tmdb_pending=False):
+def require_ready(root, allow_tmdb_pending=False, allow_igdb_pending=False):
     if (root/'restore-pending').exists():raise OperatorError('Restore replay and verification must finish before starting writers.')
     tmdb_pending = root / 'tmdb-removal-pending.json'
     if not allow_tmdb_pending and (tmdb_pending.exists() or tmdb_pending.is_symlink()):
         raise OperatorError('Finish the pending TMDB removal before starting writers.')
+    igdb_pending = root / 'igdb-removal-pending.json'
+    if not allow_igdb_pending and (igdb_pending.exists() or igdb_pending.is_symlink()):
+        raise OperatorError('Finish the pending IGDB removal before starting writers.')
     if not (root/'migrated.json').exists():raise OperatorError('Run explicit prepare and migrate before starting applications.')
     try:return json.loads(read_private(root/'migrated.json'))
     except ValueError:raise OperatorError('Invalid migration acceptance record.') from None
@@ -230,8 +240,8 @@ def release_images(root=None):
     if len(values)!=3 or not all(re.fullmatch(r'sha256:[a-f0-9]{64}',value) for value in values):raise OperatorError('Missing or invalid release image identities.')
     return dict(zip(names,values))
 
-def require_release(root,images, allow_tmdb_pending=False):
-    marker=require_ready(root, allow_tmdb_pending)
+def require_release(root,images, allow_tmdb_pending=False, allow_igdb_pending=False):
+    marker=require_ready(root, allow_tmdb_pending, allow_igdb_pending)
     if marker.get('images')!=images or marker.get('overrideSha','')!=override_signature(root):
         raise OperatorError('Release images or instance override changed; stop writers and explicitly migrate/accept the complete release.')
     return marker
@@ -255,8 +265,8 @@ def stopped_writers(command,env):
 
 def require_prepared(root):
     path = root / 'prepared.json'
-    if not path.exists() or json.loads(read_private(path)) != {'format': 2}:
-        raise OperatorError('Run explicit prepare with the current release to provision TMDB policy and storage.')
+    if not path.exists() or json.loads(read_private(path)) != {'format': 3}:
+        raise OperatorError('Run explicit prepare with the current release to provision TMDB/IGDB policies and storage.')
 
 def require_database_collations(command, env):
     # A PostgreSQL major-version match does not make libc/ICU indexes safe after
@@ -304,6 +314,35 @@ def tmdb_remove(args, root, command, env):
     sync_directory(root)
     print('TMDB policy, database removal and poster cache cleanup complete.')
 
+def igdb_remove(args, root, command, env):
+    from entrypoint import IGDB_POLICY_ENTRY_LIMIT, valid_igdb_identity, valid_igdb_poster
+
+    stopped_writers(command, env)
+    if (not args.database_name.strip()
+            or (not args.terminate and not valid_igdb_identity(args.identity))
+            or (args.terminate and args.poster)
+            or len(args.poster) > IGDB_POLICY_ENTRY_LIMIT
+            or not all(valid_igdb_poster(poster) for poster in args.poster)):
+        raise OperatorError('Provide the exact database name and a canonical IGDB identity with optional poster filenames, or request termination.')
+    require_release(root, release_images(root), allow_igdb_pending=True)
+    pending = root / 'igdb-removal-pending.json'
+    intent = {'identity': args.identity, 'terminated': args.terminate, 'posters': sorted(set(args.poster))}
+    if pending.exists() or pending.is_symlink():
+        if json.loads(read_private(pending)) != intent:
+            raise OperatorError('Repeat the pending IGDB removal with its original identity or termination and additional poster filenames.')
+    else:
+        write_state(pending, intent)
+    action = ['--terminate'] if args.terminate else ['--block', args.identity]
+    for poster in intent['posters']:
+        action.extend(['--poster', poster])
+    execute(command + ['run', '--rm', 'tools', 'replay', '--igdb-maintenance', '--database-name',
+                       args.database_name, *action], env)
+    execute(command + ['run', '--rm', '--no-deps', 'tools', 'igdb-clear-cache'], env)
+    write_state(root / 'igdb-removal-complete.json', {'databaseName': args.database_name, **intent})
+    pending.unlink()
+    sync_directory(root)
+    print('IGDB policy, database removal and poster cache cleanup complete.')
+
 def dispatch(args,root,config,command,env):
     operation=args.command
     if operation=='build':
@@ -330,7 +369,7 @@ def dispatch(args,root,config,command,env):
     elif operation=='prepare':
         stopped_writers(command,env)
         execute(command+['run','--rm','--no-deps','storage-init'],env)
-        write_state(root/'prepared.json',{'format':2})
+        write_state(root/'prepared.json',{'format':3})
     elif operation=='migrate':
         stopped_writers(command,env)
         require_prepared(root)
@@ -365,6 +404,12 @@ def dispatch(args,root,config,command,env):
         if (not policy.is_file() or policy.is_relative_to(source)
                 or policy == root / 'independent/tmdb/tmdb-policy.json'):
             raise OperatorError('Supply the protected current TMDB policy independently of the snapshot and restore target.')
+        if not args.igdb_policy.is_absolute():
+            raise OperatorError('Supply an absolute path to the protected current independent IGDB policy.')
+        igdb_policy = safe_path(args.igdb_policy)
+        if (not igdb_policy.is_file() or igdb_policy.is_relative_to(source)
+                or igdb_policy == root / 'independent/igdb/igdb-policy.json'):
+            raise OperatorError('Supply the protected current IGDB policy independently of the snapshot and restore target.')
         # Preflight integrity before creating/restoring any target database data.
         sys.path.insert(0,str(PACKAGE))
         from maintenance import validate_backup, MaintenanceError
@@ -372,7 +417,7 @@ def dispatch(args,root,config,command,env):
         except (MaintenanceError,ValueError,OSError):raise OperatorError('Backup integrity/release validation failed; target untouched.') from None
         exclusive_file(root/'restore-pending',b'Keep traffic stopped until replay succeeds.\n')
         execute(command+['up','-d','--wait','postgres'],env)
-        execute(command+['run','--rm','--user','0:0','-e','RATEFREAK_RELEASE_IMAGES='+json.dumps(release_images(root),separators=(',',':')),'-v',str(source)+':/backup:ro','-v',str(journal)+':/current-journal:ro','-v',str(policy)+':/current-tmdb-policy:ro','tools','restore'],env)
+        execute(command+['run','--rm','--user','0:0','-e','RATEFREAK_RELEASE_IMAGES='+json.dumps(release_images(root),separators=(',',':')),'-v',str(source)+':/backup:ro','-v',str(journal)+':/current-journal:ro','-v',str(policy)+':/current-tmdb-policy:ro','-v',str(igdb_policy)+':/current-igdb-policy:ro','tools','restore'],env)
         write_state(root/'restore-complete.json',{'images':release_images(root),'overrideSha':override_signature(root)})
     elif operation=='replay':
         stopped_writers(command,env)
@@ -385,6 +430,8 @@ def dispatch(args,root,config,command,env):
             (root/'restore-pending').unlink();sync_directory(root)
     elif operation=='tmdb-remove':
         tmdb_remove(args, root, command, env)
+    elif operation=='igdb-remove':
+        igdb_remove(args, root, command, env)
     elif operation=='start':
         require_release(root,release_images(root))
         stopped_writers(command, env)

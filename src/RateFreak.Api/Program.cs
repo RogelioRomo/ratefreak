@@ -6,6 +6,12 @@ using RateFreak.Api.Middleware;
 using RateFreak.Api.Security;
 using RateFreak.Infrastructure;
 
+if (args.Contains("--igdb-maintenance", StringComparer.Ordinal))
+{
+    Environment.ExitCode = await RateFreak.Api.Maintenance.IgdbMaintenance.ExecuteAsync(args);
+    return;
+}
+
 if (args.Contains("--tmdb-maintenance", StringComparer.Ordinal))
 {
     Environment.ExitCode = await RateFreak.Api.Maintenance.TmdbMaintenance.ExecuteAsync(args);

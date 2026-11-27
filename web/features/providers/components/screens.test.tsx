@@ -42,3 +42,13 @@ it('shows no providers and retryable capability failures',async()=>{fetchMock.mo
 it('recovers from an empty later page',async()=>{route.query='q=empty&provider=tmdb&type=movie&page=3';fetchMock.mockImplementation(async url=>String(url).endsWith('/providers')?Response.json(caps):Response.json({provider:'tmdb',page:3,items:[]}));setup();expect(await screen.findByText('No titles on this page.')).toBeInTheDocument();expect(screen.getByRole('link',{name:'Go to first page'})).toHaveAttribute('href','/catalog/discover?q=empty&provider=tmdb&type=movie&page=1');});
 it('previews honest fields and offers login continuation',async()=>{setup(<ProviderPreviewScreen provider="tmdb" type="movie" externalId="11"/>);expect(await screen.findByRole('heading',{level:1,name:'A Film'})).toBeInTheDocument();expect(screen.getByText('No description available yet.')).toBeInTheDocument();expect(screen.getByRole('link',{name:'Log in to import'})).toHaveAttribute('href','/login?returnTo=%2Fcatalog%2Fdiscover%2Ftmdb%2Fmovie%2F11');});
 it.each([404,429,503])('shows preview %s honestly',async status=>{fetchMock.mockImplementation(async url=>String(url).endsWith('/providers')?Response.json(caps):Response.json({}, {status}));setup(<ProviderPreviewScreen provider="tmdb" type="movie" externalId="11"/>);expect(await screen.findByRole('alert')).toHaveTextContent(status===404?'Title not found':status===429?'Too many requests':'Provider unavailable');expect(screen.getByRole('heading',{level:1,name:'Provider preview.'})).toBeInTheDocument();});
+
+it('renders a direct Open Library cover and source attribution on the preview', async()=>{
+ const imageReference='https://covers.openlibrary.org/b/id/12345-L.jpg?default=false';
+ const book={...item,provider:'openlibrary',externalId:'OL123W',type:'book',title:'A Book',imageReference};
+ fetchMock.mockImplementation(async url=>String(url).endsWith('/providers')?Response.json([...caps,{name:'openlibrary',enabled:true,supportedTypes:['book'],attribution:'Open Library metadata',attributionUrl:'https://openlibrary.org'}]):Response.json(book));
+ setup(<ProviderPreviewScreen provider="openlibrary" type="book" externalId="OL123W"/>);
+ const image=await screen.findByRole('img',{name:'Artwork for A Book'});
+ expect(image).toHaveAttribute('src',imageReference);expect(image).not.toHaveAttribute('srcset');
+ expect(screen.getByRole('link',{name:'Open Library attribution'})).toHaveAttribute('href','https://openlibrary.org');
+});

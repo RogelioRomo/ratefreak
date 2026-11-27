@@ -1,6 +1,6 @@
 # Current project status and release work
 
-Updated: 2026-11-26.
+Updated: 2026-11-27.
 
 RateFreak's first-release product scope is implemented and merged locally into
 `main`. **Public release is not yet cleared.** The remaining work is provider
@@ -102,20 +102,21 @@ The order below is a suggested sequence. Earlier candidate checks are completed
 evidence for their exact sources/images; changed final artifacts need matching
 qualification.
 
-1. **Implement and verify the agreed provider changes.** Decisions are recorded
-   in the [implementation handoff](provider-implementation-handoff.md): IGDB
-   refresh from five calendar months and expiry at six, preserving independent
-   user records; direct Open Library cover URLs bypassing the proxy/optimizer.
-   These choices no longer await provider correspondence before implementation.
-   Both implementations and their acceptance remain pending release work.
+1. **Carry the implemented provider changes into final qualification.** The
+   [implementation handoff](provider-implementation-handoff.md) now has IGDB
+   five/six-calendar-month lifecycle, durable removal/restore protection and a
+   managed cover cache, plus direct Open Library covers bypassing proxy/optimizer.
+   See [implementation verification](provider-implementation-verification.md) for
+   exact development-test/artifact scope. Final stable artifact qualification
+   remains required; no persistent installation was migrated by this work.
    The described use is completely free/noncommercial; no commercial IGDB
    partnership is pending. Six months is our chosen policy, not IGDB approval;
    cover-processing and Archive terms interpretation limits remain documented
    in the [agreement evidence](provider-agreement-evidence.md). Keep providers
    optional/default-disabled and release artifacts free of imported content and
    shared credentials. Record operator registration/contact, eligibility,
-   aggregate pacing and attribution. TMDB lifecycle implementation is complete;
-   its final artifact qualification remains part of the candidate checks below.
+   aggregate pacing and attribution. TMDB lifecycle implementation remains in
+   place; final artwork/source/security checks belong to the candidate below.
 2. **Freeze and qualify the stable candidate.** Select the stable version and
    source revision; build final API/web/tools images and assemble matching
    source materials, license/notice delivery and inventories. Repeat relevant

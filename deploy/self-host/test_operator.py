@@ -663,19 +663,401 @@ class TmdbOperatorTests(unittest.TestCase):
         from argparse import Namespace
         from unittest.mock import patch
         config = cli.initialize(self.root, 'https://reader.example', False)
-        cli.write_state(self.root / 'prepared.json', {'format': 2})
+        cli.write_state(self.root / 'prepared.json', {'format': 3})
         backup = self.root / 'backup'
         backup.mkdir()
         journal = self.root / 'journal'
         journal.touch(mode=0o600)
         policy = self.root / 'independently-stored-policy.json'
         policy.touch(mode=0o600)
-        args = Namespace(command='restore', backup=backup, journal=journal, tmdb_policy=policy)
+        args = Namespace(command='restore', backup=backup, journal=journal, tmdb_policy=policy, igdb_policy=policy)
         with patch('maintenance.validate_backup'), patch.object(cli, 'release_images', return_value={}), \
              patch.object(cli, 'execute', return_value='[]') as execute:
             cli.dispatch(args, self.root, config, ['compose'], {})
         self.assertIn(str(policy) + ':/current-tmdb-policy:ro', execute.call_args.args[0])
         self.assertTrue((self.root / 'restore-pending').is_file())
+
+
+class IgdbStorageTests(unittest.TestCase):
+    def setUp(self):
+        StorageTests.setUp(self)
+        self.uid, self.gid = os.getuid(), os.getgid()
+        for directory in ('storage', 'runtime', 'independent'):
+            (self.root / directory).mkdir(mode=0o700)
+        self.policy = self.root / 'independent/igdb/igdb-policy.json'
+
+    tearDown = StorageTests.tearDown
+
+    def prepare(self):
+        self.entry.prepare_igdb_storage(self.root, self.uid, self.gid)
+
+    def test_first_prepare_clears_legacy_cache_and_repeat_preserves_policy_and_cache(self):
+        self.entry.prepare_image_cache(self.root / 'storage', self.uid, self.gid)
+        legacy = self.root / 'storage/image-cache'
+        (legacy / 'optimizer-key').mkdir()
+        (legacy / 'optimizer-key/old.webp').write_bytes(b'old optimized poster')
+        self.prepare()
+        self.assertEqual(list(legacy.iterdir()), [])
+        self.assertEqual(json.loads(self.policy.read_bytes()), {
+            'format': 1, 'terminated': False, 'blockedIdentities': [], 'blockedPosters': [],
+        })
+        for path in [self.policy.parent, self.root / 'storage/igdb-covers']:
+            self.assertEqual(stat.S_IMODE(path.stat().st_mode), 0o700)
+            self.assertEqual((path.stat().st_uid, path.stat().st_gid), (self.uid, self.gid))
+        self.assertEqual(stat.S_IMODE(self.policy.stat().st_mode), 0o600)
+        blocked = b'{"format":1,"terminated":true,"blockedIdentities":["game:1"],"blockedPosters":["poster.jpg"]}'
+        self.policy.write_bytes(blocked)
+        (legacy / 'igdb.webp').write_bytes(b'ordinary cache')
+        self.prepare()
+        self.assertEqual(self.policy.read_bytes(), blocked)
+        self.assertEqual((legacy / 'igdb.webp').read_bytes(), b'ordinary cache')
+
+    def test_repeat_prepare_refuses_missing_provisioned_policy(self):
+        self.prepare()
+        self.policy.unlink()
+        with self.assertRaises(self.entry.StorageError):
+            self.prepare()
+        self.assertFalse(self.policy.exists())
+
+    def test_prepare_refuses_missing_policy_when_only_host_receipt_survives(self):
+        self.prepare()
+        cli.write_state(self.root / 'prepared.json', {'format': 3})
+        self.policy.unlink()
+        self.policy.parent.rmdir()
+        (self.root / 'runtime/igdb-lifecycle-v1').unlink()
+        legacy_file = self.root / 'storage/image-cache/igdb.webp'
+        legacy_file.write_bytes(b'ordinary cache')
+
+        with self.assertRaises(self.entry.StorageError):
+            self.prepare()
+
+        self.assertFalse(self.policy.parent.exists())
+        self.assertEqual(legacy_file.read_bytes(), b'ordinary cache')
+
+    def test_prepare_recovers_runtime_receipt_with_existing_policy_and_host_receipt(self):
+        self.prepare()
+        cli.write_state(self.root / 'prepared.json', {'format': 3})
+        receipt = self.root / 'runtime/igdb-lifecycle-v1'
+        receipt.unlink()
+        legacy_file = self.root / 'storage/image-cache/igdb.webp'
+        legacy_file.write_bytes(b'ordinary cache')
+        blocked = b'{"format":1,"terminated":true,"blockedIdentities":[],"blockedPosters":[]}'
+        self.policy.write_bytes(blocked)
+
+        self.prepare()
+
+        self.assertEqual(self.policy.read_bytes(), blocked)
+        self.assertEqual(legacy_file.read_bytes(), b'ordinary cache')
+        self.assertTrue(receipt.is_file())
+
+    def mounts_at(self, *mountpoints):
+        from unittest.mock import patch
+        read_bytes = Path.read_bytes
+
+        def read(path):
+            if path != Path('/proc/self/mountinfo'):
+                return read_bytes(path)
+            lines = []
+            for mount_id, mountpoint in enumerate(mountpoints, start=101):
+                escaped = os.fsencode(mountpoint).replace(b' ', b'\\040')
+                lines.append(str(mount_id).encode() + b' 92 8:1 /other ' + escaped
+                             + b' rw,relatime - ext4 /dev/sda1 rw\n')
+            return b''.join(lines)
+
+        return patch.object(Path, 'read_bytes', read)
+
+    def test_prepare_upgrades_format_one_with_expected_instance_bind(self):
+        cli.write_state(self.root / 'prepared.json', {'format': 1})
+        self.entry.prepare_image_cache(self.root / 'storage', self.uid, self.gid)
+        legacy = self.root / 'storage/image-cache'
+        (legacy / 'old.jpg').write_bytes(b'old optimized poster')
+
+        with self.mounts_at(self.root):
+            self.prepare()
+
+        self.assertTrue(self.policy.is_file())
+        self.assertEqual(list(legacy.iterdir()), [])
+
+    def test_prepare_refuses_same_device_mounts_in_legacy_cache_before_deletion(self):
+        self.entry.prepare_image_cache(self.root / 'storage', self.uid, self.gid)
+        legacy = self.root / 'storage/image-cache'
+        nested = legacy / 'optimizer key'
+        nested.mkdir()
+        files = [legacy / 'ordinary.jpg', nested / 'unrelated.jpg']
+        for file in files:
+            file.write_bytes(b'keep')
+
+        for mountpoint in (legacy, nested):
+            with self.subTest(mountpoint=mountpoint), self.mounts_at(self.root, mountpoint):
+                with self.assertRaises(self.entry.StorageError):
+                    self.prepare()
+                for file in files:
+                    self.assertEqual(file.read_bytes(), b'keep')
+                self.assertFalse(self.policy.exists())
+
+    def test_prepare_refuses_symlinks_in_legacy_cache(self):
+        self.entry.prepare_image_cache(self.root / 'storage', self.uid, self.gid)
+        target = self.root / 'unrelated'
+        target.write_bytes(b'keep')
+        link = self.root / 'storage/image-cache/bad-link'
+        link.symlink_to(target)
+        with self.assertRaises(self.entry.StorageError):
+            self.prepare()
+        self.assertEqual(target.read_bytes(), b'keep')
+        self.assertFalse(self.policy.exists())
+        link.unlink()
+        self.prepare()
+        self.assertTrue(self.policy.is_file())
+
+    def test_policy_refuses_unsafe_mode_owner_paths_and_noncanonical_schema(self):
+        self.prepare()
+        valid = self.policy.read_bytes()
+        for data in [
+            b'{"format":1,"format":1,"terminated":false,"blockedIdentities":[],"blockedPosters":[]}',
+            b'{"format":true,"terminated":false,"blockedIdentities":[],"blockedPosters":[]}',
+            b'{"format":1,"terminated":0,"blockedIdentities":[],"blockedPosters":[]}',
+            b'{"format":1,"terminated":false,"blockedIdentities":["game:01"],"blockedPosters":[]}',
+            b'{"format":1,"terminated":false,"blockedIdentities":["game:2147483648"],"blockedPosters":[]}',
+            b'{"format":1,"terminated":false,"blockedIdentities":["game:1","game:1"],"blockedPosters":[]}',
+            b'{"format":1,"terminated":false,"blockedIdentities":[],"blockedPosters":["../a.jpg"]}',
+            b'{"format":1,"terminated":false,"blockedIdentities":[],"blockedPosters":[],"extra":0}',
+            b' ' * (1024 * 1024 + 1),
+        ]:
+            with self.subTest(data=data[:160]), self.assertRaises(self.entry.StorageError):
+                self.policy.write_bytes(data)
+                self.prepare()
+        self.policy.write_bytes(valid)
+        with self.assertRaises(self.entry.StorageError):
+            self.entry.read_igdb_policy(self.policy, self.uid + 1, self.gid)
+        self.policy.chmod(0o644)
+        with self.assertRaises(self.entry.StorageError):
+            self.prepare()
+        self.policy.chmod(0o600)
+        saved = self.policy.with_suffix('.saved')
+        self.policy.rename(saved)
+        self.policy.symlink_to(saved)
+        with self.assertRaises(self.entry.StorageError):
+            self.prepare()
+        self.assertEqual(saved.read_bytes(), valid)
+
+    def test_cache_clear_refuses_unexpected_entries_before_deleting_regular_files(self):
+        self.prepare()
+        cache = self.root / 'storage/igdb-covers'
+        (cache / 'a.jpg').write_bytes(b'cached')
+        (cache / '.igdb-lock').write_bytes(b'lock')
+        (cache / 'unexpected').mkdir()
+        with self.assertRaises(self.entry.StorageError):
+            self.entry.clear_igdb_cache(cache, self.uid, self.gid)
+        self.assertTrue((cache / 'a.jpg').is_file())
+        (cache / 'unexpected').rmdir()
+        with self.mounts_at(cache):
+            self.entry.clear_igdb_cache(cache, self.uid, self.gid)
+        self.assertEqual(list(cache.iterdir()), [])
+
+    def test_restore_reads_current_policy_and_preserves_existing_blocks_on_invalid_input(self):
+        import maintenance
+        self.prepare()
+        original = self.policy.read_bytes()
+        current = self.root / 'current-igdb-policy.json'
+        current.write_bytes(b'{}')
+        current.chmod(0o600)
+        with self.assertRaises(maintenance.StorageError):
+            maintenance.restore_igdb_policy(current, self.policy, self.uid, self.gid)
+        self.assertEqual(self.policy.read_bytes(), original)
+        current.write_bytes(b'{"format":1,"terminated":true,"blockedIdentities":["game:1"],"blockedPosters":["once.jpg"]}')
+        maintenance.restore_igdb_policy(current, self.policy, self.uid, self.gid)
+        self.assertEqual(self.policy.read_bytes(), current.read_bytes())
+        self.assertEqual(stat.S_IMODE(self.policy.stat().st_mode), 0o600)
+        current.write_bytes(original)
+        with self.assertRaises(maintenance.MaintenanceError):
+            maintenance.restore_igdb_policy(current, self.policy, self.uid, self.gid)
+
+    def test_policy_refuses_hardlinked_file_without_modifying_it(self):
+        self.prepare()
+        original = self.policy.read_bytes()
+        alias = self.root / 'linked-policy.json'
+        os.link(self.policy, alias)
+        with self.assertRaises(self.entry.StorageError):
+            self.entry.read_igdb_policy(alias, self.uid, self.gid)
+        self.assertEqual(self.policy.read_bytes(), original)
+        self.assertEqual(alias.stat().st_ino, self.policy.stat().st_ino)
+
+    def test_restore_refuses_hardlink_alias_of_fresh_empty_policy(self):
+        import maintenance
+        self.prepare()
+        original = self.policy.read_bytes()
+        inode = self.policy.stat().st_ino
+        alias = self.root / 'restore-policy-alias.json'
+        os.link(self.policy, alias)
+        with self.assertRaises((maintenance.StorageError, maintenance.MaintenanceError)):
+            maintenance.restore_igdb_policy(alias, self.policy, self.uid, self.gid)
+        self.assertEqual(self.policy.read_bytes(), original)
+        self.assertEqual(self.policy.stat().st_ino, inode)
+
+    def test_restore_refuses_source_and_target_with_same_inode(self):
+        import maintenance
+        self.prepare()
+        inode = self.policy.stat().st_ino
+        with self.assertRaises(maintenance.MaintenanceError):
+            maintenance.restore_igdb_policy(self.policy, self.policy, self.uid, self.gid)
+        self.assertEqual(self.policy.stat().st_ino, inode)
+
+    def test_verify_replay_checks_blocked_posters_on_otherwise_valid_titles(self):
+        import maintenance
+        from unittest.mock import patch
+        self.prepare()
+        self.policy.write_bytes(b'{"format":1,"terminated":false,"blockedIdentities":[],"blockedPosters":["removed.jpg"]}')
+
+        def checked(sql):
+            self.assertIn("https://images.igdb.com/igdb/image/upload/t_cover_big/removed.jpg", sql)
+            self.assertIn("image_reference IN", sql)
+            return '0'
+
+        with patch.object(maintenance, 'query', side_effect=checked):
+            maintenance.verify_igdb_replay(self.policy, self.uid, self.gid)
+
+    def test_verify_replay_reports_remaining_blocked_or_expired_fields(self):
+        import maintenance
+        from unittest.mock import patch
+        self.prepare()
+        self.policy.write_bytes(b'{"format":1,"terminated":false,"blockedIdentities":["game:2"],"blockedPosters":[]}')
+
+        def remaining(sql):
+            self.assertIn("'game:2'", sql)
+            self.assertIn("interval '6 months'", sql)
+            self.assertIn("'Unavailable title'", sql)
+            return '1'
+
+        with patch.object(maintenance, 'query', side_effect=remaining), self.assertRaises(maintenance.MaintenanceError):
+            maintenance.verify_igdb_replay(self.policy, self.uid, self.gid)
+
+
+class IgdbOperatorTests(unittest.TestCase):
+    setUp = InstanceTests.setUp
+    tearDown = InstanceTests.tearDown
+
+    def test_igdb_maintenance_mode_runs_offline_api_command(self):
+        import entrypoint
+        self.root.mkdir()
+        for name in ['proxy', 'runtime']:
+            cli.exclusive_file(self.root / name, b'a' * 64 + b'\n')
+        arguments = ['--igdb-maintenance', '--database-name', 'ratefreak', '--block', 'game:12']
+        command, _ = entrypoint.runtime_command('replay', self.root, arguments, {})
+        self.assertEqual(command, ['dotnet', '/app/RateFreak.Api.dll', *arguments])
+
+    def test_igdb_remove_keeps_start_blocked_until_a_cache_cleanup_retry_succeeds(self):
+        from argparse import Namespace
+        from unittest.mock import patch
+        config = cli.initialize(self.root, 'https://reader.example', False)
+        images = {'api': 'a', 'web': 'w', 'tools': 't'}
+        cli.write_state(self.root / 'migrated.json', {'images': images, 'overrideSha': ''})
+        args = Namespace(command='igdb-remove', database_name='exact-db', identity='game:12', terminate=False,
+                         poster=['one.jpg', 'two.jpg'])
+        command = ['compose']
+        calls = []
+
+        def execute(arguments, env=None, capture=False):
+            calls.append(arguments)
+            if arguments[1] == 'ps':
+                return '[]'
+            if arguments[-1] == 'igdb-clear-cache' and len(calls) == 3:
+                raise cli.OperatorError('Interrupted cache cleanup')
+
+        with patch.object(cli, 'execute', side_effect=execute), patch.object(cli, 'release_images', return_value=images):
+            with self.assertRaisesRegex(cli.OperatorError, 'Interrupted cache cleanup'):
+                cli.dispatch(args, self.root, config, command, {})
+            with self.assertRaises(cli.OperatorError):
+                cli.require_ready(self.root)
+            self.assertFalse((self.root / 'igdb-removal-complete.json').exists())
+            cli.dispatch(args, self.root, config, command, {})
+        expected = [
+            ['compose', 'ps', '--all', '--format', 'json'],
+            ['compose', 'run', '--rm', 'tools', 'replay', '--igdb-maintenance', '--database-name',
+             'exact-db', '--block', 'game:12', '--poster', 'one.jpg', '--poster', 'two.jpg'],
+            ['compose', 'run', '--rm', '--no-deps', 'tools', 'igdb-clear-cache'],
+        ]
+        self.assertEqual(calls, expected * 2)
+        cli.require_ready(self.root)
+        completion = json.loads((self.root / 'igdb-removal-complete.json').read_bytes())
+        self.assertEqual(completion, {'databaseName': 'exact-db', 'identity': 'game:12',
+                                      'terminated': False, 'posters': ['one.jpg', 'two.jpg']})
+
+    def test_igdb_remove_refuses_a_live_web_writer_before_maintenance(self):
+        from argparse import Namespace
+        from unittest.mock import patch
+        config = cli.initialize(self.root, 'https://reader.example', False)
+        args = Namespace(command='igdb-remove', database_name='ratefreak', identity=None, terminate=True, poster=[])
+        with patch.object(cli, 'execute', return_value='[{"Service":"web","State":"running"}]') as execute:
+            with self.assertRaisesRegex(cli.OperatorError, 'Explicitly stop'):
+                cli.dispatch(args, self.root, config, ['compose'], {})
+        execute.assert_called_once_with(['compose', 'ps', '--all', '--format', 'json'], {}, capture=True)
+
+    def test_restore_requires_independent_policy_cli_argument(self):
+        from contextlib import redirect_stderr
+        from io import StringIO
+        from unittest.mock import patch
+        arguments = ['ratefreak.py', '--instance-dir', str(self.root), 'restore', '--backup', '/unused',
+                     '--journal', '/unused', '--confirm-restore']
+        stderr = StringIO()
+        with patch.object(sys, 'argv', arguments), redirect_stderr(stderr), self.assertRaises(SystemExit) as error:
+            cli.main()
+        self.assertEqual(error.exception.code, 2)
+        self.assertIn('--igdb-policy', stderr.getvalue())
+
+    def test_restore_mounts_current_policy_read_only(self):
+        from argparse import Namespace
+        from unittest.mock import patch
+        config = cli.initialize(self.root, 'https://reader.example', False)
+        cli.write_state(self.root / 'prepared.json', {'format': 3})
+        backup = self.root / 'backup'
+        backup.mkdir()
+        journal = self.root / 'journal'
+        journal.touch(mode=0o600)
+        policy = self.root / 'independently-stored-policy.json'
+        policy.touch(mode=0o600)
+        args = Namespace(command='restore', backup=backup, journal=journal, igdb_policy=policy, tmdb_policy=policy)
+        with patch('maintenance.validate_backup'), patch.object(cli, 'release_images', return_value={}), \
+             patch.object(cli, 'execute', return_value='[]') as execute:
+            cli.dispatch(args, self.root, config, ['compose'], {})
+        self.assertIn(str(policy) + ':/current-igdb-policy:ro', execute.call_args.args[0])
+        self.assertTrue((self.root / 'restore-pending').is_file())
+
+
+class ProviderPackagingTests(unittest.TestCase):
+    def test_api_can_persist_confirmed_igdb_removals_but_web_cannot_edit_policy(self):
+        # Atomic replacement requires the policy parent mount to be writable.
+        compose = Path(__file__).with_name('compose.yaml').read_text()
+        api = compose.split('  api:', 1)[1].split('  web:', 1)[0]
+        web = compose.split('  web:', 1)[1].split('  storage-init:', 1)[0]
+        def policy_mount(service):
+            return service.split('target: /independent-igdb', 1)[1].split('      - ', 1)[0]
+        self.assertNotIn('read_only: true', policy_mount(api))
+        self.assertIn('read_only: true', policy_mount(web))
+
+    def test_new_preparation_rejects_old_host_receipt_until_explicit_prepare(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            cli.write_state(root / 'prepared.json', {'format': 2})
+            with self.assertRaises(cli.OperatorError):
+                cli.require_prepared(root)
+
+    def test_igdb_prepare_upgrades_tmdb_install_and_preserves_managed_artwork(self):
+        import entrypoint
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in ('runtime', 'storage', 'independent'):
+                (root / name).mkdir(mode=0o700)
+            uid, gid = os.getuid(), os.getgid()
+            entrypoint.prepare_tmdb_storage(root, uid, gid)
+            cli.write_state(root / 'prepared.json', {'format': 2})
+            keep = root / 'storage/tmdb-posters/keep.jpg'
+            keep.write_bytes(b'managed TMDB image')
+            old = root / 'storage/image-cache/legacy.webp'
+            old.write_bytes(b'obsolete optimized image')
+            entrypoint.prepare_igdb_storage(root, uid, gid)
+            self.assertFalse(old.exists())
+            self.assertEqual(keep.read_bytes(), b'managed TMDB image')
+            self.assertTrue((root / 'independent/igdb/igdb-policy.json').is_file())
 
 
 if __name__ == "__main__":unittest.main()

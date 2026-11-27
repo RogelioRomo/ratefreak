@@ -46,6 +46,8 @@ public static class AccountErasureReplay
                 .RunOnceAsync(CancellationToken.None);
             await scope.ServiceProvider.GetRequiredService<RateFreak.Infrastructure.Providers.Tmdb.TmdbLifecycle>()
                 .MaintainAsync(args[2], null, false, [], CancellationToken.None);
+            await scope.ServiceProvider.GetRequiredService<RateFreak.Infrastructure.Providers.Igdb.IgdbLifecycle>()
+                .MaintainAsync(args[2], null, false, [], CancellationToken.None);
             Console.WriteLine("Account erasure replay complete. Verify database/artwork cleanup before reopening traffic.");
             return 0;
         }

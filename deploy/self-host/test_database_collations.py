@@ -16,7 +16,7 @@ class DatabaseCollationTests(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name) / 'instance'
         self.config = cli.initialize(self.root, 'https://reader.example', False)
-        cli.write_state(self.root / 'prepared.json', {'format': 2})
+        cli.write_state(self.root / 'prepared.json', {'format': 3})
         self.images = {name: 'sha256:' + str(index) * 64 for index, name in enumerate(['api', 'web', 'tools'], 1)}
         cli.write_state(self.root / 'migrated.json', {'images': self.images, 'overrideSha': ''})
         self.commands = []

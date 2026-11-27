@@ -23,7 +23,8 @@ internal static class InstallationGuard
             return;
         }
         if (context.GetEndpoint()?.Metadata.GetMetadata<RateFreak.Api.Endpoints.StoredCatalogContent>() != null &&
-            !context.RequestServices.GetRequiredService<RateFreak.Infrastructure.Providers.Tmdb.ITmdbCatalogReadiness>().Ready)
+            (!context.RequestServices.GetRequiredService<RateFreak.Infrastructure.Providers.Tmdb.ITmdbCatalogReadiness>().Ready ||
+             !context.RequestServices.GetRequiredService<RateFreak.Infrastructure.Providers.Igdb.IIgdbCatalogReadiness>().Ready))
         {
             context.Response.Headers.CacheControl = "no-store";
             await Results.Problem(statusCode: 503, title: "Catalog maintenance is pending.").ExecuteAsync(context);

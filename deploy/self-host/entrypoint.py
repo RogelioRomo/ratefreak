@@ -17,6 +17,11 @@ TMDB_POLICY_LIMIT = 1024 * 1024
 TMDB_POLICY_ENTRY_LIMIT = 10_000
 TMDB_POLICY_PATH = Path('/independent/tmdb-policy.json')
 TMDB_CACHE_PATH = Path('/data/tmdb-posters')
+IGDB_POLICY_PATH = Path('/independent-igdb/igdb-policy.json')
+IGDB_CACHE_PATH = Path('/data/igdb-covers')
+EMPTY_IGDB_POLICY = {'format': 1, 'terminated': False, 'blockedIdentities': [], 'blockedPosters': []}
+IGDB_POLICY_LIMIT = TMDB_POLICY_LIMIT
+IGDB_POLICY_ENTRY_LIMIT = TMDB_POLICY_ENTRY_LIMIT
 EMPTY_TMDB_POLICY = {'format': 1, 'terminated': False, 'blockedIdentities': [], 'blockedPosters': []}
 
 def no_links(path):
@@ -48,6 +53,16 @@ def valid_tmdb_identity(value):
 def valid_tmdb_poster(value):
     return (isinstance(value, str) and len(value) <= 200
             and re.fullmatch(r'[A-Za-z0-9_-]+\.(?:jpg|jpeg|png|webp|avif)', value) is not None)
+
+def valid_igdb_identity(value):
+    if not isinstance(value, str):
+        return False
+    match = re.fullmatch(r'game:([1-9][0-9]{0,9})', value)
+    return match is not None and int(match[1]) <= 2_147_483_647
+
+def valid_igdb_poster(value):
+    return (isinstance(value, str) and len(value) <= 200
+            and re.fullmatch(r'[A-Za-z0-9_-]+\.jpg', value) is not None)
 
 def read_owned_file(path, limit, uid, gid=None):
     if not path.is_absolute():
@@ -91,6 +106,23 @@ def read_tmdb_policy(path, uid=UID, gid=GID):
             raise StorageError('Invalid TMDB policy entries.')
     return policy
 
+def read_igdb_policy(path, uid=UID, gid=GID):
+    data = read_owned_file(path, IGDB_POLICY_LIMIT, uid, gid)
+    try:
+        policy = json.loads(data.decode('utf-8'), object_pairs_hook=unique_json_object)
+    except (ValueError, RecursionError) as error:
+        raise StorageError('Invalid IGDB policy JSON.') from error
+    if (not isinstance(policy, dict) or policy.keys() != EMPTY_IGDB_POLICY.keys()
+            or type(policy['format']) is not int or policy['format'] != 1
+            or type(policy['terminated']) is not bool):
+        raise StorageError('Invalid IGDB policy schema.')
+    for key, validate in [('blockedIdentities', valid_igdb_identity), ('blockedPosters', valid_igdb_poster)]:
+        values = policy[key]
+        if (not isinstance(values, list) or len(values) > IGDB_POLICY_ENTRY_LIMIT
+                or not all(validate(value) for value in values) or len(set(values)) != len(values)):
+            raise StorageError('Invalid IGDB policy entries.')
+    return policy
+
 def write_owned_file(path, data, uid, gid):
     no_links(path)
     fd, name = tempfile.mkstemp(dir=path.parent, prefix=f'.{path.name}.', suffix='.tmp')
@@ -108,6 +140,10 @@ def write_owned_file(path, data, uid, gid):
         staged.unlink(missing_ok=True)
 
 def write_tmdb_policy(path, policy, uid=UID, gid=GID):
+    data = json.dumps(policy, separators=(',', ':')).encode('utf-8')
+    write_owned_file(path, data, uid, gid)
+
+def write_igdb_policy(path, policy, uid=UID, gid=GID):
     data = json.dumps(policy, separators=(',', ':')).encode('utf-8')
     write_owned_file(path, data, uid, gid)
 
@@ -162,9 +198,9 @@ def host_prepared_tmdb(root):
     except (ValueError, RecursionError) as error:
         raise StorageError('Invalid instance preparation receipt.') from error
     if (not isinstance(prepared, dict) or prepared.keys() != {'format'}
-            or type(prepared['format']) is not int or prepared['format'] not in (1, 2)):
+            or type(prepared['format']) is not int or prepared['format'] not in (1, 2, 3)):
         raise StorageError('Invalid instance preparation receipt.')
-    return prepared['format'] == 2
+    return prepared['format'] >= 2
 
 def prepare_tmdb_storage(root, uid=UID, gid=GID):
     policy = root / 'independent/tmdb/tmdb-policy.json'
@@ -186,6 +222,47 @@ def prepare_tmdb_storage(root, uid=UID, gid=GID):
         clear_cache(root / 'storage/image-cache', uid, gid, allow_directories=True)
         if not has_policy:
             write_tmdb_policy(policy, EMPTY_TMDB_POLICY, uid, gid)
+    if not has_receipt:
+        write_owned_file(receipt, b'1\n', os.geteuid(), os.getegid())
+
+def clear_igdb_cache(path, uid=UID, gid=GID):
+    clear_cache(path, uid, gid, allow_root_mount=True)
+
+def host_prepared_igdb(root):
+    receipt = root / 'prepared.json'
+    no_links(receipt)
+    if not receipt.exists():
+        return False
+    data = read_owned_file(receipt, 64, root.stat().st_uid)
+    try:
+        prepared = json.loads(data, object_pairs_hook=unique_json_object)
+    except (ValueError, RecursionError) as error:
+        raise StorageError('Invalid instance preparation receipt.') from error
+    if (not isinstance(prepared, dict) or prepared.keys() != {'format'}
+            or type(prepared['format']) is not int or prepared['format'] not in (1, 2, 3)):
+        raise StorageError('Invalid instance preparation receipt.')
+    return prepared['format'] >= 3
+
+def prepare_igdb_storage(root, uid=UID, gid=GID):
+    policy = root / 'independent/igdb/igdb-policy.json'
+    receipt = root / 'runtime/igdb-lifecycle-v1'
+    no_links(receipt)
+    has_receipt = receipt.exists()
+    if has_receipt and read_owned_file(receipt, 64, os.geteuid(), os.getegid()) != b'1\n':
+        raise StorageError('Invalid IGDB lifecycle preparation receipt.')
+    initialized = host_prepared_igdb(root) or has_receipt
+    has_policy = policy.exists() or policy.is_symlink()
+    if initialized and not has_policy:
+        raise StorageError('Restore the current independent IGDB policy before preparing this instance.')
+    owned_directory(policy.parent, uid, gid, create=not initialized)
+    if has_policy:
+        read_igdb_policy(policy, uid, gid)
+    owned_directory(root / 'storage/igdb-covers', uid, gid)
+    prepare_image_cache(root / 'storage', uid, gid)
+    if not initialized:
+        clear_cache(root / 'storage/image-cache', uid, gid, allow_directories=True)
+        if not has_policy:
+            write_igdb_policy(policy, EMPTY_IGDB_POLICY, uid, gid)
     if not has_receipt:
         write_owned_file(receipt, b'1\n', os.geteuid(), os.getegid())
 
@@ -235,11 +312,12 @@ def prepare():
     if not any(independent.iterdir()) and independent.stat().st_uid==0:os.chown(independent,UID,GID)
     ensure_journal(independent/'account-erasures.jsonl')
     prepare_tmdb_storage(root)
+    prepare_igdb_storage(root)
     for service,names in {'web':['ingress','proxy'],'api':['proxy','setup','runtime'],'tools':['runtime','migrator','postgres','proxy'],'postgres':['postgres','migrator','runtime']}.items():
         uid,gid=(999,999) if service=='postgres' else (UID,GID)
         directory=root/'runtime'/service;owned_directory(directory,uid,gid)
         for name in names:copy_secret(root/'secrets'/name,directory/name,uid,gid)
-    print('Protected runtime secrets, artwork, keys, image caches, independent journal and TMDB policy prepared.')
+    print('Protected runtime secrets, artwork, keys, image caches, independent journal and TMDB/IGDB policies prepared.')
 
 def connection(user,password,environment=None):
     values=os.environ if environment is None else environment
@@ -254,7 +332,7 @@ def connection(user,password,environment=None):
 
 def runtime_command(mode,directory,extra,environment):
     if mode not in {'api','web','migrate','replay'}:raise StorageError('Unknown container command mode.')
-    if mode=='replay' and (not extra or extra[0] not in {'--replay-account-erasures','--appoint-admin','--revoke-admin','--tmdb-maintenance'}):
+    if mode=='replay' and (not extra or extra[0] not in {'--replay-account-erasures','--appoint-admin','--revoke-admin','--tmdb-maintenance','--igdb-maintenance'}):
         raise StorageError('An explicit maintenance action is required.')
     env=environment.copy()
     if mode=='web':
@@ -279,6 +357,7 @@ def run():
     mode=sys.argv[1]
     if mode=='prepare':prepare();return
     if mode=='tmdb-clear-cache':clear_tmdb_cache(TMDB_CACHE_PATH);return
+    if mode=='igdb-clear-cache':clear_igdb_cache(IGDB_CACHE_PATH);return
     if mode in ['backup','restore','verify-replay']:
         os.execvp('python3',['python3','/app/maintenance.py',mode])
     command,env=runtime_command(mode,Path('/run/ratefreak'),sys.argv[2:],os.environ)

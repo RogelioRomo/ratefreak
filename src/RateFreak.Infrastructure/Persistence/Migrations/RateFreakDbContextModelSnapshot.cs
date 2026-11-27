@@ -1397,6 +1397,81 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RateFreak.Infrastructure.Providers.Igdb.IgdbLifecycleState", b =>
+                {
+                    b.Property<Guid>("MappingId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("mapping_id");
+
+                    b.Property<bool>("ContentRemoved")
+                        .HasColumnType("boolean")
+                        .HasColumnName("content_removed");
+
+                    b.Property<int>("Failures")
+                        .HasColumnType("integer")
+                        .HasColumnName("failures");
+
+                    b.Property<DateTimeOffset?>("LastAttemptAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("last_attempt_at");
+
+                    b.Property<string>("LastOutcome")
+                        .HasMaxLength(24)
+                        .HasColumnType("character varying(24)")
+                        .HasColumnName("last_outcome");
+
+                    b.Property<DateTimeOffset?>("NextAttemptAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("next_attempt_at");
+
+                    b.HasKey("MappingId");
+
+                    b.HasIndex("NextAttemptAt", "MappingId");
+
+                    b.ToTable("igdb_lifecycle_states", (string)null);
+                });
+
+            modelBuilder.Entity("RateFreak.Infrastructure.Providers.Igdb.IgdbPosterIdentity", b =>
+                {
+                    b.Property<Guid>("MappingId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("mapping_id");
+
+                    b.Property<string>("Filename")
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("filename");
+
+                    b.HasKey("MappingId", "Filename");
+
+                    b.ToTable("igdb_poster_identities", (string)null);
+                });
+
+            modelBuilder.Entity("RateFreak.Infrastructure.Providers.Igdb.IgdbRefreshSchedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    b.Property<DateTimeOffset?>("LastBatchAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("last_batch_at");
+
+                    b.Property<DateTimeOffset?>("NextAllowedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("next_allowed_at");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("igdb_refresh_schedule", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1
+                        });
+                });
+
             modelBuilder.Entity("RateFreak.Infrastructure.Providers.Tmdb.TmdbLifecycleState", b =>
                 {
                     b.Property<Guid>("MappingId")
@@ -1778,6 +1853,24 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
                     b.HasOne("RateFreak.Infrastructure.Authentication.AccountUser", null)
                         .WithOne()
                         .HasForeignKey("RateFreak.Infrastructure.Authentication.AvatarAsset", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RateFreak.Infrastructure.Providers.Igdb.IgdbLifecycleState", b =>
+                {
+                    b.HasOne("RateFreak.Domain.Catalog.MediaExternalId", null)
+                        .WithOne()
+                        .HasForeignKey("RateFreak.Infrastructure.Providers.Igdb.IgdbLifecycleState", "MappingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RateFreak.Infrastructure.Providers.Igdb.IgdbPosterIdentity", b =>
+                {
+                    b.HasOne("RateFreak.Domain.Catalog.MediaExternalId", null)
+                        .WithMany()
+                        .HasForeignKey("MappingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

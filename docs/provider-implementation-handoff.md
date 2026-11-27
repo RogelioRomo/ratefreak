@@ -3,6 +3,14 @@
 Recorded 2026-11-26 for implementation in a later session. No application change
 has been made by this decision record.
 
+## Implementation follow-up, 2026-11-27
+
+The implementation is now in the `feat/provider-implementation` checkout. See
+[verification and remaining qualification](provider-implementation-verification.md)
+for the exact tests and artifact scope. The decision record below retains its
+original context. No persistent database was migrated, provider correspondence
+sent or release published by this implementation.
+
 ## Agreed scope and status
 
 RateFreak is completely free, self-hosted and noncommercial, without monetization

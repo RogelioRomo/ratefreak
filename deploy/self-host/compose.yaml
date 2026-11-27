@@ -42,6 +42,7 @@ services:
       Artwork__RootPath: /data/artwork
       AccountData__ErasureJournalPath: ${RATEFREAK_API_ERASURE_JOURNAL_PATH:-}
       Providers__Tmdb__PolicyPath: /independent/tmdb-policy.json
+      Providers__Igdb__PolicyPath: /independent-igdb/igdb-policy.json
     volumes: &api-volumes
       - ${RATEFREAK_INSTANCE_DIR}/runtime/api:/run/ratefreak:ro
       - ${RATEFREAK_INSTANCE_DIR}/storage/artwork:/data/artwork
@@ -50,6 +51,10 @@ services:
         source: ${RATEFREAK_INSTANCE_DIR}/independent/tmdb
         target: /independent
         read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${RATEFREAK_INSTANCE_DIR}/independent/igdb
+        target: /independent-igdb
         bind: {create_host_path: false}
       - type: bind
         source: ${RATEFREAK_INSTANCE_DIR}/independent/account-erasures.jsonl
@@ -82,6 +87,8 @@ services:
       RATEFREAK_ALLOW_PRIVATE_API_HTTP: 'true'
       RATEFREAK_TMDB_POLICY_PATH: /independent/tmdb-policy.json
       RATEFREAK_TMDB_CACHE_PATH: /data/tmdb-posters
+      RATEFREAK_IGDB_POLICY_PATH: /independent-igdb/igdb-policy.json
+      RATEFREAK_IGDB_CACHE_PATH: /data/igdb-covers
     volumes:
       - ${RATEFREAK_INSTANCE_DIR}/runtime/web:/run/ratefreak:ro
       - ${RATEFREAK_INSTANCE_DIR}/storage/image-cache:/app/.next/cache/images
@@ -91,8 +98,17 @@ services:
         read_only: true
         bind: {create_host_path: false}
       - type: bind
+        source: ${RATEFREAK_INSTANCE_DIR}/independent/igdb
+        target: /independent-igdb
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
         source: ${RATEFREAK_INSTANCE_DIR}/storage/tmdb-posters
         target: /data/tmdb-posters
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${RATEFREAK_INSTANCE_DIR}/storage/igdb-covers
+        target: /data/igdb-covers
         bind: {create_host_path: false}
     depends_on:
       api: {condition: service_healthy}
@@ -142,8 +158,16 @@ services:
         target: /independent
         bind: {create_host_path: false}
       - type: bind
+        source: ${RATEFREAK_INSTANCE_DIR}/independent/igdb
+        target: /independent-igdb
+        bind: {create_host_path: false}
+      - type: bind
         source: ${RATEFREAK_INSTANCE_DIR}/storage/tmdb-posters
         target: /data/tmdb-posters
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${RATEFREAK_INSTANCE_DIR}/storage/igdb-covers
+        target: /data/igdb-covers
         bind: {create_host_path: false}
     networks: [database]
     depends_on:

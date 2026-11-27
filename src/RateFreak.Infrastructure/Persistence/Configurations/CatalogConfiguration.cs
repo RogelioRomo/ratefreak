@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RateFreak.Domain.Catalog;
 using RateFreak.Infrastructure.Providers.Tmdb;
+using RateFreak.Infrastructure.Providers.Igdb;
 
 namespace RateFreak.Infrastructure.Persistence.Configurations;
 
@@ -55,6 +56,28 @@ internal static class CatalogConfiguration
             schedule.HasKey(x => x.Id);
             schedule.Property(x => x.Id).ValueGeneratedNever();
             schedule.HasData(new TmdbRefreshSchedule { Id = 1 });
+        });
+        modelBuilder.Entity<IgdbLifecycleState>(state =>
+        {
+            state.ToTable("igdb_lifecycle_states");
+            state.HasKey(x => x.MappingId);
+            state.HasOne<MediaExternalId>().WithOne().HasForeignKey<IgdbLifecycleState>(x => x.MappingId);
+            state.HasIndex(x => new { x.NextAttemptAt, x.MappingId });
+            state.Property(x => x.LastOutcome).HasMaxLength(24);
+        });
+        modelBuilder.Entity<IgdbPosterIdentity>(poster =>
+        {
+            poster.ToTable("igdb_poster_identities");
+            poster.HasKey(x => new { x.MappingId, x.Filename });
+            poster.HasOne<MediaExternalId>().WithMany().HasForeignKey(x => x.MappingId);
+            poster.Property(x => x.Filename).HasMaxLength(200);
+        });
+        modelBuilder.Entity<IgdbRefreshSchedule>(schedule =>
+        {
+            schedule.ToTable("igdb_refresh_schedule");
+            schedule.HasKey(x => x.Id);
+            schedule.Property(x => x.Id).ValueGeneratedNever();
+            schedule.HasData(new IgdbRefreshSchedule { Id = 1 });
         });
         modelBuilder.Entity<MediaExternalId>(mapping =>
         {
