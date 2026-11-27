@@ -53,10 +53,37 @@ reapplication was idempotent. See [integration/migration evidence](release-evide
 Private backup and apply records are in
 `.local/localhost/tmdb-content-lifecycle-migration/`.
 
-API/frontend remain stopped; persistent-instance provider/runtime settings are unchanged. Nothing
-was pushed or published. Upstream synchronization failed because GitHub SSH
+Following that TMDB migration, API/frontend were left stopped and persistent-instance
+provider/runtime settings were unchanged. Nothing was pushed or published. Upstream synchronization failed because GitHub SSH
 authentication was unavailable. Other installations need their own reviewed
 migration and configuration; this local migration does not upgrade them.
+
+On 2026-11-27, the owner requested application startup and explicitly authorized
+the IGDB migration. `20261127171719_AddIgdbContentLifecycle` was applied to the
+local `ratefreak` database after a private database/artwork backup and isolated
+restore, upgrade, rollback and reapplication rehearsal. All 32 existing application
+tables and artwork were preserved; repeat application was idempotent. Private
+records are under `.local/localhost/igdb-content-lifecycle-migration/`.
+The Development API and web app are running at `http://localhost:5080` and
+`http://localhost:3000` for owner review, with existing provider settings and
+credentials retained and local lifecycle policy/cache paths provisioned.
+Startup checks/logs are under `.local/localhost/provider-startup/`. This is local
+manual review, not final release qualification or publication.
+
+MusicBrainz album artwork, full song catalog support with associated-release
+artwork, and the signed-in Recently rated section were subsequently implemented.
+Album/song discovery defaults to results with loaded covers and permits showing
+all results. The signed-in home introduction was removed and the footer now
+displays "Made with RateFreak", linking to the repository in a new tab. The MIT
+license is unchanged; no mandatory visible-attribution condition was added.
+`20261127222703_AddSongs` is applied to the local database;
+the EF database update command was rerun successfully with no pending migration.
+See [ADR 0022](adr/0022-musicbrainz-songs-and-artwork.md). These local changes do
+not establish migration or release acceptance for other installations.
+The final frontend verification passed all 1,103 tests across 129 test files.
+All implementation commits are on local `main`; no local feature branches remain.
+GitHub synchronization remains blocked by unavailable SSH authentication, so the
+remote branch state has not been verified and these commits have not been pushed.
 
 The [2026-11-25 security follow-up](security-followup-2026-11-25.md) implements: Debian 13 web/tools runtimes, stable SkiaSharp 4.157.0
 with refreshed native notices, PostgreSQL 17.12 Trixie with collation safeguards,
@@ -132,7 +159,7 @@ qualification.
 3. **Complete final reference-installation acceptance.** On the exact candidate,
    verify fresh installation, supported upgrade/data preservation, real HTTPS
    sessions/CSRF/logout/recovery, persistence, ordinary/staff browser journeys
-   and coordinated backup/isolated restore with current erasure and TMDB policy
+   and coordinated backup/isolated restore with current erasure and TMDB/IGDB policy
    replay. Earlier reference and TMDB image proofs already passed; repeat the
    checks affected by the final source/runtime changes. Finish representative
    load/capacity evidence and verify maintainer security-report notification
@@ -154,7 +181,7 @@ establish them for every self-hosted instance:
 - Protected secrets, durable Data Protection keys and persistent PostgreSQL/artwork
   storage, including restart/recovery and replica behavior where applicable.
 - Coordinated database/artwork backups expiring within 30 days, an independently
-  protected erasure journal, current TMDB policy and a successful isolated restore.
+  protected erasure journal, current TMDB/IGDB policies and a successful isolated restore.
 - Current staff permissions, named operator attribution, protected external
   records with 365-day expiration and Admin removal/recovery acceptance.
 - Monitoring, sanitized logging, secret rotation and perimeter/coordinated abuse
