@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { isMusicBrainzCover } from "./musicbrainz-cover-paths";
 import { tmdbPosterFilename } from "./tmdb-poster-paths";
 import { igdbCoverFilename } from "./igdb-cover-paths";
 
@@ -19,7 +20,8 @@ export const providerImageConfig: NonNullable<NextConfig["images"]> = {
 };
 
 export function isProviderArtwork(reference: string): boolean {
-  return tmdbPosterFilename(reference) !== null
+  return isMusicBrainzCover(reference)
+    || tmdbPosterFilename(reference) !== null
     || igdbCoverFilename(reference) !== null
     || /^https:\/\/covers\.openlibrary\.org\/b\/id\/[1-9][0-9]{0,9}-L\.jpg\?default=false$/.test(reference);
 }

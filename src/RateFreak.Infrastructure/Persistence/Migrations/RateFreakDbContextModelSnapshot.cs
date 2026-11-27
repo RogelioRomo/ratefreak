@@ -468,7 +468,7 @@ namespace RateFreak.Infrastructure.Persistence.Migrations
 
                             t.HasCheckConstraint("ck_media_items_title", "length(btrim(title)) > 0");
 
-                            t.HasCheckConstraint("ck_media_items_type", "media_type IN ('movie', 'tv_show', 'album', 'video_game', 'book', 'custom')");
+                            t.HasCheckConstraint("ck_media_items_type", "media_type IN ('movie', 'tv_show', 'album', 'song', 'video_game', 'book', 'custom')");
 
                             t.HasCheckConstraint("ck_media_items_visibility", "visibility IN ('public', 'private')");
                         });

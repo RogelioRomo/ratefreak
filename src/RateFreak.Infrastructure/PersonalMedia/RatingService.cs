@@ -1,3 +1,4 @@
+using RateFreak.Application.MetadataImport;
 using RateFreak.Infrastructure.Catalog;
 using RateFreak.Application.Catalog;
 using RateFreak.Infrastructure.Moderation;
@@ -10,6 +11,17 @@ namespace RateFreak.Infrastructure.PersonalMedia;
 
 internal sealed class RatingService(RateFreakDbContext context) : IRatingService
 {
+    public async Task<RecentRatingsPage> RecentAsync(Guid userId, CancellationToken ct)
+    {
+        var items = await (from rating in context.Ratings.AsNoTracking().Where(r => r.UserId == userId)
+                           join media in context.MediaItems.AsNoTracking().Where(CatalogAccess.Readable(userId)) on rating.MediaItemId equals media.Id
+                           orderby rating.UpdatedAt descending, rating.MediaItemId
+                           select new RecentRating(new MediaSummary(media.Id, media.MediaType, media.Title, media.ReleaseDate, MusicBrainzArtwork.Album(media.ImageReference,
+                context.MediaExternalIds.Where(e => media.MediaType == "album" && e.MediaItemId == media.Id && e.Provider == "musicbrainz" && e.Namespace == "release-group").OrderBy(e => e.ExternalId).Select(e => e.ExternalId).FirstOrDefault())), rating.Score, rating.UpdatedAt))
+            .Take(12).ToListAsync(ct);
+        return new(items);
+    }
+
     public Task<RatingDetails?> FindAsync(Guid userId, Guid mediaId, CancellationToken ct) =>
         context.Ratings.AsNoTracking().Where(x => x.UserId == userId && x.MediaItemId == mediaId && context.MediaItems.Where(CatalogAccess.Readable(userId)).Any(m => m.Id == x.MediaItemId))
             .Select(x => new RatingDetails(x.Id, x.MediaItemId, x.Score, x.CreatedAt, x.UpdatedAt, x.IsShared, x.SharedAt)).SingleOrDefaultAsync(ct);

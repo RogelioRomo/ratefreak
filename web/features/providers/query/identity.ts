@@ -1,7 +1,7 @@
 import type { ProviderIdentity, ProviderName } from "../interfaces/provider";
 export const providerNames: Record<ProviderName, string> = { tmdb: "TMDB", musicbrainz: "MusicBrainz", igdb: "IGDB", openlibrary: "Open Library" };
 export const providerHomes: Record<ProviderName, string> = { tmdb: "https://www.themoviedb.org", musicbrainz: "https://musicbrainz.org", igdb: "https://www.igdb.com", openlibrary: "https://openlibrary.org" };
-export const providerTypes = { tmdb: ["movie", "tv_show"], musicbrainz: ["album"], igdb: ["video_game"], openlibrary: ["book"] } as const;
+export const providerTypes = { tmdb: ["movie", "tv_show"], musicbrainz: ["album", "song"], igdb: ["video_game"], openlibrary: ["book"] } as const;
 export function validProviderType(provider: string, type: string): boolean {
   return Object.hasOwn(providerTypes, provider) && (providerTypes[provider as ProviderName] as readonly string[]).includes(type);
 }

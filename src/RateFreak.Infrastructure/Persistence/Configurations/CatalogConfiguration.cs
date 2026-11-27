@@ -13,7 +13,7 @@ internal static class CatalogConfiguration
         {
             item.ToTable("media_items", table =>
             {
-                table.HasCheckConstraint("ck_media_items_type", "media_type IN ('movie', 'tv_show', 'album', 'video_game', 'book', 'custom')");
+                table.HasCheckConstraint("ck_media_items_type", "media_type IN ('movie', 'tv_show', 'album', 'song', 'video_game', 'book', 'custom')");
                 table.HasCheckConstraint("ck_media_items_visibility", "visibility IN ('public', 'private')");
                 table.HasCheckConstraint("ck_media_items_provenance", "(provenance = 'system' AND creator_user_id IS NULL AND media_type <> 'custom' AND visibility = 'public') OR (provenance = 'user' AND (creator_user_id IS NOT NULL OR visibility = 'public') AND media_type = 'custom')");
                 table.HasCheckConstraint("ck_media_items_revision", "revision > 0");

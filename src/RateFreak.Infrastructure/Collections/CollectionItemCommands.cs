@@ -1,3 +1,4 @@
+using RateFreak.Application.MetadataImport;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using RateFreak.Application.Catalog;
@@ -22,7 +23,8 @@ internal sealed class CollectionItemCommands(RateFreakDbContext db) : ICollectio
         var item = new CollectionItem(id, media.Id, request.Position ?? 0); db.Add(item); collection!.Advance();
         try { await db.SaveChangesAsync(ct); }
         catch (DbUpdateException ex) when (ex.InnerException is PostgresException { SqlState: PostgresErrorCodes.UniqueViolation, ConstraintName: "ux_collection_items_media" }) { return new(CollectionStatus.Conflict); }
-        var result = new ItemDetails(item.Id, media.Id, new MediaSummary(media.Id, media.MediaType, media.Title, media.ReleaseDate, media.ImageReference), item.Position, item.CreatedAt, item.UpdatedAt);
+        var result = new ItemDetails(item.Id, media.Id, new MediaSummary(media.Id, media.MediaType, media.Title, media.ReleaseDate, MusicBrainzArtwork.Album(media.ImageReference,
+                db.MediaExternalIds.Where(e => media.MediaType == "album" && e.MediaItemId == media.Id && e.Provider == "musicbrainz" && e.Namespace == "release-group").OrderBy(e => e.ExternalId).Select(e => e.ExternalId).FirstOrDefault())), item.Position, item.CreatedAt, item.UpdatedAt);
         await tx.CommitAsync(ct); return new(CollectionStatus.Success, result, collection.Revision);
     }
     public async Task<CollectionResult<ItemDetails>> UpdateAsync(Guid ownerId, Guid id, Guid itemId, ItemUpdate request, CancellationToken ct)
@@ -33,7 +35,8 @@ internal sealed class CollectionItemCommands(RateFreakDbContext db) : ICollectio
         if (item is null) return new(CollectionStatus.NotFound);
         if (request.Position is null or < 0) return CollectionMutation.Invalid<ItemDetails>("position", "A nonnegative position is required.");
         item.Reorder(request.Position.Value); collection!.Advance(); await db.SaveChangesAsync(ct);
-        var media = await db.MediaItems.AsNoTracking().Where(m => m.Id == item.MediaItemId).Select(m => new MediaSummary(m.Id, m.MediaType, m.Title, m.ReleaseDate, m.ImageReference)).SingleAsync(ct);
+        var media = await db.MediaItems.AsNoTracking().Where(m => m.Id == item.MediaItemId).Select(m => new MediaSummary(m.Id, m.MediaType, m.Title, m.ReleaseDate, MusicBrainzArtwork.Album(m.ImageReference,
+                db.MediaExternalIds.Where(e => m.MediaType == "album" && e.MediaItemId == m.Id && e.Provider == "musicbrainz" && e.Namespace == "release-group").OrderBy(e => e.ExternalId).Select(e => e.ExternalId).FirstOrDefault()))).SingleAsync(ct);
         await tx.CommitAsync(ct); return new(CollectionStatus.Success, new(item.Id, item.MediaItemId, media, item.Position, item.CreatedAt, item.UpdatedAt), collection.Revision);
     }
     public async Task<CollectionResult<CollectionRevision>> ClearUnavailableAsync(Guid ownerId, Guid id, long? expectedRevision, CancellationToken ct)

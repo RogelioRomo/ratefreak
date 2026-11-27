@@ -56,3 +56,18 @@ it("renders IGDB artwork through the unoptimized managed cover route", () => {
   expect(url.pathname + url.search).toBe("/igdb-covers/co123.jpg");
   expect(image).not.toHaveAttribute("srcset");
 });
+
+it("renders canonical Cover Art Archive covers directly and falls back on a miss", () => {
+  const reference = "https://coverartarchive.org/release-group/3bd76d40-7f0e-36b7-9348-91a33afee20e/front-500";
+  render(artwork(reference));
+  expect(screen.getByRole("img")).toHaveAttribute("src", reference);
+  expect(screen.getByRole("img")).not.toHaveAttribute("srcset");
+  fireEvent.error(screen.getByRole("img"));
+  expect(screen.getByText("Artwork unavailable")).toBeVisible();
+});
+it.each([
+  "https://coverartarchive.org.evil.test/release-group/3bd76d40-7f0e-36b7-9348-91a33afee20e/front-500",
+  "https://coverartarchive.org/release-group/00000000-0000-0000-0000-000000000000/front-500",
+  "https://coverartarchive.org/release-group/3bd76d40-7f0e-36b7-9348-91a33afee20e/front-500?url=http://localhost",
+  "https://coverartarchive.org/release-group/3bd76d40-7f0e-36b7-9348-91a33afee20e/front-500\n"
+])("rejects noncanonical CAA reference %s", reference => expect(supportedArtwork(reference)).toBeNull());

@@ -5,6 +5,7 @@ import { IconStar } from "@tabler/icons-react";
 import { Button } from "@/components/ui/button";
 import type { RatingFormProps } from "../interfaces/component-props";
 import { saveRating, deletePersonal } from "../api/personal";
+import { recentRatingsKey } from "@/features/home/hooks/use-recent-ratings";
 import { personalKeys } from "../hooks/use-personal";
 import { usePersonalWrite } from "../hooks/use-personal-write";
 import { PersonalError } from "./personal-error";
@@ -20,7 +21,7 @@ export function RatingForm({ accountId, mediaId, saved, canShareRating = false }
   const shared = sharing.value;
   const [score, setScore] = useState(saved ? String(saved.score) : "");
   const [present, setPresent] = useState(!!saved), [message, setMessage] = useState("");
-  const write = usePersonalWrite(); const keys = [personalKeys.rating(accountId, mediaId), personalKeys.aggregate(mediaId), personalKeys.library(accountId)];
+  const write = usePersonalWrite(); const keys = [personalKeys.rating(accountId, mediaId), personalKeys.aggregate(mediaId), personalKeys.library(accountId), recentRatingsKey(accountId)];
   return <form aria-label="Rating" className={styles.form} onSubmit={event => {
     event.preventDefault(); if (score === "") return; setMessage("");
     void write.run(signal => saveRating(mediaId, +score, signal, sharing.dirty ? shared : undefined), keys).then(outcome => { if (outcome) { setPresent(true); setSharing({ value: outcome.value.isShared ?? shared, saved: outcome.value.isShared ?? shared, id: outcome.value.id ?? savedId, dirty: false }); setMessage("Rating saved."); } });

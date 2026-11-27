@@ -1,4 +1,5 @@
 "use client";
+import { MusicMetadata } from "@/features/catalog/components/music-metadata";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
@@ -31,7 +32,7 @@ export function DiscoveryScreen() {
         <div className={styles.summary}><p role="status">{results.data.items.length} {results.data.items.length === 1 ? "result" : "results"} on this page</p><p>Page {filters.page}</p></div>
         {!results.data.items.length ? <div className={styles.guidance}><h2>No titles on this page.</h2><p>Try another search{filters.page > 1 ? " or return to the first page." : "."}</p>{filters.page > 1 && <Link className={styles.link} href={discoveryHref({ ...filters, page: 1 })}>Go to first page</Link>}</div> : <ul className={styles.grid}>{results.data.items.map(item => {
           const identity = providerIdentity(item.provider, item.type, item.externalId);
-          return identity ? <li key={`${item.provider}-${item.type}-${item.externalId}`}><Link className={styles.entry} href={previewHref(identity)} aria-labelledby={`external-${item.externalId}`}><MediaArtwork reference={item.imageReference} title={item.title} type={item.type} /><h2 id={`external-${item.externalId}`}>{item.title}</h2></Link><p className={styles.meta}>{mediaLabels[item.type]}{item.releaseDate ? ` · ${item.releaseDate.slice(0, 4)}` : ""}</p></li> : null;
+          return identity ? <li key={`${item.provider}-${item.type}-${item.externalId}`}><Link className={styles.entry} href={previewHref(identity)} aria-labelledby={`external-${item.externalId}`}><MediaArtwork reference={item.imageReference} title={item.title} type={item.type} /><h2 id={`external-${item.externalId}`}>{item.title}</h2></Link>{(item.type === "song" || item.type === "album") && <MusicMetadata metadata={item.metadata} compact />}<p className={styles.meta}>{mediaLabels[item.type]}{item.releaseDate ? ` · ${item.releaseDate.slice(0, 4)}` : ""}</p></li> : null;
         })}</ul>}
         <nav className={styles.pagination} aria-label="Provider pages">{filters.page > 1 ? <Link href={discoveryHref({ ...filters, page: filters.page - 1 })}><IconArrowLeft size={18} aria-hidden="true" />Previous</Link> : <span>Previous</span>}<span>Page {filters.page}</span>{results.data.items.length > 0 && filters.page < 500 ? <Link href={discoveryHref({ ...filters, page: filters.page + 1 })}>Next<IconArrowRight size={18} aria-hidden="true" /></Link> : <span>Next</span>}</nav>
       </section>}

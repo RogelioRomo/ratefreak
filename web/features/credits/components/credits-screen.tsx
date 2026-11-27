@@ -13,8 +13,9 @@ export function CreditsScreen() {
     </section>
     <section className={styles.section} aria-labelledby="musicbrainz-credit">
       <h2 id="musicbrainz-credit">MusicBrainz</h2>
-      <p>Album metadata is provided by <a href="https://musicbrainz.org">MusicBrainz</a>, an open music encyclopedia maintained by its community and the MetaBrainz Foundation.</p>
+      <p>Album and song metadata is provided by <a href="https://musicbrainz.org">MusicBrainz</a>, an open music encyclopedia maintained by its community and the MetaBrainz Foundation.</p>
       <p>RateFreak imports selected core metadata under <a href="https://musicbrainz.org/doc/About/Data_License">CC0</a>. MusicBrainz data licensing does not cover album artwork.</p>
+      <p>Album covers are delivered by the <a href="https://coverartarchive.org">Cover Art Archive</a>, a MusicBrainz and Internet Archive project. Artwork remains subject to its owners’ rights; see the <a href="https://musicbrainz.org/doc/Cover_Art_Archive">Cover Art Archive policy</a>.</p>
     </section>
     <section className={styles.section} aria-labelledby="igdb-credit">
       <h2 id="igdb-credit">IGDB</h2>

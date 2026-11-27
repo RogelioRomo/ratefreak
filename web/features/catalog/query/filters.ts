@@ -1,6 +1,6 @@
 import type { CatalogFilters, MediaType } from "../interfaces/catalog-filters";
-export const mediaTypes = { movie: "Movies", tv_show: "TV shows", album: "Albums", video_game: "Video games", book: "Books", custom: "Custom items" } as const;
-export const mediaLabels = { movie: "Movie", tv_show: "TV show", album: "Album", video_game: "Video game", book: "Book", custom: "Custom item" } as const;
+export const mediaTypes = { movie: "Movies", tv_show: "TV shows", album: "Albums", song: "Songs", video_game: "Video games", book: "Books", custom: "Custom items" } as const;
+export const mediaLabels = { movie: "Movie", tv_show: "TV show", album: "Album", song: "Song", video_game: "Video game", book: "Book", custom: "Custom item" } as const;
 export const isMediaId = (id: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
 export function submittedFilters(q: string, type: string, categoryId = ""): CatalogFilters {
   return { q: q.trim(), type: type as MediaType | "", page: 1, pageSize: 20, ...(categoryId ? { categoryId } : {}) };

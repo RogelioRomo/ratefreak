@@ -867,14 +867,14 @@ collection revisions. No live reset has been performed by this implementation.
 Stop old writers, confirm external consumers and follow the operations runbook before
 an actual cutover. Deleted test field values cannot be recovered by schema rollback.
 
-## MusicBrainz albums (Phase 6a)
+## MusicBrainz albums and songs (Phase 6a, extended 2026-11-27)
 
 MusicBrainz adds `album` media with search, preview and protected import through the
 existing provider routes. A canonical album represents a MusicBrainz release group,
 so editions/remasters share a single rating/review identity. Only primary type Album
 is accepted; live albums, compilations and soundtracks can qualify. EPs, singles,
-tracks and explicitly non-musical audiobook/audio-drama/spokenword/interview groups
-are excluded. No MusicBrainz write-back or user account is involved.
+explicitly non-musical audiobook/audio-drama/spokenword/interview album groups
+are excluded. Songs use MusicBrainz recording identities rather than edition-specific tracks. No MusicBrainz write-back or user account is involved.
 
 The adapter is **disabled by default**, including the current local configuration.
 Automated tests use simulated responses; no real MusicBrainz calls are required.
@@ -900,7 +900,7 @@ checked 2026-10-30.
 
 Routes:
 
-- `GET /api/v1/media/providers` lists all three configured metadata adapters, supported types,
+- `GET /api/v1/media/providers` lists configured metadata adapters, supported types,
   attribution and enabled states, without contact/tokens.
 - `GET /api/v1/media/external/search?provider=musicbrainz&type=album&q=Year%20Zero&page=1`
   searches album title or artist with an escaped literal phrase. Pages 1–500,
@@ -921,10 +921,41 @@ imports create one item/mapping, never title-merge or overwrite curated records.
 Album title remains separate from artist credits. Metadata includes `artistCredit`,
 ordered `artists` (id/name/joinPhrase), `primaryType`, `secondaryTypes` and optional
 `firstReleaseDate`. A valid year/year-month is preserved without inventing a day;
-`releaseDate` is non-null only for a complete valid date. Description/imageReference
-remain null. No cover art, annotation, tags, genres or provider ratings are imported.
+`releaseDate` is non-null only for a complete valid date. Description remains null.
+Album image references use `https://coverartarchive.org/release-group/{uuid}/front-500`.
+Covers load directly in the browser without the public optimizer or a local image
+cache; missing/failed covers retain the standard fallback. Existing albums with a
+null image reference resolve a cover from their MusicBrainz release-group mapping
+at read time, without updating stored metadata or replacing existing artwork.
+Artwork is separate from MusicBrainz's CC0 metadata and remains subject to its
+owners' rights; see [Cover Art Archive](https://musicbrainz.org/doc/Cover_Art_Archive)
+and its [API](https://musicbrainz.org/doc/Cover_Art_Archive/API).
+No annotation, tags, genres or provider ratings are imported.
 Albums work with existing library statuses, ratings, reviews, catalog/library type
 filters and collections; imports do not automatically create personal records.
+
+Songs use the same endpoints with `type=song` / `mediaType: "song"`:
+`GET /api/v1/media/external/search?provider=musicbrainz&type=song&q=Survivalism&page=1`
+and `GET /api/v1/media/external/musicbrainz/song/{recordingUuid}`. Recording IDs
+use the `recording` namespace, distinct from album release groups. Artist credits,
+optional `lengthMilliseconds`, `disambiguation` and partial `firstReleaseDate` are
+preserved. Distinct recordings (studio, live, remixes) remain distinct items;
+recording previews and search show artist/version details. Songs support ratings,
+reviews, lists and library tracking. No arbitrary release artwork is assigned to
+recordings. The `AddSongs` migration seeds Songs and widens the type constraint;
+upgrade refuses conflicting seed/category names, and rollback refuses dependent
+songs/category usage or modifications. Apply through the normal migration process;
+never delete user content just to downgrade.
+
+Authenticated home shows up to 12 **Recently rated** items before the existing
+Following/Community feed tabs. `GET /api/v1/users/me/ratings/recent` returns an
+`items` envelope with `media`, `score` and `updatedAt`, ordered by rating update
+time descending and media ID ascending for ties. It includes the owner's private
+ratings without requiring library entries and filters inaccessible/archived items.
+It requires authentication, accepts no query parameters, uses personal read rate
+limits and `no-store`, and never accepts another account ID. Rating edits move an
+item forward; removing a rating removes it from the section. Signed-out home is
+unchanged. Loading/retry/empty states are independent from feed state.
 
 Outbound transport uses a fixed HTTPS origin with redirects disabled. One shared
 process-wide gate allows one MusicBrainz operation, with no waiting operation queue;
@@ -952,7 +983,8 @@ rollback. Without albums, downgrade/reapply preserves existing movies/TV.
 [MusicBrainz licensing](https://musicbrainz.org/doc/About/Data_License) distinguishes
 core CC0 data from supplementary data; its API documentation distinguishes free
 non-commercial service from commercial plans. Review applicable terms before
-public/commercial launch. Cover art is a separate service and is deferred.
+public/commercial launch. Album covers now use the separate Cover Art Archive service
+and rights described above; metadata licensing does not grant artwork rights.
 Comments, moderation and Open Library books are implemented. Self-hosted release
 readiness remains open; use [current status](docs/STATUS.md), rather than the
 original Phase 6 backlog, for remaining work.

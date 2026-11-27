@@ -5,6 +5,7 @@ import { beforeEach, expect, it, vi } from 'vitest';
 import Home from '@/app/page';
 import { SessionContext } from '@/features/auth/session/session-context';
 import type { SessionContextValue } from '@/features/auth/interfaces/session-context-value';
+vi.mock('@/features/home/api/recent-ratings',()=>({getRecentRatings:vi.fn(async()=>({items:[]}))}));
 const route=vi.hoisted(()=>({query:'',push:vi.fn()}));
 vi.mock('next/navigation',()=>({useSearchParams:()=>new URLSearchParams(route.query),usePathname:()=> '/',useRouter:()=>({push:route.push,replace:route.push})}));
 const account={id:'owner',handle:'reader',displayName:'Reader',email:'reader@example.test',createdAt:'2026-01-01'};
@@ -37,7 +38,7 @@ it('does not reuse the previous account feed when another account signs in',asyn
 it('sorts merged pages when unsharing moves an entry behind newer reviews',async()=>{
  const middle={...entry,media:{...entry.media,id:'b1111111-1111-1111-1111-111111111111',title:'Middle review'},publishedAt:'2026-06-01T00:00:00Z'};
  fetchMock.mockImplementation(async(url:unknown)=>Response.json(String(url).includes('cursor=next')?{items:[{...entry,publishedAt:'2026-01-01T00:00:00Z'}],nextCursor:null,hasFollowees:true}:{items:[entry,middle],nextCursor:'next',hasFollowees:true}));
- const view=setup();fireEvent.click(await screen.findByRole('button',{name:'Load more'}));route.query='cursor=next';view.update();await waitFor(()=>expect(screen.queryByRole('button',{name:'Load more'})).not.toBeInTheDocument());expect(screen.getAllByRole('heading',{level:2}).map(node=>node.textContent)).toEqual(['Middle review','Dune']);
+ const view=setup();fireEvent.click(await screen.findByRole('button',{name:'Load more'}));route.query='cursor=next';view.update();await waitFor(()=>expect(screen.queryByRole('button',{name:'Load more'})).not.toBeInTheDocument());expect(screen.getAllByRole('heading',{level:2}).map(node=>node.textContent)).toEqual(['Recently rated','Middle review','Dune']);
 });
 it('refreshes the session once when a retained-page error precedes another pages 401',async()=>{
  const next={...entry,media:{...entry.media,id:'b1111111-1111-1111-1111-111111111111',title:'Other review'}};

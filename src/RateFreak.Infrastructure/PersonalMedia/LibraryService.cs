@@ -1,3 +1,4 @@
+using RateFreak.Application.MetadataImport;
 using RateFreak.Infrastructure.Catalog;
 using RateFreak.Infrastructure.Moderation;
 using System.Data;
@@ -14,7 +15,8 @@ internal sealed class LibraryService(RateFreakDbContext context) : ILibraryServi
     private IQueryable<LibraryItem> Items(IQueryable<LibraryEntry> entries) =>
         from entry in entries
         join media in context.MediaItems.AsNoTracking() on entry.MediaItemId equals media.Id
-        select new LibraryItem(new MediaSummary(media.Id, media.MediaType, media.Title, media.ReleaseDate, media.ImageReference),
+        select new LibraryItem(new MediaSummary(media.Id, media.MediaType, media.Title, media.ReleaseDate, MusicBrainzArtwork.Album(media.ImageReference,
+                context.MediaExternalIds.Where(e => media.MediaType == "album" && e.MediaItemId == media.Id && e.Provider == "musicbrainz" && e.Namespace == "release-group").OrderBy(e => e.ExternalId).Select(e => e.ExternalId).FirstOrDefault())),
             entry.Status, entry.StartedAt, entry.CompletedAt, entry.CreatedAt, entry.UpdatedAt,
             context.Ratings.Where(r => r.UserId == entry.UserId && r.MediaItemId == entry.MediaItemId).Select(r => (decimal?)r.Score).FirstOrDefault());
 
@@ -46,7 +48,8 @@ internal sealed class LibraryService(RateFreakDbContext context) : ILibraryServi
             _ => rows.OrderByDescending(x => x.Entry.CreatedAt).ThenBy(x => x.Media.Id)
         };
         var page = await ordered.Skip((query.Page - 1) * query.PageSize).Take(query.PageSize)
-            .Select(x => new LibraryItem(new MediaSummary(x.Media.Id, x.Media.MediaType, x.Media.Title, x.Media.ReleaseDate, x.Media.ImageReference),
+            .Select(x => new LibraryItem(new MediaSummary(x.Media.Id, x.Media.MediaType, x.Media.Title, x.Media.ReleaseDate, MusicBrainzArtwork.Album(x.Media.ImageReference,
+                context.MediaExternalIds.Where(e => x.Media.MediaType == "album" && e.MediaItemId == x.Media.Id && e.Provider == "musicbrainz" && e.Namespace == "release-group").OrderBy(e => e.ExternalId).Select(e => e.ExternalId).FirstOrDefault())),
                 x.Entry.Status, x.Entry.StartedAt, x.Entry.CompletedAt, x.Entry.CreatedAt, x.Entry.UpdatedAt, x.OwnRating)).ToListAsync(ct);
         await tx.CommitAsync(ct);
         return new(page, query.Page, query.PageSize, total);

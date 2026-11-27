@@ -18,6 +18,8 @@ public sealed record LibraryStatusWriteResult(LibraryStatusWriteStatus Status, L
 public sealed record LibraryItem(MediaSummary Media, string Status, DateOnly? StartedAt, DateOnly? CompletedAt,
     DateTimeOffset CreatedAt, DateTimeOffset UpdatedAt, decimal? OwnRating = null);
 public sealed record RatingDetails(Guid Id, Guid MediaId, decimal Score, DateTimeOffset CreatedAt, DateTimeOffset UpdatedAt, bool IsShared = false, DateTimeOffset? SharedAt = null);
+public sealed record RecentRating(MediaSummary Media, decimal Score, DateTimeOffset UpdatedAt);
+public sealed record RecentRatingsPage(IReadOnlyList<RecentRating> Items);
 public sealed record RatingAggregate(int Count, decimal? Average);
 public sealed record ReviewAuthor(Guid Id, string Handle, string DisplayName, string? AvatarUrl = null);
 public sealed record ReviewDetails(Guid Id, Guid MediaId, ReviewAuthor Author, string Body, bool IsSpoiler,
@@ -35,6 +37,7 @@ public interface ILibraryService
 }
 public interface IRatingService
 {
+    Task<RecentRatingsPage> RecentAsync(Guid userId, CancellationToken ct);
     Task<RatingDetails?> FindAsync(Guid userId, Guid mediaId, CancellationToken ct);
     Task<CatalogResult<RatingDetails>> PutAsync(Guid userId, Guid mediaId, decimal score, bool? isShared, CancellationToken ct);
     Task<bool> DeleteAsync(Guid userId, Guid mediaId, CancellationToken ct);

@@ -37,10 +37,58 @@ public sealed partial class MusicBrainzTests
         using var client = new HttpClient(handler); using var gate = new MusicBrainzRequestGate(TimeProvider.System);
         var item = await Provider(client, gate).GetDetailsAsync(Id.ToUpperInvariant(), "album", Ct);
         Assert.NotNull(item); Assert.Equal(Id, item.ExternalId); Assert.Equal("musicbrainz", item.Provider); Assert.Equal("album", item.Type);
-        Assert.Equal("Year Zero", item.Title); Assert.Equal(new DateOnly(2007,4,13), item.ReleaseDate); Assert.Null(item.Description); Assert.Null(item.ImageReference);
+        Assert.Equal("Year Zero", item.Title); Assert.Equal(new DateOnly(2007,4,13), item.ReleaseDate); Assert.Null(item.Description); Assert.Equal($"https://coverartarchive.org/release-group/{Id}/front-500", item.ImageReference);
         Assert.Equal("Nine Inch Nails", item.Metadata.GetProperty("artistCredit").GetString()); Assert.Equal(Artist, item.Metadata.GetProperty("artists")[0].GetProperty("id").GetString());
         Assert.False(item.Metadata.TryGetProperty("rating", out _));
     }
+    private static string Recording(string length = "217000") => $$$"""{"id":"{{{Id}}}","title":"Survivalism","length":{{{length}}},"disambiguation":"studio version","first-release-date":"2007-04","artist-credit":[{"name":"Nine Inch Nails","artist":{"id":"{{{Artist}}}"}}]}""";
+
+    [Fact]
+    public async Task Songs_use_recording_identity_and_preserve_version_metadata()
+    {
+        using var handler = new Handler((request, _) =>
+        {
+            Assert.Equal("/ws/2/recording/" + Id, request.RequestUri!.AbsolutePath);
+            Assert.Contains("artist-credits", request.RequestUri.Query);
+            return Task.FromResult(Json(Recording()));
+        });
+        using var client = new HttpClient(handler); using var gate = new MusicBrainzRequestGate(TimeProvider.System);
+        Assert.Contains("song", Provider(client, gate).Capability.SupportedTypes);
+        var song = await Provider(client, gate).GetDetailsAsync(Id, "song", Ct);
+        Assert.NotNull(song); Assert.Equal("song", song.Type); Assert.Equal("Survivalism", song.Title);
+        Assert.Equal(217000, song.Metadata.GetProperty("lengthMilliseconds").GetInt32());
+        Assert.Equal("studio version", song.Metadata.GetProperty("disambiguation").GetString());
+        Assert.Equal("2007-04", song.Metadata.GetProperty("firstReleaseDate").GetString());
+        Assert.Null(song.ReleaseDate); Assert.Null(song.ImageReference);
+        Assert.True(MediaProviderInput.TryIdentity("musicbrainz", "song", Id.ToUpperInvariant(), out var identity));
+        Assert.Equal("recording", identity.Namespace); Assert.Equal($"https://musicbrainz.org/recording/{Id}", identity.ExternalUrl);
+    }
+
+    [Fact]
+    public async Task Song_search_escapes_literals_and_uses_recording_results()
+    {
+        using var handler = new Handler((request, _) =>
+        {
+            Assert.Equal("/ws/2/recording", request.RequestUri!.AbsolutePath);
+            var query = Uri.UnescapeDataString(request.RequestUri.Query);
+            Assert.Contains("recording:", query); Assert.Contains("artist:", query);
+            Assert.Contains("offset=20", query); Assert.DoesNotContain("primarytype", query);
+            return Task.FromResult(Json("{\"recordings\":[" + Recording() + "]}"));
+        });
+        using var client = new HttpClient(handler); using var gate = new MusicBrainzRequestGate(TimeProvider.System);
+        var page = await Provider(client, gate).SearchAsync("Survivalism", "song", 2, Ct);
+        Assert.Equal("song", Assert.Single(page.Items).Type);
+    }
+
+    [Theory]
+    [InlineData("-1")] [InlineData("1.5")] [InlineData("\"bad\"")] [InlineData("2147483648")]
+    public async Task Invalid_recording_duration_is_rejected(string length)
+    {
+        using var handler = new Handler((_, _) => Task.FromResult(Json(Recording(length))));
+        using var client = new HttpClient(handler); using var gate = new MusicBrainzRequestGate(TimeProvider.System);
+        Assert.Equal(ProviderFailure.InvalidResponse, (await Assert.ThrowsAsync<MediaProviderException>(() => Provider(client, gate).GetDetailsAsync(Id, "song", Ct))).Failure);
+    }
+
     [Fact]
     public async Task Search_escapes_literal_input_and_keeps_fixed_album_filter_and_pagination()
     {

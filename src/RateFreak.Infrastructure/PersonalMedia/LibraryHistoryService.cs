@@ -1,3 +1,4 @@
+using RateFreak.Application.MetadataImport;
 using System.Data;
 using Microsoft.EntityFrameworkCore;
 using RateFreak.Application.Catalog;
@@ -40,7 +41,8 @@ internal sealed class LibraryHistoryService(RateFreakDbContext context) : ILibra
         var items = await (from entry in periodEntries
                            join media in context.MediaItems.AsNoTracking() on entry.MediaItemId equals media.Id
                            orderby entry.CompletedAt descending, entry.MediaItemId
-                           select new LibraryItem(new MediaSummary(media.Id, media.MediaType, media.Title, media.ReleaseDate, media.ImageReference),
+                           select new LibraryItem(new MediaSummary(media.Id, media.MediaType, media.Title, media.ReleaseDate, MusicBrainzArtwork.Album(media.ImageReference,
+                context.MediaExternalIds.Where(e => media.MediaType == "album" && e.MediaItemId == media.Id && e.Provider == "musicbrainz" && e.Namespace == "release-group").OrderBy(e => e.ExternalId).Select(e => e.ExternalId).FirstOrDefault())),
                                entry.Status, entry.StartedAt, entry.CompletedAt, entry.CreatedAt, entry.UpdatedAt,
                                context.Ratings.Where(rating => rating.UserId == userId && rating.MediaItemId == media.Id)
                                    .Select(rating => (decimal?)rating.Score).FirstOrDefault()))

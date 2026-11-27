@@ -64,11 +64,12 @@ public static class MediaProviderInput
         {
             identity = new(provider, "game", igdbId, null); return true;
         }
-        if (provider == "musicbrainz" && type == MediaTypes.Album && externalId is { Length: 36 }
+        if (provider == "musicbrainz" && type is (MediaTypes.Album or MediaTypes.Song) && externalId is { Length: 36 }
             && Guid.TryParseExact(externalId, "D", out var uuid) && uuid != Guid.Empty)
         {
             var id = uuid.ToString("D");
-            identity = new(provider, "release-group", id, $"https://musicbrainz.org/release-group/{id}"); return true;
+            var ns = type == MediaTypes.Song ? "recording" : "release-group";
+            identity = new(provider, ns, id, $"https://musicbrainz.org/{ns}/{id}"); return true;
         }
         return false;
     }

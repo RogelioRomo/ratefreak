@@ -30,7 +30,7 @@ internal static class PersonalMediaEndpoints
             if (sort is not (null or "recently_added" or "recently_completed" or "title" or "highest_rated" or "lowest_rated"))
                 errors["sort"] = ["Unsupported library ordering."];
             if (status is not null && !PersonalMediaRules.ValidStatus(status)) errors["status"] = ["Unsupported tracking status."];
-            if (type is not null && !MediaTypes.IsCatalogType(type)) errors["type"] = ["Type must be movie, tv_show, album, video_game, book or custom."];
+            if (type is not null && !MediaTypes.IsCatalogType(type)) errors["type"] = ["Type must be movie, tv_show, album, song, video_game, book or custom."];
             if (errors.Count != 0) return Results.ValidationProblem(errors);
             return Results.Ok(await service.ListAsync(UserId(user), new(status, type, page, pageSize, q?.Trim(), sort), ct));
         }).RequireRateLimiting("personal-read").Produces<PersonalPage<LibraryItem>>().ProducesValidationProblem()
@@ -96,6 +96,14 @@ internal static class PersonalMediaEndpoints
 
     private static void MapRatings(WebApplication app)
     {
+        app.MapGet("/api/v1/users/me/ratings/recent", async (ClaimsPrincipal user, IRatingService service, HttpContext context, CancellationToken ct) =>
+        {
+            context.Response.Headers.CacheControl = "no-store";
+            if (context.Request.Query.Count != 0) return Results.ValidationProblem(new Dictionary<string,string[]> { ["query"] = ["This endpoint does not accept query parameters."] });
+            return Results.Ok(await service.RecentAsync(UserId(user), ct));
+        }).WithTags("Ratings").WithMetadata(new StoredCatalogContent()).RequireAuthorization().RequireRateLimiting("personal-read")
+            .Produces<RecentRatingsPage>().ProducesValidationProblem().ProducesProblem(401).ProducesProblem(429)
+            .WithSummary("Get your 12 most recently updated ratings for accessible catalog items");
         var media = app.MapGroup("/api/v1/media/{mediaId:guid}").WithTags("Ratings");
         media.MapGet("/ratings", async (Guid mediaId, ClaimsPrincipal user, IRatingService service, CancellationToken ct) =>
         {

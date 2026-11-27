@@ -8,7 +8,7 @@ export function validateCatalogQuery(params: URLSearchParams): URLSearchParams {
       if (value.length > 200 || value.includes("\0")) throw new Error("Invalid search.");
       if (value.trim()) result.set(key, value.trim());
     } else if (key === "type") {
-      if (!["movie", "tv_show", "album", "video_game", "book", "custom"].includes(value)) throw new Error("Invalid media type.");
+      if (!["movie", "tv_show", "album", "song", "video_game", "book", "custom"].includes(value)) throw new Error("Invalid media type.");
       result.set(key, value);
     } else if (key === "categoryId") {
       if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value)) throw new Error("Invalid category."); result.set(key, value.toLowerCase());

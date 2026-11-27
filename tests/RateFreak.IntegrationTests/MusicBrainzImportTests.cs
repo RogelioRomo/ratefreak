@@ -46,6 +46,40 @@ public sealed class MusicBrainzImportTests(AccountDatabase database) : IClassFix
     { Assert.Equal(expected,response.StatusCode);return await response.Content.ReadFromJsonAsync<JsonElement>(Ct); }
 
     [Fact]
+    public async Task Existing_albums_resolve_covers_without_overwriting_stored_metadata()
+    {
+        using var transport=new Transport(); await using var factory=Factory(transport); using var client=Client(factory); await SignIn(client);
+        var id=Guid.NewGuid().ToString("D"); var created=await Json(await Import(client,id),HttpStatusCode.Created);
+        var mediaId=created.GetProperty("mediaId").GetGuid();
+        await using var db=Db(); await db.MediaItems.Where(x=>x.Id==mediaId).ExecuteUpdateAsync(x=>x.SetProperty(m=>m.ImageReference,(string?)null),Ct);
+        var cover=$"https://coverartarchive.org/release-group/{id}/front-500";
+        var details=await Json(await client.GetAsync($"/api/v1/media/{mediaId}",Ct)); Assert.Equal(cover,details.GetProperty("imageReference").GetString());
+        var catalog=await Json(await client.GetAsync("/api/v1/media?type=album&q=Authoritative",Ct));
+        Assert.Contains(catalog.GetProperty("items").EnumerateArray(),x=>x.GetProperty("id").GetGuid()==mediaId && x.GetProperty("imageReference").GetString()==cover);
+        Assert.Equal(HttpStatusCode.OK,(await client.PutAsJsonAsync($"/api/v1/users/me/library/{mediaId}",new {status="planned"},Ct)).StatusCode);
+        var library=await Json(await client.GetAsync("/api/v1/users/me/library",Ct)); Assert.Equal(cover,library.GetProperty("items")[0].GetProperty("media").GetProperty("imageReference").GetString());
+        Assert.Null((await db.MediaItems.SingleAsync(x=>x.Id==mediaId,Ct)).ImageReference);
+    }
+
+    [Fact]
+    public async Task Song_import_uses_recording_namespace_and_supports_rating_library_and_reviews()
+    {
+        using var transport=new Transport(); await using var factory=Factory(transport); using var client=Client(factory); await SignIn(client);
+        var id=Guid.NewGuid().ToString("D");
+        var album=await Json(await Import(client,id),HttpStatusCode.Created);
+        var created=await Json(await Import(client,id,"song"),HttpStatusCode.Created);
+        var mediaId=created.GetProperty("mediaId").GetGuid();
+        Assert.NotEqual(album.GetProperty("mediaId").GetGuid(),mediaId);
+        var details=await Json(await client.GetAsync($"/api/v1/media/{mediaId}",Ct));
+        Assert.Equal("song",details.GetProperty("type").GetString());
+        Assert.Equal("recording",details.GetProperty("externalIds")[0].GetProperty("namespace").GetString());
+        Assert.Equal(HttpStatusCode.OK,(await client.PutAsJsonAsync($"/api/v1/media/{mediaId}/rating",new {score=4.5},Ct)).StatusCode);
+        Assert.Equal(HttpStatusCode.OK,(await client.PutAsJsonAsync($"/api/v1/users/me/library/{mediaId}",new {status="completed"},Ct)).StatusCode);
+        Assert.Equal(HttpStatusCode.Created,(await client.PostAsJsonAsync($"/api/v1/media/{mediaId}/reviews",new {body="A song worth remembering."},Ct)).StatusCode);
+        var replay=await Json(await Import(client,id,"song")); Assert.Equal(mediaId,replay.GetProperty("mediaId").GetGuid());
+    }
+
+    [Fact]
     public async Task Album_import_is_authoritative_and_supports_existing_personal_and_collection_features()
     {
         using var transport=new Transport();await using var factory=Factory(transport);using var client=Client(factory);await SignIn(client);var id=Guid.NewGuid().ToString("D");

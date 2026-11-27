@@ -1,3 +1,4 @@
+using RateFreak.Application.MetadataImport;
 using System.Data;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +28,8 @@ internal sealed class CatalogQueries(RateFreakDbContext context) : ICatalogQueri
         var total = await items.CountAsync(cancellationToken);
         var page = await items.OrderBy(x => x.Title).ThenBy(x => x.Id)
             .Skip((query.Page - 1) * query.PageSize).Take(query.PageSize)
-            .Select(x => new MediaSummary(x.Id, x.MediaType, x.Title, x.ReleaseDate, x.ImageReference))
+            .Select(x => new MediaSummary(x.Id, x.MediaType, x.Title, x.ReleaseDate, MusicBrainzArtwork.Album(x.ImageReference,
+                context.MediaExternalIds.Where(e => x.MediaType == "album" && e.MediaItemId == x.Id && e.Provider == "musicbrainz" && e.Namespace == "release-group").OrderBy(e => e.ExternalId).Select(e => e.ExternalId).FirstOrDefault())))
             .ToListAsync(cancellationToken);
         await tx.CommitAsync(cancellationToken);
         return new CatalogPage(page, query.Page, query.PageSize, total);
@@ -44,7 +46,7 @@ internal sealed class CatalogQueries(RateFreakDbContext context) : ICatalogQueri
             .ToListAsync(cancellationToken);
         using var metadata = JsonDocument.Parse(item.Metadata);
         var result = new MediaDetails(item.Id, item.MediaType, item.Title, item.Description, item.ReleaseDate,
-            item.ImageReference, metadata.RootElement.Clone(), item.CreatedAt, item.UpdatedAt, mappings)
+            MusicBrainzArtwork.Album(item.ImageReference, item.MediaType == "album" ? mappings.FirstOrDefault(e => e.Provider == "musicbrainz" && e.Namespace == "release-group")?.ExternalId : null), metadata.RootElement.Clone(), item.CreatedAt, item.UpdatedAt, mappings)
         { Category = new(item.Category.Id, item.Category.Name, item.Category.Scope, item.Category.Revision, item.Category.IsHidden, item.Category.IsSeeded, item.Category.OwnerUserId), CreatorUserId = item.CreatorUserId, Provenance = item.Provenance, Visibility = item.Visibility, IsArchived = item.IsArchived, IsHidden = item.IsHidden, Revision = item.Revision };
         await tx.CommitAsync(cancellationToken); return result;
     }

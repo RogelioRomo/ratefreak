@@ -20,7 +20,7 @@ export function MediaArtwork({ reference, title, type, sizes = "(max-width: 448p
   const src = supportedArtwork(reference);
   const tmdbFilename = src && tmdbPosterFilename(src);
   const igdbFilename = src && igdbCoverFilename(src);
-  const Icon = type === "custom" ? IconPhoto : type === "book" ? IconBook : type === "album" ? IconDisc : type === "video_game" ? IconDeviceGamepad2 : type === "tv_show" ? IconDeviceTv : IconMovie;
+  const Icon = type === "custom" ? IconPhoto : type === "book" ? IconBook : (type === "album" || type === "song") ? IconDisc : type === "video_game" ? IconDeviceGamepad2 : type === "tv_show" ? IconDeviceTv : IconMovie;
   return <div className={styles.artwork}>
     {src && failedReference !== src
       ? isProviderArtwork(src)

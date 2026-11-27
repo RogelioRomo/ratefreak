@@ -279,3 +279,15 @@ it.each(["tab=popular", "type=film", "tab=following&tab=community", "unknown=1",
   const response=await proxyRequest(makeRequest("feed?"+query),["feed"]);
   expect(response.status).toBe(400);expect(fetchMock).not.toHaveBeenCalled();
 });
+
+it('proxies only the current account recent ratings without accepting user/query overrides', async () => {
+  fetchMock.mockResolvedValue(Response.json({items:[]}));
+  const path=['users','me','ratings','recent'];
+  const response=await proxyRequest(makeRequest(path.join('/'),{headers:{Cookie:'ratefreak.session=owner'}}),path);
+  expect(response.status).toBe(200);expect(response.headers.get('cache-control')).toBe('no-store');
+  expect(String(fetchMock.mock.calls[0][0])).toBe('http://api.test:5080/api/v1/users/me/ratings/recent');
+  fetchMock.mockClear();
+  expect((await proxyRequest(makeRequest(path.join('/')+'?userId=other'),path)).status).toBe(404);
+  expect((await proxyRequest(makeRequest(path.join('/'),{method:'POST'}),path)).status).toBe(405);
+  expect(fetchMock).not.toHaveBeenCalled();
+});

@@ -1,3 +1,4 @@
+using RateFreak.Application.MetadataImport;
 using System.Data;
 using Microsoft.EntityFrameworkCore;
 using RateFreak.Application.Catalog;
@@ -17,7 +18,8 @@ internal sealed class CollectionQueries(RateFreakDbContext db) : ICollectionQuer
     private IQueryable<CollectionItem> VisibleItems(Guid? viewer, Guid id) => db.CollectionItems.AsNoTracking().Where(i => i.CollectionId == id && db.MediaItems.Where(CatalogAccess.Readable(viewer)).Any(m => m.Id == i.MediaItemId));
     private IQueryable<ItemDetails> Details(IQueryable<CollectionItem> query) =>
         from i in query join m in db.MediaItems.AsNoTracking() on i.MediaItemId equals m.Id
-        select new ItemDetails(i.Id, i.MediaItemId, new MediaSummary(m.Id, m.MediaType, m.Title, m.ReleaseDate, m.ImageReference), i.Position, i.CreatedAt, i.UpdatedAt);
+        select new ItemDetails(i.Id, i.MediaItemId, new MediaSummary(m.Id, m.MediaType, m.Title, m.ReleaseDate, MusicBrainzArtwork.Album(m.ImageReference,
+                db.MediaExternalIds.Where(e => m.MediaType == "album" && e.MediaItemId == m.Id && e.Provider == "musicbrainz" && e.Namespace == "release-group").OrderBy(e => e.ExternalId).Select(e => e.ExternalId).FirstOrDefault())), i.Position, i.CreatedAt, i.UpdatedAt);
     public async Task<CollectionPage<CollectionSummary>> ListAsync(Guid? viewerId, bool ownOnly, int page, int pageSize, CancellationToken ct)
     {
         await using var tx = await db.Database.BeginTransactionAsync(IsolationLevel.RepeatableRead, ct); var query = Accessible(viewerId);

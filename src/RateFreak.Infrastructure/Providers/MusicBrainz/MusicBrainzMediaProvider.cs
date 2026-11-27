@@ -13,25 +13,26 @@ public sealed class MusicBrainzMediaProvider(HttpClient client,IOptions<MusicBra
     MusicBrainzRequestGate gate,TimeProvider clock,ILogger<MusicBrainzMediaProvider> logger) : IMediaProvider
 {
     private readonly MusicBrainzOptions settings=options.Value;
-    public ProviderCapability Capability => new("musicbrainz",settings.Enabled,["album"],"Music metadata provided by MusicBrainz.","https://musicbrainz.org");
+    public ProviderCapability Capability => new("musicbrainz",settings.Enabled,["album","song"],"Music metadata provided by MusicBrainz.","https://musicbrainz.org");
     public async Task<ExternalSearchPage> SearchAsync(string query,string type,int page,CancellationToken cancellationToken)
     {
-        if (type!="album" || !CollectionRules.ValidText(query.Trim(),200) || page is <1 or >500) throw new ArgumentException("Invalid provider search input.");
+        if (type is not ("album" or "song") || !CollectionRules.ValidText(query.Trim(),200) || page is <1 or >500) throw new ArgumentException("Invalid provider search input.");
         var literal=query.Trim().Replace("\\","\\\\",StringComparison.Ordinal).Replace("\"","\\\"",StringComparison.Ordinal);
-        var search=$"(releasegroup:\"{literal}\" OR artist:\"{literal}\") AND primarytype:album";
-        using var json=await GetJsonAsync($"release-group?query={Uri.EscapeDataString(search)}&limit=20&offset={((page-1)*20).ToString(CultureInfo.InvariantCulture)}&fmt=json",cancellationToken);
-        if (json is null || json.RootElement.ValueKind!=JsonValueKind.Object || !json.RootElement.TryGetProperty("release-groups",out var rows) || rows.ValueKind!=JsonValueKind.Array || rows.GetArrayLength()>20)
+        var search=type == "song" ? $"(recording:\"{literal}\" OR artist:\"{literal}\")" : $"(releasegroup:\"{literal}\" OR artist:\"{literal}\") AND primarytype:album";
+        var entity = type == "song" ? "recording" : "release-group";
+        using var json=await GetJsonAsync($"{entity}?query={Uri.EscapeDataString(search)}&limit=20&offset={((page-1)*20).ToString(CultureInfo.InvariantCulture)}&fmt=json",cancellationToken);
+        if (json is null || json.RootElement.ValueKind!=JsonValueKind.Object || !json.RootElement.TryGetProperty(type == "song" ? "recordings" : "release-groups",out var rows) || rows.ValueKind!=JsonValueKind.Array || rows.GetArrayLength()>20)
             throw new MediaProviderException(ProviderFailure.InvalidResponse);
         var items=new List<ExternalMediaResult>();
-        foreach (var row in rows.EnumerateArray()) { var mapped=MusicBrainzMapping.Map(row); if(mapped is not null) items.Add(mapped); }
+        foreach (var row in rows.EnumerateArray()) { var mapped=MusicBrainzMapping.Map(row,type); if(mapped is not null) items.Add(mapped); }
         return new("musicbrainz",page,items);
     }
     public async Task<ExternalMediaResult?> GetDetailsAsync(string externalId,string type,CancellationToken cancellationToken)
     {
         if (!MediaProviderInput.TryIdentity("musicbrainz",type,externalId,out var identity)) throw new ArgumentException("Invalid provider identity.");
-        using var json=await GetJsonAsync($"release-group/{identity.ExternalId}?inc=artist-credits&fmt=json",cancellationToken);
+        using var json=await GetJsonAsync($"{identity.Namespace}/{identity.ExternalId}?inc=artist-credits&fmt=json",cancellationToken);
         if (json is null) return null;
-        var mapped=MusicBrainzMapping.Map(json.RootElement);
+        var mapped=MusicBrainzMapping.Map(json.RootElement,type);
         // Check identity even when a valid non-album response is excluded.
         if (json.RootElement.ValueKind!=JsonValueKind.Object || !json.RootElement.TryGetProperty("id",out var id)
             || id.ValueKind!=JsonValueKind.String || !Guid.TryParseExact(id.GetString(),"D",out var uuid) || uuid.ToString("D")!=identity.ExternalId)

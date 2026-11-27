@@ -12,6 +12,7 @@ import { useMedia } from "../hooks/use-media";
 import { isMediaId, mediaLabels } from "../query/filters";
 import { CatalogCredits } from "@/features/credits/components/catalog-credits";
 import { MediaArtwork } from "./media-artwork";
+import { MusicMetadata } from "./music-metadata";
 import { BookMetadata } from "./book-metadata";
 import styles from "./media-detail-screen.module.css";
 
@@ -32,6 +33,7 @@ export function MediaDetailScreen({ id }: MediaDetailScreenProps) {
           <h1>{media.data.title}</h1>
           {media.data.creatorUserId === viewer && <Link href={`/catalog/${id}/edit`}>Manage item</Link>}
           {media.data.type === "book" ? <BookMetadata metadata={media.data.metadata} externalId={media.data.externalIds?.find(identity => identity.provider === "openlibrary" && identity.namespace === "work")?.externalId} />
+            : media.data.type === "song" || media.data.type === "album" ? <MusicMetadata metadata={media.data.metadata} />
             : media.data.type !== "custom" && <p className={styles.date}>{media.data.releaseDate ? <time dateTime={media.data.releaseDate}>{new Date(`${media.data.releaseDate}T00:00:00Z`).toLocaleDateString("en", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })}</time> : "Release date unavailable"}</p>}
           <section className={styles.description} aria-labelledby="about-title"><h2>About this title</h2><p>{media.data.description?.trim() || "No description available yet."}</p></section>
           <CatalogCredits type={media.data.type} providers={media.data.externalIds?.map(identity => identity.provider) ?? []} />
