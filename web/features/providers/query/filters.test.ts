@@ -9,3 +9,15 @@ it("accepts an enabled Open Library capability and selects Books", () => {
  expect(parseDiscovery(new URLSearchParams("q=Fantastic+Mr+Fox&provider=openlibrary&type=book"), JSON.parse(JSON.stringify(books))))
    .toMatchObject({ filters: { provider: "openlibrary", type: "book", q: "Fantastic Mr Fox", page: 1 }, submitted: true, error: null });
 });
+it.each(['album','song'])('defaults MusicBrainz %s to verified artwork and persists opt-out',type=>{
+ const music=[{name:'musicbrainz',enabled:true,supportedTypes:['album','song'],attribution:'MusicBrainz',attributionUrl:'https://musicbrainz.org'}];
+ const defaults=parseDiscovery(new URLSearchParams(`q=music&provider=musicbrainz&type=${type}`),JSON.parse(JSON.stringify(music)));
+ expect(defaults.filters).toMatchObject({artworkOnly:true});
+ const all=parseDiscovery(new URLSearchParams(`q=music&provider=musicbrainz&type=${type}&artwork=all`),JSON.parse(JSON.stringify(music)));
+ expect(all.filters).toMatchObject({artworkOnly:false});
+ expect(discoveryHref(all.filters!)).toContain('artwork=all');
+});
+it('rejects unknown and duplicate artwork filter values',()=>{
+ const music=[{name:'musicbrainz',enabled:true,supportedTypes:['album'],attribution:'MusicBrainz',attributionUrl:'https://musicbrainz.org'}];
+ for(const tail of ['artwork=maybe','artwork=all&artwork=only'])expect(parseDiscovery(new URLSearchParams(`q=x&provider=musicbrainz&type=album&${tail}`),JSON.parse(JSON.stringify(music))).error).toBeTruthy();
+});

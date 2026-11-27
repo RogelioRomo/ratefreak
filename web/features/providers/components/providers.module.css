@@ -38,3 +38,6 @@
 @media (max-width: 48rem) { .heading { display: block; } .heading p { margin-top: 1rem; } .form { grid-template-columns: repeat(2, minmax(0, 1fr)); } .form > button { grid-column: 1 / -1; } .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1rem; } }
 @media (max-width: 40rem) { .detail { grid-template-columns: minmax(0, 1fr); } .artwork { max-width: 20rem; } }
 @media (max-width: 28rem) { .form, .grid { grid-template-columns: minmax(0, 1fr); } }
+
+.form .artworkOption { grid-column: 1 / -1; display: flex; align-items: center; gap: .75rem; min-height: 2.75rem; cursor: pointer; }
+.form .artworkOption input { width: 1.125rem; height: 1.125rem; min-height: 0; padding: 0; flex-shrink: 0; accent-color: var(--accent); }

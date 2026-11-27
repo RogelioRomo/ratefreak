@@ -4,7 +4,7 @@ import type { ProviderFilters, ProviderIdentity } from "../interfaces/provider";
 import { getProviders, getExternalSearch, getExternalMedia } from "../api/providers";
 export const providerKeys = {
   capabilities: ["providers", "capabilities"] as const,
-  search: (filters: ProviderFilters | null) => ["providers", "search", filters] as const,
+  search: (filters: ProviderFilters | null) => ["providers", "search", filters ? { q: filters.q, provider: filters.provider, type: filters.type, page: filters.page } : null] as const,
   preview: (identity: ProviderIdentity | null) => ["providers", "preview", identity] as const,
 };
 export const useProviders = () => useQuery({ queryKey: providerKeys.capabilities, queryFn: ({ signal }) => getProviders(signal), retry: false });

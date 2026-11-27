@@ -15,7 +15,7 @@ export function supportedArtwork(reference: string | null): string | null {
   if (isProviderArtwork(reference)) return reference;
   return null;
 }
-export function MediaArtwork({ reference, title, type, sizes = "(max-width: 448px) calc(100vw - 3rem), (max-width: 768px) calc((100vw - 4rem) / 2), (max-width: 1024px) 30vw, 280px" }: MediaArtworkProps) {
+export function MediaArtwork({ reference, title, type, loading = "lazy", onLoad, onUnavailable, sizes = "(max-width: 448px) calc(100vw - 3rem), (max-width: 768px) calc((100vw - 4rem) / 2), (max-width: 1024px) 30vw, 280px" }: MediaArtworkProps) {
   const [failedReference, setFailedReference] = useState<string | null>(null);
   const src = supportedArtwork(reference);
   const tmdbFilename = src && tmdbPosterFilename(src);
@@ -24,9 +24,9 @@ export function MediaArtwork({ reference, title, type, sizes = "(max-width: 448p
   return <div className={styles.artwork}>
     {src && failedReference !== src
       ? isProviderArtwork(src)
-        ? <Image src={tmdbFilename ? tmdbPosterRoute + tmdbFilename : igdbFilename ? igdbCoverRoute + igdbFilename : src} unoptimized alt={`Artwork for ${title}`} fill sizes={sizes} loading="lazy" decoding="async" referrerPolicy="no-referrer" onError={() => setFailedReference(src)} />
+        ? <Image src={tmdbFilename ? tmdbPosterRoute + tmdbFilename : igdbFilename ? igdbCoverRoute + igdbFilename : src} unoptimized alt={`Artwork for ${title}`} fill sizes={sizes} loading={loading} decoding="async" referrerPolicy="no-referrer" onLoad={onLoad} onError={() => { setFailedReference(src); onUnavailable?.(); }} />
         // eslint-disable-next-line @next/next/no-img-element -- protected uploads must retain authorization and no-store; never enter the public optimizer.
-        : <img src={src} alt={`Artwork for ${title}`} loading="lazy" decoding="async" referrerPolicy="no-referrer" onError={() => setFailedReference(src)} />
+        : <img src={src} alt={`Artwork for ${title}`} loading={loading} decoding="async" referrerPolicy="no-referrer" onLoad={onLoad} onError={() => { setFailedReference(src); onUnavailable?.(); }} />
       : <div className={styles.fallback}><Icon size={36} stroke={1.25} aria-hidden="true" /><span>Artwork unavailable</span></div>}
   </div>;
 }

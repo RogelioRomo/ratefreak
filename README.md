@@ -950,7 +950,16 @@ use the related release group, or the exact release when no group is available
 or MusicBrainz explicitly reports a front cover there. Missing associations and
 unavailable images retain the fallback. New imports store the cover and release
 context without automatically importing the album. Previously imported songs
-retain their stored data; no background metadata refresh is introduced. The `AddSongs` migration seeds Songs and widens the type constraint;
+retain their stored data; no background metadata refresh is introduced.
+
+MusicBrainz album and song discovery defaults to **Only show results with artwork**.
+The browser checks actual image loads (up to four at a time, with an eight-second
+limit per cover); a URL alone does not qualify. Results appear as covers load.
+Uncheck the option and submit Search providers to include missing/failed covers,
+or use Show all results on a fully filtered page. The opt-out is preserved as
+`artwork=all` in discovery URLs and is never sent to the metadata API. Pagination
+continues to follow upstream pages, so a page with no loaded covers can still
+have a Next page. Other providers and direct preview/import access are unchanged. The `AddSongs` migration seeds Songs and widens the type constraint;
 upgrade refuses conflicting seed/category names, and rollback refuses dependent
 songs/category usage or modifications. Apply through the normal migration process;
 never delete user content just to downgrade.
