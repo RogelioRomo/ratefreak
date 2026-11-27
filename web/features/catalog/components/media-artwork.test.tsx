@@ -71,3 +71,14 @@ it.each([
   "https://coverartarchive.org/release-group/3bd76d40-7f0e-36b7-9348-91a33afee20e/front-500?url=http://localhost",
   "https://coverartarchive.org/release-group/3bd76d40-7f0e-36b7-9348-91a33afee20e/front-500\n"
 ])("rejects noncanonical CAA reference %s", reference => expect(supportedArtwork(reference)).toBeNull());
+it("renders artwork from a song’s associated release", () => {
+  const reference = "https://coverartarchive.org/release/df86f3ac-6da2-3e5c-b4ba-5f8abb29ce51/front-500";
+  render(artwork(reference));
+  expect(screen.getByRole("img")).toHaveAttribute("src", reference);
+  expect(screen.getByRole("img")).toHaveAttribute("referrerpolicy", "no-referrer");
+});
+it.each([
+  "https://coverartarchive.org/release/00000000-0000-0000-0000-000000000000/front-500",
+  "https://coverartarchive.org/release/df86f3ac-6da2-3e5c-b4ba-5f8abb29ce51/front-500?target=http://localhost",
+  "https://coverartarchive.org/release/df86f3ac-6da2-3e5c-b4ba-5f8abb29ce51/front-500\n"
+])("rejects malformed release cover %s", reference => expect(supportedArtwork(reference)).toBeNull());

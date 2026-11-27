@@ -941,8 +941,16 @@ use the `recording` namespace, distinct from album release groups. Artist credit
 optional `lengthMilliseconds`, `disambiguation` and partial `firstReleaseDate` are
 preserved. Distinct recordings (studio, live, remixes) remain distinct items;
 recording previews and search show artist/version details. Songs support ratings,
-reviews, lists and library tracking. No arbitrary release artwork is assigned to
-recordings. The `AddSongs` migration seeds Songs and widens the type constraint;
+reviews, lists and library tracking. Song artwork is selected from releases attached to that exact recording,
+with official albums preferred over singles, compilations and bootlegs. Search
+uses embedded release data without extra per-result requests; details include
+releases and release groups in the existing metadata request. The selected
+release title and validated MusicBrainz source link appear with the song. Covers
+use the related release group, or the exact release when no group is available
+or MusicBrainz explicitly reports a front cover there. Missing associations and
+unavailable images retain the fallback. New imports store the cover and release
+context without automatically importing the album. Previously imported songs
+retain their stored data; no background metadata refresh is introduced. The `AddSongs` migration seeds Songs and widens the type constraint;
 upgrade refuses conflicting seed/category names, and rollback refuses dependent
 songs/category usage or modifications. Apply through the normal migration process;
 never delete user content just to downgrade.

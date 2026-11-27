@@ -52,8 +52,11 @@ internal static class MusicBrainzMapping
         }
         var metadata = new Dictionary<string,object> { ["artistCredit"]=combined,["artists"]=artists };
         if (type == "album") { metadata["primaryType"]="Album"; metadata["secondaryTypes"]=secondary; }
+        MusicBrainzSongArtwork? artwork = null;
         if (type == "song")
         {
+            artwork = MusicBrainzSongArtwork.Select(item);
+            if (artwork != null) metadata["release"] = new { id=artwork.Id, title=artwork.Title, releaseGroupId=artwork.ReleaseGroupId };
             if (item.TryGetProperty("length", out var length) && length.ValueKind != JsonValueKind.Null)
             {
                 if (length.ValueKind != JsonValueKind.Number || !length.TryGetInt32(out var milliseconds) || milliseconds < 0) throw Invalid();
@@ -66,7 +69,7 @@ internal static class MusicBrainzMapping
         var json = JsonSerializer.SerializeToElement(metadata);
         if (json.GetRawText().Length>32768) throw Invalid();
         return new("musicbrainz",identity.ExternalId,type,title,null,releaseDate,
-            type == "album" ? MusicBrainzArtwork.Album(null, identity.ExternalId) : null,json);
+            type == "album" ? MusicBrainzArtwork.Album(null, identity.ExternalId) : artwork?.ImageReference,json);
     }
     private static string? Text(JsonElement item,string name,int max,bool required=false)
     {

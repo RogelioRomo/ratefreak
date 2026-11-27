@@ -1,1 +1,3 @@
 .metadata { display: grid; gap: .25rem; margin-block: .5rem; color: var(--muted); font-size: .875rem; line-height: 1.6; overflow-wrap: anywhere; }
+
+.metadata a { color: var(--accent); text-underline-offset: .2em; }

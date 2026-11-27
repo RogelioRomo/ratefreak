@@ -19,11 +19,11 @@ public sealed class MusicBrainzImportTests(AccountDatabase database) : IClassFix
     private static CancellationToken Ct=>TestContext.Current.CancellationToken;
     private sealed class Transport : HttpMessageHandler
     {
-        public int Calls; public string PrimaryType="Album"; public HttpStatusCode Status=HttpStatusCode.OK;
+        public int Calls; public string PrimaryType="Album"; public HttpStatusCode Status=HttpStatusCode.OK; public string Releases="[]";
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,CancellationToken ct)
         {
             Interlocked.Increment(ref Calls); var id=request.RequestUri!.AbsolutePath.Split('/').Last();
-            return Task.FromResult(new HttpResponseMessage(Status) { Content=new StringContent($$"""{"id":"{{id}}","title":"Authoritative album","primary-type":"{{PrimaryType}}","secondary-types":["Live"],"first-release-date":"1999","artist-credit":[]}""",Encoding.UTF8,"application/json") });
+            return Task.FromResult(new HttpResponseMessage(Status) { Content=new StringContent($$"""{"id":"{{id}}","title":"Authoritative album","primary-type":"{{PrimaryType}}","secondary-types":["Live"],"first-release-date":"1999","artist-credit":[],"releases":{{Releases}}}""",Encoding.UTF8,"application/json") });
         }
     }
     private ApiFactory Factory(Transport transport)=>new(connectionString:database.ConnectionString,configureServices:services=>
@@ -44,6 +44,30 @@ public sealed class MusicBrainzImportTests(AccountDatabase database) : IClassFix
     private static Task<HttpResponseMessage> Import(HttpClient c,string id,string type="album",string provider="musicbrainz")=>c.PostAsJsonAsync("/api/v1/media/import",new { provider,externalId=id,mediaType=type },Ct);
     private static async Task<JsonElement> Json(HttpResponseMessage response,HttpStatusCode expected=HttpStatusCode.OK)
     { Assert.Equal(expected,response.StatusCode);return await response.Content.ReadFromJsonAsync<JsonElement>(Ct); }
+
+    [Fact]
+    public async Task Song_import_persists_associated_album_cover_in_catalog_library_recent_ratings_and_feeds()
+    {
+        const string release="df86f3ac-6da2-3e5c-b4ba-5f8abb29ce51";
+        const string group="3c0ed061-55d0-3cf2-bdb8-d88425e0f3ea";
+        using var transport=new Transport { Releases=JsonSerializer.Serialize(new[] {new Dictionary<string,object> { ["id"]=release, ["title"]="Year Zero", ["status"]="Official", ["release-group"]=new {id=group,title="Year Zero"} }}) };
+        await using var factory=Factory(transport); using var client=Client(factory); await SignIn(client);
+        var recording=Guid.NewGuid().ToString("D"); var created=await Json(await Import(client,recording,"song"),HttpStatusCode.Created);
+        var mediaId=created.GetProperty("mediaId").GetGuid(); var cover=$"https://coverartarchive.org/release-group/{group}/front-500";
+        var details=await Json(await client.GetAsync($"/api/v1/media/{mediaId}",Ct));
+        Assert.Equal("song",details.GetProperty("type").GetString()); Assert.Equal(cover,details.GetProperty("imageReference").GetString());
+        Assert.Equal(recording,details.GetProperty("externalIds")[0].GetProperty("externalId").GetString());
+        Assert.Equal(group,details.GetProperty("metadata").GetProperty("release").GetProperty("releaseGroupId").GetString());
+        await Json(await client.PutAsJsonAsync($"/api/v1/users/me/library/{mediaId}",new {status="completed"},Ct));
+        await Json(await client.PutAsJsonAsync($"/api/v1/media/{mediaId}/rating",new {score=4.5,isShared=true},Ct));
+        foreach(var route in new[]{"/api/v1/users/me/library?type=song","/api/v1/users/me/ratings/recent","/api/v1/feed?tab=community&type=song"})
+        {
+            var row=Assert.Single((await Json(await client.GetAsync(route,Ct))).GetProperty("items").EnumerateArray());
+            Assert.Equal(cover,row.GetProperty("media").GetProperty("imageReference").GetString());
+        }
+        await using var db=Db(); Assert.Equal(cover,(await db.MediaItems.SingleAsync(x=>x.Id==mediaId,Ct)).ImageReference);
+        Assert.False(await db.MediaExternalIds.AnyAsync(x=>x.Namespace=="release-group" && x.ExternalId==group,Ct));
+    }
 
     [Fact]
     public async Task Existing_albums_resolve_covers_without_overwriting_stored_metadata()

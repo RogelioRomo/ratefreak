@@ -30,7 +30,8 @@ public sealed class MusicBrainzMediaProvider(HttpClient client,IOptions<MusicBra
     public async Task<ExternalMediaResult?> GetDetailsAsync(string externalId,string type,CancellationToken cancellationToken)
     {
         if (!MediaProviderInput.TryIdentity("musicbrainz",type,externalId,out var identity)) throw new ArgumentException("Invalid provider identity.");
-        using var json=await GetJsonAsync($"{identity.Namespace}/{identity.ExternalId}?inc=artist-credits&fmt=json",cancellationToken);
+        var includes = type == "song" ? "artist-credits+releases+release-groups" : "artist-credits";
+        using var json=await GetJsonAsync($"{identity.Namespace}/{identity.ExternalId}?inc={includes}&fmt=json",cancellationToken);
         if (json is null) return null;
         var mapped=MusicBrainzMapping.Map(json.RootElement,type);
         // Check identity even when a valid non-album response is excluded.

@@ -6,7 +6,15 @@ track/song support, preserving its album identity and transport restrictions.
 Songs use MusicBrainz recording UUIDs under `recording`, with a canonical `song`
 media type and Songs seeded category. Album UUIDs remain under `release-group`;
 the same UUID cannot alias these media types. Use existing import and personal
-media lifecycles; no edition-specific track identities or inferred song artwork.
+media lifecycles; no edition-specific track identities. On 2026-11-27 the owner
+subsequently requested song artwork from associated albums: select only releases
+attached to the exact recording, prefer official albums, preserve the chosen
+release/group in metadata, and display its validated source link. Search uses
+embedded relationships; song details request releases/release-groups. Covers
+come from the related release group, or an exact release without a group or
+with a reported front cover. Missing or malformed optional associations keep the
+recording importable without artwork. No automatic album import or old-song
+background refresh is introduced.
 
 Cover Art Archive's canonical release-group front-500 endpoint supplies album
 artwork. Validate the exact origin/path and let browsers fetch images directly,
