@@ -11,8 +11,7 @@ export function AppShell({ children, className }: AppShellProps) {
       <SiteHeader />
       <main id="main-content" tabIndex={-1} className={className}>{children}</main>
       <footer className={styles.footer}>
-        <span>RateFreak</span>
-        <p>A little more you. A little less algorithm.</p>
+        <p>Made with <a href="https://github.com/RogelioRomo/ratefreak">RateFreak</a></p>
         <Link className={styles.credits} href="/credits">Credits</Link>
         <ThemeControl />
       </footer>
