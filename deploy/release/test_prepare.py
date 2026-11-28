@@ -98,3 +98,47 @@ class PreparationTests(unittest.TestCase):
             self.assertFalse((root/'release-manifest.json').exists())
             self.assertEqual(before,{name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in manifest['files']})
         finally:fixture.tearDown()
+
+    def test_reference_source_review_is_required_when_reference_inventory_is_supplied(self):
+        from unittest.mock import patch
+        import importlib.util
+        spec=importlib.util.spec_from_file_location('reference_bundle_fixture',Path(__file__).resolve().parents[1]/'self-host/test_release_bundle.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        fixture=module.BundleTests();fixture.setUp()
+        try:
+            root=fixture.root;materials=root/'materials';materials.mkdir()
+            with tarfile.open(root/'sources.tar.gz') as archive:archive.extractall(materials,filter='data')
+            materials=materials/'sources';coverage=json.loads((materials/'coverage.json').read_text());coverage['format']=1
+            for role,row in coverage['images'].items():row['scopes']=sorted(prepare.SOURCE_SCOPES[role])
+            (materials/'coverage.json').write_text(json.dumps(coverage))
+            images={role:e['id'] for role,e in fixture.manifest['images'].items()}
+            inventory=json.loads((root/'source-inventory.json').read_text())
+            refs={'format':1,'images':{role:{'image_id':'sha256:'+digit*64,'components':[{'scope':'os','name':'libc','version':'1'}]} for role,digit in [('postgres','3'),('caddy','4')]}}
+            with self.assertRaises(ValueError):prepare.source_evidence(materials,images,root/'without-reference-proof',inventory,reference_inventory=refs)
+            import hashlib
+            (materials/'reference-notices.txt').write_text('Original reference package license')
+            reference_files={name:hashlib.sha256((materials/name).read_bytes()).hexdigest() for name in ['review.md','sources.tar.gz','reference-notices.txt']}
+            reference={'format':1,'images':{role:{'image_id':row['image_id'],'review_record':'review.md','files':reference_files,'components':[{**row['components'][0],'source_files':['sources.tar.gz'],'notice_files':['reference-notices.txt']}]} for role,row in refs['images'].items()}}
+            (materials/'reference-coverage.json').write_text(json.dumps(reference))
+            result=prepare.source_evidence(materials,images,root/'complete-reference-proof',inventory,reference_inventory=refs)
+            self.assertEqual(result['images']['api']['image_id'],images['api'])
+            self.assertTrue((root/'complete-reference-proof/reference-coverage.json').is_file())
+        finally:fixture.tearDown()
+
+    def test_all_candidate_tags_are_checked_before_verification_or_output_creation(self):
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);output=root/'candidate'
+            (root/'docs/releases').mkdir(parents=True)
+            (root/'docs/releases/0.1.0.md').write_text('# 0.1.0\n'+''.join('## '+heading+'\nReviewed fixture.\n' for heading in ['Changes','Upgrade','Migrations','Recovery','Known issues']))
+            identity={'version':'0.1.0','revision':'a'*40,'official':True,'dirty':False}
+            def inspect(command,**kwargs):return subprocess.CompletedProcess(command,0,stdout='sha256:'+'c'*64 if command[-1]=='reference=ratefreak-caddy:0.1.0' else '')
+            with patch.object(prepare,'read_identity',return_value=identity),patch.object(prepare.subprocess,'run',side_effect=inspect),patch.object(prepare,'run',side_effect=AssertionError('Verification ran before all immutable tags were checked')):
+                with self.assertRaisesRegex(ValueError,'existing immutable'):prepare.prepare(root,'v0.1.0',output)
+            self.assertFalse(output.exists())
+
+    def test_daemon_or_permission_error_cannot_claim_an_unused_candidate_tag(self):
+        from unittest.mock import patch
+        failure=subprocess.CompletedProcess(['docker'],1,stdout='',stderr='permission denied')
+        with patch.object(prepare.subprocess,'run',return_value=failure):
+            with self.assertRaisesRegex(ValueError,'verify'):prepare.require_unused_image_tag('ratefreak-api:0.1.0')

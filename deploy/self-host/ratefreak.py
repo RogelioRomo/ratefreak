@@ -107,7 +107,8 @@ def compose(root, config, ingress=None):
     enabled=policy.exists() and json.loads(read_private(policy)).get('independentReplicationConfirmed') is True
     env['RATEFREAK_API_ERASURE_JOURNAL_PATH']='/journal/account-erasures.jsonl' if enabled else ''
     selection=selected_images(root)
-    for name,tag in selection.items():env['RATEFREAK_'+name.upper()+'_IMAGE']=tag
+    references=selected_reference_images(root)
+    for name,tag in {**selection,**references}.items():env['RATEFREAK_'+name.upper()+'_IMAGE']=tag
     project='ratefreak-'+hashlib.sha256(str(root).encode()).hexdigest()[:12]
     command=['docker','compose','--project-name',project,'-f',str(PACKAGE/'compose.yaml')]
     if ingress:command+=['-f',str(PACKAGE/('compose.caddy.yaml' if ingress=='caddy' else 'compose.host-proxy.yaml'))]
@@ -115,10 +116,12 @@ def compose(root, config, ingress=None):
     if override.exists() or override.is_symlink():
         read_private(override)
         command+=['-f',str(override)]
-    if (root/'release-selection.json').exists() and all(value.startswith('sha256:') for value in selection.values()):
+    if (root/'release-selection.json').exists() and (references or all(value.startswith('sha256:') for value in selection.values())):
         resolved=json.loads(execute(command+['--profile','*','config','--format','json'],env,capture=True))
-        for service,kind in {'api':'api','web':'web','tools':'tools','migrate':'tools','storage-init':'tools'}.items():
-            if resolved.get('services',{}).get(service,{}).get('image')!=selection[kind]:
+        expected={service:selection[kind] for service,kind in {'api':'api','web':'web','tools':'tools','migrate':'tools','storage-init':'tools'}.items()}
+        expected.update({name:image for name,image in references.items() if name=='postgres' or ingress=='caddy' or name in resolved.get('services',{})})
+        for service,image in expected.items():
+            if resolved.get('services',{}).get(service,{}).get('image')!=image:
                 raise OperatorError('Instance overrides must not replace individual images in a selected release.')
     return command,env
 
@@ -213,7 +216,11 @@ def activate_selection(root,selection):
 
 def select_source(root):
     images=release_images()
-    activate_selection(root,{'format':1,'mode':'source','images':{name:{'id':image,'tag':'ratefreak-'+name+':local'} for name,image in images.items()}})
+    names=['postgres','caddy']
+    values=execute(['docker','image','inspect','--format','{{.Id}}',*['ratefreak-'+name+':local' for name in names]],capture=True).splitlines()
+    if len(values)!=2 or not all(re.fullmatch(r'sha256:[a-f0-9]{64}',value) for value in values):raise OperatorError('Missing or invalid reference image identities.')
+    references={name:{'id':image,'tag':'ratefreak-'+name+':local'} for name,image in zip(names,values)}
+    activate_selection(root,{'format':1,'mode':'source','images':{name:{'id':image,'tag':'ratefreak-'+name+':local'} for name,image in images.items()},'reference_images':references})
 
 
 def selected_images(root):
@@ -228,9 +235,25 @@ def selected_images(root):
         tag=image.get('tag','')
         if not re.fullmatch('ratefreak-'+name+r':[0-9A-Za-z._-]+',tag):raise OperatorError('Invalid selected image tag.')
         image_id=image.get('id','')
-        if selection.get('mode')=='source':result[name]=tag
+        if selection.get('mode')=='source' and 'reference_images' not in selection:result[name]=tag
         elif re.fullmatch('sha256:[a-f0-9]{64}',image_id):result[name]=image_id
         else:raise OperatorError('Selected release lacks an immutable image identity.')
+    return result
+
+def selected_reference_images(root):
+    path=root/'release-selection.json'
+    if not path.exists():return {}
+    from release_bundle import read_manifest
+    read_private(path)
+    selection=read_manifest(path)
+    if 'reference_images' not in selection:return {}
+    references=selection['reference_images']
+    if not isinstance(references,dict) or set(references)!={'postgres','caddy'}:raise OperatorError('Invalid selected reference images.')
+    result={}
+    for name,image in references.items():
+        if not isinstance(image,dict) or not all(isinstance(image.get(key),str) for key in ('tag','id')) or not re.fullmatch('ratefreak-'+name+r':[0-9A-Za-z._-]+',image.get('tag','')) or not re.fullmatch('sha256:[a-f0-9]{64}',image.get('id','')):
+            raise OperatorError('Selected reference lacks an immutable image identity.')
+        result[name]=image['id']
     return result
 
 def release_images(root=None):
@@ -351,8 +374,8 @@ def dispatch(args,root,config,command,env):
         from versioning import read_identity
         identity=read_identity(PACKAGE.parents[1])
         (PACKAGE.parents[1]/'.build-identity.json').write_text(json.dumps(identity)+'\n')
-        for name in ['api','web','tools']:
-            execute(['docker','build','--build-arg','RATEFREAK_VERSION='+identity['version'],'--build-arg','RATEFREAK_REVISION='+identity['revision'],'--build-arg','RATEFREAK_OFFICIAL=false','-f',str(PACKAGE/(name+'.Dockerfile')),'-t','ratefreak-'+name+':local',str(PACKAGE.parents[1])])
+        for name in ['api','web','tools','postgres','caddy']:
+            execute(['docker','build','--pull','--no-cache-filter','runtime','--build-arg','RATEFREAK_VERSION='+identity['version'],'--build-arg','RATEFREAK_REVISION='+identity['revision'],'--build-arg','RATEFREAK_OFFICIAL=false','-f',str(PACKAGE/(name+'.Dockerfile')),'-t','ratefreak-'+name+':local',str(PACKAGE.parents[1])])
         select_source(root)
     elif operation=='load-release':
         stopped_writers(command,env)

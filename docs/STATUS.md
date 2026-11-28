@@ -123,6 +123,13 @@ Earlier blocked receipts retain their historical scope. This closes those two
 blockers on the reviewed images/configuration; final stable artifacts still need
 fresh security qualification and any available compatible fixes.
 
+The owner selected complete five-image distribution on 2026-11-27:
+API/web/tools plus patched PostgreSQL/Caddy images. The release loader, source
+build selection, reference inventories/source-notice gates and pinned-baseline
+acceptance harness have been updated for that set. See [ADR 0023](adr/0023-patched-reference-images.md).
+The successor source and images still require exact artifact/security, source and
+operational qualification; these implementation changes alone do not clear release.
+
 ## Remaining release gates
 
 The order below is a suggested sequence. Earlier candidate checks are completed

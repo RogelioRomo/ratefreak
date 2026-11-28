@@ -51,6 +51,48 @@ def archive_members(path,tag):
             if annotations.get('io.containerd.image.name') not in (tag,'docker.io/library/'+tag) or annotations.get('org.opencontainers.image.ref.name')!=tag.split(':')[1]:
                 raise ValueError('OCI index contains unrelated image tags.')
 
+def bundled_images(manifest):
+    """Keep application and reference schemas separate while loading one set."""
+    references=manifest.get('reference_images',{})
+    if 'reference_images' in manifest and (not isinstance(references,dict) or set(references)!={'postgres','caddy'}):
+        raise ValueError('Incomplete release reference images.')
+    if any(not isinstance(image,dict) or set(image)!={'id','tag','file'} for image in references.values()):
+        raise ValueError('Invalid release reference image metadata.')
+    return {**manifest['images'],**references}
+
+def archive_identity(path,image,manifest):
+    """Preflight serialized metadata before importing any five-image archive."""
+    with tarfile.open(path,'r:*') as archive:
+        def payload(name):
+            try:member=archive.getmember(name)
+            except KeyError:raise ValueError('Missing archived image identity.') from None
+            if not member.isfile() or member.size>4*1024*1024:raise ValueError('Invalid archived image identity.')
+            return archive.extractfile(member).read()
+        saved=json.loads(payload('manifest.json'),object_pairs_hook=unique_object)[0]
+        raw=payload(saved['Config']);config=json.loads(raw,object_pairs_hook=unique_object)
+        digest='sha256:'+hashlib.sha256(raw).hexdigest()
+        if saved['Config'] not in (digest[7:]+'.json','blobs/sha256/'+digest[7:]):
+            raise ValueError('Archived config checksum does not match its name.')
+        labels=config.get('config',{}).get('Labels',{}) or {}
+        if (config.get('architecture')!='amd64' or config.get('os')!='linux' or
+            labels.get('org.opencontainers.image.version')!=manifest['version'] or
+            labels.get('org.opencontainers.image.revision')!=manifest['revision']):
+            raise ValueError('Archived image labels/platform do not match release.')
+        def descriptor_matches(descriptor,depth=0):
+            if depth>8 or not isinstance(descriptor,dict):raise ValueError('Invalid OCI identity chain.')
+            value=descriptor.get('digest','')
+            if not isinstance(value,str) or not re.fullmatch('sha256:[a-f0-9]{64}',value):raise ValueError('Invalid OCI digest.')
+            raw=payload('blobs/sha256/'+value[7:])
+            if 'sha256:'+hashlib.sha256(raw).hexdigest()!=value:raise ValueError('OCI identity checksum mismatch.')
+            node=json.loads(raw,object_pairs_hook=unique_object)
+            if 'manifests' in node:return any(descriptor_matches(child,depth+1) for child in node['manifests'])
+            return node.get('config',{}).get('digest')==digest
+        if 'index.json' in archive.getnames():
+            index=json.loads(payload('index.json'),object_pairs_hook=unique_object)
+            if not any(descriptor_matches(d) for d in index.get('manifests',[]) if d.get('digest')==image['id']):
+                raise ValueError('Archived image ID does not match release.')
+        elif image['id']!=digest:raise ValueError('Archived image ID does not match release.')
+
 def validate_bundle(directory: Path, manifest_name="release-manifest.json") -> dict:
     if directory.is_symlink():raise ValueError('Linked bundle directory.')
     root=directory.resolve();manifest=read_manifest(root/manifest_name)
@@ -67,10 +109,11 @@ def validate_bundle(directory: Path, manifest_name="release-manifest.json") -> d
         with path.open('rb') as stream:actual=hashlib.file_digest(stream,'sha256').hexdigest()
         if actual!=entry['sha256']:raise ValueError('Artifact checksum mismatch.')
     archives=set()
-    for name,image in images.items():
-        if not isinstance(image,dict) or image.get('file') not in files or image['file'] in archives or image.get('tag')!='ratefreak-'+name+':'+version.replace('+','_') or not re.fullmatch('sha256:[a-f0-9]{64}',image.get('id','')):
+    for name,image in bundled_images(manifest).items():
+        if not isinstance(image,dict) or not all(isinstance(image.get(key),str) for key in ('file','tag','id')) or image.get('file') not in files or image['file'] in archives or image.get('tag')!='ratefreak-'+name+':'+version.replace('+','_') or not re.fullmatch('sha256:[a-f0-9]{64}',image.get('id','')):
             raise ValueError('Mixed or invalid release images.')
         archives.add(image['file']);archive_members(regular_file(root,image['file']),image['tag'])
+        if 'reference_images' in manifest:archive_identity(regular_file(root,image['file']),image,manifest)
     from release_manifest import validate
     try:validate(manifest,root,manifest_name,read_manifest)
     except (KeyError,TypeError,tarfile.TarError,AttributeError) as error:raise ValueError('Malformed or incomplete release evidence.') from error
@@ -78,13 +121,14 @@ def validate_bundle(directory: Path, manifest_name="release-manifest.json") -> d
 
 def load_bundle(directory: Path,inspect_image,load_image,manifest_name="release-manifest.json") -> dict:
     manifest=validate_bundle(directory,manifest_name)
-    for image in manifest['images'].values():
+    images=bundled_images(manifest)
+    for image in images.values():
         existing=inspect_image(image['tag'])
         if existing is not None and existing.get('Id')!=image['id']:
             raise ValueError('Refusing to replace an existing immutable release tag.')
-    for name,image in manifest['images'].items():
+    for name,image in images.items():
         load_image(regular_file(directory,image['file']))
-        metadata=inspect_image(image['tag']);labels=metadata.get('Config',{}).get('Labels',{}) or {}
+        metadata=inspect_image(image['tag']) or {};labels=metadata.get('Config',{}).get('Labels',{}) or {}
         if metadata.get('Id')!=image['id'] or metadata.get('Architecture')!='amd64' or metadata.get('Os')!='linux' or labels.get('org.opencontainers.image.version')!=manifest['version'] or labels.get('org.opencontainers.image.revision')!=manifest['revision']:
             raise ValueError('Loaded image identity does not match release manifest.')
     return manifest

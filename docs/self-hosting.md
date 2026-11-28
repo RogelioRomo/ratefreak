@@ -284,7 +284,7 @@ over newer user data.
 
 Download every file from the verified project release and retain its
 `release-manifest.json`. Check provenance before running supplied code. The
-manifest binds filenames, sizes, SHA-256 hashes, platform and all three image IDs;
+manifest binds filenames, sizes, SHA-256 hashes, platform and all five image IDs;
 checksums alone do not authenticate a publisher.
 
 With writers stopped and a coordinated backup retained, use the matching source
@@ -304,10 +304,12 @@ selection; successful selection invalidates prior migration acceptance. Old imag
 are retained. Bundle-selected services resolve immutable image IDs, so another
 instance cannot change their selection by moving a Docker tag. A subsequent
 source `build` explicitly selects the complete local image set only after all
-three builds succeed, and requires fresh migration acceptance. Application image
-selection does not change implicitly on start. PostgreSQL selection comes from
-the reviewed reference/instance configuration and is checked before writers start. Do not set independent
-API/web/tools versions or substitute images in the instance override.
+five builds succeed, and requires fresh migration acceptance. Image selection
+does not change implicitly on start. New bundles also select the patched PostgreSQL
+and Caddy identities; their package sources/licenses accompany the release. Do not
+substitute any selected image in an instance override. Review PostgreSQL collation
+compatibility and coordinated recovery before changing an installation. Retained
+legacy three-image bundles keep their original separately referenced service scope.
 
 See [release preparation and announcements](releasing.md) for versioning, required
 matching source materials and optional administrator update checks. Update checks
