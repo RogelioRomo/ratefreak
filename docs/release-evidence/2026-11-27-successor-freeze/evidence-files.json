@@ -1,0 +1,38 @@
+{
+  "candidate-manifest.json": {
+    "bytes": 3559,
+    "sha256": "0fe6e515d57c7b5571f490c415f40ae633a829ad44f1cdac333d91254ddb3237"
+  },
+  "code-review.json": {
+    "bytes": 753,
+    "sha256": "0c9b4893c782172cb0f365d9996f30ea7e2cc55da4ffd793aa20cc3bd2d41dc0"
+  },
+  "final-bundle-review.json": {
+    "bytes": 82269,
+    "sha256": "5383ace3b15c90bfc27c1d4dae8bbfa26ae4486f2a7639c1885c453c5bfb30d9"
+  },
+  "final-bundle-review.md": {
+    "bytes": 799,
+    "sha256": "f3dae500cc2975854e54cdafc23042b18b855ab7b6e081dcf76116118ab34846"
+  },
+  "finalization.json": {
+    "bytes": 789,
+    "sha256": "c6ab97405c9ef77786ac668b6178a8150b89ae90dfa3bef0da56f95f6f41dab2"
+  },
+  "main-source-integration.json": {
+    "bytes": 3664,
+    "sha256": "c5d1a9aa31f96f949f5b54d54b5b62962861cb92aa7f36ea5d67f19ccf05d023"
+  },
+  "release-manifest.json": {
+    "bytes": 4122,
+    "sha256": "a111f38944c21395bb3d7fd8303457aa066b276e3f853b9374f9d98ac58a1463"
+  },
+  "summary.json": {
+    "bytes": 2106,
+    "sha256": "dcdb98dabc2021fa9062cb81b21321c39703fe051107bc5bfca80266aeddddba"
+  },
+  "verification.json": {
+    "bytes": 1592,
+    "sha256": "be885aa2cfc8735d38ec8b2f67e7b5e2832e953bf1f1bd881f95ad6a7da25ff3"
+  }
+}

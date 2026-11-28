@@ -1,0 +1,16 @@
+{
+  "componentEntries": 502,
+  "gaps": [],
+  "images": {
+    "api": "sha256:db65696090623e3f5336215360512837f38be773c913d593e558e81103eca646",
+    "tools": "sha256:e8154a58abde88d996af17fe32996639c74a2e11a898d131f2cf087953c1536c",
+    "web": "sha256:9bb46deb17c663e22f96b1875ec3269a02ae519d10ee2d51ac1f724238e2b05e"
+  },
+  "materialFiles": 55,
+  "nativeSourceInputsVerified": 406,
+  "osSourceInputEntriesReadBack": 849,
+  "priorMaterialsReadBack": 47,
+  "scope": "Original frozen f54048c candidate only; security successor required",
+  "securityClearance": false,
+  "valid": true
+}

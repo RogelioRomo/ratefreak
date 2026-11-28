@@ -1,0 +1,117 @@
+{
+  "accepted_risk_ids": [
+    "CVE-2019-1010022",
+    "CVE-2019-1010024"
+  ],
+  "accepted_scope": "Earlier owner policy retained on unchanged libc/native bytes and supported reference configuration; findings remain visible. API native mitigation property also retained despite scanner omission. No compatible distro fix observed.",
+  "associations": 1304,
+  "database": {
+    "DownloadedAt": "2026-11-27T23:57:03.876929834Z",
+    "NextUpdate": "2026-11-28T19:05:47.637500308Z",
+    "UpdatedAt": "2026-11-27T19:05:47.637500704Z",
+    "Version": 2
+  },
+  "database_sha256": "7da4ea8ea14a343f136a82ab206ba1c3f98eb84f8e22b997ad37385f3d731352",
+  "dependency_scan": {
+    "findings": 0,
+    "pnpm_packages": 136,
+    "report_sha256": "fb275ec9447282160b94729ec581768ef646537c32fb63523fd1f08058aaea58",
+    "scope": "Frozen pnpm lock and detected .NET deps manifests including generated build/test manifests; zero scanner findings does not cover unreported native advisories."
+  },
+  "dispositions": {
+    "accepted-low-risk": 6,
+    "binary-build-exclusion": 1,
+    "conditional-configuration-exclusion": 3,
+    "conditional-exclusion-supported-consumers": 5,
+    "conditional-exclusion-supported-gosu-flow": 60,
+    "conditional-exclusion-supported-reference-config": 10,
+    "conditional-supported-caller-exclusion": 265,
+    "conditional-supported-consumer-exclusion": 8,
+    "conditional-supported-flow-exclusion": 203,
+    "platform-exclusion-linux-image": 1
+  },
+  "gaps": [
+    "Available routine distro fixes require successor artifacts and matching source/notices/scans/acceptance; frozen artifacts not changed.",
+    "Tools efbundle bytes differ by stable build identity; inherited native runtime component hashes match, but application/source acceptance binds changed bundle separately.",
+    "Image local-ID to archive config chains independently verified in ../2026-11-27-stable-layers/all-layer-audit.json; Trivy metadata IDs are config hashes, local containerd IDs differ.",
+    "No bit-for-bit native reconstruction, arbitrary SQL/plugin/custom environment, unsupported architecture, exhaustive vulnerability discovery or future DB freshness claim."
+  ],
+  "images": {
+    "api": "sha256:db65696090623e3f5336215360512837f38be773c913d593e558e81103eca646",
+    "caddy": "caddy:2@sha256:ce773ec7a742ce15ee6bf2bb5f65882b9e2a4487b10733e6f1484f86e6b5d8bc",
+    "postgres-trixie": "postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+    "tools": "sha256:e8154a58abde88d996af17fe32996639c74a2e11a898d131f2cf087953c1536c",
+    "web": "sha256:9bb46deb17c663e22f96b1875ec3269a02ae519d10ee2d51ac1f724238e2b05e"
+  },
+  "layer_identity_evidence": "../2026-11-27-stable-layers/all-layer-audit.json",
+  "new_findings": [
+    "CVE-2026-112060",
+    "CVE-2026-137067",
+    "CVE-2026-137068",
+    "CVE-2026-137069",
+    "CVE-2026-137072",
+    "CVE-2026-137073",
+    "CVE-2026-137074",
+    "CVE-2026-137075",
+    "CVE-2026-137082"
+  ],
+  "persistent_instance_changed": false,
+  "published": false,
+  "records": 562,
+  "review_utc": "2026-11-28T00:04:36.770760+00:00",
+  "scanner": "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+  "scans": {
+    "api": {
+      "associations": 115,
+      "ids": 48,
+      "severities": {
+        "LOW": 6,
+        "MEDIUM": 109
+      }
+    },
+    "caddy": {
+      "associations": 21,
+      "ids": 14,
+      "severities": {
+        "HIGH": 2,
+        "LOW": 4,
+        "MEDIUM": 14,
+        "UNKNOWN": 1
+      }
+    },
+    "postgres-trixie": {
+      "associations": 445,
+      "ids": 218,
+      "severities": {
+        "CRITICAL": 2,
+        "HIGH": 99,
+        "LOW": 164,
+        "MEDIUM": 146,
+        "UNKNOWN": 34
+      }
+    },
+    "tools": {
+      "associations": 380,
+      "ids": 146,
+      "severities": {
+        "HIGH": 80,
+        "LOW": 119,
+        "MEDIUM": 163,
+        "UNKNOWN": 18
+      }
+    },
+    "web": {
+      "associations": 343,
+      "ids": 134,
+      "severities": {
+        "HIGH": 77,
+        "LOW": 98,
+        "MEDIUM": 153,
+        "UNKNOWN": 15
+      }
+    }
+  },
+  "security_gate": "held-compatible-vendor-fixes-pending-successor-qualification",
+  "source_revision": "f54048c233e405843160bc16d857f8c32082599f",
+  "version": "0.1.0"
+}

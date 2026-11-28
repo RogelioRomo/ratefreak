@@ -1,0 +1,178 @@
+{
+  "artifact": "reference-postgres-acquisition-receipts.tar.gz",
+  "members": {
+    "fresh/caddy-debian-layer-inventory.json": {
+      "sha256": "f45fa833262609f3d0300cb66ca4181a6e2a0285e776fda69d10bc3d186101c5",
+      "bytes": 71929
+    },
+    "fresh/debian-InRelease": {
+      "sha256": "bfacad4ca61899ce20d4a0d439f29339f66541561b67506364efb88e27dee870",
+      "bytes": 140420
+    },
+    "fresh/debian-Sources.xz": {
+      "sha256": "b449439c113900c8607c1005f7a1ec0704d0f3b7376ba312b2150c79e4e4e06c",
+      "bytes": 10538456
+    },
+    "fresh/image-usr-share-postgresql-common-pgdg-apt.postgresql.org.asc": {
+      "sha256": "0144068502a1eddd2a0280ede10ef607d1ec592ce819940991203941564e8e76",
+      "bytes": 4812
+    },
+    "fresh/pgdg-InRelease": {
+      "sha256": "1bcb190a5df497e5152586d0e00b0e9c4853ab35444727c5d3f8207352e78111",
+      "bytes": 240897
+    },
+    "fresh/pgdg-Sources.gz": {
+      "sha256": "cc265f5f1458d23930231619b32af96c9b05fa200f8678ef15490b12a8a362b0",
+      "bytes": 186635
+    },
+    "fresh/postgres-common-license-binding.json": {
+      "sha256": "fa20b0d1da2e888c3b355835dffe2cadd9147a6b9ad30f017e6299490849a42c",
+      "bytes": 25967
+    },
+    "fresh/postgres-layer-inventory.json": {
+      "sha256": "6ed6835fbe51d370c11f25413eecf3acbb227f9a6141ba98502fcdbc4aac5476",
+      "bytes": 242538
+    },
+    "fresh/postgres-source-acquisition.json": {
+      "sha256": "1bde618dde65d15b6bcb477acb56bafabe605d5dce2b6341108073b91ea044dd",
+      "bytes": 180894
+    },
+    "fresh/postgres-source-verification.json": {
+      "sha256": "17adbc30ccf99bbd364791970491054767603e765d30cf8f45a08dc35cec7c13",
+      "bytes": 487
+    },
+    "fresh/security-InRelease": {
+      "sha256": "6ff18d89278e62e0c80fae219c01a2b931a9a35a2b98673557943c306772c0d0",
+      "bytes": 43409
+    },
+    "fresh/security-Sources.xz": {
+      "sha256": "c32a2d2d27f669b83fdadb518cb93ccff1c8fb90b8c2f5963685410765ff439a",
+      "bytes": 268544
+    },
+    "fresh/updates-InRelease": {
+      "sha256": "3184f0d27c7e2030b22f5009e6a05934d9b15a42cfd3481d5d5093ebfc385472",
+      "bytes": 47340
+    },
+    "fresh/updates-Sources.xz": {
+      "sha256": "810077786dba4b427b1f8aa18a6a3e72cf3e4226cd1c52dea02e91de020bdf50",
+      "bytes": 1400
+    },
+    "keys/debian-archive-keyring.gpg": {
+      "sha256": "506b815cbb32d9b6066b4a2aa524071e071761e7e7f68c3ac74f3061ba852017",
+      "bytes": 55918
+    },
+    "prior/ratefreak-candidate-os-sources.tar/SOURCE-MANIFEST.json": {
+      "sha256": "9165400af65cc3c402b9fda84bf63a2fe826e2d707bcf12a51b0134a9ebf99bc",
+      "bytes": 368129
+    },
+    "prior/ratefreak-candidate-os-sources.tar/README.md": {
+      "sha256": "30e5c5de818a1ae0ac2ee840ac52656b3c9a677a2ea870cc7530be65fc803980",
+      "bytes": 1275
+    },
+    "prior/ratefreak-candidate-os-sources.tar/metadata/api-indexes.tar.gz": {
+      "sha256": "841d07b1b97fab5cbb418858002490fb9afa7c404759abe106dc3249888dc421",
+      "bytes": 33447261
+    },
+    "prior/ratefreak-candidate-os-sources.tar/metadata/web-indexes.tar.gz": {
+      "sha256": "f71da7e07b2d27e7e56bdb6d43a148d866ad169def71163b956b8ed0c4a9c0b8",
+      "bytes": 15815953
+    },
+    "prior/ratefreak-candidate-os-sources.tar/metadata/tools-indexes.tar.gz": {
+      "sha256": "23a7a38c18fbc0cce801cd393845eb96a810a15f94e321a933168156fc4588df",
+      "bytes": 16094595
+    },
+    "prior/ratefreak-candidate-os-sources.tar/metadata/api-snapshot-indexes.tar.gz": {
+      "sha256": "92b8bca0bc6bf2b990a0f86e5500da2a07b2824a5870fe026c1c5b48ab6cd67e",
+      "bytes": 33365003
+    },
+    "prior/ratefreak-candidate-os-sources.tar/metadata/tools-pgdg-history-indexes.tar.gz": {
+      "sha256": "408a64bd51699fd2eb54ec0291ca5363572394fc41e0a9705ebef262bee13e29",
+      "bytes": 17101139
+    },
+    "prior/security-os-sources.tar/SOURCE-MANIFEST.json": {
+      "sha256": "cae4b62a44016d1dc4ca686000169ff8e4663dfbf5ff7532cd1d4b7813f91da7",
+      "bytes": 8827
+    },
+    "prior/security-os-sources.tar/README.md": {
+      "sha256": "7fb933d53f3fa262081459b4080b2a92ebb35f2016391925c72a4124ce0786f0",
+      "bytes": 437
+    },
+    "prior/security-os-sources.tar/metadata/api-source-indexes.tar.gz": {
+      "sha256": "01dd0f94bfe4f9063e7a90cc9f90d817ae0d3c15a3705cdcce33d9f1ae4393fc",
+      "bytes": 33457989
+    },
+    "prior/security-os-sources.tar/metadata/web-source-indexes.tar.gz": {
+      "sha256": "90b5361af3cd5b1ed823dd0990367f505ca2cdabb34e01d8695dc23142e1f020",
+      "bytes": 17238258
+    },
+    "prior/debian13-os-sources.tar/SOURCE-MANIFEST.json": {
+      "sha256": "08feda9925390f4cfc22aa66aec89996095588263c5863a7180cdda558131186",
+      "bytes": 131846
+    },
+    "prior/debian13-os-sources.tar/README.md": {
+      "sha256": "7fb933d53f3fa262081459b4080b2a92ebb35f2016391925c72a4124ce0786f0",
+      "bytes": 437
+    },
+    "prior/debian13-os-sources.tar/metadata/web-source-indexes.tar.gz": {
+      "sha256": "6bd7e18b046ccaeb51d68edefb481c543a6bb73db1277b9e3d4cc9436cb226fe",
+      "bytes": 17241980
+    },
+    "prior/debian13-os-sources.tar/metadata/tools-source-indexes.tar.gz": {
+      "sha256": "14a3a3f1a88e65795e5e5edb37f1af4fd4da0cd3923d60979d5f091eede8a206",
+      "bytes": 17526459
+    },
+    "prior/os-source-updates.tar/SOURCE-MANIFEST.json": {
+      "sha256": "40d43618636f0c3e43b39b2c81a3dc7f749ec06cdbb5402085c69f5450ec3a21",
+      "bytes": 17146
+    },
+    "prior/os-source-updates.tar/README.md": {
+      "sha256": "9c062867dd7a2eab806e84ba599a96dcf0b86b5b5314de9f0acd301df823da32",
+      "bytes": 428
+    },
+    "prior/os-source-updates.tar/metadata/api-source-indexes.tar.gz": {
+      "sha256": "7dc70e413326cb4a367f608c3f6d3ba0f473b4c576dea54e1e6d98cafd961ceb",
+      "bytes": 33450876
+    },
+    "prior/os-source-updates.tar/metadata/tools-source-indexes.tar.gz": {
+      "sha256": "d04ee5696beacfa8771e55087353b5c05d11e569a78166606674532bceef4a87",
+      "bytes": 16075479
+    },
+    "prior/lower-layer-os-sources.tar/SOURCE-MANIFEST.json": {
+      "sha256": "7b950c0cdab11bf281bf296002778ee5da95f34165108013d0bd40ab669e4edd",
+      "bytes": 7854
+    },
+    "prior/lower-layer-os-sources.tar/signature-verification.json": {
+      "sha256": "fe706d75278e19f3d01aefec2a1c38f6a5f747fe4f25dd18fc1af234082184dd",
+      "bytes": 1496
+    },
+    "prior/lower-layer-os-sources.tar/notices/base-files-13.8+deb13u7/copyright": {
+      "sha256": "c84c664bce3a83eaa327bb9e354c0df588bc535b5e95474aab7ca3cce74937cd",
+      "bytes": 1696
+    },
+    "prior/lower-layer-os-sources.tar/notices/libc-bin-2.41-12+deb13u4/copyright": {
+      "sha256": "f5788886720a2605a946e81d571e6c8162b09f58d2e2ceb8d36e5768fccd850d",
+      "bytes": 51200
+    },
+    "prior/lower-layer-os-sources.tar/notices/libc6-2.41-12+deb13u4/copyright": {
+      "sha256": "f5788886720a2605a946e81d571e6c8162b09f58d2e2ceb8d36e5768fccd850d",
+      "bytes": 51200
+    },
+    "prior/lower-layer-os-sources.tar/notices/libssl3t64-3.5.7-1~deb13u3/copyright": {
+      "sha256": "6a7da622fe0637a334d2a8fc470852d2ffb77d9a2b2f930f854e32a41ad6ef35",
+      "bytes": 2543
+    },
+    "prior/lower-layer-os-sources.tar/notices/openssl-provider-legacy-3.5.7-1~deb13u3/copyright": {
+      "sha256": "6a7da622fe0637a334d2a8fc470852d2ffb77d9a2b2f930f854e32a41ad6ef35",
+      "bytes": 2543
+    },
+    "prior/lower-layer-os-sources.tar/notices/zlib1g-1_1.3.dfsg+really1.3.1-1+b1/copyright": {
+      "sha256": "9e5b96d63773a5d177ba264254390f792be07e41748ebd94730981c6cac31cc6",
+      "bytes": 2927
+    },
+    "verification-tool-version.txt": {
+      "sha256": "28a380ca171fac5e552d24fa913feb57c9c110dc4f01514cfeae7d7ea4cafc18",
+      "bytes": 101
+    }
+  },
+  "scope": "Fresh verification of new source inputs against retained repository signing keys; original prior acquisition receipts retained for exact reused source pairs."
+}

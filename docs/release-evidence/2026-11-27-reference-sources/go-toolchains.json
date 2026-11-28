@@ -1,0 +1,36 @@
+[
+  {
+    "version": "go1.24.6",
+    "file": "reference-go1.24.6.src.tar.gz",
+    "url": "https://go.dev/dl/go1.24.6.src.tar.gz",
+    "sha256": "e1cb5582aab588668bc04c07de18688070f6b8c9b2aaf361f821e19bd47cfdbd",
+    "bytes": 30794139,
+    "notice_file": "reference-go1.24.6-notices.tar.gz",
+    "official_metadata": {
+      "filename": "go1.24.6.src.tar.gz",
+      "os": "",
+      "arch": "",
+      "version": "go1.24.6",
+      "sha256": "e1cb5582aab588668bc04c07de18688070f6b8c9b2aaf361f821e19bd47cfdbd",
+      "size": 30794139,
+      "kind": "source"
+    }
+  },
+  {
+    "version": "go1.27.3",
+    "file": "reference-go1.27.3.src.tar.gz",
+    "url": "https://go.dev/dl/go1.27.3.src.tar.gz",
+    "sha256": "6e7749035cf360f06b2575d162ea79df9fda8ef671889e5c375f8e50777f26bb",
+    "bytes": 35134035,
+    "notice_file": "reference-go1.27.3-notices.tar.gz",
+    "official_metadata": {
+      "filename": "go1.27.3.src.tar.gz",
+      "os": "",
+      "arch": "",
+      "version": "go1.27.3",
+      "sha256": "6e7749035cf360f06b2575d162ea79df9fda8ef671889e5c375f8e50777f26bb",
+      "size": 35134035,
+      "kind": "source"
+    }
+  }
+]

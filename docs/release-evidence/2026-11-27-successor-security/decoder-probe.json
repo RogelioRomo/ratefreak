@@ -1,0 +1,52 @@
+{
+  "image_id": "sha256:b34486f80782118b4312836bb698453deaeedb710bb53e4f742190d9551cb45e",
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges:true",
+    "--tmpfs",
+    "/tmp:uid=10001,gid=10001,mode=1777",
+    "--entrypoint",
+    "node",
+    "--mount",
+    "type=bind,src=/home/rhaydon/documents/repos/ratefreak/.local/security-runtime-guard-2026-11-25/decoder-image-probe.cjs,dst=/probe.cjs,readonly",
+    "sha256:b34486f80782118b4312836bb698453deaeedb710bb53e4f742190d9551cb45e",
+    "/probe.cjs"
+  ],
+  "result": {
+    "compiled_register": true,
+    "warm_zstd_fetch_rejected": true,
+    "commonjs_and_esm_decoders_rejected": [
+      "createZstdDecompress",
+      "ZstdDecompress",
+      "zstdDecompress",
+      "zstdDecompressSync"
+    ],
+    "supported_response_encodings": [
+      "gzip",
+      "deflate",
+      "br"
+    ],
+    "node_version": "24.22.3",
+    "embedded_zstd_version": "1.5.7",
+    "next_optimizer_same_sharp": true,
+    "avif_metadata_rejected": true,
+    "avif_optimization_rejected": true,
+    "supported_inputs": [
+      "jpeg",
+      "png",
+      "webp",
+      "gif"
+    ],
+    "sharp_version": "0.35.5",
+    "heif_version": "1.23.5",
+    "scope": "Local loopback HTTP only in a network-disabled container. Exact production compiled startup and optimizer module; safe synthetic inputs, no exploit payload or live-instance access."
+  }
+}

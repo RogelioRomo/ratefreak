@@ -1,0 +1,28 @@
+{
+  "active_gaps": [],
+  "obsolete_vendor_trial_findings": [
+    {
+      "id": "alpine-gpl2-openssl3-grant-review",
+      "roles": [
+        "caddy"
+      ],
+      "status": "obsolete trial remains uncleared; replacement inventory/source binding pending",
+      "kind": "redistribution grant compatibility, not corresponding-source availability",
+      "facts": [
+        "Actual apk/libapk dynamic dependency chain includes libssl.so.3 and libcrypto.so.3 from OpenSSL3.5.9.",
+        "Exact apk-tools3.0.9 source and recipe specify GPL-2.0-only; no applicable OpenSSL linking exception found in complete source-text search.",
+        "Separate Alpine ssl_client directly uses the same libraries; exact source file and recipe retained, but an applicable individual grant/exception has not been established."
+      ],
+      "references": [
+        "https://www.apache.org/licenses/GPL-compatibility.html",
+        "https://www.gnu.org/licenses/gpl-faq.html#SystemLibraryException"
+      ],
+      "limit": "This is an unresolved release review blocker; no definitive legal violation finding or legal opinion is claimed. Merely collecting both sources does not resolve grant compatibility.",
+      "resolution_path": "Use a source/notice-reviewed image excluding these linked binaries and their inherited layers, or establish applicable original permission.",
+      "applicability": "Obsolete Alpine vendor trial only; user-approved replacement decision is Debian13/Trixie Caddy runtime. The questioned Alpine raw layers will not be redistributed."
+    }
+  ],
+  "resolution": "Selected Debian runtime has no Alpine filesystem layers or questioned apk/libapk/ssl_client/OpenSSL payloads. Full source and notice decisions apply only to the exact images in reference-coverage.json. Historical Alpine trial remains uncleared.",
+  "security_clearance": false,
+  "publication_authorized": false
+}

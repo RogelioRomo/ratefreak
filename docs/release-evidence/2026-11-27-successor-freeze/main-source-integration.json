@@ -1,0 +1,108 @@
+{
+  "copied": [
+    {
+      "file": "deploy/compliance/README.md",
+      "sha256": "1c79199555263d2823a01804e48e3171243db3f889f2fcdcee61d63f233ee403"
+    },
+    {
+      "file": "deploy/release/acceptance.py",
+      "sha256": "6926eff275d0f729660ffaa543dc586043c0b66d73db62aad4773fc68468c312"
+    },
+    {
+      "file": "deploy/release/prepare.py",
+      "sha256": "5b024f98d6666f98bc90cb11f3b2637ab5f86892e6e1a27b07ee502fa5da7e20"
+    },
+    {
+      "file": "deploy/release/reference_inventory.py",
+      "sha256": "2c32e86d7e4bb544f0a112fbac1135f607132bc546b94771420140bc084c9c46"
+    },
+    {
+      "file": "deploy/release/reference_sources.py",
+      "sha256": "7216d9f86902f1f0be090f57d1dc89e1d4bf38b2d14fd579c86d8c279b63394e"
+    },
+    {
+      "file": "deploy/release/test_acceptance.py",
+      "sha256": "2620c6532a3840b12ac0676ac19f4cf84856fefe7d83cfaf349f162360cb0bb2"
+    },
+    {
+      "file": "deploy/release/test_prepare.py",
+      "sha256": "05360d760ce80bc00c7da24a989da0e757c540f2e6bb15d55aae0273d8d11cc7"
+    },
+    {
+      "file": "deploy/release/test_reference_inventory.py",
+      "sha256": "6905de1c267c2ae1e4be4770287c8746358e0bf7e24e6f660d8a60ff1e6bb923"
+    },
+    {
+      "file": "deploy/release/test_reference_manifest.py",
+      "sha256": "08071ed9d96b41883f89be23aa934b0bff06226054c41e841ad8dec30726b9ef"
+    },
+    {
+      "file": "deploy/release/test_reference_sources.py",
+      "sha256": "f437da42b6bc7cedd22a00d76f315f3036ef4f7a00480c22598e717036422e29"
+    },
+    {
+      "file": "deploy/self-host/caddy.Dockerfile",
+      "sha256": "7d811600937a6106e3bc7de2598cb51cb6e481cd0ca7c9e73bb42272193ec7b1"
+    },
+    {
+      "file": "deploy/self-host/compose.caddy.yaml",
+      "sha256": "417d98c62b41aa3863d4305772e92d557e5e3cf054b4ec665683db2c1d21f497"
+    },
+    {
+      "file": "deploy/self-host/compose.yaml",
+      "sha256": "eba3444a1aa42424fec1c68292c57e6c096dca1289ab29e9a8b5009864f50d4f"
+    },
+    {
+      "file": "deploy/self-host/postgres.Dockerfile",
+      "sha256": "9cec89987152401d74002c372de31265eaeda8e405636ac96a71a37eda1bd871"
+    },
+    {
+      "file": "deploy/self-host/ratefreak.py",
+      "sha256": "feeffa7134ce66d3be58768d262376a765c80cf6c5e6053039bb190e2ac25bdc"
+    },
+    {
+      "file": "deploy/self-host/release_bundle.py",
+      "sha256": "c5f675bd72d32bb1e92ec1f020c31ddc71c8d1227bd4ffa7d211c1bde0e509fd"
+    },
+    {
+      "file": "deploy/self-host/release_manifest.py",
+      "sha256": "5e7a35b71b46e5c58e9edd44022e8bce0431d4e76afb5687337c2b11e20745fd"
+    },
+    {
+      "file": "deploy/self-host/test_operator.py",
+      "sha256": "355ee5a7c4cb9c6f8258501bc61197a3a8ce94cd7f1030caa098eaf5fb111dd0"
+    },
+    {
+      "file": "deploy/self-host/test_reference_selection.py",
+      "sha256": "c50ecf915cfad4d859fe1f7cffa1c50c59ecc65ae08b05066eed196d430016fb"
+    },
+    {
+      "file": "docs/adr/0023-patched-reference-images.md",
+      "sha256": "b76ea0c7d04c6b568c5cdb050620de6fd0634d2bb1fb09e902f4bbdc821f75b2"
+    },
+    {
+      "file": "docs/releases/0.1.0.md",
+      "sha256": "ba9170e7cc0df1f06d61b2ce97664ad5313e4243806a421b3d410f4acea5af96"
+    },
+    {
+      "file": "docs/releasing.md",
+      "sha256": "fd2d4eff8a360e13ab5dea4c467006b072889ab21b078113f4f522be853bfb7b"
+    },
+    {
+      "file": "docs/self-hosting.md",
+      "sha256": "b10bf62aadad5b3a4b5d59eb9e723cfd2e219c9bc54a75d83b183e7a28095df0"
+    }
+  ],
+  "mainCommitted": false,
+  "postIntegrationToolingTests": {
+    "compliance": 20,
+    "operator": 116,
+    "passed": true,
+    "release": 68,
+    "total": 204
+  },
+  "preservedMainDocs": [
+    "docs/STATUS.md"
+  ],
+  "revision": "9eea2c76550fe03920dd999f1677565e4f43d12b"
+}

@@ -1,0 +1,16 @@
+{
+  "README.md": "4caf092c565ae987a5930ba28a3da1ae1b8c4e91ce4ef8d4e2d3d8fa4c1e94ca",
+  "advisory-ledger.json": "644fbaaa37cb968f0b0f645d451aef4108f65b575ef945adddeac25f1bf5de56",
+  "available-fixes.json": "42faa15130f96e3770814909e5fe9cd02137888ffe4072c5a53762c54c8652ff",
+  "comparison.json": "6039e6747234b9ac80166adcda956b8c288bf64f1444516785ab79e3910b65c7",
+  "configuration-probes.json": "9141bbfd2614ab27cc4fbfa3aa4848a23a4a122a6acc4b24c4a4ef5eae2f9746",
+  "decoder-probe.json": "dc8450946c25cb3d1632e02fd1da3552a1f9eee7c1c74b9bf7f97b713711206b",
+  "dependency-scan.json": "68dd36c6fec44785deea954c8b19fe10769ba8bc236150608cccd8b4ae5edf75",
+  "fix-decisions.json": "d04359b1c85c36c70fe98c9d1122f9aabe1ee83e38443091bcf7f3c76bfb8756",
+  "manual-native-dispositions.json": "b060b4d56718ff7889fc21efba7a36cee6d37ca57fc2d995358c7e67bbcdd273",
+  "native-rebinding.json": "60dacc76b1c1a6ecafc0781753650b0baa008d86fc6290abfcc830e5a378c3d4",
+  "new-caller-review.json": "f4708a8544dd136517ef01397d5fb7efb2bda338cc60461d14d64d3c7fb714c3",
+  "scan-artifact-binding.json": "f0b99bc4cd2beb77f8fea1f4a4116767f4ee2dd2f64338995a7763f41b78b2f1",
+  "summary.json": "9b57d229a51d72705af77d91e744ed00d0a194302fb4500ca6fd5d2cb2fbffcc",
+  "vendor-acquisition.json": "29358014a250b0220da36d78a47e8b9bcaa269ce66614abc9f7b172bdca30752"
+}

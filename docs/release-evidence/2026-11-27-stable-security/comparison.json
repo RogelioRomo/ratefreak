@@ -1,0 +1,1614 @@
+{
+  "record_count": 562,
+  "associations": 1304,
+  "dispositions": {
+    "conditional-supported-caller-exclusion": 256,
+    "conditional-supported-flow-exclusion": 203,
+    "open": 9,
+    "accepted-low-risk": 6,
+    "conditional-configuration-exclusion": 3,
+    "conditional-supported-consumer-exclusion": 8,
+    "platform-exclusion-linux-image": 1,
+    "conditional-exclusion-supported-gosu-flow": 60,
+    "conditional-exclusion-supported-consumers": 5,
+    "binary-build-exclusion": 1,
+    "conditional-exclusion-supported-reference-config": 10
+  },
+  "new_or_open": [
+    {
+      "image": "api",
+      "image_id": "sha256:875a962f9080ea90f2160018602c52872f86bcebc18629493932a2afba1164d0",
+      "source": "rtmpdump",
+      "advisory": "CVE-2026-112060",
+      "type": "ubuntu",
+      "target": "/input/api.tar.gz (ubuntu 24.04)",
+      "matches": [
+        {
+          "package": "librtmp1",
+          "installed": "2.4+20151223.gitfa8646d.1-2build7",
+          "fixed": "",
+          "severity": "MEDIUM",
+          "source_version": "2.4+20151223.gitfa8646d.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112060"
+        }
+      ],
+      "disposition": "open"
+    },
+    {
+      "image": "postgres-trixie",
+      "image_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+      "source": "libxml2",
+      "advisory": "CVE-2026-137067",
+      "type": "debian",
+      "target": "/input/postgres-trixie.tar (debian 13.8)",
+      "matches": [
+        {
+          "package": "libxml2",
+          "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+          "fixed": "",
+          "severity": "UNKNOWN",
+          "source_version": "2.12.7+dfsg+really2.9.14",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-137067"
+        }
+      ],
+      "disposition": "open"
+    },
+    {
+      "image": "postgres-trixie",
+      "image_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+      "source": "libxml2",
+      "advisory": "CVE-2026-137068",
+      "type": "debian",
+      "target": "/input/postgres-trixie.tar (debian 13.8)",
+      "matches": [
+        {
+          "package": "libxml2",
+          "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+          "fixed": "",
+          "severity": "UNKNOWN",
+          "source_version": "2.12.7+dfsg+really2.9.14",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-137068"
+        }
+      ],
+      "disposition": "open"
+    },
+    {
+      "image": "postgres-trixie",
+      "image_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+      "source": "libxml2",
+      "advisory": "CVE-2026-137069",
+      "type": "debian",
+      "target": "/input/postgres-trixie.tar (debian 13.8)",
+      "matches": [
+        {
+          "package": "libxml2",
+          "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+          "fixed": "",
+          "severity": "UNKNOWN",
+          "source_version": "2.12.7+dfsg+really2.9.14",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-137069"
+        }
+      ],
+      "disposition": "open"
+    },
+    {
+      "image": "postgres-trixie",
+      "image_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+      "source": "libxml2",
+      "advisory": "CVE-2026-137072",
+      "type": "debian",
+      "target": "/input/postgres-trixie.tar (debian 13.8)",
+      "matches": [
+        {
+          "package": "libxml2",
+          "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+          "fixed": "",
+          "severity": "UNKNOWN",
+          "source_version": "2.12.7+dfsg+really2.9.14",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-137072"
+        }
+      ],
+      "disposition": "open"
+    },
+    {
+      "image": "postgres-trixie",
+      "image_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+      "source": "libxml2",
+      "advisory": "CVE-2026-137073",
+      "type": "debian",
+      "target": "/input/postgres-trixie.tar (debian 13.8)",
+      "matches": [
+        {
+          "package": "libxml2",
+          "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+          "fixed": "",
+          "severity": "UNKNOWN",
+          "source_version": "2.12.7+dfsg+really2.9.14",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-137073"
+        }
+      ],
+      "disposition": "open"
+    },
+    {
+      "image": "postgres-trixie",
+      "image_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+      "source": "libxml2",
+      "advisory": "CVE-2026-137074",
+      "type": "debian",
+      "target": "/input/postgres-trixie.tar (debian 13.8)",
+      "matches": [
+        {
+          "package": "libxml2",
+          "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+          "fixed": "",
+          "severity": "UNKNOWN",
+          "source_version": "2.12.7+dfsg+really2.9.14",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-137074"
+        }
+      ],
+      "disposition": "open"
+    },
+    {
+      "image": "postgres-trixie",
+      "image_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+      "source": "libxml2",
+      "advisory": "CVE-2026-137075",
+      "type": "debian",
+      "target": "/input/postgres-trixie.tar (debian 13.8)",
+      "matches": [
+        {
+          "package": "libxml2",
+          "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+          "fixed": "",
+          "severity": "UNKNOWN",
+          "source_version": "2.12.7+dfsg+really2.9.14",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-137075"
+        }
+      ],
+      "disposition": "open"
+    },
+    {
+      "image": "postgres-trixie",
+      "image_id": "sha256:27aa017e1766f3ab3af3701c15f045b222603c679d06876caadc9d24f6093ade",
+      "source": "libxml2",
+      "advisory": "CVE-2026-137082",
+      "type": "debian",
+      "target": "/input/postgres-trixie.tar (debian 13.8)",
+      "matches": [
+        {
+          "package": "libxml2",
+          "installed": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+          "fixed": "",
+          "severity": "UNKNOWN",
+          "source_version": "2.12.7+dfsg+really2.9.14",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-137082"
+        }
+      ],
+      "disposition": "open"
+    }
+  ],
+  "changed_fixed_or_matches": [
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-107364",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107364"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107364"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107364"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107364"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-107708",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107708"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107708"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107708"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107708"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-107778",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107778"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107778"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107778"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107778"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-107884",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107884"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107884"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107884"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-107884"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-112314",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112314"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112314"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112314"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112314"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-112315",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112315"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112315"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112315"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112315"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-112316",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112316"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112316"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112316"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112316"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-112317",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112317"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112317"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112317"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112317"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-112318",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112318"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112318"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112318"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112318"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-112319",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112319"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112319"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112319"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112319"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-112320",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112320"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112320"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112320"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112320"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-112321",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112321"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112321"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112321"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112321"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-112322",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112322"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112322"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112322"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112322"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-112323",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112323"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112323"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112323"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-112323"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-118380",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-118380"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-118380"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-118380"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-118380"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-119079",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-119079"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-119079"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-119079"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-119079"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-71199",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-71199"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-71199"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-71199"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-71199"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "api",
+        "krb5",
+        "CVE-2026-71200",
+        "ubuntu"
+      ],
+      "matches": [
+        {
+          "package": "libgssapi-krb5-2",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-71200"
+        },
+        {
+          "package": "libk5crypto3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-71200"
+        },
+        {
+          "package": "libkrb5-3",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-71200"
+        },
+        {
+          "package": "libkrb5support0",
+          "installed": "1.20.1-6ubuntu2.10",
+          "fixed": "1.20.1-6ubuntu2.12",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-71200"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libgssapi-krb5-2",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libk5crypto3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5-3",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        },
+        {
+          "fixed": "",
+          "installed": "1.20.1-6ubuntu2.10",
+          "package": "libkrb5support0",
+          "severity": "MEDIUM",
+          "source_version": "1.20.1"
+        }
+      ]
+    },
+    {
+      "key": [
+        "web",
+        "shadow",
+        "CVE-2026-135901",
+        "debian"
+      ],
+      "matches": [
+        {
+          "package": "login.defs",
+          "installed": "1:4.17.4-2",
+          "fixed": "1:4.17.4-2+deb13u1",
+          "severity": "UNKNOWN",
+          "source_version": "4.17.4",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-135901"
+        },
+        {
+          "package": "passwd",
+          "installed": "1:4.17.4-2",
+          "fixed": "1:4.17.4-2+deb13u1",
+          "severity": "UNKNOWN",
+          "source_version": "4.17.4",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-135901"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1:4.17.4-2",
+          "package": "login.defs",
+          "severity": "UNKNOWN",
+          "source_version": "4.17.4"
+        },
+        {
+          "fixed": "",
+          "installed": "1:4.17.4-2",
+          "package": "passwd",
+          "severity": "UNKNOWN",
+          "source_version": "4.17.4"
+        }
+      ]
+    },
+    {
+      "key": [
+        "tools",
+        "shadow",
+        "CVE-2026-135901",
+        "debian"
+      ],
+      "matches": [
+        {
+          "package": "login.defs",
+          "installed": "1:4.17.4-2",
+          "fixed": "1:4.17.4-2+deb13u1",
+          "severity": "UNKNOWN",
+          "source_version": "4.17.4",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-135901"
+        },
+        {
+          "package": "passwd",
+          "installed": "1:4.17.4-2",
+          "fixed": "1:4.17.4-2+deb13u1",
+          "severity": "UNKNOWN",
+          "source_version": "4.17.4",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-135901"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1:4.17.4-2",
+          "package": "login.defs",
+          "severity": "UNKNOWN",
+          "source_version": "4.17.4"
+        },
+        {
+          "fixed": "",
+          "installed": "1:4.17.4-2",
+          "package": "passwd",
+          "severity": "UNKNOWN",
+          "source_version": "4.17.4"
+        }
+      ]
+    },
+    {
+      "key": [
+        "postgres-trixie",
+        "shadow",
+        "CVE-2026-135901",
+        "debian"
+      ],
+      "matches": [
+        {
+          "package": "login.defs",
+          "installed": "1:4.17.4-2",
+          "fixed": "1:4.17.4-2+deb13u1",
+          "severity": "UNKNOWN",
+          "source_version": "4.17.4",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-135901"
+        },
+        {
+          "package": "passwd",
+          "installed": "1:4.17.4-2",
+          "fixed": "1:4.17.4-2+deb13u1",
+          "severity": "UNKNOWN",
+          "source_version": "4.17.4",
+          "url": "https://avd.aquasec.com/nvd/cve-2026-135901"
+        }
+      ],
+      "prior": [
+        {
+          "fixed": "",
+          "installed": "1:4.17.4-2",
+          "package": "login.defs",
+          "severity": "UNKNOWN",
+          "source_version": "4.17.4"
+        },
+        {
+          "fixed": "",
+          "installed": "1:4.17.4-2",
+          "package": "passwd",
+          "severity": "UNKNOWN",
+          "source_version": "4.17.4"
+        }
+      ]
+    }
+  ]
+}

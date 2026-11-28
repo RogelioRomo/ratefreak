@@ -1,0 +1,795 @@
+{
+  "workload": {
+    "users": 6,
+    "ordinary_users": 5,
+    "staff_users": 1,
+    "cycles_per_user": 30,
+    "cycle_seconds": 2,
+    "operations": [
+      "public media GET",
+      "own library GET",
+      "own library PUT",
+      "own library item GET"
+    ],
+    "requests": 720,
+    "thresholds": {
+      "http_errors": 0,
+      "read_p95_seconds": 1.0,
+      "write_p95_seconds": 2.0
+    },
+    "scope": "Synthetic six-user reference single-host workload, cached synthetic artwork and local database; no external providers, large libraries, exports, multi-node or internet latency.",
+    "dataset": {
+      "media_items": 3,
+      "authenticated_accounts": 6,
+      "library_entries_per_account": 1,
+      "hot_public_items_read": 1,
+      "synthetic_uploads": "three 2x2 fixtures"
+    }
+  },
+  "resources": {
+    "host_cpus": 12,
+    "host_memory_kib": "MemTotal:        8094480 kB",
+    "containers": [
+      {
+        "service": "api",
+        "image": "sha256:db65696090623e3f5336215360512837f38be773c913d593e558e81103eca646",
+        "nano_cpus": 0,
+        "memory_limit_bytes": 0
+      },
+      {
+        "service": "postgres",
+        "image": "sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf",
+        "nano_cpus": 0,
+        "memory_limit_bytes": 0
+      },
+      {
+        "service": "web",
+        "image": "sha256:9bb46deb17c663e22f96b1875ec3269a02ae519d10ee2d51ac1f724238e2b05e",
+        "nano_cpus": 0,
+        "memory_limit_bytes": 0
+      }
+    ]
+  },
+  "elapsed_seconds": 58.04510854599994,
+  "requests_per_second": 12.404145982936875,
+  "metrics": {
+    "read": {
+      "count": 540,
+      "p50_seconds": 0.011394740500236367,
+      "p95_seconds": 0.018116702999577683,
+      "max_seconds": 0.056270970999321435
+    },
+    "write": {
+      "count": 180,
+      "p50_seconds": 0.01977557300006083,
+      "p95_seconds": 0.02766305299974192,
+      "max_seconds": 0.03312506499969459
+    }
+  },
+  "errors": [
+    {
+      "kind": "read",
+      "seconds": 0.023251474000062444,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013224048000665789,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012480576999223558,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013297317999786173,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.014743214999725751,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013363864999519137,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010136914999748114,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01292233100048179,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011425174000578409,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013291023999954632,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.014462439999988419,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010486621999916679,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.014759513000171864,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013804064999931143,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01092656199944031,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012234896999871125,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012542402000690345,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013068079000731814,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012801900999875215,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012091787999452208,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "write",
+      "seconds": 0.009177687999908812,
+      "error": "PUT users/me/library/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.025023438000062015,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01404479899974831,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.014421926000068197,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.00989009599925339,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013099301000693231,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013685322000128508,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.0126267129999178,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012739494000015839,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011949691000154417,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.014508555999782402,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.014529613999911817,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013004307999835873,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012808071999643289,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013073711000288313,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.016305069999361876,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.00880037800015998,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010846809999748075,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013004765000005136,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010343795999688155,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011641862000033143,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "write",
+      "seconds": 0.009362642000269261,
+      "error": "PUT users/me/library/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.025110347999543592,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.014588996000384213,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01478105299975141,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01342261799982225,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011877810999976646,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011643078999441059,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01166193100016244,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012055770999722881,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012880752000455686,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01316975800000364,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013553824999689823,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010357643000133976,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01258801299991319,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.009857059000751178,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.014189759000146296,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010175555999921926,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010795553000207292,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010219856999356125,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012640982999982953,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01161322600000858,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "write",
+      "seconds": 0.008778629000516958,
+      "error": "PUT users/me/library/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.026292644999557524,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012600599000506918,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013083359000120254,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.0117738629996893,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010465855999427731,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011947379000048386,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011263528999734262,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01028734700048517,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010675040999558405,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.018116702999577683,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01258796300044196,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011191984999641136,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01003209899954527,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011453425000581774,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013829542999701516,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012027390000184823,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.008332524000252306,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.014170829999784473,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.014590900000257534,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013189281999984814,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "write",
+      "seconds": 0.007842128999982378,
+      "error": "PUT users/me/library/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.025371335999807343,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.014702909999869007,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013821860999996716,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012153777999628801,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01374077499986015,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010646140000062587,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01273782000043866,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010715183000684192,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.009064805999514647,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010906448000241653,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011949497999921732,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011819038000794535,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011535203999301302,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013191740999900503,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.016103611000289675,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011364306999894325,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.009774979999747302,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012708551000287116,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013955655000245315,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.009591570000338834,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "write",
+      "seconds": 0.00948361299924727,
+      "error": "PUT users/me/library/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.024309677000019292,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011221357000067655,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011232756000026711,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.014896593999765173,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.011920612999347213,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010413203000098292,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01350578400069935,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010237312999379355,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01456796500042401,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.015412751999974716,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.010729561000516696,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.012737236000248231,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013671914000042307,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.014982343999690784,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.017842287000348733,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.01359222500013857,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013188317999265564,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.015728836000562296,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.016162101000190887,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "read",
+      "seconds": 0.013140207999640552,
+      "error": "GET media/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    },
+    {
+      "kind": "write",
+      "seconds": 0.010289488000125857,
+      "error": "PUT users/me/library/0fb61e04-b78e-44db-b384-bcbf6303bf66: expected 200, got 429"
+    }
+  ],
+  "passed": false,
+  "resource_sampling": {
+    "sample_count": 5,
+    "interval_seconds": 10,
+    "cpu_max_percent": 85.38,
+    "memory_samples": [
+      {
+        "elapsed_seconds": 1.1282369230002587,
+        "services": [
+          {
+            "cpu_percent": "85.38%",
+            "memory": "115.6MiB / 7.719GiB"
+          },
+          {
+            "cpu_percent": "2.13%",
+            "memory": "101MiB / 7.719GiB"
+          },
+          {
+            "cpu_percent": "2.75%",
+            "memory": "174.8MiB / 7.719GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 13.232297982000091,
+        "services": [
+          {
+            "cpu_percent": "7.96%",
+            "memory": "141.8MiB / 7.719GiB"
+          },
+          {
+            "cpu_percent": "0.08%",
+            "memory": "102.1MiB / 7.719GiB"
+          },
+          {
+            "cpu_percent": "5.72%",
+            "memory": "177.6MiB / 7.719GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 25.33495682300054,
+        "services": [
+          {
+            "cpu_percent": "0.87%",
+            "memory": "167.3MiB / 7.719GiB"
+          },
+          {
+            "cpu_percent": "0.03%",
+            "memory": "101.8MiB / 7.719GiB"
+          },
+          {
+            "cpu_percent": "5.57%",
+            "memory": "186.6MiB / 7.719GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 37.43697053699998,
+        "services": [
+          {
+            "cpu_percent": "0.74%",
+            "memory": "172.6MiB / 7.719GiB"
+          },
+          {
+            "cpu_percent": "0.02%",
+            "memory": "102.8MiB / 7.719GiB"
+          },
+          {
+            "cpu_percent": "12.16%",
+            "memory": "195.1MiB / 7.719GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 49.5505161810006,
+        "services": [
+          {
+            "cpu_percent": "0.75%",
+            "memory": "172.4MiB / 7.719GiB"
+          },
+          {
+            "cpu_percent": "0.03%",
+            "memory": "102.3MiB / 7.719GiB"
+          },
+          {
+            "cpu_percent": "4.74%",
+            "memory": "198MiB / 7.719GiB"
+          }
+        ]
+      }
+    ]
+  },
+  "interpretation": "Intentional observation of an unchanged process-local shared-IP catalog budget: 60/min. Latency statistics include rejected operations; this workload did not meet the zero-error threshold."
+}

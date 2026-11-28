@@ -1,0 +1,10 @@
+{
+  "checked_existing_evidence": [
+    "docs/self-hosted-release-plan.md:126-128",
+    "docs/STATUS.md:31-33"
+  ],
+  "private_reporting_enabled_existing_evidence": true,
+  "maintainer_delivery_verified": false,
+  "new_external_report_or_message_sent": false,
+  "gate": "Existing delivered-notification evidence or an explicitly authorized end-to-end test report is required; read-only evidence cannot establish receipt."
+}

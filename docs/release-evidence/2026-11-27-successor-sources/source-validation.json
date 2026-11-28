@@ -1,0 +1,15 @@
+{
+  "components": 502,
+  "images": {
+    "api": "sha256:238c0ff9aa756644534d2626fd002047d7d5e5a3afc4247b7b0ad75197baaf56",
+    "tools": "sha256:e17b647a8bc72431576993405649a1f357ce4d76fdc16a3d0507dbdc7cb9b4cc",
+    "web": "sha256:b34486f80782118b4312836bb698453deaeedb710bb53e4f742190d9551cb45e"
+  },
+  "materialFiles": 64,
+  "nativeInputs": 406,
+  "publicationAuthorized": false,
+  "revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+  "securityClearance": false,
+  "sourceInputsReadBack": 1186,
+  "valid": true
+}

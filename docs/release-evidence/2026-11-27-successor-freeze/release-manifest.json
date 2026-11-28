@@ -1,0 +1,125 @@
+{
+  "dirty": false,
+  "files": {
+    "RELEASE-NOTES.md": {
+      "bytes": 4357,
+      "sha256": "ba9170e7cc0df1f06d61b2ce97664ad5313e4243806a421b3d410f4acea5af96"
+    },
+    "acceptance.tar.gz": {
+      "bytes": 833,
+      "sha256": "457c1a447402ec6e8afe53570b404d4d80404ce85c2b59d317ebbcff3543214b"
+    },
+    "api-notices.tar.gz": {
+      "bytes": 899537,
+      "sha256": "de8778976d79f6ef5f9b3e9b14590fbf03a46a501ca136d6fe68b5a503d13c07"
+    },
+    "api.tar.gz": {
+      "bytes": 276362290,
+      "sha256": "7b550a3badfa03904e7ea66c589cd413e179360a2b84efe4890ed53a72f24cb4"
+    },
+    "baseline-images.json": {
+      "bytes": 249,
+      "sha256": "d4fa63773dea2321b77847a7228b20fbcecc4a83cf239f5d693fb5ffbb28743a"
+    },
+    "built-images.json": {
+      "bytes": 257,
+      "sha256": "ed3230424ec9a7286e9cab688d9ca4fe6a97b9f9bb4762b9f2d57ef55f982358"
+    },
+    "built-reference-images.json": {
+      "bytes": 178,
+      "sha256": "8c1be59a0019ce664edbfc25e8fa4cec6f97dfde84dfceca6be259817b67bcdf"
+    },
+    "caddy-notices.tar.gz": {
+      "bytes": 286822,
+      "sha256": "7f936dc997c03b6f3247011150dfaaa08f23cdb388a46ca5d862b08e0f37816a"
+    },
+    "caddy.tar.gz": {
+      "bytes": 58899994,
+      "sha256": "ce54e5ce04487071a4827a1ab82a87c56a00cea6c58b70ef6086ee6aafa456c7"
+    },
+    "fresh-acceptance.tar.gz": {
+      "bytes": 549,
+      "sha256": "2261a540ecc682f49c9117721e19da2513bfcafb8f756a00c608a84587160d14"
+    },
+    "installation.tar.gz": {
+      "bytes": 5329540,
+      "sha256": "9130966da8ed597f55c28ca21f06fbd8d1783cf775148a944f440dfde150dafb"
+    },
+    "postgres-notices.tar.gz": {
+      "bytes": 541911,
+      "sha256": "c7aaa247d655d1df031117120a2897a946a84188253226467dc190a0232b9978"
+    },
+    "postgres.tar.gz": {
+      "bytes": 168045198,
+      "sha256": "948c56e32e804dd1bec408df3affb9ebae17912987cbf56d5840be09dae8a37c"
+    },
+    "reference-inventory.json": {
+      "bytes": 552452,
+      "sha256": "d398623190d8d5f1b3f9bce7a81e4eeacca9ad767aaf2daba0750be60c848c47"
+    },
+    "reports.tar.gz": {
+      "bytes": 520,
+      "sha256": "135ff583735816bd959bf32de6331b04749dcf2dbf94b169eb1a23e5b72c1bd4"
+    },
+    "source-inventory.json": {
+      "bytes": 213734,
+      "sha256": "5f2e2e53223dd9ee586c0402e9447a3d1314247ffc45c2263333e06af4ec6112"
+    },
+    "sources.tar.gz": {
+      "bytes": 3266796459,
+      "sha256": "6fd604810f3f91e4f9cdb6d81f92039496229688ad96e596529c239eda152615"
+    },
+    "tools-notices.tar.gz": {
+      "bytes": 999825,
+      "sha256": "a8c140a1a97925e011b98dc2fd279e1c76c07908923251304965e3b3af348a91"
+    },
+    "tools.tar.gz": {
+      "bytes": 315445758,
+      "sha256": "90821398064664adebdc42a9c50d62c7cff43f8a6658793085f82e33e32b4416"
+    },
+    "web-notices.tar.gz": {
+      "bytes": 847779,
+      "sha256": "c6f5aedc40dde920432674531f1b8a13832bb9b2a0c446aeddcbe037f073b87d"
+    },
+    "web.tar.gz": {
+      "bytes": 112613324,
+      "sha256": "9ad6ad432062fd74837cdd1f98ba9891db58198fb18ab2dad4bd418a2ba3dd23"
+    }
+  },
+  "format": 1,
+  "images": {
+    "api": {
+      "file": "api.tar.gz",
+      "id": "sha256:238c0ff9aa756644534d2626fd002047d7d5e5a3afc4247b7b0ad75197baaf56",
+      "tag": "ratefreak-api:0.1.0"
+    },
+    "tools": {
+      "file": "tools.tar.gz",
+      "id": "sha256:e17b647a8bc72431576993405649a1f357ce4d76fdc16a3d0507dbdc7cb9b4cc",
+      "tag": "ratefreak-tools:0.1.0"
+    },
+    "web": {
+      "file": "web.tar.gz",
+      "id": "sha256:b34486f80782118b4312836bb698453deaeedb710bb53e4f742190d9551cb45e",
+      "tag": "ratefreak-web:0.1.0"
+    }
+  },
+  "migration": "20261127222703_AddSongs",
+  "official": true,
+  "platform": "linux/amd64",
+  "reference_images": {
+    "caddy": {
+      "file": "caddy.tar.gz",
+      "id": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+      "tag": "ratefreak-caddy:0.1.0"
+    },
+    "postgres": {
+      "file": "postgres.tar.gz",
+      "id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "tag": "ratefreak-postgres:0.1.0"
+    }
+  },
+  "revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+  "stage": "verified",
+  "version": "0.1.0"
+}

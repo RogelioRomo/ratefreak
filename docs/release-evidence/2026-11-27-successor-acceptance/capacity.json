@@ -1,0 +1,358 @@
+{
+  "source_revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+  "application_images": {
+    "api": "sha256:238c0ff9aa756644534d2626fd002047d7d5e5a3afc4247b7b0ad75197baaf56",
+    "web": "sha256:b34486f80782118b4312836bb698453deaeedb710bb53e4f742190d9551cb45e",
+    "tools": "sha256:e17b647a8bc72431576993405649a1f357ce4d76fdc16a3d0507dbdc7cb9b4cc"
+  },
+  "reference_images": {
+    "caddy": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+    "postgres": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221"
+  },
+  "workload": {
+    "users": 6,
+    "ordinary_users": 5,
+    "staff_users": 1,
+    "cycles_per_user": 30,
+    "cycle_seconds": 6.5,
+    "operations": [
+      "public media GET",
+      "own library GET",
+      "own library PUT",
+      "own library item GET"
+    ],
+    "requests": 720,
+    "dataset": {
+      "media_items": 1003,
+      "initial_library_entries_per_user": 251,
+      "distinct_catalog_detail_targets": 180
+    },
+    "thresholds": {
+      "http_errors": 0,
+      "read_p95_seconds": 1.0,
+      "write_p95_seconds": 2.0
+    },
+    "scope": "Synthetic six-user reference single-host workload with 1,003 media items and at least 251 library entries per account. No external providers, exports, multi-node or internet latency."
+  },
+  "resources": {
+    "host_cpus": 12,
+    "host_memory_kib": "MemTotal:        8094484 kB",
+    "containers": [
+      {
+        "service": "api",
+        "image": "sha256:238c0ff9aa756644534d2626fd002047d7d5e5a3afc4247b7b0ad75197baaf56",
+        "nano_cpus": 0,
+        "memory_limit_bytes": 0
+      },
+      {
+        "service": "postgres",
+        "image": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+        "nano_cpus": 0,
+        "memory_limit_bytes": 0
+      },
+      {
+        "service": "web",
+        "image": "sha256:b34486f80782118b4312836bb698453deaeedb710bb53e4f742190d9551cb45e",
+        "nano_cpus": 0,
+        "memory_limit_bytes": 0
+      }
+    ]
+  },
+  "elapsed_seconds": 188.56124138900032,
+  "requests_per_second": 3.8183880987219734,
+  "metrics": {
+    "read": {
+      "count": 540,
+      "p50_seconds": 0.014481075499816143,
+      "p95_seconds": 0.035841224000250804,
+      "max_seconds": 0.12339691399984076
+    },
+    "write": {
+      "count": 180,
+      "p50_seconds": 0.019483420500137072,
+      "p95_seconds": 0.03995483099970443,
+      "max_seconds": 0.11367893600026946
+    }
+  },
+  "errors": [],
+  "passed": true,
+  "resource_sampling": {
+    "sample_count": 16,
+    "interval_seconds": 10,
+    "cpu_max_percent": 75.22,
+    "memory_samples": [
+      {
+        "elapsed_seconds": 2.1530378820002625,
+        "services": [
+          {
+            "cpu_percent": "73.09%",
+            "memory": "121.3MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "6.17%",
+            "memory": "66.84MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "3.73%",
+            "memory": "126.3MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 14.254585663000398,
+        "services": [
+          {
+            "cpu_percent": "75.22%",
+            "memory": "132MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "6.47%",
+            "memory": "68.15MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "13.06%",
+            "memory": "128.4MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 26.360398330000407,
+        "services": [
+          {
+            "cpu_percent": "29.11%",
+            "memory": "146.1MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "12.24%",
+            "memory": "68.21MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "5.04%",
+            "memory": "127.2MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 38.46456238900009,
+        "services": [
+          {
+            "cpu_percent": "3.11%",
+            "memory": "140.3MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "5.89%",
+            "memory": "67.47MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "2.00%",
+            "memory": "127.4MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 50.56666463900001,
+        "services": [
+          {
+            "cpu_percent": "0.83%",
+            "memory": "139.6MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "5.19%",
+            "memory": "68.01MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.07%",
+            "memory": "129.1MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 62.667859816000146,
+        "services": [
+          {
+            "cpu_percent": "5.76%",
+            "memory": "152.1MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "6.02%",
+            "memory": "68.33MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.00%",
+            "memory": "130.2MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 74.78983825400019,
+        "services": [
+          {
+            "cpu_percent": "0.64%",
+            "memory": "166.5MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.01%",
+            "memory": "64.59MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.00%",
+            "memory": "123.8MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 86.89102723900032,
+        "services": [
+          {
+            "cpu_percent": "0.67%",
+            "memory": "173.1MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.01%",
+            "memory": "65.79MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "5.18%",
+            "memory": "125.6MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 98.99168371000042,
+        "services": [
+          {
+            "cpu_percent": "0.68%",
+            "memory": "171.9MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "5.34%",
+            "memory": "64.56MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.01%",
+            "memory": "125.3MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 111.0929247250001,
+        "services": [
+          {
+            "cpu_percent": "10.14%",
+            "memory": "173.1MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "5.87%",
+            "memory": "64.7MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.08%",
+            "memory": "124.2MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 123.1946807510003,
+        "services": [
+          {
+            "cpu_percent": "5.02%",
+            "memory": "172.3MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.01%",
+            "memory": "65.74MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.08%",
+            "memory": "124.2MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 135.2965234440003,
+        "services": [
+          {
+            "cpu_percent": "0.70%",
+            "memory": "171.9MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.01%",
+            "memory": "65.13MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.00%",
+            "memory": "129.5MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 147.3992235540004,
+        "services": [
+          {
+            "cpu_percent": "0.96%",
+            "memory": "172.4MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.02%",
+            "memory": "65.46MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "4.81%",
+            "memory": "130.6MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 159.503847768,
+        "services": [
+          {
+            "cpu_percent": "0.68%",
+            "memory": "174.5MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.01%",
+            "memory": "64.72MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "1.77%",
+            "memory": "130.1MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 170.86201280900013,
+        "services": [
+          {
+            "cpu_percent": "0.83%",
+            "memory": "165.6MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "6.30%",
+            "memory": "57.86MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "0.00%",
+            "memory": "103.4MiB / 7.72GiB"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 182.96119638500022,
+        "services": [
+          {
+            "cpu_percent": "13.23%",
+            "memory": "169.2MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "11.07%",
+            "memory": "60.04MiB / 7.72GiB"
+          },
+          {
+            "cpu_percent": "5.12%",
+            "memory": "110.9MiB / 7.72GiB"
+          }
+        ]
+      }
+    ]
+  }
+}

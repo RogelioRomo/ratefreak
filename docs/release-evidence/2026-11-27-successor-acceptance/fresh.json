@@ -1,0 +1,19 @@
+{
+  "candidateImages": {
+    "api": "sha256:238c0ff9aa756644534d2626fd002047d7d5e5a3afc4247b7b0ad75197baaf56",
+    "web": "sha256:b34486f80782118b4312836bb698453deaeedb710bb53e4f742190d9551cb45e",
+    "tools": "sha256:e17b647a8bc72431576993405649a1f357ce4d76fdc16a3d0507dbdc7cb9b4cc"
+  },
+  "baselineImages": null,
+  "https": true,
+  "freshInstall": true,
+  "upgrade": false,
+  "referenceImages": {
+    "caddy": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+    "postgres": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221"
+  },
+  "disabledUpdateChecks": true,
+  "ordinaryDenied": true,
+  "logoutDenied": true,
+  "dataPreserved": true
+}

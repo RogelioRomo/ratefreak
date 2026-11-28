@@ -1,0 +1,192 @@
+{
+  "api": {
+    "image_id": "sha256:238c0ff9aa756644534d2626fd002047d7d5e5a3afc4247b7b0ad75197baaf56",
+    "platform": "linux/amd64",
+    "archive_sha256": "7b550a3badfa03904e7ea66c589cd413e179360a2b84efe4890ed53a72f24cb4",
+    "scanner_report_sha256": "d89a52716840af7821a2625b7165bc34483f69dff6eb28e9c9c1e62575dc09d5",
+    "archive_config_id": "sha256:113e90864e7a64973dfd81a315e5481a0a8b173b86bcc2e54a8339d7399897ee",
+    "scanner_config_matches": true,
+    "scanner_diffids_match": true,
+    "local_image_index_manifest_config_chain_verified": true,
+    "oci_nodes": [
+      {
+        "digest": "sha256:238c0ff9aa756644534d2626fd002047d7d5e5a3afc4247b7b0ad75197baaf56",
+        "mediaType": "application/vnd.oci.image.index.v1+json",
+        "platform": null
+      },
+      {
+        "digest": "sha256:a6df2794cc7d07f67af74cde6fc2691b8da6f5885a17abc7eb111dcd6a68d77c",
+        "mediaType": "application/vnd.oci.image.manifest.v1+json",
+        "platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        }
+      },
+      {
+        "digest": "sha256:9f7bdc7d3928f2e5e76f6d47d9b1e4022bb26d07a0b59b416525acef6a32e3a5",
+        "mediaType": "application/vnd.oci.image.manifest.v1+json",
+        "platform": {
+          "architecture": "unknown",
+          "os": "unknown"
+        }
+      }
+    ],
+    "labels": {
+      "org.opencontainers.image.revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+      "org.opencontainers.image.source": "https://github.com/RogelioRomo/ratefreak",
+      "org.opencontainers.image.version": "0.1.0"
+    }
+  },
+  "web": {
+    "image_id": "sha256:b34486f80782118b4312836bb698453deaeedb710bb53e4f742190d9551cb45e",
+    "platform": "linux/amd64",
+    "archive_sha256": "9ad6ad432062fd74837cdd1f98ba9891db58198fb18ab2dad4bd418a2ba3dd23",
+    "scanner_report_sha256": "a1df08659f7aa2fc011541ee440fcc55fffab564c8785034630ad23e55936a9d",
+    "archive_config_id": "sha256:9e934e27e62501fde9e5bb1c36259f00cf1b1f43d2adf570c6e0156e41a672ad",
+    "scanner_config_matches": true,
+    "scanner_diffids_match": true,
+    "local_image_index_manifest_config_chain_verified": true,
+    "oci_nodes": [
+      {
+        "digest": "sha256:b34486f80782118b4312836bb698453deaeedb710bb53e4f742190d9551cb45e",
+        "mediaType": "application/vnd.oci.image.index.v1+json",
+        "platform": null
+      },
+      {
+        "digest": "sha256:635d874125a59b6a8fc54a7c442101ea0fbc4cc1e4d8c6db66c060176b660a1a",
+        "mediaType": "application/vnd.oci.image.manifest.v1+json",
+        "platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        }
+      },
+      {
+        "digest": "sha256:a7733bcc08d5d4a5dc58a24daae33fc3d79b7a93ca27fcef29fae35f22be3d27",
+        "mediaType": "application/vnd.oci.image.manifest.v1+json",
+        "platform": {
+          "architecture": "unknown",
+          "os": "unknown"
+        }
+      }
+    ],
+    "labels": {
+      "org.opencontainers.image.revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+      "org.opencontainers.image.source": "https://github.com/RogelioRomo/ratefreak",
+      "org.opencontainers.image.version": "0.1.0"
+    }
+  },
+  "tools": {
+    "image_id": "sha256:e17b647a8bc72431576993405649a1f357ce4d76fdc16a3d0507dbdc7cb9b4cc",
+    "platform": "linux/amd64",
+    "archive_sha256": "90821398064664adebdc42a9c50d62c7cff43f8a6658793085f82e33e32b4416",
+    "scanner_report_sha256": "f6e0cf0802cbca8f494c94ce23be8f289e58107c001853bde270f208e3ffeb59",
+    "archive_config_id": "sha256:64e3f7242f867ae3df55cfe873ba92f3b8968f101c00cebafc9aaeb3796f1481",
+    "scanner_config_matches": true,
+    "scanner_diffids_match": true,
+    "local_image_index_manifest_config_chain_verified": true,
+    "oci_nodes": [
+      {
+        "digest": "sha256:e17b647a8bc72431576993405649a1f357ce4d76fdc16a3d0507dbdc7cb9b4cc",
+        "mediaType": "application/vnd.oci.image.index.v1+json",
+        "platform": null
+      },
+      {
+        "digest": "sha256:d076567299be271dff7b06e3ac21d0aea9427909da71f661287bec6fc889d6a2",
+        "mediaType": "application/vnd.oci.image.manifest.v1+json",
+        "platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        }
+      },
+      {
+        "digest": "sha256:a65b087e2c0aa9fb4b75a577058d18ac55d0c9e92f61ad1cecb5ad242faf2aad",
+        "mediaType": "application/vnd.oci.image.manifest.v1+json",
+        "platform": {
+          "architecture": "unknown",
+          "os": "unknown"
+        }
+      }
+    ],
+    "labels": {
+      "org.opencontainers.image.revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+      "org.opencontainers.image.source": "https://github.com/RogelioRomo/ratefreak",
+      "org.opencontainers.image.version": "0.1.0"
+    }
+  },
+  "caddy": {
+    "image_id": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+    "platform": "linux/amd64",
+    "archive_sha256": "ce54e5ce04487071a4827a1ab82a87c56a00cea6c58b70ef6086ee6aafa456c7",
+    "scanner_report_sha256": "1fa2ecf6224306da50c5c2ac78e0afca9e4e65d57f36a9681c667fc7a365a8d4",
+    "archive_config_id": "sha256:6d68c450fa83ad6bbdaf46c2ad8ef581f1afd04a3eb17bf21693f02f8fb8ad66",
+    "scanner_config_matches": true,
+    "scanner_diffids_match": true,
+    "local_image_index_manifest_config_chain_verified": true,
+    "oci_nodes": [
+      {
+        "digest": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+        "mediaType": "application/vnd.oci.image.index.v1+json",
+        "platform": null
+      },
+      {
+        "digest": "sha256:276e1963b3486ce791a9cdb9d171ec76c86c71292111c6280f6a9096f4888edf",
+        "mediaType": "application/vnd.oci.image.manifest.v1+json",
+        "platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        }
+      },
+      {
+        "digest": "sha256:71cd42709aa7bf49b4ace66643e6bcedf554a84614c062beff1885d59f2e81c9",
+        "mediaType": "application/vnd.oci.image.manifest.v1+json",
+        "platform": {
+          "architecture": "unknown",
+          "os": "unknown"
+        }
+      }
+    ],
+    "labels": {
+      "org.opencontainers.image.revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+      "org.opencontainers.image.source": "https://github.com/RogelioRomo/ratefreak",
+      "org.opencontainers.image.version": "0.1.0"
+    }
+  },
+  "postgres": {
+    "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+    "platform": "linux/amd64",
+    "archive_sha256": "948c56e32e804dd1bec408df3affb9ebae17912987cbf56d5840be09dae8a37c",
+    "scanner_report_sha256": "7ddfb0b73c0d7da593bdc5477d80348ff4db326aec51816e6b338f177066a2d3",
+    "archive_config_id": "sha256:1ee734c1b725b1d062677a725574a0087763541bde144fa77632386cc71e7b5b",
+    "scanner_config_matches": true,
+    "scanner_diffids_match": true,
+    "local_image_index_manifest_config_chain_verified": true,
+    "oci_nodes": [
+      {
+        "digest": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+        "mediaType": "application/vnd.oci.image.index.v1+json",
+        "platform": null
+      },
+      {
+        "digest": "sha256:a37973a3cb6c52f0eeb17ed2fc8ac97a86eaa29064a8ad24e39a68e254dbd5e2",
+        "mediaType": "application/vnd.oci.image.manifest.v1+json",
+        "platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        }
+      },
+      {
+        "digest": "sha256:bd5afe76e756a0af88ac448429fff34ffe63631c2fed7d4eba4331c8ee11ce58",
+        "mediaType": "application/vnd.oci.image.manifest.v1+json",
+        "platform": {
+          "architecture": "unknown",
+          "os": "unknown"
+        }
+      }
+    ],
+    "labels": {
+      "org.opencontainers.image.revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+      "org.opencontainers.image.source": "https://github.com/RogelioRomo/ratefreak",
+      "org.opencontainers.image.version": "0.1.0"
+    }
+  }
+}

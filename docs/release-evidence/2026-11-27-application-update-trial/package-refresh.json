@@ -1,0 +1,160 @@
+{
+  "candidateQualificationComplete": false,
+  "commandPolicy": "Docker Linux amd64 build with --pull --no-cache-filter runtime; original tagged source exported as context",
+  "images": {
+    "api": {
+      "buildExitCode": 0,
+      "buildLogSha256": "68c361b784be967bd19a238589ef8a43a49d342bc78c94acdcedadb35a454740",
+      "builtUtc": "2026-11-28T00:07:27.274393+00:00",
+      "delta": [
+        {
+          "after": {
+            "source_package": "krb5",
+            "source_version": "1.20.1-6ubuntu2.12",
+            "version": "1.20.1-6ubuntu2.12"
+          },
+          "before": {
+            "architecture": "amd64",
+            "package": "libgssapi-krb5-2:amd64",
+            "source_package": "krb5",
+            "source_version": "1.20.1-6ubuntu2.10",
+            "version": "1.20.1-6ubuntu2.10"
+          },
+          "package": "libgssapi-krb5-2"
+        },
+        {
+          "after": {
+            "source_package": "krb5",
+            "source_version": "1.20.1-6ubuntu2.12",
+            "version": "1.20.1-6ubuntu2.12"
+          },
+          "before": {
+            "architecture": "amd64",
+            "package": "libk5crypto3:amd64",
+            "source_package": "krb5",
+            "source_version": "1.20.1-6ubuntu2.10",
+            "version": "1.20.1-6ubuntu2.10"
+          },
+          "package": "libk5crypto3"
+        },
+        {
+          "after": {
+            "source_package": "krb5",
+            "source_version": "1.20.1-6ubuntu2.12",
+            "version": "1.20.1-6ubuntu2.12"
+          },
+          "before": {
+            "architecture": "amd64",
+            "package": "libkrb5-3:amd64",
+            "source_package": "krb5",
+            "source_version": "1.20.1-6ubuntu2.10",
+            "version": "1.20.1-6ubuntu2.10"
+          },
+          "package": "libkrb5-3"
+        },
+        {
+          "after": {
+            "source_package": "krb5",
+            "source_version": "1.20.1-6ubuntu2.12",
+            "version": "1.20.1-6ubuntu2.12"
+          },
+          "before": {
+            "architecture": "amd64",
+            "package": "libkrb5support0:amd64",
+            "source_package": "krb5",
+            "source_version": "1.20.1-6ubuntu2.10",
+            "version": "1.20.1-6ubuntu2.10"
+          },
+          "package": "libkrb5support0"
+        }
+      ],
+      "id": "sha256:738c8837fdc4b9a985122b9454535e0bba3a4de96bc3b586e8459c5d44863445",
+      "packageInventorySha256": "50b28c94d5d6aa7a9e801a9061d725cda25ead703aaf29ea0d354729590ed989",
+      "tag": "ratefreak-api:security-trial-2026-11-27"
+    },
+    "tools": {
+      "buildExitCode": 0,
+      "buildLogSha256": "5b2cb769e587cd0a4d26573e63e6a21d98cac9552738aad306b249a7e5a58835",
+      "builtUtc": "2026-11-28T00:08:25.362625+00:00",
+      "delta": [
+        {
+          "after": {
+            "source_package": "shadow",
+            "source_version": "1:4.17.4-2+deb13u1",
+            "version": "1:4.17.4-2+deb13u1"
+          },
+          "before": {
+            "architecture": "all",
+            "package": "login.defs",
+            "source_package": "shadow",
+            "source_version": "1:4.17.4-2",
+            "version": "1:4.17.4-2"
+          },
+          "package": "login.defs"
+        },
+        {
+          "after": {
+            "source_package": "shadow",
+            "source_version": "1:4.17.4-2+deb13u1",
+            "version": "1:4.17.4-2+deb13u1"
+          },
+          "before": {
+            "architecture": "amd64",
+            "package": "passwd",
+            "source_package": "shadow",
+            "source_version": "1:4.17.4-2",
+            "version": "1:4.17.4-2"
+          },
+          "package": "passwd"
+        }
+      ],
+      "id": "sha256:8d7450f8da17b9cccf1544be6c260810a7c1a357db698443980c9ebf9911031c",
+      "packageInventorySha256": "7618519e82f2c288242a0ff5831d58081d07f1bad1d2cc0121d556e86748ac26",
+      "tag": "ratefreak-tools:security-trial-2026-11-27"
+    },
+    "web": {
+      "buildExitCode": 0,
+      "buildLogSha256": "9e2237639d748c913d852a3765e447eb75bcad78d402d18c8a65428ede612e13",
+      "builtUtc": "2026-11-28T00:07:48.388645+00:00",
+      "delta": [
+        {
+          "after": {
+            "source_package": "shadow",
+            "source_version": "1:4.17.4-2+deb13u1",
+            "version": "1:4.17.4-2+deb13u1"
+          },
+          "before": {
+            "architecture": "all",
+            "package": "login.defs",
+            "source_package": "shadow",
+            "source_version": "1:4.17.4-2",
+            "version": "1:4.17.4-2"
+          },
+          "package": "login.defs"
+        },
+        {
+          "after": {
+            "source_package": "shadow",
+            "source_version": "1:4.17.4-2+deb13u1",
+            "version": "1:4.17.4-2+deb13u1"
+          },
+          "before": {
+            "architecture": "amd64",
+            "package": "passwd",
+            "source_package": "shadow",
+            "source_version": "1:4.17.4-2",
+            "version": "1:4.17.4-2"
+          },
+          "package": "passwd"
+        }
+      ],
+      "id": "sha256:6689f4a07c3cf1b8243ed1aafb1e6ec606591101fb503ba4409e3011b60b9c64",
+      "packageInventorySha256": "29d91add49e5bb4d7c596ada112259329bea338f8f14f23d41b037c976aa3863",
+      "tag": "ratefreak-web:security-trial-2026-11-27"
+    }
+  },
+  "originalFrozenArchivesUnchanged": true,
+  "persistentInstanceChanged": false,
+  "scope": "Separately tagged package-refresh trial only; not a successor frozen/final candidate",
+  "sourceRevision": "f54048c233e405843160bc16d857f8c32082599f"
+}

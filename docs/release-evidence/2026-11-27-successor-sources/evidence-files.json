@@ -1,0 +1,54 @@
+{
+  "assemble.py": {
+    "bytes": 3381,
+    "sha256": "3cf1efceced72ee9ef10eae9d22e64456a00fbc1304f6114cd5ff36dcf7d8bf6"
+  },
+  "coverage.json": {
+    "bytes": 210468,
+    "sha256": "991f42885bc7e723c5f059d3630e6d06a3eabc891ecc19d3d245c7e8c31a910c"
+  },
+  "finish.py": {
+    "bytes": 6536,
+    "sha256": "c3494cd58631ba5b7d4565e9382c439de543508c9a63d1e3273e807994808530"
+  },
+  "independent-app-review.json": {
+    "bytes": 3511,
+    "sha256": "46d1f6745accbc547a9e38c02d4201111beb013ef2f087a47080e072cb0b9177"
+  },
+  "independent_app_check.py": {
+    "bytes": 9916,
+    "sha256": "2d1a93781f4d6492832643b1141414465808490b8343fc07300f958ebcb61d91"
+  },
+  "krb5-descriptor-closure.json": {
+    "bytes": 757,
+    "sha256": "1a2daa6884be4fef6253ea02e9a0b5141772ca991c72104e7f5608b4436ccfde"
+  },
+  "os-image-bindings.json": {
+    "bytes": 321807,
+    "sha256": "5d4bf33a915b965c0341513b51d2ae2af860d0ebc1e5122984962b2a41d43ae2"
+  },
+  "reconcile.py": {
+    "bytes": 5538,
+    "sha256": "159ef66221c7b01e7a1ae1a97b429fa0c828918cdd89048b86590c0ace68c446"
+  },
+  "release-source-review.md": {
+    "bytes": 4393,
+    "sha256": "e1d922fc2672e11a9f74e5a54fe743a8886227547465803f2471399ddbc9b3ab"
+  },
+  "review.md": {
+    "bytes": 1390,
+    "sha256": "c028ceb83465f54e4e08205cfa06eb8c2c8b05343b602f841333c6df21fa441d"
+  },
+  "source-reconciliation.json": {
+    "bytes": 334181,
+    "sha256": "4f93ed2a23ec4e83e687aed0951422c0147c1f3c94630775a8019ea2af2a7188"
+  },
+  "source-validation.json": {
+    "bytes": 519,
+    "sha256": "6e05aa10f8ae3518bfd29711d6339d80dcda9c8277ed159d8cd198088cee04ee"
+  },
+  "successor-native-rebinding.json": {
+    "bytes": 344,
+    "sha256": "0f2df6855a79d48c9a86df31bc63368c27d007dcb7c162ed18540910d6406fb5"
+  }
+}

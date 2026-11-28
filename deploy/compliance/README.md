@@ -108,3 +108,15 @@ The observed Linux build's 162 registry packages have complete collected texts;
 the resulting notice bundle is included with the npm libvips package notices.
 The original 357-crate source set includes unbuilt target/dev dependencies; its
 separately recorded provenance limits are not silently promoted to runtime claims.
+
+## Bundled reference services
+
+PostgreSQL/Caddy reference images are now distributed alongside the application
+images. `deploy/release/reference_inventory.py` collects their actual installed
+OS source identities, original available copyrights/notices, ELF fingerprints,
+Go module/toolchain identities and configuration scripts without starting the
+containers. Those facts are not source/license clearance. Supplemental original
+licenses and matching source/build materials are reviewed separately and bound
+through `reference-coverage.json`; final preparation and bundle validation reject
+missing or mismatched coverage. Include inherited-layer sources and preserve
+all documented provenance limits. See `docs/releasing.md` and ADR 0023.

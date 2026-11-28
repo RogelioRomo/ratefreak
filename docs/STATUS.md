@@ -109,7 +109,9 @@ installation configuration on the previous exact images; the frozen installation
 archive must be regenerated at final qualification. Representative capacity
 evidence remains outstanding. No persistent installation was changed.
 
-**The current security review has no unaccepted findings.** The owner authorized
+**The 2026-11-26 security review has no unaccepted findings for its recorded
+images/configuration.** The later stable-candidate review below requires available
+vendor fixes before release. The owner authorized
 a [risk-based CVE policy](security-risk-policy.md) for all future findings:
 apply available compatible fixes; otherwise findings assessed as low practical
 risk may be accepted with documented reasons and reassessment conditions.
@@ -123,53 +125,78 @@ Earlier blocked receipts retain their historical scope. This closes those two
 blockers on the reviewed images/configuration; final stable artifacts still need
 fresh security qualification and any available compatible fixes.
 
+The **0.1.0 stable candidate is frozen locally**, at source revision
+`f54048c233e405843160bc16d857f8c32082599f`, with exact Linux amd64 API/web/tools
+image archives, collected notices, component inventory, installation source and
+release notes. The frozen revision passed all 15 release checks and **2,070 tests**
+(821 backend with zero skips, 1,103 frontend, 146 operator/release/compliance).
+All 11 artifact checksums and image platform/version/revision identities were
+validated. See the [freeze record](stable-candidate-freeze-2026-11-27.md).
+The candidate remains at `review`. Its [source/license reconciliation](release-evidence/2026-11-27-stable-sources/review.md)
+now covers all 502 component entries, with 849 OS source-input entries and the
+406-input native sidecar freshly verified. Its [all-layer/privacy review](release-evidence/2026-11-27-stable-layers/review.md)
+checked all 43 layers and exact tracked source without finding a new payload or
+configured-secret blocker. The [fresh security scan](release-evidence/2026-11-27-stable-security/summary.json)
+requires compatible vendor fixes: API krb5, Debian shadow, PostgreSQL zstd and
+Caddy OpenSSL/zlib packages. Conditional exclusions and the two existing accepted
+low risks remain explicit; available fixes still require a successor candidate.
+The owner approved supplying patched PostgreSQL/Caddy alongside the existing
+application images. The five-image successor is frozen locally at
+`9eea2c76550fe03920dd999f1677565e4f43d12b`; all 15 release checks and **2,128 tests**
+passed (821 backend with zero skips, 1,103 frontend, 204 tooling). The finalized local bundle has21indexed artifacts at `verified`, with exact five
+image archives, matching sources/notices and fresh/upgrade acceptance receipts.
+Independent readback verified all artifact bytes,404source archive members,
+880component entries and identical final image IDs. Compatible OS fixes are
+applied; source, security and operational qualification passed. See the
+[final package review](release-evidence/2026-11-27-successor-freeze/final-bundle-review.md).
+The local bundle is under
+`.local/stable-qualification-2026-11-27/successor-candidate/release/`.
+Caddy uses a Debian final runtime with the exact upstream static server/assets;
+the historical Alpine trial's unresolved grant question does not qualify that
+trial for delivery. Original candidate artifacts remain unchanged.
+The [successor security ledger](release-evidence/2026-11-27-successor-security/README.md)
+assesses all 1,433 associations across 633 image/source records, with zero unaccepted
+blockers. Compatible OS fixes are applied. Two previously accepted glibc risks
+and specific caller/configuration exclusions remain explicit, including 68
+fix-listed associations in unchanged static vendor Go/module copies; those
+copies are not claimed patched. All seven allocator roles, decoder restrictions,
+JIT-off and current configuration probes passed. The inherited public PostgreSQL
+snakeoil key is documented as unused with ssl=off and requires replacement if
+TLS is enabled.
+
+Successor recovery, 36-table nonempty restore/replay and representative
+720-operation capacity acceptance passed on all five exact final images. See the [qualification record](stable-candidate-qualification-2026-11-27.md)
+and [resumption handoff](release-handoff-2026-11-27.md) for current task state.
+The successor source/tag lives in an isolated clone; the main checkout retains
+its development version. No persistent installation was changed and nothing was
+pushed or published.
+
 ## Remaining release gates
 
-The order below is a suggested sequence. Earlier candidate checks are completed
-evidence for their exact sources/images; changed final artifacts need matching
-qualification.
+The local successor package and its provider/source/security/operational proof
+are complete. Providers remain optional/default-disabled; preserve eligibility,
+operator registration/contact, aggregate pacing, attribution and lifecycle/removal
+conditions. The described use remains free/noncommercial, with no commercial IGDB
+partnership pending. Existing cover/Archive interpretation and provenance limits
+remain in [provider agreement evidence](provider-agreement-evidence.md).
 
-1. **Carry the implemented provider changes into final qualification.** The
-   [implementation handoff](provider-implementation-handoff.md) now has IGDB
-   five/six-calendar-month lifecycle, durable removal/restore protection and a
-   managed cover cache, plus direct Open Library covers bypassing proxy/optimizer.
-   See [implementation verification](provider-implementation-verification.md) for
-   exact development-test/artifact scope. Final stable artifact qualification
-   remains required; no persistent installation was migrated by this work.
-   The described use is completely free/noncommercial; no commercial IGDB
-   partnership is pending. Six months is our chosen policy, not IGDB approval;
-   cover-processing and Archive terms interpretation limits remain documented
-   in the [agreement evidence](provider-agreement-evidence.md). Keep providers
-   optional/default-disabled and release artifacts free of imported content and
-   shared credentials. Record operator registration/contact, eligibility,
-   aggregate pacing and attribution. TMDB lifecycle implementation remains in
-   place; final artwork/source/security checks belong to the candidate below.
-2. **Freeze and qualify the stable candidate.** Select the stable version and
-   source revision; build final API/web/tools images and assemble matching
-   source materials, license/notice delivery and inventories. Repeat relevant
-   source, all-layer artifact, secret/privacy and dependency/security checks.
-   Apply available compatible security fixes and reassess accepted findings under
-   the [current policy](security-risk-policy.md). Preserve the allocator, decoder,
-   JIT, architecture and caller conditions of existing exclusions, and bind any
-   retained risk acceptances to the final artifacts.
-   Keep historical candidate identities unchanged and retain documented
-   provenance limits. Earlier source-delivery and candidate proofs are in
-   [runtime redistribution verification](runtime-redistribution-verification.md)
-   and [candidate verification](release-candidate-verification-2026-11-23.md).
-3. **Complete final reference-installation acceptance.** On the exact candidate,
-   verify fresh installation, supported upgrade/data preservation, real HTTPS
-   sessions/CSRF/logout/recovery, persistence, ordinary/staff browser journeys
-   and coordinated backup/isolated restore with current erasure and TMDB/IGDB policy
-   replay. Earlier reference and TMDB image proofs already passed; repeat the
-   checks affected by the final source/runtime changes. Finish representative
-   load/capacity evidence and verify maintainer security-report notification
-   delivery. See [reference verification](self-hosted-reference-verification.md)
-   and the [detailed acceptance checklist](frontend-release-verification.md#outstanding-release-gates).
-4. **Publish the approved release.** Restore GitHub authentication, synchronize
-   the source, and obtain authorization for versioned artifact publication.
-   Deliver the matching source/notices with binaries and publish the release
-   announcement using the implemented release/versioning process. See
-   [release plan](self-hosted-release-plan.md) and [versioning verification](release-versioning-verification.md).
+1. **Verify maintainer security-report notification delivery.** The owner confirms
+   private reporting is enabled but has not received notifications. This does not
+   establish a delivery failure or prove receipt. A clearly labeled private test
+   draft is prepared locally; no report/message was sent. Confirm receipt through
+   the configured maintainer notification channel before closing this gate.
+2. **Restore GitHub authentication and synchronize the reviewed source.** Prior
+   SSH authentication was unavailable. The 23 reviewed successor implementation
+   files are integrated into the main working tree, with all 204 tooling tests
+   passing; main changes remain uncommitted. The isolated frozen source commit
+   and local-only tag preserve the exact reviewed release. Preserve all current
+   main changes/evidence and the original candidate when integrating/synchronizing.
+3. **Publish only after authorization.** The local verified bundle is ready for
+   review. Obtain explicit approval for remote source/tag/artifact publication;
+   deliver its full matching sources/notices and the release announcement using
+   the existing [release plan](self-hosted-release-plan.md) and
+   [versioning process](release-versioning-verification.md). Nothing is published
+   and the persistent developer installation remains unchanged.
 
 ## Per-installation operator duties
 

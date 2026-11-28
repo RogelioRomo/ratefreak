@@ -1,0 +1,160 @@
+{
+  "format": 1,
+  "inventory_sha256": "d398623190d8d5f1b3f9bce7a81e4eeacca9ad767aaf2daba0750be60c848c47",
+  "images": {
+    "caddy": {
+      "trial_image_id": "sha256:f9e40de3c091b03634b56315cd859a556742c6bfabe4f6df59f18793eb7f5002",
+      "image_id": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+      "all_collected_fingerprints_identical": true,
+      "compared_fields": [
+        "binaries",
+        "components",
+        "configuration_files",
+        "coverage_gaps",
+        "go_buildinfo",
+        "notice_files",
+        "package_database",
+        "platform",
+        "scope_limits",
+        "upstream_runtime"
+      ],
+      "filesystem_layer_digests_identical": false,
+      "source_and_notice_payloads_identical": true,
+      "all_raw_layer_blob_digests_verified": true,
+      "trial_raw_members": 4248,
+      "final_raw_members": 4248,
+      "allowed_generated_deltas": [
+        {
+          "layer": 1,
+          "path": "var/cache/ldconfig/aux-cache",
+          "before_sha256": "e8cd73a92905e9128970b0a0bf22a0f44924c084e13232735c4af8b6338661ff",
+          "after_sha256": "52c3482dcd9307c534fe6539ec4cb8c74a86f323560565b1a9e501f63b40966a",
+          "proof": "Parsed using retained glibc2.41 elf/cache.c aux-cache format: exact library size,flags,SONAME and ISA-level multisets match; file identity/time and hash-table/string ordering metadata may differ. Every distributed library/executable byte remains identical."
+        },
+        {
+          "layer": 1,
+          "path": "var/log/apt/history.log",
+          "before_sha256": "9b54f528a83d31d72f703094a354f00bc0c44767217045173a62e95fa0677b39",
+          "after_sha256": "961ed65d2a2d49cf15d7a6cb3ae15951e6b0fd16d08892ac81e04782e50daaeb",
+          "proof": "Log bytes identical after replacing recorded date/time fields only."
+        },
+        {
+          "layer": 1,
+          "path": "var/log/apt/term.log",
+          "before_sha256": "74e0f2caa329085beaf94ac3d3099abe304613411acc6334dcf13c9f6e8d815c",
+          "after_sha256": "db17711f4d6a5c84f2c8d57993d987de671b6855c25544c599004312c5c20b7d",
+          "proof": "Log bytes identical after replacing recorded date/time fields only."
+        },
+        {
+          "layer": 1,
+          "path": "var/log/dpkg.log",
+          "before_sha256": "61312fa231b61c00fe32e8369cd08e16863676eb8663138749812484caf05891",
+          "after_sha256": "13985c8c5d6a0a0fa4fe53629050d00225798441df48ba73f52068bb4b5274fd",
+          "proof": "Log bytes identical after replacing recorded date/time fields only."
+        }
+      ],
+      "raw_member_reconciliation_sha256": "d1f56d918a36ca075ea277b210815107abe470cc6896e7d18e3a05e61c58192c",
+      "generated_delta_proof_sha256": "95ce1f95adf2a2e16e7947dd165f7776a40ff1d2f5831a2fd8850484f2f65a40",
+      "filesystem_layer_digests": [
+        "sha256:dd57f90311a2567b55ff22eeacff1602fd04ad7566e315957731359eab173b90",
+        "sha256:a37ddee2d8c5c2c624a18dc553808b8b6c9e1de3145baf9f6121e297ae607380",
+        "sha256:fad16f6143202e81cf5a9733af9f06aa6e7b198651e8c5d1aa1b62f5428a8af2",
+        "sha256:177765a54cbf1ff923131af7ba401c9e77b55f96fa91572e5b76ace6b0b7da5e",
+        "sha256:9fca9f8b4d5b0a9d721731e6096b5a4055ed3f1ef72daddd02f9534e8b72ea25",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+      ],
+      "trial_labels": {
+        "org.opencontainers.image.revision": "f54048c233e405843160bc16d857f8c32082599f",
+        "org.opencontainers.image.source": "https://github.com/RogelioRomo/ratefreak",
+        "org.opencontainers.image.version": "0.1.0"
+      },
+      "final_labels": {
+        "org.opencontainers.image.revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+        "org.opencontainers.image.source": "https://github.com/RogelioRomo/ratefreak",
+        "org.opencontainers.image.version": "0.1.0"
+      }
+    },
+    "postgres": {
+      "trial_image_id": "sha256:6038dc4023fb2c9b997fa2b9064e0cccd7f2f38c9814e3367d2f9e8d21dca86e",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "all_collected_fingerprints_identical": true,
+      "compared_fields": [
+        "binaries",
+        "components",
+        "configuration_files",
+        "coverage_gaps",
+        "go_buildinfo",
+        "notice_files",
+        "package_database",
+        "platform",
+        "scope_limits",
+        "upstream_runtime"
+      ],
+      "filesystem_layer_digests_identical": false,
+      "source_and_notice_payloads_identical": true,
+      "all_raw_layer_blob_digests_verified": true,
+      "trial_raw_members": 10940,
+      "final_raw_members": 10940,
+      "allowed_generated_deltas": [
+        {
+          "layer": 13,
+          "path": "var/cache/ldconfig/aux-cache",
+          "before_sha256": "e2e08d50dd64e959a11122a74e59690a38e4e4dac84faa45f82088ec35697bf2",
+          "after_sha256": "ee881765582ec2243876e3fc5ad190fe10817453e7843a6059d11979f5489cc2",
+          "proof": "Parsed using retained glibc2.41 elf/cache.c aux-cache format: exact library size,flags,SONAME and ISA-level multisets match; file identity/time and hash-table/string ordering metadata may differ. Every distributed library/executable byte remains identical."
+        },
+        {
+          "layer": 13,
+          "path": "var/log/apt/history.log",
+          "before_sha256": "511cb4c9a7c6f755cea17cb43c5d0092f0dd263d94618fe3926c86231c254b4f",
+          "after_sha256": "7890a29a8a38c7d27420d11403e28ecf935686ee529a5b440f47d309c1705c69",
+          "proof": "Log bytes identical after replacing recorded date/time fields only."
+        },
+        {
+          "layer": 13,
+          "path": "var/log/apt/term.log",
+          "before_sha256": "b1005a7b89f3f61bf7b59f5258c9294744d0fce012336bb3ad9542c55ef4080e",
+          "after_sha256": "c0828fb297246b03d1b8c357bd5d15f827b6b23c89d39c61518e3cb70035ddbd",
+          "proof": "Log bytes identical after replacing recorded date/time fields only."
+        },
+        {
+          "layer": 13,
+          "path": "var/log/dpkg.log",
+          "before_sha256": "377085914a03472840aa8778592593dddcfdc7710b007254eab78f0ba45ec47d",
+          "after_sha256": "774d2deaecf2111be1153071e37fbc0f1ea02709eda175c6386ff4521248bd77",
+          "proof": "Log bytes identical after replacing recorded date/time fields only."
+        }
+      ],
+      "raw_member_reconciliation_sha256": "d1f56d918a36ca075ea277b210815107abe470cc6896e7d18e3a05e61c58192c",
+      "generated_delta_proof_sha256": "95ce1f95adf2a2e16e7947dd165f7776a40ff1d2f5831a2fd8850484f2f65a40",
+      "filesystem_layer_digests": [
+        "sha256:54ae9782e24f4abba5eebc5cc388f983b590abb011b69f20e0e592240bb7a698",
+        "sha256:c075fe327b538f131e3589ae86b9796c425af0bdaada321a86932983fce207ce",
+        "sha256:c1f3288e3b5adddc4784a8550645c006ba01c7739e29ca7d8b0a903fa0104314",
+        "sha256:715351b8f7f9a34d3f5ee4e321788d2a024248a01d5a551042fa67f0c1db76a2",
+        "sha256:6c853912bc9664cc70495f81e50bcac5d6d4d8927cb030acf610149710ffc33e",
+        "sha256:57b9a3494236c1968a87a951db475d79451d3b6ac78b3ef4ec2b67dae77e63e8",
+        "sha256:ed3f7aabd7f6b09df89f70a9226750a4075dba929e5f71ecbd5f5c1e7f145cd1",
+        "sha256:5597d3979cfe7c5c4aa1825a5cf9e13172a4d9cc3afac6570a1b711865b636ee",
+        "sha256:81ed41669c63283023adfefde3e3c9617cf59c8add183459cf0dab7c064fb94f",
+        "sha256:b226160f1f6389d411975105e9c2eb57e5a4079cb77a606485d55d20164f82c5",
+        "sha256:c9301c6b738f833c8fe79db75e7a44c7f757a6ee130a4132f9cec991df53e6c7",
+        "sha256:4f42e2a35c1a1c16429538bc94c109131c0583dc913e8000e55e2031b77ea63e",
+        "sha256:bbe88b181357d7e9fc2bc18a7a2694c877f978369d74cdbfb94b1a4415eb4d5c",
+        "sha256:c15dd19e2b60a148b72347cbf3abff6356ecc6d3dc88bd8197323f987070e1f9"
+      ],
+      "trial_labels": {
+        "org.opencontainers.image.revision": "f54048c233e405843160bc16d857f8c32082599f",
+        "org.opencontainers.image.source": "https://github.com/RogelioRomo/ratefreak",
+        "org.opencontainers.image.version": "0.1.0"
+      },
+      "final_labels": {
+        "org.opencontainers.image.revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+        "org.opencontainers.image.source": "https://github.com/RogelioRomo/ratefreak",
+        "org.opencontainers.image.version": "0.1.0"
+      }
+    }
+  },
+  "gaps": [],
+  "scope": "Source/notice rebinding only; no security or publication clearance"
+}

@@ -1,0 +1,19 @@
+{
+  "all_six_role_allocator_values": {
+    "postgres": "glibc.malloc.arena_max=1",
+    "api": "glibc.malloc.arena_max=1",
+    "web": "glibc.malloc.arena_max=1",
+    "storage-init": "glibc.malloc.arena_max=1",
+    "migrate": "glibc.malloc.arena_max=1",
+    "tools": "glibc.malloc.arena_max=1"
+  },
+  "postgres_jit": "off",
+  "running_application_images": {
+    "api": "sha256:db65696090623e3f5336215360512837f38be773c913d593e558e81103eca646",
+    "web": "sha256:9bb46deb17c663e22f96b1875ec3269a02ae519d10ee2d51ac1f724238e2b05e"
+  },
+  "frozen_compose_sha256": "589ba32b961124fabe966e65f5474a5bca60a8483e92fcafd3cc0d70072f669b",
+  "production_operator_used": true,
+  "provider_credentials_supplied": false,
+  "persistent_installation_changed": false
+}

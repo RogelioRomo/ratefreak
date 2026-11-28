@@ -1,0 +1,30 @@
+{
+  "source_revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--user",
+    "1000:1000",
+    "--mount",
+    "type=bind,src=/home/rhaydon/documents/repos/ratefreak/.local/stable-qualification-2026-11-27/successor-security/frozen-source,dst=/source,readonly",
+    "--mount",
+    "type=bind,src=/home/rhaydon/documents/repos/ratefreak/.local/stable-qualification-2026-11-27/successor-security,dst=/output",
+    "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+    "fs",
+    "--cache-dir",
+    "/output/cache",
+    "--skip-db-update",
+    "--skip-version-check",
+    "--scanners",
+    "vuln",
+    "--list-all-pkgs",
+    "--format",
+    "json",
+    "--output",
+    "/output/dependency-trivy.json",
+    "/source"
+  ],
+  "exit_code": 0,
+  "utc": "2026-11-28T00:42:54.029708+00:00"
+}

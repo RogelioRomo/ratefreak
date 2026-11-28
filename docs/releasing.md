@@ -16,10 +16,29 @@ without Git metadata. Runtime environment settings cannot
 change compiled installed identity. Read the pre-1.0 compatibility rules in
 [release notes](releases/README.md).
 
-Source builds continue to use `ratefreak-{api,web,tools}:local`. Downloaded bundles
+Source builds use `ratefreak-{api,web,tools,postgres,caddy}:local`. Downloaded bundles
 load versioned local tags together; they require no registry credentials. Install
 only downloads obtained from the project's verified GitHub release. Checksums
 prove byte agreement with a manifest, not the identity of its publisher.
+
+## Complete reference image set
+
+New candidates deliver API/web/tools plus patched PostgreSQL and Caddy images;
+see [ADR 0023](adr/0023-patched-reference-images.md). The application `images`
+map remains three-role; `reference_images` contains exactly PostgreSQL/Caddy.
+`built-reference-images.json` and `reference-inventory.json` bind actual package,
+Go module/toolchain, executable and original notice evidence to those two IDs.
+Every image archive and both reference notice archives are included in the
+artifact hash manifest. All five archives, labels, Linux amd64 identities and
+existing-tag conflicts are checked before selecting the new set. Source builds
+select the complete set only after every build and inspection succeeds.
+
+Official preparation refreshes each Dockerfile's `runtime` stage and pulls its
+pinned base. It refuses existing version tags. If an unpublished candidate needs
+replacement, first preserve its exact archives and IDs, retain dated backup image
+tags, and explicitly retire its old local version tags; never force the loader to
+overwrite a tag or replace any published artifacts. Finalization still reuses
+accepted archives without building again.
 
 ## Verification and candidate preparation
 
@@ -103,6 +122,25 @@ make a legal determination or prove that arbitrary supplied archives satisfy a
 license. Finish the documented dependency/provider review and image source-delivery
 review before supplying approved evidence. Current unresolved OS/API/tools source
 work remains blocking; an empty manifest or a boolean clearance flag is insufficient.
+
+## Reference source/license evidence
+
+In addition to the application `coverage.json`, complete five-image candidates
+require `reference-coverage.json` in the reviewed source-material directory.
+It has `format: 1` and exact `postgres`/`caddy` `images` entries. Each names its
+`image_id`, a `review_record`, a flat `files` SHA-256 map and `components` matching
+`reference-inventory.json` by scope/name/version. Every component needs actual
+`notice_files` and corresponding `source_files`, or a documented reviewed
+permissive exception with an inventoried record. Review text alone cannot stand
+in for sources or original grant texts. The final `sources.tar.gz` delivers both
+coverage records and every referenced source/notice file; the validator checks
+their bytes again. Historical three-image material does not cover the newly
+distributed reference binaries. Collector `coverage_gaps` describe supplementary
+review obligations and cannot themselves serve as clearance.
+
+Fresh and pinned-baseline upgrade receipts must both record the exact
+`referenceImages` IDs. Qualification also rechecks collation, HTTPS, persistence,
+backup/isolated restore and current erasure/TMDB/IGDB replay after runtime changes.
 
 ## Publication checklist
 

@@ -1,0 +1,73 @@
+{
+  "records": [
+    {
+      "assessment": "Stack-guard layout bypass aids a separate native stack-buffer overflow. Primary vendor low/unimportant judgment and reference deployment support low practical risk; no fix or complete exclusion is claimed.",
+      "disposition": "accepted-low-risk",
+      "evidence": [
+        "native-rebinding.json",
+        "configuration-probes.json",
+        "../2026-11-26-security-risk-acceptance/decision.json"
+      ],
+      "fix_status": "No corrected Debian vendor package currently listed; existing native weakness retained. Ubuntu22 priority low/ignored following upstream.",
+      "id": "CVE-2019-1010022",
+      "images": [
+        "api",
+        "web",
+        "tools",
+        "postgres-trixie"
+      ],
+      "reassess_if": [
+        "Compatible vendor fix, changed native/configuration/exposure, changed upstream assessment or new exploitation evidence."
+      ]
+    },
+    {
+      "assessment": "Predictable/reused native thread-stack addresses aid a separate memory-corruption exploit. Earlier actual address reuse persists in unchanged binaries; vendor unimportant assessment supports accepted low practical risk.",
+      "disposition": "accepted-low-risk",
+      "evidence": [
+        "native-rebinding.json",
+        "configuration-probes.json",
+        "../2026-11-26-security-risk-acceptance/decision.json"
+      ],
+      "fix_status": "No corrected Debian vendor package currently listed; existing native weakness retained. Ubuntu22 priority low/ignored following upstream.",
+      "id": "CVE-2019-1010024",
+      "images": [
+        "api",
+        "web",
+        "tools",
+        "postgres-trixie"
+      ],
+      "reassess_if": [
+        "Compatible vendor fix, changed native/configuration/exposure, changed upstream assessment or new exploitation evidence."
+      ]
+    },
+    {
+      "assessment": "Six rendered reference roles run real16-thread allocator probe and each produces one arena with glibc.malloc.arena_max=1. Changing policy/startup/native code requires reassessment.",
+      "disposition": "conditional-allocator-policy-exclusion",
+      "evidence": [
+        "configuration-probes.json"
+      ],
+      "id": "CVE-2019-1010025"
+    },
+    {
+      "assessment": "Actual compiled registration rejects all four CommonJS/ESM zstd decoder APIs and warmed built-in fetch zstd response; gzip/deflate/Brotli and allowed rasters still work. Node24.22.3 remains latest24.x from vendor index; no routine same-line patched runtime currently published. OS zstd fixes do not patch Node copy.",
+      "component": "Node24.22.3 embedded zstd1.5.7",
+      "disposition": "supported-caller-mitigation",
+      "evidence": [
+        "decoder-probe.json",
+        "vendor-acquisition.json"
+      ],
+      "id": "CVE-2026-124851"
+    },
+    {
+      "assessment": "All retained Skia payloads included in byte rebinding; exact4.157 source pin contains previously reviewed fixed Skia ancestry. No independent exploit reproduction or bit-for-bit rebuild claim.",
+      "component": "SkiaSharp4.157.0",
+      "disposition": "source-lineage-fixed-boundary-retained",
+      "evidence": [
+        "native-rebinding.json",
+        "../2026-11-25-security-followup/skia/fix-boundary.json"
+      ],
+      "id": "CVE-2026-126912"
+    }
+  ],
+  "scope": "Additional native properties not fully represented by package scanner rows; not a claim of exhaustive native vulnerability coverage."
+}

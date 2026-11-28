@@ -1,0 +1,3444 @@
+{
+  "format": 1,
+  "sources": [
+    {
+      "source_package": "acl",
+      "source_version": "2.3.2-2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "1f42130ccb5442fe2db2aee1dcc03c51a31512dd2519a38e8fc9270c5abbc807-acl_2.3.2-2.dsc",
+          "original_file": "acl_2.3.2-2.dsc",
+          "sha256": "1f42130ccb5442fe2db2aee1dcc03c51a31512dd2519a38e8fc9270c5abbc807",
+          "bytes": 2604,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "97203a72cae99ab89a067fe2210c1cbf052bc492b479eca7d226d9830883b0bd-acl_2.3.2.orig.tar.xz",
+          "original_file": "acl_2.3.2.orig.tar.xz",
+          "sha256": "97203a72cae99ab89a067fe2210c1cbf052bc492b479eca7d226d9830883b0bd",
+          "bytes": 371680,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "184c6a903490885a096095db67b433a04542c6569f167cbe8115268c0f227273-acl_2.3.2.orig.tar.xz.asc",
+          "original_file": "acl_2.3.2.orig.tar.xz.asc",
+          "sha256": "184c6a903490885a096095db67b433a04542c6569f167cbe8115268c0f227273",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "e27b6e194c0a7554595d76f96acdceb800631bdc46c36457b73bc7e4a0c5f2ee-acl_2.3.2-2.debian.tar.xz",
+          "original_file": "acl_2.3.2-2.debian.tar.xz",
+          "sha256": "e27b6e194c0a7554595d76f96acdceb800631bdc46c36457b73bc7e4a0c5f2ee",
+          "bytes": 24296,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "adduser",
+      "source_version": "3.152",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "5ad23648a879d006e7a57d351720d4cbbbe3fb5e274ea52beb4f619896b9d520-adduser_3.152.dsc",
+          "original_file": "adduser_3.152.dsc",
+          "sha256": "5ad23648a879d006e7a57d351720d4cbbbe3fb5e274ea52beb4f619896b9d520",
+          "bytes": 1678,
+          "url": "https://deb.debian.org/debian/pool/main/a/adduser/adduser_3.152.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "484cdde2d48053be40657b564375469fc577e89f3b984b01aed247b6081355b8-adduser_3.152.tar.xz",
+          "original_file": "adduser_3.152.tar.xz",
+          "sha256": "484cdde2d48053be40657b564375469fc577e89f3b984b01aed247b6081355b8",
+          "bytes": 334252,
+          "url": "https://deb.debian.org/debian/pool/main/a/adduser/adduser_3.152.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "apparmor",
+      "source_version": "4.1.0-1",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "db02d7e4a32280d01ee91aaf5b38f31a9b12f3ebf187c74ccd5f903dbde32b50-apparmor_4.1.0-1.dsc",
+          "original_file": "apparmor_4.1.0-1.dsc",
+          "sha256": "db02d7e4a32280d01ee91aaf5b38f31a9b12f3ebf187c74ccd5f903dbde32b50",
+          "bytes": 3269,
+          "url": "https://deb.debian.org/debian/pool/main/a/apparmor/apparmor_4.1.0-1.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "c4422381941a6f30b7a5c9ee1defb7bc4efe3adbee3f99d642aa6e9bb8bcffcf-apparmor_4.1.0.orig.tar.gz",
+          "original_file": "apparmor_4.1.0.orig.tar.gz",
+          "sha256": "c4422381941a6f30b7a5c9ee1defb7bc4efe3adbee3f99d642aa6e9bb8bcffcf",
+          "bytes": 8496942,
+          "url": "https://deb.debian.org/debian/pool/main/a/apparmor/apparmor_4.1.0.orig.tar.gz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "9c606402ec543f494c43ee9707f993da21a0ac68dccd8cdd4ca3e308b436addb-apparmor_4.1.0.orig.tar.gz.asc",
+          "original_file": "apparmor_4.1.0.orig.tar.gz.asc",
+          "sha256": "9c606402ec543f494c43ee9707f993da21a0ac68dccd8cdd4ca3e308b436addb",
+          "bytes": 870,
+          "url": "https://deb.debian.org/debian/pool/main/a/apparmor/apparmor_4.1.0.orig.tar.gz.asc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "85d693ea43458bd07a98fe9504ae6a2da309cb5820eef62871e1a6ed43d34084-apparmor_4.1.0-1.debian.tar.xz",
+          "original_file": "apparmor_4.1.0-1.debian.tar.xz",
+          "sha256": "85d693ea43458bd07a98fe9504ae6a2da309cb5820eef62871e1a6ed43d34084",
+          "bytes": 93168,
+          "url": "https://deb.debian.org/debian/pool/main/a/apparmor/apparmor_4.1.0-1.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "apt",
+      "source_version": "3.0.4",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "efc029dbfb0e264dfb38a8bf34398a8d3709cd35a463c270153b59e2e4ffb404-apt_3.0.4.dsc",
+          "original_file": "apt_3.0.4.dsc",
+          "sha256": "efc029dbfb0e264dfb38a8bf34398a8d3709cd35a463c270153b59e2e4ffb404",
+          "bytes": 3091,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "e853aec49afbe520ebcd4dbcbc98e1c55262c6bf1c119cf43e6aec69752443c6-apt_3.0.4.tar.xz",
+          "original_file": "apt_3.0.4.tar.xz",
+          "sha256": "e853aec49afbe520ebcd4dbcbc98e1c55262c6bf1c119cf43e6aec69752443c6",
+          "bytes": 2423460,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "attr",
+      "source_version": "1:2.5.2-3",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "c2ae3e15db059029030ddf4fdac179d8f90d423f2310a6ef8c745ba28ac18b0a-attr_2.5.2-3.dsc",
+          "original_file": "attr_2.5.2-3.dsc",
+          "sha256": "c2ae3e15db059029030ddf4fdac179d8f90d423f2310a6ef8c745ba28ac18b0a",
+          "bytes": 2576,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "f2e97b0ab7ce293681ab701915766190d607a1dba7fae8a718138150b700a70b-attr_2.5.2.orig.tar.xz",
+          "original_file": "attr_2.5.2.orig.tar.xz",
+          "sha256": "f2e97b0ab7ce293681ab701915766190d607a1dba7fae8a718138150b700a70b",
+          "bytes": 334180,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "eeac729088d3c6379e91b7596cb3582e46b047c47f0fa3c5c77f9c9e84dc3a4c-attr_2.5.2.orig.tar.xz.asc",
+          "original_file": "attr_2.5.2.orig.tar.xz.asc",
+          "sha256": "eeac729088d3c6379e91b7596cb3582e46b047c47f0fa3c5c77f9c9e84dc3a4c",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "153f98c87575277ea021e24dae36293b7738699174438a2060b47e8312b771e3-attr_2.5.2-3.debian.tar.xz",
+          "original_file": "attr_2.5.2-3.debian.tar.xz",
+          "sha256": "153f98c87575277ea021e24dae36293b7738699174438a2060b47e8312b771e3",
+          "bytes": 32260,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "audit",
+      "source_version": "1:4.0.2-2+deb13u1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "f72198219d4a50967e328a143c9c0a7ba981c8f3790b2880465b8a80ac33850e-audit_4.0.2-2+deb13u1.dsc",
+          "original_file": "audit_4.0.2-2+deb13u1.dsc",
+          "sha256": "f72198219d4a50967e328a143c9c0a7ba981c8f3790b2880465b8a80ac33850e",
+          "bytes": 2761,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "d5d1b5d50ee4a2d0d17875bc6ae6bd6a7d5b34d9557ea847a39faec531faaa0a-audit_4.0.2.orig.tar.gz",
+          "original_file": "audit_4.0.2.orig.tar.gz",
+          "sha256": "d5d1b5d50ee4a2d0d17875bc6ae6bd6a7d5b34d9557ea847a39faec531faaa0a",
+          "bytes": 1198769,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "ab39cb2d6dc6b0440da37f085b643dffc86d8cc5370b5cc6502d36b53edaa862-audit_4.0.2-2+deb13u1.debian.tar.xz",
+          "original_file": "audit_4.0.2-2+deb13u1.debian.tar.xz",
+          "sha256": "ab39cb2d6dc6b0440da37f085b643dffc86d8cc5370b5cc6502d36b53edaa862",
+          "bytes": 25008,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "base-files",
+      "source_version": "13.8+deb13u7",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "6240b5a02fc32bd6d925bb7776e00c467e80d930f8cf3c4a20c299ce692dc7e4-base-files_13.8+deb13u7.dsc",
+          "original_file": "base-files_13.8+deb13u7.dsc",
+          "sha256": "6240b5a02fc32bd6d925bb7776e00c467e80d930f8cf3c4a20c299ce692dc7e4",
+          "bytes": 1247,
+          "prior_archive": "lower-layer-os-sources.tar",
+          "prior_archive_sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7"
+        },
+        {
+          "file": "be32803b9408ac9aa46b96f68c83ee45e88d04d89854a87999986efc4cb34c69-base-files_13.8+deb13u7.tar.xz",
+          "original_file": "base-files_13.8+deb13u7.tar.xz",
+          "sha256": "be32803b9408ac9aa46b96f68c83ee45e88d04d89854a87999986efc4cb34c69",
+          "bytes": 83444,
+          "prior_archive": "lower-layer-os-sources.tar",
+          "prior_archive_sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7"
+        }
+      ]
+    },
+    {
+      "source_package": "base-files",
+      "source_version": "13.8+deb13u8",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "034d399f488ceb536a407fd1138eb6b564ec709be4c19f636ff9166bb7295472-base-files_13.8+deb13u8.dsc",
+          "original_file": "base-files_13.8+deb13u8.dsc",
+          "sha256": "034d399f488ceb536a407fd1138eb6b564ec709be4c19f636ff9166bb7295472",
+          "bytes": 1247,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "a86beb649384499dfa575d52dca5cc8418a51b60b4ea081dd00a68c1abd792c2-base-files_13.8+deb13u8.tar.xz",
+          "original_file": "base-files_13.8+deb13u8.tar.xz",
+          "sha256": "a86beb649384499dfa575d52dca5cc8418a51b60b4ea081dd00a68c1abd792c2",
+          "bytes": 83524,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "base-passwd",
+      "source_version": "3.6.7",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "23dafe71f85d7595d9e20efba17729c1c975a33bd469cf09bfad9e96b1f542f3-base-passwd_3.6.7.dsc",
+          "original_file": "base-passwd_3.6.7.dsc",
+          "sha256": "23dafe71f85d7595d9e20efba17729c1c975a33bd469cf09bfad9e96b1f542f3",
+          "bytes": 1891,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "cf869870fed7862b57bfa9e99cd5cd6f365e2349705a1b65af7fc182629bd1ab-base-passwd_3.6.7.tar.xz",
+          "original_file": "base-passwd_3.6.7.tar.xz",
+          "sha256": "cf869870fed7862b57bfa9e99cd5cd6f365e2349705a1b65af7fc182629bd1ab",
+          "bytes": 60872,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "bash",
+      "source_version": "5.2.37-2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "7e5f6d5a26093e812f8841d5cf3245054102e86986017d8edd859417b03707f9-bash_5.2.37-2.dsc",
+          "original_file": "bash_5.2.37-2.dsc",
+          "sha256": "7e5f6d5a26093e812f8841d5cf3245054102e86986017d8edd859417b03707f9",
+          "bytes": 2162,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "370704c9c859f4060b7df19055e43bb9b5fa09d887699cf6ba87885c5485d36a-bash_5.2.37.orig.tar.xz",
+          "original_file": "bash_5.2.37.orig.tar.xz",
+          "sha256": "370704c9c859f4060b7df19055e43bb9b5fa09d887699cf6ba87885c5485d36a",
+          "bytes": 5600932,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "42e03ef523258b61fa765b8c9719d7bf461f2a274260d07fbe45ca7e4627923a-bash_5.2.37-2.debian.tar.xz",
+          "original_file": "bash_5.2.37-2.debian.tar.xz",
+          "sha256": "42e03ef523258b61fa765b8c9719d7bf461f2a274260d07fbe45ca7e4627923a",
+          "bytes": 88360,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "bzip2",
+      "source_version": "1.0.8-6",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "cd3bfd77254a6b5ef1be144bdc90a0dd374bc8206afd98ba4abf828741b79820-bzip2_1.0.8-6.dsc",
+          "original_file": "bzip2_1.0.8-6.dsc",
+          "sha256": "cd3bfd77254a6b5ef1be144bdc90a0dd374bc8206afd98ba4abf828741b79820",
+          "bytes": 1604,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269-bzip2_1.0.8.orig.tar.gz",
+          "original_file": "bzip2_1.0.8.orig.tar.gz",
+          "sha256": "ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269",
+          "bytes": 810029,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "648ed0dac9a041ba6951e0cca521628aa39947cefee78139f7b934a5dc502095-bzip2_1.0.8-6.debian.tar.bz2",
+          "original_file": "bzip2_1.0.8-6.debian.tar.bz2",
+          "sha256": "648ed0dac9a041ba6951e0cca521628aa39947cefee78139f7b934a5dc502095",
+          "bytes": 26991,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "ca-certificates",
+      "source_version": "20250419+deb13u1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "347487e99c0b9f09150c8d78ad03e3552545c3904d5e0d7f731ef2ef79d484d4-ca-certificates_20250419+deb13u1.dsc",
+          "original_file": "ca-certificates_20250419+deb13u1.dsc",
+          "sha256": "347487e99c0b9f09150c8d78ad03e3552545c3904d5e0d7f731ef2ef79d484d4",
+          "bytes": 1924,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "1b2e3d0b90cfc62ac8033d64e18ea4649fbb2a01c937c9ac9d36e762da6b9446-ca-certificates_20250419+deb13u1.tar.xz",
+          "original_file": "ca-certificates_20250419+deb13u1.tar.xz",
+          "sha256": "1b2e3d0b90cfc62ac8033d64e18ea4649fbb2a01c937c9ac9d36e762da6b9446",
+          "bytes": 277284,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "cdebconf",
+      "source_version": "0.280",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "36cdaa45fca445d2164fbdd81faad9918d748fa703678d8af237354d5744b1d1-cdebconf_0.280.dsc",
+          "original_file": "cdebconf_0.280.dsc",
+          "sha256": "36cdaa45fca445d2164fbdd81faad9918d748fa703678d8af237354d5744b1d1",
+          "bytes": 2703,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "c42115131939845e452a323ceded937efad3b2e3e1b80a1a186f9d5c494a43a2-cdebconf_0.280.tar.xz",
+          "original_file": "cdebconf_0.280.tar.xz",
+          "sha256": "c42115131939845e452a323ceded937efad3b2e3e1b80a1a186f9d5c494a43a2",
+          "bytes": 286132,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "coreutils",
+      "source_version": "9.7-3",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "c3a207e3aaad165765c7a6fab89045f5fd20035fea6830b9f9ebbb92ebfbff89-coreutils_9.7-3.dsc",
+          "original_file": "coreutils_9.7-3.dsc",
+          "sha256": "c3a207e3aaad165765c7a6fab89045f5fd20035fea6830b9f9ebbb92ebfbff89",
+          "bytes": 2122,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "e8bb26ad0293f9b5a1fc43fb42ba970e312c66ce92c1b0b16713d7500db251bf-coreutils_9.7.orig.tar.xz",
+          "original_file": "coreutils_9.7.orig.tar.xz",
+          "sha256": "e8bb26ad0293f9b5a1fc43fb42ba970e312c66ce92c1b0b16713d7500db251bf",
+          "bytes": 6158960,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "5070e9428bd372a7fa1f66b395b81092bb40c98f9f56a2e2bc55c47fd387e901-coreutils_9.7.orig.tar.xz.asc",
+          "original_file": "coreutils_9.7.orig.tar.xz.asc",
+          "sha256": "5070e9428bd372a7fa1f66b395b81092bb40c98f9f56a2e2bc55c47fd387e901",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "483f77876a080577f63da1d004cc1cf17d16df65d6925aefdd3294c6101eccfb-coreutils_9.7-3.debian.tar.xz",
+          "original_file": "coreutils_9.7-3.debian.tar.xz",
+          "sha256": "483f77876a080577f63da1d004cc1cf17d16df65d6925aefdd3294c6101eccfb",
+          "bytes": 26820,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "cyrus-sasl2",
+      "source_version": "2.1.28+dfsg1-9",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "179cda376ee9f9a54098f902174299dd183ae78c703f72b86bd4c3297db4c153-cyrus-sasl2_2.1.28+dfsg1-9.dsc",
+          "original_file": "cyrus-sasl2_2.1.28+dfsg1-9.dsc",
+          "sha256": "179cda376ee9f9a54098f902174299dd183ae78c703f72b86bd4c3297db4c153",
+          "bytes": 3306,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "e796a5d85d1a85e1b433d43504e467f9075c7ebc0b45730a3996cf11b1deada4-cyrus-sasl2_2.1.28+dfsg1.orig.tar.xz",
+          "original_file": "cyrus-sasl2_2.1.28+dfsg1.orig.tar.xz",
+          "sha256": "e796a5d85d1a85e1b433d43504e467f9075c7ebc0b45730a3996cf11b1deada4",
+          "bytes": 794540,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "8215afa01ee2907da0a650bfa6b9cf0fae12f2611a098eedd853b5e71adf6623-cyrus-sasl2_2.1.28+dfsg1-9.debian.tar.xz",
+          "original_file": "cyrus-sasl2_2.1.28+dfsg1-9.debian.tar.xz",
+          "sha256": "8215afa01ee2907da0a650bfa6b9cf0fae12f2611a098eedd853b5e71adf6623",
+          "bytes": 99180,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "dash",
+      "source_version": "0.5.12-12",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "589efc4d87a4ae4745c273bdb33198d7c4f28a71736a8ece81d3677cf9c6e5ce-dash_0.5.12-12.dsc",
+          "original_file": "dash_0.5.12-12.dsc",
+          "sha256": "589efc4d87a4ae4745c273bdb33198d7c4f28a71736a8ece81d3677cf9c6e5ce",
+          "bytes": 1460,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "6a474ac46e8b0b32916c4c60df694c82058d3297d8b385b74508030ca4a8f28a-dash_0.5.12.orig.tar.gz",
+          "original_file": "dash_0.5.12.orig.tar.gz",
+          "sha256": "6a474ac46e8b0b32916c4c60df694c82058d3297d8b385b74508030ca4a8f28a",
+          "bytes": 246054,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "a278acb5d9a1f5d9a086d36a547287cbf3105b8f33c0e62d86d264decf5ba1ad-dash_0.5.12-12.debian.tar.xz",
+          "original_file": "dash_0.5.12-12.debian.tar.xz",
+          "sha256": "a278acb5d9a1f5d9a086d36a547287cbf3105b8f33c0e62d86d264decf5ba1ad",
+          "bytes": 47300,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "db5.3",
+      "source_version": "5.3.28+dfsg2-9",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "045f392c75dffc9d4f3bd44978b90ca8d45b935cf0ae4202bf79a760f2ce07b1-db5.3_5.3.28+dfsg2-9.dsc",
+          "original_file": "db5.3_5.3.28+dfsg2-9.dsc",
+          "sha256": "045f392c75dffc9d4f3bd44978b90ca8d45b935cf0ae4202bf79a760f2ce07b1",
+          "bytes": 2373,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "ad41b507415dec8316e828b2230242af2251d2c86eefa3c7aa9ef47c5239ef33-db5.3_5.3.28+dfsg2.orig.tar.xz",
+          "original_file": "db5.3_5.3.28+dfsg2.orig.tar.xz",
+          "sha256": "ad41b507415dec8316e828b2230242af2251d2c86eefa3c7aa9ef47c5239ef33",
+          "bytes": 21287688,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "21fe6ee0491c83d0c34fe52e0e0e423946172eff68262584a0cc8ef880c36b74-db5.3_5.3.28+dfsg2-9.debian.tar.xz",
+          "original_file": "db5.3_5.3.28+dfsg2-9.debian.tar.xz",
+          "sha256": "21fe6ee0491c83d0c34fe52e0e0e423946172eff68262584a0cc8ef880c36b74",
+          "bytes": 36412,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "debconf",
+      "source_version": "1.5.91",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "1aa3ceaef24ef533cfffe7f9ca750c6325dbaea86a7abca77cb4439ceae930d8-debconf_1.5.91.dsc",
+          "original_file": "debconf_1.5.91.dsc",
+          "sha256": "1aa3ceaef24ef533cfffe7f9ca750c6325dbaea86a7abca77cb4439ceae930d8",
+          "bytes": 2035,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "18f3f43924ccc870be483d7c5f1a9be59e51ae1da403059d654666b5a175bf15-debconf_1.5.91.tar.xz",
+          "original_file": "debconf_1.5.91.tar.xz",
+          "sha256": "18f3f43924ccc870be483d7c5f1a9be59e51ae1da403059d654666b5a175bf15",
+          "bytes": 609964,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "debian-archive-keyring",
+      "source_version": "2025.1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "09604bd8d4562a1e942e5d1a19a6b82447cbdeb2e7c7f0df7c32a2503647ea47-debian-archive-keyring_2025.1.dsc",
+          "original_file": "debian-archive-keyring_2025.1.dsc",
+          "sha256": "09604bd8d4562a1e942e5d1a19a6b82447cbdeb2e7c7f0df7c32a2503647ea47",
+          "bytes": 1267,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "2d019c3fa19c42da4d37571e473c296286dad0214cb3bd5cafd99f04a8bf5471-debian-archive-keyring_2025.1.tar.xz",
+          "original_file": "debian-archive-keyring_2025.1.tar.xz",
+          "sha256": "2d019c3fa19c42da4d37571e473c296286dad0214cb3bd5cafd99f04a8bf5471",
+          "bytes": 138248,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "debianutils",
+      "source_version": "5.23.2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "471b65deec232bb033f3e3e06d5bf64dac0ced474c6fd61d41538f3f3de876f8-debianutils_5.23.2.dsc",
+          "original_file": "debianutils_5.23.2.dsc",
+          "sha256": "471b65deec232bb033f3e3e06d5bf64dac0ced474c6fd61d41538f3f3de876f8",
+          "bytes": 1908,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "79e524b7526dba2ec5c409d0ee52ebec135815cf5b2907375d444122e0594b69-debianutils_5.23.2.tar.xz",
+          "original_file": "debianutils_5.23.2.tar.xz",
+          "sha256": "79e524b7526dba2ec5c409d0ee52ebec135815cf5b2907375d444122e0594b69",
+          "bytes": 82376,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "diffutils",
+      "source_version": "1:3.10-4",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "087b414ddfc92161a30186926bc4b4ac02c7cba589b0323561cacd54c8b48392-diffutils_3.10-4.dsc",
+          "original_file": "diffutils_3.10-4.dsc",
+          "sha256": "087b414ddfc92161a30186926bc4b4ac02c7cba589b0323561cacd54c8b48392",
+          "bytes": 1875,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "90e5e93cc724e4ebe12ede80df1634063c7a855692685919bfe60b556c9bd09e-diffutils_3.10.orig.tar.xz",
+          "original_file": "diffutils_3.10.orig.tar.xz",
+          "sha256": "90e5e93cc724e4ebe12ede80df1634063c7a855692685919bfe60b556c9bd09e",
+          "bytes": 1624240,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "a94faf8f1baa04ff220f7b2ccb137c16337284e023ebc4a1d5df475c08d810f7-diffutils_3.10.orig.tar.xz.asc",
+          "original_file": "diffutils_3.10.orig.tar.xz.asc",
+          "sha256": "a94faf8f1baa04ff220f7b2ccb137c16337284e023ebc4a1d5df475c08d810f7",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "8588b6ffb897ccff46c583e58ef50500b2511eee41949b21e8afa5439712c2c7-diffutils_3.10-4.debian.tar.xz",
+          "original_file": "diffutils_3.10-4.debian.tar.xz",
+          "sha256": "8588b6ffb897ccff46c583e58ef50500b2511eee41949b21e8afa5439712c2c7",
+          "bytes": 14304,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "dpkg",
+      "source_version": "1.22.22",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "fc481d9b87cd4416cd55673cc1fa716b57480a6b23253ac0d87c1abbfad4c964-dpkg_1.22.22.dsc",
+          "original_file": "dpkg_1.22.22.dsc",
+          "sha256": "fc481d9b87cd4416cd55673cc1fa716b57480a6b23253ac0d87c1abbfad4c964",
+          "bytes": 3449,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "d5ea9f132deec8030b50ab2a02ade2b49f0c7a195805a302c8301156fe833a57-dpkg_1.22.22.tar.xz",
+          "original_file": "dpkg_1.22.22.tar.xz",
+          "sha256": "d5ea9f132deec8030b50ab2a02ade2b49f0c7a195805a302c8301156fe833a57",
+          "bytes": 5746724,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "e2fsprogs",
+      "source_version": "1.47.2-3",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "860abb653ecbe01a11bb7e41c9e09a45e83847bffa585f7a3d3c0f9401c9d4bb-e2fsprogs_1.47.2-3.dsc",
+          "original_file": "e2fsprogs_1.47.2-3.dsc",
+          "sha256": "860abb653ecbe01a11bb7e41c9e09a45e83847bffa585f7a3d3c0f9401c9d4bb",
+          "bytes": 3035,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "6dcd67ff9d8b13274ba3f088e4318be4f5b71412cd863524423fc49d39a6371f-e2fsprogs_1.47.2.orig.tar.gz",
+          "original_file": "e2fsprogs_1.47.2.orig.tar.gz",
+          "sha256": "6dcd67ff9d8b13274ba3f088e4318be4f5b71412cd863524423fc49d39a6371f",
+          "bytes": 9996725,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "2063f62a198dd3df21f789c990c2cf9b4a5de24ed55f0b78d86e97e98daffc9d-e2fsprogs_1.47.2.orig.tar.gz.asc",
+          "original_file": "e2fsprogs_1.47.2.orig.tar.gz.asc",
+          "sha256": "2063f62a198dd3df21f789c990c2cf9b4a5de24ed55f0b78d86e97e98daffc9d",
+          "bytes": 488,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "5517aae5ce5196e49fa314492f0639ad7a1692c9521d703b6c81acff77a1564e-e2fsprogs_1.47.2-3.debian.tar.xz",
+          "original_file": "e2fsprogs_1.47.2-3.debian.tar.xz",
+          "sha256": "5517aae5ce5196e49fa314492f0639ad7a1692c9521d703b6c81acff77a1564e",
+          "bytes": 103684,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "findutils",
+      "source_version": "4.10.0-3",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "fa6b67056d9e5b4d8edbfc8ab95ac15ac769b140284426973f6a1ef07a4594ec-findutils_4.10.0-3.dsc",
+          "original_file": "findutils_4.10.0-3.dsc",
+          "sha256": "fa6b67056d9e5b4d8edbfc8ab95ac15ac769b140284426973f6a1ef07a4594ec",
+          "bytes": 2291,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "1387e0b67ff247d2abde998f90dfbf70c1491391a59ddfecb8ae698789f0a4f5-findutils_4.10.0.orig.tar.xz",
+          "original_file": "findutils_4.10.0.orig.tar.xz",
+          "sha256": "1387e0b67ff247d2abde998f90dfbf70c1491391a59ddfecb8ae698789f0a4f5",
+          "bytes": 2240712,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "7f53670eea6bd114e014571221eb652855c1129a3ed99f2a9257c2a313cc216f-findutils_4.10.0.orig.tar.xz.asc",
+          "original_file": "findutils_4.10.0.orig.tar.xz.asc",
+          "sha256": "7f53670eea6bd114e014571221eb652855c1129a3ed99f2a9257c2a313cc216f",
+          "bytes": 488,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "7d19668508523a6fcfb7731f5646305a8b1a00a3105ee3f0a5f167adf93a8a46-findutils_4.10.0-3.debian.tar.xz",
+          "original_file": "findutils_4.10.0-3.debian.tar.xz",
+          "sha256": "7d19668508523a6fcfb7731f5646305a8b1a00a3105ee3f0a5f167adf93a8a46",
+          "bytes": 33364,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "gcc-14",
+      "source_version": "14.2.0-19",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "7db1e202cce66617e9134a662c877a3a773de5b612fd52179815877e0ecfb847-gcc-14_14.2.0-19.dsc",
+          "original_file": "gcc-14_14.2.0-19.dsc",
+          "sha256": "7db1e202cce66617e9134a662c877a3a773de5b612fd52179815877e0ecfb847",
+          "bytes": 47347,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "e162a5ef3f0077ecae598c6556908d2ab80841532df3398072a96a6df6e6aa29-gcc-14_14.2.0.orig.tar.gz",
+          "original_file": "gcc-14_14.2.0.orig.tar.gz",
+          "sha256": "e162a5ef3f0077ecae598c6556908d2ab80841532df3398072a96a6df6e6aa29",
+          "bytes": 94299633,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "31cbab4bafa48aa1c540497bd8098cbcf98e673778f927651ed944709f687781-gcc-14_14.2.0-19.debian.tar.xz",
+          "original_file": "gcc-14_14.2.0-19.debian.tar.xz",
+          "sha256": "31cbab4bafa48aa1c540497bd8098cbcf98e673778f927651ed944709f687781",
+          "bytes": 2577016,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "gdbm",
+      "source_version": "1.24-2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "28acecf1cf00240942833c04079a02bb4c199a48faa1f4ca90f0ea9b79dc5841-gdbm_1.24-2.dsc",
+          "original_file": "gdbm_1.24-2.dsc",
+          "sha256": "28acecf1cf00240942833c04079a02bb4c199a48faa1f4ca90f0ea9b79dc5841",
+          "bytes": 2466,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "695e9827fdf763513f133910bc7e6cfdb9187943a4fec943e57449723d2b8dbf-gdbm_1.24.orig.tar.gz",
+          "original_file": "gdbm_1.24.orig.tar.gz",
+          "sha256": "695e9827fdf763513f133910bc7e6cfdb9187943a4fec943e57449723d2b8dbf",
+          "bytes": 1195931,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "8fb2f87e817ed6bd1d7ef2ab976f6a0046814a5ff28a06c521b796e0d3fd1226-gdbm_1.24.orig.tar.gz.asc",
+          "original_file": "gdbm_1.24.orig.tar.gz.asc",
+          "sha256": "8fb2f87e817ed6bd1d7ef2ab976f6a0046814a5ff28a06c521b796e0d3fd1226",
+          "bytes": 195,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "736d23450674c1bf0b03a2f65b83870b0801bc3747df3099df970c1479b0ab63-gdbm_1.24-2.debian.tar.xz",
+          "original_file": "gdbm_1.24-2.debian.tar.xz",
+          "sha256": "736d23450674c1bf0b03a2f65b83870b0801bc3747df3099df970c1479b0ab63",
+          "bytes": 16880,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "glibc",
+      "source_version": "2.41-12+deb13u4",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "0915324aa646bb99abfaa9aa6ecb734b30babd28454a3e51f3152912370fbd3e-glibc_2.41-12+deb13u4.dsc",
+          "original_file": "glibc_2.41-12+deb13u4.dsc",
+          "sha256": "0915324aa646bb99abfaa9aa6ecb734b30babd28454a3e51f3152912370fbd3e",
+          "bytes": 7576,
+          "prior_archive": "lower-layer-os-sources.tar",
+          "prior_archive_sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7"
+        },
+        {
+          "file": "f24aa441021121a79266f0d75242706cab8843a47901fefe74527491807f1998-glibc_2.41.orig.tar.xz",
+          "original_file": "glibc_2.41.orig.tar.xz",
+          "sha256": "f24aa441021121a79266f0d75242706cab8843a47901fefe74527491807f1998",
+          "bytes": 20323540,
+          "prior_archive": "lower-layer-os-sources.tar",
+          "prior_archive_sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7"
+        },
+        {
+          "file": "dda4153511bfd543502d18e5bc9323110996fe9c531f14ae3fad6eb17f027c7d-glibc_2.41-12+deb13u4.debian.tar.xz",
+          "original_file": "glibc_2.41-12+deb13u4.debian.tar.xz",
+          "sha256": "dda4153511bfd543502d18e5bc9323110996fe9c531f14ae3fad6eb17f027c7d",
+          "bytes": 499524,
+          "prior_archive": "lower-layer-os-sources.tar",
+          "prior_archive_sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7"
+        }
+      ]
+    },
+    {
+      "source_package": "glibc",
+      "source_version": "2.41-12+deb13u5",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "eba607a62d96947f8b7dbef8606d2e0c87f115393105bcf0f5bc1cee882a1e63-glibc_2.41-12+deb13u5.dsc",
+          "original_file": "glibc_2.41-12+deb13u5.dsc",
+          "sha256": "eba607a62d96947f8b7dbef8606d2e0c87f115393105bcf0f5bc1cee882a1e63",
+          "bytes": 7576,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "f24aa441021121a79266f0d75242706cab8843a47901fefe74527491807f1998-glibc_2.41.orig.tar.xz",
+          "original_file": "glibc_2.41.orig.tar.xz",
+          "sha256": "f24aa441021121a79266f0d75242706cab8843a47901fefe74527491807f1998",
+          "bytes": 20323540,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "9f2cc9eaafec40954c7120e593376d6c964f531d596005529409dbaffdba16a6-glibc_2.41-12+deb13u5.debian.tar.xz",
+          "original_file": "glibc_2.41-12+deb13u5.debian.tar.xz",
+          "sha256": "9f2cc9eaafec40954c7120e593376d6c964f531d596005529409dbaffdba16a6",
+          "bytes": 522972,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "gmp",
+      "source_version": "2:6.3.0+dfsg-3",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "f7b64af28f52b7346bb8581e01d3c19daf769639345f234f8ae1e29c42171443-gmp_6.3.0+dfsg-3.dsc",
+          "original_file": "gmp_6.3.0+dfsg-3.dsc",
+          "sha256": "f7b64af28f52b7346bb8581e01d3c19daf769639345f234f8ae1e29c42171443",
+          "bytes": 2251,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "bd2966e6d277f79328e894a5a9f3ba3fbf2ed2be81def5f48623e30c23fb1572-gmp_6.3.0+dfsg.orig.tar.xz",
+          "original_file": "gmp_6.3.0+dfsg.orig.tar.xz",
+          "sha256": "bd2966e6d277f79328e894a5a9f3ba3fbf2ed2be81def5f48623e30c23fb1572",
+          "bytes": 1870556,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "1d890bbe25dd649d2ddba1926483176520e50f22115a00566f250b613b8c20ad-gmp_6.3.0+dfsg-3.debian.tar.xz",
+          "original_file": "gmp_6.3.0+dfsg-3.debian.tar.xz",
+          "sha256": "1d890bbe25dd649d2ddba1926483176520e50f22115a00566f250b613b8c20ad",
+          "bytes": 19912,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "gnupg2",
+      "source_version": "2.4.7-21+deb13u1",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "30a96cd2d26a57f6796507bf8f083825734d4081e3c5f922d2b99bb2bf671212-gnupg2_2.4.7-21+deb13u1.dsc",
+          "original_file": "gnupg2_2.4.7-21+deb13u1.dsc",
+          "sha256": "30a96cd2d26a57f6796507bf8f083825734d4081e3c5f922d2b99bb2bf671212",
+          "bytes": 4933,
+          "url": "https://deb.debian.org/debian/pool/main/g/gnupg2/gnupg2_2.4.7-21+deb13u1.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "7b24706e4da7e0e3b06ca068231027401f238102c41c909631349dcc3b85eb46-gnupg2_2.4.7.orig.tar.bz2",
+          "original_file": "gnupg2_2.4.7.orig.tar.bz2",
+          "sha256": "7b24706e4da7e0e3b06ca068231027401f238102c41c909631349dcc3b85eb46",
+          "bytes": 8010244,
+          "url": "https://deb.debian.org/debian/pool/main/g/gnupg2/gnupg2_2.4.7.orig.tar.bz2",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "cec7da75dab60e3e2f6bf92ed1174126a1e5a1cc5e448f9e004a23be2dd227f6-gnupg2_2.4.7.orig.tar.bz2.asc",
+          "original_file": "gnupg2_2.4.7.orig.tar.bz2.asc",
+          "sha256": "cec7da75dab60e3e2f6bf92ed1174126a1e5a1cc5e448f9e004a23be2dd227f6",
+          "bytes": 390,
+          "url": "https://deb.debian.org/debian/pool/main/g/gnupg2/gnupg2_2.4.7.orig.tar.bz2.asc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "3941a8a537e258f6216ad1c1b9ecb255dfc286e5d03eb39805e536de4a448856-gnupg2_2.4.7-21+deb13u1.debian.tar.xz",
+          "original_file": "gnupg2_2.4.7-21+deb13u1.debian.tar.xz",
+          "sha256": "3941a8a537e258f6216ad1c1b9ecb255dfc286e5d03eb39805e536de4a448856",
+          "bytes": 131264,
+          "url": "https://deb.debian.org/debian/pool/main/g/gnupg2/gnupg2_2.4.7-21+deb13u1.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "gnutls28",
+      "source_version": "3.8.9-3+deb13u4",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "f1153e91212bdf60acf66cb62713ad4ed577f2e85f578a04df31a5619624c1e1-gnutls28_3.8.9-3+deb13u4.dsc",
+          "original_file": "gnutls28_3.8.9-3+deb13u4.dsc",
+          "sha256": "f1153e91212bdf60acf66cb62713ad4ed577f2e85f578a04df31a5619624c1e1",
+          "bytes": 3271,
+          "url": "https://security.debian.org/debian-security/pool/updates/main/g/gnutls28/gnutls28_3.8.9-3+deb13u4.dsc",
+          "authenticated_index": "security"
+        },
+        {
+          "file": "69e113d802d1670c4d5ac1b99040b1f2d5c7c05daec5003813c049b5184820ed-gnutls28_3.8.9.orig.tar.xz",
+          "original_file": "gnutls28_3.8.9.orig.tar.xz",
+          "sha256": "69e113d802d1670c4d5ac1b99040b1f2d5c7c05daec5003813c049b5184820ed",
+          "bytes": 6847364,
+          "url": "https://security.debian.org/debian-security/pool/updates/main/g/gnutls28/gnutls28_3.8.9.orig.tar.xz",
+          "authenticated_index": "security"
+        },
+        {
+          "file": "7631d47762865d4ef494492cca794cf0fe6a8be892a4aa02f362ae29006d3054-gnutls28_3.8.9.orig.tar.xz.asc",
+          "original_file": "gnutls28_3.8.9.orig.tar.xz.asc",
+          "sha256": "7631d47762865d4ef494492cca794cf0fe6a8be892a4aa02f362ae29006d3054",
+          "bytes": 833,
+          "url": "https://security.debian.org/debian-security/pool/updates/main/g/gnutls28/gnutls28_3.8.9.orig.tar.xz.asc",
+          "authenticated_index": "security"
+        },
+        {
+          "file": "f0b9c7d182072f0bbdb281304686aa6e2bfd343dadefa432ec4dab4893e9841f-gnutls28_3.8.9-3+deb13u4.debian.tar.xz",
+          "original_file": "gnutls28_3.8.9-3+deb13u4.debian.tar.xz",
+          "sha256": "f0b9c7d182072f0bbdb281304686aa6e2bfd343dadefa432ec4dab4893e9841f",
+          "bytes": 140880,
+          "url": "https://security.debian.org/debian-security/pool/updates/main/g/gnutls28/gnutls28_3.8.9-3+deb13u4.debian.tar.xz",
+          "authenticated_index": "security"
+        }
+      ]
+    },
+    {
+      "source_package": "grep",
+      "source_version": "3.11-4",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "dd6f8eb933bc05446e483f7792c8bf0a1aba9d498e65c6ccafe64e9bf27ac054-grep_3.11-4.dsc",
+          "original_file": "grep_3.11-4.dsc",
+          "sha256": "dd6f8eb933bc05446e483f7792c8bf0a1aba9d498e65c6ccafe64e9bf27ac054",
+          "bytes": 1642,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "1db2aedde89d0dea42b16d9528f894c8d15dae4e190b59aecc78f5a951276eab-grep_3.11.orig.tar.xz",
+          "original_file": "grep_3.11.orig.tar.xz",
+          "sha256": "1db2aedde89d0dea42b16d9528f894c8d15dae4e190b59aecc78f5a951276eab",
+          "bytes": 1703776,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "89ec23ffd59b68822732dc8204fc89883c3af30a90ae390feb94346d9d09a589-grep_3.11.orig.tar.xz.asc",
+          "original_file": "grep_3.11.orig.tar.xz.asc",
+          "sha256": "89ec23ffd59b68822732dc8204fc89883c3af30a90ae390feb94346d9d09a589",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "f10394b7589c58ca7de4b580692b1b59431f898cb2068e86222c174e093fdf49-grep_3.11-4.debian.tar.xz",
+          "original_file": "grep_3.11-4.debian.tar.xz",
+          "sha256": "f10394b7589c58ca7de4b580692b1b59431f898cb2068e86222c174e093fdf49",
+          "bytes": 20468,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "gzip",
+      "source_version": "1.13-1+deb13u1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "0c25763da4f7242fbe7e9185b69bcb3f986011b04446b66a84c52bbdf731d308-gzip_1.13-1+deb13u1.dsc",
+          "original_file": "gzip_1.13-1+deb13u1.dsc",
+          "sha256": "0c25763da4f7242fbe7e9185b69bcb3f986011b04446b66a84c52bbdf731d308",
+          "bytes": 1708,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "7454eb6935db17c6655576c2e1b0fabefd38b4d0936e0f87f48cd062ce91a057-gzip_1.13.orig.tar.xz",
+          "original_file": "gzip_1.13.orig.tar.xz",
+          "sha256": "7454eb6935db17c6655576c2e1b0fabefd38b4d0936e0f87f48cd062ce91a057",
+          "bytes": 838248,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "ffc69d13290009f42dbb4d10a34839350eff3fdaf4be1fda03d10b238ba2f77d-gzip_1.13-1+deb13u1.debian.tar.xz",
+          "original_file": "gzip_1.13-1+deb13u1.debian.tar.xz",
+          "sha256": "ffc69d13290009f42dbb4d10a34839350eff3fdaf4be1fda03d10b238ba2f77d",
+          "bytes": 21364,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "hostname",
+      "source_version": "3.25",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "80aadf116c3423044be69a4cef8ba2766f412bd4d46a500aacb61f303c19c4ef-hostname_3.25.dsc",
+          "original_file": "hostname_3.25.dsc",
+          "sha256": "80aadf116c3423044be69a4cef8ba2766f412bd4d46a500aacb61f303c19c4ef",
+          "bytes": 1519,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "5bb5d1be011158090157c9e7587ae5606c262a5020ecdc5caac6686b9910592e-hostname_3.25.tar.xz",
+          "original_file": "hostname_3.25.tar.xz",
+          "sha256": "5bb5d1be011158090157c9e7587ae5606c262a5020ecdc5caac6686b9910592e",
+          "bytes": 12804,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "icu",
+      "source_version": "76.1-4",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "2587ef23962b42a074ceab2f0407058f8e3fca0e6edd5d7c0bc1df6c683724a6-icu_76.1-4.dsc",
+          "original_file": "icu_76.1-4.dsc",
+          "sha256": "2587ef23962b42a074ceab2f0407058f8e3fca0e6edd5d7c0bc1df6c683724a6",
+          "bytes": 2236,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e-icu_76.1.orig.tar.gz",
+          "original_file": "icu_76.1.orig.tar.gz",
+          "sha256": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+          "bytes": 27437767,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "6ef6ef96376eb6550f2b450e08b84c29238f60a77b89273f1521e1b57db73472-icu_76.1.orig.tar.gz.asc",
+          "original_file": "icu_76.1.orig.tar.gz.asc",
+          "sha256": "6ef6ef96376eb6550f2b450e08b84c29238f60a77b89273f1521e1b57db73472",
+          "bytes": 228,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "5f9ff8b3a8e89a01b52c84bfebd35e7825ac561669d24e5a3d5f25d158e4f412-icu_76.1-4.debian.tar.xz",
+          "original_file": "icu_76.1-4.debian.tar.xz",
+          "sha256": "5f9ff8b3a8e89a01b52c84bfebd35e7825ac561669d24e5a3d5f25d158e4f412",
+          "bytes": 65216,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "init-system-helpers",
+      "source_version": "1.69~deb13u1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "873082d72727267b6207e38df47e3002aeb0ed554f876db17c7bbfeb26174ee6-init-system-helpers_1.69~deb13u1.dsc",
+          "original_file": "init-system-helpers_1.69~deb13u1.dsc",
+          "sha256": "873082d72727267b6207e38df47e3002aeb0ed554f876db17c7bbfeb26174ee6",
+          "bytes": 2266,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "bbd65c63420b6335b91cbf5daad9a70632a087657eb9078ea000f0a16c2d83da-init-system-helpers_1.69~deb13u1.tar.xz",
+          "original_file": "init-system-helpers_1.69~deb13u1.tar.xz",
+          "sha256": "bbd65c63420b6335b91cbf5daad9a70632a087657eb9078ea000f0a16c2d83da",
+          "bytes": 45852,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "keyutils",
+      "source_version": "1.6.3-6",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "e63869474c390d5d5bdee8492f7b2f4d6034ff10d8190da18593620c0f35fbf8-keyutils_1.6.3-6.dsc",
+          "original_file": "keyutils_1.6.3-6.dsc",
+          "sha256": "e63869474c390d5d5bdee8492f7b2f4d6034ff10d8190da18593620c0f35fbf8",
+          "bytes": 2100,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "a61d5706136ae4c05bd48f86186bcfdbd88dd8bd5107e3e195c924cfc1b39bb4-keyutils_1.6.3.orig.tar.gz",
+          "original_file": "keyutils_1.6.3.orig.tar.gz",
+          "sha256": "a61d5706136ae4c05bd48f86186bcfdbd88dd8bd5107e3e195c924cfc1b39bb4",
+          "bytes": 137022,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "6fc3c1217b8e92df9dff73e4919c45dff4ada5fd414ab57329af487f4476466a-keyutils_1.6.3-6.debian.tar.xz",
+          "original_file": "keyutils_1.6.3-6.debian.tar.xz",
+          "sha256": "6fc3c1217b8e92df9dff73e4919c45dff4ada5fd414ab57329af487f4476466a",
+          "bytes": 16588,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "krb5",
+      "source_version": "1.21.3-5+deb13u2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "72f1fd2681f4688b64a762599480fbd7612d0f5f2cb9f4ce1b21a9eaeee4791d-krb5_1.21.3-5+deb13u2.dsc",
+          "original_file": "krb5_1.21.3-5+deb13u2.dsc",
+          "sha256": "72f1fd2681f4688b64a762599480fbd7612d0f5f2cb9f4ce1b21a9eaeee4791d",
+          "bytes": 3429,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "b7a4cd5ead67fb08b980b21abd150ff7217e85ea320c9ed0c6dadd304840ad35-krb5_1.21.3.orig.tar.gz",
+          "original_file": "krb5_1.21.3.orig.tar.gz",
+          "sha256": "b7a4cd5ead67fb08b980b21abd150ff7217e85ea320c9ed0c6dadd304840ad35",
+          "bytes": 9136145,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "85047c935fe949ef2e275885451b168557b923dd13a5aab0ef8fe6acd27b94d7-krb5_1.21.3.orig.tar.gz.asc",
+          "original_file": "krb5_1.21.3.orig.tar.gz.asc",
+          "sha256": "85047c935fe949ef2e275885451b168557b923dd13a5aab0ef8fe6acd27b94d7",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "68e3ce5ebfffb8c47a7378b09b36b279791b1994b9df3d9a016d5e105f42a02b-krb5_1.21.3-5+deb13u2.debian.tar.xz",
+          "original_file": "krb5_1.21.3-5+deb13u2.debian.tar.xz",
+          "sha256": "68e3ce5ebfffb8c47a7378b09b36b279791b1994b9df3d9a016d5e105f42a02b",
+          "bytes": 123616,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "less",
+      "source_version": "668-1",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "84c63a051999d30deab36131d98345d4277105dadfd5d7c63ffea6a631f498f1-less_668-1.dsc",
+          "original_file": "less_668-1.dsc",
+          "sha256": "84c63a051999d30deab36131d98345d4277105dadfd5d7c63ffea6a631f498f1",
+          "bytes": 1889,
+          "url": "https://deb.debian.org/debian/pool/main/l/less/less_668-1.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "2819f55564d86d542abbecafd82ff61e819a3eec967faa36cd3e68f1596a44b8-less_668.orig.tar.gz",
+          "original_file": "less_668.orig.tar.gz",
+          "sha256": "2819f55564d86d542abbecafd82ff61e819a3eec967faa36cd3e68f1596a44b8",
+          "bytes": 649770,
+          "url": "https://deb.debian.org/debian/pool/main/l/less/less_668.orig.tar.gz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "5b24942fb8e4352fc22ddff6ccaa61eb978d590fb3eecd26591f5cca8965ab03-less_668.orig.tar.gz.asc",
+          "original_file": "less_668.orig.tar.gz.asc",
+          "sha256": "5b24942fb8e4352fc22ddff6ccaa61eb978d590fb3eecd26591f5cca8965ab03",
+          "bytes": 195,
+          "url": "https://deb.debian.org/debian/pool/main/l/less/less_668.orig.tar.gz.asc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "83e659f43c11ee8591685744cd71e6b99e8cb430224649ac98557068d881e4ce-less_668-1.debian.tar.xz",
+          "original_file": "less_668-1.debian.tar.xz",
+          "sha256": "83e659f43c11ee8591685744cd71e6b99e8cb430224649ac98557068d881e4ce",
+          "bytes": 22332,
+          "url": "https://deb.debian.org/debian/pool/main/l/less/less_668-1.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "libassuan",
+      "source_version": "3.0.2-2",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "4c6b68814cef421d1768628b401a62176c579dc8e1e3026348d7ec159943f0c7-libassuan_3.0.2-2.dsc",
+          "original_file": "libassuan_3.0.2-2.dsc",
+          "sha256": "4c6b68814cef421d1768628b401a62176c579dc8e1e3026348d7ec159943f0c7",
+          "bytes": 2682,
+          "url": "https://deb.debian.org/debian/pool/main/liba/libassuan/libassuan_3.0.2-2.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "d2931cdad266e633510f9970e1a2f346055e351bb19f9b78912475b8074c36f6-libassuan_3.0.2.orig.tar.bz2",
+          "original_file": "libassuan_3.0.2.orig.tar.bz2",
+          "sha256": "d2931cdad266e633510f9970e1a2f346055e351bb19f9b78912475b8074c36f6",
+          "bytes": 593917,
+          "url": "https://deb.debian.org/debian/pool/main/liba/libassuan/libassuan_3.0.2.orig.tar.bz2",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "3799b287fd7d48f750597bd9104621d2cbafd508de83303b1a5f5eef08f06072-libassuan_3.0.2.orig.tar.bz2.asc",
+          "original_file": "libassuan_3.0.2.orig.tar.bz2.asc",
+          "sha256": "3799b287fd7d48f750597bd9104621d2cbafd508de83303b1a5f5eef08f06072",
+          "bytes": 228,
+          "url": "https://deb.debian.org/debian/pool/main/liba/libassuan/libassuan_3.0.2.orig.tar.bz2.asc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "05566fa4ac35ad6af7214ce01beeaffcc2ce1c13d20daac4cf86949c5fad25fc-libassuan_3.0.2-2.debian.tar.xz",
+          "original_file": "libassuan_3.0.2-2.debian.tar.xz",
+          "sha256": "05566fa4ac35ad6af7214ce01beeaffcc2ce1c13d20daac4cf86949c5fad25fc",
+          "bytes": 17536,
+          "url": "https://deb.debian.org/debian/pool/main/liba/libassuan/libassuan_3.0.2-2.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "libbsd",
+      "source_version": "0.12.2-2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "01eb1d0c896096f9038213f5f00376ecfd1c0d1def21b7042f28ae070e4837e3-libbsd_0.12.2-2.dsc",
+          "original_file": "libbsd_0.12.2-2.dsc",
+          "sha256": "01eb1d0c896096f9038213f5f00376ecfd1c0d1def21b7042f28ae070e4837e3",
+          "bytes": 2446,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "b88cc9163d0c652aaf39a99991d974ddba1c3a9711db8f1b5838af2a14731014-libbsd_0.12.2.orig.tar.xz",
+          "original_file": "libbsd_0.12.2.orig.tar.xz",
+          "sha256": "b88cc9163d0c652aaf39a99991d974ddba1c3a9711db8f1b5838af2a14731014",
+          "bytes": 446032,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "620dc92f158ebe0a650c0e92214a8121b927276895dc9a1dcaa38f627fa0fcb0-libbsd_0.12.2.orig.tar.xz.asc",
+          "original_file": "libbsd_0.12.2.orig.tar.xz.asc",
+          "sha256": "620dc92f158ebe0a650c0e92214a8121b927276895dc9a1dcaa38f627fa0fcb0",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "36c878a32c1f190ca2cb474de5c6139990a6c029906493d3566770b1ebd569bf-libbsd_0.12.2-2.debian.tar.xz",
+          "original_file": "libbsd_0.12.2-2.debian.tar.xz",
+          "sha256": "36c878a32c1f190ca2cb474de5c6139990a6c029906493d3566770b1ebd569bf",
+          "bytes": 18688,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "libcap-ng",
+      "source_version": "0.8.5-4",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "a5745b7d68a11068ae5beddcc7fbc94cd87dd81cb2d7495e7d48610603be3526-libcap-ng_0.8.5-4.dsc",
+          "original_file": "libcap-ng_0.8.5-4.dsc",
+          "sha256": "a5745b7d68a11068ae5beddcc7fbc94cd87dd81cb2d7495e7d48610603be3526",
+          "bytes": 1710,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "e4be07fdd234f10b866433f224d183626003c65634ed0552b02e654a380244c2-libcap-ng_0.8.5.orig.tar.gz",
+          "original_file": "libcap-ng_0.8.5.orig.tar.gz",
+          "sha256": "e4be07fdd234f10b866433f224d183626003c65634ed0552b02e654a380244c2",
+          "bytes": 59265,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "f5d4e7f38bdbca87de77317ce95f973883081370ef257019b484e29e3368a20d-libcap-ng_0.8.5-4.debian.tar.xz",
+          "original_file": "libcap-ng_0.8.5-4.debian.tar.xz",
+          "sha256": "f5d4e7f38bdbca87de77317ce95f973883081370ef257019b484e29e3368a20d",
+          "bytes": 7816,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "libcap2",
+      "source_version": "1:2.75-10+deb13u1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "cb6af220de216655ec55bb1f5abf3fa8f03e82c9956f120b313056e895c02ea6-libcap2_2.75-10+deb13u1.dsc",
+          "original_file": "libcap2_2.75-10+deb13u1.dsc",
+          "sha256": "cb6af220de216655ec55bb1f5abf3fa8f03e82c9956f120b313056e895c02ea6",
+          "bytes": 2714,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "de4e7e064c9ba451d5234dd46e897d7c71c96a9ebf9a0c445bc04f4742d83632-libcap2_2.75.orig.tar.xz",
+          "original_file": "libcap2_2.75.orig.tar.xz",
+          "sha256": "de4e7e064c9ba451d5234dd46e897d7c71c96a9ebf9a0c445bc04f4742d83632",
+          "bytes": 197868,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "c71b593e7c3160fd7f406641074d93462bbc4906c9243937a0e232f42d5c54d2-libcap2_2.75.orig.tar.xz.asc",
+          "original_file": "libcap2_2.75.orig.tar.xz.asc",
+          "sha256": "c71b593e7c3160fd7f406641074d93462bbc4906c9243937a0e232f42d5c54d2",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "d375de2f743f112835fc0eef2a9c305c1109371954cf53e109b7f046fe58c1bc-libcap2_2.75-10+deb13u1.debian.tar.xz",
+          "original_file": "libcap2_2.75-10+deb13u1.debian.tar.xz",
+          "sha256": "d375de2f743f112835fc0eef2a9c305c1109371954cf53e109b7f046fe58c1bc",
+          "bytes": 24628,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "libedit",
+      "source_version": "3.1-20250104-1",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "1faea2073588dc3310133fb2dca5b9b6d3e759ae8653c2afefa1c802085cf544-libedit_3.1-20250104-1.dsc",
+          "original_file": "libedit_3.1-20250104-1.dsc",
+          "sha256": "1faea2073588dc3310133fb2dca5b9b6d3e759ae8653c2afefa1c802085cf544",
+          "bytes": 2264,
+          "url": "https://deb.debian.org/debian/pool/main/libe/libedit/libedit_3.1-20250104-1.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "23792701694550a53720630cd1cd6167101b5773adddcb4104f7345b73a568ac-libedit_3.1-20250104.orig.tar.gz",
+          "original_file": "libedit_3.1-20250104.orig.tar.gz",
+          "sha256": "23792701694550a53720630cd1cd6167101b5773adddcb4104f7345b73a568ac",
+          "bytes": 546745,
+          "url": "https://deb.debian.org/debian/pool/main/libe/libedit/libedit_3.1-20250104.orig.tar.gz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "2720852d7c1bb1634b682ed24d700e0313167e5a5529a5b7cc95a5d0e24273fe-libedit_3.1-20250104-1.debian.tar.xz",
+          "original_file": "libedit_3.1-20250104-1.debian.tar.xz",
+          "sha256": "2720852d7c1bb1634b682ed24d700e0313167e5a5529a5b7cc95a5d0e24273fe",
+          "bytes": 16708,
+          "url": "https://deb.debian.org/debian/pool/main/libe/libedit/libedit_3.1-20250104-1.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "libffi",
+      "source_version": "3.4.8-2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "4424defe3f37c0084f062e03330b2ba3d3f927367c33be455cfacf7f85a78161-libffi_3.4.8-2.dsc",
+          "original_file": "libffi_3.4.8-2.dsc",
+          "sha256": "4424defe3f37c0084f062e03330b2ba3d3f927367c33be455cfacf7f85a78161",
+          "bytes": 1948,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "cbb7f0b3b095dc506387ec1e35b891bfb4891d05b90a495bc69a10f2293f80ff-libffi_3.4.8.orig.tar.gz",
+          "original_file": "libffi_3.4.8.orig.tar.gz",
+          "sha256": "cbb7f0b3b095dc506387ec1e35b891bfb4891d05b90a495bc69a10f2293f80ff",
+          "bytes": 595051,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "f23ac79a19895ebb6bbb539263d0d945ebc2d3e91217a597f5819777f08b401c-libffi_3.4.8-2.debian.tar.xz",
+          "original_file": "libffi_3.4.8-2.debian.tar.xz",
+          "sha256": "f23ac79a19895ebb6bbb539263d0d945ebc2d3e91217a597f5819777f08b401c",
+          "bytes": 11220,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "libgcrypt20",
+      "source_version": "1.11.0-7+deb13u1",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "727fae4a95bafe8b2094f75d880d3c63f8066865cb552422492cafd675887c80-libgcrypt20_1.11.0-7+deb13u1.dsc",
+          "original_file": "libgcrypt20_1.11.0-7+deb13u1.dsc",
+          "sha256": "727fae4a95bafe8b2094f75d880d3c63f8066865cb552422492cafd675887c80",
+          "bytes": 3149,
+          "url": "https://security.debian.org/debian-security/pool/updates/main/libg/libgcrypt20/libgcrypt20_1.11.0-7+deb13u1.dsc",
+          "authenticated_index": "security"
+        },
+        {
+          "file": "09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c-libgcrypt20_1.11.0.orig.tar.bz2",
+          "original_file": "libgcrypt20_1.11.0.orig.tar.bz2",
+          "sha256": "09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c",
+          "bytes": 4180345,
+          "url": "https://security.debian.org/debian-security/pool/updates/main/libg/libgcrypt20/libgcrypt20_1.11.0.orig.tar.bz2",
+          "authenticated_index": "security"
+        },
+        {
+          "file": "9fedf4f7bb80d5178d4e26ec2f03ba5fc44eddfc72c2e9966d7d619aeee3df2c-libgcrypt20_1.11.0.orig.tar.bz2.asc",
+          "original_file": "libgcrypt20_1.11.0.orig.tar.bz2.asc",
+          "sha256": "9fedf4f7bb80d5178d4e26ec2f03ba5fc44eddfc72c2e9966d7d619aeee3df2c",
+          "bytes": 228,
+          "url": "https://security.debian.org/debian-security/pool/updates/main/libg/libgcrypt20/libgcrypt20_1.11.0.orig.tar.bz2.asc",
+          "authenticated_index": "security"
+        },
+        {
+          "file": "08deb210f65066655791c8d2f1b1a40907abce6e0e0e07e6d2942426c5b4f3b8-libgcrypt20_1.11.0-7+deb13u1.debian.tar.xz",
+          "original_file": "libgcrypt20_1.11.0-7+deb13u1.debian.tar.xz",
+          "sha256": "08deb210f65066655791c8d2f1b1a40907abce6e0e0e07e6d2942426c5b4f3b8",
+          "bytes": 40944,
+          "url": "https://security.debian.org/debian-security/pool/updates/main/libg/libgcrypt20/libgcrypt20_1.11.0-7+deb13u1.debian.tar.xz",
+          "authenticated_index": "security"
+        }
+      ]
+    },
+    {
+      "source_package": "libgpg-error",
+      "source_version": "1.51-4",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "fecb803e22016cbf46b7c0a0d5c23f8a45a2f70fa10d3b3b67b10be917987410-libgpg-error_1.51-4.dsc",
+          "original_file": "libgpg-error_1.51-4.dsc",
+          "sha256": "fecb803e22016cbf46b7c0a0d5c23f8a45a2f70fa10d3b3b67b10be917987410",
+          "bytes": 2956,
+          "url": "https://deb.debian.org/debian/pool/main/libg/libgpg-error/libgpg-error_1.51-4.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "be0f1b2db6b93eed55369cdf79f19f72750c8c7c39fc20b577e724545427e6b2-libgpg-error_1.51.orig.tar.bz2",
+          "original_file": "libgpg-error_1.51.orig.tar.bz2",
+          "sha256": "be0f1b2db6b93eed55369cdf79f19f72750c8c7c39fc20b577e724545427e6b2",
+          "bytes": 1085510,
+          "url": "https://deb.debian.org/debian/pool/main/libg/libgpg-error/libgpg-error_1.51.orig.tar.bz2",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "5e8c9179635b3105f4c07d09168fda9ce039607e926628aec6a06134908be918-libgpg-error_1.51.orig.tar.bz2.asc",
+          "original_file": "libgpg-error_1.51.orig.tar.bz2.asc",
+          "sha256": "5e8c9179635b3105f4c07d09168fda9ce039607e926628aec6a06134908be918",
+          "bytes": 228,
+          "url": "https://deb.debian.org/debian/pool/main/libg/libgpg-error/libgpg-error_1.51.orig.tar.bz2.asc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "9d1edd110f540c9f7163035f352836dd968ca38977f31adb073b99b9a05f8c4d-libgpg-error_1.51-4.debian.tar.xz",
+          "original_file": "libgpg-error_1.51-4.debian.tar.xz",
+          "sha256": "9d1edd110f540c9f7163035f352836dd968ca38977f31adb073b99b9a05f8c4d",
+          "bytes": 22332,
+          "url": "https://deb.debian.org/debian/pool/main/libg/libgpg-error/libgpg-error_1.51-4.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "libidn2",
+      "source_version": "2.3.8-2",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "af3327227dbbf12fff281f71b7feb90371d2dbe597f3129e38b93c3faadcea61-libidn2_2.3.8-2.dsc",
+          "original_file": "libidn2_2.3.8-2.dsc",
+          "sha256": "af3327227dbbf12fff281f71b7feb90371d2dbe597f3129e38b93c3faadcea61",
+          "bytes": 2961,
+          "url": "https://deb.debian.org/debian/pool/main/libi/libidn2/libidn2_2.3.8-2.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "bbad1678d35d28e2c62e6a2577083829461402d9e47b908791c55314a5cb5e04-libidn2_2.3.8.orig.tar.gz",
+          "original_file": "libidn2_2.3.8.orig.tar.gz",
+          "sha256": "bbad1678d35d28e2c62e6a2577083829461402d9e47b908791c55314a5cb5e04",
+          "bytes": 718637,
+          "url": "https://deb.debian.org/debian/pool/main/libi/libidn2/libidn2_2.3.8.orig.tar.gz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "8995cab7db361d9d6989eab26d9b521c74236960a5d78250121c8d369b013bd8-libidn2_2.3.8.orig.tar.gz.asc",
+          "original_file": "libidn2_2.3.8.orig.tar.gz.asc",
+          "sha256": "8995cab7db361d9d6989eab26d9b521c74236960a5d78250121c8d369b013bd8",
+          "bytes": 1223,
+          "url": "https://deb.debian.org/debian/pool/main/libi/libidn2/libidn2_2.3.8.orig.tar.gz.asc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "ab95c2bab110557505ba437bc162f67a5a85fa9d8a2e55501245dc7f0fe2e412-libidn2_2.3.8-2.debian.tar.xz",
+          "original_file": "libidn2_2.3.8-2.debian.tar.xz",
+          "sha256": "ab95c2bab110557505ba437bc162f67a5a85fa9d8a2e55501245dc7f0fe2e412",
+          "bytes": 17532,
+          "url": "https://deb.debian.org/debian/pool/main/libi/libidn2/libidn2_2.3.8-2.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "libjson-perl",
+      "source_version": "4.10000-1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "7759c7cc963ae03bd6042dff53fc246843c68097be5a1e264bd810adf9f65b3e-libjson-perl_4.10000-1.dsc",
+          "original_file": "libjson-perl_4.10000-1.dsc",
+          "sha256": "7759c7cc963ae03bd6042dff53fc246843c68097be5a1e264bd810adf9f65b3e",
+          "bytes": 2495,
+          "prior_archive": "ratefreak-candidate-os-sources.tar",
+          "prior_archive_sha256": "6e78705e84204511caac65a9c1778461b3d78f210380e475d01d5fd9d4c07736"
+        },
+        {
+          "file": "df8b5143d9a7de99c47b55f1a170bd1f69f711935c186a6dc0ab56dd05758e35-libjson-perl_4.10000.orig.tar.gz",
+          "original_file": "libjson-perl_4.10000.orig.tar.gz",
+          "sha256": "df8b5143d9a7de99c47b55f1a170bd1f69f711935c186a6dc0ab56dd05758e35",
+          "bytes": 94342,
+          "prior_archive": "ratefreak-candidate-os-sources.tar",
+          "prior_archive_sha256": "6e78705e84204511caac65a9c1778461b3d78f210380e475d01d5fd9d4c07736"
+        },
+        {
+          "file": "c9992d1b78bbb7033c4df7ea126c5de65bdf3f337ff8f0650786a7a6d20024c1-libjson-perl_4.10000-1.debian.tar.xz",
+          "original_file": "libjson-perl_4.10000-1.debian.tar.xz",
+          "sha256": "c9992d1b78bbb7033c4df7ea126c5de65bdf3f337ff8f0650786a7a6d20024c1",
+          "bytes": 5296,
+          "prior_archive": "ratefreak-candidate-os-sources.tar",
+          "prior_archive_sha256": "6e78705e84204511caac65a9c1778461b3d78f210380e475d01d5fd9d4c07736"
+        }
+      ]
+    },
+    {
+      "source_package": "libksba",
+      "source_version": "1.6.7-2",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "47f8b314c6b74fdcfb42390327dc0441c6ba6bfdb4511ca12e2b4478fc452e1c-libksba_1.6.7-2.dsc",
+          "original_file": "libksba_1.6.7-2.dsc",
+          "sha256": "47f8b314c6b74fdcfb42390327dc0441c6ba6bfdb4511ca12e2b4478fc452e1c",
+          "bytes": 2482,
+          "url": "https://deb.debian.org/debian/pool/main/libk/libksba/libksba_1.6.7-2.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "cf72510b8ebb4eb6693eef765749d83677a03c79291a311040a5bfd79baab763-libksba_1.6.7.orig.tar.bz2",
+          "original_file": "libksba_1.6.7.orig.tar.bz2",
+          "sha256": "cf72510b8ebb4eb6693eef765749d83677a03c79291a311040a5bfd79baab763",
+          "bytes": 706437,
+          "url": "https://deb.debian.org/debian/pool/main/libk/libksba/libksba_1.6.7.orig.tar.bz2",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "cd704f8100151752b12776fa87dac42a3f99334ed155bcbcbaeda8e786581316-libksba_1.6.7.orig.tar.bz2.asc",
+          "original_file": "libksba_1.6.7.orig.tar.bz2.asc",
+          "sha256": "cd704f8100151752b12776fa87dac42a3f99334ed155bcbcbaeda8e786581316",
+          "bytes": 228,
+          "url": "https://deb.debian.org/debian/pool/main/libk/libksba/libksba_1.6.7.orig.tar.bz2.asc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "28f0ef1f9dd2a7f1cef23e49393d750d50aade01476462d8d5225a23e4ad9929-libksba_1.6.7-2.debian.tar.xz",
+          "original_file": "libksba_1.6.7-2.debian.tar.xz",
+          "sha256": "28f0ef1f9dd2a7f1cef23e49393d750d50aade01476462d8d5225a23e4ad9929",
+          "bytes": 14872,
+          "url": "https://deb.debian.org/debian/pool/main/libk/libksba/libksba_1.6.7-2.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "libmd",
+      "source_version": "1.1.0-2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "46cc951cd6d71bbfeff4522de66f968fb92601ec4cc622b07f6ac0a2a36ac5f0-libmd_1.1.0-2.dsc",
+          "original_file": "libmd_1.1.0-2.dsc",
+          "sha256": "46cc951cd6d71bbfeff4522de66f968fb92601ec4cc622b07f6ac0a2a36ac5f0",
+          "bytes": 2280,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "1bd6aa42275313af3141c7cf2e5b964e8b1fd488025caf2f971f43b00776b332-libmd_1.1.0.orig.tar.xz",
+          "original_file": "libmd_1.1.0.orig.tar.xz",
+          "sha256": "1bd6aa42275313af3141c7cf2e5b964e8b1fd488025caf2f971f43b00776b332",
+          "bytes": 271228,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "402fd3024e43ab975733d09e661804a58ca58697194e4b15216b1217cfe1dadb-libmd_1.1.0.orig.tar.xz.asc",
+          "original_file": "libmd_1.1.0.orig.tar.xz.asc",
+          "sha256": "402fd3024e43ab975733d09e661804a58ca58697194e4b15216b1217cfe1dadb",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "3b6ff35fc921eb5450fa9bf2d300c9e058e3771f96f8f13f759768fadd53324c-libmd_1.1.0-2.debian.tar.xz",
+          "original_file": "libmd_1.1.0-2.debian.tar.xz",
+          "sha256": "3b6ff35fc921eb5450fa9bf2d300c9e058e3771f96f8f13f759768fadd53324c",
+          "bytes": 8244,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "libseccomp",
+      "source_version": "2.6.0-2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "d05f94536558d34fa339326c6f958a3357b51efac8234470b5d97b69472db765-libseccomp_2.6.0-2.dsc",
+          "original_file": "libseccomp_2.6.0-2.dsc",
+          "sha256": "d05f94536558d34fa339326c6f958a3357b51efac8234470b5d97b69472db765",
+          "bytes": 2622,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "83b6085232d1588c379dc9b9cae47bb37407cf262e6e74993c61ba72d2a784dc-libseccomp_2.6.0.orig.tar.gz",
+          "original_file": "libseccomp_2.6.0.orig.tar.gz",
+          "sha256": "83b6085232d1588c379dc9b9cae47bb37407cf262e6e74993c61ba72d2a784dc",
+          "bytes": 685655,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "52e338fa958128293cbd25d2be189e34da41c4f4abbb1b641cf58f373c001f94-libseccomp_2.6.0.orig.tar.gz.asc",
+          "original_file": "libseccomp_2.6.0.orig.tar.gz.asc",
+          "sha256": "52e338fa958128293cbd25d2be189e34da41c4f4abbb1b641cf58f373c001f94",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "ed705ec85719403e77d004c99c0b06b795f090c66fcae265c4bcf37ffea9cc27-libseccomp_2.6.0-2.debian.tar.xz",
+          "original_file": "libseccomp_2.6.0-2.debian.tar.xz",
+          "sha256": "ed705ec85719403e77d004c99c0b06b795f090c66fcae265c4bcf37ffea9cc27",
+          "bytes": 20800,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "libselinux",
+      "source_version": "3.8.1-1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "e430b782a396e266f86c32fa779efadebfd40e6a0d10ddbd786fc47905f723b9-libselinux_3.8.1-1.dsc",
+          "original_file": "libselinux_3.8.1-1.dsc",
+          "sha256": "e430b782a396e266f86c32fa779efadebfd40e6a0d10ddbd786fc47905f723b9",
+          "bytes": 3013,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "ec2d2789f931152d21c1db1eb4bc202ce4eccede34d9be9e360e3b45243cee2c-libselinux_3.8.1.orig.tar.gz",
+          "original_file": "libselinux_3.8.1.orig.tar.gz",
+          "sha256": "ec2d2789f931152d21c1db1eb4bc202ce4eccede34d9be9e360e3b45243cee2c",
+          "bytes": 204411,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "7f983714a780d89f7677e7ba140ce29974022b8ba225f60246b6c33de1477dd6-libselinux_3.8.1.orig.tar.gz.asc",
+          "original_file": "libselinux_3.8.1.orig.tar.gz.asc",
+          "sha256": "7f983714a780d89f7677e7ba140ce29974022b8ba225f60246b6c33de1477dd6",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "1af25952374f083cf3d6d0edd5beb938f2e53c30eb404afa1e32fcd1cb127db7-libselinux_3.8.1-1.debian.tar.xz",
+          "original_file": "libselinux_3.8.1-1.debian.tar.xz",
+          "sha256": "1af25952374f083cf3d6d0edd5beb938f2e53c30eb404afa1e32fcd1cb127db7",
+          "bytes": 37812,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "libsemanage",
+      "source_version": "3.8.1-1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "b22bfc4ab2cd47fac46cc9e45d418bb30eb540c3e5c1052d6c669f53e180e4e5-libsemanage_3.8.1-1.dsc",
+          "original_file": "libsemanage_3.8.1-1.dsc",
+          "sha256": "b22bfc4ab2cd47fac46cc9e45d418bb30eb540c3e5c1052d6c669f53e180e4e5",
+          "bytes": 2992,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "7b39127b219cc70bfd935a4af6b0f2ba83d4b35c916f253c7e942c23ab490f07-libsemanage_3.8.1.orig.tar.gz",
+          "original_file": "libsemanage_3.8.1.orig.tar.gz",
+          "sha256": "7b39127b219cc70bfd935a4af6b0f2ba83d4b35c916f253c7e942c23ab490f07",
+          "bytes": 184618,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "5b4856cb5823fba1b247ff1b5355692706da68a4df61a936d1b33b1f9e9b2f3d-libsemanage_3.8.1.orig.tar.gz.asc",
+          "original_file": "libsemanage_3.8.1.orig.tar.gz.asc",
+          "sha256": "5b4856cb5823fba1b247ff1b5355692706da68a4df61a936d1b33b1f9e9b2f3d",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "6d1e5bd4d06bbd25ced1b75fba394c3e2157bd604cf1cd33fb581793d70bd7b8-libsemanage_3.8.1-1.debian.tar.xz",
+          "original_file": "libsemanage_3.8.1-1.debian.tar.xz",
+          "sha256": "6d1e5bd4d06bbd25ced1b75fba394c3e2157bd604cf1cd33fb581793d70bd7b8",
+          "bytes": 37572,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "libsepol",
+      "source_version": "3.8.1-1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "0351ffc8c3f66918c9e4ecae9244ae2af27857d8795e424e384ddda794718c34-libsepol_3.8.1-1.dsc",
+          "original_file": "libsepol_3.8.1-1.dsc",
+          "sha256": "0351ffc8c3f66918c9e4ecae9244ae2af27857d8795e424e384ddda794718c34",
+          "bytes": 2347,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "0e78705305f955abd4c0654d37a5477ee26349ab74db9e2b03a7868897ae1ddf-libsepol_3.8.1.orig.tar.gz",
+          "original_file": "libsepol_3.8.1.orig.tar.gz",
+          "sha256": "0e78705305f955abd4c0654d37a5477ee26349ab74db9e2b03a7868897ae1ddf",
+          "bytes": 513830,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "183f6cf96054986704d4224f89518e9139370385c43a533078f45ca688dca8b6-libsepol_3.8.1.orig.tar.gz.asc",
+          "original_file": "libsepol_3.8.1.orig.tar.gz.asc",
+          "sha256": "183f6cf96054986704d4224f89518e9139370385c43a533078f45ca688dca8b6",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "7aac515a941f8dd19581b16c664b3098962e6a8ed7fa0afdafd306a85c667619-libsepol_3.8.1-1.debian.tar.xz",
+          "original_file": "libsepol_3.8.1-1.debian.tar.xz",
+          "sha256": "7aac515a941f8dd19581b16c664b3098962e6a8ed7fa0afdafd306a85c667619",
+          "bytes": 21432,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "libtasn1-6",
+      "source_version": "4.20.0-2+deb13u1",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "3f8b0e7ddd5325278b1164f260e45e785e5907309d76b703c8716d068f9cd7e9-libtasn1-6_4.20.0-2+deb13u1.dsc",
+          "original_file": "libtasn1-6_4.20.0-2+deb13u1.dsc",
+          "sha256": "3f8b0e7ddd5325278b1164f260e45e785e5907309d76b703c8716d068f9cd7e9",
+          "bytes": 2697,
+          "url": "https://deb.debian.org/debian/pool/main/libt/libtasn1-6/libtasn1-6_4.20.0-2+deb13u1.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "92e0e3bd4c02d4aeee76036b2ddd83f0c732ba4cda5cb71d583272b23587a76c-libtasn1-6_4.20.0.orig.tar.gz",
+          "original_file": "libtasn1-6_4.20.0.orig.tar.gz",
+          "sha256": "92e0e3bd4c02d4aeee76036b2ddd83f0c732ba4cda5cb71d583272b23587a76c",
+          "bytes": 1783873,
+          "url": "https://deb.debian.org/debian/pool/main/libt/libtasn1-6/libtasn1-6_4.20.0.orig.tar.gz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "0faa628b6a3e4bb84ca5f00f127c6dfa1fc96a7ad88030dd7aa048753cf4b201-libtasn1-6_4.20.0.orig.tar.gz.asc",
+          "original_file": "libtasn1-6_4.20.0.orig.tar.gz.asc",
+          "sha256": "0faa628b6a3e4bb84ca5f00f127c6dfa1fc96a7ad88030dd7aa048753cf4b201",
+          "bytes": 1223,
+          "url": "https://deb.debian.org/debian/pool/main/libt/libtasn1-6/libtasn1-6_4.20.0.orig.tar.gz.asc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "c1ba650436b6a9fc5fac5ea494ab20caf7adb29a3713067e8b665d2f2f325cb1-libtasn1-6_4.20.0-2+deb13u1.debian.tar.xz",
+          "original_file": "libtasn1-6_4.20.0-2+deb13u1.debian.tar.xz",
+          "sha256": "c1ba650436b6a9fc5fac5ea494ab20caf7adb29a3713067e8b665d2f2f325cb1",
+          "bytes": 19196,
+          "url": "https://deb.debian.org/debian/pool/main/libt/libtasn1-6/libtasn1-6_4.20.0-2+deb13u1.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "libtext-charwidth-perl",
+      "source_version": "0.04-11",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "8a4f6e7a44880f8b4dd8f3dc0c97a39c6fef979f99899de4962c9ccfe84a2577-libtext-charwidth-perl_0.04-11.dsc",
+          "original_file": "libtext-charwidth-perl_0.04-11.dsc",
+          "sha256": "8a4f6e7a44880f8b4dd8f3dc0c97a39c6fef979f99899de4962c9ccfe84a2577",
+          "bytes": 2162,
+          "url": "https://deb.debian.org/debian/pool/main/libt/libtext-charwidth-perl/libtext-charwidth-perl_0.04-11.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "2990c13c3f4a5479d7dbc5a94b86c23798cf0dc7df54ffe54e065f072558b6ed-libtext-charwidth-perl_0.04.orig.tar.bz2",
+          "original_file": "libtext-charwidth-perl_0.04.orig.tar.bz2",
+          "sha256": "2990c13c3f4a5479d7dbc5a94b86c23798cf0dc7df54ffe54e065f072558b6ed",
+          "bytes": 8327,
+          "url": "https://deb.debian.org/debian/pool/main/libt/libtext-charwidth-perl/libtext-charwidth-perl_0.04.orig.tar.bz2",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "2590d0b6ee7b9cea5396debb96190077210874b4847e844f9eb0d8a4d87ba19c-libtext-charwidth-perl_0.04-11.debian.tar.xz",
+          "original_file": "libtext-charwidth-perl_0.04-11.debian.tar.xz",
+          "sha256": "2590d0b6ee7b9cea5396debb96190077210874b4847e844f9eb0d8a4d87ba19c",
+          "bytes": 3016,
+          "url": "https://deb.debian.org/debian/pool/main/libt/libtext-charwidth-perl/libtext-charwidth-perl_0.04-11.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "libtext-wrapi18n-perl",
+      "source_version": "0.06-10",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "726c08c23af488c28b70600a5c1632468f1535cb50dcd5255cc153a4f8558ed9-libtext-wrapi18n-perl_0.06-10.dsc",
+          "original_file": "libtext-wrapi18n-perl_0.06-10.dsc",
+          "sha256": "726c08c23af488c28b70600a5c1632468f1535cb50dcd5255cc153a4f8558ed9",
+          "bytes": 1829,
+          "url": "https://deb.debian.org/debian/pool/main/libt/libtext-wrapi18n-perl/libtext-wrapi18n-perl_0.06-10.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "432c2a801efe9f12d631124c1163439eac4c99449ba13d80133c45ecacc627f5-libtext-wrapi18n-perl_0.06.orig.tar.gz",
+          "original_file": "libtext-wrapi18n-perl_0.06.orig.tar.gz",
+          "sha256": "432c2a801efe9f12d631124c1163439eac4c99449ba13d80133c45ecacc627f5",
+          "bytes": 3797,
+          "url": "https://deb.debian.org/debian/pool/main/libt/libtext-wrapi18n-perl/libtext-wrapi18n-perl_0.06.orig.tar.gz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "751073476ee62cc3430ff0afcab74a4e02b432199d7612e1fd63105fc89ec378-libtext-wrapi18n-perl_0.06-10.debian.tar.xz",
+          "original_file": "libtext-wrapi18n-perl_0.06-10.debian.tar.xz",
+          "sha256": "751073476ee62cc3430ff0afcab74a4e02b432199d7612e1fd63105fc89ec378",
+          "bytes": 3452,
+          "url": "https://deb.debian.org/debian/pool/main/libt/libtext-wrapi18n-perl/libtext-wrapi18n-perl_0.06-10.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "libunistring",
+      "source_version": "1.3-2",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "0c09938cace7fbbf36c73af8bc2243fd2f70d3fe336539e8d4c10d0e61742571-libunistring_1.3-2.dsc",
+          "original_file": "libunistring_1.3-2.dsc",
+          "sha256": "0c09938cace7fbbf36c73af8bc2243fd2f70d3fe336539e8d4c10d0e61742571",
+          "bytes": 2215,
+          "url": "https://deb.debian.org/debian/pool/main/libu/libunistring/libunistring_1.3-2.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "f245786c831d25150f3dfb4317cda1acc5e3f79a5da4ad073ddca58886569527-libunistring_1.3.orig.tar.xz",
+          "original_file": "libunistring_1.3.orig.tar.xz",
+          "sha256": "f245786c831d25150f3dfb4317cda1acc5e3f79a5da4ad073ddca58886569527",
+          "bytes": 2753448,
+          "url": "https://deb.debian.org/debian/pool/main/libu/libunistring/libunistring_1.3.orig.tar.xz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "62201b5b7ce9c0b033c50cefa5d7769dff4b7cee8205572e0cf917653cae9e33-libunistring_1.3.orig.tar.xz.asc",
+          "original_file": "libunistring_1.3.orig.tar.xz.asc",
+          "sha256": "62201b5b7ce9c0b033c50cefa5d7769dff4b7cee8205572e0cf917653cae9e33",
+          "bytes": 833,
+          "url": "https://deb.debian.org/debian/pool/main/libu/libunistring/libunistring_1.3.orig.tar.xz.asc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "feaf9761d365430178ea46feefeb602b435c21acf5924918e2257238e0378fc9-libunistring_1.3-2.debian.tar.xz",
+          "original_file": "libunistring_1.3-2.debian.tar.xz",
+          "sha256": "feaf9761d365430178ea46feefeb602b435c21acf5924918e2257238e0378fc9",
+          "bytes": 28480,
+          "url": "https://deb.debian.org/debian/pool/main/libu/libunistring/libunistring_1.3-2.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "libxcrypt",
+      "source_version": "1:4.4.38-1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "feba1874a84616791c1c17f9a290c9e97562b2904b3b0200edc82a2db54f3f07-libxcrypt_4.4.38-1.dsc",
+          "original_file": "libxcrypt_4.4.38-1.dsc",
+          "sha256": "feba1874a84616791c1c17f9a290c9e97562b2904b3b0200edc82a2db54f3f07",
+          "bytes": 1573,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "6a275a356622c64ba9f693892215dbb399c003a7a4afeed9c4c74070eaab20f4-libxcrypt_4.4.38.orig.tar.xz",
+          "original_file": "libxcrypt_4.4.38.orig.tar.xz",
+          "sha256": "6a275a356622c64ba9f693892215dbb399c003a7a4afeed9c4c74070eaab20f4",
+          "bytes": 394216,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "6b87bcb5325e417ab3f4c01c364233444b4c9008a69ec1d6fababb3f6e693a5e-libxcrypt_4.4.38-1.debian.tar.xz",
+          "original_file": "libxcrypt_4.4.38-1.debian.tar.xz",
+          "sha256": "6b87bcb5325e417ab3f4c01c364233444b4c9008a69ec1d6fababb3f6e693a5e",
+          "bytes": 8512,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "libxml2",
+      "source_version": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "04b1da890535b11e3db231f39114ee09e643badceff79441d749d0ca78efaaa5-libxml2_2.12.7+dfsg+really2.9.14-2.1+deb13u3.dsc",
+          "original_file": "libxml2_2.12.7+dfsg+really2.9.14-2.1+deb13u3.dsc",
+          "sha256": "04b1da890535b11e3db231f39114ee09e643badceff79441d749d0ca78efaaa5",
+          "bytes": 3085,
+          "url": "https://deb.debian.org/debian/pool/main/libx/libxml2/libxml2_2.12.7+dfsg+really2.9.14-2.1+deb13u3.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "4fe913dec8b1ab89d13b489b419a8203176ea39e931eaa0d25b17eafb9c279e9-libxml2_2.12.7+dfsg+really2.9.14.orig.tar.xz",
+          "original_file": "libxml2_2.12.7+dfsg+really2.9.14.orig.tar.xz",
+          "sha256": "4fe913dec8b1ab89d13b489b419a8203176ea39e931eaa0d25b17eafb9c279e9",
+          "bytes": 2351200,
+          "url": "https://deb.debian.org/debian/pool/main/libx/libxml2/libxml2_2.12.7+dfsg+really2.9.14.orig.tar.xz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "3b6d265f482d6a8fbe3c056d2006fb3b563b4a838f7258b388ac5f0b29206921-libxml2_2.12.7+dfsg+really2.9.14-2.1+deb13u3.debian.tar.xz",
+          "original_file": "libxml2_2.12.7+dfsg+really2.9.14-2.1+deb13u3.debian.tar.xz",
+          "sha256": "3b6d265f482d6a8fbe3c056d2006fb3b563b4a838f7258b388ac5f0b29206921",
+          "bytes": 58040,
+          "url": "https://deb.debian.org/debian/pool/main/libx/libxml2/libxml2_2.12.7+dfsg+really2.9.14-2.1+deb13u3.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "libxslt",
+      "source_version": "1.1.35-1.2+deb13u3",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "67b78137f28adfeed5f2714dc0c4f70e8f1babdd67104e89edbaa188a5f61b9f-libxslt_1.1.35-1.2+deb13u3.dsc",
+          "original_file": "libxslt_1.1.35-1.2+deb13u3.dsc",
+          "sha256": "67b78137f28adfeed5f2714dc0c4f70e8f1babdd67104e89edbaa188a5f61b9f",
+          "bytes": 1850,
+          "url": "https://deb.debian.org/debian/pool/main/libx/libxslt/libxslt_1.1.35-1.2+deb13u3.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "8247f33e9a872c6ac859aa45018bc4c4d00b97e2feac9eebc10c93ce1f34dd79-libxslt_1.1.35.orig.tar.xz",
+          "original_file": "libxslt_1.1.35.orig.tar.xz",
+          "sha256": "8247f33e9a872c6ac859aa45018bc4c4d00b97e2feac9eebc10c93ce1f34dd79",
+          "bytes": 1827548,
+          "url": "https://deb.debian.org/debian/pool/main/libx/libxslt/libxslt_1.1.35.orig.tar.xz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "6a51679fd4ccf179d5018cea8c50681248b595c2e3911d9b2f38b07ac79e7deb-libxslt_1.1.35-1.2+deb13u3.debian.tar.xz",
+          "original_file": "libxslt_1.1.35-1.2+deb13u3.debian.tar.xz",
+          "sha256": "6a51679fd4ccf179d5018cea8c50681248b595c2e3911d9b2f38b07ac79e7deb",
+          "bytes": 32016,
+          "url": "https://deb.debian.org/debian/pool/main/libx/libxslt/libxslt_1.1.35-1.2+deb13u3.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "libzstd",
+      "source_version": "1.5.7+dfsg-1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "8f6ab97fa772d921334e50fa5756a0951e23c718dc913e43a228f28c1a23adf9-libzstd_1.5.7+dfsg-1.dsc",
+          "original_file": "libzstd_1.5.7+dfsg-1.dsc",
+          "sha256": "8f6ab97fa772d921334e50fa5756a0951e23c718dc913e43a228f28c1a23adf9",
+          "bytes": 2371,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "0c092ef267edce57ba7f3f2645c861f72eaf5e76273c6c3632869423464b90a5-libzstd_1.5.7+dfsg.orig.tar.xz",
+          "original_file": "libzstd_1.5.7+dfsg.orig.tar.xz",
+          "sha256": "0c092ef267edce57ba7f3f2645c861f72eaf5e76273c6c3632869423464b90a5",
+          "bytes": 1834780,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "5e88424d919941291f79e1bfada6cb1a6f748671d9de7d4b7d931f361f183a15-libzstd_1.5.7+dfsg-1.debian.tar.xz",
+          "original_file": "libzstd_1.5.7+dfsg-1.debian.tar.xz",
+          "sha256": "5e88424d919941291f79e1bfada6cb1a6f748671d9de7d4b7d931f361f183a15",
+          "bytes": 23036,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "libzstd",
+      "source_version": "1.5.7+dfsg-1+deb13u1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "32f2d49685864a4f03f639ac59cfd19674b650e1f2b007705b01342cb0fd5cc3-libzstd_1.5.7+dfsg-1+deb13u1.dsc",
+          "original_file": "libzstd_1.5.7+dfsg-1+deb13u1.dsc",
+          "sha256": "32f2d49685864a4f03f639ac59cfd19674b650e1f2b007705b01342cb0fd5cc3",
+          "bytes": 2403,
+          "prior_archive": "security-os-sources.tar",
+          "prior_archive_sha256": "08a65bc3240890f56e54a56d08d2cfd001717a4f50a5ff887c44173c6b8a7a2b"
+        },
+        {
+          "file": "0c092ef267edce57ba7f3f2645c861f72eaf5e76273c6c3632869423464b90a5-libzstd_1.5.7+dfsg.orig.tar.xz",
+          "original_file": "libzstd_1.5.7+dfsg.orig.tar.xz",
+          "sha256": "0c092ef267edce57ba7f3f2645c861f72eaf5e76273c6c3632869423464b90a5",
+          "bytes": 1834780,
+          "prior_archive": "security-os-sources.tar",
+          "prior_archive_sha256": "08a65bc3240890f56e54a56d08d2cfd001717a4f50a5ff887c44173c6b8a7a2b"
+        },
+        {
+          "file": "adc44c628b74a7a4eff4fbed4681e8fdc8ffe8e4bc31aa9ea6a41a07a2281d23-libzstd_1.5.7+dfsg-1+deb13u1.debian.tar.xz",
+          "original_file": "libzstd_1.5.7+dfsg-1+deb13u1.debian.tar.xz",
+          "sha256": "adc44c628b74a7a4eff4fbed4681e8fdc8ffe8e4bc31aa9ea6a41a07a2281d23",
+          "bytes": 24276,
+          "prior_archive": "security-os-sources.tar",
+          "prior_archive_sha256": "08a65bc3240890f56e54a56d08d2cfd001717a4f50a5ff887c44173c6b8a7a2b"
+        }
+      ]
+    },
+    {
+      "source_package": "llvm-toolchain-19",
+      "source_version": "1:19.1.7-3",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "1559a483908ca0c8d4124448a551da5f87ab644771352a5335b1b01d07fe732f-llvm-toolchain-19_19.1.7-3.dsc",
+          "original_file": "llvm-toolchain-19_19.1.7-3.dsc",
+          "sha256": "1559a483908ca0c8d4124448a551da5f87ab644771352a5335b1b01d07fe732f",
+          "bytes": 8200,
+          "url": "https://deb.debian.org/debian/pool/main/l/llvm-toolchain-19/llvm-toolchain-19_19.1.7-3.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "ae498f3bc58ae2d9f64ef5f0c035c4240152bf015a5b7738b15c22e93bdc97ce-llvm-toolchain-19_19.1.7.orig.tar.xz",
+          "original_file": "llvm-toolchain-19_19.1.7.orig.tar.xz",
+          "sha256": "ae498f3bc58ae2d9f64ef5f0c035c4240152bf015a5b7738b15c22e93bdc97ce",
+          "bytes": 164407968,
+          "url": "https://deb.debian.org/debian/pool/main/l/llvm-toolchain-19/llvm-toolchain-19_19.1.7.orig.tar.xz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "bcbccbc6ae715ac84bd21bb7e1175fba483abc0993a6066aa49236c473bce7df-llvm-toolchain-19_19.1.7-3.debian.tar.xz",
+          "original_file": "llvm-toolchain-19_19.1.7-3.debian.tar.xz",
+          "sha256": "bcbccbc6ae715ac84bd21bb7e1175fba483abc0993a6066aa49236c473bce7df",
+          "bytes": 154980,
+          "url": "https://deb.debian.org/debian/pool/main/l/llvm-toolchain-19/llvm-toolchain-19_19.1.7-3.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "lz4",
+      "source_version": "1.10.0-4",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "394c635aa75a21cd5896680e48821c05336645072ae866b2717d53f36b9ba851-lz4_1.10.0-4.dsc",
+          "original_file": "lz4_1.10.0-4.dsc",
+          "sha256": "394c635aa75a21cd5896680e48821c05336645072ae866b2717d53f36b9ba851",
+          "bytes": 1941,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b-lz4_1.10.0.orig.tar.gz",
+          "original_file": "lz4_1.10.0.orig.tar.gz",
+          "sha256": "537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b",
+          "bytes": 387114,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "8d276c3254182c2c9cf319b9a6504cf257c56b441f37d3db8ad97d33d46a0911-lz4_1.10.0-4.debian.tar.xz",
+          "original_file": "lz4_1.10.0-4.debian.tar.xz",
+          "sha256": "8d276c3254182c2c9cf319b9a6504cf257c56b441f37d3db8ad97d33d46a0911",
+          "bytes": 8080,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "mawk",
+      "source_version": "1.3.4.20250131-1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "147dd01670e2ebf61f3c78470e0025b87d14e69c7ba9cfafd54da32a355dea84-mawk_1.3.4.20250131-1.dsc",
+          "original_file": "mawk_1.3.4.20250131-1.dsc",
+          "sha256": "147dd01670e2ebf61f3c78470e0025b87d14e69c7ba9cfafd54da32a355dea84",
+          "bytes": 2969,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "51bcb82d577b141d896d9d9c3077d7aaa209490132e9f2b9573ba8511b3835be-mawk_1.3.4.20250131.orig.tar.gz",
+          "original_file": "mawk_1.3.4.20250131.orig.tar.gz",
+          "sha256": "51bcb82d577b141d896d9d9c3077d7aaa209490132e9f2b9573ba8511b3835be",
+          "bytes": 433213,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "bc83f127727edb42a91d516770c8d0d3cdb5f6e541aa3cb5213b79dae494db95-mawk_1.3.4.20250131.orig.tar.gz.asc",
+          "original_file": "mawk_1.3.4.20250131.orig.tar.gz.asc",
+          "sha256": "bc83f127727edb42a91d516770c8d0d3cdb5f6e541aa3cb5213b79dae494db95",
+          "bytes": 729,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "23dea8244bf4f116ec3cd202ab5d4693207d82d986cd0a3d79442b916be4e2b7-mawk_1.3.4.20250131-1.debian.tar.xz",
+          "original_file": "mawk_1.3.4.20250131-1.debian.tar.xz",
+          "sha256": "23dea8244bf4f116ec3cd202ab5d4693207d82d986cd0a3d79442b916be4e2b7",
+          "bytes": 16008,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "ncurses",
+      "source_version": "6.5+20250216-2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "00539cc2bc6bb84be1b8a8a5decf606682e14b6f39b76b9aa090e65d2c2d4580-ncurses_6.5+20250216-2.dsc",
+          "original_file": "ncurses_6.5+20250216-2.dsc",
+          "sha256": "00539cc2bc6bb84be1b8a8a5decf606682e14b6f39b76b9aa090e65d2c2d4580",
+          "bytes": 3890,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "b37baafa436e7133bb12a185cb8f60e1599b1947e9f0181c76f3190acf28b6eb-ncurses_6.5+20250216.orig.tar.gz",
+          "original_file": "ncurses_6.5+20250216.orig.tar.gz",
+          "sha256": "b37baafa436e7133bb12a185cb8f60e1599b1947e9f0181c76f3190acf28b6eb",
+          "bytes": 3774714,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "64f4d17923322176c44079f18f170e2164a59d551d7e4e9c1a6e4eebedc5dd6f-ncurses_6.5+20250216.orig.tar.gz.asc",
+          "original_file": "ncurses_6.5+20250216.orig.tar.gz.asc",
+          "sha256": "64f4d17923322176c44079f18f170e2164a59d551d7e4e9c1a6e4eebedc5dd6f",
+          "bytes": 729,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "546930a8992ae3325d8c38378f290265d969cf6333cfae9648ac6d69e1e8a8a6-ncurses_6.5+20250216-2.debian.tar.xz",
+          "original_file": "ncurses_6.5+20250216-2.debian.tar.xz",
+          "sha256": "546930a8992ae3325d8c38378f290265d969cf6333cfae9648ac6d69e1e8a8a6",
+          "bytes": 50420,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "netbase",
+      "source_version": "6.5",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "e8691899f57c06fcc383b0f2214b662137df539227d9d7811dc8223f32ebe4c7-netbase_6.5.dsc",
+          "original_file": "netbase_6.5.dsc",
+          "sha256": "e8691899f57c06fcc383b0f2214b662137df539227d9d7811dc8223f32ebe4c7",
+          "bytes": 899,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "9116047aebbaa1698934052d01c6e09b4c3aed643e93df63d2ddcbec243c26d1-netbase_6.5.tar.xz",
+          "original_file": "netbase_6.5.tar.xz",
+          "sha256": "9116047aebbaa1698934052d01c6e09b4c3aed643e93df63d2ddcbec243c26d1",
+          "bytes": 32544,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "nettle",
+      "source_version": "3.10.1-1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "7b440850ce04b341363f3f5e23dfb9f96ebf7d52e0ef7ba2d07120c90ca61b3c-nettle_3.10.1-1.dsc",
+          "original_file": "nettle_3.10.1-1.dsc",
+          "sha256": "7b440850ce04b341363f3f5e23dfb9f96ebf7d52e0ef7ba2d07120c90ca61b3c",
+          "bytes": 2053,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "b0fcdd7fc0cdea6e80dcf1dd85ba794af0d5b4a57e26397eee3bc193272d9132-nettle_3.10.1.orig.tar.gz",
+          "original_file": "nettle_3.10.1.orig.tar.gz",
+          "sha256": "b0fcdd7fc0cdea6e80dcf1dd85ba794af0d5b4a57e26397eee3bc193272d9132",
+          "bytes": 2643267,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "2d40d02ddac5985d8833532a17a0ef96cb685ee0547ee9617ec13793b22e34c6-nettle_3.10.1-1.debian.tar.xz",
+          "original_file": "nettle_3.10.1-1.debian.tar.xz",
+          "sha256": "2d40d02ddac5985d8833532a17a0ef96cb685ee0547ee9617ec13793b22e34c6",
+          "bytes": 25036,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "npth",
+      "source_version": "1.8-3",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "4d447cdfdc0034465181f7285ae7d52f4e1b7ca9a60f4fec4effae556d6d5c46-npth_1.8-3.dsc",
+          "original_file": "npth_1.8-3.dsc",
+          "sha256": "4d447cdfdc0034465181f7285ae7d52f4e1b7ca9a60f4fec4effae556d6d5c46",
+          "bytes": 2188,
+          "url": "https://deb.debian.org/debian/pool/main/n/npth/npth_1.8-3.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "8bd24b4f23a3065d6e5b26e98aba9ce783ea4fd781069c1b35d149694e90ca3e-npth_1.8.orig.tar.bz2",
+          "original_file": "npth_1.8.orig.tar.bz2",
+          "sha256": "8bd24b4f23a3065d6e5b26e98aba9ce783ea4fd781069c1b35d149694e90ca3e",
+          "bytes": 317739,
+          "url": "https://deb.debian.org/debian/pool/main/n/npth/npth_1.8.orig.tar.bz2",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "1a2bd2f85ad832d5166e616cbf336b072c6bdc20335146c5adccd3e2795a24bc-npth_1.8.orig.tar.bz2.asc",
+          "original_file": "npth_1.8.orig.tar.bz2.asc",
+          "sha256": "1a2bd2f85ad832d5166e616cbf336b072c6bdc20335146c5adccd3e2795a24bc",
+          "bytes": 390,
+          "url": "https://deb.debian.org/debian/pool/main/n/npth/npth_1.8.orig.tar.bz2.asc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "b2ec0499de431042120dd56338f9f7ae600b1cbc00dcb71efe39d62d8960cb73-npth_1.8-3.debian.tar.xz",
+          "original_file": "npth_1.8-3.debian.tar.xz",
+          "sha256": "b2ec0499de431042120dd56338f9f7ae600b1cbc00dcb71efe39d62d8960cb73",
+          "bytes": 8668,
+          "url": "https://deb.debian.org/debian/pool/main/n/npth/npth_1.8-3.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "nss-wrapper",
+      "source_version": "1.1.16-1",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "9beb33218403b6d8012a98041cfed36c618cc6ec47f3dbbc14336e5ac6d69c70-nss-wrapper_1.1.16-1.dsc",
+          "original_file": "nss-wrapper_1.1.16-1.dsc",
+          "sha256": "9beb33218403b6d8012a98041cfed36c618cc6ec47f3dbbc14336e5ac6d69c70",
+          "bytes": 1835,
+          "url": "https://deb.debian.org/debian/pool/main/n/nss-wrapper/nss-wrapper_1.1.16-1.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "dc79ab072779be4403b45b60cd044dd13780d4bb9675d27abf1932ada7c8a88d-nss-wrapper_1.1.16.orig.tar.gz",
+          "original_file": "nss-wrapper_1.1.16.orig.tar.gz",
+          "sha256": "dc79ab072779be4403b45b60cd044dd13780d4bb9675d27abf1932ada7c8a88d",
+          "bytes": 190469,
+          "url": "https://deb.debian.org/debian/pool/main/n/nss-wrapper/nss-wrapper_1.1.16.orig.tar.gz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "e1824361a2047f0770e503aa96bd3c9a53bcb9a9afb9f99d65c006d93ef1fb09-nss-wrapper_1.1.16.orig.tar.gz.asc",
+          "original_file": "nss-wrapper_1.1.16.orig.tar.gz.asc",
+          "sha256": "e1824361a2047f0770e503aa96bd3c9a53bcb9a9afb9f99d65c006d93ef1fb09",
+          "bytes": 833,
+          "url": "https://deb.debian.org/debian/pool/main/n/nss-wrapper/nss-wrapper_1.1.16.orig.tar.gz.asc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "36c59a98b9351d7b56e102c84eb623e20a38ed7d540920ca74359c94cdd8a86a-nss-wrapper_1.1.16-1.debian.tar.xz",
+          "original_file": "nss-wrapper_1.1.16-1.debian.tar.xz",
+          "sha256": "36c59a98b9351d7b56e102c84eb623e20a38ed7d540920ca74359c94cdd8a86a",
+          "bytes": 8684,
+          "url": "https://deb.debian.org/debian/pool/main/n/nss-wrapper/nss-wrapper_1.1.16-1.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "openldap",
+      "source_version": "2.6.10+dfsg-1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "05cdd431ef995904f094f4464ca78d5d3b2abdbe4eefacd72446ff8443a2ffac-openldap_2.6.10+dfsg-1.dsc",
+          "original_file": "openldap_2.6.10+dfsg-1.dsc",
+          "sha256": "05cdd431ef995904f094f4464ca78d5d3b2abdbe4eefacd72446ff8443a2ffac",
+          "bytes": 3285,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "e871102bda1e42155fd4d6be4825a297e1c593cb0907b84fc7dde888dc847877-openldap_2.6.10+dfsg.orig.tar.xz",
+          "original_file": "openldap_2.6.10+dfsg.orig.tar.xz",
+          "sha256": "e871102bda1e42155fd4d6be4825a297e1c593cb0907b84fc7dde888dc847877",
+          "bytes": 3754560,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "2dc95ade5655d67c9043e45b5601734fdb7f668267682d087b595a80de24a500-openldap_2.6.10+dfsg-1.debian.tar.xz",
+          "original_file": "openldap_2.6.10+dfsg-1.debian.tar.xz",
+          "sha256": "2dc95ade5655d67c9043e45b5601734fdb7f668267682d087b595a80de24a500",
+          "bytes": 170112,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "openssl",
+      "source_version": "3.5.7-1~deb13u3",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "9cdb0d9daf0773ca5c0f3f5ea1fc59b1106a99e005a5c048948b826e8d3b47e1-openssl_3.5.7-1~deb13u3.dsc",
+          "original_file": "openssl_3.5.7-1~deb13u3.dsc",
+          "sha256": "9cdb0d9daf0773ca5c0f3f5ea1fc59b1106a99e005a5c048948b826e8d3b47e1",
+          "bytes": 2710,
+          "prior_archive": "lower-layer-os-sources.tar",
+          "prior_archive_sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7"
+        },
+        {
+          "file": "a8c0d28a529ca480f9f36cf5792e2cd21984552a3c8e4aa11a24aa31aeac98e8-openssl_3.5.7.orig.tar.gz",
+          "original_file": "openssl_3.5.7.orig.tar.gz",
+          "sha256": "a8c0d28a529ca480f9f36cf5792e2cd21984552a3c8e4aa11a24aa31aeac98e8",
+          "bytes": 53153930,
+          "prior_archive": "lower-layer-os-sources.tar",
+          "prior_archive_sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7"
+        },
+        {
+          "file": "d3d082bee3f658c31db53af625eceecf29d777c7010394bed5787ebcc98abdf2-openssl_3.5.7.orig.tar.gz.asc",
+          "original_file": "openssl_3.5.7.orig.tar.gz.asc",
+          "sha256": "d3d082bee3f658c31db53af625eceecf29d777c7010394bed5787ebcc98abdf2",
+          "bytes": 833,
+          "prior_archive": "lower-layer-os-sources.tar",
+          "prior_archive_sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7"
+        },
+        {
+          "file": "0a427fdc3e773f4119a7dd5b36d1f0903a163cf4ea15d812bb823b251ff1cbc5-openssl_3.5.7-1~deb13u3.debian.tar.xz",
+          "original_file": "openssl_3.5.7-1~deb13u3.debian.tar.xz",
+          "sha256": "0a427fdc3e773f4119a7dd5b36d1f0903a163cf4ea15d812bb823b251ff1cbc5",
+          "bytes": 147344,
+          "prior_archive": "lower-layer-os-sources.tar",
+          "prior_archive_sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7"
+        }
+      ]
+    },
+    {
+      "source_package": "openssl",
+      "source_version": "3.5.9-1~deb13u1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "b038dfab5ee111242b7439e07c820d228519273e7fd1f514014b039e929aad9f-openssl_3.5.9-1~deb13u1.dsc",
+          "original_file": "openssl_3.5.9-1~deb13u1.dsc",
+          "sha256": "b038dfab5ee111242b7439e07c820d228519273e7fd1f514014b039e929aad9f",
+          "bytes": 2707,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "603f5602e2eef00d77fbd429d34dcd5822bb301757a1bc9cdb24c670f1eb859a-openssl_3.5.9.orig.tar.gz",
+          "original_file": "openssl_3.5.9.orig.tar.gz",
+          "sha256": "603f5602e2eef00d77fbd429d34dcd5822bb301757a1bc9cdb24c670f1eb859a",
+          "bytes": 53279637,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "bdccf2057a7c4ae377b40e832cb8c632ae8b532d4fb64cc7b843066eee748f89-openssl_3.5.9.orig.tar.gz.asc",
+          "original_file": "openssl_3.5.9.orig.tar.gz.asc",
+          "sha256": "bdccf2057a7c4ae377b40e832cb8c632ae8b532d4fb64cc7b843066eee748f89",
+          "bytes": 931,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "7d5158a87cd24641316b050de419be4ebddb1f180afd7ebaa3bc990036c38ec6-openssl_3.5.9-1~deb13u1.debian.tar.xz",
+          "original_file": "openssl_3.5.9-1~deb13u1.debian.tar.xz",
+          "sha256": "7d5158a87cd24641316b050de419be4ebddb1f180afd7ebaa3bc990036c38ec6",
+          "bytes": 54612,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "p11-kit",
+      "source_version": "0.25.5-3",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "65e21a68dd942741bba82f5bf20901f616b64de91a976d92a54a0cb314896544-p11-kit_0.25.5-3.dsc",
+          "original_file": "p11-kit_0.25.5-3.dsc",
+          "sha256": "65e21a68dd942741bba82f5bf20901f616b64de91a976d92a54a0cb314896544",
+          "bytes": 2538,
+          "url": "https://deb.debian.org/debian/pool/main/p/p11-kit/p11-kit_0.25.5-3.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "04d0a86450cdb1be018f26af6699857171a188ac6d5b8c90786a60854e1198e5-p11-kit_0.25.5.orig.tar.xz",
+          "original_file": "p11-kit_0.25.5.orig.tar.xz",
+          "sha256": "04d0a86450cdb1be018f26af6699857171a188ac6d5b8c90786a60854e1198e5",
+          "bytes": 1002056,
+          "url": "https://deb.debian.org/debian/pool/main/p/p11-kit/p11-kit_0.25.5.orig.tar.xz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "066c92b9d2accb2fda6a2f71e676fb6526fcc153051b1f04ee7d7c8c96a09989-p11-kit_0.25.5.orig.tar.xz.asc",
+          "original_file": "p11-kit_0.25.5.orig.tar.xz.asc",
+          "sha256": "066c92b9d2accb2fda6a2f71e676fb6526fcc153051b1f04ee7d7c8c96a09989",
+          "bytes": 228,
+          "url": "https://deb.debian.org/debian/pool/main/p/p11-kit/p11-kit_0.25.5.orig.tar.xz.asc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "3800ea81e4615898813f533834ad37ec270f6f7d4c9413c84e712075a197849c-p11-kit_0.25.5-3.debian.tar.xz",
+          "original_file": "p11-kit_0.25.5-3.debian.tar.xz",
+          "sha256": "3800ea81e4615898813f533834ad37ec270f6f7d4c9413c84e712075a197849c",
+          "bytes": 24184,
+          "url": "https://deb.debian.org/debian/pool/main/p/p11-kit/p11-kit_0.25.5-3.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "pam",
+      "source_version": "1.7.0-5",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "5c127aa18c7cb52ec9ee91fa2099453b3a851bcc0088e79045384a2a508b341c-pam_1.7.0-5.dsc",
+          "original_file": "pam_1.7.0-5.dsc",
+          "sha256": "5c127aa18c7cb52ec9ee91fa2099453b3a851bcc0088e79045384a2a508b341c",
+          "bytes": 2210,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "57dcd7a6b966ecd5bbd95e1d11173734691e16b68692fa59661cdae9b13b1697-pam_1.7.0.orig.tar.xz",
+          "original_file": "pam_1.7.0.orig.tar.xz",
+          "sha256": "57dcd7a6b966ecd5bbd95e1d11173734691e16b68692fa59661cdae9b13b1697",
+          "bytes": 507824,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "7a8ea18ec7d9dd1f8cbf9055c32128cbca8241aa63e9fea44d56ce6f0e15e441-pam_1.7.0.orig.tar.xz.asc",
+          "original_file": "pam_1.7.0.orig.tar.xz.asc",
+          "sha256": "7a8ea18ec7d9dd1f8cbf9055c32128cbca8241aa63e9fea44d56ce6f0e15e441",
+          "bytes": 801,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "d776d7cb6fc8b08273f96b7f843299356ef13c6756e30468c594ab28faf1701c-pam_1.7.0-5.debian.tar.xz",
+          "original_file": "pam_1.7.0-5.debian.tar.xz",
+          "sha256": "d776d7cb6fc8b08273f96b7f843299356ef13c6756e30468c594ab28faf1701c",
+          "bytes": 145640,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "pcre2",
+      "source_version": "10.46-1~deb13u3",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "5f317534eff1e33f0a5690a866ba2f2c9399c60ce9b74c89039d4de372420c5c-pcre2_10.46-1~deb13u3.dsc",
+          "original_file": "pcre2_10.46-1~deb13u3.dsc",
+          "sha256": "5f317534eff1e33f0a5690a866ba2f2c9399c60ce9b74c89039d4de372420c5c",
+          "bytes": 2406,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "8d28d7f2c3b970c3a4bf3776bcbb5adfc923183ce74bc8df1ebaad8c1985bd07-pcre2_10.46.orig.tar.gz",
+          "original_file": "pcre2_10.46.orig.tar.gz",
+          "sha256": "8d28d7f2c3b970c3a4bf3776bcbb5adfc923183ce74bc8df1ebaad8c1985bd07",
+          "bytes": 2718545,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "28734c85365f431a4494c2efe2cdb42ed432673f962e421826f3c3b7aa76c4cf-pcre2_10.46-1~deb13u3.diff.gz",
+          "original_file": "pcre2_10.46-1~deb13u3.diff.gz",
+          "sha256": "28734c85365f431a4494c2efe2cdb42ed432673f962e421826f3c3b7aa76c4cf",
+          "bytes": 20405,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "perl",
+      "source_version": "5.40.1-6+deb13u1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "92d1cfb32167d77fada7284f1c291de72f93eb896f5cfd58247d020182b403a8-perl_5.40.1-6+deb13u1.dsc",
+          "original_file": "perl_5.40.1-6+deb13u1.dsc",
+          "sha256": "92d1cfb32167d77fada7284f1c291de72f93eb896f5cfd58247d020182b403a8",
+          "bytes": 2404,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "4ea023d08101443f6ed9dc3bdd9bb5f5e08087678dc9e443d195df22da36209a-perl_5.40.1.orig-regen-configure.tar.xz",
+          "original_file": "perl_5.40.1.orig-regen-configure.tar.xz",
+          "sha256": "4ea023d08101443f6ed9dc3bdd9bb5f5e08087678dc9e443d195df22da36209a",
+          "bytes": 421056,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "dfa20c2eef2b4af133525610bbb65dd13777ecf998c9c5b1ccf0d308e732ee3f-perl_5.40.1.orig.tar.xz",
+          "original_file": "perl_5.40.1.orig.tar.xz",
+          "sha256": "dfa20c2eef2b4af133525610bbb65dd13777ecf998c9c5b1ccf0d308e732ee3f",
+          "bytes": 13930924,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "5ee76db601d6f4638433ab9b0f5bd5cfb15b102a79d902ff282e762becb7e724-perl_5.40.1-6+deb13u1.debian.tar.xz",
+          "original_file": "perl_5.40.1-6+deb13u1.debian.tar.xz",
+          "sha256": "5ee76db601d6f4638433ab9b0f5bd5cfb15b102a79d902ff282e762becb7e724",
+          "bytes": 186360,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "pinentry",
+      "source_version": "1.3.1-2",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "368802b3766c8bc619f1902b72dd2dddf3b745a92fed18a051560a211e4856a1-pinentry_1.3.1-2.dsc",
+          "original_file": "pinentry_1.3.1-2.dsc",
+          "sha256": "368802b3766c8bc619f1902b72dd2dddf3b745a92fed18a051560a211e4856a1",
+          "bytes": 3206,
+          "url": "https://deb.debian.org/debian/pool/main/p/pinentry/pinentry_1.3.1-2.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04-pinentry_1.3.1.orig.tar.bz2",
+          "original_file": "pinentry_1.3.1.orig.tar.bz2",
+          "sha256": "bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04",
+          "bytes": 611233,
+          "url": "https://deb.debian.org/debian/pool/main/p/pinentry/pinentry_1.3.1.orig.tar.bz2",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "bc51c827206fb48de8003bd09dec6be7e28193f772459a505b7d7483669b4b9b-pinentry_1.3.1.orig.tar.bz2.asc",
+          "original_file": "pinentry_1.3.1.orig.tar.bz2.asc",
+          "sha256": "bc51c827206fb48de8003bd09dec6be7e28193f772459a505b7d7483669b4b9b",
+          "bytes": 390,
+          "url": "https://deb.debian.org/debian/pool/main/p/pinentry/pinentry_1.3.1.orig.tar.bz2.asc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "7b6174d6469bb15555cbcee453ad7a61e4c2532b2d7ed1ad47b36fe61e6ff1a7-pinentry_1.3.1-2.debian.tar.xz",
+          "original_file": "pinentry_1.3.1-2.debian.tar.xz",
+          "sha256": "7b6174d6469bb15555cbcee453ad7a61e4c2532b2d7ed1ad47b36fe61e6ff1a7",
+          "bytes": 21032,
+          "url": "https://deb.debian.org/debian/pool/main/p/pinentry/pinentry_1.3.1-2.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "postgresql-17",
+      "source_version": "17.12-1.pgdg13+1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "7df902518f971be625f4a40c115b38870ee630d5bc12079e9730622bbc39e0d8-postgresql-17_17.12-1.pgdg13+1.dsc",
+          "original_file": "postgresql-17_17.12-1.pgdg13+1.dsc",
+          "sha256": "7df902518f971be625f4a40c115b38870ee630d5bc12079e9730622bbc39e0d8",
+          "bytes": 3358,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "9cf136a703d8ee2f83465c43be4e9e8e7930c82b0bfba13be7e2537be769ac55-postgresql-17_17.12.orig.tar.bz2",
+          "original_file": "postgresql-17_17.12.orig.tar.bz2",
+          "sha256": "9cf136a703d8ee2f83465c43be4e9e8e7930c82b0bfba13be7e2537be769ac55",
+          "bytes": 22292547,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "609bec1644442159e1c372c0f666d4cafbcc51a472cad4266dbbbafb2f0dcf5f-postgresql-17_17.12-1.pgdg13+1.debian.tar.xz",
+          "original_file": "postgresql-17_17.12-1.pgdg13+1.debian.tar.xz",
+          "sha256": "609bec1644442159e1c372c0f666d4cafbcc51a472cad4266dbbbafb2f0dcf5f",
+          "bytes": 34408,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "postgresql-19",
+      "source_version": "19.0-2.pgdg13+1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "7e2a240f4f3be4bfd0052daf883b89e7cbe6bd91f6ea479653f790a8431c25b6-postgresql-19_19.0-2.pgdg13+1.dsc",
+          "original_file": "postgresql-19_19.0-2.pgdg13+1.dsc",
+          "sha256": "7e2a240f4f3be4bfd0052daf883b89e7cbe6bd91f6ea479653f790a8431c25b6",
+          "bytes": 3705,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "a89fd70efbad6a08c7dbed8d4872e3af30170d9e5ca9dc7906523be95b4e692d-postgresql-19_19.0.orig.tar.bz2",
+          "original_file": "postgresql-19_19.0.orig.tar.bz2",
+          "sha256": "a89fd70efbad6a08c7dbed8d4872e3af30170d9e5ca9dc7906523be95b4e692d",
+          "bytes": 23982241,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "28654ae084fc6b0d3ae287f59cea83807bd21a7287e7c6947a125067947d865d-postgresql-19_19.0-2.pgdg13+1.debian.tar.xz",
+          "original_file": "postgresql-19_19.0-2.pgdg13+1.debian.tar.xz",
+          "sha256": "28654ae084fc6b0d3ae287f59cea83807bd21a7287e7c6947a125067947d865d",
+          "bytes": 24952,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "postgresql-common",
+      "source_version": "297.pgdg13+1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "069066f5b4b1a24ada521ffb7f110d8c80335a86b1fff764c2c364db9b81d530-postgresql-common_297.pgdg13+1.dsc",
+          "original_file": "postgresql-common_297.pgdg13+1.dsc",
+          "sha256": "069066f5b4b1a24ada521ffb7f110d8c80335a86b1fff764c2c364db9b81d530",
+          "bytes": 1538,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "08552a1b677af701ee96728055d5af0e9d45c3e75305b72293c256aec79b2857-postgresql-common_297.pgdg13+1.tar.xz",
+          "original_file": "postgresql-common_297.pgdg13+1.tar.xz",
+          "sha256": "08552a1b677af701ee96728055d5af0e9d45c3e75305b72293c256aec79b2857",
+          "bytes": 220540,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "procps",
+      "source_version": "2:4.0.4-9",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "0ea43605b8d5d7ac4306af0dcd2d01e237cbaba6603b0cf248dd7cfd4364ac7a-procps_4.0.4-9.dsc",
+          "original_file": "procps_4.0.4-9.dsc",
+          "sha256": "0ea43605b8d5d7ac4306af0dcd2d01e237cbaba6603b0cf248dd7cfd4364ac7a",
+          "bytes": 2124,
+          "url": "https://deb.debian.org/debian/pool/main/p/procps/procps_4.0.4-9.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "22870d6feb2478adb617ce4f09a787addaf2d260c5a8aa7b17d889a962c5e42e-procps_4.0.4.orig.tar.xz",
+          "original_file": "procps_4.0.4.orig.tar.xz",
+          "sha256": "22870d6feb2478adb617ce4f09a787addaf2d260c5a8aa7b17d889a962c5e42e",
+          "bytes": 1401540,
+          "url": "https://deb.debian.org/debian/pool/main/p/procps/procps_4.0.4.orig.tar.xz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "4821ca009f83b05522bc97ddac82661898938323ef0808416bca7830ce19bd97-procps_4.0.4-9.debian.tar.xz",
+          "original_file": "procps_4.0.4-9.debian.tar.xz",
+          "sha256": "4821ca009f83b05522bc97ddac82661898938323ef0808416bca7830ce19bd97",
+          "bytes": 45932,
+          "url": "https://deb.debian.org/debian/pool/main/p/procps/procps_4.0.4-9.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "readline",
+      "source_version": "8.2-6",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "6f94c7144d6b6b1ff88aaebd81480e87f8773b7638031782aac12ef93ffd2e71-readline_8.2-6.dsc",
+          "original_file": "readline_8.2-6.dsc",
+          "sha256": "6f94c7144d6b6b1ff88aaebd81480e87f8773b7638031782aac12ef93ffd2e71",
+          "bytes": 2810,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35-readline_8.2.orig.tar.gz",
+          "original_file": "readline_8.2.orig.tar.gz",
+          "sha256": "3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35",
+          "bytes": 3043952,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "d1cf806644dbce298cf929f1cc9b3af5a50cd7db97b6f69db280c1eb2f544376-readline_8.2-6.debian.tar.xz",
+          "original_file": "readline_8.2-6.debian.tar.xz",
+          "sha256": "d1cf806644dbce298cf929f1cc9b3af5a50cd7db97b6f69db280c1eb2f544376",
+          "bytes": 38396,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "rust-sequoia-sqv",
+      "source_version": "1.3.0-3",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "98ad852ed30d42d3b0d6ce40d2f56a96fb443cc6fa2caeaa12516fe5bbe544af-rust-sequoia-sqv_1.3.0-3.dsc",
+          "original_file": "rust-sequoia-sqv_1.3.0-3.dsc",
+          "sha256": "98ad852ed30d42d3b0d6ce40d2f56a96fb443cc6fa2caeaa12516fe5bbe544af",
+          "bytes": 2704,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "8924571d26720b245292ad3c450e4061fcb24890461874790549747bffa35e60-rust-sequoia-sqv_1.3.0.orig.tar.gz",
+          "original_file": "rust-sequoia-sqv_1.3.0.orig.tar.gz",
+          "sha256": "8924571d26720b245292ad3c450e4061fcb24890461874790549747bffa35e60",
+          "bytes": 140759,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "be04e0365bc1206617a3e55d507bfce2e972819fb737e23a1112a717cc89b9bc-rust-sequoia-sqv_1.3.0-3.debian.tar.xz",
+          "original_file": "rust-sequoia-sqv_1.3.0-3.debian.tar.xz",
+          "sha256": "be04e0365bc1206617a3e55d507bfce2e972819fb737e23a1112a717cc89b9bc",
+          "bytes": 3876,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "sed",
+      "source_version": "4.9-2+deb13u1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "9fcc5dffe5e712b4631757c057228ae57919aec1cca1c91a80e76719167f443b-sed_4.9-2+deb13u1.dsc",
+          "original_file": "sed_4.9-2+deb13u1.dsc",
+          "sha256": "9fcc5dffe5e712b4631757c057228ae57919aec1cca1c91a80e76719167f443b",
+          "bytes": 2047,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "6e226b732e1cd739464ad6862bd1a1aba42d7982922da7a53519631d24975181-sed_4.9.orig.tar.xz",
+          "original_file": "sed_4.9.orig.tar.xz",
+          "sha256": "6e226b732e1cd739464ad6862bd1a1aba42d7982922da7a53519631d24975181",
+          "bytes": 1397092,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "9c9aacda91e02802f33fb6a1a6e86f80be1bc67b92a4dae009e78f77e26e130a-sed_4.9-2+deb13u1.debian.tar.xz",
+          "original_file": "sed_4.9-2+deb13u1.debian.tar.xz",
+          "sha256": "9c9aacda91e02802f33fb6a1a6e86f80be1bc67b92a4dae009e78f77e26e130a",
+          "bytes": 63644,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "sensible-utils",
+      "source_version": "0.0.25",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "7d0deb8fca88c2e095a838b4ba2443c5c07f1501907b331a7ef051178c90a5a8-sensible-utils_0.0.25.dsc",
+          "original_file": "sensible-utils_0.0.25.dsc",
+          "sha256": "7d0deb8fca88c2e095a838b4ba2443c5c07f1501907b331a7ef051178c90a5a8",
+          "bytes": 1718,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "b905fcb981397db693bbcdda2ba9af712552a092f3bacd621112ccc98ddce4bd-sensible-utils_0.0.25.tar.xz",
+          "original_file": "sensible-utils_0.0.25.tar.xz",
+          "sha256": "b905fcb981397db693bbcdda2ba9af712552a092f3bacd621112ccc98ddce4bd",
+          "bytes": 76132,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "shadow",
+      "source_version": "1:4.17.4-2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "920de0d3be5303f2c0511d5531c1815abc258b15af8f9c511c8aa6d8e1a91a86-shadow_4.17.4-2.dsc",
+          "original_file": "shadow_4.17.4-2.dsc",
+          "sha256": "920de0d3be5303f2c0511d5531c1815abc258b15af8f9c511c8aa6d8e1a91a86",
+          "bytes": 2851,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "554801054694ff7d8a7abdf0d6ece34e2f16e111673cc01b8c9ee1278451181e-shadow_4.17.4.orig.tar.xz",
+          "original_file": "shadow_4.17.4.orig.tar.xz",
+          "sha256": "554801054694ff7d8a7abdf0d6ece34e2f16e111673cc01b8c9ee1278451181e",
+          "bytes": 2326584,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "82437d2b54790b3a6734c526b757e693cd0c734ec6afd69f9a9cf0eb1dad8dc4-shadow_4.17.4.orig.tar.xz.asc",
+          "original_file": "shadow_4.17.4.orig.tar.xz.asc",
+          "sha256": "82437d2b54790b3a6734c526b757e693cd0c734ec6afd69f9a9cf0eb1dad8dc4",
+          "bytes": 488,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "97eaf0b3682a8a1a1ae6e4c4fac00885a7433d2487e636bde7c1c406e66bdb23-shadow_4.17.4-2.debian.tar.xz",
+          "original_file": "shadow_4.17.4-2.debian.tar.xz",
+          "sha256": "97eaf0b3682a8a1a1ae6e4c4fac00885a7433d2487e636bde7c1c406e66bdb23",
+          "bytes": 167792,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "shadow",
+      "source_version": "1:4.17.4-2+deb13u1",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "6d5eea95be34edcbeb34369bee37d4961ec325c486efaf4d5a7463ee66e7626a-shadow_4.17.4-2+deb13u1.dsc",
+          "original_file": "shadow_4.17.4-2+deb13u1.dsc",
+          "sha256": "6d5eea95be34edcbeb34369bee37d4961ec325c486efaf4d5a7463ee66e7626a",
+          "bytes": 2278,
+          "url": "https://security.debian.org/debian-security/pool/updates/main/s/shadow/shadow_4.17.4-2+deb13u1.dsc",
+          "authenticated_index": "security"
+        },
+        {
+          "file": "554801054694ff7d8a7abdf0d6ece34e2f16e111673cc01b8c9ee1278451181e-shadow_4.17.4.orig.tar.xz",
+          "original_file": "shadow_4.17.4.orig.tar.xz",
+          "sha256": "554801054694ff7d8a7abdf0d6ece34e2f16e111673cc01b8c9ee1278451181e",
+          "bytes": 2326584,
+          "url": "https://security.debian.org/debian-security/pool/updates/main/s/shadow/shadow_4.17.4.orig.tar.xz",
+          "authenticated_index": "security"
+        },
+        {
+          "file": "82437d2b54790b3a6734c526b757e693cd0c734ec6afd69f9a9cf0eb1dad8dc4-shadow_4.17.4.orig.tar.xz.asc",
+          "original_file": "shadow_4.17.4.orig.tar.xz.asc",
+          "sha256": "82437d2b54790b3a6734c526b757e693cd0c734ec6afd69f9a9cf0eb1dad8dc4",
+          "bytes": 488,
+          "url": "https://security.debian.org/debian-security/pool/updates/main/s/shadow/shadow_4.17.4.orig.tar.xz.asc",
+          "authenticated_index": "security"
+        },
+        {
+          "file": "765f5e4b0fff4f0aaf9dec140d620330ece7db5e2b0a595b8a7a5066ce738bd1-shadow_4.17.4-2+deb13u1.debian.tar.xz",
+          "original_file": "shadow_4.17.4-2+deb13u1.debian.tar.xz",
+          "sha256": "765f5e4b0fff4f0aaf9dec140d620330ece7db5e2b0a595b8a7a5066ce738bd1",
+          "bytes": 171104,
+          "url": "https://security.debian.org/debian-security/pool/updates/main/s/shadow/shadow_4.17.4-2+deb13u1.debian.tar.xz",
+          "authenticated_index": "security"
+        }
+      ]
+    },
+    {
+      "source_package": "sqlite3",
+      "source_version": "3.46.1-7+deb13u2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "46e1eec171e11108fc436e45309b635b601029726b6ffd3bf435bb474e511638-sqlite3_3.46.1-7+deb13u2.dsc",
+          "original_file": "sqlite3_3.46.1-7+deb13u2.dsc",
+          "sha256": "46e1eec171e11108fc436e45309b635b601029726b6ffd3bf435bb474e511638",
+          "bytes": 2673,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "648df41a8e532882b1905df45919aae4bafaf74c455f66bc86f1f52f45c8b8f0-sqlite3_3.46.1.orig-www.tar.xz",
+          "original_file": "sqlite3_3.46.1.orig-www.tar.xz",
+          "sha256": "648df41a8e532882b1905df45919aae4bafaf74c455f66bc86f1f52f45c8b8f0",
+          "bytes": 5861820,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "d0cdd2ece271b29e7ce18095745d892517ee26d0f270065b3a25c2e9eb11639c-sqlite3_3.46.1.orig.tar.xz",
+          "original_file": "sqlite3_3.46.1.orig.tar.xz",
+          "sha256": "d0cdd2ece271b29e7ce18095745d892517ee26d0f270065b3a25c2e9eb11639c",
+          "bytes": 8456776,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "59d33bc436258603702bb051d645743ab03612b82f79e7c7d638c65127c21261-sqlite3_3.46.1-7+deb13u2.debian.tar.xz",
+          "original_file": "sqlite3_3.46.1-7+deb13u2.debian.tar.xz",
+          "sha256": "59d33bc436258603702bb051d645743ab03612b82f79e7c7d638c65127c21261",
+          "bytes": 37084,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "ssl-cert",
+      "source_version": "1.1.3",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "64f67c02455b273e9c6fd117d9f74d625174e60d395d47039eb6585af4549726-ssl-cert_1.1.3.dsc",
+          "original_file": "ssl-cert_1.1.3.dsc",
+          "sha256": "64f67c02455b273e9c6fd117d9f74d625174e60d395d47039eb6585af4549726",
+          "bytes": 1644,
+          "url": "https://deb.debian.org/debian/pool/main/s/ssl-cert/ssl-cert_1.1.3.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "65a0628b9472525a4f1465fd9205d257ae3a790693691cc2b5a4fa16878b8261-ssl-cert_1.1.3.tar.xz",
+          "original_file": "ssl-cert_1.1.3.tar.xz",
+          "sha256": "65a0628b9472525a4f1465fd9205d257ae3a790693691cc2b5a4fa16878b8261",
+          "bytes": 32324,
+          "url": "https://deb.debian.org/debian/pool/main/s/ssl-cert/ssl-cert_1.1.3.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "systemd",
+      "source_version": "257.13-1~deb13u1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "1b3405d671a82d1e20c9d99f52d4336aafe8543b28d04e91b7f1f586d3a667c7-systemd_257.13-1~deb13u1.dsc",
+          "original_file": "systemd_257.13-1~deb13u1.dsc",
+          "sha256": "1b3405d671a82d1e20c9d99f52d4336aafe8543b28d04e91b7f1f586d3a667c7",
+          "bytes": 8696,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "1eb7d5f9ff8a426ff880a3cded9ce819613ba8003ac5ddde9eca162f14ddabe7-systemd_257.13.orig.tar.gz",
+          "original_file": "systemd_257.13.orig.tar.gz",
+          "sha256": "1eb7d5f9ff8a426ff880a3cded9ce819613ba8003ac5ddde9eca162f14ddabe7",
+          "bytes": 16543653,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "9c6e435d613b996efcdb3b7dd9a4cebaa745333a3f64dc722f3fad646f1fdc1a-systemd_257.13-1~deb13u1.debian.tar.xz",
+          "original_file": "systemd_257.13-1~deb13u1.debian.tar.xz",
+          "sha256": "9c6e435d613b996efcdb3b7dd9a4cebaa745333a3f64dc722f3fad646f1fdc1a",
+          "bytes": 183128,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "sysvinit",
+      "source_version": "3.14-4",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "1cfe65682218077e6f76011f0c5caacc9f2ab214d55893307d4a54c93312ac92-sysvinit_3.14-4.dsc",
+          "original_file": "sysvinit_3.14-4.dsc",
+          "sha256": "1cfe65682218077e6f76011f0c5caacc9f2ab214d55893307d4a54c93312ac92",
+          "bytes": 2375,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "4e90a148707cf64113fc97343c053f9c0c9589551936b053999dcc69731f295f-sysvinit_3.14.orig.tar.gz",
+          "original_file": "sysvinit_3.14.orig.tar.gz",
+          "sha256": "4e90a148707cf64113fc97343c053f9c0c9589551936b053999dcc69731f295f",
+          "bytes": 516357,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "2ba0aa763232112696bce50ee5acc707a515fcbd5b2c194193bfa7a0a525bff6-sysvinit_3.14-4.debian.tar.xz",
+          "original_file": "sysvinit_3.14-4.debian.tar.xz",
+          "sha256": "2ba0aa763232112696bce50ee5acc707a515fcbd5b2c194193bfa7a0a525bff6",
+          "bytes": 122156,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "tar",
+      "source_version": "1.35+dfsg-3.1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "5bb58d4966d94c99a9f1b182676089ecc05058d62fdb927f5c07539d9cda4077-tar_1.35+dfsg-3.1.dsc",
+          "original_file": "tar_1.35+dfsg-3.1.dsc",
+          "sha256": "5bb58d4966d94c99a9f1b182676089ecc05058d62fdb927f5c07539d9cda4077",
+          "bytes": 2017,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "9ae57e981c1e73c0eebc2b26c9b0c4497fe310ef1d516ea430efb5470b71f7a8-tar_1.35+dfsg.orig.tar.xz",
+          "original_file": "tar_1.35+dfsg.orig.tar.xz",
+          "sha256": "9ae57e981c1e73c0eebc2b26c9b0c4497fe310ef1d516ea430efb5470b71f7a8",
+          "bytes": 2111608,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "0d0278034b82ed84dce04a461879b6e1871e4cb416a0ff04d3d35ff05fc30a53-tar_1.35+dfsg-3.1.debian.tar.xz",
+          "original_file": "tar_1.35+dfsg-3.1.debian.tar.xz",
+          "sha256": "0d0278034b82ed84dce04a461879b6e1871e4cb416a0ff04d3d35ff05fc30a53",
+          "bytes": 21540,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "tzdata",
+      "source_version": "2026f-0+deb13u1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "5b054ca653d94f5c26e8485f002915cff2e542bd5be473b224708ae301c2f9df-tzdata_2026f-0+deb13u1.dsc",
+          "original_file": "tzdata_2026f-0+deb13u1.dsc",
+          "sha256": "5b054ca653d94f5c26e8485f002915cff2e542bd5be473b224708ae301c2f9df",
+          "bytes": 2466,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "01b4a91cec5167ed48c11e8ab78f2048cead78ce94b0cafcad0ae8c5a3044d3d-tzdata_2026f.orig.tar.gz",
+          "original_file": "tzdata_2026f.orig.tar.gz",
+          "sha256": "01b4a91cec5167ed48c11e8ab78f2048cead78ce94b0cafcad0ae8c5a3044d3d",
+          "bytes": 483310,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "21d673c017910cf47e392e2e8e23a855ed22456da16a9a26ae714bd1e723255d-tzdata_2026f.orig.tar.gz.asc",
+          "original_file": "tzdata_2026f.orig.tar.gz.asc",
+          "sha256": "21d673c017910cf47e392e2e8e23a855ed22456da16a9a26ae714bd1e723255d",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "1e591c778ef71dc461cdc3d16841edb48872c536cd04a27bf2ad86187126388c-tzdata_2026f-0+deb13u1.debian.tar.xz",
+          "original_file": "tzdata_2026f-0+deb13u1.debian.tar.xz",
+          "sha256": "1e591c778ef71dc461cdc3d16841edb48872c536cd04a27bf2ad86187126388c",
+          "bytes": 128876,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "ucf",
+      "source_version": "3.0052",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "9117f54533d23ad74371e91c3038e13b1aa0fabd51a382f47a5af81e9b5ee591-ucf_3.0052.dsc",
+          "original_file": "ucf_3.0052.dsc",
+          "sha256": "9117f54533d23ad74371e91c3038e13b1aa0fabd51a382f47a5af81e9b5ee591",
+          "bytes": 1512,
+          "url": "https://deb.debian.org/debian/pool/main/u/ucf/ucf_3.0052.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "94130b4840618a65543ca4c12f4de062081008f42f36d0abfbd75098ebe9a7eb-ucf_3.0052.tar.xz",
+          "original_file": "ucf_3.0052.tar.xz",
+          "sha256": "94130b4840618a65543ca4c12f4de062081008f42f36d0abfbd75098ebe9a7eb",
+          "bytes": 71488,
+          "url": "https://deb.debian.org/debian/pool/main/u/ucf/ucf_3.0052.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "util-linux",
+      "source_version": "2.41.5-0+deb13u1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "43e9b2cbebd10fdc598c4ad10217c8202c28de53af6eafc892c8e9b5cbf3a3a5-util-linux_2.41.5-0+deb13u1.dsc",
+          "original_file": "util-linux_2.41.5-0+deb13u1.dsc",
+          "sha256": "43e9b2cbebd10fdc598c4ad10217c8202c28de53af6eafc892c8e9b5cbf3a3a5",
+          "bytes": 4988,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "f586e35d320ff537aab3ffeca37e9ecd482ccbe013590db4429a414d8aa6a728-util-linux_2.41.5.orig.tar.xz",
+          "original_file": "util-linux_2.41.5.orig.tar.xz",
+          "sha256": "f586e35d320ff537aab3ffeca37e9ecd482ccbe013590db4429a414d8aa6a728",
+          "bytes": 9474992,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "5b327ccd22f0f4ed28a389870aa51d04ecedb8693e52a1d122850f2b3188cbf6-util-linux_2.41.5-0+deb13u1.debian.tar.xz",
+          "original_file": "util-linux_2.41.5-0+deb13u1.debian.tar.xz",
+          "sha256": "5b327ccd22f0f4ed28a389870aa51d04ecedb8693e52a1d122850f2b3188cbf6",
+          "bytes": 107604,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "xxhash",
+      "source_version": "0.8.3-2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "9d1f7aaace7871fbdb8775d756c6eaca84e6ad5d8e9c6ac465b7e0adc06ff90c-xxhash_0.8.3-2.dsc",
+          "original_file": "xxhash_0.8.3-2.dsc",
+          "sha256": "9d1f7aaace7871fbdb8775d756c6eaca84e6ad5d8e9c6ac465b7e0adc06ff90c",
+          "bytes": 1969,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "aae608dfe8213dfd05d909a57718ef82f30722c392344583d3f39050c7f29a80-xxhash_0.8.3.orig.tar.gz",
+          "original_file": "xxhash_0.8.3.orig.tar.gz",
+          "sha256": "aae608dfe8213dfd05d909a57718ef82f30722c392344583d3f39050c7f29a80",
+          "bytes": 1147630,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "13824bfb2b2367225dfe3090d0ae050614f1c470a47db7232a2e9d4b2b14ad31-xxhash_0.8.3-2.debian.tar.xz",
+          "original_file": "xxhash_0.8.3-2.debian.tar.xz",
+          "sha256": "13824bfb2b2367225dfe3090d0ae050614f1c470a47db7232a2e9d4b2b14ad31",
+          "bytes": 5144,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "xz-utils",
+      "source_version": "5.8.1-1+deb13u2",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "f02574465dcb7da3d5b7bdfc20ea350248c3371b0df36bb005152af80d61cdfc-xz-utils_5.8.1-1+deb13u2.dsc",
+          "original_file": "xz-utils_5.8.1-1+deb13u2.dsc",
+          "sha256": "f02574465dcb7da3d5b7bdfc20ea350248c3371b0df36bb005152af80d61cdfc",
+          "bytes": 2562,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "0b54f79df85912504de0b14aec7971e3f964491af1812d83447005807513cd9e-xz-utils_5.8.1.orig.tar.xz",
+          "original_file": "xz-utils_5.8.1.orig.tar.xz",
+          "sha256": "0b54f79df85912504de0b14aec7971e3f964491af1812d83447005807513cd9e",
+          "bytes": 1461872,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "4138f4ceca1aa7fd2085fb15a23f6d495d27bca6d3c49c429a8520ea622c27ae-xz-utils_5.8.1.orig.tar.xz.asc",
+          "original_file": "xz-utils_5.8.1.orig.tar.xz.asc",
+          "sha256": "4138f4ceca1aa7fd2085fb15a23f6d495d27bca6d3c49c429a8520ea622c27ae",
+          "bytes": 833,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "7dfcff43a8035561c4860a4893f7cf9de5e977e79a90aee4d101053e21912cb0-xz-utils_5.8.1-1+deb13u2.debian.tar.xz",
+          "original_file": "xz-utils_5.8.1-1+deb13u2.debian.tar.xz",
+          "sha256": "7dfcff43a8035561c4860a4893f7cf9de5e977e79a90aee4d101053e21912cb0",
+          "bytes": 28044,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    },
+    {
+      "source_package": "z3",
+      "source_version": "4.13.3-1",
+      "provenance": "OpenPGP-verified repository InRelease and SHA256-bound Sources index",
+      "inputs": [
+        {
+          "file": "503d4e990e0d6e2012d4ef97e31ff6a7dcd8b0ead582e58be07c84dc6b6d0df3-z3_4.13.3-1.dsc",
+          "original_file": "z3_4.13.3-1.dsc",
+          "sha256": "503d4e990e0d6e2012d4ef97e31ff6a7dcd8b0ead582e58be07c84dc6b6d0df3",
+          "bytes": 2704,
+          "url": "https://deb.debian.org/debian/pool/main/z/z3/z3_4.13.3-1.dsc",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "f59c9cf600ea57fb64ffeffbffd0f2d2b896854f339e846f48f069d23bc14ba0-z3_4.13.3.orig.tar.gz",
+          "original_file": "z3_4.13.3.orig.tar.gz",
+          "sha256": "f59c9cf600ea57fb64ffeffbffd0f2d2b896854f339e846f48f069d23bc14ba0",
+          "bytes": 5583533,
+          "url": "https://deb.debian.org/debian/pool/main/z/z3/z3_4.13.3.orig.tar.gz",
+          "authenticated_index": "debian"
+        },
+        {
+          "file": "25a36c2b45e85b24620da6dec8fbb2095d41cbe1b03b27b5da007ff9c922e9ca-z3_4.13.3-1.debian.tar.xz",
+          "original_file": "z3_4.13.3-1.debian.tar.xz",
+          "sha256": "25a36c2b45e85b24620da6dec8fbb2095d41cbe1b03b27b5da007ff9c922e9ca",
+          "bytes": 10696,
+          "url": "https://deb.debian.org/debian/pool/main/z/z3/z3_4.13.3-1.debian.tar.xz",
+          "authenticated_index": "debian"
+        }
+      ]
+    },
+    {
+      "source_package": "zlib",
+      "source_version": "1:1.3.dfsg+really1.3.1-1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "ede2791e29c1d3b422f9208bdd7edf040c20445ea1e7453a72037576e64fa197-zlib_1.3.dfsg+really1.3.1-1.dsc",
+          "original_file": "zlib_1.3.dfsg+really1.3.1-1.dsc",
+          "sha256": "ede2791e29c1d3b422f9208bdd7edf040c20445ea1e7453a72037576e64fa197",
+          "bytes": 2637,
+          "prior_archive": "lower-layer-os-sources.tar",
+          "prior_archive_sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7"
+        },
+        {
+          "file": "60dd315c07f616887caa029408308a018ace66e3d142726a97db164b3b8f69fb-zlib_1.3.dfsg+really1.3.1.orig.tar.gz",
+          "original_file": "zlib_1.3.dfsg+really1.3.1.orig.tar.gz",
+          "sha256": "60dd315c07f616887caa029408308a018ace66e3d142726a97db164b3b8f69fb",
+          "bytes": 1325737,
+          "prior_archive": "lower-layer-os-sources.tar",
+          "prior_archive_sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7"
+        },
+        {
+          "file": "9ed525955ce9fb0c1b39be8ff98f73450dbfc6305a9a27e6149c8972d38a0a9e-zlib_1.3.dfsg+really1.3.1-1.debian.tar.xz",
+          "original_file": "zlib_1.3.dfsg+really1.3.1-1.debian.tar.xz",
+          "sha256": "9ed525955ce9fb0c1b39be8ff98f73450dbfc6305a9a27e6149c8972d38a0a9e",
+          "bytes": 16576,
+          "prior_archive": "lower-layer-os-sources.tar",
+          "prior_archive_sha256": "554f835d7859b8ad77897bb9be707ff8f04df806e9b75a8e8fd6a153462923e7"
+        }
+      ]
+    },
+    {
+      "source_package": "zlib",
+      "source_version": "1:1.3.dfsg+really1.3.1-1+deb13u1",
+      "provenance": "Exact prior reviewed source/package/version; retained original authenticated acquisition receipts",
+      "inputs": [
+        {
+          "file": "7954224611bd043d62c094abf81cefcf9d97276479fc495767fcbc92cc6552f2-zlib_1.3.dfsg+really1.3.1-1+deb13u1.dsc",
+          "original_file": "zlib_1.3.dfsg+really1.3.1-1+deb13u1.dsc",
+          "sha256": "7954224611bd043d62c094abf81cefcf9d97276479fc495767fcbc92cc6552f2",
+          "bytes": 3271,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "60dd315c07f616887caa029408308a018ace66e3d142726a97db164b3b8f69fb-zlib_1.3.dfsg+really1.3.1.orig.tar.gz",
+          "original_file": "zlib_1.3.dfsg+really1.3.1.orig.tar.gz",
+          "sha256": "60dd315c07f616887caa029408308a018ace66e3d142726a97db164b3b8f69fb",
+          "bytes": 1325737,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        },
+        {
+          "file": "4e99de80447700cf16ecf8ed3e77fabb39f085a5fffc66713466ccf07397cc04-zlib_1.3.dfsg+really1.3.1-1+deb13u1.debian.tar.xz",
+          "original_file": "zlib_1.3.dfsg+really1.3.1-1+deb13u1.debian.tar.xz",
+          "sha256": "4e99de80447700cf16ecf8ed3e77fabb39f085a5fffc66713466ccf07397cc04",
+          "bytes": 17836,
+          "prior_archive": "debian13-os-sources.tar",
+          "prior_archive_sha256": "85c4d6a3a049390c42a4e7791468de3cc8abc0b0eeb8198b95e5f7888aeb904f"
+        }
+      ]
+    }
+  ],
+  "authentication": [
+    {
+      "repository": "https://deb.debian.org/debian",
+      "suite": "trixie",
+      "release_file": "debian-InRelease",
+      "release_sha256": "bfacad4ca61899ce20d4a0d439f29339f66541561b67506364efb88e27dee870",
+      "signature_verification": "Authenticated signature made by B8B80B5B623EAB6AD8775C45B7C5D7D6350947F8 (Debian Archive Automatic Signing Key (12/bookworm) <ftpmaster@debian.org>)\n\nAuthenticated signature made by 04B54C3CDCA79751B16BC6B5225629DF75B188BD (Debian Archive Automatic Signing Key (13/trixie) <ftpmaster@debian.org>)\n\nAuthenticated signature made by 41587F7DB8C774BCCF131416762F67A0B2C39DE4 (Debian Stable Release Key (13/trixie) <debian-release@lists.debian.org>)\n\n3\u00a0authenticated signatures.\n",
+      "sources_file": "debian-Sources.xz",
+      "sources_sha256": "b449439c113900c8607c1005f7a1ec0704d0f3b7376ba312b2150c79e4e4e06c",
+      "bytes": 10538456,
+      "keyring_sha256": "506b815cbb32d9b6066b4a2aa524071e071761e7e7f68c3ac74f3061ba852017"
+    },
+    {
+      "repository": "https://security.debian.org/debian-security",
+      "suite": "trixie-security",
+      "release_file": "security-InRelease",
+      "release_sha256": "6ff18d89278e62e0c80fae219c01a2b931a9a35a2b98673557943c306772c0d0",
+      "signature_verification": "Authenticated signature made by 05AB90340C0C5E797F44A8C8254CF3B5AEC0A8F0 (Debian Security Archive Automatic Signing Key (12/bookworm) <ftpmaster@debian.org>)\n\nAuthenticated signature made by 5E04A1E3223A19A20706E20F9904613D4CCE68C6 (Debian Security Archive Automatic Signing Key (13/trixie) <ftpmaster@debian.org>)\n\n2\u00a0authenticated signatures.\n",
+      "sources_file": "security-Sources.xz",
+      "sources_sha256": "c32a2d2d27f669b83fdadb518cb93ccff1c8fb90b8c2f5963685410765ff439a",
+      "bytes": 268544,
+      "keyring_sha256": "506b815cbb32d9b6066b4a2aa524071e071761e7e7f68c3ac74f3061ba852017"
+    },
+    {
+      "repository": "https://deb.debian.org/debian",
+      "suite": "trixie-updates",
+      "release_file": "updates-InRelease",
+      "release_sha256": "3184f0d27c7e2030b22f5009e6a05934d9b15a42cfd3481d5d5093ebfc385472",
+      "signature_verification": "Authenticated signature made by B8B80B5B623EAB6AD8775C45B7C5D7D6350947F8 (Debian Archive Automatic Signing Key (12/bookworm) <ftpmaster@debian.org>)\n\nAuthenticated signature made by 04B54C3CDCA79751B16BC6B5225629DF75B188BD (Debian Archive Automatic Signing Key (13/trixie) <ftpmaster@debian.org>)\n\n2\u00a0authenticated signatures.\n",
+      "sources_file": "updates-Sources.xz",
+      "sources_sha256": "810077786dba4b427b1f8aa18a6a3e72cf3e4226cd1c52dea02e91de020bdf50",
+      "bytes": 1400,
+      "keyring_sha256": "506b815cbb32d9b6066b4a2aa524071e071761e7e7f68c3ac74f3061ba852017"
+    },
+    {
+      "repository": "https://apt.postgresql.org/pub/repos/apt",
+      "suite": "trixie-pgdg",
+      "release_file": "pgdg-InRelease",
+      "release_sha256": "1bcb190a5df497e5152586d0e00b0e9c4853ab35444727c5d3f8207352e78111",
+      "signature_verification": "Authenticated signature made by B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8 (PostgreSQL Debian Repository)\n\n1\u00a0authenticated signature.\n",
+      "sources_file": "pgdg-Sources.gz",
+      "sources_sha256": "cc265f5f1458d23930231619b32af96c9b05fa200f8678ef15490b12a8a362b0",
+      "bytes": 186635,
+      "keyring_sha256": "0144068502a1eddd2a0280ede10ef607d1ec592ce819940991203941564e8e76"
+    }
+  ]
+}

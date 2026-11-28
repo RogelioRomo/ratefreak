@@ -1,0 +1,2343 @@
+{
+  "module_count": 149,
+  "grant_text_family_counts": {
+    "Apache-2.0,BSD": 32,
+    "Apache-2.0": 34,
+    "BSD": 32,
+    "MIT": 46,
+    "MIT,Apache-2.0,BSD": 1,
+    "MIT,BSD": 1,
+    "CC0": 1,
+    "MIT,Apache-2.0": 2
+  },
+  "modules": [
+    {
+      "path": "cel.dev/cel-go",
+      "version": "v0.32.0",
+      "go_h1": "h1:irvpFKr5EuGPyxeME03ERh0rii1TX+BDAnB9eL3IvNk=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-60560f622efb534165f2.zip",
+      "notice_file": "reference-go-notices-60560f622efb534165f2.tar.gz",
+      "notice_members": [
+        "cel.dev/cel-go@v0.32.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "cel.dev/expr",
+      "version": "v0.25.3",
+      "go_h1": "h1:A2jO8jwOugrrovveCWfj0KEZOfqiLgAcwjpHPhzIGw0=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-a0187810f083692ca971.zip",
+      "notice_file": "reference-go-notices-a0187810f083692ca971.tar.gz",
+      "notice_members": [
+        "cel.dev/expr@v0.25.3/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "cloud.google.com/go/auth",
+      "version": "v0.23.3",
+      "go_h1": "h1:UMK+oBtuNGMCR/6i6mmySUItqjOazpJrbmZyhGbGBWo=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-4e2bd61e69757933b733.zip",
+      "notice_file": "reference-go-notices-4e2bd61e69757933b733.tar.gz",
+      "notice_members": [
+        "cloud.google.com/go/auth@v0.23.3/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "cloud.google.com/go/auth/oauth2adapt",
+      "version": "v0.2.8",
+      "go_h1": "h1:keo8NaayQZ6wimpNSmW5OPc283g65QNIiLpZnkHRbnc=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-a6652874e6ee3ddb0d0b.zip",
+      "notice_file": "reference-go-notices-a6652874e6ee3ddb0d0b.tar.gz",
+      "notice_members": [
+        "cloud.google.com/go/auth/oauth2adapt@v0.2.8/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "cloud.google.com/go/compute/metadata",
+      "version": "v0.9.1",
+      "go_h1": "h1:CTE1OWBQ0vnF5uHwdFAQJvMQ0Fi/KRcqqKTo9V0F8Ik=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-543dcc9a054e60f2123f.zip",
+      "notice_file": "reference-go-notices-543dcc9a054e60f2123f.tar.gz",
+      "notice_members": [
+        "cloud.google.com/go/compute/metadata@v0.9.1/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "dario.cat/mergo",
+      "version": "v1.0.2",
+      "go_h1": "h1:85+piFYR1tMbRrLcDwR18y4UKJ3aH1Tbzi24VRW1TK8=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-52ea9d5563d17d5fc3b3.zip",
+      "notice_file": "reference-go-notices-52ea9d5563d17d5fc3b3.tar.gz",
+      "notice_members": [
+        "dario.cat/mergo@v1.0.2/LICENSE",
+        "dario.cat/mergo@v1.0.2/testdata/license.json"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "filippo.io/bigmod",
+      "version": "v0.1.0",
+      "go_h1": "h1:UNzDk7y9ADKST+axd9skUpBQeW7fG2KrTZyOE4uGQy8=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-c6214510ac76c7de10d4.zip",
+      "notice_file": "reference-go-notices-c6214510ac76c7de10d4.tar.gz",
+      "notice_members": [
+        "filippo.io/bigmod@v0.1.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "filippo.io/edwards25519",
+      "version": "v1.2.0",
+      "go_h1": "h1:crnVqOiS4jqYleHd9vaKZ+HKtHfllngJIiOpNpoJsjo=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-6c729efccdcdd7f56940.zip",
+      "notice_file": "reference-go-notices-6c729efccdcdd7f56940.tar.gz",
+      "notice_members": [
+        "filippo.io/edwards25519@v1.2.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/BurntSushi/toml",
+      "version": "v1.6.0",
+      "go_h1": "h1:dRaEfpa2VI55EwlIW72hMRHdWouJeRF7TPYhI+AUQjk=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-2c8e80ea9802b5805646.zip",
+      "notice_file": "reference-go-notices-2c8e80ea9802b5805646.tar.gz",
+      "notice_members": [
+        "github.com/BurntSushi/toml@v1.6.0/COPYING",
+        "github.com/BurntSushi/toml@v1.6.0/cmd/toml-test-decoder/COPYING",
+        "github.com/BurntSushi/toml@v1.6.0/cmd/toml-test-encoder/COPYING",
+        "github.com/BurntSushi/toml@v1.6.0/cmd/tomlv/COPYING"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/DeRuina/timberjack",
+      "version": "v1.4.8",
+      "go_h1": "h1:V7SIoCzkyWD93WmyKECSX+tMu/hLqQQvptlhEsbBIhI=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-7bcecd7c0d7e28d880b4.zip",
+      "notice_file": "reference-go-notices-7bcecd7c0d7e28d880b4.tar.gz",
+      "notice_members": [
+        "github.com/DeRuina/timberjack@v1.4.8/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/KimMachineGun/automemlimit",
+      "version": "v1.0.0",
+      "go_h1": "h1:+MqlvDE/pkJNjk1rU+O14QsH8k10nJAD0frB0lsxyvw=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-174b1c328c4c7c0c65ba.zip",
+      "notice_file": "reference-go-notices-174b1c328c4c7c0c65ba.tar.gz",
+      "notice_members": [
+        "github.com/KimMachineGun/automemlimit@v1.0.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/Masterminds/goutils",
+      "version": "v1.1.1",
+      "go_h1": "h1:5nUrii3FMTL5diU80unEVvNevw1nH4+ZV4DSLVJLSYI=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-22166ec6eaa2633166c4.zip",
+      "notice_file": "reference-go-notices-22166ec6eaa2633166c4.tar.gz",
+      "notice_members": [
+        "github.com/Masterminds/goutils@v1.1.1/LICENSE.txt"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/Masterminds/semver/v3",
+      "version": "v3.5.0",
+      "go_h1": "h1:kQceYJfbupGfZOKZQg0kou0DgAKhzDg2NZPAwZ/2OOE=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-75745e6f875757fd2c91.zip",
+      "notice_file": "reference-go-notices-75745e6f875757fd2c91.tar.gz",
+      "notice_members": [
+        "github.com/Masterminds/semver/v3@v3.5.0/LICENSE.txt"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/Masterminds/sprig/v3",
+      "version": "v3.3.0",
+      "go_h1": "h1:mQh0Yrg1XPo6vjYXgtf5OtijNAKJRNcTdOOGZe3tPhs=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-d78ff9d9b905786a868a.zip",
+      "notice_file": "reference-go-notices-d78ff9d9b905786a868a.tar.gz",
+      "notice_members": [
+        "github.com/Masterminds/sprig/v3@v3.3.0/LICENSE.txt"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/alecthomas/chroma/v2",
+      "version": "v2.27.0",
+      "go_h1": "h1:FodwmyOBgJULFYmDqibcp9pvfDLWdtPRh9v/r5BXYZs=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-0d9561776d910b7615d0.zip",
+      "notice_file": "reference-go-notices-0d9561776d910b7615d0.tar.gz",
+      "notice_members": [
+        "github.com/alecthomas/chroma/v2@v2.27.0/COPYING"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/antlr4-go/antlr/v4",
+      "version": "v4.13.1",
+      "go_h1": "h1:SqQKkuVZ+zWkMMNkjy5FZe5mr5WURWnlpmOuzYWrPrQ=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-89eef74c08c0d42ff42e.zip",
+      "notice_file": "reference-go-notices-89eef74c08c0d42ff42e.tar.gz",
+      "notice_members": [
+        "github.com/antlr4-go/antlr/v4@v4.13.1/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/aryann/difflib",
+      "version": "v0.0.0-20210328193216-ff5ff6dc229b",
+      "go_h1": "h1:uUXgbcPDK3KpW29o4iy7GtuappbWT0l5NaMo9H9pJDw=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-3bd855d20a53e4a53678.zip",
+      "notice_file": "reference-go-notices-3bd855d20a53e4a53678.tar.gz",
+      "notice_members": [
+        "github.com/aryann/difflib@v0.0.0-20210328193216-ff5ff6dc229b/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/beorn7/perks",
+      "version": "v1.0.1",
+      "go_h1": "h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-6a4a306d3a353f9ac6ca.zip",
+      "notice_file": "reference-go-notices-6a4a306d3a353f9ac6ca.tar.gz",
+      "notice_members": [
+        "github.com/beorn7/perks@v1.0.1/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/bits-and-blooms/bitset",
+      "version": "v1.25.0",
+      "go_h1": "h1:0Ro0qF4abCkM6SqWPVj29sFhAbMPAZpaDD7xhJ10beM=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-41b2047e7d8db18b2747.zip",
+      "notice_file": "reference-go-notices-41b2047e7d8db18b2747.tar.gz",
+      "notice_members": [
+        "github.com/bits-and-blooms/bitset@v1.25.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/caddyserver/caddy/v2",
+      "version": "v2.11.9",
+      "go_h1": "h1:bhZtcRKQOq0fuLvEgCdPYvUxXyGn9kzjG4lh2332DTE=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-dc0ca87e8a5f778f379d.zip",
+      "notice_file": "reference-go-notices-dc0ca87e8a5f778f379d.tar.gz",
+      "notice_members": [
+        "github.com/caddyserver/caddy/v2@v2.11.9/AUTHORS",
+        "github.com/caddyserver/caddy/v2@v2.11.9/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/caddyserver/certmagic",
+      "version": "v0.25.6",
+      "go_h1": "h1:vHMtFSLKTa6kuZz6w0SnRMpQ388tSkww8ye355BgAM4=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-ad87354825bbd1472cf4.zip",
+      "notice_file": "reference-go-notices-ad87354825bbd1472cf4.tar.gz",
+      "notice_members": [
+        "github.com/caddyserver/certmagic@v0.25.6/LICENSE.txt"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/caddyserver/zerossl",
+      "version": "v0.1.6",
+      "go_h1": "h1:1yrhTx5DWi43wOJPQ+Y4mVl++EPmSqqT/4REW//lsas=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-10e8fb21fcfe1fc01562.zip",
+      "notice_file": "reference-go-notices-10e8fb21fcfe1fc01562.tar.gz",
+      "notice_members": [
+        "github.com/caddyserver/zerossl@v0.1.6/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/ccoveille/go-safecast/v2",
+      "version": "v2.0.1",
+      "go_h1": "h1:2+mIu3gXtwmWelBia2kkxfB8eP4orTHDH7ClSlWkd6I=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-b9d78dfd5cdf79e454b4.zip",
+      "notice_file": "reference-go-notices-b9d78dfd5cdf79e454b4.tar.gz",
+      "notice_members": [
+        "github.com/ccoveille/go-safecast/v2@v2.0.1/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/cenkalti/backoff/v5",
+      "version": "v5.0.3",
+      "go_h1": "h1:ZN+IMa753KfX5hd8vVaMixjnqRZ3y8CuJKRKj1xcsSM=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-a96cd76420ae519737e8.zip",
+      "notice_file": "reference-go-notices-a96cd76420ae519737e8.tar.gz",
+      "notice_members": [
+        "github.com/cenkalti/backoff/v5@v5.0.3/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/cespare/xxhash/v2",
+      "version": "v2.3.0",
+      "go_h1": "h1:UL815xU9SqsFlibzuggzjXhog7bL6oX9BbNZnL2UFvs=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-fe2c5c159ce77d1f14f7.zip",
+      "notice_file": "reference-go-notices-fe2c5c159ce77d1f14f7.tar.gz",
+      "notice_members": [
+        "github.com/cespare/xxhash/v2@v2.3.0/LICENSE.txt"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/chzyer/readline",
+      "version": "v1.5.1",
+      "go_h1": "h1:upd/6fQk4src78LMRzh5vItIt361/o4uq553V8B5sGI=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-373490dd13295ed6a263.zip",
+      "notice_file": "reference-go-notices-373490dd13295ed6a263.tar.gz",
+      "notice_members": [
+        "github.com/chzyer/readline@v1.5.1/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/cloudflare/circl",
+      "version": "v1.6.5",
+      "go_h1": "h1:O64F26HEqNhznd/hrC5KZXVKYuKM2rx4deZDTc4ihQA=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-cd6e51fd600c4e7f2b95.zip",
+      "notice_file": "reference-go-notices-cd6e51fd600c4e7f2b95.tar.gz",
+      "notice_members": [
+        "github.com/cloudflare/circl@v1.6.5/LICENSE",
+        "github.com/cloudflare/circl@v1.6.5/ecc/p384/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/coreos/go-oidc/v3",
+      "version": "v3.21.0",
+      "go_h1": "h1:wZo4Q9Pum8dYEj0eMUPrqR+kvuGkeUplbLpNCkBqoWM=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-7cd0fd73658571a4ab23.zip",
+      "notice_file": "reference-go-notices-7cd0fd73658571a4ab23.tar.gz",
+      "notice_members": [
+        "github.com/coreos/go-oidc/v3@v3.21.0/LICENSE",
+        "github.com/coreos/go-oidc/v3@v3.21.0/NOTICE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/cpuguy83/go-md2man/v2",
+      "version": "v2.0.7",
+      "go_h1": "h1:zbFlGlXEAKlwXpmvle3d8Oe3YnkKIK4xSRTd3sHPnBo=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-44e4e05d937a3a1986e7.zip",
+      "notice_file": "reference-go-notices-44e4e05d937a3a1986e7.tar.gz",
+      "notice_members": [
+        "github.com/cpuguy83/go-md2man/v2@v2.0.7/LICENSE.md"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/dlclark/regexp2/v2",
+      "version": "v2.8.0",
+      "go_h1": "h1:CekDhPLGfm+GAJmPVFIG+5dqMIQPkyHJll7BbdneDfw=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-fde404ba1dd89833063d.zip",
+      "notice_file": "reference-go-notices-fde404ba1dd89833063d.tar.gz",
+      "notice_members": [
+        "github.com/dlclark/regexp2/v2@v2.8.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/dunglas/go-urlpattern",
+      "version": "v1.0.0",
+      "go_h1": "h1:AmMwIDXWJFezeE1v38rxvQRGvvzTlityFuifLLVfoQQ=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-1becc79c33f45eb475d2.zip",
+      "notice_file": "reference-go-notices-1becc79c33f45eb475d2.tar.gz",
+      "notice_members": [
+        "github.com/dunglas/go-urlpattern@v1.0.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/dunglas/httpsfv",
+      "version": "v1.1.1",
+      "go_h1": "h1:HoSs101zIE9I23DlqlmljJ/OIi7ILwrH347pXhRZdxI=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-9e31d9e084449a0b97b7.zip",
+      "notice_file": "reference-go-notices-9e31d9e084449a0b97b7.tar.gz",
+      "notice_members": [
+        "github.com/dunglas/httpsfv@v1.1.1/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/dustin/go-humanize",
+      "version": "v1.1.0",
+      "go_h1": "h1:dbKTrvD0klcbBV/h4AWJdMuZogJACoMlvWIWZ5b2xWg=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-51bf2a17bdc4c9068d0d.zip",
+      "notice_file": "reference-go-notices-51bf2a17bdc4c9068d0d.tar.gz",
+      "notice_members": [
+        "github.com/dustin/go-humanize@v1.1.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/felixge/httpsnoop",
+      "version": "v1.1.0",
+      "go_h1": "h1:3YtUj32ZZkqZtt3sZZsClsymw/QDuVfpNhoA31zeORc=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-6e1aa0a6f9c706598cb6.zip",
+      "notice_file": "reference-go-notices-6e1aa0a6f9c706598cb6.tar.gz",
+      "notice_members": [
+        "github.com/felixge/httpsnoop@v1.1.0/LICENSE.txt"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/fxamacker/cbor/v2",
+      "version": "v2.9.4",
+      "go_h1": "h1:xwjVlxEMR3S605oUlgBjKLTTeGFciYPGYCtF/35LKGo=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-1a785fabfcbbcc9d5d48.zip",
+      "notice_file": "reference-go-notices-1a785fabfcbbcc9d5d48.tar.gz",
+      "notice_members": [
+        "github.com/fxamacker/cbor/v2@v2.9.4/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/go-chi/chi/v5",
+      "version": "v5.4.0",
+      "go_h1": "h1:+ufzvFTGKyin26Or5DLrlIDq4ygIDBVcj7oVNeeaYFE=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-1cfdc8adea7bd38e52ae.zip",
+      "notice_file": "reference-go-notices-1cfdc8adea7bd38e52ae.tar.gz",
+      "notice_members": [
+        "github.com/go-chi/chi/v5@v5.4.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/go-jose/go-jose/v3",
+      "version": "v3.0.5",
+      "go_h1": "h1:BLLJWbC4nMZOfuPVxoZIxeYsn6Nl2r1fITaJ78UQlVQ=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-4cb4a3dd9aa5053e2218.zip",
+      "notice_file": "reference-go-notices-4cb4a3dd9aa5053e2218.tar.gz",
+      "notice_members": [
+        "github.com/go-jose/go-jose/v3@v3.0.5/LICENSE",
+        "github.com/go-jose/go-jose/v3@v3.0.5/json/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/go-jose/go-jose/v4",
+      "version": "v4.1.6",
+      "go_h1": "h1:sNRkftxFJxwsILiQukqp5z83QBSmntVwmgRY7AqBDO4=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-55cb2a19f7c399a1a308.zip",
+      "notice_file": "reference-go-notices-55cb2a19f7c399a1a308.tar.gz",
+      "notice_members": [
+        "github.com/go-jose/go-jose/v4@v4.1.6/LICENSE",
+        "github.com/go-jose/go-jose/v4@v4.1.6/json/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/go-logr/logr",
+      "version": "v1.4.4",
+      "go_h1": "h1:tG4xh9yMsRCAiodLVTxyrkzSZ9+o0L1Kg/+cPVcbP/8=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-75fd2ba99c059230ae1d.zip",
+      "notice_file": "reference-go-notices-75fd2ba99c059230ae1d.tar.gz",
+      "notice_members": [
+        "github.com/go-logr/logr@v1.4.4/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/go-logr/stdr",
+      "version": "v1.2.2",
+      "go_h1": "h1:hSWxHoqTgW2S2qGc0LTAI563KZ5YKYRhT3MFKZMbjag=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-e037074f96493a3be38a.zip",
+      "notice_file": "reference-go-notices-e037074f96493a3be38a.tar.gz",
+      "notice_members": [
+        "github.com/go-logr/stdr@v1.2.2/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/google/certificate-transparency-go",
+      "version": "v1.3.3",
+      "go_h1": "h1:hq/rSxztSkXN2tx/3jQqF6Xc0O565UQPdHrOWvZwybo=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-560f42572dd1271ef5fc.zip",
+      "notice_file": "reference-go-notices-560f42572dd1271ef5fc.tar.gz",
+      "notice_members": [
+        "github.com/google/certificate-transparency-go@v1.3.3/AUTHORS",
+        "github.com/google/certificate-transparency-go@v1.3.3/LICENSE",
+        "github.com/google/certificate-transparency-go@v1.3.3/third_party/prometheus/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/google/go-tpm",
+      "version": "v0.9.8",
+      "go_h1": "h1:slArAR9Ft+1ybZu0lBwpSmpwhRXaa85hWtMinMyRAWo=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-69e5806f884bfbf499f9.zip",
+      "notice_file": "reference-go-notices-69e5806f884bfbf499f9.tar.gz",
+      "notice_members": [
+        "github.com/google/go-tpm@v0.9.8/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/google/go-tspi",
+      "version": "v0.3.0",
+      "go_h1": "h1:ADtq8RKfP+jrTyIWIZDIYcKOMecRqNJFOew2IT0Inus=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-f8aaeab2ba5d235103be.zip",
+      "notice_file": "reference-go-notices-f8aaeab2ba5d235103be.tar.gz",
+      "notice_members": [
+        "github.com/google/go-tspi@v0.3.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/google/s2a-go",
+      "version": "v0.1.10",
+      "go_h1": "h1:EMp+aOuXN6l8cE/gjF5Bt+vyZxsUuyCWe9chDWR/+uU=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-8556b2e2ab8fd41d1100.zip",
+      "notice_file": "reference-go-notices-8556b2e2ab8fd41d1100.tar.gz",
+      "notice_members": [
+        "github.com/google/s2a-go@v0.1.10/LICENSE.md"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/google/uuid",
+      "version": "v1.6.0",
+      "go_h1": "h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-d0d666767bf9063c153c.zip",
+      "notice_file": "reference-go-notices-d0d666767bf9063c153c.tar.gz",
+      "notice_members": [
+        "github.com/google/uuid@v1.6.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/googleapis/enterprise-certificate-proxy",
+      "version": "v0.3.22",
+      "go_h1": "h1:NU4XpII6jD+Dxcot94fqjE+AfJoE/lQP9q3faYGzC/c=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-dd05ce0620ab13f036dd.zip",
+      "notice_file": "reference-go-notices-dd05ce0620ab13f036dd.tar.gz",
+      "notice_members": [
+        "github.com/googleapis/enterprise-certificate-proxy@v0.3.22/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/googleapis/gax-go/v2",
+      "version": "v2.25.0",
+      "go_h1": "h1:77gyzCOrTyzPKfzGZJG/V5DO4/Kuamek8W+cYJQ4U8k=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-02fb143dd7267b0cee57.zip",
+      "notice_file": "reference-go-notices-02fb143dd7267b0cee57.tar.gz",
+      "notice_members": [
+        "github.com/googleapis/gax-go/v2@v2.25.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/grpc-ecosystem/grpc-gateway/v2",
+      "version": "v2.30.0",
+      "go_h1": "h1:/Tnpcb2E0Pz/tN9s3bfEY2Q8ePCEX9iuS+cneUwncnw=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-1cbe89cde2264eb4bf4a.zip",
+      "notice_file": "reference-go-notices-1cbe89cde2264eb4bf4a.tar.gz",
+      "notice_members": [
+        "github.com/grpc-ecosystem/grpc-gateway/v2@v2.30.0/LICENSE",
+        "github.com/grpc-ecosystem/grpc-gateway/v2@v2.30.0/internal/casing/LICENSE.md",
+        "github.com/grpc-ecosystem/grpc-gateway/v2@v2.30.0/protoc-gen-openapiv3/internal/genopenapi/testdata/license_missing_name.prototext"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/huandu/xstrings",
+      "version": "v1.6.1",
+      "go_h1": "h1:yYdKSd6Sjv3fNZt9BDjl1FDsPNfQEaYi19L5LzK2JKs=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-fab6e69aa3cd3d06f039.zip",
+      "notice_file": "reference-go-notices-fab6e69aa3cd3d06f039.tar.gz",
+      "notice_members": [
+        "github.com/huandu/xstrings@v1.6.1/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/klauspost/compress",
+      "version": "v1.20.1",
+      "go_h1": "h1:T7kKElXUMXrUJ2E9QhQhxFtcK5rPyLdsGZvdbLMPdiQ=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-ade314d492ec944f493f.zip",
+      "notice_file": "reference-go-notices-ade314d492ec944f493f.tar.gz",
+      "notice_members": [
+        "github.com/klauspost/compress@v1.20.1/LICENSE",
+        "github.com/klauspost/compress@v1.20.1/gzhttp/LICENSE",
+        "github.com/klauspost/compress@v1.20.1/internal/lz4ref/LICENSE",
+        "github.com/klauspost/compress@v1.20.1/internal/snapref/LICENSE",
+        "github.com/klauspost/compress@v1.20.1/s2/LICENSE",
+        "github.com/klauspost/compress@v1.20.1/s2/cmd/internal/filepathx/LICENSE",
+        "github.com/klauspost/compress@v1.20.1/s2/cmd/internal/readahead/LICENSE",
+        "github.com/klauspost/compress@v1.20.1/snappy/AUTHORS",
+        "github.com/klauspost/compress@v1.20.1/snappy/LICENSE",
+        "github.com/klauspost/compress@v1.20.1/snappy/xerial/LICENSE",
+        "github.com/klauspost/compress@v1.20.1/zstd/internal/xxhash/LICENSE.txt"
+      ],
+      "grant_text_families_present": [
+        "MIT",
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/klauspost/cpuid/v2",
+      "version": "v2.4.0",
+      "go_h1": "h1:S6Hrbc7+ywsr0r+RLapfGBHfyefhCTwEh3A0tV913Dw=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-024fc0249f22de59197e.zip",
+      "notice_file": "reference-go-notices-024fc0249f22de59197e.tar.gz",
+      "notice_members": [
+        "github.com/klauspost/cpuid/v2@v2.4.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/libdns/libdns",
+      "version": "v1.1.1",
+      "go_h1": "h1:wPrHrXILoSHKWJKGd0EiAVmiJbFShguILTg9leS/P/U=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-0aa1f70ad71d9df3fb29.zip",
+      "notice_file": "reference-go-notices-0aa1f70ad71d9df3fb29.tar.gz",
+      "notice_members": [
+        "github.com/libdns/libdns@v1.1.1/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/manifoldco/promptui",
+      "version": "v0.9.0",
+      "go_h1": "h1:3V4HzJk1TtXW1MTZMP7mdlwbBpIinw3HztaIlYthEiA=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-b9646f73aad999516f93.zip",
+      "notice_file": "reference-go-notices-b9646f73aad999516f93.tar.gz",
+      "notice_members": [
+        "github.com/manifoldco/promptui@v0.9.0/LICENSE.md"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/mattn/go-colorable",
+      "version": "v0.1.15",
+      "go_h1": "h1:+u9SLTRGnXv73cEsnsmoZBom+dMU88B2M0aDcWy0/jY=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-6068564e18dc0e16a1a9.zip",
+      "notice_file": "reference-go-notices-6068564e18dc0e16a1a9.tar.gz",
+      "notice_members": [
+        "github.com/mattn/go-colorable@v0.1.15/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/mattn/go-isatty",
+      "version": "v0.0.24",
+      "go_h1": "h1:tGZZoVgT/KiqK1c8ocVLeDS8BSWMRd47J3Lbz7vsReI=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-b2b1ce0ae100a9fc9cf1.zip",
+      "notice_file": "reference-go-notices-b2b1ce0ae100a9fc9cf1.tar.gz",
+      "notice_members": [
+        "github.com/mattn/go-isatty@v0.0.24/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/mgutz/ansi",
+      "version": "v0.0.0-20200706080929-d51e80ef957d",
+      "go_h1": "h1:5PJl274Y63IEHC+7izoQE9x6ikvDFZS2mDVS3drnohI=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-e2daa6a41b67af49ee4c.zip",
+      "notice_file": "reference-go-notices-e2daa6a41b67af49ee4c.tar.gz",
+      "notice_members": [
+        "github.com/mgutz/ansi@v0.0.0-20200706080929-d51e80ef957d/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/mholt/acmez/v3",
+      "version": "v3.1.7",
+      "go_h1": "h1:XTqpuUcRdRoIBuDoI+M4mCnRnPTPN4rqH3Mb723Rg4U=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-a745751040fd67b61d29.zip",
+      "notice_file": "reference-go-notices-a745751040fd67b61d29.tar.gz",
+      "notice_members": [
+        "github.com/mholt/acmez/v3@v3.1.7/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/miekg/dns",
+      "version": "v1.1.73",
+      "go_h1": "h1:uhT8nJxmTrPJYClxVxTCX+CVn6qnzSiybRk72Z6DgrE=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-6732e5474795d3b8f72d.zip",
+      "notice_file": "reference-go-notices-6732e5474795d3b8f72d.tar.gz",
+      "notice_members": [
+        "github.com/miekg/dns@v1.1.73/AUTHORS",
+        "github.com/miekg/dns@v1.1.73/COPYRIGHT",
+        "github.com/miekg/dns@v1.1.73/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/mitchellh/copystructure",
+      "version": "v1.2.0",
+      "go_h1": "h1:vpKXTN4ewci03Vljg/q9QvCGUDttBOGBIa15WveJJGw=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-458a176192b4f5044718.zip",
+      "notice_file": "reference-go-notices-458a176192b4f5044718.tar.gz",
+      "notice_members": [
+        "github.com/mitchellh/copystructure@v1.2.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/mitchellh/go-ps",
+      "version": "v1.0.0",
+      "go_h1": "h1:i6ampVEEF4wQFF+bkYfwYgY+F/uYJDktmvLPf7qIgjc=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-df5583e96e9e09fee176.zip",
+      "notice_file": "reference-go-notices-df5583e96e9e09fee176.tar.gz",
+      "notice_members": [
+        "github.com/mitchellh/go-ps@v1.0.0/LICENSE.md"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/mitchellh/reflectwalk",
+      "version": "v1.0.2",
+      "go_h1": "h1:G2LzWKi524PWgd3mLHV8Y5k7s6XUvT0Gef6zxSIeXaQ=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-67d68365a42ce5e0bf6f.zip",
+      "notice_file": "reference-go-notices-67d68365a42ce5e0bf6f.tar.gz",
+      "notice_members": [
+        "github.com/mitchellh/reflectwalk@v1.0.2/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/munnerz/goautoneg",
+      "version": "v0.0.0-20191010083416-a7dc8b61c822",
+      "go_h1": "h1:C3w9PqII01/Oq1c1nUAm88MOHcQC9l5mIlSMApZMrHA=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-77900c92eace5618c1e1.zip",
+      "notice_file": "reference-go-notices-77900c92eace5618c1e1.tar.gz",
+      "notice_members": [
+        "github.com/munnerz/goautoneg@v0.0.0-20191010083416-a7dc8b61c822/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/nlnwa/whatwg-url",
+      "version": "v0.6.2",
+      "go_h1": "h1:jU61lU2ig4LANydbEJmA2nPrtCGiKdtgT0rmMd2VZ/Q=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-82f500d095ee0d273ee6.zip",
+      "notice_file": "reference-go-notices-82f500d095ee0d273ee6.tar.gz",
+      "notice_members": [
+        "github.com/nlnwa/whatwg-url@v0.6.2/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/pbnjay/memory",
+      "version": "v0.0.0-20210728143218-7b4eea64cf58",
+      "go_h1": "h1:onHthvaw9LFnH4t2DcNVpwGmV9E1BkGknEliJkfwQj0=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-b9e1427c344de19f1a6c.zip",
+      "notice_file": "reference-go-notices-b9e1427c344de19f1a6c.tar.gz",
+      "notice_members": [
+        "github.com/pbnjay/memory@v0.0.0-20210728143218-7b4eea64cf58/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/pires/go-proxyproto",
+      "version": "v0.15.0",
+      "go_h1": "h1:dTshmNbFm/D+0+sbrxUuddPOZ5Y0B7c5NhtsBkm6LqI=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-20a35fd64abb9f801f3a.zip",
+      "notice_file": "reference-go-notices-20a35fd64abb9f801f3a.tar.gz",
+      "notice_members": [
+        "github.com/pires/go-proxyproto@v0.15.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/pkg/errors",
+      "version": "v0.9.1",
+      "go_h1": "h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-94dd5aaff89aa2c9802b.zip",
+      "notice_file": "reference-go-notices-94dd5aaff89aa2c9802b.tar.gz",
+      "notice_members": [
+        "github.com/pkg/errors@v0.9.1/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/prometheus/client_golang",
+      "version": "v1.24.1",
+      "go_h1": "h1:JnJkREXzWxUdCuPFpIWZiPispT9xVV59uiuyR2bPlnU=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-4e2926491d8bb860b59c.zip",
+      "notice_file": "reference-go-notices-4e2926491d8bb860b59c.tar.gz",
+      "notice_members": [
+        "github.com/prometheus/client_golang@v1.24.1/LICENSE",
+        "github.com/prometheus/client_golang@v1.24.1/NOTICE",
+        "github.com/prometheus/client_golang@v1.24.1/internal/github.com/golang/gddo/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/prometheus/client_model",
+      "version": "v0.6.3",
+      "go_h1": "h1:O0jaTVAYNxTHYInEPFJt5I3+sN8zqBtVMPTB1qyxiEo=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-6cfb7a62add766299fdf.zip",
+      "notice_file": "reference-go-notices-6cfb7a62add766299fdf.tar.gz",
+      "notice_members": [
+        "github.com/prometheus/client_model@v0.6.3/LICENSE",
+        "github.com/prometheus/client_model@v0.6.3/NOTICE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/prometheus/common",
+      "version": "v0.71.0",
+      "go_h1": "h1:9KDAKb7Mj3HEVKyFCK6Dc/HIwlBzZIN2l7/lrHl3KK8=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-fa324c63c461d22e196a.zip",
+      "notice_file": "reference-go-notices-fa324c63c461d22e196a.tar.gz",
+      "notice_members": [
+        "github.com/prometheus/common@v0.71.0/LICENSE",
+        "github.com/prometheus/common@v0.71.0/NOTICE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/prometheus/otlptranslator",
+      "version": "v1.0.0",
+      "go_h1": "h1:s0LJW/iN9dkIH+EnhiD3BlkkP5QVIUVEoIwkU+A6qos=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-9412d2b2ebec9a2835ac.zip",
+      "notice_file": "reference-go-notices-9412d2b2ebec9a2835ac.tar.gz",
+      "notice_members": [
+        "github.com/prometheus/otlptranslator@v1.0.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/prometheus/procfs",
+      "version": "v0.22.0",
+      "go_h1": "h1:6q9+/JL9IKAPbCmBrv9n5O5Ty3NKnciV5X7YGw0oics=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-fd44faad1422a0ff08cc.zip",
+      "notice_file": "reference-go-notices-fd44faad1422a0ff08cc.tar.gz",
+      "notice_members": [
+        "github.com/prometheus/procfs@v0.22.0/LICENSE",
+        "github.com/prometheus/procfs@v0.22.0/NOTICE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/quic-go/qpack",
+      "version": "v0.6.0",
+      "go_h1": "h1:g7W+BMYynC1LbYLSqRt8PBg5Tgwxn214ZZR34VIOjz8=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-1c4377cde23f013a5fa3.zip",
+      "notice_file": "reference-go-notices-1c4377cde23f013a5fa3.tar.gz",
+      "notice_members": [
+        "github.com/quic-go/qpack@v0.6.0/LICENSE.md"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/quic-go/quic-go",
+      "version": "v0.63.0",
+      "go_h1": "h1:LIFGHI4PFUhhw2dDD1ARHdCff143ffMHwZtbnbuJ78A=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-6d381f4afbe6292ca460.zip",
+      "notice_file": "reference-go-notices-6d381f4afbe6292ca460.tar.gz",
+      "notice_members": [
+        "github.com/quic-go/quic-go@v0.63.0/LICENSE",
+        "github.com/quic-go/quic-go@v0.63.0/assets/LICENSE.md"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/rs/xid",
+      "version": "v1.6.0",
+      "go_h1": "h1:fV591PaemRlL6JfRxGDEPl69wICngIQ3shQtzfy2gxU=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-81b63250f2243626b6f4.zip",
+      "notice_file": "reference-go-notices-81b63250f2243626b6f4.tar.gz",
+      "notice_members": [
+        "github.com/rs/xid@v1.6.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/russross/blackfriday/v2",
+      "version": "v2.1.0",
+      "go_h1": "h1:JIOH55/0cWyOuilr9/qlrm0BSXldqnqwMsf35Ld67mk=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-ebe12162835abb80c7dc.zip",
+      "notice_file": "reference-go-notices-ebe12162835abb80c7dc.tar.gz",
+      "notice_members": [
+        "github.com/russross/blackfriday/v2@v2.1.0/LICENSE.txt"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/shopspring/decimal",
+      "version": "v1.4.0",
+      "go_h1": "h1:bxl37RwXBklmTi0C79JfXCEBD1cqqHt0bbgBAGFp81k=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-3834d317ce8f12b55d76.zip",
+      "notice_file": "reference-go-notices-3834d317ce8f12b55d76.tar.gz",
+      "notice_members": [
+        "github.com/shopspring/decimal@v1.4.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/shurcooL/sanitized_anchor_name",
+      "version": "v1.0.0",
+      "go_h1": "h1:PdmoCO6wvbs+7yrJyMORt4/BmY5IYyJwS/kOiWx8mHo=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-591cd1e4a08860d4e8c7.zip",
+      "notice_file": "reference-go-notices-591cd1e4a08860d4e8c7.tar.gz",
+      "notice_members": [
+        "github.com/shurcooL/sanitized_anchor_name@v1.0.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/sirupsen/logrus",
+      "version": "v1.10.2",
+      "go_h1": "h1:G2SED73/qrAu6YwbdxOD6peLkCBI3z7L+ykJFTXJBBo=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-e126243465b435f044af.zip",
+      "notice_file": "reference-go-notices-e126243465b435f044af.tar.gz",
+      "notice_members": [
+        "github.com/sirupsen/logrus@v1.10.2/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/slackhq/nebula",
+      "version": "v1.11.2",
+      "go_h1": "h1:eP61cSfUuoEVGViD50gZBsAbBLPUAhoNOYewPmEwPG4=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-2367b1a686d1bd48c985.zip",
+      "notice_file": "reference-go-notices-2367b1a686d1bd48c985.tar.gz",
+      "notice_members": [
+        "github.com/slackhq/nebula@v1.11.2/AUTHORS",
+        "github.com/slackhq/nebula@v1.11.2/LICENSE",
+        "github.com/slackhq/nebula@v1.11.2/dist/windows/wintun/LICENSE.txt"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/smallstep/certificates",
+      "version": "v0.30.2",
+      "go_h1": "h1:1G3xBi8sJ740iA1mMPW2Svv7EIZKJ4Zf/iQtA5QlN0Y=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-9c0805a7f502eb8649dd.zip",
+      "notice_file": "reference-go-notices-9c0805a7f502eb8649dd.tar.gz",
+      "notice_members": [
+        "github.com/smallstep/certificates@v0.30.2/LICENSE",
+        "github.com/smallstep/certificates@v0.30.2/debian/copyright"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/smallstep/cli-utils",
+      "version": "v0.12.2",
+      "go_h1": "h1:lGzM9PJrH/qawbzMC/s2SvgLdJPKDWKwKzx9doCVO+k=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-6136eb1115a0cbbcbeef.zip",
+      "notice_file": "reference-go-notices-6136eb1115a0cbbcbeef.tar.gz",
+      "notice_members": [
+        "github.com/smallstep/cli-utils@v0.12.2/LICENSE",
+        "github.com/smallstep/cli-utils@v0.12.2/pkg/blackfriday/LICENSE.txt"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/smallstep/go-attestation",
+      "version": "v0.4.4-0.20260814222900-a849f4e2cd68",
+      "go_h1": "h1:KcK2guFXrE5sX/nvF1b+atHP6DjRB1gCv3ppyTXB2Zk=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-21dcb2d6e03f582adbd1.zip",
+      "notice_file": "reference-go-notices-21dcb2d6e03f582adbd1.tar.gz",
+      "notice_members": [
+        "github.com/smallstep/go-attestation@v0.4.4-0.20260814222900-a849f4e2cd68/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/smallstep/linkedca",
+      "version": "v0.26.0",
+      "go_h1": "h1:NsxTVo3zI3KwOFFiVodeHtuGgKq0b5kOUXVLjjNTvXY=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-b07d10222e54302c804b.zip",
+      "notice_file": "reference-go-notices-b07d10222e54302c804b.tar.gz",
+      "notice_members": [
+        "github.com/smallstep/linkedca@v0.26.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/smallstep/nosql",
+      "version": "v0.8.0",
+      "go_h1": "h1:FBTCUfKPmWYbrozW+RBKu+fnvbn+zr5rVli/XB4Jp4A=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-84b16cac27628901c5cf.zip",
+      "notice_file": "reference-go-notices-84b16cac27628901c5cf.tar.gz",
+      "notice_members": [
+        "github.com/smallstep/nosql@v0.8.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/smallstep/pkcs7",
+      "version": "v0.2.3",
+      "go_h1": "h1:bhoQ3TeZmdoXTatcwxCbk+FMcdsyr0gYrrW2Xq2qr+s=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-118ea197b75eee6e8ec2.zip",
+      "notice_file": "reference-go-notices-118ea197b75eee6e8ec2.tar.gz",
+      "notice_members": [
+        "github.com/smallstep/pkcs7@v0.2.3/LICENSE",
+        "github.com/smallstep/pkcs7@v0.2.3/internal/cryptobyte/LICENSE",
+        "github.com/smallstep/pkcs7@v0.2.3/internal/cryptobyte/PATENTS"
+      ],
+      "grant_text_families_present": [
+        "MIT",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/smallstep/scep",
+      "version": "v0.0.0-20260331191114-261f960a40d1",
+      "go_h1": "h1:lpXBkQKj1rT1oGX/2idvt8xbrOrnoQxH/+CjoeMxs9E=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-3ba56de84543183d8937.zip",
+      "notice_file": "reference-go-notices-3ba56de84543183d8937.tar.gz",
+      "notice_members": [
+        "github.com/smallstep/scep@v0.0.0-20260331191114-261f960a40d1/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/smallstep/truststore",
+      "version": "v0.13.0",
+      "go_h1": "h1:90if9htAOblavbMeWlqNLnO9bsjjgVv2hQeQJCi/py4=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-3e19b5a519e37c59827a.zip",
+      "notice_file": "reference-go-notices-3e19b5a519e37c59827a.tar.gz",
+      "notice_members": [
+        "github.com/smallstep/truststore@v0.13.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/spf13/cast",
+      "version": "v1.10.0",
+      "go_h1": "h1:h2x0u2shc1QuLHfxi+cTJvs30+ZAHOGRic8uyGTDWxY=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-c079ef874966a9ecfbf8.zip",
+      "notice_file": "reference-go-notices-c079ef874966a9ecfbf8.tar.gz",
+      "notice_members": [
+        "github.com/spf13/cast@v1.10.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/spf13/cobra",
+      "version": "v1.10.2",
+      "go_h1": "h1:DMTTonx5m65Ic0GOoRY2c16WCbHxOOw6xxezuLaBpcU=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-11bbffcd17fd6421bfa2.zip",
+      "notice_file": "reference-go-notices-11bbffcd17fd6421bfa2.tar.gz",
+      "notice_members": [
+        "github.com/spf13/cobra@v1.10.2/LICENSE.txt"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/spf13/pflag",
+      "version": "v1.0.10",
+      "go_h1": "h1:4EBh2KAYBwaONj6b2Ye1GiHfwjqyROoF4RwYO+vPwFk=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-80d3641cd70fc7138cc0.zip",
+      "notice_file": "reference-go-notices-80d3641cd70fc7138cc0.tar.gz",
+      "notice_members": [
+        "github.com/spf13/pflag@v1.0.10/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/tailscale/tscert",
+      "version": "v0.0.0-20251216020129-aea342f6d747",
+      "go_h1": "h1:RnBbFMmodYzhC6adOjTbtUQXyzV8dcvKYbolzs6Qch0=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-86af439a01d63b520a24.zip",
+      "notice_file": "reference-go-notices-86af439a01d63b520a24.tar.gz",
+      "notice_members": [
+        "github.com/tailscale/tscert@v0.0.0-20251216020129-aea342f6d747/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/urfave/cli",
+      "version": "v1.22.17",
+      "go_h1": "h1:SYzXoiPfQjHBbkYxbew5prZHS1TOLT3ierW8SYLqtVQ=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-0d3897b3d2551bf34311.zip",
+      "notice_file": "reference-go-notices-0d3897b3d2551bf34311.tar.gz",
+      "notice_members": [
+        "github.com/urfave/cli@v1.22.17/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/x448/float16",
+      "version": "v0.8.4",
+      "go_h1": "h1:qLwI1I70+NjRFUR3zs1JPUCgaCXSh3SW62uAKT1mSBM=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-bf5b0184ba5ef37b5596.zip",
+      "notice_file": "reference-go-notices-bf5b0184ba5ef37b5596.tar.gz",
+      "notice_members": [
+        "github.com/x448/float16@v0.8.4/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/yuin/goldmark",
+      "version": "v1.8.6",
+      "go_h1": "h1:d0VcaP1sx9GkFVkoW+KtggpGi2KZ965i14b0+bDQST4=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-f973aaf47f0fbb2663ce.zip",
+      "notice_file": "reference-go-notices-f973aaf47f0fbb2663ce.tar.gz",
+      "notice_members": [
+        "github.com/yuin/goldmark@v1.8.6/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/yuin/goldmark-highlighting/v2",
+      "version": "v2.0.0-20230729083705-37449abec8cc",
+      "go_h1": "h1:+IAOyRda+RLrxa1WC7umKOZRsGq4QrFFMYApOeHzQwQ=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-3e0ae7959d7d428e4a8c.zip",
+      "notice_file": "reference-go-notices-3e0ae7959d7d428e4a8c.tar.gz",
+      "notice_members": [
+        "github.com/yuin/goldmark-highlighting/v2@v2.0.0-20230729083705-37449abec8cc/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/zeebo/blake3",
+      "version": "v0.2.4",
+      "go_h1": "h1:KYQPkhpRtcqh0ssGYcKLG1JYvddkEA8QwCM/yBqhaZI=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-8c82f7b469fddec4333f.zip",
+      "notice_file": "reference-go-notices-8c82f7b469fddec4333f.tar.gz",
+      "notice_members": [
+        "github.com/zeebo/blake3@v0.2.4/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "CC0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.etcd.io/bbolt",
+      "version": "v1.5.0",
+      "go_h1": "h1:S7GAl7Fxv12yohbwFfIbQCGDWbQbtDGPET4P/bD4lxU=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-d6e6975006a7582b4407.zip",
+      "notice_file": "reference-go-notices-d6e6975006a7582b4407.tar.gz",
+      "notice_members": [
+        "go.etcd.io/bbolt@v1.5.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/auto/sdk",
+      "version": "v1.2.1",
+      "go_h1": "h1:jXsnJ4Lmnqd11kwkBV2LgLoFMZKizbCi5fNZ/ipaZ64=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-577798e91bbc87c900c9.zip",
+      "notice_file": "reference-go-notices-577798e91bbc87c900c9.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/auto/sdk@v1.2.1/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/contrib/bridges/prometheus",
+      "version": "v0.71.0",
+      "go_h1": "h1:9qgxsFLskbDMXl8WMqThoF6w8yGJgCumn9qRc67OmnI=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-dd006798db9cf7f19342.zip",
+      "notice_file": "reference-go-notices-dd006798db9cf7f19342.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/contrib/bridges/prometheus@v0.71.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/contrib/exporters/autoexport",
+      "version": "v0.71.0",
+      "go_h1": "h1:VCsJbp0YLyPtx2tu5Vgv2a2/qLoaMCj8hT2uZ34+Mx0=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-bcf686af3357c3d12a95.zip",
+      "notice_file": "reference-go-notices-bcf686af3357c3d12a95.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/contrib/exporters/autoexport@v0.71.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+      "version": "v0.71.0",
+      "go_h1": "h1:3g7B90UzBltIDKq1/5mrTGxTnOFDV0ICOhLoxiZ8jlg=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-6b4d7c141ccd80ec9cbf.zip",
+      "notice_file": "reference-go-notices-6b4d7c141ccd80ec9cbf.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp@v0.71.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/contrib/propagators/autoprop",
+      "version": "v0.71.0",
+      "go_h1": "h1:uy7dcw6v3XK3LMGj2sB9CXtJtTHX8QA9pjSrLhvf86c=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-b7f2292748692f6dd5dc.zip",
+      "notice_file": "reference-go-notices-b7f2292748692f6dd5dc.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/contrib/propagators/autoprop@v0.71.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/contrib/propagators/aws",
+      "version": "v1.46.0",
+      "go_h1": "h1:JslT1wq/5vb6lQsbdOqShvIEs7sDlf0IvKxNZdadfjY=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-bfe59ab96d2f8d4d6fc9.zip",
+      "notice_file": "reference-go-notices-bfe59ab96d2f8d4d6fc9.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/contrib/propagators/aws@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/contrib/propagators/b3",
+      "version": "v1.46.0",
+      "go_h1": "h1:OFVqWObn7xLIbOjE/koO0LS9fZJNgAyBD0msA+UQAoc=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-126fe0c077755d4eb866.zip",
+      "notice_file": "reference-go-notices-126fe0c077755d4eb866.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/contrib/propagators/b3@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/contrib/propagators/jaeger",
+      "version": "v1.46.0",
+      "go_h1": "h1:uxl0SGcmuBkHj/Adl9oftEAyiawQBPL5RzMAmt/Yvq4=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-8f05ded061bca02dbdab.zip",
+      "notice_file": "reference-go-notices-8f05ded061bca02dbdab.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/contrib/propagators/jaeger@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/contrib/propagators/ot",
+      "version": "v1.46.0",
+      "go_h1": "h1:SxC/1xmJJJdGQTNmavqW8ju85TRXiZHeFaQdnEMCWLE=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-3a6fd95d10d07b308a1d.zip",
+      "notice_file": "reference-go-notices-3a6fd95d10d07b308a1d.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/contrib/propagators/ot@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel",
+      "version": "v1.46.0",
+      "go_h1": "h1:FHt5/CDyVxi/8IM1CH7VE/rRgq3kLHa2mSTVMO8AWyc=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-a8d082e57d4a911a9ce3.zip",
+      "notice_file": "reference-go-notices-a8d082e57d4a911a9ce3.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc",
+      "version": "v0.22.0",
+      "go_h1": "h1:Bu39F5tzJct+f2IZbB8989fwyTps3c8e7EsUQsz+vs8=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-1489cca72d85e0f2f3d9.zip",
+      "notice_file": "reference-go-notices-1489cca72d85e0f2f3d9.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc@v0.22.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp",
+      "version": "v0.22.0",
+      "go_h1": "h1:lYk7RmxdLK865qLwibroNGldHa1U7SWKYYvNjlK7PIo=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-ddf974137f9131b66dbb.zip",
+      "notice_file": "reference-go-notices-ddf974137f9131b66dbb.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp@v0.22.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc",
+      "version": "v1.46.0",
+      "go_h1": "h1:qkDYCAFiZXLcs1L4aY+tP2wguQ4kURANqHOQMA2et2s=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-af8d1693d2fb8495971f.zip",
+      "notice_file": "reference-go-notices-af8d1693d2fb8495971f.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp",
+      "version": "v1.46.0",
+      "go_h1": "h1:AP23h/mFgb/lc7tdck1Kfn9qxsM8TAeNPCU5C3pzaps=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-3b53394237760e84329a.zip",
+      "notice_file": "reference-go-notices-3b53394237760e84329a.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/exporters/otlp/otlptrace",
+      "version": "v1.46.0",
+      "go_h1": "h1:OFnwLJr+pF3iHrlGSzbxyuo6/6HyBlnlN1CWEJmBVcw=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-13cbeba2bb6d47db758c.zip",
+      "notice_file": "reference-go-notices-13cbeba2bb6d47db758c.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/exporters/otlp/otlptrace@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+      "version": "v1.46.0",
+      "go_h1": "h1:w53CDeOA/Kurp7yRsegSr6pbbr759dOvJ+yNmWM6Hxs=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-1f12cd6a9d64534d5553.zip",
+      "notice_file": "reference-go-notices-1f12cd6a9d64534d5553.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp",
+      "version": "v1.46.0",
+      "go_h1": "h1:KrC1YrQeSt46ITMWAbgQx1M1eV1/1TKzttrBzymPmss=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-8d7880155f13eededc1d.zip",
+      "notice_file": "reference-go-notices-8d7880155f13eededc1d.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/exporters/prometheus",
+      "version": "v0.68.0",
+      "go_h1": "h1:QOf2IftqQwITVRJpnn0M7M9ZCbgWfxz4P7i9C9yc2N4=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-bd6f3f183fe30b139b1f.zip",
+      "notice_file": "reference-go-notices-bd6f3f183fe30b139b1f.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/exporters/prometheus@v0.68.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/exporters/stdout/stdoutlog",
+      "version": "v0.22.0",
+      "go_h1": "h1:kvMAiLEudKmk+CSG+iYbU8vTUGNNDaf/V09OO5lrTwI=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-30fa74f434ba61fc9064.zip",
+      "notice_file": "reference-go-notices-30fa74f434ba61fc9064.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.22.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/exporters/stdout/stdoutmetric",
+      "version": "v1.46.0",
+      "go_h1": "h1:PR9eAf7o0dQs3hshZNZpE9aW2dXWX/KdDf6pJilVD3U=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-c96412fb3a7b4ab0489d.zip",
+      "notice_file": "reference-go-notices-c96412fb3a7b4ab0489d.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/exporters/stdout/stdoutmetric@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/exporters/stdout/stdouttrace",
+      "version": "v1.46.0",
+      "go_h1": "h1:KdRxPiAoMptR3vfWzvjjvutTsSiwbC2uG0496rzZNfo=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-3887d45c1a5c18d4b8e0.zip",
+      "notice_file": "reference-go-notices-3887d45c1a5c18d4b8e0.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/exporters/stdout/stdouttrace@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/log",
+      "version": "v0.22.0",
+      "go_h1": "h1:5DBNnfvaJ6CVdkJ+Jle8Tzs50aSSv49TXGj9XRsEYw0=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-1ff85063c9449a4f53c1.zip",
+      "notice_file": "reference-go-notices-1ff85063c9449a4f53c1.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/log@v0.22.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/metric",
+      "version": "v1.46.0",
+      "go_h1": "h1:yBnkXvgV7AXFILZc5K6IZe/CBFF3OS7BJ8ov6/lj0K8=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-bbfe316d04fb84b3b5f2.zip",
+      "notice_file": "reference-go-notices-bbfe316d04fb84b3b5f2.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/metric@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/sdk",
+      "version": "v1.46.0",
+      "go_h1": "h1:h5CNQQjEbuQXY/JfZtgt3i7HVFV3aHPO2OAwO2eTYPI=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-688965c7f462831b121d.zip",
+      "notice_file": "reference-go-notices-688965c7f462831b121d.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/sdk@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/sdk/log",
+      "version": "v0.22.0",
+      "go_h1": "h1:PRL+s6P63XT4E/bheEflopPUpVxuvANqZwtt89yhoGk=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-4d30dd360c34275bca73.zip",
+      "notice_file": "reference-go-notices-4d30dd360c34275bca73.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/sdk/log@v0.22.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/sdk/metric",
+      "version": "v1.46.0",
+      "go_h1": "h1:0piZ26EG4RBfebb2jhDH6ERCYHoVWduc3kLgPCwSnSE=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-de0290cfc1a535d146c5.zip",
+      "notice_file": "reference-go-notices-de0290cfc1a535d146c5.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/sdk/metric@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/otel/trace",
+      "version": "v1.46.0",
+      "go_h1": "h1:OULy7ccdJnZtJ0UDYFOIGaCmiWzJ8Vi2G/Rsu60qs1c=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-d1f724acd0987951f0c5.zip",
+      "notice_file": "reference-go-notices-d1f724acd0987951f0c5.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/otel/trace@v1.46.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.opentelemetry.io/proto/otlp",
+      "version": "v1.11.0",
+      "go_h1": "h1:5rrYs0Ykyj50sdU/JU0x8etU+LubXWb+gED6TbEdMIk=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-b26cce3a3ba8800a2ed2.zip",
+      "notice_file": "reference-go-notices-b26cce3a3ba8800a2ed2.tar.gz",
+      "notice_members": [
+        "go.opentelemetry.io/proto/otlp@v1.11.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.step.sm/crypto",
+      "version": "v0.91.0",
+      "go_h1": "h1:0mN0DwVOvUuh7VbyTnxABZuAkxwak/Grp8Y/b4YaZDU=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-4fea49376db572ee16f3.zip",
+      "notice_file": "reference-go-notices-4fea49376db572ee16f3.tar.gz",
+      "notice_members": [
+        "go.step.sm/crypto@v0.91.0/LICENSE",
+        "go.step.sm/crypto@v0.91.0/internal/bcrypt_pbkdf/LICENSE",
+        "go.step.sm/crypto@v0.91.0/internal/utils/utfbom/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0",
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.uber.org/automaxprocs",
+      "version": "v1.6.0",
+      "go_h1": "h1:O3y2/QNTOdbF+e/dpXNNW7Rx2hZ4sTIPyybbxyNqTUs=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-3d6d84a1accfc74c1091.zip",
+      "notice_file": "reference-go-notices-3d6d84a1accfc74c1091.tar.gz",
+      "notice_members": [
+        "go.uber.org/automaxprocs@v1.6.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.uber.org/multierr",
+      "version": "v1.11.0",
+      "go_h1": "h1:blXXJkSxSSfBVBlC76pxqeO+LN3aDfLQo+309xJstO0=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-3cc09eaf82cd75d74ad9.zip",
+      "notice_file": "reference-go-notices-3cc09eaf82cd75d74ad9.tar.gz",
+      "notice_members": [
+        "go.uber.org/multierr@v1.11.0/LICENSE.txt"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.uber.org/zap",
+      "version": "v1.28.0",
+      "go_h1": "h1:IZzaP1Fv73/T/pBMLk4VutPl36uNC+OSUh3JLG3FIjo=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-5c37d60dd9d260172309.zip",
+      "notice_file": "reference-go-notices-5c37d60dd9d260172309.tar.gz",
+      "notice_members": [
+        "go.uber.org/zap@v1.28.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.uber.org/zap/exp",
+      "version": "v0.3.0",
+      "go_h1": "h1:6JYzdifzYkGmTdRR59oYH+Ng7k49H9qVpWwNSsGJj3U=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-87b494e615c31ad4ec3d.zip",
+      "notice_file": "reference-go-notices-87b494e615c31ad4ec3d.tar.gz",
+      "notice_members": [
+        "go.uber.org/zap/exp@v0.3.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "MIT"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "go.yaml.in/yaml/v3",
+      "version": "v3.0.5",
+      "go_h1": "h1:N6y/pJk8buWs9NY5ERU2HSMfm+IuD/OtfdAnq6kESPw=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-6e4ce618136452ca5403.zip",
+      "notice_file": "reference-go-notices-6e4ce618136452ca5403.tar.gz",
+      "notice_members": [
+        "go.yaml.in/yaml/v3@v3.0.5/LICENSE",
+        "go.yaml.in/yaml/v3@v3.0.5/NOTICE"
+      ],
+      "grant_text_families_present": [
+        "MIT",
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "golang.org/x/crypto",
+      "version": "v0.57.0",
+      "go_h1": "h1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-0679ec780e4b4d27c7be.zip",
+      "notice_file": "reference-go-notices-0679ec780e4b4d27c7be.tar.gz",
+      "notice_members": [
+        "golang.org/x/crypto@v0.57.0/LICENSE",
+        "golang.org/x/crypto@v0.57.0/PATENTS"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "golang.org/x/crypto/x509roots/fallback",
+      "version": "v0.0.0-20261030153154-30a33513ff6d",
+      "go_h1": "h1:5NBkmd8MXirajj6AAEpi4HFVJnVkBNPTL1ggYAKqaws=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-a0638e8527597de1a833.zip",
+      "notice_file": "reference-go-notices-a0638e8527597de1a833.tar.gz",
+      "notice_members": [
+        "golang.org/x/crypto/x509roots/fallback@v0.0.0-20261030153154-30a33513ff6d/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "golang.org/x/exp",
+      "version": "v0.0.0-20260908205506-85c1c2202aba",
+      "go_h1": "h1:Ck8QetSgk912qxWLMCKxd0in+aiyBQyDSMae6e/xmpU=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-a39e93bf1b4e50c4e8a2.zip",
+      "notice_file": "reference-go-notices-a39e93bf1b4e50c4e8a2.tar.gz",
+      "notice_members": [
+        "golang.org/x/exp@v0.0.0-20260908205506-85c1c2202aba/LICENSE",
+        "golang.org/x/exp@v0.0.0-20260908205506-85c1c2202aba/PATENTS"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "golang.org/x/net",
+      "version": "v0.60.0",
+      "go_h1": "h1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-15c710684eedf3d46ef5.zip",
+      "notice_file": "reference-go-notices-15c710684eedf3d46ef5.tar.gz",
+      "notice_members": [
+        "golang.org/x/net@v0.60.0/LICENSE",
+        "golang.org/x/net@v0.60.0/PATENTS"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "golang.org/x/oauth2",
+      "version": "v0.37.0",
+      "go_h1": "h1:JUlcxA8oAtauLfiH8FX2/FkAWHAdi0QtGCGc+hofE98=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-636809519be14c752379.zip",
+      "notice_file": "reference-go-notices-636809519be14c752379.tar.gz",
+      "notice_members": [
+        "golang.org/x/oauth2@v0.37.0/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "golang.org/x/sync",
+      "version": "v0.23.0",
+      "go_h1": "h1:KameEIfc1IkluZyXWLn39Wd4tURc6GbCiISGiZm2bQk=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-ebe0252705d09641daff.zip",
+      "notice_file": "reference-go-notices-ebe0252705d09641daff.tar.gz",
+      "notice_members": [
+        "golang.org/x/sync@v0.23.0/LICENSE",
+        "golang.org/x/sync@v0.23.0/PATENTS"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "golang.org/x/sys",
+      "version": "v0.48.0",
+      "go_h1": "h1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-2a81efe5fc811142d426.zip",
+      "notice_file": "reference-go-notices-2a81efe5fc811142d426.tar.gz",
+      "notice_members": [
+        "golang.org/x/sys@v0.48.0/LICENSE",
+        "golang.org/x/sys@v0.48.0/PATENTS"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "golang.org/x/term",
+      "version": "v0.46.0",
+      "go_h1": "h1:3+OXuTbaKDgwk8jTi3aSLHRlmWqHEUDUtxnbFigO4YE=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-11bfcf1bc0c48296c07b.zip",
+      "notice_file": "reference-go-notices-11bfcf1bc0c48296c07b.tar.gz",
+      "notice_members": [
+        "golang.org/x/term@v0.46.0/LICENSE",
+        "golang.org/x/term@v0.46.0/PATENTS"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "golang.org/x/text",
+      "version": "v0.42.0",
+      "go_h1": "h1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-530a556028a30ad65697.zip",
+      "notice_file": "reference-go-notices-530a556028a30ad65697.tar.gz",
+      "notice_members": [
+        "golang.org/x/text@v0.42.0/LICENSE",
+        "golang.org/x/text@v0.42.0/PATENTS"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "golang.org/x/time",
+      "version": "v0.16.0",
+      "go_h1": "h1:vMb6ptszcQMkcwiRTAuNNU50gom6++Q/6gY2hDM6VDE=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-f83b656e1cbd4d27cb99.zip",
+      "notice_file": "reference-go-notices-f83b656e1cbd4d27cb99.tar.gz",
+      "notice_members": [
+        "golang.org/x/time@v0.16.0/LICENSE",
+        "golang.org/x/time@v0.16.0/PATENTS"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "google.golang.org/api",
+      "version": "v0.298.0",
+      "go_h1": "h1:YW18RkHBMZBA1ergX0m4biagzgbiPTb2uTsRsDPWNRY=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-e1596e5bb1598ec6fdcb.zip",
+      "notice_file": "reference-go-notices-e1596e5bb1598ec6fdcb.tar.gz",
+      "notice_members": [
+        "google.golang.org/api@v0.298.0/AUTHORS",
+        "google.golang.org/api@v0.298.0/LICENSE",
+        "google.golang.org/api@v0.298.0/internal/third_party/uritemplates/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "google.golang.org/genproto/googleapis/api",
+      "version": "v0.0.0-20260921155816-b14227669459",
+      "go_h1": "h1:GS9OIt/j7c8bvBjYNgnKQysVfmV7e4jM0H8ZK95G4t8=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-4ab79a2d25fa0db900d1.zip",
+      "notice_file": "reference-go-notices-4ab79a2d25fa0db900d1.tar.gz",
+      "notice_members": [
+        "google.golang.org/genproto/googleapis/api@v0.0.0-20260921155816-b14227669459/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "google.golang.org/genproto/googleapis/rpc",
+      "version": "v0.0.0-20260921155816-b14227669459",
+      "go_h1": "h1:b0xCahf3FK2m2Cv0p4vTozGPWncCvLfwV86UNg8xWU8=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-c76ad54acb9b6b69ede0.zip",
+      "notice_file": "reference-go-notices-c76ad54acb9b6b69ede0.tar.gz",
+      "notice_members": [
+        "google.golang.org/genproto/googleapis/rpc@v0.0.0-20260921155816-b14227669459/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "google.golang.org/grpc",
+      "version": "v1.83.2",
+      "go_h1": "h1:EManeRomTObA0BU7I8vXgg/78uE5MJ9M8B39EX2WscU=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-e991380da57b31140cb3.zip",
+      "notice_file": "reference-go-notices-e991380da57b31140cb3.tar.gz",
+      "notice_members": [
+        "google.golang.org/grpc@v1.83.2/AUTHORS",
+        "google.golang.org/grpc@v1.83.2/LICENSE",
+        "google.golang.org/grpc@v1.83.2/NOTICE.txt"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "google.golang.org/protobuf",
+      "version": "v1.36.12",
+      "go_h1": "h1:pJOKDDOyeXErUroCihFAd5LQuwXBSpVnKGrj5o/fwxc=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-3a91b7c253011163a4d2.zip",
+      "notice_file": "reference-go-notices-3a91b7c253011163a4d2.tar.gz",
+      "notice_members": [
+        "google.golang.org/protobuf@v1.36.12/LICENSE",
+        "google.golang.org/protobuf@v1.36.12/PATENTS"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "gopkg.in/yaml.v3",
+      "version": "v3.0.1",
+      "go_h1": "h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-491112fe160db255d49b.zip",
+      "notice_file": "reference-go-notices-491112fe160db255d49b.tar.gz",
+      "notice_members": [
+        "gopkg.in/yaml.v3@v3.0.1/LICENSE",
+        "gopkg.in/yaml.v3@v3.0.1/NOTICE"
+      ],
+      "grant_text_families_present": [
+        "MIT",
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "github.com/moby/sys/user",
+      "version": "v0.4.1",
+      "go_h1": "h1:RgjRlaDKi/Xmyrz4t8lyzXT6v2ooFeO/7xtchmhVWE0=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-aeda685516b509b035a5.zip",
+      "notice_file": "reference-go-notices-aeda685516b509b035a5.tar.gz",
+      "notice_members": [
+        "github.com/moby/sys/user@v0.4.1/LICENSE"
+      ],
+      "grant_text_families_present": [
+        "Apache-2.0"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    },
+    {
+      "path": "golang.org/x/sys",
+      "version": "v0.1.0",
+      "go_h1": "h1:kunALQeHf1/185U1i0GOB/fy1IPRDDpuoOOqRReG57U=",
+      "embedded_sum_verified": true,
+      "source_file": "reference-go-module-55329bde7aa4362baca2.zip",
+      "notice_file": "reference-go-notices-55329bde7aa4362baca2.tar.gz",
+      "notice_members": [
+        "golang.org/x/sys@v0.1.0/LICENSE",
+        "golang.org/x/sys@v0.1.0/PATENTS"
+      ],
+      "grant_text_families_present": [
+        "BSD"
+      ],
+      "decision": "Complete corresponding module sources and all original license/notice/patent texts retained. Preserve original attribution, complete grants/disclaimers, Apache NOTICE and patent terms where supplied; no package-label-only or source exception decision."
+    }
+  ],
+  "limits": "Grant family detection is an index of actual preserved texts, not a claim that every file uses one license. Full source and notices remain authoritative; no bit-for-bit rebuild or signature trust claim."
+}

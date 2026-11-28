@@ -1,0 +1,7 @@
+{
+  "bytes": 201183115,
+  "file": "web.native-sources.tar.gz",
+  "image_id": "sha256:9bb46deb17c663e22f96b1875ec3269a02ae519d10ee2d51ac1f724238e2b05e",
+  "scope": "Linux amd64 application libvips aggregate source/build inputs; excludes OS and API/tools sources",
+  "sha256": "75a557bc23962e71b3d7c1ad060d2a114453da4f9e7f3d4ef3b0006c59d46e3d"
+}

@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf
+    image: ${RATEFREAK_POSTGRES_IMAGE:-postgres:17-trixie@sha256:87c8b42f423b45d5247e6aa8fdb2e7762fec164c68a50fe3eb07e7bfcaf4dbcf}
     restart: unless-stopped
     command: [postgres, -c, jit=off]
     environment:

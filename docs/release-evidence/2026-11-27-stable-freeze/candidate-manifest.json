@@ -1,0 +1,73 @@
+{
+  "dirty": false,
+  "files": {
+    "RELEASE-NOTES.md": {
+      "bytes": 4214,
+      "sha256": "2035f6d4ee9b68e8daa85e94db679233ff694462959d452f2c1147f5cbba7a2a"
+    },
+    "api-notices.tar.gz": {
+      "bytes": 899755,
+      "sha256": "272a244db46987391f6c2d016b3c1f3bcb9115b3de1f2eacb430024e93ab12d1"
+    },
+    "api.tar.gz": {
+      "bytes": 276364401,
+      "sha256": "e811ded4312f094f2e7b9c38c417f4ffa21e62cca1c0b84abb87ddbd950d96f5"
+    },
+    "built-images.json": {
+      "bytes": 257,
+      "sha256": "b36af783ea805e3a373981dfd9bea60743f617f05ad52748e864b42056e67d1a"
+    },
+    "installation.tar.gz": {
+      "bytes": 5302370,
+      "sha256": "88315738ee29508e40ce18c58a9d5efb6fef47b3d66aae9d9431107d3de6089f"
+    },
+    "reports.tar.gz": {
+      "bytes": 522,
+      "sha256": "603aa22b5cc8c058c897853fb54f3f11f58f00f2657b529b5adbf7b0f4c2e920"
+    },
+    "source-inventory.json": {
+      "bytes": 213702,
+      "sha256": "b86aadb84a6070b37b547dca198479ffaa434d23977f70fa09868aba59c2ad75"
+    },
+    "tools-notices.tar.gz": {
+      "bytes": 999930,
+      "sha256": "6e00ed3e8c00efedc2214fdc47e507b0d489911062948a06549208d66c5eec73"
+    },
+    "tools.tar.gz": {
+      "bytes": 314696153,
+      "sha256": "302db862d01350ff5622c79e8687d828f8d2eb8ab2bc129756883889be54ee9f"
+    },
+    "web-notices.tar.gz": {
+      "bytes": 847929,
+      "sha256": "1520404d30360eceb45baf5c321710bcc18e770a7fcd89d7b88f545cc5b2e93f"
+    },
+    "web.tar.gz": {
+      "bytes": 111865385,
+      "sha256": "dd4d2ff31e0af38f82cb2f834de46a564dbf8fc44fdd7efbb6c114656a0d7c75"
+    }
+  },
+  "format": 1,
+  "images": {
+    "api": {
+      "file": "api.tar.gz",
+      "id": "sha256:db65696090623e3f5336215360512837f38be773c913d593e558e81103eca646",
+      "tag": "ratefreak-api:0.1.0"
+    },
+    "tools": {
+      "file": "tools.tar.gz",
+      "id": "sha256:e8154a58abde88d996af17fe32996639c74a2e11a898d131f2cf087953c1536c",
+      "tag": "ratefreak-tools:0.1.0"
+    },
+    "web": {
+      "file": "web.tar.gz",
+      "id": "sha256:9bb46deb17c663e22f96b1875ec3269a02ae519d10ee2d51ac1f724238e2b05e",
+      "tag": "ratefreak-web:0.1.0"
+    }
+  },
+  "migration": "20261127222703_AddSongs",
+  "official": true,
+  "platform": "linux/amd64",
+  "revision": "f54048c233e405843160bc16d857f8c32082599f",
+  "stage": "review",
+  "version": "0.1.0"
+}

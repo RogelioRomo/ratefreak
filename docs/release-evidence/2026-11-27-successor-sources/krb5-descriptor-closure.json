@@ -1,0 +1,19 @@
+{
+  "archive": "application-os-updates.tar",
+  "checksumsSha256Closure": [
+    {
+      "bytes": 8661660,
+      "file": "krb5_1.20.1.orig.tar.gz",
+      "sha256": "704aed49b19eb5a7178b34b2873620ec299db08752d6a8574f95d41879ab8851"
+    },
+    {
+      "bytes": 150340,
+      "file": "krb5_1.20.1-6ubuntu2.12.debian.tar.xz",
+      "sha256": "c4c73827fcfa5216706f961d8c644afe822629c322bf6d15baac3767fbda0b3e"
+    }
+  ],
+  "descriptor": "krb5_1.20.1-6ubuntu2.12.dsc",
+  "descriptorSHA256": "77b14fb3160e5cebfb5b97188301715f412a90262d7b70f53a03cad322b0909b",
+  "scope": "New application krb5 source descriptor exact SHA256/size closure. Authenticated acquisition evidence retained inside source archive; no fresh signature verification claimed.",
+  "valid": true
+}

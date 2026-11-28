@@ -1,0 +1,445 @@
+{
+  "application_rebuild": "Frozen Dockerfiles already run apt-get update && apt-get upgrade. Rebuild with --no-cache for the package refresh; ordinary layer cache can retain old package transaction. Capture resulting package and notice/source records, then retest final images.",
+  "gate": "held-routine-vendor-updates",
+  "groups": [
+    {
+      "action": "Apply routine vendor OS package update in successor; retain archive and requalify affected behavior/notices/scans.",
+      "associations": 72,
+      "ids": [
+        "CVE-2026-107364",
+        "CVE-2026-107708",
+        "CVE-2026-107778",
+        "CVE-2026-107884",
+        "CVE-2026-112314",
+        "CVE-2026-112315",
+        "CVE-2026-112316",
+        "CVE-2026-112317",
+        "CVE-2026-112318",
+        "CVE-2026-112319",
+        "CVE-2026-112320",
+        "CVE-2026-112321",
+        "CVE-2026-112322",
+        "CVE-2026-112323",
+        "CVE-2026-118380",
+        "CVE-2026-119079",
+        "CVE-2026-71199",
+        "CVE-2026-71200"
+      ],
+      "image": "api",
+      "packages": [
+        {
+          "fixed": "1.20.1-6ubuntu2.12",
+          "installed": "1.20.1-6ubuntu2.10",
+          "name": "libgssapi-krb5-2"
+        },
+        {
+          "fixed": "1.20.1-6ubuntu2.12",
+          "installed": "1.20.1-6ubuntu2.10",
+          "name": "libk5crypto3"
+        },
+        {
+          "fixed": "1.20.1-6ubuntu2.12",
+          "installed": "1.20.1-6ubuntu2.10",
+          "name": "libkrb5-3"
+        },
+        {
+          "fixed": "1.20.1-6ubuntu2.12",
+          "installed": "1.20.1-6ubuntu2.10",
+          "name": "libkrb5support0"
+        }
+      ],
+      "source": "krb5"
+    },
+    {
+      "action": "Retain conditional caller/configuration exclusion; scanner fixes refer to toolchain/module versions, not an available updated vendor gosu/Caddy application release. Latest vendor releases are gosu1.20 and Caddy2.11.9; custom runtime/module rebuild not routine validated vendor update. Reassess next upstream release.",
+      "associations": 1,
+      "ids": [
+        "CVE-2026-128085"
+      ],
+      "image": "caddy",
+      "packages": [
+        {
+          "fixed": "1.47.0",
+          "installed": "v1.46.0",
+          "name": "go.opentelemetry.io/otel/sdk"
+        }
+      ],
+      "source": "go.opentelemetry.io/otel/sdk"
+    },
+    {
+      "action": "Retain conditional caller/configuration exclusion; scanner fixes refer to toolchain/module versions, not an available updated vendor gosu/Caddy application release. Latest vendor releases are gosu1.20 and Caddy2.11.9; custom runtime/module rebuild not routine validated vendor update. Reassess next upstream release.",
+      "associations": 1,
+      "ids": [
+        "CVE-2026-128085"
+      ],
+      "image": "caddy",
+      "packages": [
+        {
+          "fixed": "1.47.0",
+          "installed": "v0.22.0",
+          "name": "go.opentelemetry.io/otel/sdk/log"
+        }
+      ],
+      "source": "go.opentelemetry.io/otel/sdk/log"
+    },
+    {
+      "action": "Retain conditional caller/configuration exclusion; scanner fixes refer to toolchain/module versions, not an available updated vendor gosu/Caddy application release. Latest vendor releases are gosu1.20 and Caddy2.11.9; custom runtime/module rebuild not routine validated vendor update. Reassess next upstream release.",
+      "associations": 1,
+      "ids": [
+        "CVE-2026-128085"
+      ],
+      "image": "caddy",
+      "packages": [
+        {
+          "fixed": "1.47.0",
+          "installed": "v1.46.0",
+          "name": "go.opentelemetry.io/otel/trace"
+        }
+      ],
+      "source": "go.opentelemetry.io/otel/trace"
+    },
+    {
+      "action": "Retain conditional caller/configuration exclusion; scanner fixes refer to toolchain/module versions, not an available updated vendor gosu/Caddy application release. Latest vendor releases are gosu1.20 and Caddy2.11.9; custom runtime/module rebuild not routine validated vendor update. Reassess next upstream release.",
+      "associations": 1,
+      "ids": [
+        "GO-2026-5932"
+      ],
+      "image": "caddy",
+      "packages": [
+        {
+          "fixed": "0.58.1-0.20261009181718-2f1f834330b2",
+          "installed": "v0.57.0",
+          "name": "golang.org/x/crypto"
+        }
+      ],
+      "source": "golang.org/x/crypto"
+    },
+    {
+      "action": "Retain conditional caller/configuration exclusion; scanner fixes refer to toolchain/module versions, not an available updated vendor gosu/Caddy application release. Latest vendor releases are gosu1.20 and Caddy2.11.9; custom runtime/module rebuild not routine validated vendor update. Reassess next upstream release.",
+      "associations": 2,
+      "ids": [
+        "CVE-2026-78661",
+        "CVE-2026-97045"
+      ],
+      "image": "caddy",
+      "packages": [
+        {
+          "fixed": "0.62.0",
+          "installed": "v0.60.0",
+          "name": "golang.org/x/net"
+        }
+      ],
+      "source": "golang.org/x/net"
+    },
+    {
+      "action": "Apply routine vendor OS package update in successor; retain archive and requalify affected behavior/notices/scans.",
+      "associations": 10,
+      "ids": [
+        "CVE-2026-107496",
+        "CVE-2026-88822",
+        "CVE-2026-88823",
+        "CVE-2026-95691",
+        "CVE-2026-95692"
+      ],
+      "image": "caddy",
+      "packages": [
+        {
+          "fixed": "3.5.9-r1",
+          "installed": "3.5.9-r0",
+          "name": "libcrypto3"
+        },
+        {
+          "fixed": "3.5.9-r1",
+          "installed": "3.5.9-r0",
+          "name": "libssl3"
+        }
+      ],
+      "source": "openssl"
+    },
+    {
+      "action": "Retain conditional caller/configuration exclusion; scanner fixes refer to toolchain/module versions, not an available updated vendor gosu/Caddy application release. Latest vendor releases are gosu1.20 and Caddy2.11.9; custom runtime/module rebuild not routine validated vendor update. Reassess next upstream release.",
+      "associations": 1,
+      "ids": [
+        "CVE-2026-97054"
+      ],
+      "image": "caddy",
+      "packages": [
+        {
+          "fixed": "1.26.11, 1.27.4",
+          "installed": "v1.27.3",
+          "name": "stdlib"
+        }
+      ],
+      "source": "stdlib"
+    },
+    {
+      "action": "Apply routine vendor OS package update in successor; retain archive and requalify affected behavior/notices/scans.",
+      "associations": 1,
+      "ids": [
+        "CVE-2026-4738"
+      ],
+      "image": "caddy",
+      "packages": [
+        {
+          "fixed": "1.4-r0",
+          "installed": "1.3.2-r1",
+          "name": "zlib"
+        }
+      ],
+      "source": "zlib"
+    },
+    {
+      "action": "Retain conditional caller/configuration exclusion; scanner fixes refer to toolchain/module versions, not an available updated vendor gosu/Caddy application release. Latest vendor releases are gosu1.20 and Caddy2.11.9; custom runtime/module rebuild not routine validated vendor update. Reassess next upstream release.",
+      "associations": 1,
+      "ids": [
+        "CVE-2026-39824"
+      ],
+      "image": "postgres-trixie",
+      "packages": [
+        {
+          "fixed": "0.44.0",
+          "installed": "v0.1.0",
+          "name": "golang.org/x/sys"
+        }
+      ],
+      "source": "golang.org/x/sys"
+    },
+    {
+      "action": "Apply routine vendor OS package update in successor; retain archive and requalify affected behavior/notices/scans.",
+      "associations": 2,
+      "ids": [
+        "CVE-2026-124851"
+      ],
+      "image": "postgres-trixie",
+      "packages": [
+        {
+          "fixed": "1.5.7+dfsg-1+deb13u1",
+          "installed": "1.5.7+dfsg-1",
+          "name": "libzstd1"
+        },
+        {
+          "fixed": "1.5.7+dfsg-1+deb13u1",
+          "installed": "1.5.7+dfsg-1",
+          "name": "zstd"
+        }
+      ],
+      "source": "libzstd"
+    },
+    {
+      "action": "Apply routine vendor OS package update in successor; retain archive and requalify affected behavior/notices/scans.",
+      "associations": 2,
+      "ids": [
+        "CVE-2026-135901"
+      ],
+      "image": "postgres-trixie",
+      "packages": [
+        {
+          "fixed": "1:4.17.4-2+deb13u1",
+          "installed": "1:4.17.4-2",
+          "name": "login.defs"
+        },
+        {
+          "fixed": "1:4.17.4-2+deb13u1",
+          "installed": "1:4.17.4-2",
+          "name": "passwd"
+        }
+      ],
+      "source": "shadow"
+    },
+    {
+      "action": "Retain conditional caller/configuration exclusion; scanner fixes refer to toolchain/module versions, not an available updated vendor gosu/Caddy application release. Latest vendor releases are gosu1.20 and Caddy2.11.9; custom runtime/module rebuild not routine validated vendor update. Reassess next upstream release.",
+      "associations": 60,
+      "ids": [
+        "CVE-2025-47912",
+        "CVE-2025-58183",
+        "CVE-2025-58185",
+        "CVE-2025-58186",
+        "CVE-2025-58187",
+        "CVE-2025-58188",
+        "CVE-2025-58189",
+        "CVE-2025-61723",
+        "CVE-2025-61724",
+        "CVE-2025-61725",
+        "CVE-2025-61726",
+        "CVE-2025-61727",
+        "CVE-2025-61728",
+        "CVE-2025-61729",
+        "CVE-2025-61730",
+        "CVE-2025-68121",
+        "CVE-2026-111943",
+        "CVE-2026-25679",
+        "CVE-2026-27139",
+        "CVE-2026-27142",
+        "CVE-2026-27145",
+        "CVE-2026-32280",
+        "CVE-2026-32281",
+        "CVE-2026-32282",
+        "CVE-2026-32283",
+        "CVE-2026-32288",
+        "CVE-2026-32289",
+        "CVE-2026-33811",
+        "CVE-2026-33814",
+        "CVE-2026-33818",
+        "CVE-2026-39820",
+        "CVE-2026-39821",
+        "CVE-2026-39822",
+        "CVE-2026-39823",
+        "CVE-2026-39825",
+        "CVE-2026-39826",
+        "CVE-2026-39836",
+        "CVE-2026-42499",
+        "CVE-2026-42504",
+        "CVE-2026-42505",
+        "CVE-2026-42507",
+        "CVE-2026-56853",
+        "CVE-2026-56857",
+        "CVE-2026-56858",
+        "CVE-2026-56859",
+        "CVE-2026-56860",
+        "CVE-2026-56862",
+        "CVE-2026-56866",
+        "CVE-2026-78659",
+        "CVE-2026-78660",
+        "CVE-2026-78663",
+        "CVE-2026-78667",
+        "CVE-2026-78669",
+        "CVE-2026-94439",
+        "CVE-2026-94440",
+        "CVE-2026-94448",
+        "CVE-2026-97030",
+        "CVE-2026-97031",
+        "CVE-2026-97032",
+        "CVE-2026-97054"
+      ],
+      "image": "postgres-trixie",
+      "packages": [
+        {
+          "fixed": "1.24.11, 1.25.5",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        },
+        {
+          "fixed": "1.24.12, 1.25.6",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        },
+        {
+          "fixed": "1.24.13, 1.25.7, 1.26.0-rc.3",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        },
+        {
+          "fixed": "1.24.8, 1.25.2",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        },
+        {
+          "fixed": "1.24.9, 1.25.3",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        },
+        {
+          "fixed": "1.25.10, 1.26.3",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        },
+        {
+          "fixed": "1.25.11, 1.26.4",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        },
+        {
+          "fixed": "1.25.12, 1.26.5, 1.27.0-rc.2",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        },
+        {
+          "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        },
+        {
+          "fixed": "1.25.8, 1.26.1",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        },
+        {
+          "fixed": "1.25.9, 1.26.2",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        },
+        {
+          "fixed": "1.26.10, 1.27.3",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        },
+        {
+          "fixed": "1.26.11, 1.27.4",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        },
+        {
+          "fixed": "1.26.9, 1.27.2",
+          "installed": "v1.24.6",
+          "name": "stdlib"
+        }
+      ],
+      "source": "stdlib"
+    },
+    {
+      "action": "Apply routine vendor OS package update in successor; retain archive and requalify affected behavior/notices/scans.",
+      "associations": 2,
+      "ids": [
+        "CVE-2026-135901"
+      ],
+      "image": "tools",
+      "packages": [
+        {
+          "fixed": "1:4.17.4-2+deb13u1",
+          "installed": "1:4.17.4-2",
+          "name": "login.defs"
+        },
+        {
+          "fixed": "1:4.17.4-2+deb13u1",
+          "installed": "1:4.17.4-2",
+          "name": "passwd"
+        }
+      ],
+      "source": "shadow"
+    },
+    {
+      "action": "Apply routine vendor OS package update in successor; retain archive and requalify affected behavior/notices/scans.",
+      "associations": 2,
+      "ids": [
+        "CVE-2026-135901"
+      ],
+      "image": "web",
+      "packages": [
+        {
+          "fixed": "1:4.17.4-2+deb13u1",
+          "installed": "1:4.17.4-2",
+          "name": "login.defs"
+        },
+        {
+          "fixed": "1:4.17.4-2+deb13u1",
+          "installed": "1:4.17.4-2",
+          "name": "passwd"
+        }
+      ],
+      "source": "shadow"
+    }
+  ],
+  "official_reference_images": {
+    "caddy_application_version": "2.11.9",
+    "caddy_current_amd64_manifest": "sha256:fc9cbc100585871d18d4e451cca7021785c90a7006087427ae5ceb3e4efe6424",
+    "caddy_current_index": "sha256:4851e54a46b206517c574821bb5cc67f170d2156041e9fbc4c9193b45e84a75b",
+    "caddy_decision": "Current official image retains old Alpine crypto/zlib; apply apk vendor updates in a derived image or await official refresh. Static Go/module exclusions retain their configured caller limits.",
+    "postgres_current_amd64_manifest": "sha256:e711be2c7ff64c9eb8883fc87571621be6caa2f943d825a49e5d20ac5b0221d7",
+    "postgres_current_index": "sha256:97fb53376be3e4fb1a8a61421daa69dcc3bf2fa39bda3259f5245f9a455af1a9",
+    "postgres_current_packages": "postgres (PostgreSQL) 17.12 (Debian 17.12-1.pgdg13+1)\nlibxml2:amd64\t2.12.7+dfsg+really2.9.14-2.1+deb13u3\nlibzstd1:amd64\t1.5.7+dfsg-1\nlogin.defs\t1:4.17.4-2\npasswd\t1:4.17.4-2\nzstd\t1.5.7+dfsg-1\nb1892636c281590f34bc63c1118f058cd9de66c4ea463772e3909672d8b302ac  /usr/local/bin/gosu\n",
+    "postgres_current_version": "17.12-1.pgdg13+1",
+    "postgres_decision": "Current official image still has old shadow/zstd; a derived apt-updated image or later official refresh is required. No database-major or distro transition is required."
+  },
+  "routine_os_update_associations": 91,
+  "routine_os_update_records": 28
+}

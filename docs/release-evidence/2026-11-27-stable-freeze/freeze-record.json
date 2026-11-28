@@ -1,0 +1,113 @@
+{
+  "applicationBaselineRevision": "de413159d3a0cd7f0558b041bd4a13175cafaf87",
+  "archiveValidation": {
+    "checksumsMatch": true,
+    "files": 11,
+    "imageLabelsMatch": true,
+    "trackedSourcePreflightMatchesInstallationArchive": true
+  },
+  "backendTests": 821,
+  "baseImageReferences": {
+    "deploy/self-host/api.Dockerfile": [
+      "mcr.microsoft.com/dotnet/sdk:10.0-noble@sha256:8c6edfb26c85153f236d26efebd9ad349aec403583f343f201ee67838b23658d",
+      "mcr.microsoft.com/dotnet/aspnet:10.0.15-noble@sha256:aac50ceef10391e78a899e3d2ccd00bbafa2dcb56ccf4586cbccf00edb84fc21"
+    ],
+    "deploy/self-host/tools.Dockerfile": [
+      "mcr.microsoft.com/dotnet/sdk:10.0-noble@sha256:8c6edfb26c85153f236d26efebd9ad349aec403583f343f201ee67838b23658d",
+      "mcr.microsoft.com/dotnet/aspnet:10.0.15-noble@sha256:aac50ceef10391e78a899e3d2ccd00bbafa2dcb56ccf4586cbccf00edb84fc21",
+      "debian:trixie-slim@sha256:7378260c0a098d27ac206225db5e7d92b8c7c84ea7afccc86eeb513756bbd392"
+    ],
+    "deploy/self-host/web.Dockerfile": [
+      "node:24-bookworm-slim@sha256:dc26ae92c9fb15cf6b1d63e20f0944b2efe0f115b20e00be48fb23fceb061c54",
+      "debian:trixie-slim@sha256:7378260c0a098d27ac206225db5e7d92b8c7c84ea7afccc86eeb513756bbd392"
+    ]
+  },
+  "candidateDirectory": ".local/stable-candidate-2026-11-27/candidate-qualified/",
+  "createdUtc": "2026-11-27T23:34:06.085272+00:00",
+  "disposableContainersRemoved": true,
+  "freezeComplete": true,
+  "frontendTests": 1103,
+  "latestMigration": "20261127222703_AddSongs",
+  "mainWorkingTree": "Evidence filename correction and test assertion fix applied, with release notes and freeze/status records; changes remain uncommitted. VERSION and tags remain unchanged in main checkout.",
+  "metadataCorrection": "Four historical evidence files renamed .log to .txt; verification index keys updated; all evidence bytes/hashes preserved; historical exporter retains original output names.",
+  "operatorReleaseComplianceTests": 146,
+  "persistentInstanceChanged": false,
+  "platform": "linux/amd64",
+  "preparationExit": {
+    "code": 1,
+    "reason": "Expected incomplete-candidate result: image-bound source materials not yet reviewed; no release-manifest.json produced."
+  },
+  "privateGitBundle": {
+    "bytes": 4855287,
+    "distribution": "private preservation only; contains Git history",
+    "file": "frozen-source-qualified.git.bundle",
+    "sha256": "62ef885480e7add7cfbd76f99ebf26df527b545efce18377b40f8d0588cec0fb"
+  },
+  "publicationAuthorized": false,
+  "qualificationComplete": false,
+  "revision": "f54048c233e405843160bc16d857f8c32082599f",
+  "schema": 1,
+  "scope": "local stable candidate freeze; qualification and publication pending",
+  "sourceFiles": {
+    "VERSION": {
+      "bytes": 6,
+      "sha256": "e9dd8507f4bf0c6f42458e41aea833ad0bd3f6127272335eee9bf4d58541ed67"
+    },
+    "deploy/compliance/native/source-bundle.lock.json": {
+      "bytes": 133589,
+      "sha256": "4be80e52d2d792e8087618ad746ff6abae74c8ebe734c030084e5c69665ab185"
+    },
+    "deploy/self-host/api.Dockerfile": {
+      "bytes": 2279,
+      "sha256": "80cd194ab3af078805db8f2943f9c823d17af4595221332192564317c673fd29"
+    },
+    "deploy/self-host/compose.yaml": {
+      "bytes": 6651,
+      "sha256": "589ba32b961124fabe966e65f5474a5bca60a8483e92fcafd3cc0d70072f669b"
+    },
+    "deploy/self-host/entrypoint.py": {
+      "bytes": 18093,
+      "sha256": "38a7e245e517004d97cc0e5715e3d26edd9b2c22b2d45b635d7f28093801cfb4"
+    },
+    "deploy/self-host/ratefreak.py": {
+      "bytes": 27636,
+      "sha256": "979ad3d46921653480017c3a65926d069666be0b6887822a1aa80be3755ccbf1"
+    },
+    "deploy/self-host/tools.Dockerfile": {
+      "bytes": 3332,
+      "sha256": "c9731a6e92320171c252affd823c4384ba2ddca4aaa543eafc81f683f5c2b74e"
+    },
+    "deploy/self-host/web.Dockerfile": {
+      "bytes": 2089,
+      "sha256": "f44b843ae996c953e0b381a8e5c3ea4ad2e7f50bc9d91c560e39c56a6f21de7f"
+    },
+    "docs/releases/0.1.0.md": {
+      "bytes": 4214,
+      "sha256": "2035f6d4ee9b68e8daa85e94db679233ff694462959d452f2c1147f5cbba7a2a"
+    },
+    "tests/RateFreak.IntegrationTests/MusicBrainzImportTests.cs": {
+      "bytes": 18896,
+      "sha256": "67a1fbbcf306b72c627ea6d26acdd46c52c55458c8a0fc3b5b6d511880785936"
+    },
+    "web/pnpm-lock.yaml": {
+      "bytes": 188608,
+      "sha256": "083f8f3e0a3ded7c66f656f57dc05bc6b97a4787dce39976599729bfb58fe0fa"
+    }
+  },
+  "sourceSelection": "clean isolated local clone source-qualified; tag exists only in this clone",
+  "stage": "review",
+  "supersededSourceRevisions": [
+    "f33356a0291d5022173918f18001487d086e14ec",
+    "b329e038aa2ac59edf4bdb21899afcd371a27099"
+  ],
+  "tag": "v0.1.0",
+  "testCorrection": "Song artwork integration assertion selects the imported media ID; shared fixture may retain unrelated community feed entries.",
+  "totalTests": 2070,
+  "trackedSourceArchive": {
+    "bytes": 5302370,
+    "file": "frozen-source-qualified.tar.gz",
+    "sha256": "88315738ee29508e40ce18c58a9d5efb6fef47b3d66aae9d9431107d3de6089f"
+  },
+  "verificationChecks": 15,
+  "version": "0.1.0"
+}

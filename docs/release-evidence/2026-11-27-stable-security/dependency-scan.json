@@ -1,0 +1,22 @@
+{
+  "exit_code": 0,
+  "input": "frozen source-qualified read-only",
+  "report_sha256": "fb275ec9447282160b94729ec581768ef646537c32fb63523fd1f08058aaea58",
+  "scanner": "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+  "arguments": [
+    "fs",
+    "--cache-dir",
+    "/output/cache",
+    "--skip-db-update",
+    "--skip-version-check",
+    "--scanners",
+    "vuln",
+    "--list-all-pkgs",
+    "--format",
+    "json",
+    "--output",
+    "/output/dependency-trivy.json",
+    "/source"
+  ],
+  "findings": 0
+}

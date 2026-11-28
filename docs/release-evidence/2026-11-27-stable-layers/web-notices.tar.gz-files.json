@@ -1,0 +1,92 @@
+[
+  {
+    "bytes": 1079,
+    "path": "web-notices/LICENSE.txt",
+    "sha256": "9e0a7ac740671fe693d1dfffb4d8b4622ef36deff0c55ae2d1098bff004de5dc"
+  },
+  {
+    "bytes": 2496296,
+    "path": "web-notices/THIRD-PARTY-NOTICES.txt",
+    "sha256": "6df6a53a634b4b06b47f3bbcbee484eb6b3d9f66411c974dc6597a72aa989c6d"
+  },
+  {
+    "bytes": 60176,
+    "path": "web-notices/manifest.json",
+    "sha256": "53366d4336bcaac9c0085cd0f85730df8115fcc12ef540842716e65c52fec5ff"
+  },
+  {
+    "bytes": 85542,
+    "path": "web-notices/native/librsvg-built.Cargo.lock",
+    "sha256": "5723e14ce316e9058c76257848e18ab52624c98d16f758b5f8a73b5007b2ab8b"
+  },
+  {
+    "bytes": 85542,
+    "path": "web-notices/native/librsvg-edited.Cargo.lock",
+    "sha256": "5723e14ce316e9058c76257848e18ab52624c98d16f758b5f8a73b5007b2ab8b"
+  },
+  {
+    "bytes": 9512,
+    "path": "web-notices/native/rust-built-packages.json",
+    "sha256": "522fd91adb55510bab635e5537ff1c1cd39b539164f266aae9e88b804e27dd9f"
+  },
+  {
+    "bytes": 547,
+    "path": "web-notices/native/rust-coverage.json",
+    "sha256": "de28678c178b6b036e11f5f57a35a8ffd33edf0bf59fa7711356f638d4814369"
+  },
+  {
+    "bytes": 103615,
+    "path": "web-notices/native/rust-notices-manifest.json",
+    "sha256": "be2232cae4252693b88b92fbe0e80e98550a8a71a5af130217fa944621e865d5"
+  },
+  {
+    "bytes": 11357,
+    "path": "web-notices/native/sharp-libvips-BUILD-LICENSE.txt",
+    "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+  },
+  {
+    "bytes": 23877,
+    "path": "web-notices/native/sharp-libvips-build.sh",
+    "sha256": "333031b3b49bf1a16d0b9d6812d98f67c404218932ef8c0b389388524a524b36"
+  },
+  {
+    "bytes": 346,
+    "path": "web-notices/native/sharp-libvips-packaging.json",
+    "sha256": "83b473ccd75681bf1596421bd1187c8e7021ba6050b347a6f403a77cade7a364"
+  },
+  {
+    "bytes": 594,
+    "path": "web-notices/native/sharp-libvips-versions.properties",
+    "sha256": "c0ad634f7c2ac8994f831dd0bcb5c60043db7ba4ddd9cc2dbc3703b15f4ec7e5"
+  },
+  {
+    "bytes": 24261,
+    "path": "web-notices/native/source-acquisition.json",
+    "sha256": "cdd50f2cce3773da73e5bac45a30e880bb413f3ad6d40e833ce1a1ae6a4e7d59"
+  },
+  {
+    "bytes": 133589,
+    "path": "web-notices/native/source-bundle.lock.json",
+    "sha256": "4be80e52d2d792e8087618ad746ff6abae74c8ebe734c030084e5c69665ab185"
+  },
+  {
+    "bytes": 771,
+    "path": "web-notices/native/sources.json",
+    "sha256": "41b4dab2e6b5086aecb4c32704ff5e8978e56f353fc5ccc198a925673d6d434c"
+  },
+  {
+    "bytes": 23025,
+    "path": "web-notices/runtime/evidence.json",
+    "sha256": "70d9258cce202baa483acf2d6790e4f26e76b2908820fce0a3131187eda2dc21"
+  },
+  {
+    "bytes": 5099,
+    "path": "web-notices/runtime/os-packages.tsv",
+    "sha256": "b09d696d1188813fc4c58016cc094fa44d70c8736da5c5b4db12f1535561f61d"
+  },
+  {
+    "bytes": 459209,
+    "path": "web-notices/runtime/runtime-license-texts.tar.gz",
+    "sha256": "752e701b7320ad0ed5bf550ab5e21a6ae61d85b8e899177e597e3a94e0f0b210"
+  }
+]

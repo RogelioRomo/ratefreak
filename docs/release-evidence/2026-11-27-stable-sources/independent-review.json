@@ -1,0 +1,57 @@
+{
+  "scope": "Original f54048c candidate source/license reconciliation only; no security, successor, or publication clearance",
+  "checks": {
+    "current_material_hashes": 55,
+    "prior_material_hashes": 47,
+    "exact_image_components": {
+      "api": {
+        "image_id": "sha256:db65696090623e3f5336215360512837f38be773c913d593e558e81103eca646",
+        "entries": 162
+      },
+      "tools": {
+        "image_id": "sha256:e8154a58abde88d996af17fe32996639c74a2e11a898d131f2cf087953c1536c",
+        "entries": 152
+      },
+      "web": {
+        "image_id": "sha256:9bb46deb17c663e22f96b1875ec3269a02ae519d10ee2d51ac1f724238e2b05e",
+        "entries": 188
+      }
+    },
+    "os_source_inputs_hash_size": 849,
+    "descriptor_checksums_complete": 275,
+    "actual_notice_payloads": "Application notice members and nested runtime-license bytes equal prior; outer runtime evidence/archive may differ",
+    "native_source_inputs_exact_profile": 406,
+    "frozen_committed_source_bytes": 1721,
+    "evidence_manifest_hashes": true,
+    "proof_script_root_discovery": "Fixed by parent during review; public/private copies equal, ancestor discovery checked without rerunning mutating scripts",
+    "raw_image_layers": 43,
+    "raw_package_status_snapshots_source_mapped": 8,
+    "primary_selected_payloads": {
+      "skia_primary_layer_sha256": "37d70d52efbd0d03f1f1e6d458f9050e55d1f47ec8760d0fdbe5043416dbdac8",
+      "api_font_notice_members_verified": 18,
+      "efbundle_primary_layer_sha256": "6f5455d7b7c602d1e4a58e47fcf08510a7dbd320fa18193caf416e90f8fec49f",
+      "tools_font_notice_members_verified": 18,
+      "web_font_notice_members_verified": 4,
+      "web_notice_members_verified": 18
+    },
+    "embedded_bundle": {
+      "files": 104,
+      "dependency_libraries": 36,
+      "third_party_unchanged": true,
+      "embedded_skia_primary_layer_match": true,
+      "apphost_commit": "8e0f8ed2312954727f8919d7d1c2f78b483b4ee7",
+      "framework_acquisition_hashes": true
+    },
+    "all_component_versions_equal_prior": true
+  },
+  "blockers": [],
+  "important_gaps": [],
+  "minor_limitations": [
+    "Original font download/subsetting history, exact upstream Sharp prebuild header resolution, native bit-for-bit rebuild and new upstream signature verification remain explicitly unproven. Successor needs new evidence."
+  ],
+  "verified_commands": [
+    "python3 /tmp/source-independent-check.py",
+    "python3 /tmp/source-independent-images.py"
+  ],
+  "limitations_of_independent_review": "Fresh retained-byte, descriptor-closure, source-tree, raw-layer mapping and bundle readback. Existing recorded license grant decisions were checked for consistency; no new legal opinion, signature trust validation, native rebuild, security clearance or successor qualification."
+}

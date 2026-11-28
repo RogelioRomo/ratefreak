@@ -1,0 +1,488 @@
+[
+  {
+    "bytes": 235403,
+    "linkname": "",
+    "path": "caddy-notices/inventory.json",
+    "type": "0"
+  },
+  {
+    "bytes": 8011,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/apt/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 1696,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/base-files/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 798,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/base-passwd/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 9764,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/bash/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 30341,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/bsdutils/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 18940,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/ca-certificates/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 164,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/ca-certificates/examples/ca-certificates-local/debian/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 5572,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/coreutils/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 3878,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/dash/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 2764,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/debconf/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 1243,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/debian-archive-keyring/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 9062,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/debianutils/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 16445,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/diffutils/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 5661,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/dpkg/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 24411,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/findutils/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 69004,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/gcc-14-base/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 1807,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/grep/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 2895,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/gzip/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 1273,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/hostname/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 3133,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/init-system-helpers/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 2048,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libacl1/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 8011,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libapt-pkg7.0/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 1947,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libattr1/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 1596,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libaudit-common/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 1596,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libaudit1/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 30341,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libblkid1/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 22378,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libbsd0/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 2228,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libbz2-1.0/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 51200,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libc-bin/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 51200,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libc6/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 1621,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libcap-ng0/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 4496,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libcap2/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 6010,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libcrypt1/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 17177,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libdb5.3t64/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 5856,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libdebconfclient0/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 4153,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libgmp10/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 24407,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libhogweed6t64/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 30341,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/liblastlog2-2/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 3737,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/liblz4-1/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 11875,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/liblzma5/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 8018,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libmd0/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 30341,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libmount1/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 24407,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libnettle8t64/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 9727,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libpam-modules-bin/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 9727,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libpam-modules/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 9727,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libpam-runtime/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 9727,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libpam0g/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 6627,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libpcre2-8-0/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 1429,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libseccomp2/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 1957,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libselinux1/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 1921,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libsemanage-common/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 1921,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libsemanage2/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 3750,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libsepol2/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 30341,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libsmartcols1/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 1770,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libsqlite3-0/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 2543,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libssl3t64/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 12521,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libsystemd0/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 4670,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libtinfo6/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 12521,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libudev1/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 30341,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libuuid1/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 3213,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libxxhash0/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 5332,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/libzstd1/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 5869,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/login.defs/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 30341,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/login/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 22806,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/mawk/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 30341,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/mount/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 4670,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/ncurses-base/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 4670,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/ncurses-bin/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 2543,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/openssl-provider-legacy/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 2543,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/openssl/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 5869,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/passwd/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 109644,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/perl-base/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 8618,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/sed/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 957,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/sqv/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 5881,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/sysvinit-utils/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 6560,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/tar/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 375,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/tzdata/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 30341,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/util-linux/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 2927,
+    "linkname": "",
+    "path": "caddy-notices/original/usr/share/doc/zlib1g/copyright",
+    "type": "0"
+  },
+  {
+    "bytes": 71660,
+    "linkname": "",
+    "path": "caddy-notices/original/var/lib/dpkg/status",
+    "type": "0"
+  }
+]

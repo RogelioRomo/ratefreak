@@ -1,0 +1,76 @@
+[
+  {
+    "file": "reference-gosu-1.20-source.tar.gz",
+    "url": "https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.20",
+    "sha256": "207a2045e890d3ca3326027c5f585733085960b401a49dbc00e3bb628c054cf8",
+    "bytes": 18156,
+    "notice_file": "reference-gosu-1.20-notices.tar.gz",
+    "notice_members": [
+      "gosu-1.20/LICENSE"
+    ]
+  },
+  {
+    "file": "reference-docker-postgres-source.tar.gz",
+    "url": "https://codeload.github.com/docker-library/postgres/tar.gz/431640c75318610961eabb6417cd3ea8140c643f",
+    "sha256": "37c13f7c3c227dedd8c1d253af24c64c5c5fe14fa590b63dc7b2201eeb4c4874",
+    "bytes": 51244,
+    "notice_file": "reference-docker-postgres-notices.tar.gz",
+    "notice_members": [
+      "postgres-431640c75318610961eabb6417cd3ea8140c643f/AUTHORS",
+      "postgres-431640c75318610961eabb6417cd3ea8140c643f/LICENSE"
+    ]
+  },
+  {
+    "file": "reference-caddy-main-0d98cae-source.tar.gz",
+    "url": "https://codeload.github.com/caddyserver/caddy/tar.gz/0d98caea58f794f88e709b1bef2880996a471bca",
+    "sha256": "7b8de20699ec38a43c97d70dd5347ed8e19d3db96d0c9d76ded020f018cb6e5e",
+    "bytes": 1191543,
+    "notice_file": "reference-caddy-main-0d98cae-notices.tar.gz",
+    "notice_members": [
+      "caddy-0d98caea58f794f88e709b1bef2880996a471bca/AUTHORS",
+      "caddy-0d98caea58f794f88e709b1bef2880996a471bca/LICENSE"
+    ]
+  },
+  {
+    "file": "reference-caddy-main-0d98cae-source.tar.gz",
+    "url": "https://codeload.github.com/caddyserver/caddy/tar.gz/0d98caea58f794f88e709b1bef2880996a471bca",
+    "sha256": "7b8de20699ec38a43c97d70dd5347ed8e19d3db96d0c9d76ded020f018cb6e5e",
+    "bytes": 1191543,
+    "notice_file": "reference-caddy-main-0d98cae-notices.tar.gz",
+    "notice_members": [
+      "caddy-0d98caea58f794f88e709b1bef2880996a471bca/AUTHORS",
+      "caddy-0d98caea58f794f88e709b1bef2880996a471bca/LICENSE"
+    ]
+  },
+  {
+    "file": "reference-caddy-main-0d98cae-source.tar.gz",
+    "url": "https://codeload.github.com/caddyserver/caddy/tar.gz/0d98caea58f794f88e709b1bef2880996a471bca",
+    "sha256": "7b8de20699ec38a43c97d70dd5347ed8e19d3db96d0c9d76ded020f018cb6e5e",
+    "bytes": 1191543,
+    "notice_file": "reference-caddy-main-0d98cae-notices.tar.gz",
+    "notice_members": [
+      "caddy-0d98caea58f794f88e709b1bef2880996a471bca/AUTHORS",
+      "caddy-0d98caea58f794f88e709b1bef2880996a471bca/LICENSE"
+    ]
+  },
+  {
+    "file": "reference-caddy-docker-366249a-source.tar.gz",
+    "url": "https://codeload.github.com/caddyserver/caddy-docker/tar.gz/366249a1b454ae9a22a58e864e47e8fbc19a9586",
+    "sha256": "06a366df2ff4974fd9d75af8fc204bd6e1fbbe891bbe49831e4e874e28cbc84e",
+    "bytes": 14251,
+    "notice_file": "reference-caddy-docker-366249a-notices.tar.gz",
+    "notice_members": [
+      "caddy-docker-366249a1b454ae9a22a58e864e47e8fbc19a9586/LICENSE"
+    ]
+  },
+  {
+    "file": "reference-caddy-dist-33ae08f-source.tar.gz",
+    "url": "https://codeload.github.com/caddyserver/dist/tar.gz/33ae08ff08d168572df2956ed14fbc4949880d94",
+    "sha256": "b9db2950fd54576d7a41b0bac15a3a82afe1a5fb6f60e25fe031a4b7f3d4123f",
+    "bytes": 24711,
+    "notice_file": "reference-caddy-dist-33ae08f-notices.tar.gz",
+    "notice_members": [
+      "dist-33ae08ff08d168572df2956ed14fbc4949880d94/LICENSE"
+    ]
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "api": {
+    "changed": [
+      {
+        "after": "c42904a2cb521e884467d9e01087bf0c3dbfb3ab5d23870e55a7934c81bc95e4",
+        "before": "52ebe873cc47cf47351778b38fa3e866848b58cd9f179beb190ea10156266b7b",
+        "path": "api-notices/runtime/evidence.json"
+      },
+      {
+        "after": "544af0daa59316f75227488d43b7d852b7bd2b6b212728dcacfaad93c9f58653",
+        "before": "58c643a6c30db61b79b711218900a5de4163da34d52e2ec8198267ef0502a997",
+        "path": "api-notices/runtime/runtime-license-texts.tar.gz"
+      }
+    ],
+    "newFiles": 18,
+    "oldFiles": 18
+  },
+  "tools": {
+    "changed": [
+      {
+        "after": "6d335126461512e77f8fd0d3990df06ee53147cc603fb599b983855213b49bde",
+        "before": "66c8baeaabbe4cc8d80b111dafa188bbf8541dc8dd39ed6ea960f4cd9c11ce71",
+        "path": "tools-notices/runtime/evidence.json"
+      },
+      {
+        "after": "051c4e95cbdb1e331b342e8e074aa207d308d5884821a1a32b6184edc9b9c790",
+        "before": "6071c1ebbe545b6f466907d9e5cf45bceabf50805ed6bce03b39bcc26040d50a",
+        "path": "tools-notices/runtime/runtime-license-texts.tar.gz"
+      }
+    ],
+    "newFiles": 18,
+    "oldFiles": 18
+  },
+  "web": {
+    "changed": [
+      {
+        "after": "70d9258cce202baa483acf2d6790e4f26e76b2908820fce0a3131187eda2dc21",
+        "before": "f1deafbcac5b4224509039b132cd74d92b364b250489d9834bc9f4a0449721b4",
+        "path": "web-notices/runtime/evidence.json"
+      },
+      {
+        "after": "752e701b7320ad0ed5bf550ab5e21a6ae61d85b8e899177e597e3a94e0f0b210",
+        "before": "c88960cdf6bba9c8f941c3e3f4801fdded9d26de91d95594b07ff38d25a5e42f",
+        "path": "web-notices/runtime/runtime-license-texts.tar.gz"
+      }
+    ],
+    "newFiles": 18,
+    "oldFiles": 18
+  }
+}

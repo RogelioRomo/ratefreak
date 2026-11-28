@@ -1,0 +1,128 @@
+[
+  {
+    "bytes": 0,
+    "linkname": "",
+    "path": "api-notices",
+    "type": "5"
+  },
+  {
+    "bytes": 1079,
+    "linkname": "",
+    "path": "api-notices/LICENSE.txt",
+    "type": "0"
+  },
+  {
+    "bytes": 1197666,
+    "linkname": "",
+    "path": "api-notices/THIRD-PARTY-NOTICES.txt",
+    "type": "0"
+  },
+  {
+    "bytes": 40042,
+    "linkname": "",
+    "path": "api-notices/manifest.json",
+    "type": "0"
+  },
+  {
+    "bytes": 0,
+    "linkname": "",
+    "path": "api-notices/native",
+    "type": "5"
+  },
+  {
+    "bytes": 85542,
+    "linkname": "",
+    "path": "api-notices/native/librsvg-built.Cargo.lock",
+    "type": "0"
+  },
+  {
+    "bytes": 85542,
+    "linkname": "",
+    "path": "api-notices/native/librsvg-edited.Cargo.lock",
+    "type": "0"
+  },
+  {
+    "bytes": 9512,
+    "linkname": "",
+    "path": "api-notices/native/rust-built-packages.json",
+    "type": "0"
+  },
+  {
+    "bytes": 547,
+    "linkname": "",
+    "path": "api-notices/native/rust-coverage.json",
+    "type": "0"
+  },
+  {
+    "bytes": 103615,
+    "linkname": "",
+    "path": "api-notices/native/rust-notices-manifest.json",
+    "type": "0"
+  },
+  {
+    "bytes": 11357,
+    "linkname": "",
+    "path": "api-notices/native/sharp-libvips-BUILD-LICENSE.txt",
+    "type": "0"
+  },
+  {
+    "bytes": 23877,
+    "linkname": "",
+    "path": "api-notices/native/sharp-libvips-build.sh",
+    "type": "0"
+  },
+  {
+    "bytes": 346,
+    "linkname": "",
+    "path": "api-notices/native/sharp-libvips-packaging.json",
+    "type": "0"
+  },
+  {
+    "bytes": 594,
+    "linkname": "",
+    "path": "api-notices/native/sharp-libvips-versions.properties",
+    "type": "0"
+  },
+  {
+    "bytes": 24261,
+    "linkname": "",
+    "path": "api-notices/native/source-acquisition.json",
+    "type": "0"
+  },
+  {
+    "bytes": 133589,
+    "linkname": "",
+    "path": "api-notices/native/source-bundle.lock.json",
+    "type": "0"
+  },
+  {
+    "bytes": 771,
+    "linkname": "",
+    "path": "api-notices/native/sources.json",
+    "type": "0"
+  },
+  {
+    "bytes": 0,
+    "linkname": "",
+    "path": "api-notices/runtime",
+    "type": "5"
+  },
+  {
+    "bytes": 31781,
+    "linkname": "",
+    "path": "api-notices/runtime/evidence.json",
+    "type": "0"
+  },
+  {
+    "bytes": 8190,
+    "linkname": "",
+    "path": "api-notices/runtime/os-packages.tsv",
+    "type": "0"
+  },
+  {
+    "bytes": 617456,
+    "linkname": "",
+    "path": "api-notices/runtime/runtime-license-texts.tar.gz",
+    "type": "0"
+  }
+]

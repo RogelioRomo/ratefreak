@@ -1,0 +1,80 @@
+{
+  "archives": {
+    "api-notices.tar.gz": {
+      "duplicate_paths": [],
+      "files": 18,
+      "members": 21,
+      "policy_rejected_paths": []
+    },
+    "caddy-notices.tar.gz": {
+      "duplicate_paths": [],
+      "files": 81,
+      "members": 81,
+      "policy_rejected_paths": []
+    },
+    "installation.tar.gz": {
+      "duplicate_paths": [],
+      "files": 1732,
+      "members": 2010,
+      "policy_rejected_paths": [],
+      "source_changed": [],
+      "source_extra": [
+        "SOURCE_REVISION"
+      ],
+      "source_missing": []
+    },
+    "postgres-notices.tar.gz": {
+      "duplicate_paths": [],
+      "files": 144,
+      "members": 144,
+      "policy_rejected_paths": []
+    },
+    "reports.tar.gz": {
+      "duplicate_paths": [],
+      "files": 1,
+      "members": 2,
+      "policy_rejected_paths": []
+    },
+    "tools-notices.tar.gz": {
+      "duplicate_paths": [],
+      "files": 18,
+      "members": 21,
+      "policy_rejected_paths": []
+    },
+    "web-notices.tar.gz": {
+      "duplicate_paths": [],
+      "files": 18,
+      "members": 21,
+      "policy_rejected_paths": []
+    }
+  },
+  "artifact_sha256": {
+    "RELEASE-NOTES.md": "ba9170e7cc0df1f06d61b2ce97664ad5313e4243806a421b3d410f4acea5af96",
+    "api-notices.tar.gz": "de8778976d79f6ef5f9b3e9b14590fbf03a46a501ca136d6fe68b5a503d13c07",
+    "api.tar.gz": "7b550a3badfa03904e7ea66c589cd413e179360a2b84efe4890ed53a72f24cb4",
+    "built-images.json": "ed3230424ec9a7286e9cab688d9ca4fe6a97b9f9bb4762b9f2d57ef55f982358",
+    "built-reference-images.json": "8c1be59a0019ce664edbfc25e8fa4cec6f97dfde84dfceca6be259817b67bcdf",
+    "caddy-notices.tar.gz": "7f936dc997c03b6f3247011150dfaaa08f23cdb388a46ca5d862b08e0f37816a",
+    "caddy.tar.gz": "ce54e5ce04487071a4827a1ab82a87c56a00cea6c58b70ef6086ee6aafa456c7",
+    "installation.tar.gz": "9130966da8ed597f55c28ca21f06fbd8d1783cf775148a944f440dfde150dafb",
+    "postgres-notices.tar.gz": "c7aaa247d655d1df031117120a2897a946a84188253226467dc190a0232b9978",
+    "postgres.tar.gz": "948c56e32e804dd1bec408df3affb9ebae17912987cbf56d5840be09dae8a37c",
+    "reference-inventory.json": "d398623190d8d5f1b3f9bce7a81e4eeacca9ad767aaf2daba0750be60c848c47",
+    "reports.tar.gz": "135ff583735816bd959bf32de6331b04749dcf2dbf94b169eb1a23e5b72c1bd4",
+    "source-inventory.json": "5f2e2e53223dd9ee586c0402e9447a3d1314247ffc45c2263333e06af4ec6112",
+    "tools-notices.tar.gz": "a8c140a1a97925e011b98dc2fd279e1c76c07908923251304965e3b3af348a91",
+    "tools.tar.gz": "90821398064664adebdc42a9c50d62c7cff43f8a6658793085f82e33e32b4416",
+    "web-notices.tar.gz": "c6f5aedc40dde920432674531f1b8a13832bb9b2a0c446aeddcbe037f073b87d",
+    "web.tar.gz": "9ad6ad432062fd74837cdd1f98ba9891db58198fb18ab2dad4bd418a2ba3dd23"
+  },
+  "configured_private_values_checked": 7,
+  "credential_pattern_matches": [],
+  "limits": "Only configured private values >=12 bytes under selected setting names and selected credential patterns are tested; heuristic absence is not proof of absence. Source tree .git is excluded as nondistributed metadata.",
+  "policy_file_sha256": "5b024f98d6666f98bc90cb11f3b2637ab5f86892e6e1a27b07ee502fa5da7e20",
+  "policy_source": "deploy/release/prepare.py:safe_source",
+  "private_value_matches": [],
+  "revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+  "source_committed_blob_identity_verified": true,
+  "source_files": 1731,
+  "source_unsafe_paths": []
+}

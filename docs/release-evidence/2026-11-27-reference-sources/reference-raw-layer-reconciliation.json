@@ -1,0 +1,190 @@
+{
+  "caddy": {
+    "trial_image_id": "sha256:f9e40de3c091b03634b56315cd859a556742c6bfabe4f6df59f18793eb7f5002",
+    "image_id": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+    "all_raw_layer_blob_digests_verified": true,
+    "trial_members": 4248,
+    "final_members": 4248,
+    "trial_layers": 6,
+    "final_layers": 6,
+    "changed": [
+      {
+        "before": {
+          "layer": 1,
+          "path": "var/cache/ldconfig/aux-cache",
+          "type": "0",
+          "mode": "0o600",
+          "linkname": "",
+          "bytes": 4118,
+          "sha256": "e8cd73a92905e9128970b0a0bf22a0f44924c084e13232735c4af8b6338661ff"
+        },
+        "after": {
+          "layer": 1,
+          "path": "var/cache/ldconfig/aux-cache",
+          "type": "0",
+          "mode": "0o600",
+          "linkname": "",
+          "bytes": 4118,
+          "sha256": "52c3482dcd9307c534fe6539ec4cb8c74a86f323560565b1a9e501f63b40966a"
+        }
+      },
+      {
+        "before": {
+          "layer": 1,
+          "path": "var/log/apt/history.log",
+          "type": "0",
+          "mode": "0o644",
+          "linkname": "",
+          "bytes": 830,
+          "sha256": "9b54f528a83d31d72f703094a354f00bc0c44767217045173a62e95fa0677b39"
+        },
+        "after": {
+          "layer": 1,
+          "path": "var/log/apt/history.log",
+          "type": "0",
+          "mode": "0o644",
+          "linkname": "",
+          "bytes": 830,
+          "sha256": "961ed65d2a2d49cf15d7a6cb3ae15951e6b0fd16d08892ac81e04782e50daaeb"
+        }
+      },
+      {
+        "before": {
+          "layer": 1,
+          "path": "var/log/apt/term.log",
+          "type": "0",
+          "mode": "0o640",
+          "linkname": "",
+          "bytes": 10736,
+          "sha256": "74e0f2caa329085beaf94ac3d3099abe304613411acc6334dcf13c9f6e8d815c"
+        },
+        "after": {
+          "layer": 1,
+          "path": "var/log/apt/term.log",
+          "type": "0",
+          "mode": "0o640",
+          "linkname": "",
+          "bytes": 10736,
+          "sha256": "db17711f4d6a5c84f2c8d57993d987de671b6855c25544c599004312c5c20b7d"
+        }
+      },
+      {
+        "before": {
+          "layer": 1,
+          "path": "var/log/dpkg.log",
+          "type": "0",
+          "mode": "0o644",
+          "linkname": "",
+          "bytes": 8426,
+          "sha256": "61312fa231b61c00fe32e8369cd08e16863676eb8663138749812484caf05891"
+        },
+        "after": {
+          "layer": 1,
+          "path": "var/log/dpkg.log",
+          "type": "0",
+          "mode": "0o644",
+          "linkname": "",
+          "bytes": 8426,
+          "sha256": "13985c8c5d6a0a0fa4fe53629050d00225798441df48ba73f52068bb4b5274fd"
+        }
+      }
+    ],
+    "added": [],
+    "removed": [],
+    "all_content_and_types_identical": false
+  },
+  "postgres": {
+    "trial_image_id": "sha256:6038dc4023fb2c9b997fa2b9064e0cccd7f2f38c9814e3367d2f9e8d21dca86e",
+    "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+    "all_raw_layer_blob_digests_verified": true,
+    "trial_members": 10940,
+    "final_members": 10940,
+    "trial_layers": 14,
+    "final_layers": 14,
+    "changed": [
+      {
+        "before": {
+          "layer": 13,
+          "path": "var/cache/ldconfig/aux-cache",
+          "type": "0",
+          "mode": "0o600",
+          "linkname": "",
+          "bytes": 6945,
+          "sha256": "e2e08d50dd64e959a11122a74e59690a38e4e4dac84faa45f82088ec35697bf2"
+        },
+        "after": {
+          "layer": 13,
+          "path": "var/cache/ldconfig/aux-cache",
+          "type": "0",
+          "mode": "0o600",
+          "linkname": "",
+          "bytes": 6945,
+          "sha256": "ee881765582ec2243876e3fc5ad190fe10817453e7843a6059d11979f5489cc2"
+        }
+      },
+      {
+        "before": {
+          "layer": 13,
+          "path": "var/log/apt/history.log",
+          "type": "0",
+          "mode": "0o644",
+          "linkname": "",
+          "bytes": 4554,
+          "sha256": "511cb4c9a7c6f755cea17cb43c5d0092f0dd263d94618fe3926c86231c254b4f"
+        },
+        "after": {
+          "layer": 13,
+          "path": "var/log/apt/history.log",
+          "type": "0",
+          "mode": "0o644",
+          "linkname": "",
+          "bytes": 4554,
+          "sha256": "7890a29a8a38c7d27420d11403e28ecf935686ee529a5b440f47d309c1705c69"
+        }
+      },
+      {
+        "before": {
+          "layer": 13,
+          "path": "var/log/apt/term.log",
+          "type": "0",
+          "mode": "0o640",
+          "linkname": "",
+          "bytes": 34605,
+          "sha256": "b1005a7b89f3f61bf7b59f5258c9294744d0fce012336bb3ad9542c55ef4080e"
+        },
+        "after": {
+          "layer": 13,
+          "path": "var/log/apt/term.log",
+          "type": "0",
+          "mode": "0o640",
+          "linkname": "",
+          "bytes": 34605,
+          "sha256": "c0828fb297246b03d1b8c357bd5d15f827b6b23c89d39c61518e3cb70035ddbd"
+        }
+      },
+      {
+        "before": {
+          "layer": 13,
+          "path": "var/log/dpkg.log",
+          "type": "0",
+          "mode": "0o644",
+          "linkname": "",
+          "bytes": 42038,
+          "sha256": "377085914a03472840aa8778592593dddcfdc7710b007254eab78f0ba45ec47d"
+        },
+        "after": {
+          "layer": 13,
+          "path": "var/log/dpkg.log",
+          "type": "0",
+          "mode": "0o644",
+          "linkname": "",
+          "bytes": 42038,
+          "sha256": "774d2deaecf2111be1153071e37fbc0f1ea02709eda175c6386ff4521248bd77"
+        }
+      }
+    ],
+    "added": [],
+    "removed": [],
+    "all_content_and_types_identical": false
+  }
+}

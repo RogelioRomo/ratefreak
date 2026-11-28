@@ -1,0 +1,29 @@
+{
+  "valid": true,
+  "format": 1,
+  "scope": "Exact PostgreSQL and Debian Caddy source/notice delivery only; no security or publication clearance",
+  "images": {
+    "caddy": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+    "postgres": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221"
+  },
+  "component_entries": 378,
+  "source_tuples": 103,
+  "source_inputs": 329,
+  "go_module_archives": 149,
+  "go_toolchains": 2,
+  "material_files": 339,
+  "source_exception_entries": 0,
+  "security_clearance": false,
+  "publication_authorized": false,
+  "resolved_inventory_obligations": {
+    "caddy": [
+      "Original installed notices are retained where present; complete per-component license/source coverage requires matching independently reviewed reference-coverage.json.",
+      "Go toolchain, main module and transitive module original notices/sources require supplemental review; embedded module identities do not constitute license text or source delivery."
+    ],
+    "postgres": [
+      "Original installed notices are retained where present; complete per-component license/source coverage requires matching independently reviewed reference-coverage.json.",
+      "Go toolchain, main module and transitive module original notices/sources require supplemental review; embedded module identities do not constitute license text or source delivery."
+    ]
+  },
+  "gaps": []
+}

@@ -1,0 +1,92 @@
+{
+  "scope": "Independent review of final frozen successor application source/notice/layer evidence; no security or publication clearance",
+  "revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+  "images": {
+    "api": "sha256:238c0ff9aa756644534d2626fd002047d7d5e5a3afc4247b7b0ad75197baaf56",
+    "tools": "sha256:e17b647a8bc72431576993405649a1f357ce4d76fdc16a3d0507dbdc7cb9b4cc",
+    "web": "sha256:b34486f80782118b4312836bb698453deaeedb710bb53e4f742190d9551cb45e"
+  },
+  "blockers": [],
+  "important_gaps": [],
+  "minor_limitations": [
+    "Generated Next output is itemized by raw-file differences and frozen source/package inventory; its changed compiled chunks are not claimed byte-identical or rebuilt reproducibly.",
+    "Original Sharp prebuild header resolution and font download/subsetting history remain explicitly unproven; original source/build/replacement proof and permissive exceptions retain their historical scope.",
+    "Layer classifiers use path categories and fingerprints; they are not a vulnerability finding. Privacy and OG/WASM/TTF search conclusions retain recorded heuristic limits.",
+    "This review relies on the main all-layer scan for exhaustive application member enumeration, while independently checking raw final migration/Skia bytes, all source archives, source/notice mappings and frozen committed source blobs."
+  ],
+  "checks": {
+    "exact_component_entries": 502,
+    "current_material_hashes": 64,
+    "prior_material_hashes": 55,
+    "os_source_input_references_sha256_and_size": 1186,
+    "source_descriptor_closures": 379,
+    "component_version_changes": {
+      "api": [
+        {
+          "scope": "os",
+          "name": "libgssapi-krb5-2:amd64",
+          "before": "1.20.1-6ubuntu2.10",
+          "after": "1.20.1-6ubuntu2.12"
+        },
+        {
+          "scope": "os",
+          "name": "libk5crypto3:amd64",
+          "before": "1.20.1-6ubuntu2.10",
+          "after": "1.20.1-6ubuntu2.12"
+        },
+        {
+          "scope": "os",
+          "name": "libkrb5-3:amd64",
+          "before": "1.20.1-6ubuntu2.10",
+          "after": "1.20.1-6ubuntu2.12"
+        },
+        {
+          "scope": "os",
+          "name": "libkrb5support0:amd64",
+          "before": "1.20.1-6ubuntu2.10",
+          "after": "1.20.1-6ubuntu2.12"
+        }
+      ],
+      "tools": [
+        {
+          "scope": "os",
+          "name": "login.defs",
+          "before": "1:4.17.4-2",
+          "after": "1:4.17.4-2+deb13u1"
+        },
+        {
+          "scope": "os",
+          "name": "passwd",
+          "before": "1:4.17.4-2",
+          "after": "1:4.17.4-2+deb13u1"
+        }
+      ],
+      "web": [
+        {
+          "scope": "os",
+          "name": "login.defs",
+          "before": "1:4.17.4-2",
+          "after": "1:4.17.4-2+deb13u1"
+        },
+        {
+          "scope": "os",
+          "name": "passwd",
+          "before": "1:4.17.4-2",
+          "after": "1:4.17.4-2+deb13u1"
+        }
+      ]
+    },
+    "actual_application_and_nested_runtime_notice_bytes_equal_prior": true,
+    "all_final_installed_and_inherited_os_pairs_have_exact_sources": true,
+    "fresh_exact_image_native_source_inputs": 406,
+    "frozen_committed_source_blobs": 1731,
+    "primary_tools_bundle": {
+      "files": 104,
+      "dependency_libraries": 36,
+      "only_five_first_party_assemblies_change": true,
+      "dependency_manifest_all_records_equal_prior": true,
+      "embedded_apphost_equal_prior": true,
+      "embedded_skia_equals_primary_layer": true
+    }
+  }
+}

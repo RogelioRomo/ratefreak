@@ -1,0 +1,16 @@
+{
+  "current_caddy_index": "sha256:4851e54a46b206517c574821bb5cc67f170d2156041e9fbc4c9193b45e84a75b",
+  "fresh_registry_index_matches": true,
+  "caddy_vendor_binary_sha256": "a563843e11cbce39c557bd429ebb787d56f49d51d9bbb3292cd9b36b37a60cdf",
+  "caddy_latest_application_release": "v2.11.9",
+  "gosu_latest_release": "1.20",
+  "gosu_latest_amd64_asset": [
+    {
+      "name": "gosu-amd64",
+      "updated_at": "2026-10-25T09:39:02Z",
+      "digest": "sha256:b1892636c281590f34bc63c1118f058cd9de66c4ea463772e3909672d8b302ac",
+      "url": "https://github.com/tianon/gosu/releases/download/1.20/gosu-amd64"
+    }
+  ],
+  "assessment": "Scanner-listed module/Go fixes are available upstream but current packaged Caddy/gosu vendor artifacts retain the reviewed static runtime/module copies. No same-vendor packaged runtime correction is being represented as applied. Supported caller/configuration exclusions remain visible, with reassessment when vendor artifact/source/runtime inputs change."
+}

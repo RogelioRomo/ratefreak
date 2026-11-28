@@ -1,0 +1,37 @@
+{
+  "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "-i",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges:true",
+    "--entrypoint",
+    "sh",
+    "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+    "-s"
+  ],
+  "stdin": "set -eu\nsha256sum /etc/ssl/private/ssl-cert-snakeoil.key /etc/ssl/certs/ssl-cert-snakeoil.pem\nopenssl x509 -in /etc/ssl/certs/ssl-cert-snakeoil.pem -noout -subject -issuer -fingerprint -sha256\nopenssl pkey -in /etc/ssl/private/ssl-cert-snakeoil.key -pubout 2>/dev/null | sha256sum\npostgres --describe-config | awk '$1 == \"ssl\" || $1 == \"ssl_cert_file\" || $1 == \"ssl_key_file\" {print}'\n",
+  "exit_code": 0,
+  "file_sha256": {
+    "/etc/ssl/private/ssl-cert-snakeoil.key": "1f24940b8d11b3616ff23fb3649409219a6662ba08d73b2fc0558b94e9f79316",
+    "/etc/ssl/certs/ssl-cert-snakeoil.pem": "a0d7202f18d5d490bded64850f65b663e31c687b80d3371c0c46c7b50bf3555a"
+  },
+  "public_certificate_and_default_config_metadata": "1f24940b8d11b3616ff23fb3649409219a6662ba08d73b2fc0558b94e9f79316  /etc/ssl/private/ssl-cert-snakeoil.key\na0d7202f18d5d490bded64850f65b663e31c687b80d3371c0c46c7b50bf3555a  /etc/ssl/certs/ssl-cert-snakeoil.pem\nsubject=CN=localhost\nissuer=CN=localhost\nsha256 Fingerprint=EF:C2:B9:A2:3A:FA:0C:17:B6:5E:A4:4B:3B:6C:2D:F9:B2:64:6E:7B:6A:1C:FB:61:C5:26:B2:90:8B:27:3F:75\ncd1cc7b30561b09940c15bbe74f44245601809049cf87ee1e1fae2cae97681e9  -\nssl\tsighup\tConnections and Authentication / SSL\tBOOLEAN\tFALSE\t\t\tEnables SSL connections.\t\nssl_cert_file\tsighup\tConnections and Authentication / SSL\tSTRING\tserver.crt\t\t\tLocation of the SSL server certificate file.\t\nssl_key_file\tsighup\tConnections and Authentication / SSL\tSTRING\tserver.key\t\t\tLocation of the SSL server private key file.\t\n",
+  "private_key_bytes_exported": false,
+  "decision": "conditional-unused-public-vendor-fixture",
+  "assessment": "The image actually contains the inherited snakeoil private key; this is not a private-key-free claim. Distribution makes this fixture key public. Supported exact PostgreSQL SQL configuration is ssl=off, and upstream defaults use server.crt/server.key rather than these snakeoil paths. Reference application/database networking does not authenticate with this self-signed fixture. No production trust/identity is assigned to it.",
+  "conditions": [
+    "Keep PostgreSQL ssl=off in this reviewed internal reference topology; enabling TLS or selecting snakeoil paths requires fresh operator-controlled identity/key configuration and reassessment.",
+    "Do not treat the shipped fixture as a secret production credential or trusted CA."
+  ],
+  "sql_evidence": "jit-probe.json",
+  "layer_evidence": "Parent all-layer review binds the key/certificate and libgnutls heuristic hits to exact archived layers.",
+  "limits": "No claim that every private key or secret pattern is absent; the reviewed vendor fixture and generic binary heuristic remain explicitly recorded."
+}

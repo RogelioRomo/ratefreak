@@ -1,0 +1,35 @@
+{
+  "tlsVerified": true,
+  "ordinaryDenied": true,
+  "ordinaryLibraryCatalogNotifications": true,
+  "results": [
+    {
+      "theme": "light",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ],
+      "realDisabledState": true,
+      "simulatedNewerRelease": true,
+      "keyboardCheck": true,
+      "logoutConcealed": true,
+      "noBrowserGitHubRequests": true
+    },
+    {
+      "theme": "dark",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ],
+      "realDisabledState": true,
+      "simulatedNewerRelease": true,
+      "keyboardCheck": true,
+      "logoutConcealed": true,
+      "noBrowserGitHubRequests": true
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "caddy-asset-source-bindings.json": "f5f3c9ee599a2e7470674e07bcf178a4408a4e8df4f6b1737404b01b0764b452",
+  "caddy-debian-layer-inventory.json": "3915e2a12945556573f5f1f4858ec31948c18ad5f5e1123f2f1fb974d68c6ae4",
+  "final-copy-verification.json": "dfc136f1a181860853ffc5db7d0f7739328ec684fb17662e61e4cdd535baa65f",
+  "go-acquisition.json": "dc12dac28f54de032cde6ba0cfa24fa3ff59c687bc2c6a7be9817807fda626b7",
+  "go-source-notice-review.json": "61438d0c70e010f871acc1f8fd847e56392bb344f27b65f1ab768b4d767f26a6",
+  "go-toolchains.json": "366ef0eae8ef4eb6b93bf26b43950017f722882062baa15574ed962936ab2819",
+  "postgres-acquisition-receipts.json": "c04212d274aa9e7f440b3cf5653153cdc0d471097bac6ab9cdcdf9e1f1be7f7b",
+  "postgres-common-license-binding.json": "fa20b0d1da2e888c3b355835dffe2cadd9147a6b9ad30f017e6299490849a42c",
+  "postgres-source-acquisition.json": "1bde618dde65d15b6bcb477acb56bafabe605d5dce2b6341108073b91ea044dd",
+  "postgres-source-verification.json": "17adbc30ccf99bbd364791970491054767603e765d30cf8f45a08dc35cec7c13",
+  "reference-coverage.json": "99ba7967e7486c785a3c8ebeaeb5ddcdee7b8f8ef66f8bf6c6b26992ac6ac493",
+  "reference-generated-delta-proof.json": "95ce1f95adf2a2e16e7947dd165f7776a40ff1d2f5831a2fd8850484f2f65a40",
+  "reference-image-rebinding.json": "2375737d167852d49691f99b2213e230123df3b9c00181d7007f0e07abf3f237",
+  "reference-raw-layer-reconciliation.json": "d1f56d918a36ca075ea277b210815107abe470cc6896e7d18e3a05e61c58192c",
+  "reference-source-gaps.json": "849f0ec6c1f43a43d0469081e2148da4312ffb8757e7e3bed20fa647404a3635",
+  "reference-source-validation.json": "f4ae683b17dfd3a2a798ba8248fe309e819305199d95b75501e9c5110e93c2a8",
+  "review.md": "2bdd6f7c346cc6dfa4612bf757e51e2c728fc8a62bf94a91a45e92b5583b244e",
+  "source-bindings.json": "3a197cb5ad49264fb7e6505519a97e3d464f34280d33d3b8c8ffd4f1b4d8450d",
+  "source-independent-review.json": "4e3c17f75f68ed2d5dc76ee3438b5810bc0b2e065f62eb544e95cdfc4b900928",
+  "wrapper-acquisition.json": "9347fbc2733855420e26fee23cbb3c146a1b62ccf4ee231d261adb33c77bdc71",
+  "wrapper-source-verification.json": "b0a2d3227f8a5252f1962e4224ad7d1a8e41c9bf4648a0db413f9887aa0f4150"
+}

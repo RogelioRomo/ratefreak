@@ -1,0 +1,41 @@
+{
+  "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+  "bindings": [
+    {
+      "component": "postgres",
+      "prior_path": "/usr/lib/postgresql/17/bin/postgres",
+      "current_paths": [
+        "/usr/lib/postgresql/17/bin/postgres"
+      ],
+      "sha256": "7dbdb3ba3212ed4839b1728a8b47d7263c3887cba29cf8197b3857f7e1ba6fa8",
+      "equal": true
+    },
+    {
+      "component": "libpq",
+      "prior_path": "/usr/lib/x86_64-linux-gnu/libpq.so.5",
+      "current_paths": [
+        "/usr/lib/x86_64-linux-gnu/libpq.so.5.19"
+      ],
+      "sha256": "44167a345720d9bf03279f41cab89f0b5a58d7d675c07402f1ba936faffc8755",
+      "equal": true
+    },
+    {
+      "component": "llvmjit",
+      "prior_path": "/usr/lib/postgresql/17/lib/llvmjit.so",
+      "current_paths": [
+        "/usr/lib/postgresql/17/lib/llvmjit.so"
+      ],
+      "sha256": "481dc3cd55e3e248b95040ddba868ebe0a1659bc4f742620be44fc7e7a47cf59",
+      "equal": true
+    },
+    {
+      "component": "gosu",
+      "current_paths": [
+        "/usr/local/bin/gosu"
+      ],
+      "sha256": "b1892636c281590f34bc63c1118f058cd9de66c4ea463772e3909672d8b302ac",
+      "matches_current_vendor_release_asset_digest": true
+    }
+  ],
+  "native_input_scope": "Exact core server,client library,JIT provider and gosu unchanged; patched pzstd source delta separately proved in pzstd-security-delta.json; supported schema/query/JIT configuration bound by current probes."
+}

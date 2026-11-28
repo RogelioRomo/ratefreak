@@ -1,0 +1,38 @@
+{
+  "candidateImages": {
+    "api": "sha256:238c0ff9aa756644534d2626fd002047d7d5e5a3afc4247b7b0ad75197baaf56",
+    "web": "sha256:b34486f80782118b4312836bb698453deaeedb710bb53e4f742190d9551cb45e",
+    "tools": "sha256:e17b647a8bc72431576993405649a1f357ce4d76fdc16a3d0507dbdc7cb9b4cc"
+  },
+  "baselineImages": {
+    "api": "sha256:bb44c12b0f3786618c94da10121b4b47b8bf45cbbd91a279e3d7cdf2527e5237",
+    "web": "sha256:9fc85864396c4724e9d6a1d35ef349dbe5e6eb241f974773379f02c0036a1273",
+    "tools": "sha256:71b51c8f9e0a14ec1cd2bee23293b21a98e82b55f9b774e2be2a1da38b01aeff"
+  },
+  "https": true,
+  "freshInstall": false,
+  "upgrade": true,
+  "referenceImages": {
+    "caddy": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+    "postgres": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221"
+  },
+  "upgradePreservation": {
+    "original_table_count": 30,
+    "original_column_rows_preserved": true,
+    "added_tables": [
+      "igdb_lifecycle_states",
+      "igdb_poster_identities",
+      "igdb_refresh_schedule",
+      "tmdb_lifecycle_states",
+      "tmdb_poster_identities",
+      "tmdb_refresh_schedule"
+    ],
+    "songs_seed_verified": true,
+    "original_migration_history_preserved": true,
+    "originalArtworkAndKeysPreserved": true
+  },
+  "disabledUpdateChecks": true,
+  "ordinaryDenied": true,
+  "logoutDenied": true,
+  "dataPreserved": true
+}

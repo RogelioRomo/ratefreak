@@ -19,6 +19,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'self-host'))
 from release_bundle import validate_bundle, load_bundle, regular_file, read_manifest
 
 SERVICES=('api','web','tools')
+REFERENCE_SERVICES=('postgres','caddy')
 SOURCE_SCOPES={'api':{'os','dotnet','nuget','runtime'},'web':{'os','node','npm','native','runtime'},'tools':{'os','dotnet','nuget','postgres','runtime'}}
 
 def new_output(path):path.mkdir(parents=True,exist_ok=False)
@@ -71,7 +72,7 @@ def validate_notes(path,version):
     if version not in text or any(not re.search(r'^## '+heading+r'\b',text,re.M|re.I) for heading in ('Changes','Upgrade','Migrations','Recovery','Known issues')) or 'TBD' in text or 'TODO' in text:
         raise ValueError('Release notes require version, changes, upgrade, migrations, recovery and known issues.')
 
-def source_evidence(directory,images,output,inventory=None):
+def source_evidence(directory,images,output,inventory=None,reference_inventory=None):
     """Validate image-bound reviewed source coverage; never infer legal clearance."""
     from source_inventory import validate_coverage,validate_native
     if inventory is None:raise ValueError('Actual shipped component inventory is required.')
@@ -93,6 +94,9 @@ def source_evidence(directory,images,output,inventory=None):
     output.mkdir(exist_ok=False)
     for filename in sorted(copied):shutil.copyfile(directory/filename,output/filename)
     shutil.copyfile(directory/'coverage.json',output/'coverage.json')
+    if reference_inventory is not None:
+        from reference_sources import copy_evidence
+        copy_evidence(directory,reference_inventory,output)
     # Native sidecars, when present, must also validate their internal inventory.
     from_path=Path(__file__).resolve().parents[1]/'compliance'
     sys.path.insert(0,str(from_path))
@@ -169,14 +173,20 @@ def resume_candidate(output,identity,compliance,baseline_bundle=None):
     staging=output/('.finalization-'+secrets.token_hex(8));staging.mkdir()
     for name in candidate['files']:shutil.copyfile(output/name,staging/name)
     images={name:entry['id'] for name,entry in candidate['images'].items()}
-    source_evidence(compliance,images,staging/'sources',read_manifest(output/'source-inventory.json'));freeze_directory(staging,'sources')
+    reference_images={name:entry['id'] for name,entry in candidate.get('reference_images',{}).items()}
+    if reference_images:
+        source_evidence(compliance,images,staging/'sources',read_manifest(output/'source-inventory.json'),reference_inventory=read_manifest(output/'reference-inventory.json'))
+    else:
+        source_evidence(compliance,images,staging/'sources',read_manifest(output/'source-inventory.json'))
+    freeze_directory(staging,'sources')
     baseline=baseline_images(Path(__file__).resolve().parents[2],identity,baseline_bundle)
     baseline_file=staging/'baseline-images.json';baseline_file.write_text(json.dumps(baseline,sort_keys=True)+'\n')
     images_file=staging/'built-images.json'
     root=Path(__file__).resolve().parents[2]
-    run([sys.executable,str(root/'deploy/release/acceptance.py'),'--confirm-disposable','--report-directory',str(staging/'fresh-acceptance'),'--images-json',str(images_file)],root)
+    reference_args=['--reference-images-json',str(staging/'built-reference-images.json')] if reference_images else []
+    run([sys.executable,str(root/'deploy/release/acceptance.py'),'--confirm-disposable','--report-directory',str(staging/'fresh-acceptance'),'--images-json',str(images_file),*reference_args],root)
     freeze_directory(staging,'fresh-acceptance')
-    run([sys.executable,str(root/'deploy/release/acceptance.py'),'--confirm-disposable','--report-directory',str(staging/'acceptance'),'--images-json',str(images_file),'--baseline-images-json',str(baseline_file)],root)
+    run([sys.executable,str(root/'deploy/release/acceptance.py'),'--confirm-disposable','--report-directory',str(staging/'acceptance'),'--images-json',str(images_file),'--baseline-images-json',str(baseline_file),*reference_args],root)
     freeze_directory(staging,'acceptance')
     final={**candidate,'stage':'verified','files':inventory(staging)}
     (staging/'release-manifest.json').write_text(json.dumps(final,sort_keys=True,indent=2)+'\n')
@@ -184,28 +194,45 @@ def resume_candidate(output,identity,compliance,baseline_bundle=None):
     staging.rename(output/'release')
     return final
 
+def require_unused_image_tag(image):
+    existing=subprocess.run(['docker','image','ls','--no-trunc','--quiet','--filter','reference='+image],text=True,capture_output=True)
+    if existing.returncode!=0:
+        raise ValueError('Unable to verify unused candidate image tag; Docker image listing failed: '+image)
+    if existing.stdout.strip():
+        raise ValueError('Refusing to replace an existing immutable candidate image tag; explicitly preserve and retire the prior unpublished local candidate first: '+image)
+
+
 def prepare(repository,tag,output,compliance=None,resume=False,baseline_bundle=None):
     identity=read_identity(repository,tag)
     if resume:
         if compliance is None:raise ValueError('Finalization requires reviewed image-bound source materials.')
         return resume_candidate(output,identity,compliance,baseline_bundle)
+    if output.exists() or output.is_symlink():raise FileExistsError('Candidate output already exists; never replace retained artifacts.')
+    for name in (*SERVICES,*REFERENCE_SERVICES):
+        require_unused_image_tag('ratefreak-'+name+':'+identity['version'].replace('+','_'))
     new_output(output)
     notes=repository/'docs/releases'/f'{identity["version"]}.md';validate_notes(notes,identity['version'])
     reports=output/'reports'
     with tempfile.TemporaryDirectory(prefix='ratefreak-private-verification-') as temporary:
         run([sys.executable,str(repository/'deploy/release/verify.py'),'--report-directory',str(Path(temporary)/'raw'),'--public-report-directory',str(reports),'--tag',tag],repository)
-    images={};manifest={'format':1,**identity,'stage':'review','platform':'linux/amd64','images':{},'files':{}}
+    images={};reference_images={}
+    manifest={'format':1,**identity,'stage':'review','platform':'linux/amd64','images':{},'reference_images':{},'files':{}}
     migrations=sorted((repository/'src/RateFreak.Infrastructure/Persistence/Migrations').glob('[0-9]*.cs'))
     manifest['migration']=next(p.stem for p in reversed(migrations) if not p.name.endswith('.Designer.cs'))
     with tempfile.TemporaryDirectory(prefix='ratefreak-tagged-build-') as temporary:
         context=Path(temporary)/'source';export_context(repository,identity['revision'],context)
         (context/'.build-identity.json').write_text(json.dumps(identity)+'\n')
-        for name in SERVICES:
+        for name in (*SERVICES,*REFERENCE_SERVICES):
             image='ratefreak-'+name+':'+identity['version'].replace('+','_')
-            command=['docker','build','--platform','linux/amd64','--build-arg','RATEFREAK_VERSION='+identity['version'],'--build-arg','RATEFREAK_REVISION='+identity['revision'],'--build-arg','RATEFREAK_OFFICIAL=true','-f',str(context/'deploy/self-host'/f'{name}.Dockerfile'),'-t',image,str(context)]
+            require_unused_image_tag(image)
+            command=['docker','build','--platform','linux/amd64','--pull','--no-cache-filter','runtime','--build-arg','RATEFREAK_VERSION='+identity['version'],'--build-arg','RATEFREAK_REVISION='+identity['revision'],'--build-arg','RATEFREAK_OFFICIAL=true','-f',str(context/'deploy/self-host'/f'{name}.Dockerfile'),'-t',image,str(context)]
             run(command,context);metadata=json.loads(run(['docker','image','inspect',image]))[0]
-            images[name]=metadata['Id'];manifest['images'][name]={'tag':image,'id':metadata['Id'],'file':name+'.tar.gz'}
+            selected=images if name in SERVICES else reference_images
+            selected[name]=metadata['Id']
+            manifest['images' if name in SERVICES else 'reference_images'][name]={'tag':image,'id':metadata['Id'],'file':name+'.tar.gz'}
             save_image(image,output/(name+'.tar.gz'))
+            if name in REFERENCE_SERVICES:
+                continue
             container=run(['docker','create',image])
             try:
                 location='/app/public/notices' if name=='web' else '/app/notices'
@@ -216,6 +243,9 @@ def prepare(repository,tag,output,compliance=None,resume=False,baseline_bundle=N
     profile=json.loads((repository/'deploy/compliance/native/source-bundle.lock.json').read_text())
     (output/'source-inventory.json').write_text(json.dumps(collect(output,images,profile),sort_keys=True,indent=2)+'\n')
     (output/'built-images.json').write_text(json.dumps(images,indent=2)+'\n')
+    from reference_inventory import collect as collect_references
+    (output/'reference-inventory.json').write_text(json.dumps(collect_references(output,reference_images),sort_keys=True,indent=2)+'\n')
+    (output/'built-reference-images.json').write_text(json.dumps(reference_images,sort_keys=True,indent=2)+'\n')
     source_archive(repository,output/'installation.tar.gz');shutil.copyfile(notes,output/'RELEASE-NOTES.md')
     freeze_directory(output,'reports')
     manifest['files']=inventory(output)

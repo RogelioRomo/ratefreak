@@ -1,0 +1,45 @@
+{
+  "gosu": {
+    "source_tag": "1.20",
+    "embedded_version": "v1.20.0",
+    "embedded_vcs_revision": "1.20",
+    "go_mod_sha256": "216dbdc31af7371e368b90a85837c6dcf8aa7139cb449ecceaa0526d91900c3a",
+    "dependency_versions_match": true,
+    "original_license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  "caddy": {
+    "vcs_revision": "0d98caea58f794f88e709b1bef2880996a471bca",
+    "module_origin": {
+      "Version": "v2.11.9",
+      "Time": "2026-11-04T23:05:11Z",
+      "Origin": {
+        "VCS": "git",
+        "URL": "https://github.com/caddyserver/caddy",
+        "Hash": "0d98caea58f794f88e709b1bef2880996a471bca",
+        "Ref": "refs/tags/v2.11.9"
+      }
+    },
+    "supplemental_asset_sources": {
+      "etc/caddy/Caddyfile": {
+        "source_file": "dist-33ae08ff08d168572df2956ed14fbc4949880d94/config/Caddyfile",
+        "sha256": "66177d46fa761acb07208065db9b0274cb1b12c02ac43b9bfc9857b698b1ccfe",
+        "bytes": 769,
+        "source_archive": "reference-caddy-dist-33ae08f-source.tar.gz"
+      },
+      "usr/share/caddy/index.html": {
+        "source_file": "dist-33ae08ff08d168572df2956ed14fbc4949880d94/welcome/index.html",
+        "sha256": "70a45d667679109cd6b25502554597f21536ee995ada0549251167bd171533b9",
+        "bytes": 18753,
+        "source_archive": "reference-caddy-dist-33ae08f-source.tar.gz"
+      }
+    }
+  },
+  "postgres_entrypoint": {
+    "usr/local/bin/docker-ensure-initdb.sh": [
+      "postgres-431640c75318610961eabb6417cd3ea8140c643f/17/trixie/docker-ensure-initdb.sh"
+    ],
+    "usr/local/bin/docker-entrypoint.sh": [
+      "postgres-431640c75318610961eabb6417cd3ea8140c643f/17/trixie/docker-entrypoint.sh"
+    ]
+  }
+}

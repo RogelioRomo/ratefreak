@@ -1,0 +1,15 @@
+{
+  "source_tuples": 103,
+  "input_references": 334,
+  "source_input_files": 329,
+  "all_descriptor_closures_verified": true,
+  "all_sources_exact_versions": true,
+  "image_entrypoint_sources": {
+    "usr/local/bin/docker-ensure-initdb.sh": [
+      "postgres-431640c75318610961eabb6417cd3ea8140c643f/17/trixie/docker-ensure-initdb.sh"
+    ],
+    "usr/local/bin/docker-entrypoint.sh": [
+      "postgres-431640c75318610961eabb6417cd3ea8140c643f/17/trixie/docker-entrypoint.sh"
+    ]
+  }
+}

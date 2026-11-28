@@ -1,0 +1,26 @@
+{
+  "artifacts": 21,
+  "candidateImagesRebuilt": false,
+  "complete": true,
+  "finalizationExitCode": 0,
+  "finalizerDisposableProjects": [
+    {
+      "containersRemaining": false,
+      "project": "ratefreak-b37e7d8a8ff3",
+      "volumesRemaining": false
+    },
+    {
+      "containersRemaining": false,
+      "project": "ratefreak-2ac21cec7779",
+      "volumesRemaining": false
+    }
+  ],
+  "independentFinalReadback": "passed",
+  "independentReviewSHA256": "5383ace3b15c90bfc27c1d4dae8bbfa26ae4486f2a7639c1885c453c5bfb30d9",
+  "indexedBytes": 4207841566,
+  "manifestSHA256": "a111f38944c21395bb3d7fd8303457aa066b276e3f853b9374f9d98ac58a1463",
+  "persistentInstanceChanged": false,
+  "published": false,
+  "revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+  "stage": "verified"
+}

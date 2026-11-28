@@ -1,0 +1,77 @@
+{
+  "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "-i",
+    "--network",
+    "none",
+    "--read-only",
+    "--user",
+    "postgres",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges:true",
+    "--tmpfs",
+    "/tmp:mode=1777",
+    "--env",
+    "GLIBC_TUNABLES=glibc.malloc.arena_max=1",
+    "--entrypoint",
+    "sh",
+    "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+    "-s"
+  ],
+  "stdin": "set -eu\ninitdb -D /tmp/security-pg -A trust >/tmp/init.log\npg_ctl -D /tmp/security-pg -o \"-c jit=off -c listen_addresses='' -c unix_socket_directories=/tmp\" -w start >/tmp/start.log\ntrap 'pg_ctl -D /tmp/security-pg -m immediate -w stop >/tmp/stop.log' EXIT\npsql -X -q -A -t -h /tmp -U postgres -d postgres -v ON_ERROR_STOP=1 <<'SQL'\nSELECT json_build_object('jit',current_setting('jit'),'ssl',current_setting('ssl'),'wal_compression',current_setting('wal_compression'),'pg_jit_available',pg_jit_available(),'sum',(SELECT sum(i::bigint) FROM generate_series(1,10000) AS g(i)),'llvm_not_mapped',position('llvmjit' in pg_read_file('/proc/self/maps',0,1048576))=0 AND position('libLLVM' in pg_read_file('/proc/self/maps',0,1048576))=0);\nSET jit_above_cost=0; SET jit_inline_above_cost=0; SET jit_optimize_above_cost=0;\nEXPLAIN (ANALYZE,FORMAT JSON) SELECT sum(i::bigint) FROM generate_series(1,10000) AS g(i);\nSQL\n",
+  "facts": {
+    "jit": "off",
+    "ssl": "off",
+    "wal_compression": "off",
+    "pg_jit_available": false,
+    "sum": 50005000,
+    "llvm_not_mapped": true
+  },
+  "forced_cost_plan": [
+    {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 150.0,
+        "Total Cost": 150.01,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Actual Startup Time": 1.138,
+        "Actual Total Time": 1.139,
+        "Actual Rows": 1,
+        "Actual Loops": 1,
+        "Plans": [
+          {
+            "Node Type": "Function Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Function Name": "generate_series",
+            "Alias": "g",
+            "Startup Cost": 0.0,
+            "Total Cost": 100.0,
+            "Plan Rows": 10000,
+            "Plan Width": 4,
+            "Actual Startup Time": 0.455,
+            "Actual Total Time": 0.751,
+            "Actual Rows": 10000,
+            "Actual Loops": 1
+          }
+        ]
+      },
+      "Planning Time": 0.023,
+      "Triggers": [],
+      "Execution Time": 1.169
+    }
+  ],
+  "passed": true,
+  "scope": "Disposable isolated SQL cluster; exact reference jit=off/native policy; no persistent installation, arbitrary user SQL or TLS/replication configuration qualified."
+}

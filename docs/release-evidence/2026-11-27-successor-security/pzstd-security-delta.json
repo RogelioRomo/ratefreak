@@ -1,0 +1,27 @@
+{
+  "prior_package": "1.5.7+dfsg-1",
+  "current_package": "1.5.7+dfsg-1+deb13u1",
+  "upstream_orig_archive_sha256": "0c092ef267edce57ba7f3f2645c861f72eaf5e76273c6c3632869423464b90a5",
+  "upstream_source_identical": true,
+  "debian_packaging_delta": [
+    "debian/changelog",
+    "debian/patches/CVE-2026-124851.patch",
+    "debian/patches/series"
+  ],
+  "security_patch_sha256": "6093ac3e24ef7e08c8b669736137502ff12209a857af6ada3795d8c978a64edd",
+  "security_patch_paths": [
+    "libzstd-1.5.7+dfsg/lib/decompress/zstd_decompress_block.c"
+  ],
+  "cxx_sources_or_build_flags_changed": false,
+  "assessment": "The pzstd executable embeds affected C decompressor code, so binary hash changes with the vendor security fix. Exact upstream source, all existing patches and build recipes remain identical; new patch changes only C literal-buffer padding/window continuity. No affected C++ template instantiation or caller is introduced. Prior pzstd GNU header/caller exclusions retain their source-level mechanism. Reference backup/restore uses fixed pg_dump/pg_restore, not pzstd.",
+  "evidence": [
+    "native-rebinding.json",
+    "../2026-11-26-security-closure/source-review.json"
+  ],
+  "source_materials": {
+    "prior_debian": ".local/security-closure-2026-11-26/zstd/libzstd_1.5.7+dfsg-1.debian.tar.xz",
+    "current_debian": ".local/stable-qualification-2026-11-27/reference-sources/postgres-source-inputs/adc44c628b74a7a4eff4fbed4681e8fdc8ffe8e4bc31aa9ea6a41a07a2281d23-libzstd_1.5.7+dfsg-1+deb13u1.debian.tar.xz",
+    "orig": ".local/stable-qualification-2026-11-27/reference-sources/postgres-source-inputs/0c092ef267edce57ba7f3f2645c861f72eaf5e76273c6c3632869423464b90a5-libzstd_1.5.7+dfsg.orig.tar.xz"
+  },
+  "limit": "Source/package-delta proof, not independently reproduced binary compilation."
+}

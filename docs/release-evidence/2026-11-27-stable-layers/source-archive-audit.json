@@ -1,0 +1,63 @@
+{
+  "archives": {
+    "api-notices.tar.gz": {
+      "duplicate_paths": [],
+      "files": 18,
+      "members": 21,
+      "policy_rejected_paths": []
+    },
+    "installation.tar.gz": {
+      "duplicate_paths": [],
+      "files": 1722,
+      "members": 2000,
+      "policy_rejected_paths": [],
+      "source_changed": [],
+      "source_extra": [
+        "SOURCE_REVISION"
+      ],
+      "source_missing": [],
+      "source_revision_matches": true
+    },
+    "reports.tar.gz": {
+      "duplicate_paths": [],
+      "files": 1,
+      "members": 2,
+      "policy_rejected_paths": []
+    },
+    "tools-notices.tar.gz": {
+      "duplicate_paths": [],
+      "files": 18,
+      "members": 21,
+      "policy_rejected_paths": []
+    },
+    "web-notices.tar.gz": {
+      "duplicate_paths": [],
+      "files": 18,
+      "members": 21,
+      "policy_rejected_paths": []
+    }
+  },
+  "artifact_sha256": {
+    "RELEASE-NOTES.md": "2035f6d4ee9b68e8daa85e94db679233ff694462959d452f2c1147f5cbba7a2a",
+    "api-notices.tar.gz": "272a244db46987391f6c2d016b3c1f3bcb9115b3de1f2eacb430024e93ab12d1",
+    "api.tar.gz": "e811ded4312f094f2e7b9c38c417f4ffa21e62cca1c0b84abb87ddbd950d96f5",
+    "built-images.json": "b36af783ea805e3a373981dfd9bea60743f617f05ad52748e864b42056e67d1a",
+    "installation.tar.gz": "88315738ee29508e40ce18c58a9d5efb6fef47b3d66aae9d9431107d3de6089f",
+    "reports.tar.gz": "603aa22b5cc8c058c897853fb54f3f11f58f00f2657b529b5adbf7b0f4c2e920",
+    "source-inventory.json": "b86aadb84a6070b37b547dca198479ffaa434d23977f70fa09868aba59c2ad75",
+    "tools-notices.tar.gz": "6e00ed3e8c00efedc2214fdc47e507b0d489911062948a06549208d66c5eec73",
+    "tools.tar.gz": "302db862d01350ff5622c79e8687d828f8d2eb8ab2bc129756883889be54ee9f",
+    "web-notices.tar.gz": "1520404d30360eceb45baf5c321710bcc18e770a7fcd89d7b88f545cc5b2e93f",
+    "web.tar.gz": "dd4d2ff31e0af38f82cb2f834de46a564dbf8fc44fdd7efbb6c114656a0d7c75"
+  },
+  "configured_private_values_checked": 7,
+  "credential_pattern_matches": [],
+  "limits": "Only configured private values >=12 bytes under selected setting names and selected credential patterns are tested; heuristic absence is not proof of absence. Source tree .git is excluded as nondistributed metadata.",
+  "policy_file_sha256": "1b96a4aa8756f3a321fff1bcaf7fbfdbfa5d38d6e63ec6d076aa9cbe487ec3e8",
+  "policy_source": "deploy/release/prepare.py:safe_source",
+  "private_value_matches": [],
+  "revision": "f54048c233e405843160bc16d857f8c32082599f",
+  "source_committed_blob_identity_verified": true,
+  "source_files": 1721,
+  "source_unsafe_paths": []
+}

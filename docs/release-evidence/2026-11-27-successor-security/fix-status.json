@@ -1,0 +1,1201 @@
+{
+  "caddy_runtime_transition": "Only static vendor Caddy binary/default serving assets are copied into updated Debian/Trixie; old Alpine runtime/libraries/helpers and lower layers are not in the successor. This is a runtime replacement, not a claim that old Alpine copies were patched.",
+  "os_fix_listed_associations": 0,
+  "qualified_distro_updates": [
+    {
+      "image": "api",
+      "installed": "1.20.1-6ubuntu2.12",
+      "primary_vendor": "https://ubuntu.com/security/notices/USN-9202-1",
+      "source": "krb5"
+    },
+    {
+      "image": "web",
+      "installed": "1:4.17.4-2+deb13u1",
+      "primary_vendor": "https://security-tracker.debian.org/tracker/CVE-2026-135901",
+      "source": "shadow"
+    },
+    {
+      "image": "tools",
+      "installed": "1:4.17.4-2+deb13u1",
+      "primary_vendor": "https://security-tracker.debian.org/tracker/CVE-2026-135901",
+      "source": "shadow"
+    },
+    {
+      "image": "postgres",
+      "installed": "1:4.17.4-2+deb13u1",
+      "primary_vendor": "https://security-tracker.debian.org/tracker/CVE-2026-135901",
+      "source": "shadow"
+    },
+    {
+      "image": "caddy",
+      "installed": "1:4.17.4-2+deb13u1",
+      "primary_vendor": "https://security-tracker.debian.org/tracker/CVE-2026-135901",
+      "source": "shadow"
+    },
+    {
+      "image": "postgres",
+      "installed": "1.5.7+dfsg-1+deb13u1",
+      "primary_vendor": "https://security-tracker.debian.org/tracker/CVE-2026-124851",
+      "source": "libzstd"
+    }
+  ],
+  "records": [
+    {
+      "advisory": "CVE-2026-128085",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-reference-config",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.47.0",
+      "image": "caddy",
+      "image_id": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+      "installed": "v1.46.0",
+      "package": "go.opentelemetry.io/otel/sdk",
+      "severity": "MEDIUM",
+      "source": "go.opentelemetry.io/otel/sdk",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-128085",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-reference-config",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.47.0",
+      "image": "caddy",
+      "image_id": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+      "installed": "v0.22.0",
+      "package": "go.opentelemetry.io/otel/sdk/log",
+      "severity": "MEDIUM",
+      "source": "go.opentelemetry.io/otel/sdk/log",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-128085",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-reference-config",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.47.0",
+      "image": "caddy",
+      "image_id": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+      "installed": "v1.46.0",
+      "package": "go.opentelemetry.io/otel/trace",
+      "severity": "MEDIUM",
+      "source": "go.opentelemetry.io/otel/trace",
+      "source_version": null
+    },
+    {
+      "advisory": "GO-2026-5932",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-reference-config",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "0.58.1-0.20261009181718-2f1f834330b2",
+      "image": "caddy",
+      "image_id": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+      "installed": "v0.57.0",
+      "package": "golang.org/x/crypto",
+      "severity": "UNKNOWN",
+      "source": "golang.org/x/crypto",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-78661",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-reference-config",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "0.62.0",
+      "image": "caddy",
+      "image_id": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+      "installed": "v0.60.0",
+      "package": "golang.org/x/net",
+      "severity": "HIGH",
+      "source": "golang.org/x/net",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-97045",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-reference-config",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "0.62.0",
+      "image": "caddy",
+      "image_id": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+      "installed": "v0.60.0",
+      "package": "golang.org/x/net",
+      "severity": "MEDIUM",
+      "source": "golang.org/x/net",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-97054",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-reference-config",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.11, 1.27.4",
+      "image": "caddy",
+      "image_id": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+      "installed": "v1.27.3",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-39824",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "platform-exclusion-linux-image",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "0.44.0",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v0.1.0",
+      "package": "golang.org/x/sys",
+      "severity": "UNKNOWN",
+      "source": "golang.org/x/sys",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-68121",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.13, 1.25.7, 1.26.0-rc.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "CRITICAL",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-61726",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.12, 1.25.6",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-61729",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.11, 1.25.5",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-111943",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.10, 1.27.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-25679",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.8, 1.26.1",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-27145",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.11, 1.26.4",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-32280",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.9, 1.26.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-32281",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.9, 1.26.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-32283",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.9, 1.26.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-33811",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.10, 1.26.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-33814",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.10, 1.26.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-33818",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-39820",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.10, 1.26.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-39821",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-39822",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.12, 1.26.5, 1.27.0-rc.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-39836",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.10, 1.26.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-42499",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.10, 1.26.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-42504",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.11, 1.26.4",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-56853",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-56858",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-56859",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-56860",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-56862",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-78667",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.9, 1.27.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-78669",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.9, 1.27.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-97031",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.9, 1.27.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-47912",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.8, 1.25.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-58183",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.8, 1.25.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-58185",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.8, 1.25.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-58187",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.9, 1.25.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-58188",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.8, 1.25.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-58189",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.8, 1.25.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-61723",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.8, 1.25.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-61724",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.8, 1.25.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-61725",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.8, 1.25.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-61727",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.11, 1.25.5",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-61728",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.12, 1.25.6",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-61730",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.12, 1.25.6",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-27142",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.8, 1.26.1",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-32282",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.9, 1.26.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-32288",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.9, 1.26.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-32289",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.9, 1.26.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-39823",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.10, 1.26.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-39825",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.10, 1.26.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-39826",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.10, 1.26.3",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-42505",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.12, 1.26.5, 1.27.0-rc.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-42507",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.11, 1.26.4",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-56866",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.9, 1.27.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-78659",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.9, 1.27.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-78660",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.9, 1.27.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-78663",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.9, 1.27.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-94439",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.9, 1.27.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-94440",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.9, 1.27.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-94448",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.9, 1.27.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-97030",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.9, 1.27.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-97032",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.9, 1.27.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-97054",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.11, 1.27.4",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2025-58186",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.24.8, 1.25.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "LOW",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-27139",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.25.8, 1.26.1",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "LOW",
+      "source": "stdlib",
+      "source_version": null
+    },
+    {
+      "advisory": "CVE-2026-56857",
+      "decision": "Upstream module/toolchain correction exists; the latest vendor Caddy/gosu application artifact retains this copy. Concrete supported-caller/configuration exclusions apply; no installed-copy patch claim or arbitrary-compatibility assertion. Reassess on new packaged vendor release or changed sources/commands/configuration.",
+      "disposition": "conditional-exclusion-supported-gosu-flow",
+      "evidence": [
+        "static-vendor-fix-review.json",
+        "advisory-ledger.json"
+      ],
+      "fixed": "1.26.9, 1.27.2",
+      "image": "postgres",
+      "image_id": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+      "installed": "v1.24.6",
+      "package": "stdlib",
+      "severity": "LOW",
+      "source": "stdlib",
+      "source_version": null
+    }
+  ],
+  "static_go_module_fix_listed_associations": 68
+}

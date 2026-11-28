@@ -1,0 +1,113 @@
+{
+  "files": {
+    "all-layer-audit.json": {
+      "bytes": 801013,
+      "sha256": "06090df4b23af403bcd015013380c9797a586cd29fa9cb0c90fa715778c18f22"
+    },
+    "api-layer-files.json": {
+      "bytes": 1032479,
+      "sha256": "eb685f8e557d828bb5c09e48aac6d1118a37e4297107f473eb318695d634ce01"
+    },
+    "api-layer-members.json": {
+      "bytes": 1081270,
+      "sha256": "8d5f5869f8c896f77153ed42087c253d49f800c392ca67fda7269c0ce5175811"
+    },
+    "api-notices.tar.gz-files.json": {
+      "bytes": 2981,
+      "sha256": "c693d6ecb5f00878cbf45a5d0d767a38c9d52cc49433be10b303ee8b86b413a3"
+    },
+    "api-notices.tar.gz-members.json": {
+      "bytes": 2450,
+      "sha256": "fc0a29b224c05fca9ba12cf8c19009350159a263940a88797cf46a9f43516866"
+    },
+    "efbundle-inventory.json": {
+      "bytes": 60296,
+      "sha256": "b2066123a23f2ebb7375873171e7acc362e8fccdabd631ea3ee8ee54198483cc"
+    },
+    "efbundle-previous-inventory.json": {
+      "bytes": 60386,
+      "sha256": "d149518d4b856cf5b94b6bccd04da0dadb5b08387e1e2b5025b1638bc842adac"
+    },
+    "efbundle_audit.py": {
+      "bytes": 3744,
+      "sha256": "6dd4fb3275eb9a9ab0b0df6fe39c1d24242bf071e7a18bcbbe49e533ff255a63"
+    },
+    "installation.tar.gz-files.json": {
+      "bytes": 312991,
+      "sha256": "74430b272adbd04d49f32c1f926c4f85fc00bcb780131d9cb249488ef833891f"
+    },
+    "installation.tar.gz-members.json": {
+      "bytes": 265112,
+      "sha256": "556fd322cb8e8c7cfd2032c4a7327146eff5647989637a9280651f01f58fc6b8"
+    },
+    "layer_audit.py": {
+      "bytes": 12062,
+      "sha256": "1b6efb8323f52dd4c20704205eff86967f6abd795e6d1dfe9007e8dd31d519fd"
+    },
+    "payload-reconciliation.json": {
+      "bytes": 121305,
+      "sha256": "aa22ea365fc1d06b74df32bf84b271107c1e7ba79cb34e0bbf1976267949c2ac"
+    },
+    "reconcile_layers.py": {
+      "bytes": 5669,
+      "sha256": "21a84c6a43ef8bbb5257ccfafcd9162c87c5ea4ec70ba3577926cb11115fb21b"
+    },
+    "reports.tar.gz-files.json": {
+      "bytes": 153,
+      "sha256": "f46bd2bbcf64690b5ac8895c8ec672652128d3f555c10e7bd651341bdd76c6e4"
+    },
+    "reports.tar.gz-members.json": {
+      "bytes": 192,
+      "sha256": "dfaaf288b2aa20063a3918912b52c48a7c8766cb4800d14ebc0785bd08a7f8f5"
+    },
+    "review.md": {
+      "bytes": 5191,
+      "sha256": "2ac9dd4178bc29390ce91da75ffbea9c9d37a950c5d5868418d73dc2770f3812"
+    },
+    "source-archive-audit.json": {
+      "bytes": 2560,
+      "sha256": "761e5b73967ca3e4b71457f311e272b94ec08723f554a2358a8290385c14ff52"
+    },
+    "source-files.json": {
+      "bytes": 453975,
+      "sha256": "0919fec43a7c7688a6f4fdc65cee61ab91880d3385020107bc81cc84eed5bb9a"
+    },
+    "source_archive_audit.py": {
+      "bytes": 4191,
+      "sha256": "f283b2db62b1998a7d3388540995a1cd4055de904b06368c182d1ddc4ed98f64"
+    },
+    "tools-layer-files.json": {
+      "bytes": 1338658,
+      "sha256": "04fbb04d26a48efac8ded3f4c5cb9740b12c71fa07dcb346880dd093a79a6787"
+    },
+    "tools-layer-members.json": {
+      "bytes": 1386522,
+      "sha256": "2fffeb9b9c6ad9105a29c0070b41563a93fee07b80cfc3d1689c1aa1b821ebae"
+    },
+    "tools-notices.tar.gz-files.json": {
+      "bytes": 3017,
+      "sha256": "f8f0e8f0960dc056d7fe0f632048b1058da1b6aed4964ce37b08e5475ce46fdc"
+    },
+    "tools-notices.tar.gz-members.json": {
+      "bytes": 2492,
+      "sha256": "50fa9970721adcd0eb853e289b22bb170af6051f5417b07260e0d1f75091bede"
+    },
+    "web-layer-files.json": {
+      "bytes": 1389226,
+      "sha256": "cb24be52a5f18badc7ad5a1a0fda47af274cdb57ff6a221df9f712a3b185bfa1"
+    },
+    "web-layer-members.json": {
+      "bytes": 1408684,
+      "sha256": "ad33c0c43d05b56806fe631ca7b8db1df7a5a084185e81067cab3a4ddc9c2f80"
+    },
+    "web-notices.tar.gz-files.json": {
+      "bytes": 2981,
+      "sha256": "162c0ffea6ad0d00967eaf59dc151e95fa4bcf389b244884dd077abac301b7e5"
+    },
+    "web-notices.tar.gz-members.json": {
+      "bytes": 2450,
+      "sha256": "0cf7b3a1de246b8b9fda4dfd498ab2ac348ea26b7c93f14f3dc27a24f6278de0"
+    }
+  },
+  "revision": "f54048c233e405843160bc16d857f8c32082599f"
+}

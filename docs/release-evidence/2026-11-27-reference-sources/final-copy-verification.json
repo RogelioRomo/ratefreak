@@ -1,0 +1,11 @@
+{
+  "valid": true,
+  "material_files": 339,
+  "source_manifest": "reference-coverage.json",
+  "validated_directory": ".local/stable-qualification-2026-11-27/reference-sources/validated-final",
+  "images": {
+    "caddy": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+    "postgres": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221"
+  },
+  "all_copied_materials_sha256_verified": true
+}

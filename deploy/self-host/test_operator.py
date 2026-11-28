@@ -310,8 +310,8 @@ class ReleaseSelectionTests(unittest.TestCase):
         cli.write_state(self.root/'release-selection.json',{'images':{n:{'tag':'ratefreak-'+n+':0.1.0'} for n in ['api','web','tools']}})
         cli.write_state(self.root/'migrated.json',{'old':'receipt'})
         images={n:'sha256:'+str(i)*64 for i,n in enumerate(['api','web','tools'])}
-        with patch.object(cli,'release_images',return_value=images):cli.select_source(self.root)
-        self.assertTrue(all(tag.endswith(':local') for tag in cli.selected_images(self.root).values()))
+        with patch.object(cli,'release_images',return_value=images),patch.object(cli,'execute',return_value='sha256:'+'3'*64+'\nsha256:'+'4'*64+'\n'):cli.select_source(self.root)
+        self.assertEqual(cli.selected_images(self.root),images)
         self.assertFalse((self.root/'migrated.json').exists())
     def test_failed_selection_write_preserves_old_receipt_and_selection(self):
         from unittest.mock import patch

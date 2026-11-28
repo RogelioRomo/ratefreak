@@ -62,7 +62,7 @@ public sealed class MusicBrainzImportTests(AccountDatabase database) : IClassFix
         await Json(await client.PutAsJsonAsync($"/api/v1/media/{mediaId}/rating",new {score=4.5,isShared=true},Ct));
         foreach(var route in new[]{"/api/v1/users/me/library?type=song","/api/v1/users/me/ratings/recent","/api/v1/feed?tab=community&type=song"})
         {
-            var row=Assert.Single((await Json(await client.GetAsync(route,Ct))).GetProperty("items").EnumerateArray());
+            var row=Assert.Single((await Json(await client.GetAsync(route,Ct))).GetProperty("items").EnumerateArray(), x=>x.GetProperty("media").GetProperty("id").GetGuid()==mediaId);
             Assert.Equal(cover,row.GetProperty("media").GetProperty("imageReference").GetString());
         }
         await using var db=Db(); Assert.Equal(cover,(await db.MediaItems.SingleAsync(x=>x.Id==mediaId,Ct)).ImageReference);

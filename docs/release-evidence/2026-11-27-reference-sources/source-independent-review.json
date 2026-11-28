@@ -1,0 +1,43 @@
+{
+  "scope": "Independent source/notice review of exact final PostgreSQL and Debian Caddy frozen successor artifacts; no security or publication clearance",
+  "source_revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+  "images": {
+    "caddy": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+    "postgres": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221"
+  },
+  "blockers": [],
+  "important_gaps": [],
+  "verified": {
+    "exact_component_entries": 378,
+    "source_exception_entries": 0,
+    "debian_source_tuples_including_inherited": 103,
+    "source_input_files_sha256_and_size": 329,
+    "descriptor_checksum_closures": 103,
+    "source_input_references": 334,
+    "go_module_h1_archives": 149,
+    "full_go_toolchain_sources": 2,
+    "copied_material_hashes": 339,
+    "raw_caddy_layer_members": 4248,
+    "raw_postgres_layer_members": 10940,
+    "all_package_native_notice_and_source_payloads_equal_to_reviewed_trial": true,
+    "raw_layer_blob_digests_and_oci_image_root_id_verified": true,
+    "all_published_evidence_hashes_verified": true
+  },
+  "minor_limitations": [
+    "No bit-for-bit source rebuild or original temporary Go compiler workspace reconstruction is claimed. Official Go download metadata uses HTTPS+SHA256; no new detached-signature verification claim.",
+    "Historical reused source receipts keep their original acquisition/signature scope. Fresh Debian/PGDG index checks use retained explicit signing-key trust anchors.",
+    "RootFS layer digests differ. Only three timestamped APT/dpkg logs and generated ldconfig file identity/time/order cache metadata differ; every other raw member content/type/mode/link equals trial.",
+    "Obsolete Alpine vendor trial remains uncleared for its GPL2/OpenSSL3 linked grant concern and is not the distributed runtime."
+  ],
+  "delivery_directory": ".local/stable-qualification-2026-11-27/reference-sources/validated-final",
+  "coverage_manifest_sha256": "99ba7967e7486c785a3c8ebeaeb5ddcdee7b8f8ef66f8bf6c6b26992ac6ac493",
+  "verified_commands": [
+    "python3 reference-sources/verify_postgres.py",
+    "python3 reference-sources/compare_raw_reference.py",
+    "python3 reference-sources/verify_generated_deltas.py",
+    "python3 reference-sources/rebind_reference.py successor-candidate/reference-inventory.json",
+    "python3 reference-sources/assemble_reference.py successor-candidate/reference-inventory.json successor-candidate",
+    "frozen reference_sources.copy_evidence + independent SHA256 reread of every copied artifact",
+    "python3 reference-sources/export_reference.py"
+  ]
+}

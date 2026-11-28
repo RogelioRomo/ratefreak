@@ -1,0 +1,32 @@
+{
+  "source_revision": "9eea2c76550fe03920dd999f1677565e4f43d12b",
+  "all_seven_role_allocator_values": {
+    "postgres": "glibc.malloc.arena_max=1",
+    "api": "glibc.malloc.arena_max=1",
+    "web": "glibc.malloc.arena_max=1",
+    "caddy": "glibc.malloc.arena_max=1",
+    "storage-init": "glibc.malloc.arena_max=1",
+    "migrate": "glibc.malloc.arena_max=1",
+    "tools": "glibc.malloc.arena_max=1"
+  },
+  "postgres_jit": "off",
+  "application_images": {
+    "api": "sha256:238c0ff9aa756644534d2626fd002047d7d5e5a3afc4247b7b0ad75197baaf56",
+    "web": "sha256:b34486f80782118b4312836bb698453deaeedb710bb53e4f742190d9551cb45e",
+    "tools": "sha256:e17b647a8bc72431576993405649a1f357ce4d76fdc16a3d0507dbdc7cb9b4cc"
+  },
+  "reference_images": {
+    "caddy": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+    "postgres": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221"
+  },
+  "running_images": {
+    "api": "sha256:238c0ff9aa756644534d2626fd002047d7d5e5a3afc4247b7b0ad75197baaf56",
+    "caddy": "sha256:7349e81f654a5ac6f62ef54787927147be972e8ecaff3499596796c19e4c0189",
+    "postgres": "sha256:edc4f2f5cac78cceca02088e84032e9db9d102f26c84b41f6ccb28b7922ca221",
+    "web": "sha256:b34486f80782118b4312836bb698453deaeedb710bb53e4f742190d9551cb45e"
+  },
+  "frozen_compose_sha256": "eba3444a1aa42424fec1c68292c57e6c096dca1289ab29e9a8b5009864f50d4f",
+  "production_operator_used": true,
+  "provider_credentials_supplied": false,
+  "persistent_installation_changed": false
+}
