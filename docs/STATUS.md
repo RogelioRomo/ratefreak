@@ -187,8 +187,9 @@ remain in [provider agreement evidence](provider-agreement-evidence.md).
    the configured maintainer notification channel before closing this gate.
 2. **Restore GitHub authentication and synchronize the reviewed source.** Prior
    SSH authentication was unavailable. The 23 reviewed successor implementation
-   files are integrated into the main working tree, with all 204 tooling tests
-   passing; main changes remain uncommitted. The isolated frozen source commit
+   files and qualification evidence are committed and merged into local `main`.
+   The prior 204 tooling tests passed; the owner requested no additional test
+   runs for this commit/merge. The isolated frozen source commit
    and local-only tag preserve the exact reviewed release. Preserve all current
    main changes/evidence and the original candidate when integrating/synchronizing.
 3. **Publish only after authorization.** The local verified bundle is ready for

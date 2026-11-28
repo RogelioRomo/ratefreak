@@ -1,3 +1,7 @@
+# Latest repository integration — user authorized continuing below20% allowance
+
+The user explicitly waived the20% stop for this local commit/merge/cleanup and requested NO tests or builds. Release changes/evidence committed as458a527. The preserved release/patched-reference-images history is being merged into main, retaining current qualification STATUS and main's development VERSION0.1.0-dev.1; frozen9eea2c7 tag/archive/artifact identity stays unchanged. After the merge, both local copies of the merged feature branch are removed; the frozen clone is left detached at9eea2c7. No remote push/publication. Docker inspection found no running task service: only the user's developer ratefreak-postgres-1 is active, with two historical acceptance containers already stopped. Developer services/data preserved. No Docker images/cache/volumes deleted. Earlier pending/threshold notes below are historical and superseded by this integration entry. Current git log/status determine final merge commit identity.
+
 # Release handoff — 2026-11-27
 
 ## Current checkpoint — STOPPED AT USER'S 20% ALLOWANCE THRESHOLD
